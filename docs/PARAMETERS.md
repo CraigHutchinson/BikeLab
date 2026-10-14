@@ -8,6 +8,24 @@ Record quantity, internal SI unit, display unit, value/range, provenance class, 
 
 A fitted value also needs the experiment used for fitting and a different experiment reserved for validation. Avoid tuning and validating against the same trace.
 
+## Production-bike catalogue
+
+User requirement, 2026-10-14: support selecting off-the-shelf bikes, including Santa Cruz, Trek, Scott and other manufacturers. This is planned scope; no specific model specifications have been researched or added yet.
+
+Selection identifies manufacturer, model, model year, frame size and build/trim. Include hardtail and full-suspension entries. Record wheel-size configuration and geometry adjustment positions where applicable so a model name cannot silently stand for several different bicycles.
+
+Keep three layers distinct:
+
+1. Stock specification: versioned frame geometry and factory component configuration, with sources.
+2. Simulation calibration: mass distribution, inertia, suspension/contact curves and other physical parameters, each with its own evidence and uncertainty.
+3. User setup: rider characteristics, tyre inflation, suspension adjustments and compatible component changes, saved as overrides without overwriting the stock baseline.
+
+The experience should allow selecting a stock bike, inspecting its specification and modelling confidence, adjusting its setup, restoring stock configuration and comparing bikes under identical rider and test conditions. Rider-dependent setup values must be labelled rather than presented as universal factory settings.
+
+Use the appropriate suspension mechanism for each bike. Do not relabel the initial single-pivot reference as a production bike whose linkage it does not represent. A partially specified entry must show its approximations and unsupported behaviours.
+
+Start with a small, source-backed catalogue when the whole-bike rig can consume it. Expand based on data availability and validation, without limiting the design to the initial brands. Saved runs must retain the catalogue revision and effective setup so later specification updates do not change old experiments.
+
 ## Parameter groups
 
 | Group | Inputs to collect | Derived values/checks | Initial use |

@@ -99,6 +99,16 @@ Gate: physical calibration receipts, held-out validation, performance on the int
 
 Trade-off: detailed tread/soil, structural flex and thermal behaviour are separate extensions. Add them in response to observed limitations and specific experiments.
 
+## Planned extension - production-bike selection
+
+User requirement, 2026-10-14: offer off-the-shelf bike presets from Santa Cruz, Trek, Scott and other manufacturers.
+
+Prepare the catalogue alongside whole-bike work; expose selection when the geometry, suspension mechanism and components are actually consumed. The initial single-pivot test rig remains a reference mechanism, not an assumed model of every production bike.
+
+First delivery: a small source-backed set spanning hardtail and full suspension, identified by model year, frame size and build specification. Selecting a bike loads its stock configuration; rider/setup changes remain editable overrides. Show modelling confidence and missing/estimated parameters. Compare different bikes using the same rider and excitation.
+
+Acceptance: source/provenance coverage, geometry/assembly checks, correct mechanism selection, reproducible catalogue revisions, stock-reset behaviour and saved-run reproduction. Published specifications and measured dynamic calibration remain distinct. See [catalogue requirements](PARAMETERS.md#production-bike-catalogue).
+
 ## Stack decision before Slice 1 coding
 
 Evaluate a small number of candidates against:
