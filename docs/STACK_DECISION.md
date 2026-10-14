@@ -36,4 +36,3 @@ Default step 0.5 ms; tests compare 0.5, 0.25 and 0.125 ms. Recording is at 200 H
 Initial centre is R-mg/k at rest, unless a bounded initial lift is specified. Sinusoidal forcing starts at zero position with nonzero platen velocity, so its transient is intentional. Analytical harmonic tests exclude settling. A single bump starts at 1 s and uses A sin^4(pi f (t-1)) over one duration 1/f; both endpoint velocity and acceleration vanish.
 
 Inputs are bounded for this numerical prototype. Compression over 35% of radius invalidates the run; this is a surrogate domain guard, not a tyre failure prediction. All example parameters are illustrative.
-

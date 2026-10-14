@@ -120,4 +120,3 @@ function animate(now) {
 }
 window.addEventListener('resize',draw);
 calculate(params());requestAnimationFrame(animate);
-

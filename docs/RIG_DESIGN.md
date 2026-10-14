@@ -92,4 +92,3 @@ A comparison retains both setups and the exact scenario. Plot both traces on the
 - Result: metrics, validity status, failed checks and limitations.
 
 The viewer reads state; it does not own physics. A headless runner and interactive view must produce numerically matching underlying results for a prescribed scenario. Same-runtime replay is exact; cross-runtime checks use the declared tolerance in SLICE_1_EVIDENCE.md. Cross-runtime or cross-platform bitwise determinism is not promised.
-

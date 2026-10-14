@@ -137,4 +137,3 @@ export function replay(text) {
 export function sameScenario(a, b) {
   return ['profile', 'amplitude', 'frequency', 'duration', 'dt', 'sampleDt', 'lift'].every(k => a[k] === b[k]);
 }
-

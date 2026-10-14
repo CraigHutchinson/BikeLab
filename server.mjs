@@ -14,4 +14,3 @@ const server = http.createServer(async (req, res) => {
 });
 server.on('error', e => { console.error(e.message); process.exitCode = 1; });
 server.listen(4177, '127.0.0.1', () => console.log('BikeLab: http://127.0.0.1:4177'));
-

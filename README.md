@@ -54,4 +54,3 @@ Develop toward a highly realistic riding and bike-setup experience in which geom
 Next: close visual inspection, then the fork/shock station. The first complete-bike milestone remains a hardtail and a full-suspension bicycle responding to the same road input. Reassess multibody solver technology before that milestone.
 
 Develop every visible experiment alongside its foundations. Keep physics independent of rendering, rider mechanics separate from control, and measured/fitted/illustrative parameters distinguishable. Add complexity only when a named experiment consumes it.
-

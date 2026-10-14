@@ -73,4 +73,3 @@ Use node scripts/verify-record.mjs <saved-run.json> to repeat the comparison. It
 No real tyre, pressure, tread, fork, rear suspension, rider or terrain calibration. No rolling or steering. No physical wheel-spin state. No full bicycle. No participant test. No sharp-edge contact model. No root-located contact events. The current UI parameters are illustrative, and compression beyond the surrogate domain stops a run.
 
 Next: close native visual inspection, then implement a suspension station with independent force-curve and transient checks before assembling the whole bike.
-

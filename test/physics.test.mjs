@@ -105,4 +105,3 @@ test('solver reset reconstruction reproduces each integration step',()=>{
   const a=new Solver(),b=new Solver();
   for(let i=0;i<3000;i++){a.step();b.step();assert.deepEqual(a.state,b.state);}
 });
-

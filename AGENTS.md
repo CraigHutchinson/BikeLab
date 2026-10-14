@@ -19,4 +19,3 @@ Before substantive C++ authoring, read cpp-write; before merging substantive C++
 Research delegation preference: bounded data gathering to Sonnet/Terra when available. If those classes are unavailable, say so and work locally. This does not authorize installs or contended measurements.
 
 Do not publish or deploy this local sandbox merely because it has a browser interface.
-

@@ -131,4 +131,3 @@ Current delivery: stack decision and Slice 1 are implemented; pixel-level visual
 Delivered: runnable wheel/platen station, headless scenario runner, controls/plots, saved input/replay, independent tests and an evidence note. Next: close visual inspection and add verified fork/shock force curves and transient experiments.
 
 Do not require the user to pick a real bike, game controller or final graphics engine before this bounded slice can begin. Use clearly labelled illustrative parameters and keep the reference dataset question open.
-

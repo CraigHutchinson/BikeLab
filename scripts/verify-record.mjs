@@ -22,4 +22,3 @@ for (const key of Object.keys(actual.metrics)) {
 }
 assert.deepEqual(saved.events, actual.events);
 console.log(JSON.stringify({ result: 'numerical agreement', normalizedTolerance: 1e-10, maxAbsoluteDifferences: differences }, null, 2));
-
