@@ -1,0 +1,517 @@
+[
+  {
+    "model": "bikelab-prismatic-trial-1",
+    "params": {
+      "mass": 45,
+      "stiffness": 9000,
+      "damping": 350,
+      "preload": 50,
+      "travel": 0.16,
+      "initialCompression": 0.075,
+      "initialVelocity": 0,
+      "tiltDegrees": 20,
+      "transverseForce": 100,
+      "probeTorque": 0,
+      "dt": 0.0005,
+      "duration": 2
+    },
+    "engine": {
+      "package": "@dimforge/rapier3d-compat",
+      "packageVersion": "0.21.0",
+      "bindingVersion": "0.21.0",
+      "coreVersion": "0.36.0",
+      "sourceCommit": "b716d375efc0201003f0cd9ef7168eee0b62c177",
+      "precision": "float32",
+      "joint": "prismatic impulse joint",
+      "motor": "ForceBased",
+      "solverIterations": 4,
+      "internalPgsIterations": 1,
+      "requestedDt": 0.0005,
+      "storedDt": 0.0005000000237487257,
+      "lengthUnit": 1,
+      "maxCcdSubsteps": 1,
+      "sleeping": false,
+      "bodyLinearDamping": 0,
+      "bodyAngularDamping": 0,
+      "measuredMass": 45,
+      "principalInertia": [
+        1,
+        1,
+        1
+      ],
+      "torqueAxis": [
+        0.2672612419124244,
+        0.5345224838248488,
+        0.8017837257372732
+      ],
+      "colliders": 0
+    },
+    "sampleDt": 0.005,
+    "effectiveSampleDt": 0.0050000002374872565,
+    "status": "fail",
+    "checks": {
+      "reference": false,
+      "closure": true,
+      "restart": true,
+      "complete": true
+    },
+    "termination": null,
+    "completedTicks": 4000,
+    "sampleCount": 401,
+    "errors": {
+      "compression": {
+        "maxAbsolute": 0.000041145000363049244,
+        "rms": 0.000014423361915046821,
+        "limit": 0.000001
+      },
+      "compressionVelocity": {
+        "maxAbsolute": 0.0005845418556801596,
+        "rms": 0.00020412209006408317,
+        "limit": 0.0001
+      },
+      "force": {
+        "maxAbsolute": 0.3515487441601408,
+        "rms": 0.1311211393998126,
+        "limit": 0.1
+      }
+    },
+    "closure": {
+      "maxTranslation": 1.4882778789182938e-8,
+      "maxRotation": 0,
+      "limits": {
+        "translation": 0.00001,
+        "rotation": 0.00001
+      }
+    },
+    "travel": {
+      "minCompression": 0.026521828753276123,
+      "maxCompression": 0.07500000251478689
+    },
+    "restart": {
+      "tick": 2000,
+      "time": 1.0000000474974513,
+      "comparedSteps": 2000,
+      "exactBodyState": true,
+      "exactFinalSnapshot": true,
+      "scope": "Same artifact and runtime; complete engine snapshot plus immutable setup and integer tick. No contact/soil state in this fixture."
+    },
+    "diagnostics": {
+      "jointReaction": "unavailable: this JS binding exposes no joint impulse/wrench getter",
+      "force": "Constitutive force evaluated from recorded q/u; not the engine motor impulse or a measured support reaction.",
+      "scope": "Offline, interior-stroke solver feasibility. No contact, stops, whole bicycle, calibration or real-time qualification."
+    },
+    "completeReportSha256": "45a71de91a415a64a57849839c494287a1db9187f00229c9c6cb149890774eff"
+  },
+  {
+    "model": "bikelab-prismatic-trial-1",
+    "params": {
+      "mass": 45,
+      "stiffness": 9000,
+      "damping": 350,
+      "preload": 50,
+      "travel": 0.16,
+      "initialCompression": 0.075,
+      "initialVelocity": 0,
+      "tiltDegrees": 20,
+      "transverseForce": 100,
+      "probeTorque": 0,
+      "dt": 0.00025,
+      "duration": 2
+    },
+    "engine": {
+      "package": "@dimforge/rapier3d-compat",
+      "packageVersion": "0.21.0",
+      "bindingVersion": "0.21.0",
+      "coreVersion": "0.36.0",
+      "sourceCommit": "b716d375efc0201003f0cd9ef7168eee0b62c177",
+      "precision": "float32",
+      "joint": "prismatic impulse joint",
+      "motor": "ForceBased",
+      "solverIterations": 4,
+      "internalPgsIterations": 1,
+      "requestedDt": 0.00025,
+      "storedDt": 0.0002500000118743628,
+      "lengthUnit": 1,
+      "maxCcdSubsteps": 1,
+      "sleeping": false,
+      "bodyLinearDamping": 0,
+      "bodyAngularDamping": 0,
+      "measuredMass": 45,
+      "principalInertia": [
+        1,
+        1,
+        1
+      ],
+      "torqueAxis": [
+        0.2672612419124244,
+        0.5345224838248488,
+        0.8017837257372732
+      ],
+      "colliders": 0
+    },
+    "sampleDt": 0.005,
+    "effectiveSampleDt": 0.0050000002374872565,
+    "status": "fail",
+    "checks": {
+      "reference": false,
+      "closure": true,
+      "restart": true,
+      "complete": true
+    },
+    "termination": null,
+    "completedTicks": 8000,
+    "sampleCount": 401,
+    "errors": {
+      "compression": {
+        "maxAbsolute": 0.00002023493884537389,
+        "rms": 0.000007203094661788414,
+        "limit": 0.000001
+      },
+      "compressionVelocity": {
+        "maxAbsolute": 0.00029058234711906716,
+        "rms": 0.00010209894908863312,
+        "limit": 0.0001
+      },
+      "force": {
+        "maxAbsolute": 0.1723510597065001,
+        "rms": 0.06548328405149478,
+        "limit": 0.1
+      }
+    },
+    "closure": {
+      "maxTranslation": 1.456126812788251e-8,
+      "maxRotation": 0,
+      "limits": {
+        "translation": 0.00001,
+        "rotation": 0.00001
+      }
+    },
+    "travel": {
+      "minCompression": 0.026501465484611457,
+      "maxCompression": 0.07500000251478689
+    },
+    "restart": {
+      "tick": 4000,
+      "time": 1.0000000474974513,
+      "comparedSteps": 4000,
+      "exactBodyState": true,
+      "exactFinalSnapshot": true,
+      "scope": "Same artifact and runtime; complete engine snapshot plus immutable setup and integer tick. No contact/soil state in this fixture."
+    },
+    "diagnostics": {
+      "jointReaction": "unavailable: this JS binding exposes no joint impulse/wrench getter",
+      "force": "Constitutive force evaluated from recorded q/u; not the engine motor impulse or a measured support reaction.",
+      "scope": "Offline, interior-stroke solver feasibility. No contact, stops, whole bicycle, calibration or real-time qualification."
+    },
+    "completeReportSha256": "75ba325c984ad8877f58522274671d893f44fef02c286ac70b538a48dd74b6ca"
+  },
+  {
+    "model": "bikelab-prismatic-trial-1",
+    "params": {
+      "mass": 45,
+      "stiffness": 9000,
+      "damping": 350,
+      "preload": 50,
+      "travel": 0.16,
+      "initialCompression": 0.075,
+      "initialVelocity": 0,
+      "tiltDegrees": 20,
+      "transverseForce": 100,
+      "probeTorque": 0,
+      "dt": 0.000125,
+      "duration": 2
+    },
+    "engine": {
+      "package": "@dimforge/rapier3d-compat",
+      "packageVersion": "0.21.0",
+      "bindingVersion": "0.21.0",
+      "coreVersion": "0.36.0",
+      "sourceCommit": "b716d375efc0201003f0cd9ef7168eee0b62c177",
+      "precision": "float32",
+      "joint": "prismatic impulse joint",
+      "motor": "ForceBased",
+      "solverIterations": 4,
+      "internalPgsIterations": 1,
+      "requestedDt": 0.000125,
+      "storedDt": 0.0001250000059371814,
+      "lengthUnit": 1,
+      "maxCcdSubsteps": 1,
+      "sleeping": false,
+      "bodyLinearDamping": 0,
+      "bodyAngularDamping": 0,
+      "measuredMass": 45,
+      "principalInertia": [
+        1,
+        1,
+        1
+      ],
+      "torqueAxis": [
+        0.2672612419124244,
+        0.5345224838248488,
+        0.8017837257372732
+      ],
+      "colliders": 0
+    },
+    "sampleDt": 0.005,
+    "effectiveSampleDt": 0.0050000002374872565,
+    "status": "fail",
+    "checks": {
+      "reference": false,
+      "closure": true,
+      "restart": true,
+      "complete": true
+    },
+    "termination": null,
+    "completedTicks": 16000,
+    "sampleCount": 401,
+    "errors": {
+      "compression": {
+        "maxAbsolute": 0.000009756753431400256,
+        "rms": 0.0000036598384718395774,
+        "limit": 0.000001
+      },
+      "compressionVelocity": {
+        "maxAbsolute": 0.00014482920773625785,
+        "rms": 0.00005166196639185165,
+        "limit": 0.0001
+      },
+      "force": {
+        "maxAbsolute": 0.09013817718380324,
+        "rms": 0.03309855691453832,
+        "limit": 0.1
+      }
+    },
+    "closure": {
+      "maxTranslation": 1.4877163946948792e-8,
+      "maxRotation": 0,
+      "limits": {
+        "translation": 0.00001,
+        "rotation": 0.00001
+      }
+    },
+    "travel": {
+      "minCompression": 0.026491255444682282,
+      "maxCompression": 0.07500000251478689
+    },
+    "restart": {
+      "tick": 8000,
+      "time": 1.0000000474974513,
+      "comparedSteps": 8000,
+      "exactBodyState": true,
+      "exactFinalSnapshot": true,
+      "scope": "Same artifact and runtime; complete engine snapshot plus immutable setup and integer tick. No contact/soil state in this fixture."
+    },
+    "diagnostics": {
+      "jointReaction": "unavailable: this JS binding exposes no joint impulse/wrench getter",
+      "force": "Constitutive force evaluated from recorded q/u; not the engine motor impulse or a measured support reaction.",
+      "scope": "Offline, interior-stroke solver feasibility. No contact, stops, whole bicycle, calibration or real-time qualification."
+    },
+    "completeReportSha256": "3974d27ce44d72d6c0823a53ef5a5c7cf4ab80c2244753dc73e8de6102319b00"
+  },
+  {
+    "model": "bikelab-prismatic-trial-1",
+    "params": {
+      "mass": 45,
+      "stiffness": 9000,
+      "damping": 350,
+      "preload": 50,
+      "travel": 0.16,
+      "initialCompression": 0.075,
+      "initialVelocity": 0,
+      "tiltDegrees": 20,
+      "transverseForce": 100,
+      "probeTorque": 0,
+      "dt": 0.0000625,
+      "duration": 2
+    },
+    "engine": {
+      "package": "@dimforge/rapier3d-compat",
+      "packageVersion": "0.21.0",
+      "bindingVersion": "0.21.0",
+      "coreVersion": "0.36.0",
+      "sourceCommit": "b716d375efc0201003f0cd9ef7168eee0b62c177",
+      "precision": "float32",
+      "joint": "prismatic impulse joint",
+      "motor": "ForceBased",
+      "solverIterations": 4,
+      "internalPgsIterations": 1,
+      "requestedDt": 0.0000625,
+      "storedDt": 0.0000625000029685907,
+      "lengthUnit": 1,
+      "maxCcdSubsteps": 1,
+      "sleeping": false,
+      "bodyLinearDamping": 0,
+      "bodyAngularDamping": 0,
+      "measuredMass": 45,
+      "principalInertia": [
+        1,
+        1,
+        1
+      ],
+      "torqueAxis": [
+        0.2672612419124244,
+        0.5345224838248488,
+        0.8017837257372732
+      ],
+      "colliders": 0
+    },
+    "sampleDt": 0.005,
+    "effectiveSampleDt": 0.0050000002374872565,
+    "status": "fail",
+    "checks": {
+      "reference": false,
+      "closure": true,
+      "restart": true,
+      "complete": true
+    },
+    "termination": null,
+    "completedTicks": 32000,
+    "sampleCount": 401,
+    "errors": {
+      "compression": {
+        "maxAbsolute": 0.000004842926705883599,
+        "rms": 0.0000018676213379147938,
+        "limit": 0.000001
+      },
+      "compressionVelocity": {
+        "maxAbsolute": 0.00007219484413811816,
+        "rms": 0.00002626844477505846,
+        "limit": 0.0001
+      },
+      "force": {
+        "maxAbsolute": 0.04468075525738868,
+        "rms": 0.016384332962779195,
+        "limit": 0.1
+      }
+    },
+    "closure": {
+      "maxTranslation": 1.5663568527063954e-8,
+      "maxRotation": 0,
+      "limits": {
+        "translation": 0.00001,
+        "rotation": 0.00001
+      }
+    },
+    "travel": {
+      "minCompression": 0.026486307890210017,
+      "maxCompression": 0.07500000251478689
+    },
+    "restart": {
+      "tick": 16000,
+      "time": 1.0000000474974513,
+      "comparedSteps": 16000,
+      "exactBodyState": true,
+      "exactFinalSnapshot": true,
+      "scope": "Same artifact and runtime; complete engine snapshot plus immutable setup and integer tick. No contact/soil state in this fixture."
+    },
+    "diagnostics": {
+      "jointReaction": "unavailable: this JS binding exposes no joint impulse/wrench getter",
+      "force": "Constitutive force evaluated from recorded q/u; not the engine motor impulse or a measured support reaction.",
+      "scope": "Offline, interior-stroke solver feasibility. No contact, stops, whole bicycle, calibration or real-time qualification."
+    },
+    "completeReportSha256": "380c290fd61675ca8ad3d2b1da13b463c58c7baf20068dd2357c81336921e169"
+  },
+  {
+    "model": "bikelab-prismatic-trial-1",
+    "params": {
+      "mass": 45,
+      "stiffness": 9000,
+      "damping": 350,
+      "preload": 50,
+      "travel": 0.16,
+      "initialCompression": 0.075,
+      "initialVelocity": 0,
+      "tiltDegrees": 20,
+      "transverseForce": 100,
+      "probeTorque": 0,
+      "dt": 0.00003125,
+      "duration": 2
+    },
+    "engine": {
+      "package": "@dimforge/rapier3d-compat",
+      "packageVersion": "0.21.0",
+      "bindingVersion": "0.21.0",
+      "coreVersion": "0.36.0",
+      "sourceCommit": "b716d375efc0201003f0cd9ef7168eee0b62c177",
+      "precision": "float32",
+      "joint": "prismatic impulse joint",
+      "motor": "ForceBased",
+      "solverIterations": 4,
+      "internalPgsIterations": 1,
+      "requestedDt": 0.00003125,
+      "storedDt": 0.00003125000148429535,
+      "lengthUnit": 1,
+      "maxCcdSubsteps": 1,
+      "sleeping": false,
+      "bodyLinearDamping": 0,
+      "bodyAngularDamping": 0,
+      "measuredMass": 45,
+      "principalInertia": [
+        1,
+        1,
+        1
+      ],
+      "torqueAxis": [
+        0.2672612419124244,
+        0.5345224838248488,
+        0.8017837257372732
+      ],
+      "colliders": 0
+    },
+    "sampleDt": 0.005,
+    "effectiveSampleDt": 0.0050000002374872565,
+    "status": "fail",
+    "checks": {
+      "reference": false,
+      "closure": true,
+      "restart": true,
+      "complete": true
+    },
+    "termination": null,
+    "completedTicks": 64000,
+    "sampleCount": 401,
+    "errors": {
+      "compression": {
+        "maxAbsolute": 0.000009138580024437015,
+        "rms": 0.0000030132906869536565,
+        "limit": 0.000001
+      },
+      "compressionVelocity": {
+        "maxAbsolute": 0.00010730889811023936,
+        "rms": 0.00003895995006944882,
+        "limit": 0.0001
+      },
+      "force": {
+        "maxAbsolute": 0.09176719480615247,
+        "rms": 0.02837699861382436,
+        "limit": 0.1
+      }
+    },
+    "closure": {
+      "maxTranslation": 1.538992711812971e-8,
+      "maxRotation": 0,
+      "limits": {
+        "translation": 0.00001,
+        "rotation": 0.00001
+      }
+    },
+    "travel": {
+      "minCompression": 0.02649018302361567,
+      "maxCompression": 0.07500000251478689
+    },
+    "restart": {
+      "tick": 32000,
+      "time": 1.0000000474974513,
+      "comparedSteps": 32000,
+      "exactBodyState": true,
+      "exactFinalSnapshot": true,
+      "scope": "Same artifact and runtime; complete engine snapshot plus immutable setup and integer tick. No contact/soil state in this fixture."
+    },
+    "diagnostics": {
+      "jointReaction": "unavailable: this JS binding exposes no joint impulse/wrench getter",
+      "force": "Constitutive force evaluated from recorded q/u; not the engine motor impulse or a measured support reaction.",
+      "scope": "Offline, interior-stroke solver feasibility. No contact, stops, whole bicycle, calibration or real-time qualification."
+    },
+    "completeReportSha256": "28b2a02551e20da3bc410248fe49b5e1094256ae75479866ce2775f3fe4399c4"
+  }
+]

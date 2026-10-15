@@ -10,6 +10,8 @@ import { verifyRecord } from './record-validation.mjs';
 import { simulate as simulateSuspension } from '../dist/suspension.js';
 import { compareSuspension, comparisonReport } from '../dist/suspension-reference.js';
 import { fixture, probe } from '../dist/terrain.js';
+import { runTrial, trialReport } from '../dist/solver-trial.js';
+import { createHash } from 'node:crypto';
 
 const require = createRequire(import.meta.url);
 let chromium;
@@ -209,6 +211,51 @@ try {
   await page.setViewportSize({width:390,height:844});await noOverflow();await shot('terrain-mobile');
   await page.setViewportSize({width:320,height:780});await noOverflow();await shot('terrain-narrow');
   report.checks.push('terrain: hidden/small canvas recovery, square/rounded/flat, complete browser/Node report agreement, unavailable/buried states, edit gating, custom profile, load, stale-file guard, co-nearest supports and mobile widths');
+
+  await page.setViewportSize({width:1440,height:1100});await page.goto(root+'solver.html');
+  const trialReady=()=>page.waitForFunction(()=>['WITHIN TRIAL LIMITS','EXCEEDS TRIAL LIMITS'].includes(document.getElementById('status').textContent));
+  await trialReady();assert.equal(await page.locator('#status').textContent(),'EXCEEDS TRIAL LIMITS');
+  assert.match(await page.locator('#restart').textContent(),/Exact/);
+  const trialDownload=page.waitForEvent('download');await page.locator('#save').click();
+  const trialFile=join(dir,'solver-browser.json');await (await trialDownload).saveAs(trialFile);
+  const savedTrial=JSON.parse(await readFile(trialFile,'utf8'));
+  const nodeTrial=trialReport(await runTrial(savedTrial.params));
+  const maxDifferences={};
+  for(const key of Object.keys(savedTrial.signals)) {
+    const a=savedTrial.signals[key],b=nodeTrial.signals[key];assert.equal(a.length,b.length);
+    maxDifferences[key]=Math.max(...a.map((v,i)=>Math.abs(v-b[i])));
+    if(!key.startsWith('reference'))assert.deepEqual(a,b,'candidate '+key);
+    else for(let i=0;i<a.length;i++)assert.ok(Math.abs(a[i]-b[i])<=1e-12*Math.max(1,Math.abs(b[i])),'oracle '+key);
+  }
+  for(const key of Object.keys(savedTrial.errors))for(const field of ['maxAbsolute','rms','limit']) {
+    const a=savedTrial.errors[key][field],b=nodeTrial.errors[key][field];
+    assert.ok(Math.abs(a-b)<=1e-12*Math.max(1,Math.abs(b)),'error metric '+key);
+  }
+  const metadata=({signals,errors,...rest})=>rest;assert.deepEqual(metadata(savedTrial),metadata(nodeTrial));
+  report.solver={model:savedTrial.model,params:savedTrial.params,engine:savedTrial.engine,checks:savedTrial.checks,
+    errors:savedTrial.errors,closure:savedTrial.closure,restart:savedTrial.restart,
+    completeReportSha256:createHash('sha256').update(JSON.stringify(savedTrial)).digest('hex'),candidateBrowserNodeExact:true,oracleNormalizedTolerance:1e-12,maxAbsoluteBrowserNodeDifferences:maxDifferences};
+  await page.locator('#step').click();assert.equal(await page.locator('#time').textContent(),'0.005 s');
+  await page.locator('#play').click();await page.waitForFunction(()=>parseFloat(document.getElementById('time').textContent)>.03);
+  await page.locator('#play').click();const trialPaused=await page.locator('#time').textContent();
+  await page.waitForTimeout(150);assert.equal(await page.locator('#time').textContent(),trialPaused);
+  await page.locator('#scrub').fill('100');await shot('solver-desktop');
+  await field('dt').selectOption('0.000125');assert.equal(await page.locator('#save').isDisabled(),true);
+  await page.locator('button[type="submit"]').click();await trialReady();
+  assert.equal(await page.locator('#status').textContent(),'EXCEEDS TRIAL LIMITS');
+  await page.locator('#equilibrium').click();await trialReady();assert.equal(await page.locator('#status').textContent(),'WITHIN TRIAL LIMITS');
+  await shot('solver-equilibrium');
+  await field('initialCompression').fill('0');await page.locator('button[type="submit"]').click();
+  assert.equal(await page.locator('#status').textContent(),'SETUP REJECTED');assert.match(await page.locator('#error').textContent(),/envelope/);
+  assert.equal(await page.locator('#play').isDisabled(),true);await page.locator('#discard').click();await trialReady();
+  const trialCancelled=await page.evaluate(()=>{document.getElementById('setup').requestSubmit();const active=!document.getElementById('cancel').disabled;document.getElementById('cancel').click();return active;});
+  assert.equal(trialCancelled,true);assert.match(await page.locator('#error').textContent(),/cancelled/);
+  await page.locator('#release').click();await trialReady();
+  await page.locator('#rig').evaluate(c=>{c.style.display='none';});await page.waitForTimeout(30);
+  await page.locator('#rig').evaluate(c=>{c.style.display='';});await page.waitForTimeout(30);
+  await page.setViewportSize({width:390,height:844});await noOverflow();await shot('solver-mobile');
+  await page.setViewportSize({width:320,height:780});await noOverflow();await shot('solver-narrow');
+  report.checks.push('solver: real WASM module worker; exact candidate browser/Node channels with tolerance-checked analytical channels; release failure and static pass; refinement, replay, dirty/invalid gating, cancellation, restore, hidden canvas and mobile widths');
 
   // Pixel availability is separate from human inspection of captured images.
   const pixels=await page.locator('#rig').evaluate(canvas=>{

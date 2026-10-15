@@ -16,9 +16,12 @@ test('static page, modules and worker resolve under the Pages project path', asy
     assert.ok(url.pathname.startsWith(base.pathname), `Asset escapes project path: ${url}`);
     const name = url.pathname.slice(base.pathname.length) || 'index.html';
     const source = await readFile(new URL('../dist/' + name, import.meta.url), 'utf8');
+    // The pinned compat bundle embeds its WASM. A dead fallback URL in the
+    // upstream bundle is not a fetch dependency; integrity and real loading are tested separately.
+    if(name === 'vendor/rapier-0.21.0/rapier.mjs')continue;
     const pattern = name.endsWith('.html')
       ? /(?:href|src)=["']([^"']+)["']/g
-      : name.endsWith('.js')
+      : (name.endsWith('.js') || name.endsWith('.mjs'))
         ? /(?:\bfrom\s*|\bimport\s*|\bnew URL\(\s*)["']([^"']+)["']/g
         : /url\(\s*["']?([^"'\s)]+)["']?\s*\)/g;
     for (const [, path] of source.matchAll(pattern)) {
@@ -26,7 +29,7 @@ test('static page, modules and worker resolve under the Pages project path', asy
     }
   }
   for (const asset of ['style.css', 'app.js', 'physics.js', 'calculation.js', 'ui-model.js', 'worker.js',
-    'suspension.html', 'suspension-app.js', 'suspension-ui-model.js', 'suspension.js', 'suspension-reference.js', 'terrain.html', 'terrain.js', 'terrain-app.js']) {
+    'suspension.html', 'suspension-app.js', 'suspension-ui-model.js', 'suspension.js', 'suspension-reference.js', 'terrain.html', 'terrain.js', 'terrain-app.js', 'solver.html', 'solver-app.js', 'solver-config.js', 'solver-trial.js', 'solver-worker.js', 'vendor/rapier-0.21.0/rapier.mjs']) {
     assert.ok(visited.has(new URL(asset, base).href), `Unverified dependency: ${asset}`);
   }
 });
