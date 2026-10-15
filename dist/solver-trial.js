@@ -63,7 +63,8 @@ export async function runTrial(input = {}) {
     const engine={package:'@dimforge/rapier3d-compat',packageVersion:'0.21.0',bindingVersion:RAPIER.version(),coreVersion:'0.36.0',
       sourceCommit:'b716d375efc0201003f0cd9ef7168eee0b62c177',
       precision:'float32',joint:'prismatic impulse joint',motor:'ForceBased',solverIterations:4,internalPgsIterations:1,
-      requestedDt:p.dt,storedDt:world.timestep,lengthUnit:1,maxCcdSubsteps:1,sleeping:false,bodyLinearDamping:0,bodyAngularDamping:0,
+      requestedDt:p.dt,storedDt:world.timestep,substepsPerTick:4,substepDt:Math.fround(world.timestep/4),
+      additionalBodySubsteps:0,lengthUnit:1,maxCcdSubsteps:1,sleeping:false,bodyLinearDamping:0,bodyAngularDamping:0,
       measuredMass:body.mass(),principalInertia:[1,1,1],torqueAxis:[1/Math.sqrt(14),2/Math.sqrt(14),3/Math.sqrt(14)],colliders:0};
     for (let tick=0;tick<=steps;tick++) {
       if (tick>0) { world.step(); if(restored)restored.step(); }
@@ -106,6 +107,7 @@ export async function runTrial(input = {}) {
       termination,completedTicks,sampleCount:sample,errors,
       closure:{maxTranslation,maxRotation,limits:CLOSURE_LIMITS},travel:{minCompression,maxCompression},restart,
       diagnostics:{jointReaction:'unavailable: this JS binding exposes no joint impulse/wrench getter',
+        timestep:'Four solver iterations are four internal substeps. Float32 split force/velocity updates and position accumulation can reverse refinement; a smaller outer timestep is not an accuracy guarantee.',
         force:'Constitutive force evaluated from recorded q/u; not the engine motor impulse or a measured support reaction.',
         scope:'Offline, interior-stroke solver feasibility. No contact, stops, whole bicycle, calibration or real-time qualification.'},
       signals:Object.fromEntries(Object.entries(signals).map(([k,v])=>[k,v.subarray(0,sample)]))};

@@ -39,3 +39,11 @@ Reviewed all new module consumers (worker, viewer, CLI, browser and unit tests),
 Next implement the matched MuJoCo arm and compare the same physical fixture, including reaction observability. Then complete the energy/work, geometry/constraint/travel/contact and hardtail/full-suspension assembly matrix before the visible whole-bike rig. The game destination, layered soil/root and tyre mud pickup/shedding/carried-mass contracts remain unchanged.
 
 Hosted checks and deployment receipts are recorded after the implementation commit passes CI.
+
+## Continuation: verified remote head and diagnosed reversal
+
+Verified PR #5 remote head `c6a4cc96145bb122f01bbfc38c60a1fad19c115c` and tree `b05da30ddd0f6ec6d6d396d9cc36ece053f1240d`; the local synchronized tree and vendored module SHA-256 match. That head includes the pagehide/pageshow ResizeObserver lifecycle repair and passed hosted [run 38781295494](https://github.com/CraigHutchinson/BikeLab/actions/runs/38781295494). The repair was retained.
+
+The [timestep diagnosis](TIMESTEP_RESEARCH.md) now explains the previously unassigned reversal using pinned engine source, 50 actual-engine controls and independent rounded-arithmetic controls. The original finest peak is 9.139 µm around 0.205 s. Force balancing removes that early peak but exposes a late 5.665 µm peak around 1.905 s; centring alone retains the early peak. Both together restore refinement in the tested controls. This supports separate accumulated velocity-operation and absolute-position rounding mechanisms, rather than a sign error, wrong reference clock, or merely final-output precision. It is not a complete bitwise error budget.
+
+The production equations, trial parameters, lifecycle fix and accuracy gates remain unchanged. Reports/viewer now distinguish outer dt from the four internal substeps and explain why smaller dt can increase error. The alternate controls are diagnostic only; their changed force paths do not qualify them as real bike replacements. New regressions compare diagnostic/production samples, matched internal steps, crossed engine controls and scalar negative controls. The original 72-test suite plus three diagnostic tests requires hosted CI; local child-process/loopback restrictions still prevent a local complete-suite pass.

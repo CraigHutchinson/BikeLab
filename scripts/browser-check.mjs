@@ -216,6 +216,8 @@ try {
   const trialReady=()=>page.waitForFunction(()=>['WITHIN TRIAL LIMITS','EXCEEDS TRIAL LIMITS'].includes(document.getElementById('status').textContent));
   await trialReady();assert.equal(await page.locator('#status').textContent(),'EXCEEDS TRIAL LIMITS');
   assert.match(await page.locator('#restart').textContent(),/Exact/);
+  assert.match(await page.locator('#trialDetails').textContent(),/4 internal substeps of 125/);
+  assert.match(await page.locator('#timestepNote').textContent(),/Smaller steps can increase error/);
   const trialDownload=page.waitForEvent('download');await page.locator('#save').click();
   const trialFile=join(dir,'solver-browser.json');await (await trialDownload).saveAs(trialFile);
   const savedTrial=JSON.parse(await readFile(trialFile,'utf8'));

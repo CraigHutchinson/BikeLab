@@ -88,3 +88,5 @@ Develop toward a highly realistic riding and bike-setup experience in which geom
 The simulation shall ultimately be fully 3D, including lateral motion, turning forces, steering, lean and coupled braking/cornering grip. The planar rigs are intermediate validation tools. Next: enumerate whole-bike DOFs/constraints and evaluate multibody solver technology before implementing a hardtail and a full-suspension bicycle responding to the same road input. Production-bike selection and source-backed stock setups remain planned.
 
 Develop every visible experiment alongside its foundations. Keep physics independent of rendering, rider mechanics separate from control, and measured/fitted/illustrative parameters distinguishable. Add complexity only when a named experiment consumes it.
+
+The [PR #5 timestep investigation](docs/TIMESTEP_RESEARCH.md) separates accumulated float32 velocity and position rounding with reproducible engine/scalar controls. The solver viewer reports outer and internal timesteps; smaller steps are not assumed more accurate. The original physical fixture and accuracy gates remain unchanged.

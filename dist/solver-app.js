@@ -33,7 +33,8 @@ const job=new Calculation({createWorker:()=>new Worker(new URL('./solver-worker.
     }
     $('closure').textContent=(run.closure.maxTranslation*1e6).toPrecision(3)+' µm / '+(run.closure.maxRotation*1e6).toPrecision(3)+' µrad';
     $('restart').textContent=run.checks.restart?'Exact in this run':'DIVERGED / INCOMPLETE';
-    $('trialDetails').textContent='Rapier '+run.engine.bindingVersion+' · core '+run.engine.coreVersion+' · '+run.engine.precision+' · '+run.completedTicks+' steps · '+run.sampleCount+' samples. Snapshot at '+run.restart.time.toFixed(3)+' s; '+run.restart.comparedSteps+' subsequent states compared.';
+    $('trialDetails').textContent='Rapier '+run.engine.bindingVersion+' · core '+run.engine.coreVersion+' · '+run.engine.precision+' · '+run.completedTicks+' outer steps · '+run.sampleCount+' samples. Each '+(run.engine.storedDt*1000).toPrecision(6)+' ms outer step contains '+run.engine.substepsPerTick+' internal substeps of '+(run.engine.substepDt*1e6).toPrecision(6)+' µs. Snapshot at '+run.restart.time.toFixed(3)+' s; '+run.restart.comparedSteps+' subsequent states compared.';
+    $('timestepNote').textContent='Smaller steps can increase error: float32 rounding in separate force/velocity updates and position accumulation eventually competes with integration error. Compare the measured errors; refinement is not an accuracy guarantee.';
     controls();draw();
   }});
 function apply() {

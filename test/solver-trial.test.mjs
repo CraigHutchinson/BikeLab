@@ -57,6 +57,8 @@ test('preregistered refinement reports genuine failures without relaxing toleran
     assert.ok(r.errors.compression.maxAbsolute<previous*.75);previous=r.errors.compression.maxAbsolute;
     assert.equal(r.sampleCount,401);assert.equal(r.signals.time[400],r.completedTicks*r.engine.storedDt);
     assert.equal(r.engine.storedDt,Math.fround(dt));
+    assert.equal(r.engine.substepsPerTick,4);assert.equal(r.engine.substepDt,Math.fround(Math.fround(dt)/4));
+    assert.equal(r.engine.additionalBodySubsteps,0);
   }
 });
 
