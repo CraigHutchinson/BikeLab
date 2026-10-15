@@ -25,7 +25,8 @@ test('static page, modules and worker resolve under the Pages project path', asy
       pending.push(new URL(path, url));
     }
   }
-  for (const asset of ['style.css', 'app.js', 'physics.js', 'calculation.js', 'ui-model.js', 'worker.js']) {
+  for (const asset of ['style.css', 'app.js', 'physics.js', 'calculation.js', 'ui-model.js', 'worker.js',
+    'suspension.html', 'suspension-app.js', 'suspension-ui-model.js', 'suspension.js']) {
     assert.ok(visited.has(new URL(asset, base).href), `Unverified dependency: ${asset}`);
   }
 });

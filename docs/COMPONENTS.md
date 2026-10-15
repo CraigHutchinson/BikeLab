@@ -1,6 +1,6 @@
 # Dynamic systems: component inventory
 
-Status: staged scope. The loaded-wheel station, radial contact surrogate, recording and viewer exist; suspension, full-bike and later systems remain proposed. Priority denotes the first consumer, not a promise that the full fidelity described below ships at that stage.
+Status: staged scope. The loaded-wheel station and bounded axial suspension station, recording and viewers exist. The suspension law includes preload and separate viscous compression/rebound damping; friction, air chambers, end-stop forces, full-bike and later systems remain proposed. Priority denotes the first consumer, not a promise that the full fidelity described below ships at that stage. Eventual full 3D dynamics, including lateral and turning forces, is required; see THREE_DIMENSIONAL_DYNAMICS.md.
 
 ## System boundaries
 
@@ -18,7 +18,10 @@ The simulation advances physical state. The rider controller generates bounded a
 | Tyre contact geometry | Support surface, effective contact location and obstacle representation | Contact normal and contact patch approximation | Smooth rig inputs first; edge/rough-surface capability later |
 | Tyre tangential response | Slip-dependent longitudinal/lateral forces and combined grip | Wheel torque, body forces, surface properties | Braking/rolling and then 3D handling |
 | Tyre construction/setup | Inflation, dimensions, casing, compound, tread, insert and rim compatibility | Parameters or calibrated curves supplied to contact models | Measured tyre stage; no invented universal pressure-to-stiffness mapping |
-| Terrain | Geometric surface and material properties | Contact queries and prescribed rig motion | Platen and travelling-profile rig; later trail surfaces |
+| Terrain geometry/materials | Spatial surfaces, finite layer volumes, interfaces and embedded roots/rock | Contact geometry and coupled substrate load paths | Spatial-wheel station; then scanned/generated trail tiles |
+| Soil and root mechanics | Compaction, shear/plastic history, root support or composite reinforcement | Normal/tangential forces, evolving layer exposure and shared front/rear ruts | Finite-cover/root fixture, then rolling layered traction |
+| Tyre contamination | Coating distribution, packed tread voids and pickup/shedding state | Terrain material transfer and persistent geometry/grip changes | Mud-to-root-to-dry wheel experiment |
+| Terrain asset/state streaming | Immutable tiles, provenance, correlated fields and persistent deltas | Stable feature IDs, replay and bounded active regions | Detailed 1–2 cm trail ingestion after contact calibration |
 | Rider body | Segment masses/inertias, joints, geometry and posture | Forces through hands, pedals and saddle | Whole-bike fixed mass first; articulated rider next |
 | Rider contact | Hand/foot constraints, saddle contact and contact transitions | Body/contact reactions with explicit release conditions | Articulated rider; later loss of grip and impacts |
 | Rider controller | Delayed, bounded steering/lean/brake/pedal/posture actions | Commands only; no direct teleportation of bodies | Scripted rider first; balance and anticipatory control later |
@@ -27,6 +30,7 @@ The simulation advances physical state. The rider controller generates bounded a
 | Drivetrain | Crank/gear kinematics, drive torque and freewheel state | Wheel, frame, linkage and rider reactions | Rolling/pedalling slice; chain path effects when needed |
 | Air interaction | Aerodynamic forces with stated assumptions | Relative airflow and body forces | Riding slice if required by its speed range |
 | Solver | State advancement, joints, contact resolution and error reporting | Physical state and applied forces | Loaded-wheel station onward |
+| Physics model selection/comparison | Compatible model capabilities, validity/error criteria, reference comparisons and verified state adapters | Coupled state/impulse/work contracts and reproducible schedules | Next architecture review and paired experiment; live switching only after validation |
 | Experiment runner | Scenario input, initial state, clocks, run duration and repeatability | Prescribed motions and rider commands | Every station and regression test |
 | Recorder | Parameter snapshot, events, signals and result metadata | Immutable run evidence | Every station |
 | Visualisation | Camera, bodies, overlays, graphs, replay and comparisons | Read-only simulation snapshots | Every interactive slice |
@@ -63,7 +67,11 @@ Whole-bike station: planar rigid bodies, front suspension, explicit rear mechani
 
 Articulated rider: passive joints and contact first, bounded actions second. Rider parameters must not be tuned solely to make a flawed bike model look stable.
 
-Later riding: 3D steering and lean, combined-slip grip, tread/material calibration, deformable terrain, structural compliance, temperature and damage. These require their own observed tests; they are not implicit in the early station.
+Later riding: 3D steering and lean, combined-slip grip, tread/material calibration, deformable terrain, structural compliance and temperature. These require their own observed tests; they are not implicit in the early station.
+
+Overload/failure is a required physical contract for high-impact behavior, not an optional cosmetic riding effect. Review every active assembly against [the component failure matrix](OVERLOAD_AND_FAILURE.md): suspension stops, rim/spokes/tyre seal, hub/axle, fork/shock mounts, frame/links, steering/rider supports, drivetrain and brakes. Preserve travel/clearance constraints and actual load redistribution after damage; stop explicitly where the model cannot represent the outcome.
+
+Terrain/contact consumes actual spatial shape, with explicit geometry, normals and material/motion metadata. Preserve square-edge, rounded and flat distinctions and finite tyre/multiple-contact behavior. Local stress requires a supported deformation/load-transfer law. Detailed impact work may activate on demand and substep separately, with predictive activation, consistent impulses/energy and persistent damage/pressure. See [TERRAIN_CONTACT.md](TERRAIN_CONTACT.md) for the fidelity, rate-coupling and measured real-time gates.
 
 ## Inventory expansion questions
 
@@ -74,3 +82,5 @@ Later riding: 3D steering and lean, combined-slip grip, tread/material calibrati
 5. Which comparisons should a user be able to trust quantitatively, rather than only inspect qualitatively?
 
 These questions guide later refinement. They do not block the bounded loaded-wheel slice.
+
+Layered terrain, root reinforcement, mud retention and fine scanned/generated trails follow the data-oriented contracts and staged experiments in [LAYERED_TERRAIN.md](LAYERED_TERRAIN.md). Surface appearance alone never assigns physical strength or grip.

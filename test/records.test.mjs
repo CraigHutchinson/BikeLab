@@ -12,7 +12,8 @@ test('record verification accepts numerical agreement and rejects tampered evide
     r=>delete r.metrics.impulse,
     r=>r.metrics.peakForce+=1,
     r=>r.events.push({time:.1,type:'load-lost',uncertainty:.0005}),
-    r=>r.model='bikelab-wheel-0.1'
+    r=>r.model='bikelab-wheel-0.1',
+    r=>r.warnings.push('Invented diagnostic')
   ];
   for(const mutate of mutations){const r=structuredClone(original);mutate(r);assert.throws(()=>verifyRecord(JSON.stringify(r)));}
 });

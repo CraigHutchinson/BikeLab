@@ -1,6 +1,6 @@
 # Rig and model contracts
 
-Status: mixed implementation/design contract. The first loaded-wheel station is implemented; see STACK_DECISION.md for its equations and SLICE_1_EVIDENCE.md for verification. Whole-bike and later sections remain proposed.
+Status: mixed implementation/design contract. The loaded-wheel and axial suspension stations are implemented; see STACK_DECISION.md and SUSPENSION_MODEL.md for equations, and SLICE_2_EVIDENCE.md for current verification. Whole-bike and later sections remain proposed. Full 3D lateral/turning dynamics is an eventual requirement; its explicit force/frame/handling contracts are in THREE_DIMENSIONAL_DYNAMICS.md.
 
 ## Coordinates, units and time
 

@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>BikeLab — Suspension laboratory</title><link rel="stylesheet" href="./style.css"></head>
+<body><header><a class="brand" href="./">◉ <b>BikeLab</b><span> DYNAMICS LABORATORY</span></a><div class="stage">02 / SUSPENSION <i>RESEARCH PROTOTYPE</i></div></header>
+<main><nav class="stations" aria-label="Laboratory stations"><a href="./index.html">01 · Loaded wheel</a><a href="./suspension.html" aria-current="page">02 · Suspension</a></nav>
+<section class="intro"><div class="eyebrow">COMPRESS. RELEASE. COMPARE.</div><h1>Find the rebound.</h1><p>A loaded axial spring and damper. Inspect preload, compression and rebound before assembling the whole bicycle.</p></section>
+<div class="layout"><aside class="panel setup"><div class="panel-title"><h2>Element setup</h2><span>ILLUSTRATIVE</span></div>
+<div class="preset-buttons"><button id="forkPreset">Fork-scale preset</button><button id="shockPreset">Shock-scale preset</button></div>
+<p class="hint">Synthetic fixtures, not named products. Shock stroke is axial stroke, not rear-wheel travel. Presets replace all setup fields; Apply to calculate.</p>
+<form id="setup">
+<label>Supported mass <span>kg</span><input name="mass" type="number" min="1" max="150" step="any" required></label>
+<label>Spring stiffness <span>kN/m</span><input name="stiffness" type="number" min="1" max="200" step="any" required></label>
+<label>Preload force at zero stroke <span>N</span><input name="preload" type="number" min="0" max="1500" step="any" required></label>
+<label>Compression damping <span>N·s/m</span><input name="compressionDamping" type="number" min="0" max="8000" step="any" required></label>
+<label>Rebound damping <span>N·s/m</span><input name="reboundDamping" type="number" min="0" max="8000" step="any" required></label>
+<label>Axial stroke <span>mm</span><input name="travel" type="number" min="20" max="300" step="any" required></label>
+<div class="divider"></div>
+<label>Initial compression <span>mm</span><input name="initialCompression" type="number" min="0" max="300" step="any" required></label>
+<label>Initial compression velocity <span>m/s</span><input name="initialVelocity" type="number" min="-3" max="3" step="any" required></label>
+<p class="hint wide">Positive velocity compresses; negative extends. Zero velocity releases the spring from rest relative to the base.</p>
+<label>Base input<select name="profile"><option value="flat">Fixed base / release</option><option value="sine">Repeated sine wave</option><option value="bump">Single smooth bump</option></select></label>
+<label>Excursion amplitude <span>mm</span><input name="amplitude" type="number" min="0" max="50" step="any" required></label>
+<label>Frequency / inverse bump duration <span>Hz</span><input name="frequency" type="number" min="0.2" max="12" step="any" required></label>
+<details class="advanced"><summary>Run and solver settings</summary>
+<label>Duration <span>s</span><input name="duration" type="number" min="0.1" max="30" step="any" required></label>
+<label>Integration step <span>ms</span><input name="dt" type="number" min="0.01" max="0.5" step="any" required></label>
+<label>Recording interval <span>ms</span><input name="sampleDt" type="number" min="1" max="20" step="any" required></label>
+<p class="hint">Recording interval must divide duration and contain whole integration steps. Refine the step to check convergence.</p></details>
+<button class="primary wide" type="submit">Apply setup & reset</button><button id="discard" type="button">Discard edits</button></form>
+<details><summary>Model assumptions</summary><p>A guided mass above a prescribed base. One preloaded linear coil with separate viscous compression/rebound damping. Total axial force can be negative on rebound. No friction, air chambers, linkage leverage or end-stop dynamics.</p><p>A trial outside stroke stops the run and retains its last valid endpoint. This is a model limit, not a calculated top-out or bottom-out impact. Equilibrium must lie strictly inside stroke.</p><p id="solverInfo"></p></details></aside>
+<section class="workspace"><div class="panel rig"><div class="panel-title"><h2>Axial release station</h2><span id="status" role="status">CALCULATING</span></div>
+<canvas id="rig" aria-label="Spring and damper schematic with guided carriage, base and stroke indicator"></canvas>
+<div class="readouts"><div><small>AXIAL FORCE</small><strong id="force">—</strong></div><div><small>COMPRESSION</small><strong id="compression">—</strong></div><div><small>SIMULATION TIME</small><strong id="time">—</strong></div></div>
+<div class="transport"><button id="play" class="primary">Run</button><button id="reset">Reset</button><button id="cancel" disabled>Cancel calculation</button><button id="step">Step sample</button><label>Playback<select id="speed"><option value=".25">¼×</option><option value=".5">½×</option><option value="1" selected>1×</option><option value="2">2×</option></select></label><span id="compute"></span></div>
+<label class="scrub"><span>Replay position</span><input aria-label="Replay position" id="scrub" type="range" min="0" max="800" step="1" value="0"></label>
+<p class="hint">Schematic: spring and damper act in parallel. Compression and base motion share one scale; fixture dimensions are illustrative.</p></div>
+<div class="plots"><article class="panel"><div class="panel-title"><h2>Axial compression</h2><span>mm · time (s)</span></div><div class="legend"><b class="cyan">Current</b><b class="orange">Static sag</b><b class="violet" hidden>Pinned</b></div><canvas id="motion" aria-label="Compression versus time, with static sag and pinned comparison"></canvas></article>
+<article class="panel"><div class="panel-title"><h2>Axial force</h2><span>N · time (s)</span></div><div class="legend"><b class="cyan">Total</b><b class="orange">Spring</b><b class="violet" hidden>Pinned total</b></div><canvas id="loads" aria-label="Signed total and spring forces versus time"></canvas></article></div>
+<div class="plots"><article class="panel"><div class="panel-title"><h2>Spring curve</h2><span>N · compression (mm)</span></div><canvas id="springCurve" aria-label="Preloaded spring force versus compression"></canvas></article>
+<article class="panel"><div class="panel-title"><h2>Damper curve</h2><span>N · velocity (m/s)</span></div><canvas id="damperCurve" aria-label="Signed damping force versus compression velocity"></canvas><p class="hint">Negative velocity: rebound. Positive: compression. Curves use the applied setup.</p></article></div>
+<div class="panel compare"><div><h2>Repeat. Change. Compare.</h2><p id="comparison"></p></div><div class="buttons"><button id="pin">Pin reference</button><button id="clear">Clear</button><button id="save">Save run</button><label class="file-button">Load setup & rerun<input type="file" id="load" accept=".json,application/json"></label></div></div>
+<div class="panel evidence"><h2>Run measurements <span id="window"></span></h2><div id="metrics"></div><p id="error" role="alert"></p><p id="warnings" role="status"></p><p id="termination" role="status"></p><p class="hint">Illustrative parameters; no physical calibration. Measurements cover accepted integration endpoints only. Loading a saved file reruns its setup; use the headless verifier to check its original measurements.</p></div>
+</section></div><footer>BIKELAB / SLICE 02 <span>Next: hardtail & full suspension → 3D steering, lean and turning forces</span></footer></main><script type="module" src="./suspension-app.js"></script></body></html>

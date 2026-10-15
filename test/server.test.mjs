@@ -16,6 +16,8 @@ test('loopback server serves only assets and survives malformed requests',async(
     assert.equal((await get('/')).status,200);
     assert.match((await get('/worker.js')).headers['content-type'],/javascript/);
     assert.equal((await get('/ui-model.js')).status,200);
+    for(const asset of ['suspension.html','suspension.js','suspension-app.js','suspension-ui-model.js'])
+      assert.equal((await get('/'+asset)).status,200);
     assert.equal((await get('/physics.js?reload=1')).status,200);
     assert.equal((await get('/AGENTS.md')).status,404);
     assert.equal((await get('/../.git/config')).status,404);

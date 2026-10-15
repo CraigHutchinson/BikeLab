@@ -1,6 +1,6 @@
 # Parameters and evidence
 
-Status: planning catalogue. No measured bike dataset is included yet. Do not treat illustrative defaults as real-bike specifications.
+Status: planning catalogue with implemented illustrative wheel and axial suspension fixtures. See SUSPENSION_MODEL.md for every consumed suspension input, SI bounds, default/preset values and uncertainty limitations. No measured bike dataset is included yet. Do not treat illustrative defaults as real-bike specifications. Lateral/turning contact, camber, full inertia and controller calibration requirements are specified in THREE_DIMENSIONAL_DYNAMICS.md.
 
 ## Provenance required for every physical parameter
 
@@ -79,3 +79,19 @@ These metrics describe particular tests. They must not collapse into a universal
 - What bounds should the UI enforce from actual component specifications?
 
 No unavailable measurement should be replaced by an apparently precise invented value.
+
+## Strength, damage and pressure-loss data
+
+Terrain inputs must retain geometry/asset revision, positions or height-vector origin/spacing, topology/interpolation, frame, material/motion and physical edge radius where supported. Contact samples need points/normals and declared provenance; do not infer local stress from heights alone. Adaptive detail/rate settings require versioned activation/error thresholds, step bounds, synchronization, hysteresis and effective schedules. Preserve pressure/damage through model switches and record any budget-driven decisions for reproducibility. See [TERRAIN_CONTACT.md](TERRAIN_CONTACT.md).
+
+The [overload/failure contract](OVERLOAD_AND_FAILURE.md) requires a sourced failure basis for every active component before predicting survivability. Store geometry/material and assembly/preload, local load mode and failure variables (with SI units), rate/cycle dependence where consumed, uncertainty, source and validation envelope. Service ratings or a passed standard test must not be silently converted into ultimate breaking forces. Keep stock data, fitted failure parameters and illustrative overrides separate.
+
+Include top/bottom-out stop geometry and response; rim/bead-seat deformation and strength; individual spoke/nipple tension, strength and fatigue; tyre/bead compatibility, seal state, pressure and leak-rate model; and the other structural/attachment components in the matrix. Damaged state, changed load paths, accumulated history and any stochastic seed belong in the saved setup/run. Unsupported criteria must remain explicit rather than defaulting to an indestructible component or an invented threshold.
+
+## Layered terrain and contamination data
+
+Use the [layered-terrain authoring contract](LAYERED_TERRAIN.md) for immutable geometry/material assets, finite layer volumes, embedded-feature support, interface laws and evolving state. Required data depend on the consumed law: density/packing, moisture definition, pressure-sinkage response, bulk/interface shear, root geometry/anchorage, tread coating capacity and transfer history. Store units, model revision, measurement conditions, fitting/held-out evidence, validity bounds and uncertainty; do not infer them from a surface name or visual texture.
+
+Keep original survey coordinates/datum and uncertainty, generated-detail provenance, layer/feature masks, spatial correlation and seeds alongside content hashes. A 1–2 cm sampling target does not establish survey accuracy. Saved runs need initial soil/tyre state plus persistent deformation/transfer deltas and reset semantics. No such terrain data are consumed by the present stations; the JSON sketch is design documentation, not an implemented import format.
+
+Fidelity comparisons additionally retain model IDs/revisions, compatible coupling configuration, validity envelopes, state-adapter revisions, paired input/initial-state manifests and effective switching schedules. Retained mud needs mass/distribution and wheel phase, with declared transfer and inertia approximations. See [PHYSICS_FIDELITY.md](PHYSICS_FIDELITY.md); these remain future consumed data, not accepted current setup keys.

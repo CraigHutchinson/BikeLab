@@ -1,11 +1,15 @@
-import { readRecord, simulate, MODEL, CHANNELS } from '../dist/physics.js';
+import * as wheel from '../dist/physics.js';
+import * as suspension from '../dist/suspension.js';
 
 export function verifyRecord(text) {
-  const saved = readRecord(text);
-  if (saved.model !== MODEL) throw new Error('Verification requires the matching model revision. Older setup files can be rerun, not certified as current records.');
-  const actual = simulate(saved.params);
+  if (typeof text !== 'string' || new TextEncoder().encode(text).length > wheel.MAX_RECORD_BYTES) throw new Error('Run file must be text within the 64 MiB limit.');
+  const header = JSON.parse(text.replace(/^\uFEFF/, ''));
+  const model = header?.model === suspension.MODEL ? suspension : wheel;
+  const saved = model.readRecord(text);
+  if (saved.model !== model.MODEL) throw new Error('Verification requires the matching model revision. Older setup files can be rerun, not certified as current records.');
+  const actual = model.simulate(saved.params);
   const differences = {};
-  for (const key of CHANNELS) {
+  for (const key of model.CHANNELS) {
     const a = actual.signals[key], b = saved.signals?.[key];
     if (!Array.isArray(b) || b.length !== a.length) throw new Error('Invalid channel: ' + key);
     let delta = 0, scale = 1;
@@ -22,11 +26,21 @@ export function verifyRecord(text) {
     if (Math.abs(saved.metrics[key] - actual.metrics[key]) > 1e-10 * Math.max(1, Math.abs(actual.metrics[key])))
       throw new Error(key + ' metric mismatch');
   }
-  if (!Array.isArray(saved.events) || saved.events.length !== actual.events.length)
-    throw new Error('Contact event count mismatch.');
-  for (let i = 0; i < actual.events.length; i++) {
-    for (const key of ['time','type','uncertainty']) {
-      if (saved.events[i]?.[key] !== actual.events[i][key]) throw new Error('Contact event mismatch.');
+  if (JSON.stringify(saved.warnings) !== JSON.stringify(actual.warnings)) throw new Error('Diagnostic warnings mismatch.');
+  if (model === suspension) {
+    if (saved.status !== actual.status) throw new Error('Run status mismatch.');
+    if (actual.termination === null) {
+      if (saved.termination !== null) throw new Error('Travel termination mismatch.');
+    } else for (const key of Object.keys(actual.termination)) {
+      if (saved.termination?.[key] !== actual.termination[key]) throw new Error('Travel termination mismatch.');
+    }
+  } else {
+    if (!Array.isArray(saved.events) || saved.events.length !== actual.events.length)
+      throw new Error('Contact event count mismatch.');
+    for (let i = 0; i < actual.events.length; i++) {
+      for (const key of ['time','type','uncertainty']) {
+        if (saved.events[i]?.[key] !== actual.events[i][key]) throw new Error('Contact event mismatch.');
+      }
     }
   }
   return { result: 'numerical agreement', normalizedTolerance: 1e-10, maxAbsoluteDifferences: differences };
