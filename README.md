@@ -50,7 +50,7 @@ Same-runtime replay is reproducible. Browser and Node recordings are checked for
 
 ## Current evidence
 
-The previous iteration passed 47 tests on Linux and Windows; the reference-comparison revision passes 54 locally, with hosted checks tracked in its PR. Chromium checks exercise both stations, real worker cancellation, setup changes, comparison gating, playback/pause/step, browser save/load and stroke-limit handling. Browser-exported wheel, fork-scale, shock-scale and stopped runs agree numerically with Node. Captured desktop/mobile screenshots have now been inspected, closing the earlier screenshot gap for these checked states. No real-bike calibration or participant evidence exists yet.
+55 automated tests pass on Windows and Linux, including independent analytical-reference verification and coarse-step failure/refinement. Chromium checks exercise both stations, real worker cancellation, setup changes, comparison gating, playback/pause/step, browser save/load and stroke-limit handling. Browser-exported wheel, fork-scale, shock-scale and stopped runs agree numerically with Node. Captured desktop/mobile screenshots have now been inspected, closing the earlier screenshot gap for these checked states. No real-bike calibration or participant evidence exists yet.
 
 See [the prior-iteration review](docs/ITERATION_2_REVIEW.md) and [Slice 2 evidence](docs/SLICE_2_EVIDENCE.md) for scope, receipts and remaining limits. [The first hardening review](docs/REVIEW_2026-10-15.md) and [original Slice 1 evidence](docs/SLICE_1_EVIDENCE.md) remain historical receipts.
 
