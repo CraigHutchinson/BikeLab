@@ -20,21 +20,30 @@ test('cancel during file read prevents stale dispatch over a later setup',()=>{
   f.job.launch(readTicket,{text:'stale file'});
   assert.equal(f.workers.length,1);
   f.workers[0].onmessage({data:{run:'current',milliseconds:1}});
-  assert.deepEqual(f.results,[['current',1]]);
+  assert.deepEqual(f.results,[['current',1,undefined]]);
 });
 test('failed and duplicate worker messages cannot overwrite the accepted result',()=>{
   const f=fixture(),ticket=f.job.begin();f.job.launch(ticket,{params:{}});
   const w=f.workers[0];w.onmessage({data:{run:'accepted',milliseconds:2}});
   w.onmessage({data:{error:'late failure'}});
-  assert.deepEqual(f.results,[['accepted',2]]);assert.deepEqual(f.errors,[]);
+  assert.deepEqual(f.results,[['accepted',2,undefined]]);assert.deepEqual(f.errors,[]);
 });
 test('worker construction and execution failures unlock controls and permit retry',()=>{
   const f=fixture(),ticket=f.job.begin();f.job.launch(ticket,{params:{}});
   f.workers[0].onerror({message:'worker failed',preventDefault(){}});
   assert.deepEqual(f.errors,['worker failed']);assert.equal(f.busy.at(-1),false);
   const next=f.job.begin();f.job.launch(next,{params:{}});f.workers[1].onmessage({data:{run:'retried',milliseconds:1}});
-  assert.deepEqual(f.results,[['retried',1]]);
+  assert.deepEqual(f.results,[['retried',1,undefined]]);
   const failed=new Calculation({onBusy:v=>f.busy.push(v),onResult(){},onError:e=>f.errors.push(e),createWorker(){throw new Error('unavailable');}});
   failed.launch(failed.begin(),{});
   assert.equal(f.errors.at(-1),'unavailable');assert.equal(f.busy.at(-1),false);
+});
+
+test('worker comparison sidecar is delivered with its matching run and rejects stale sidecars',()=>{
+  const f=fixture(),ticket=f.job.begin();f.job.launch(ticket,{station:'suspension'});
+  const comparison={status:'pass'};
+  f.workers[0].onmessage({data:{run:'matching',milliseconds:3,comparison}});
+  assert.deepEqual(f.results,[['matching',3,comparison]]);
+  f.workers[0].onmessage({data:{run:'stale',milliseconds:4,comparison:{status:'fail'}}});
+  assert.equal(f.results.length,1);
 });

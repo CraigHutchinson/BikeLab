@@ -4,8 +4,8 @@ import { Calculation } from './calculation.js';
 import { FIELD_SCALES, setupFromFields, frameAt } from './suspension-ui-model.js';
 
 const $ = id => document.getElementById(id), form = $('setup');
-const cyan = '#70e2ce', orange = '#f2b373', violet = '#c2a3ff';
-let run, pinned = null, frame = 0, clock = 0, previous = 0, playing = false;
+const cyan = '#70e2ce', orange = '#f2b373', violet = '#c2a3ff', white = '#e5edf2';
+let run, analytical = null, pinned = null, frame = 0, clock = 0, previous = 0, playing = false;
 let dirty = false, busy = false, failure = '';
 const cache = new Map(), plots = new Map();
 const calculation = new Calculation({ onBusy: value => { busy = value; controls(); }, onResult: install,
@@ -18,7 +18,7 @@ function fill(p) {
 function stop() { playing = false; $('play').textContent = 'Run'; }
 function controls() {
   for (const el of form.elements) el.disabled = busy;
-  for (const id of ['play','reset','step','pin','save','scrub','speed']) $(id).disabled = busy || dirty || !run;
+  for (const id of ['play','reset','step','pin','save','scrub','speed','referenceSetup']) $(id).disabled = busy || dirty || !run;
   // An immediate travel limit contains one inspectable sample but cannot play forward.
   if (run?.signals.time.length === 1) for (const id of ['play','step','scrub']) $(id).disabled = true;
   for (const id of ['load','forkPreset','shockPreset']) $(id).disabled = busy;
@@ -34,7 +34,8 @@ function beginJob() {
   const ticket = calculation.begin(); draw(); return ticket;
 }
 function calculate(p) { calculation.launch(beginJob(), { station: 'suspension', params: p }); }
-function install(result, milliseconds) {
+function install(result, milliseconds, reference) {
+  analytical = reference;
   run = result; Object.freeze(run.params); frame = 0; clock = 0; dirty = false; failure = '';
   fill(run.params); stop();
   $('scrub').max = run.signals.time.length - 1;
@@ -55,7 +56,23 @@ function install(result, milliseconds) {
     const div=document.createElement('div'), small=document.createElement('small'), strong=document.createElement('strong');
     small.textContent=label; strong.textContent=text; div.append(small,strong); $('metrics').append(div);
   }
-  comparison(); draw();
+  referenceSummary(); comparison(); draw();
+}
+function referenceSummary() {
+  const a = analytical;
+  $('referenceResult').textContent = !a || a.status === 'unavailable' ? 'UNAVAILABLE FOR THIS SETUP'
+    : a.status === 'pass' ? 'WITHIN NUMERICAL LIMITS' : 'EXCEEDS NUMERICAL LIMITS';
+  $('referenceReason').textContent = !a ? 'Reference result unavailable; reload the laboratory.' : a.status === 'unavailable' ? a.reason
+    : 'Independent closed form at ' + a.sampleCount + ' recorded times, 0–' + a.endTime + ' s. Limits: 0.001 mm, 0.0001 m/s, 0.1 N. Refine the integration step to compare accuracy.';
+  $('referenceErrors').replaceChildren();
+  if (a?.errors) for (const [key, label, scale, unit] of [['compression','Compression',1000,'mm'],
+    ['compressionVelocity','Compression velocity',1,'m/s'],['force','Axial force',1,'N']]) {
+    const cell = document.createElement('div'), title = document.createElement('small'), value = document.createElement('strong'), rms = document.createElement('small');
+    title.textContent = label + ' · max error'; value.textContent = (a.errors[key].maxAbsolute * scale).toExponential(3) + ' ' + unit;
+    rms.textContent = 'RMS ' + (a.errors[key].rms * scale).toExponential(3) + ' ' + unit;
+    cell.append(title, value, rms); $('referenceErrors').append(cell);
+  }
+  for (const el of document.querySelectorAll('.referenceLegend')) el.hidden = !a?.signals;
 }
 function comparison() {
   const compatible = pinned && run && sameScenario(run.params, pinned.params);
@@ -72,6 +89,10 @@ function rebuildPlots() {
   const motion=[{x:s.time,y:s.compression,scale:1000,color:cyan},
     {x:[0,run.metrics.endTime],y:[run.metrics.equilibriumCompression,run.metrics.equilibriumCompression],scale:1000,color:orange}];
   const loads=[{x:s.time,y:s.force,scale:1,color:cyan},{x:s.time,y:s.springForce,scale:1,color:orange}];
+  if (analytical?.signals) {
+    motion.push({x:analytical.signals.time,y:analytical.signals.compression,scale:1000,color:white});
+    loads.push({x:analytical.signals.time,y:analytical.signals.force,scale:1,color:white});
+  }
   if(ref) {
     motion.push({x:ref.signals.time,y:ref.signals.compression,scale:1000,color:violet});
     loads.push({x:ref.signals.time,y:ref.signals.force,scale:1,color:violet});
@@ -119,16 +140,18 @@ function plot(id) {
   const {c,w,h,dpr}=canvas(id), data=plots.get(id);
   let item=cache.get(id);
   if(!item || item.w!==w || item.h!==h || item.dpr!==dpr) {
-    let lo=0,hi=1;
+    let lo=0,hi=0;
     for(const v of data.series) for(const value of v.y) {lo=Math.min(lo,value*v.scale);hi=Math.max(hi,value*v.scale);}
+    if (lo===hi) hi=lo+1;
     const pad=(hi-lo)*.1; lo-=pad;hi+=pad;
+    const digits=Math.min(6,Math.max(0,2-Math.floor(Math.log10(hi-lo))));
     const px=x=>48+(w-60)*(x-data.xmin)/(data.xmax-data.xmin), py=y=>h-26-(h-40)*(y-lo)/(hi-lo);
     c.font='9px system-ui';c.fillStyle='#9aabb7';c.textAlign='right';
-    for(let i=0;i<4;i++){const y=lo+(hi-lo)*i/3;line(c,48,py(y),w-12,py(y),'#293841');c.fillText(y.toFixed(0),42,py(y)+3);}
+    for(let i=0;i<4;i++){const y=lo+(hi-lo)*i/3;line(c,48,py(y),w-12,py(y),'#293841');c.fillText(y.toFixed(digits),42,py(y)+3);}
     c.textAlign='center';
     for(let i=0;i<5;i++){const x=data.xmin+(data.xmax-data.xmin)*i/4;c.fillText(x.toFixed(data.xmax<1?3:1),px(x),h-7);}
     for(const v of data.series) {
-      c.strokeStyle=v.color;c.fillStyle=v.color;c.lineWidth=1.6;c.setLineDash(v.color===violet?[4,3]:[]);c.beginPath();
+      c.strokeStyle=v.color;c.fillStyle=v.color;c.lineWidth=1.6;c.setLineDash(v.color===violet?[4,3]:v.color===white?[2,4]:[]);c.beginPath();
       for(let i=0;i<v.y.length;i++){if(i)c.lineTo(px(v.x[i]),py(v.y[i]*v.scale));else c.moveTo(px(v.x[i]),py(v.y[i]*v.scale));}c.stroke();
       if(v.y.length===1){c.beginPath();c.arc(px(v.x[0]),py(v.y[0]*v.scale),3,0,2*Math.PI);c.fill();}
     }
@@ -156,6 +179,7 @@ form.addEventListener('submit',event=>{
   catch(error){failure=error.message;$('error').textContent=error.message;draw();}
 });
 for(const key of ['fork','shock']) $(key+'Preset').onclick=()=>{fill(PRESETS[key]);edited();};
+$('referenceSetup').onclick=()=>{if(!run||busy||dirty)return;calculate({...run.params,profile:'flat',reboundDamping:run.params.compressionDamping});};
 $('discard').onclick=()=>{fill(run.params);dirty=false;failure='';$('error').textContent='';draw();};
 $('cancel').onclick=()=>{calculation.cancel();$('error').textContent='Calculation cancelled; previous run retained.';draw();};
 $('play').onclick=()=>{
