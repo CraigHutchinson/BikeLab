@@ -115,7 +115,9 @@ export async function runRig(input={}) {
     observe(0,false);
     for(let i=0;i<Math.round(4/p.dt);i++) {
       const reason=domain();if(reason)throw new Error('Setup settling stopped: '+reason);
-      mj.mj_step(model,data);observe(0,false);
+      mj.mj_step(model,data);
+      if(Math.abs(data.time-(i+1)*p.dt)>1e-7)throw new Error('Setup settling stopped: engine time reset');
+      observe(0,false);
     }
     const reason=domain();if(reason)throw new Error('Setup settling stopped: '+reason);
     if(maxSpeed>.002)throw new Error('Setup did not settle within four seconds. Increase damping.');
