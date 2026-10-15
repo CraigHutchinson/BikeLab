@@ -1,1 +1,4 @@
 * text=auto eol=lf
+
+*.wasm binary
+dist/vendor/mujoco-3.16.0/* -text

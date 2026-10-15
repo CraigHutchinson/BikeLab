@@ -1,3 +1,4 @@
+import {checkBike} from './bike-browser-check.mjs';
 // Optional development check. CI installs pinned Playwright separately from the application.
 // NODE_PATH may select that install; BIKELAB_CHROMIUM may select a local Chromium executable.
 import { createRequire } from 'node:module';
@@ -261,6 +262,8 @@ try {
   await noOverflow();await shot('solver-mobile');
   await page.setViewportSize({width:320,height:780});await noOverflow();await shot('solver-narrow');
   report.checks.push('solver: real WASM module worker; exact candidate browser/Node channels with tolerance-checked analytical channels; release failure and static pass; refinement, replay, dirty/invalid gating, cancellation, restore, hidden canvas, page lifecycle resize recovery and mobile widths');
+
+  await checkBike({page,root,dir,report});
 
   // Pixel availability is separate from human inspection of captured images.
   const pixels=await page.locator('#rig').evaluate(canvas=>{
