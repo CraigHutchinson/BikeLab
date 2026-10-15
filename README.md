@@ -12,7 +12,7 @@ The Pages workflow runs the complete test suite on Windows and Linux with Node 2
 
 ## Run the laboratory
 
-Requires Node.js (tested with v24.19.0). No package installation or build step. The solver trial includes a pinned, locally served Rapier WASM module and its Apache-2.0 licence.
+Requires Node.js (tested with v24.19.0). No package installation or build step. The solver trial and bicycle rig include pinned, locally served Rapier and MuJoCo WASM runtimes, licences and dependency notices.
 
 ```powershell
 cd BikeLab
@@ -53,6 +53,10 @@ The optional setup file is a JSON object of SI overrides; see DEFAULTS and valid
 Same-runtime replay is reproducible. Browser and Node recordings are checked for numerical agreement, not promised to be bit-identical across JavaScript runtimes.
 
 ## Current evidence
+
+The [coupled bicycle rig](https://craighutchinson.github.io/BikeLab/bike.html) adds hardtail/full-suspension selection, two moving platens, fork/shock setup, frame pitch, axle loads, recorded replay and JSON export. Run the identical model with `node scripts/bike-rig.mjs [setup.json] [run.json]`. See [model and scope](docs/BIKE_RIG.md) and [iteration 6 evidence](docs/ITERATION_6_EVIDENCE.md). It is an uncalibrated planar fixture with a fixed rider and explicit unsupported-travel termination. Further solver precision polishing is parked; the next dynamics slice is rider compliance.
+
+The following receipts describe earlier iterations:
 
 64 automated tests pass on Windows and Linux, including spatial geometry, independent analytical-reference verification and coarse-step failure/refinement. Chromium checks exercise both dynamic stations and the spatial terrain probe, real worker cancellation, setup changes, comparison gating, playback/pause/step, browser save/load and stroke-limit handling. Browser-exported wheel, fork-scale, shock-scale and stopped runs agree numerically with Node. Captured desktop/mobile screenshots have now been inspected, closing the earlier screenshot gap for these checked states. No real-bike calibration or participant evidence exists yet.
 

@@ -178,3 +178,9 @@ Reviewed merged main 672e5e7 before implementation; see [ITERATION_4_REVIEW.md](
 ## Iteration 5 continuation
 
 [The prismatic solver trial](SOLVER_TRIAL.md) is the first executable Rapier arm, after [review of 0abfde7](ITERATION_5_REVIEW.md). It adds a visible/headless constrained carriage with tilted gravity/transverse load, fixed numerical gates and exact same-runtime snapshot/restart comparison. This is deliberately smaller than the full candidate matrix: the moving default fails the strict reference limit and joint reactions are unavailable. No whole-bike solver is selected. Next receive a matched second solver arm and reaction/energy/stop/contact/assembly tests before the hardtail/full-suspension rig. See [iteration 5 evidence](ITERATION_5_EVIDENCE.md).
+
+## Iteration 6 continuation — received coupled rig
+
+User direction parks solver perfection unless it becomes a concrete blocker. [Review and scope](ITERATION_6_REVIEW.md) supersede the earlier matched-carriage prerequisite. The [coupled bicycle rig](BIKE_RIG.md) receives a 3/4-coordinate hardtail/full-suspension assembly, geometry-derived shock leverage, two vertical platen contacts, mass/spring/damper controls, replay and shared headless output. MuJoCo is selected for this bounded fixture; it is not a blanket certification for free riding, spatial contact or real-time performance. Existing Rapier diagnostics and failed precision gates remain available.
+
+Next balanced dynamics slice: passive articulated rider compliance on the existing visible assembly, with explicit hand/foot/saddle attachment, posture/mass distribution, load/work accounting and fixed-rider comparison. Retain measured parameter provenance and later production-bike catalogue. Reopen precision research only for a demonstrated receiving-feature blocker. End-stop impacts, fixture wrench telemetry and a calibrated whole-bike transient reference remain follow-ups; unsupported overload still terminates.

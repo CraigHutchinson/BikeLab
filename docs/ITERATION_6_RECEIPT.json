@@ -1,0 +1,93 @@
+{
+  "baseline": "ed17ec7936c5bbe99ec7b0754bf095b13ece50f9",
+  "node": "v24.19.0",
+  "browser": "156.0.4314.8",
+  "tests": 88,
+  "checks": [
+    "bicycle: both actual assemblies; WASM worker under Pages path; browser/Node sample agreement; setup save/load; replay; dirty/cancel/rejection and travel-limit handling; mobile and page lifecycle"
+  ],
+  "exports": [
+    {
+      "name": "bike-full",
+      "result": {
+        "dofs": 4,
+        "samples": 801,
+        "maxBrowserNodeDifference": 1.517719283583574e-11
+      }
+    },
+    {
+      "name": "bike-hardtail",
+      "result": {
+        "dofs": 3,
+        "samples": 801,
+        "maxBrowserNodeDifference": 1.5290879673557356e-11
+      }
+    }
+  ],
+  "bikes": {
+    "hardtail": {
+      "dofs": 3,
+      "status": "complete",
+      "initial": {
+        "qpos": [
+          -0.016946703305407436,
+          0.024626785107666457,
+          0.03292734385670396
+        ],
+        "qvel": [
+          1.3428637045006905e-14,
+          1.0833371355035399e-14,
+          1.3397604560547045e-15
+        ],
+        "frontForce": 352.7866820343306,
+        "rearForce": 520.0051679656692,
+        "comX": 0.002363953009379008
+      },
+      "summary": {
+        "maxResidual": 0.0038061487907725677,
+        "peakForce": 794.6491868474493,
+        "work": 5.4876120864615485,
+        "loss": 5.488503329662979
+      }
+    },
+    "full": {
+      "dofs": 4,
+      "status": "complete",
+      "initial": {
+        "qpos": [
+          -0.042758221972112896,
+          -0.014236004051544047,
+          0.03207507547120129,
+          0.09537986542570408
+        ],
+        "qvel": [
+          -4.4470902895362255e-9,
+          -3.6278337984363472e-9,
+          1.8029195566058376e-9,
+          1.1987521326048828e-8
+        ],
+        "frontForce": 350.09953002479546,
+        "rearForce": 522.6923216867443,
+        "comX": 0.0026892299233025056
+      },
+      "summary": {
+        "maxResidual": 0.0017984308733502985,
+        "peakForce": 667.7155743153888,
+        "work": 8.17424485449192,
+        "loss": 8.1751246560395
+      }
+    }
+  },
+  "screenshots": {
+    "bike-full-desktop.png": "8d3e34a9661b1c7b0aa96cd8926069e18f673f1235eeab33ce67903e8b7fb895",
+    "bike-hardtail-desktop.png": "beaab0ef9c12f553485d18bd7a48c4804c5497fae13c218bb67fd0b2fee5ac5d",
+    "bike-limit.png": "a59d4459b06065c106d585a82015ec6eb3f3ca5ed9b876ae82384afa95e0d468",
+    "bike-mobile-390.png": "ebd9608c465df63a3c689d125112727e97102cb60152700d920e58e8f3e4179a",
+    "bike-mobile-320.png": "07a2865f28d8a39570256a7b75795e60e231280c08017b8505686e03ec2b182d"
+  },
+  "limitations": [
+    "Illustrative uncalibrated planar fixture",
+    "No rider articulation, wheel spin, spatial/layered terrain or impact continuation",
+    "Browser screenshots are separate from physical and participant evidence"
+  ]
+}

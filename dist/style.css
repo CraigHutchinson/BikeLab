@@ -11,3 +11,5 @@
 .trial-table{width:100%;border-collapse:collapse;font-size:12px;font-variant-numeric:tabular-nums}.trial-table th,.trial-table td{text-align:left;padding:10px 8px;border-bottom:1px solid var(--line)}.trial-table th{color:var(--muted);font-weight:500}.trial-table .exceeds td:nth-child(2){color:var(--orange)}.reference-check a{color:var(--cyan)}
 
 .solver-page .plots h2{margin-bottom:16px}.solver-page .legend{margin-top:0;margin-bottom:10px}
+
+.bike-page .plots h2{margin-bottom:16px}.bike-page .legend{margin-top:0}.bike-page #evidence{font-size:12px;line-height:1.8}.bike-page .readouts strong{font-size:21px}

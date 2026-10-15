@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>BikeLab · Coupled bicycle rig</title><link rel="stylesheet" href="./style.css"><script type="module" src="./bike-app.js"></script></head>
+<body class="bike-page"><header><a class="brand" href="./index.html">◉<b>BikeLab</b><span>MOUNTAIN BIKE DYNAMICS LABORATORY</span></a><div class="stage">PLANAR BICYCLE <i>ILLUSTRATIVE MODEL</i></div></header>
+<main><nav class="stations" aria-label="Stations"><a href="./index.html">Loaded wheel</a><a href="./suspension.html">Suspension</a><a href="./terrain.html">Terrain probe</a><a href="./solver.html">Solver trial</a><a href="./bike.html" aria-current="page">Bicycle rig</a></nav>
+<section class="intro"><span class="eyebrow">03 / THE COUPLED BICYCLE</span><h1>One bike. Two contact patches.</h1><p>See how fork, frame and rear suspension share a bump. Compare a hardtail with a single-pivot full-suspension assembly.</p></section>
+<div class="layout"><aside class="panel setup"><div class="panel-title"><h2>Bike &amp; excitation</h2><span>SI UNITS</span></div><form id="setup">
+<label>Assembly<select name="bike"><option value="full">Single-pivot full suspension</option><option value="hardtail">Hardtail</option></select></label>
+<label>Frame + fixed rider <span>kg</span><input name="mass" type="number" min="40" max="120" step="any" required value="82"></label>
+<label>Fork spring <span>N/m</span><input name="forkStiffness" type="number" min="4000" max="18000" step="any" required value="9000"></label>
+<label>Fork damping <span>N·s/m</span><input name="forkDamping" type="number" min="0" max="1800" step="any" required value="700"></label>
+<label>Shock spring <span>N/m</span><input name="shockStiffness" type="number" min="30000" max="150000" step="any" required value="70000"></label>
+<label>Shock damping <span>N·s/m</span><input name="shockDamping" type="number" min="0" max="5000" step="any" required value="2400"></label>
+<label>Platen timing<select name="input"><option value="travelling">Front then rear</option><option value="together">Both together</option><option value="front">Front only</option><option value="rear">Rear only</option></select></label>
+<label>Bump height <span>m</span><input name="amplitude" type="number" min="0" max=".08" step="any" required value=".025"></label>
+<label>Bump duration <span>s</span><input name="bumpDuration" type="number" min=".2" max="1" step="any" required value=".4"></label>
+<label>Rear delay <span>s</span><input name="delay" type="number" min="0" max="1" step="any" required value=".25"></label>
+<details class="advanced"><summary>Tyre and calculation settings</summary>
+<label>Tyre stiffness <span>N/m</span><input name="tyreStiffness" type="number" min="40000" max="160000" step="any" required value="90000"></label>
+<label>Tyre damping <span>N·s/m</span><input name="tyreDamping" type="number" min="0" max="600" step="any" required value="300"></label>
+<label>Duration <span>s</span><input name="duration" type="number" min="2" max="8" step="any" required value="4"></label>
+<label>Integration step<select name="dt"><option value="0.00025">0.25 ms</option><option value="0.000125" selected>0.125 ms</option><option value="0.0000625">0.0625 ms</option></select></label>
+</details><button class="primary wide" type="submit">Calculate &amp; replay</button><button type="button" class="wide" id="cancel" disabled>Cancel calculation</button></form>
+<p class="hint">82 kg includes frame and rigid rider. Front assembly 3 kg; rear assembly 4 kg. All parameters are illustrative, with no real-bike calibration.</p></aside>
+<div class="workspace"><section class="panel rig"><div class="panel-title"><h2 id="assembly">Coupled bicycle</h2><span id="status" role="status">LOADING</span></div><canvas id="rig" aria-label="Side view of the bicycle and moving platens"></canvas>
+<div class="readouts"><div><small>FRAME PITCH · NOSE DOWN +</small><strong id="pitch">—</strong></div><div><small>FORK COMPRESSION</small><strong id="fork">—</strong></div><div><small>SHOCK COMPRESSION</small><strong id="shock">—</strong></div></div>
+<div class="transport"><button id="play" disabled>Play</button><button id="reset" disabled>Reset</button><button id="step" disabled>Step</button><label>Replay speed<select id="speed"><option value=".25">¼×</option><option value=".5">½×</option><option value="1" selected>1×</option></select></label></div>
+<div class="scrub"><span id="time">0.000 s</span><input id="scrub" type="range" min="0" max="800" value="0" step="1" aria-label="Replay time" disabled></div>
+<p id="error" role="alert"></p><p id="termination"></p><p class="hint">Recorded simulation · world x held by fixture · wheels do not spin · circles show unloaded tyre radius.</p></section>
+<div class="plots"><section class="panel"><h2>Contact loads · N</h2><div class="legend"><b class="cyan">Front</b><b class="orange">Rear</b></div><canvas id="loads" aria-label="Front and rear normal loads"></canvas></section><section class="panel"><h2>Suspension travel · mm</h2><div class="legend"><b class="cyan">Fork</b><b class="orange">Shock</b></div><canvas id="travel" aria-label="Fork and shock compression"></canvas></section></div>
+<section class="panel evidence"><div class="panel-title"><h2>Experiment record</h2><span id="compute"></span></div><p id="evidence">Waiting for calculation.</p><div class="buttons"><button id="save" disabled>Save run JSON</button><label class="file-button">Load setup from run<input id="load" type="file" accept=".json,application/json"></label></div><p class="hint">Two flat, prescribed platens; linear suspension and vertical tyre surrogate. No steering, rolling/slip, terrain layers, rider articulation or end-stop impacts. Unsupported travel stops the run. The fixed frame inertia is 8 kg·m²; changing mass does not estimate a new posture.</p></section>
+</div></div><footer>BIKELAB / PLANAR RIG <span>MECHANICS FIRST. CALIBRATION STILL TO COME.</span></footer></main></body></html>

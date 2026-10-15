@@ -1,0 +1,26 @@
+{
+  "package": "@mujoco/mujoco",
+  "version": "3.16.0",
+  "source": "https://github.com/google-deepmind/mujoco",
+  "commit": "a892750516336d8358949f4518fcc4fbbd85beae",
+  "tarball": "https://registry.npmjs.org/@mujoco/mujoco/-/mujoco-3.16.0.tgz",
+  "integrity": "sha512-mlMzM1pEkXsqH5O+DuIukahPEWJgZqBTXVszdtMeYBrEOXAOepwKZn4cz1rQ4BaqWzRe+GuOczr0CmOXdsW2Yw==",
+  "license": "Apache-2.0",
+  "build": "official single-threaded WASM; unmodified",
+  "files": {
+    "mujoco.js": "5d5d89ddd0857a6518c628fa502d42f99d6dd67ca240182f1068cd30a45465ac",
+    "mujoco.wasm": "e05ac96db7f45bd46e76fed6e3469bf9204329e093344d742a18bca2cc0e230e",
+    "LICENSE": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "NOTICES.txt": "5017a81a8fea4b7a196385baa929ca5a4f4a4b1b53424935a3ffe534a4c0bb13"
+  },
+  "dependencies": {
+    "libccd": "7931e764a19ef6b21b443376c699bbc9c6d4fba8",
+    "qhull": "d1c2fc0caa5f644f3a0f220290d4a868c68ed4f6",
+    "tinyobjloader": "2945a967c5303b2c8c14174117c45f3302591150",
+    "tinyxml2": "e6caeae85799003f4ca74ff26ee16a789bc2af48",
+    "miniz": "77d0dce8627735138c51770d1799a1ef48f2117d",
+    "lodepng": "22561883dd63fd1850f18e1f6adac321e4f609b0",
+    "MarchingCubeCpp": "f03a1b3ec29b1d7d865691ca8aea4f1eb2c2873d",
+    "emscripten": "4.0.10"
+  }
+}
