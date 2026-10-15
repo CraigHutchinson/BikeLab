@@ -4,3 +4,4 @@
 #discard{margin-top:8px}#warnings{color:var(--orange);font-size:12px}
 [hidden]{display:none!important}.transport{min-width:0}.panel{min-width:0}
 @media(max-width:700px){.transport button{padding:8px}.readouts>div{padding:0 7px}.readouts small{letter-spacing:.5px}}
+.stations{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:24px}.stations a{color:var(--muted);padding:8px 14px;border:1px solid var(--line);border-radius:6px;text-decoration:none;font-size:12px}.stations a[aria-current]{color:var(--cyan);border-color:var(--cyan)}.stations a:focus-visible{outline:2px solid var(--cyan);outline-offset:2px}.preset-buttons{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}#termination{color:var(--orange)}
