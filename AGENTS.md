@@ -18,4 +18,4 @@ Before substantive C++ authoring, read cpp-write; before merging substantive C++
 
 Research delegation preference: bounded data gathering to Sonnet/Terra when available. If those classes are unavailable, say so and work locally. This does not authorize installs or contended measurements.
 
-Do not publish or deploy this local sandbox merely because it has a browser interface.
+User authorization, 2026-10-15: publish CraigHutchinson/BikeLab as a public GitHub repository; push and merge all project work. Host the static laboratory through GitHub Pages Actions. Keep deployment limited to the tested dist/ assets.

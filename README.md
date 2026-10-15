@@ -2,6 +2,14 @@
 
 A mountain-bike simulation sandbox, starting with an instrumented virtual laboratory.
 
+## Online laboratory
+
+[Open BikeLab](https://craighutchinson.github.io/BikeLab/) · [Source and Actions](https://github.com/CraigHutchinson/BikeLab)
+
+GitHub Pages serves the static files in dist/. Simulation and saved-file processing run in your browser; there is no application backend.
+
+The Pages workflow runs the complete test suite on Windows and Linux with Node 24. Successful main pushes publish the tested revision automatically. Pull requests run the tests without deploying; workflow_dispatch can redeploy main. Official actions are pinned to commit revisions. See [deployment notes](docs/DEPLOYMENT.md).
+
 ## Run the first prototype
 
 Requires Node.js (tested with v24.19.0). No package installation or build step.
@@ -32,7 +40,7 @@ Same-runtime replay is reproducible. Browser and Node recordings are checked for
 
 ## Current evidence
 
-31 automated tests pass after the full prior-iteration review. Browser controls, setup changes, comparison gating, playback/pause/step and browser save/load were exercised. A browser-exported run was compared with the headless solver. Screenshot capture failed in the available browser tooling: pixel-level visual QA remains open. No real-bike calibration or participant evidence exists yet.
+32 automated tests pass after the full prior-iteration review. Browser controls, setup changes, comparison gating, playback/pause/step and browser save/load were exercised. A browser-exported run was compared with the headless solver. Screenshot capture failed in the available browser tooling: pixel-level visual QA remains open. No real-bike calibration or participant evidence exists yet.
 
 See [the current review](docs/REVIEW_2026-10-15.md) for findings, fixes and readiness. [Original Slice 1 evidence](docs/SLICE_1_EVIDENCE.md) is retained as a historical receipt.
 
