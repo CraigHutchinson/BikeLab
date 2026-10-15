@@ -85,3 +85,7 @@ Do not benchmark during this research. Once correctness and browser/native feasi
 ## Decision left open
 
 Rapier merits an early feasibility attempt because its documented browser determinism and dual joint formulations directly address current boundaries. MuJoCo is an equally necessary comparison because official WASM and articulated/deformable mechanics now provide a credible alternative, with a clear strict-limit risk. Chrono merits a bounded native reference/extension check because its tyre/terrain breadth directly addresses future requirements; browser delivery remains unresolved. This ordering is a research-cost recommendation, not a performance or fidelity ranking. Choose only after the geometry, reaction-observability, strict-travel, restart and browser/headless evidence above exists.
+
+## Executed first arm
+
+Iteration 5 implements the [prismatic feasibility trial](SOLVER_TRIAL.md), including actual package/source verification. The selected artifact is ordinary @dimforge/rapier3d-compat 0.21.0 (source-linked core 0.36.0); the source-selected enhanced-determinism build is a separate variant. Do not apply the broad unversioned JavaScript determinism statement above to this artifact. Observed same-runtime restart and browser/Node evidence are recorded separately. Actual public/raw binding declarations expose no joint reaction impulse getter, so the original reaction-observability risk remains open even for impulse joints. The moving trial fails the fixed numerical limits; this is no engine-selection decision.

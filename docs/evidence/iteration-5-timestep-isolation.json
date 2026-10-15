@@ -1,0 +1,3578 @@
+{
+  "experiment": "bikelab-timestep-isolation-1",
+  "artifact": {
+    "package": "@dimforge/rapier3d-compat",
+    "version": "0.21.0",
+    "sourceCommit": "b716d375efc0201003f0cd9ef7168eee0b62c177",
+    "coreVersion": "0.36.0",
+    "license": "Apache-2.0",
+    "tarball": "https://registry.npmjs.org/@dimforge/rapier3d-compat/-/rapier3d-compat-0.21.0.tgz",
+    "integrity": "sha512-tCl1HPGwOhn5aCQbgqWbOH+Nx/5fnr3IPAnzQuR7zIhC/raqi2yxC6LhvZqjdI2El5hQgY5RDAwDrAjAi2FdPA==",
+    "files": {
+      "rapier.mjs": "02dc6a4e2fffc013bab08fbb44fa68f501d8303615e9afe4c7d89ad4eedda0d0",
+      "LICENSE": "4c05555705e3efde601fb1252ae48f1d63992af8a8fb8947745b7fa834e8f519"
+    }
+  },
+  "runtime": {
+    "node": "v24.19.0",
+    "platform": "linux",
+    "arch": "x64"
+  },
+  "scope": "Offline source-guided diagnosis. Net-force/centred controls preserve the axial ODE, not attachment load paths. No production-law change or solver qualification.",
+  "peakWindows": {
+    "early": "recorded t <= 1 s",
+    "late": "recorded t > 1 s"
+  },
+  "cases": [
+    {
+      "name": "original",
+      "params": {
+        "mass": 45,
+        "stiffness": 9000,
+        "damping": 350,
+        "preload": 50,
+        "travel": 0.16,
+        "initialCompression": 0.075,
+        "initialVelocity": 0,
+        "tiltDegrees": 20,
+        "transverseForce": 100,
+        "probeTorque": 0,
+        "dt": 0.0005,
+        "duration": 2
+      },
+      "controls": {
+        "dt": 0.0005,
+        "substeps": 4,
+        "pgs": 1,
+        "centered": false,
+        "balanced": false,
+        "vertical": false
+      },
+      "representation": {
+        "gravityZ": -9.80665,
+        "motorTarget": -0.005555555555555556,
+        "coordinateShift": 0,
+        "transverseForce": 100
+      },
+      "storedDt": 0.0005000000237487257,
+      "substepDt": 0.0001250000059371814,
+      "substepsPerTick": 4,
+      "additionalBodySubsteps": 0,
+      "internalPgsIterations": 1,
+      "ticks": 4000,
+      "integratedSubsteps": 16000,
+      "sampleCount": 401,
+      "errors": {
+        "compression": {
+          "maxAbsolute": 0.000041145000363049244,
+          "peakTime": 0.21500001021195203,
+          "signedAtPeak": 0.000041145000363049244
+        },
+        "velocity": {
+          "maxAbsolute": 0.0005845418556801596,
+          "peakTime": 0.3000000142492354,
+          "signedAtPeak": -0.0005845418556801596
+        },
+        "force": {
+          "maxAbsolute": 0.3515487441601408,
+          "peakTime": 0.18000000854954123,
+          "signedAtPeak": 0.3515487441601408
+        },
+        "earlyCompression": {
+          "maxAbsolute": 0.000041145000363049244,
+          "peakTime": 0.21500001021195203,
+          "signedAtPeak": 0.000041145000363049244
+        },
+        "lateCompression": {
+          "maxAbsolute": 0.000006283388494059128,
+          "peakTime": 1.1200000531971455,
+          "signedAtPeak": 0.000006283388494059128
+        }
+      },
+      "closure": {
+        "maxTranslation": 1.4882778789182938e-8,
+        "maxRotation": 0
+      },
+      "traceSha256": "32dfcdb2aec45d27f5c958c7d9c9a809dc85ce4dc8ae499915f6b4adc53360ac"
+    },
+    {
+      "name": "original",
+      "params": {
+        "mass": 45,
+        "stiffness": 9000,
+        "damping": 350,
+        "preload": 50,
+        "travel": 0.16,
+        "initialCompression": 0.075,
+        "initialVelocity": 0,
+        "tiltDegrees": 20,
+        "transverseForce": 100,
+        "probeTorque": 0,
+        "dt": 0.00025,
+        "duration": 2
+      },
+      "controls": {
+        "dt": 0.00025,
+        "substeps": 4,
+        "pgs": 1,
+        "centered": false,
+        "balanced": false,
+        "vertical": false
+      },
+      "representation": {
+        "gravityZ": -9.80665,
+        "motorTarget": -0.005555555555555556,
+        "coordinateShift": 0,
+        "transverseForce": 100
+      },
+      "storedDt": 0.0002500000118743628,
+      "substepDt": 0.0000625000029685907,
+      "substepsPerTick": 4,
+      "additionalBodySubsteps": 0,
+      "internalPgsIterations": 1,
+      "ticks": 8000,
+      "integratedSubsteps": 32000,
+      "sampleCount": 401,
+      "errors": {
+        "compression": {
+          "maxAbsolute": 0.00002023493884537389,
+          "peakTime": 0.21500001021195203,
+          "signedAtPeak": 0.00002023493884537389
+        },
+        "velocity": {
+          "maxAbsolute": 0.00029058234711906716,
+          "peakTime": 0.30500001448672265,
+          "signedAtPeak": -0.00029058234711906716
+        },
+        "force": {
+          "maxAbsolute": 0.1723510597065001,
+          "peakTime": 0.18000000854954123,
+          "signedAtPeak": 0.1723510597065001
+        },
+        "earlyCompression": {
+          "maxAbsolute": 0.00002023493884537389,
+          "peakTime": 0.21500001021195203,
+          "signedAtPeak": 0.00002023493884537389
+        },
+        "lateCompression": {
+          "maxAbsolute": 0.0000032387885928256144,
+          "peakTime": 1.1200000531971455,
+          "signedAtPeak": 0.0000032387885928256144
+        }
+      },
+      "closure": {
+        "maxTranslation": 1.456126812788251e-8,
+        "maxRotation": 0
+      },
+      "traceSha256": "3b571fbffbaee7d58f28518733c03817092289a3c6a1c558acf1556cd066e05f"
+    },
+    {
+      "name": "original",
+      "params": {
+        "mass": 45,
+        "stiffness": 9000,
+        "damping": 350,
+        "preload": 50,
+        "travel": 0.16,
+        "initialCompression": 0.075,
+        "initialVelocity": 0,
+        "tiltDegrees": 20,
+        "transverseForce": 100,
+        "probeTorque": 0,
+        "dt": 0.000125,
+        "duration": 2
+      },
+      "controls": {
+        "dt": 0.000125,
+        "substeps": 4,
+        "pgs": 1,
+        "centered": false,
+        "balanced": false,
+        "vertical": false
+      },
+      "representation": {
+        "gravityZ": -9.80665,
+        "motorTarget": -0.005555555555555556,
+        "coordinateShift": 0,
+        "transverseForce": 100
+      },
+      "storedDt": 0.0001250000059371814,
+      "substepDt": 0.00003125000148429535,
+      "substepsPerTick": 4,
+      "additionalBodySubsteps": 0,
+      "internalPgsIterations": 1,
+      "ticks": 16000,
+      "integratedSubsteps": 64000,
+      "sampleCount": 401,
+      "errors": {
+        "compression": {
+          "maxAbsolute": 0.000009756753431400256,
+          "peakTime": 0.21500001021195203,
+          "signedAtPeak": 0.000009756753431400256
+        },
+        "velocity": {
+          "maxAbsolute": 0.00014482920773625785,
+          "peakTime": 0.30500001448672265,
+          "signedAtPeak": -0.00014482920773625785
+        },
+        "force": {
+          "maxAbsolute": 0.09013817718380324,
+          "peakTime": 0.39500001876149327,
+          "signedAtPeak": -0.09013817718380324
+        },
+        "earlyCompression": {
+          "maxAbsolute": 0.000009756753431400256,
+          "peakTime": 0.21500001021195203,
+          "signedAtPeak": 0.000009756753431400256
+        },
+        "lateCompression": {
+          "maxAbsolute": 0.0000016413351787980535,
+          "peakTime": 1.1350000539096072,
+          "signedAtPeak": 0.0000016413351787980535
+        }
+      },
+      "closure": {
+        "maxTranslation": 1.4877163946948792e-8,
+        "maxRotation": 0
+      },
+      "traceSha256": "4e1383bf0320503b26902387d6f6dd838ef044c972d8922f2847d944bd8da929"
+    },
+    {
+      "name": "original",
+      "params": {
+        "mass": 45,
+        "stiffness": 9000,
+        "damping": 350,
+        "preload": 50,
+        "travel": 0.16,
+        "initialCompression": 0.075,
+        "initialVelocity": 0,
+        "tiltDegrees": 20,
+        "transverseForce": 100,
+        "probeTorque": 0,
+        "dt": 0.0000625,
+        "duration": 2
+      },
+      "controls": {
+        "dt": 0.0000625,
+        "substeps": 4,
+        "pgs": 1,
+        "centered": false,
+        "balanced": false,
+        "vertical": false
+      },
+      "representation": {
+        "gravityZ": -9.80665,
+        "motorTarget": -0.005555555555555556,
+        "coordinateShift": 0,
+        "transverseForce": 100
+      },
+      "storedDt": 0.0000625000029685907,
+      "substepDt": 0.000015625000742147677,
+      "substepsPerTick": 4,
+      "additionalBodySubsteps": 0,
+      "internalPgsIterations": 1,
+      "ticks": 32000,
+      "integratedSubsteps": 128000,
+      "sampleCount": 401,
+      "errors": {
+        "compression": {
+          "maxAbsolute": 0.000004842926705883599,
+          "peakTime": 0.4400000208988786,
+          "signedAtPeak": -0.000004842926705883599
+        },
+        "velocity": {
+          "maxAbsolute": 0.00007219484413811816,
+          "peakTime": 0.30500001448672265,
+          "signedAtPeak": -0.00007219484413811816
+        },
+        "force": {
+          "maxAbsolute": 0.04468075525738868,
+          "peakTime": 0.4000000189989805,
+          "signedAtPeak": -0.04468075525738868
+        },
+        "earlyCompression": {
+          "maxAbsolute": 0.000004842926705883599,
+          "peakTime": 0.4400000208988786,
+          "signedAtPeak": -0.000004842926705883599
+        },
+        "lateCompression": {
+          "maxAbsolute": 0.0000023854129058073492,
+          "peakTime": 1.7600000835955143,
+          "signedAtPeak": -0.0000023854129058073492
+        }
+      },
+      "closure": {
+        "maxTranslation": 1.5663568527063954e-8,
+        "maxRotation": 0
+      },
+      "traceSha256": "d135ec78f20d7cbf2101b2daf77e69dc107c32ddab34eb7e7179eb8bfd282c96"
+    },
+    {
+      "name": "original",
+      "params": {
+        "mass": 45,
+        "stiffness": 9000,
+        "damping": 350,
+        "preload": 50,
+        "travel": 0.16,
+        "initialCompression": 0.075,
+        "initialVelocity": 0,
+        "tiltDegrees": 20,
+        "transverseForce": 100,
+        "probeTorque": 0,
+        "dt": 0.00003125,
+        "duration": 2
+      },
+      "controls": {
+        "dt": 0.00003125,
+        "substeps": 4,
+        "pgs": 1,
+        "centered": false,
+        "balanced": false,
+        "vertical": false
+      },
+      "representation": {
+        "gravityZ": -9.80665,
+        "motorTarget": -0.005555555555555556,
+        "coordinateShift": 0,
+        "transverseForce": 100
+      },
+      "storedDt": 0.00003125000148429535,
+      "substepDt": 0.000007812500371073838,
+      "substepsPerTick": 4,
+      "additionalBodySubsteps": 0,
+      "internalPgsIterations": 1,
+      "ticks": 64000,
+      "integratedSubsteps": 256000,
+      "sampleCount": 401,
+      "errors": {
+        "compression": {
+          "maxAbsolute": 0.000009138580024437015,
+          "peakTime": 0.20500000973697752,
+          "signedAtPeak": 0.000009138580024437015
+        },
+        "velocity": {
+          "maxAbsolute": 0.00010730889811023936,
+          "peakTime": 0.29500001401174814,
+          "signedAtPeak": -0.00010730889811023936
+        },
+        "force": {
+          "maxAbsolute": 0.09176719480615247,
+          "peakTime": 0.1600000075995922,
+          "signedAtPeak": 0.09176719480615247
+        },
+        "earlyCompression": {
+          "maxAbsolute": 0.000009138580024437015,
+          "peakTime": 0.20500000973697752,
+          "signedAtPeak": 0.000009138580024437015
+        },
+        "lateCompression": {
+          "maxAbsolute": 0.000005681332750244461,
+          "peakTime": 1.9050000904826447,
+          "signedAtPeak": 0.000005681332750244461
+        }
+      },
+      "closure": {
+        "maxTranslation": 1.538992711812971e-8,
+        "maxRotation": 0
+      },
+      "traceSha256": "3e9b6e4ce69799d63ec6252d1d3c5786329a6bc627b9371c29027bf915e6f48a"
+    },
+    {
+      "name": "one-substep",
+      "params": {
+        "mass": 45,
+        "stiffness": 9000,
+        "damping": 350,
+        "preload": 50,
+        "travel": 0.16,
+        "initialCompression": 0.075,
+        "initialVelocity": 0,
+        "tiltDegrees": 20,
+        "transverseForce": 100,
+        "probeTorque": 0,
+        "dt": 0.0005,
+        "duration": 2
+      },
+      "controls": {
+        "dt": 0.0005,
+        "substeps": 1,
+        "pgs": 1,
+        "centered": false,
+        "balanced": false,
+        "vertical": false
+      },
+      "representation": {
+        "gravityZ": -9.80665,
+        "motorTarget": -0.005555555555555556,
+        "coordinateShift": 0,
+        "transverseForce": 100
+      },
+      "storedDt": 0.0005000000237487257,
+      "substepDt": 0.0005000000237487257,
+      "substepsPerTick": 1,
+      "additionalBodySubsteps": 0,
+      "internalPgsIterations": 1,
+      "ticks": 4000,
+      "integratedSubsteps": 4000,
+      "sampleCount": 401,
+      "errors": {
+        "compression": {
+          "maxAbsolute": 0.00016579488735233086,
+          "peakTime": 0.21500001021195203,
+          "signedAtPeak": 0.00016579488735233086
+        },
+        "velocity": {
+          "maxAbsolute": 0.0023444931202991903,
+          "peakTime": 0.3000000142492354,
+          "signedAtPeak": -0.0023444931202991903
+        },
+        "force": {
+          "maxAbsolute": 1.420517934800273,
+          "peakTime": 0.18000000854954123,
+          "signedAtPeak": 1.420517934800273
+        },
+        "earlyCompression": {
+          "maxAbsolute": 0.00016579488735233086,
+          "peakTime": 0.21500001021195203,
+          "signedAtPeak": 0.00016579488735233086
+        },
+        "lateCompression": {
+          "maxAbsolute": 0.00002458695298677288,
+          "peakTime": 1.1200000531971455,
+          "signedAtPeak": 0.00002458695298677288
+        }
+      },
+      "closure": {
+        "maxTranslation": 1.4596847455659886e-8,
+        "maxRotation": 0
+      },
+      "traceSha256": "09b9cd2f013d6395090bb341ea3c930c21c39109a21edfd0ba5c9876087e7ff6"
+    },
+    {
+      "name": "one-substep",
+      "params": {
+        "mass": 45,
+        "stiffness": 9000,
+        "damping": 350,
+        "preload": 50,
+        "travel": 0.16,
+        "initialCompression": 0.075,
+        "initialVelocity": 0,
+        "tiltDegrees": 20,
+        "transverseForce": 100,
+        "probeTorque": 0,
+        "dt": 0.00025,
+        "duration": 2
+      },
+      "controls": {
+        "dt": 0.00025,
+        "substeps": 1,
+        "pgs": 1,
+        "centered": false,
+        "balanced": false,
+        "vertical": false
+      },
+      "representation": {
+        "gravityZ": -9.80665,
+        "motorTarget": -0.005555555555555556,
+        "coordinateShift": 0,
+        "transverseForce": 100
+      },
+      "storedDt": 0.0002500000118743628,
+      "substepDt": 0.0002500000118743628,
+      "substepsPerTick": 1,
+      "additionalBodySubsteps": 0,
+      "internalPgsIterations": 1,
+      "ticks": 8000,
+      "integratedSubsteps": 8000,
+      "sampleCount": 401,
+      "errors": {
+        "compression": {
+          "maxAbsolute": 0.00008302289018531986,
+          "peakTime": 0.21500001021195203,
+          "signedAtPeak": 0.00008302289018531986
+        },
+        "velocity": {
+          "maxAbsolute": 0.0011751299510931734,
+          "peakTime": 0.3000000142492354,
+          "signedAtPeak": -0.0011751299510931734
+        },
+        "force": {
+          "maxAbsolute": 0.7108745232013689,
+          "peakTime": 0.18000000854954123,
+          "signedAtPeak": 0.7108745232013689
+        },
+        "earlyCompression": {
+          "maxAbsolute": 0.00008302289018531986,
+          "peakTime": 0.21500001021195203,
+          "signedAtPeak": 0.00008302289018531986
+        },
+        "lateCompression": {
+          "maxAbsolute": 0.000012459795102760796,
+          "peakTime": 1.1200000531971455,
+          "signedAtPeak": 0.000012459795102760796
+        }
+      },
+      "closure": {
+        "maxTranslation": 1.465935619620423e-8,
+        "maxRotation": 0
+      },
+      "traceSha256": "84a41d4992a24ba0118e53bf4af559e7c1621d05fa319008fbce1e487d00bf9e"
+    },
+    {
+      "name": "one-substep",
+      "params": {
+        "mass": 45,
+        "stiffness": 9000,
+        "damping": 350,
+        "preload": 50,
+        "travel": 0.16,
+        "initialCompression": 0.075,
+        "initialVelocity": 0,
+        "tiltDegrees": 20,
+        "transverseForce": 100,
+        "probeTorque": 0,
+        "dt": 0.000125,
+        "duration": 2
+      },
+      "controls": {
+        "dt": 0.000125,
+        "substeps": 1,
+        "pgs": 1,
+        "centered": false,
+        "balanced": false,
+        "vertical": false
+      },
+      "representation": {
+        "gravityZ": -9.80665,
+        "motorTarget": -0.005555555555555556,
+        "coordinateShift": 0,
+        "transverseForce": 100
+      },
+      "storedDt": 0.0001250000059371814,
+      "substepDt": 0.0001250000059371814,
+      "substepsPerTick": 1,
+      "additionalBodySubsteps": 0,
+      "internalPgsIterations": 1,
+      "ticks": 16000,
+      "integratedSubsteps": 16000,
+      "sampleCount": 401,
+      "errors": {
+        "compression": {
+          "maxAbsolute": 0.000041145000363049244,
+          "peakTime": 0.21500001021195203,
+          "signedAtPeak": 0.000041145000363049244
+        },
+        "velocity": {
+          "maxAbsolute": 0.0005845418556801596,
+          "peakTime": 0.3000000142492354,
+          "signedAtPeak": -0.0005845418556801596
+        },
+        "force": {
+          "maxAbsolute": 0.3515487441601408,
+          "peakTime": 0.18000000854954123,
+          "signedAtPeak": 0.3515487441601408
+        },
+        "earlyCompression": {
+          "maxAbsolute": 0.000041145000363049244,
+          "peakTime": 0.21500001021195203,
+          "signedAtPeak": 0.000041145000363049244
+        },
+        "lateCompression": {
+          "maxAbsolute": 0.000006283388494059128,
+          "peakTime": 1.1200000531971455,
+          "signedAtPeak": 0.000006283388494059128
+        }
+      },
+      "closure": {
+        "maxTranslation": 1.602604656690962e-8,
+        "maxRotation": 0
+      },
+      "traceSha256": "32dfcdb2aec45d27f5c958c7d9c9a809dc85ce4dc8ae499915f6b4adc53360ac"
+    },
+    {
+      "name": "one-substep",
+      "params": {
+        "mass": 45,
+        "stiffness": 9000,
+        "damping": 350,
+        "preload": 50,
+        "travel": 0.16,
+        "initialCompression": 0.075,
+        "initialVelocity": 0,
+        "tiltDegrees": 20,
+        "transverseForce": 100,
+        "probeTorque": 0,
+        "dt": 0.0000625,
+        "duration": 2
+      },
+      "controls": {
+        "dt": 0.0000625,
+        "substeps": 1,
+        "pgs": 1,
+        "centered": false,
+        "balanced": false,
+        "vertical": false
+      },
+      "representation": {
+        "gravityZ": -9.80665,
+        "motorTarget": -0.005555555555555556,
+        "coordinateShift": 0,
+        "transverseForce": 100
+      },
+      "storedDt": 0.0000625000029685907,
+      "substepDt": 0.0000625000029685907,
+      "substepsPerTick": 1,
+      "additionalBodySubsteps": 0,
+      "internalPgsIterations": 1,
+      "ticks": 32000,
+      "integratedSubsteps": 32000,
+      "sampleCount": 401,
+      "errors": {
+        "compression": {
+          "maxAbsolute": 0.00002023493884537389,
+          "peakTime": 0.21500001021195203,
+          "signedAtPeak": 0.00002023493884537389
+        },
+        "velocity": {
+          "maxAbsolute": 0.00029058234711906716,
+          "peakTime": 0.30500001448672265,
+          "signedAtPeak": -0.00029058234711906716
+        },
+        "force": {
+          "maxAbsolute": 0.1723510597065001,
+          "peakTime": 0.18000000854954123,
+          "signedAtPeak": 0.1723510597065001
+        },
+        "earlyCompression": {
+          "maxAbsolute": 0.00002023493884537389,
+          "peakTime": 0.21500001021195203,
+          "signedAtPeak": 0.00002023493884537389
+        },
+        "lateCompression": {
+          "maxAbsolute": 0.0000032387885928256144,
+          "peakTime": 1.1200000531971455,
+          "signedAtPeak": 0.0000032387885928256144
+        }
+      },
+      "closure": {
+        "maxTranslation": 1.5007510077862326e-8,
+        "maxRotation": 0
+      },
+      "traceSha256": "3b571fbffbaee7d58f28518733c03817092289a3c6a1c558acf1556cd066e05f"
+    },
+    {
+      "name": "one-substep",
+      "params": {
+        "mass": 45,
+        "stiffness": 9000,
+        "damping": 350,
+        "preload": 50,
+        "travel": 0.16,
+        "initialCompression": 0.075,
+        "initialVelocity": 0,
+        "tiltDegrees": 20,
+        "transverseForce": 100,
+        "probeTorque": 0,
+        "dt": 0.00003125,
+        "duration": 2
+      },
+      "controls": {
+        "dt": 0.00003125,
+        "substeps": 1,
+        "pgs": 1,
+        "centered": false,
+        "balanced": false,
+        "vertical": false
+      },
+      "representation": {
+        "gravityZ": -9.80665,
+        "motorTarget": -0.005555555555555556,
+        "coordinateShift": 0,
+        "transverseForce": 100
+      },
+      "storedDt": 0.00003125000148429535,
+      "substepDt": 0.00003125000148429535,
+      "substepsPerTick": 1,
+      "additionalBodySubsteps": 0,
+      "internalPgsIterations": 1,
+      "ticks": 64000,
+      "integratedSubsteps": 64000,
+      "sampleCount": 401,
+      "errors": {
+        "compression": {
+          "maxAbsolute": 0.000009756753431400256,
+          "peakTime": 0.21500001021195203,
+          "signedAtPeak": 0.000009756753431400256
+        },
+        "velocity": {
+          "maxAbsolute": 0.00014482920773625785,
+          "peakTime": 0.30500001448672265,
+          "signedAtPeak": -0.00014482920773625785
+        },
+        "force": {
+          "maxAbsolute": 0.09013817718380324,
+          "peakTime": 0.39500001876149327,
+          "signedAtPeak": -0.09013817718380324
+        },
+        "earlyCompression": {
+          "maxAbsolute": 0.000009756753431400256,
+          "peakTime": 0.21500001021195203,
+          "signedAtPeak": 0.000009756753431400256
+        },
+        "lateCompression": {
+          "maxAbsolute": 0.0000016413351787980535,
+          "peakTime": 1.1350000539096072,
+          "signedAtPeak": 0.0000016413351787980535
+        }
+      },
+      "closure": {
+        "maxTranslation": 1.5655364768603715e-8,
+        "maxRotation": 0
+      },
+      "traceSha256": "4e1383bf0320503b26902387d6f6dd838ef044c972d8922f2847d944bd8da929"
+    },
+    {
+      "name": "two-substeps",
+      "params": {
+        "mass": 45,
+        "stiffness": 9000,
+        "damping": 350,
+        "preload": 50,
+        "travel": 0.16,
+        "initialCompression": 0.075,
+        "initialVelocity": 0,
+        "tiltDegrees": 20,
+        "transverseForce": 100,
+        "probeTorque": 0,
+        "dt": 0.0005,
+        "duration": 2
+      },
+      "controls": {
+        "dt": 0.0005,
+        "substeps": 2,
+        "pgs": 1,
+        "centered": false,
+        "balanced": false,
+        "vertical": false
+      },
+      "representation": {
+        "gravityZ": -9.80665,
+        "motorTarget": -0.005555555555555556,
+        "coordinateShift": 0,
+        "transverseForce": 100
+      },
+      "storedDt": 0.0005000000237487257,
+      "substepDt": 0.0002500000118743628,
+      "substepsPerTick": 2,
+      "additionalBodySubsteps": 0,
+      "internalPgsIterations": 1,
+      "ticks": 4000,
+      "integratedSubsteps": 8000,
+      "sampleCount": 401,
+      "errors": {
+        "compression": {
+          "maxAbsolute": 0.00008302289018531986,
+          "peakTime": 0.21500001021195203,
+          "signedAtPeak": 0.00008302289018531986
+        },
+        "velocity": {
+          "maxAbsolute": 0.0011751299510931734,
+          "peakTime": 0.3000000142492354,
+          "signedAtPeak": -0.0011751299510931734
+        },
+        "force": {
+          "maxAbsolute": 0.7108745232013689,
+          "peakTime": 0.18000000854954123,
+          "signedAtPeak": 0.7108745232013689
+        },
+        "earlyCompression": {
+          "maxAbsolute": 0.00008302289018531986,
+          "peakTime": 0.21500001021195203,
+          "signedAtPeak": 0.00008302289018531986
+        },
+        "lateCompression": {
+          "maxAbsolute": 0.000012459795102760796,
+          "peakTime": 1.1200000531971455,
+          "signedAtPeak": 0.000012459795102760796
+        }
+      },
+      "closure": {
+        "maxTranslation": 1.4509950225741384e-8,
+        "maxRotation": 0
+      },
+      "traceSha256": "84a41d4992a24ba0118e53bf4af559e7c1621d05fa319008fbce1e487d00bf9e"
+    },
+    {
+      "name": "two-substeps",
+      "params": {
+        "mass": 45,
+        "stiffness": 9000,
+        "damping": 350,
+        "preload": 50,
+        "travel": 0.16,
+        "initialCompression": 0.075,
+        "initialVelocity": 0,
+        "tiltDegrees": 20,
+        "transverseForce": 100,
+        "probeTorque": 0,
+        "dt": 0.00025,
+        "duration": 2
+      },
+      "controls": {
+        "dt": 0.00025,
+        "substeps": 2,
+        "pgs": 1,
+        "centered": false,
+        "balanced": false,
+        "vertical": false
+      },
+      "representation": {
+        "gravityZ": -9.80665,
+        "motorTarget": -0.005555555555555556,
+        "coordinateShift": 0,
+        "transverseForce": 100
+      },
+      "storedDt": 0.0002500000118743628,
+      "substepDt": 0.0001250000059371814,
+      "substepsPerTick": 2,
+      "additionalBodySubsteps": 0,
+      "internalPgsIterations": 1,
+      "ticks": 8000,
+      "integratedSubsteps": 16000,
+      "sampleCount": 401,
+      "errors": {
+        "compression": {
+          "maxAbsolute": 0.000041145000363049244,
+          "peakTime": 0.21500001021195203,
+          "signedAtPeak": 0.000041145000363049244
+        },
+        "velocity": {
+          "maxAbsolute": 0.0005845418556801596,
+          "peakTime": 0.3000000142492354,
+          "signedAtPeak": -0.0005845418556801596
+        },
+        "force": {
+          "maxAbsolute": 0.3515487441601408,
+          "peakTime": 0.18000000854954123,
+          "signedAtPeak": 0.3515487441601408
+        },
+        "earlyCompression": {
+          "maxAbsolute": 0.000041145000363049244,
+          "peakTime": 0.21500001021195203,
+          "signedAtPeak": 0.000041145000363049244
+        },
+        "lateCompression": {
+          "maxAbsolute": 0.000006283388494059128,
+          "peakTime": 1.1200000531971455,
+          "signedAtPeak": 0.000006283388494059128
+        }
+      },
+      "closure": {
+        "maxTranslation": 1.4931268424235167e-8,
+        "maxRotation": 0
+      },
+      "traceSha256": "32dfcdb2aec45d27f5c958c7d9c9a809dc85ce4dc8ae499915f6b4adc53360ac"
+    },
+    {
+      "name": "two-substeps",
+      "params": {
+        "mass": 45,
+        "stiffness": 9000,
+        "damping": 350,
+        "preload": 50,
+        "travel": 0.16,
+        "initialCompression": 0.075,
+        "initialVelocity": 0,
+        "tiltDegrees": 20,
+        "transverseForce": 100,
+        "probeTorque": 0,
+        "dt": 0.000125,
+        "duration": 2
+      },
+      "controls": {
+        "dt": 0.000125,
+        "substeps": 2,
+        "pgs": 1,
+        "centered": false,
+        "balanced": false,
+        "vertical": false
+      },
+      "representation": {
+        "gravityZ": -9.80665,
+        "motorTarget": -0.005555555555555556,
+        "coordinateShift": 0,
+        "transverseForce": 100
+      },
+      "storedDt": 0.0001250000059371814,
+      "substepDt": 0.0000625000029685907,
+      "substepsPerTick": 2,
+      "additionalBodySubsteps": 0,
+      "internalPgsIterations": 1,
+      "ticks": 16000,
+      "integratedSubsteps": 32000,
+      "sampleCount": 401,
+      "errors": {
+        "compression": {
+          "maxAbsolute": 0.00002023493884537389,
+          "peakTime": 0.21500001021195203,
+          "signedAtPeak": 0.00002023493884537389
+        },
+        "velocity": {
+          "maxAbsolute": 0.00029058234711906716,
+          "peakTime": 0.30500001448672265,
+          "signedAtPeak": -0.00029058234711906716
+        },
+        "force": {
+          "maxAbsolute": 0.1723510597065001,
+          "peakTime": 0.18000000854954123,
+          "signedAtPeak": 0.1723510597065001
+        },
+        "earlyCompression": {
+          "maxAbsolute": 0.00002023493884537389,
+          "peakTime": 0.21500001021195203,
+          "signedAtPeak": 0.00002023493884537389
+        },
+        "lateCompression": {
+          "maxAbsolute": 0.0000032387885928256144,
+          "peakTime": 1.1200000531971455,
+          "signedAtPeak": 0.0000032387885928256144
+        }
+      },
+      "closure": {
+        "maxTranslation": 1.5007510077862326e-8,
+        "maxRotation": 0
+      },
+      "traceSha256": "3b571fbffbaee7d58f28518733c03817092289a3c6a1c558acf1556cd066e05f"
+    },
+    {
+      "name": "two-substeps",
+      "params": {
+        "mass": 45,
+        "stiffness": 9000,
+        "damping": 350,
+        "preload": 50,
+        "travel": 0.16,
+        "initialCompression": 0.075,
+        "initialVelocity": 0,
+        "tiltDegrees": 20,
+        "transverseForce": 100,
+        "probeTorque": 0,
+        "dt": 0.0000625,
+        "duration": 2
+      },
+      "controls": {
+        "dt": 0.0000625,
+        "substeps": 2,
+        "pgs": 1,
+        "centered": false,
+        "balanced": false,
+        "vertical": false
+      },
+      "representation": {
+        "gravityZ": -9.80665,
+        "motorTarget": -0.005555555555555556,
+        "coordinateShift": 0,
+        "transverseForce": 100
+      },
+      "storedDt": 0.0000625000029685907,
+      "substepDt": 0.00003125000148429535,
+      "substepsPerTick": 2,
+      "additionalBodySubsteps": 0,
+      "internalPgsIterations": 1,
+      "ticks": 32000,
+      "integratedSubsteps": 64000,
+      "sampleCount": 401,
+      "errors": {
+        "compression": {
+          "maxAbsolute": 0.000009756753431400256,
+          "peakTime": 0.21500001021195203,
+          "signedAtPeak": 0.000009756753431400256
+        },
+        "velocity": {
+          "maxAbsolute": 0.00014482920773625785,
+          "peakTime": 0.30500001448672265,
+          "signedAtPeak": -0.00014482920773625785
+        },
+        "force": {
+          "maxAbsolute": 0.09013817718380324,
+          "peakTime": 0.39500001876149327,
+          "signedAtPeak": -0.09013817718380324
+        },
+        "earlyCompression": {
+          "maxAbsolute": 0.000009756753431400256,
+          "peakTime": 0.21500001021195203,
+          "signedAtPeak": 0.000009756753431400256
+        },
+        "lateCompression": {
+          "maxAbsolute": 0.0000016413351787980535,
+          "peakTime": 1.1350000539096072,
+          "signedAtPeak": 0.0000016413351787980535
+        }
+      },
+      "closure": {
+        "maxTranslation": 1.5655364768603715e-8,
+        "maxRotation": 0
+      },
+      "traceSha256": "4e1383bf0320503b26902387d6f6dd838ef044c972d8922f2847d944bd8da929"
+    },
+    {
+      "name": "two-substeps",
+      "params": {
+        "mass": 45,
+        "stiffness": 9000,
+        "damping": 350,
+        "preload": 50,
+        "travel": 0.16,
+        "initialCompression": 0.075,
+        "initialVelocity": 0,
+        "tiltDegrees": 20,
+        "transverseForce": 100,
+        "probeTorque": 0,
+        "dt": 0.00003125,
+        "duration": 2
+      },
+      "controls": {
+        "dt": 0.00003125,
+        "substeps": 2,
+        "pgs": 1,
+        "centered": false,
+        "balanced": false,
+        "vertical": false
+      },
+      "representation": {
+        "gravityZ": -9.80665,
+        "motorTarget": -0.005555555555555556,
+        "coordinateShift": 0,
+        "transverseForce": 100
+      },
+      "storedDt": 0.00003125000148429535,
+      "substepDt": 0.000015625000742147677,
+      "substepsPerTick": 2,
+      "additionalBodySubsteps": 0,
+      "internalPgsIterations": 1,
+      "ticks": 64000,
+      "integratedSubsteps": 128000,
+      "sampleCount": 401,
+      "errors": {
+        "compression": {
+          "maxAbsolute": 0.000004842926705883599,
+          "peakTime": 0.4400000208988786,
+          "signedAtPeak": -0.000004842926705883599
+        },
+        "velocity": {
+          "maxAbsolute": 0.00007219484413811816,
+          "peakTime": 0.30500001448672265,
+          "signedAtPeak": -0.00007219484413811816
+        },
+        "force": {
+          "maxAbsolute": 0.04468075525738868,
+          "peakTime": 0.4000000189989805,
+          "signedAtPeak": -0.04468075525738868
+        },
+        "earlyCompression": {
+          "maxAbsolute": 0.000004842926705883599,
+          "peakTime": 0.4400000208988786,
+          "signedAtPeak": -0.000004842926705883599
+        },
+        "lateCompression": {
+          "maxAbsolute": 0.0000023854129058073492,
+          "peakTime": 1.7600000835955143,
+          "signedAtPeak": -0.0000023854129058073492
+        }
+      },
+      "closure": {
+        "maxTranslation": 1.5663568527063954e-8,
+        "maxRotation": 0
+      },
+      "traceSha256": "d135ec78f20d7cbf2101b2daf77e69dc107c32ddab34eb7e7179eb8bfd282c96"
+    },
+    {
+      "name": "eight-substeps",
+      "params": {
+        "mass": 45,
+        "stiffness": 9000,
+        "damping": 350,
+        "preload": 50,
+        "travel": 0.16,
+        "initialCompression": 0.075,
+        "initialVelocity": 0,
+        "tiltDegrees": 20,
+        "transverseForce": 100,
+        "probeTorque": 0,
+        "dt": 0.0005,
+        "duration": 2
+      },
+      "controls": {
+        "dt": 0.0005,
+        "substeps": 8,
+        "pgs": 1,
+        "centered": false,
+        "balanced": false,
+        "vertical": false
+      },
+      "representation": {
+        "gravityZ": -9.80665,
+        "motorTarget": -0.005555555555555556,
+        "coordinateShift": 0,
+        "transverseForce": 100
+      },
+      "storedDt": 0.0005000000237487257,
+      "substepDt": 0.0000625000029685907,
+      "substepsPerTick": 8,
+      "additionalBodySubsteps": 0,
+      "internalPgsIterations": 1,
+      "ticks": 4000,
+      "integratedSubsteps": 32000,
+      "sampleCount": 401,
+      "errors": {
+        "compression": {
+          "maxAbsolute": 0.00002023493884537389,
+          "peakTime": 0.21500001021195203,
+          "signedAtPeak": 0.00002023493884537389
+        },
+        "velocity": {
+          "maxAbsolute": 0.00029058234711906716,
+          "peakTime": 0.30500001448672265,
+          "signedAtPeak": -0.00029058234711906716
+        },
+        "force": {
+          "maxAbsolute": 0.1723510597065001,
+          "peakTime": 0.18000000854954123,
+          "signedAtPeak": 0.1723510597065001
+        },
+        "earlyCompression": {
+          "maxAbsolute": 0.00002023493884537389,
+          "peakTime": 0.21500001021195203,
+          "signedAtPeak": 0.00002023493884537389
+        },
+        "lateCompression": {
+          "maxAbsolute": 0.0000032387885928256144,
+          "peakTime": 1.1200000531971455,
+          "signedAtPeak": 0.0000032387885928256144
+        }
+      },
+      "closure": {
+        "maxTranslation": 1.3930851491337369e-8,
+        "maxRotation": 0
+      },
+      "traceSha256": "3b571fbffbaee7d58f28518733c03817092289a3c6a1c558acf1556cd066e05f"
+    },
+    {
+      "name": "eight-substeps",
+      "params": {
+        "mass": 45,
+        "stiffness": 9000,
+        "damping": 350,
+        "preload": 50,
+        "travel": 0.16,
+        "initialCompression": 0.075,
+        "initialVelocity": 0,
+        "tiltDegrees": 20,
+        "transverseForce": 100,
+        "probeTorque": 0,
+        "dt": 0.00025,
+        "duration": 2
+      },
+      "controls": {
+        "dt": 0.00025,
+        "substeps": 8,
+        "pgs": 1,
+        "centered": false,
+        "balanced": false,
+        "vertical": false
+      },
+      "representation": {
+        "gravityZ": -9.80665,
+        "motorTarget": -0.005555555555555556,
+        "coordinateShift": 0,
+        "transverseForce": 100
+      },
+      "storedDt": 0.0002500000118743628,
+      "substepDt": 0.00003125000148429535,
+      "substepsPerTick": 8,
+      "additionalBodySubsteps": 0,
+      "internalPgsIterations": 1,
+      "ticks": 8000,
+      "integratedSubsteps": 64000,
+      "sampleCount": 401,
+      "errors": {
+        "compression": {
+          "maxAbsolute": 0.000009756753431400256,
+          "peakTime": 0.21500001021195203,
+          "signedAtPeak": 0.000009756753431400256
+        },
+        "velocity": {
+          "maxAbsolute": 0.00014482920773625785,
+          "peakTime": 0.30500001448672265,
+          "signedAtPeak": -0.00014482920773625785
+        },
+        "force": {
+          "maxAbsolute": 0.09013817718380324,
+          "peakTime": 0.39500001876149327,
+          "signedAtPeak": -0.09013817718380324
+        },
+        "earlyCompression": {
+          "maxAbsolute": 0.000009756753431400256,
+          "peakTime": 0.21500001021195203,
+          "signedAtPeak": 0.000009756753431400256
+        },
+        "lateCompression": {
+          "maxAbsolute": 0.0000016413351787980535,
+          "peakTime": 1.1350000539096072,
+          "signedAtPeak": 0.0000016413351787980535
+        }
+      },
+      "closure": {
+        "maxTranslation": 1.4877163946948792e-8,
+        "maxRotation": 0
+      },
+      "traceSha256": "4e1383bf0320503b26902387d6f6dd838ef044c972d8922f2847d944bd8da929"
+    },
+    {
+      "name": "eight-substeps",
+      "params": {
+        "mass": 45,
+        "stiffness": 9000,
+        "damping": 350,
+        "preload": 50,
+        "travel": 0.16,
+        "initialCompression": 0.075,
+        "initialVelocity": 0,
+        "tiltDegrees": 20,
+        "transverseForce": 100,
+        "probeTorque": 0,
+        "dt": 0.000125,
+        "duration": 2
+      },
+      "controls": {
+        "dt": 0.000125,
+        "substeps": 8,
+        "pgs": 1,
+        "centered": false,
+        "balanced": false,
+        "vertical": false
+      },
+      "representation": {
+        "gravityZ": -9.80665,
+        "motorTarget": -0.005555555555555556,
+        "coordinateShift": 0,
+        "transverseForce": 100
+      },
+      "storedDt": 0.0001250000059371814,
+      "substepDt": 0.000015625000742147677,
+      "substepsPerTick": 8,
+      "additionalBodySubsteps": 0,
+      "internalPgsIterations": 1,
+      "ticks": 16000,
+      "integratedSubsteps": 128000,
+      "sampleCount": 401,
+      "errors": {
+        "compression": {
+          "maxAbsolute": 0.000004842926705883599,
+          "peakTime": 0.4400000208988786,
+          "signedAtPeak": -0.000004842926705883599
+        },
+        "velocity": {
+          "maxAbsolute": 0.00007219484413811816,
+          "peakTime": 0.30500001448672265,
+          "signedAtPeak": -0.00007219484413811816
+        },
+        "force": {
+          "maxAbsolute": 0.04468075525738868,
+          "peakTime": 0.4000000189989805,
+          "signedAtPeak": -0.04468075525738868
+        },
+        "earlyCompression": {
+          "maxAbsolute": 0.000004842926705883599,
+          "peakTime": 0.4400000208988786,
+          "signedAtPeak": -0.000004842926705883599
+        },
+        "lateCompression": {
+          "maxAbsolute": 0.0000023854129058073492,
+          "peakTime": 1.7600000835955143,
+          "signedAtPeak": -0.0000023854129058073492
+        }
+      },
+      "closure": {
+        "maxTranslation": 1.4974240895537663e-8,
+        "maxRotation": 0
+      },
+      "traceSha256": "d135ec78f20d7cbf2101b2daf77e69dc107c32ddab34eb7e7179eb8bfd282c96"
+    },
+    {
+      "name": "eight-substeps",
+      "params": {
+        "mass": 45,
+        "stiffness": 9000,
+        "damping": 350,
+        "preload": 50,
+        "travel": 0.16,
+        "initialCompression": 0.075,
+        "initialVelocity": 0,
+        "tiltDegrees": 20,
+        "transverseForce": 100,
+        "probeTorque": 0,
+        "dt": 0.0000625,
+        "duration": 2
+      },
+      "controls": {
+        "dt": 0.0000625,
+        "substeps": 8,
+        "pgs": 1,
+        "centered": false,
+        "balanced": false,
+        "vertical": false
+      },
+      "representation": {
+        "gravityZ": -9.80665,
+        "motorTarget": -0.005555555555555556,
+        "coordinateShift": 0,
+        "transverseForce": 100
+      },
+      "storedDt": 0.0000625000029685907,
+      "substepDt": 0.000007812500371073838,
+      "substepsPerTick": 8,
+      "additionalBodySubsteps": 0,
+      "internalPgsIterations": 1,
+      "ticks": 32000,
+      "integratedSubsteps": 256000,
+      "sampleCount": 401,
+      "errors": {
+        "compression": {
+          "maxAbsolute": 0.000009138580024437015,
+          "peakTime": 0.20500000973697752,
+          "signedAtPeak": 0.000009138580024437015
+        },
+        "velocity": {
+          "maxAbsolute": 0.00010730889811023936,
+          "peakTime": 0.29500001401174814,
+          "signedAtPeak": -0.00010730889811023936
+        },
+        "force": {
+          "maxAbsolute": 0.09176719480615247,
+          "peakTime": 0.1600000075995922,
+          "signedAtPeak": 0.09176719480615247
+        },
+        "earlyCompression": {
+          "maxAbsolute": 0.000009138580024437015,
+          "peakTime": 0.20500000973697752,
+          "signedAtPeak": 0.000009138580024437015
+        },
+        "lateCompression": {
+          "maxAbsolute": 0.000005681332750244461,
+          "peakTime": 1.9050000904826447,
+          "signedAtPeak": 0.000005681332750244461
+        }
+      },
+      "closure": {
+        "maxTranslation": 1.538992711812971e-8,
+        "maxRotation": 0
+      },
+      "traceSha256": "3e9b6e4ce69799d63ec6252d1d3c5786329a6bc627b9371c29027bf915e6f48a"
+    },
+    {
+      "name": "eight-substeps",
+      "params": {
+        "mass": 45,
+        "stiffness": 9000,
+        "damping": 350,
+        "preload": 50,
+        "travel": 0.16,
+        "initialCompression": 0.075,
+        "initialVelocity": 0,
+        "tiltDegrees": 20,
+        "transverseForce": 100,
+        "probeTorque": 0,
+        "dt": 0.00003125,
+        "duration": 2
+      },
+      "controls": {
+        "dt": 0.00003125,
+        "substeps": 8,
+        "pgs": 1,
+        "centered": false,
+        "balanced": false,
+        "vertical": false
+      },
+      "representation": {
+        "gravityZ": -9.80665,
+        "motorTarget": -0.005555555555555556,
+        "coordinateShift": 0,
+        "transverseForce": 100
+      },
+      "storedDt": 0.00003125000148429535,
+      "substepDt": 0.000003906250185536919,
+      "substepsPerTick": 8,
+      "additionalBodySubsteps": 0,
+      "internalPgsIterations": 1,
+      "ticks": 64000,
+      "integratedSubsteps": 512000,
+      "sampleCount": 401,
+      "errors": {
+        "compression": {
+          "maxAbsolute": 0.000018956667713114495,
+          "peakTime": 2.0000000949949026,
+          "signedAtPeak": 0.000018956667713114495
+        },
+        "velocity": {
+          "maxAbsolute": 0.00010364520128260059,
+          "peakTime": 1.5750000748084858,
+          "signedAtPeak": -0.00010364520128260059
+        },
+        "force": {
+          "maxAbsolute": 0.13985224137263685,
+          "peakTime": 2.0000000949949026,
+          "signedAtPeak": 0.13985224137263685
+        },
+        "earlyCompression": {
+          "maxAbsolute": 0.000006872577103918254,
+          "peakTime": 0.21000000997446477,
+          "signedAtPeak": 0.000006872577103918254
+        },
+        "lateCompression": {
+          "maxAbsolute": 0.000018956667713114495,
+          "peakTime": 2.0000000949949026,
+          "signedAtPeak": 0.000018956667713114495
+        }
+      },
+      "closure": {
+        "maxTranslation": 1.5400685514213948e-8,
+        "maxRotation": 0
+      },
+      "traceSha256": "1a0090a6201b6a44a7c8eb3f8aba06a22f043d9b35edee3505f9c17701cdb260"
+    },
+    {
+      "name": "four-pgs",
+      "params": {
+        "mass": 45,
+        "stiffness": 9000,
+        "damping": 350,
+        "preload": 50,
+        "travel": 0.16,
+        "initialCompression": 0.075,
+        "initialVelocity": 0,
+        "tiltDegrees": 20,
+        "transverseForce": 100,
+        "probeTorque": 0,
+        "dt": 0.0005,
+        "duration": 2
+      },
+      "controls": {
+        "dt": 0.0005,
+        "substeps": 4,
+        "pgs": 4,
+        "centered": false,
+        "balanced": false,
+        "vertical": false
+      },
+      "representation": {
+        "gravityZ": -9.80665,
+        "motorTarget": -0.005555555555555556,
+        "coordinateShift": 0,
+        "transverseForce": 100
+      },
+      "storedDt": 0.0005000000237487257,
+      "substepDt": 0.0001250000059371814,
+      "substepsPerTick": 4,
+      "additionalBodySubsteps": 0,
+      "internalPgsIterations": 4,
+      "ticks": 4000,
+      "integratedSubsteps": 16000,
+      "sampleCount": 401,
+      "errors": {
+        "compression": {
+          "maxAbsolute": 0.00004122631916544245,
+          "peakTime": 0.21500001021195203,
+          "signedAtPeak": 0.00004122631916544245
+        },
+        "velocity": {
+          "maxAbsolute": 0.0005854610277736538,
+          "peakTime": 0.3000000142492354,
+          "signedAtPeak": -0.0005854610277736538
+        },
+        "force": {
+          "maxAbsolute": 0.35243322400702937,
+          "peakTime": 0.18000000854954123,
+          "signedAtPeak": 0.35243322400702937
+        },
+        "earlyCompression": {
+          "maxAbsolute": 0.00004122631916544245,
+          "peakTime": 0.21500001021195203,
+          "signedAtPeak": 0.00004122631916544245
+        },
+        "lateCompression": {
+          "maxAbsolute": 0.000006283388494059128,
+          "peakTime": 1.1200000531971455,
+          "signedAtPeak": 0.000006283388494059128
+        }
+      },
+      "closure": {
+        "maxTranslation": 1.4882778789182938e-8,
+        "maxRotation": 0
+      },
+      "traceSha256": "f7db44f39f1db61e5585525a63b794f7b73b85bd637f5828a9dd9aa003e920e4"
+    },
+    {
+      "name": "four-pgs",
+      "params": {
+        "mass": 45,
+        "stiffness": 9000,
+        "damping": 350,
+        "preload": 50,
+        "travel": 0.16,
+        "initialCompression": 0.075,
+        "initialVelocity": 0,
+        "tiltDegrees": 20,
+        "transverseForce": 100,
+        "probeTorque": 0,
+        "dt": 0.00025,
+        "duration": 2
+      },
+      "controls": {
+        "dt": 0.00025,
+        "substeps": 4,
+        "pgs": 4,
+        "centered": false,
+        "balanced": false,
+        "vertical": false
+      },
+      "representation": {
+        "gravityZ": -9.80665,
+        "motorTarget": -0.005555555555555556,
+        "coordinateShift": 0,
+        "transverseForce": 100
+      },
+      "storedDt": 0.0002500000118743628,
+      "substepDt": 0.0000625000029685907,
+      "substepsPerTick": 4,
+      "additionalBodySubsteps": 0,
+      "internalPgsIterations": 4,
+      "ticks": 8000,
+      "integratedSubsteps": 32000,
+      "sampleCount": 401,
+      "errors": {
+        "compression": {
+          "maxAbsolute": 0.000020240826849239613,
+          "peakTime": 0.21500001021195203,
+          "signedAtPeak": 0.000020240826849239613
+        },
+        "velocity": {
+          "maxAbsolute": 0.00029046458704173883,
+          "peakTime": 0.30500001448672265,
+          "signedAtPeak": -0.00029046458704173883
+        },
+        "force": {
+          "maxAbsolute": 0.1725599750897686,
+          "peakTime": 0.18000000854954123,
+          "signedAtPeak": 0.1725599750897686
+        },
+        "earlyCompression": {
+          "maxAbsolute": 0.000020240826849239613,
+          "peakTime": 0.21500001021195203,
+          "signedAtPeak": 0.000020240826849239613
+        },
+        "lateCompression": {
+          "maxAbsolute": 0.0000032387885928256144,
+          "peakTime": 1.1200000531971455,
+          "signedAtPeak": 0.0000032387885928256144
+        }
+      },
+      "closure": {
+        "maxTranslation": 1.456126812788251e-8,
+        "maxRotation": 0
+      },
+      "traceSha256": "5f9d0580a1381123c257cc8ab55aa003f605b23c0d2035fa66f6c76ba2c374cd"
+    },
+    {
+      "name": "four-pgs",
+      "params": {
+        "mass": 45,
+        "stiffness": 9000,
+        "damping": 350,
+        "preload": 50,
+        "travel": 0.16,
+        "initialCompression": 0.075,
+        "initialVelocity": 0,
+        "tiltDegrees": 20,
+        "transverseForce": 100,
+        "probeTorque": 0,
+        "dt": 0.000125,
+        "duration": 2
+      },
+      "controls": {
+        "dt": 0.000125,
+        "substeps": 4,
+        "pgs": 4,
+        "centered": false,
+        "balanced": false,
+        "vertical": false
+      },
+      "representation": {
+        "gravityZ": -9.80665,
+        "motorTarget": -0.005555555555555556,
+        "coordinateShift": 0,
+        "transverseForce": 100
+      },
+      "storedDt": 0.0001250000059371814,
+      "substepDt": 0.00003125000148429535,
+      "substepsPerTick": 4,
+      "additionalBodySubsteps": 0,
+      "internalPgsIterations": 4,
+      "ticks": 16000,
+      "integratedSubsteps": 64000,
+      "sampleCount": 401,
+      "errors": {
+        "compression": {
+          "maxAbsolute": 0.00000987196847417049,
+          "peakTime": 0.21500001021195203,
+          "signedAtPeak": 0.00000987196847417049
+        },
+        "velocity": {
+          "maxAbsolute": 0.0001457012757988263,
+          "peakTime": 0.30500001448672265,
+          "signedAtPeak": -0.0001457012757988263
+        },
+        "force": {
+          "maxAbsolute": 0.09009724687047083,
+          "peakTime": 0.39500001876149327,
+          "signedAtPeak": -0.09009724687047083
+        },
+        "earlyCompression": {
+          "maxAbsolute": 0.00000987196847417049,
+          "peakTime": 0.21500001021195203,
+          "signedAtPeak": 0.00000987196847417049
+        },
+        "lateCompression": {
+          "maxAbsolute": 0.0000016413351787980535,
+          "peakTime": 1.1350000539096072,
+          "signedAtPeak": 0.0000016413351787980535
+        }
+      },
+      "closure": {
+        "maxTranslation": 1.4877163946948792e-8,
+        "maxRotation": 0
+      },
+      "traceSha256": "960f068860ad7a3dacaef9a3dc304be1db11a9a35db800f19b531cf1c0f72c7c"
+    },
+    {
+      "name": "four-pgs",
+      "params": {
+        "mass": 45,
+        "stiffness": 9000,
+        "damping": 350,
+        "preload": 50,
+        "travel": 0.16,
+        "initialCompression": 0.075,
+        "initialVelocity": 0,
+        "tiltDegrees": 20,
+        "transverseForce": 100,
+        "probeTorque": 0,
+        "dt": 0.0000625,
+        "duration": 2
+      },
+      "controls": {
+        "dt": 0.0000625,
+        "substeps": 4,
+        "pgs": 4,
+        "centered": false,
+        "balanced": false,
+        "vertical": false
+      },
+      "representation": {
+        "gravityZ": -9.80665,
+        "motorTarget": -0.005555555555555556,
+        "coordinateShift": 0,
+        "transverseForce": 100
+      },
+      "storedDt": 0.0000625000029685907,
+      "substepDt": 0.000015625000742147677,
+      "substepsPerTick": 4,
+      "additionalBodySubsteps": 0,
+      "internalPgsIterations": 4,
+      "ticks": 32000,
+      "integratedSubsteps": 128000,
+      "sampleCount": 401,
+      "errors": {
+        "compression": {
+          "maxAbsolute": 0.0000049148568766060885,
+          "peakTime": 0.4400000208988786,
+          "signedAtPeak": -0.0000049148568766060885
+        },
+        "velocity": {
+          "maxAbsolute": 0.00007424770471295417,
+          "peakTime": 0.30500001448672265,
+          "signedAtPeak": -0.00007424770471295417
+        },
+        "force": {
+          "maxAbsolute": 0.04561727636684054,
+          "peakTime": 0.4000000189989805,
+          "signedAtPeak": -0.04561727636684054
+        },
+        "earlyCompression": {
+          "maxAbsolute": 0.0000049148568766060885,
+          "peakTime": 0.4400000208988786,
+          "signedAtPeak": -0.0000049148568766060885
+        },
+        "lateCompression": {
+          "maxAbsolute": 0.0000023733183669924496,
+          "peakTime": 1.7600000835955143,
+          "signedAtPeak": -0.0000023733183669924496
+        }
+      },
+      "closure": {
+        "maxTranslation": 1.5663568527063954e-8,
+        "maxRotation": 0
+      },
+      "traceSha256": "8991edc87f8dc3510a4049a51fb3a2f92009e2720277d4ca506ef3a41c7dd0b4"
+    },
+    {
+      "name": "four-pgs",
+      "params": {
+        "mass": 45,
+        "stiffness": 9000,
+        "damping": 350,
+        "preload": 50,
+        "travel": 0.16,
+        "initialCompression": 0.075,
+        "initialVelocity": 0,
+        "tiltDegrees": 20,
+        "transverseForce": 100,
+        "probeTorque": 0,
+        "dt": 0.00003125,
+        "duration": 2
+      },
+      "controls": {
+        "dt": 0.00003125,
+        "substeps": 4,
+        "pgs": 4,
+        "centered": false,
+        "balanced": false,
+        "vertical": false
+      },
+      "representation": {
+        "gravityZ": -9.80665,
+        "motorTarget": -0.005555555555555556,
+        "coordinateShift": 0,
+        "transverseForce": 100
+      },
+      "storedDt": 0.00003125000148429535,
+      "substepDt": 0.000007812500371073838,
+      "substepsPerTick": 4,
+      "additionalBodySubsteps": 0,
+      "internalPgsIterations": 4,
+      "ticks": 64000,
+      "integratedSubsteps": 256000,
+      "sampleCount": 401,
+      "errors": {
+        "compression": {
+          "maxAbsolute": 0.000009138580024437015,
+          "peakTime": 0.20500000973697752,
+          "signedAtPeak": 0.000009138580024437015
+        },
+        "velocity": {
+          "maxAbsolute": 0.00010730062273031638,
+          "peakTime": 0.29500001401174814,
+          "signedAtPeak": -0.00010730062273031638
+        },
+        "force": {
+          "maxAbsolute": 0.09176719480615247,
+          "peakTime": 0.1600000075995922,
+          "signedAtPeak": 0.09176719480615247
+        },
+        "earlyCompression": {
+          "maxAbsolute": 0.000009138580024437015,
+          "peakTime": 0.20500000973697752,
+          "signedAtPeak": 0.000009138580024437015
+        },
+        "lateCompression": {
+          "maxAbsolute": 0.000005681332750244461,
+          "peakTime": 1.9050000904826447,
+          "signedAtPeak": 0.000005681332750244461
+        }
+      },
+      "closure": {
+        "maxTranslation": 1.538992711812971e-8,
+        "maxRotation": 0
+      },
+      "traceSha256": "3bef65a7e11fbb3696ae31f50108d1b4814262396855825f186c37ad6fe9f522"
+    },
+    {
+      "name": "centered",
+      "params": {
+        "mass": 45,
+        "stiffness": 9000,
+        "damping": 350,
+        "preload": 50,
+        "travel": 0.16,
+        "initialCompression": 0.075,
+        "initialVelocity": 0,
+        "tiltDegrees": 20,
+        "transverseForce": 100,
+        "probeTorque": 0,
+        "dt": 0.0005,
+        "duration": 2
+      },
+      "controls": {
+        "dt": 0.0005,
+        "substeps": 4,
+        "pgs": 1,
+        "centered": true,
+        "balanced": false,
+        "vertical": false
+      },
+      "representation": {
+        "gravityZ": -9.80665,
+        "motorTarget": -0.04607618319815064,
+        "coordinateShift": 0.040520627642595085,
+        "transverseForce": 100
+      },
+      "storedDt": 0.0005000000237487257,
+      "substepDt": 0.0001250000059371814,
+      "substepsPerTick": 4,
+      "additionalBodySubsteps": 0,
+      "internalPgsIterations": 1,
+      "ticks": 4000,
+      "integratedSubsteps": 16000,
+      "sampleCount": 401,
+      "errors": {
+        "compression": {
+          "maxAbsolute": 0.00004124721666361533,
+          "peakTime": 0.21500001021195203,
+          "signedAtPeak": 0.00004124721666361533
+        },
+        "velocity": {
+          "maxAbsolute": 0.0005853432676963255,
+          "peakTime": 0.3000000142492354,
+          "signedAtPeak": -0.0005853432676963255
+        },
+        "force": {
+          "maxAbsolute": 0.35255212645296297,
+          "peakTime": 0.18000000854954123,
+          "signedAtPeak": 0.35255212645296297
+        },
+        "earlyCompression": {
+          "maxAbsolute": 0.00004124721666361533,
+          "peakTime": 0.21500001021195203,
+          "signedAtPeak": 0.00004124721666361533
+        },
+        "lateCompression": {
+          "maxAbsolute": 0.000006287723291947822,
+          "peakTime": 1.1200000531971455,
+          "signedAtPeak": 0.000006287723291947822
+        }
+      },
+      "closure": {
+        "maxTranslation": 7.032958944278462e-9,
+        "maxRotation": 0
+      },
+      "traceSha256": "8d34a60a97d26816a103886dc745a67bb79a3a85c66f173ec3694e44720babd0"
+    },
+    {
+      "name": "centered",
+      "params": {
+        "mass": 45,
+        "stiffness": 9000,
+        "damping": 350,
+        "preload": 50,
+        "travel": 0.16,
+        "initialCompression": 0.075,
+        "initialVelocity": 0,
+        "tiltDegrees": 20,
+        "transverseForce": 100,
+        "probeTorque": 0,
+        "dt": 0.00025,
+        "duration": 2
+      },
+      "controls": {
+        "dt": 0.00025,
+        "substeps": 4,
+        "pgs": 1,
+        "centered": true,
+        "balanced": false,
+        "vertical": false
+      },
+      "representation": {
+        "gravityZ": -9.80665,
+        "motorTarget": -0.04607618319815064,
+        "coordinateShift": 0.040520627642595085,
+        "transverseForce": 100
+      },
+      "storedDt": 0.0002500000118743628,
+      "substepDt": 0.0000625000029685907,
+      "substepsPerTick": 4,
+      "additionalBodySubsteps": 0,
+      "internalPgsIterations": 1,
+      "ticks": 8000,
+      "integratedSubsteps": 32000,
+      "sampleCount": 401,
+      "errors": {
+        "compression": {
+          "maxAbsolute": 0.000020215336207895368,
+          "peakTime": 0.21500001021195203,
+          "signedAtPeak": 0.000020215336207895368
+        },
+        "velocity": {
+          "maxAbsolute": 0.0002897427220436011,
+          "peakTime": 0.3000000142492354,
+          "signedAtPeak": -0.0002897427220436011
+        },
+        "force": {
+          "maxAbsolute": 0.1724183521923237,
+          "peakTime": 0.18000000854954123,
+          "signedAtPeak": 0.1724183521923237
+        },
+        "earlyCompression": {
+          "maxAbsolute": 0.000020215336207895368,
+          "peakTime": 0.21500001021195203,
+          "signedAtPeak": 0.000020215336207895368
+        },
+        "lateCompression": {
+          "maxAbsolute": 0.0000031399481894567316,
+          "peakTime": 1.1200000531971455,
+          "signedAtPeak": 0.0000031399481894567316
+        }
+      },
+      "closure": {
+        "maxTranslation": 6.753263112673872e-9,
+        "maxRotation": 0
+      },
+      "traceSha256": "24b50ec56bc50f06b0e01e4d9c168bb4778a86fb709e324fc2d13e555ade9f89"
+    },
+    {
+      "name": "centered",
+      "params": {
+        "mass": 45,
+        "stiffness": 9000,
+        "damping": 350,
+        "preload": 50,
+        "travel": 0.16,
+        "initialCompression": 0.075,
+        "initialVelocity": 0,
+        "tiltDegrees": 20,
+        "transverseForce": 100,
+        "probeTorque": 0,
+        "dt": 0.000125,
+        "duration": 2
+      },
+      "controls": {
+        "dt": 0.000125,
+        "substeps": 4,
+        "pgs": 1,
+        "centered": true,
+        "balanced": false,
+        "vertical": false
+      },
+      "representation": {
+        "gravityZ": -9.80665,
+        "motorTarget": -0.04607618319815064,
+        "coordinateShift": 0.040520627642595085,
+        "transverseForce": 100
+      },
+      "storedDt": 0.0001250000059371814,
+      "substepDt": 0.00003125000148429535,
+      "substepsPerTick": 4,
+      "additionalBodySubsteps": 0,
+      "internalPgsIterations": 1,
+      "ticks": 16000,
+      "integratedSubsteps": 64000,
+      "sampleCount": 401,
+      "errors": {
+        "compression": {
+          "maxAbsolute": 0.000009904801245616546,
+          "peakTime": 0.21500001021195203,
+          "signedAtPeak": 0.000009904801245616546
+        },
+        "velocity": {
+          "maxAbsolute": 0.0001459947236129855,
+          "peakTime": 0.30500001448672265,
+          "signedAtPeak": -0.0001459947236129855
+        },
+        "force": {
+          "maxAbsolute": 0.08821963500349739,
+          "peakTime": 0.39500001876149327,
+          "signedAtPeak": -0.08821963500349739
+        },
+        "earlyCompression": {
+          "maxAbsolute": 0.000009904801245616546,
+          "peakTime": 0.21500001021195203,
+          "signedAtPeak": 0.000009904801245616546
+        },
+        "lateCompression": {
+          "maxAbsolute": 0.0000015342532263401543,
+          "peakTime": 1.1200000531971455,
+          "signedAtPeak": 0.0000015342532263401543
+        }
+      },
+      "closure": {
+        "maxTranslation": 6.780542422298702e-9,
+        "maxRotation": 0
+      },
+      "traceSha256": "ffa9c6ac08ee4150ca4f3ef3e1ffbc8e344dda03310faed267aaa24325908dbe"
+    },
+    {
+      "name": "centered",
+      "params": {
+        "mass": 45,
+        "stiffness": 9000,
+        "damping": 350,
+        "preload": 50,
+        "travel": 0.16,
+        "initialCompression": 0.075,
+        "initialVelocity": 0,
+        "tiltDegrees": 20,
+        "transverseForce": 100,
+        "probeTorque": 0,
+        "dt": 0.0000625,
+        "duration": 2
+      },
+      "controls": {
+        "dt": 0.0000625,
+        "substeps": 4,
+        "pgs": 1,
+        "centered": true,
+        "balanced": false,
+        "vertical": false
+      },
+      "representation": {
+        "gravityZ": -9.80665,
+        "motorTarget": -0.04607618319815064,
+        "coordinateShift": 0.040520627642595085,
+        "transverseForce": 100
+      },
+      "storedDt": 0.0000625000029685907,
+      "substepDt": 0.000015625000742147677,
+      "substepsPerTick": 4,
+      "additionalBodySubsteps": 0,
+      "internalPgsIterations": 1,
+      "ticks": 32000,
+      "integratedSubsteps": 128000,
+      "sampleCount": 401,
+      "errors": {
+        "compression": {
+          "maxAbsolute": 0.000004603513945350413,
+          "peakTime": 0.4350000206613913,
+          "signedAtPeak": -0.000004603513945350413
+        },
+        "velocity": {
+          "maxAbsolute": 0.00006914322151083119,
+          "peakTime": 0.3000000142492354,
+          "signedAtPeak": -0.00006914322151083119
+        },
+        "force": {
+          "maxAbsolute": 0.0434935619162502,
+          "peakTime": 0.390000018524006,
+          "signedAtPeak": -0.0434935619162502
+        },
+        "earlyCompression": {
+          "maxAbsolute": 0.000004603513945350413,
+          "peakTime": 0.4350000206613913,
+          "signedAtPeak": -0.000004603513945350413
+        },
+        "lateCompression": {
+          "maxAbsolute": 7.577639755257382e-7,
+          "peakTime": 1.1200000531971455,
+          "signedAtPeak": 7.577639755257382e-7
+        }
+      },
+      "closure": {
+        "maxTranslation": 7.202307627754929e-9,
+        "maxRotation": 0
+      },
+      "traceSha256": "45e41307a325af0686ed1b793f847a3b474ecc3881f36d9372d5a5400036e5f1"
+    },
+    {
+      "name": "centered",
+      "params": {
+        "mass": 45,
+        "stiffness": 9000,
+        "damping": 350,
+        "preload": 50,
+        "travel": 0.16,
+        "initialCompression": 0.075,
+        "initialVelocity": 0,
+        "tiltDegrees": 20,
+        "transverseForce": 100,
+        "probeTorque": 0,
+        "dt": 0.00003125,
+        "duration": 2
+      },
+      "controls": {
+        "dt": 0.00003125,
+        "substeps": 4,
+        "pgs": 1,
+        "centered": true,
+        "balanced": false,
+        "vertical": false
+      },
+      "representation": {
+        "gravityZ": -9.80665,
+        "motorTarget": -0.04607618319815064,
+        "coordinateShift": 0.040520627642595085,
+        "transverseForce": 100
+      },
+      "storedDt": 0.00003125000148429535,
+      "substepDt": 0.000007812500371073838,
+      "substepsPerTick": 4,
+      "additionalBodySubsteps": 0,
+      "internalPgsIterations": 1,
+      "ticks": 64000,
+      "integratedSubsteps": 256000,
+      "sampleCount": 401,
+      "errors": {
+        "compression": {
+          "maxAbsolute": 0.000009518011910389368,
+          "peakTime": 0.20500000973697752,
+          "signedAtPeak": 0.000009518011910389368
+        },
+        "velocity": {
+          "maxAbsolute": 0.00011147127279509395,
+          "peakTime": 0.29500001401174814,
+          "signedAtPeak": -0.00011147127279509395
+        },
+        "force": {
+          "maxAbsolute": 0.09506199706834195,
+          "peakTime": 0.1600000075995922,
+          "signedAtPeak": 0.09506199706834195
+        },
+        "earlyCompression": {
+          "maxAbsolute": 0.000009518011910389368,
+          "peakTime": 0.20500000973697752,
+          "signedAtPeak": 0.000009518011910389368
+        },
+        "lateCompression": {
+          "maxAbsolute": 7.437002833496353e-7,
+          "peakTime": 1.1200000531971455,
+          "signedAtPeak": 7.437002833496353e-7
+        }
+      },
+      "closure": {
+        "maxTranslation": 7.14224384718296e-9,
+        "maxRotation": 0
+      },
+      "traceSha256": "5045e2aeb1883616cf709aaa2b260a9702e9a524638ef9ffb943d153706eadd9"
+    },
+    {
+      "name": "net-force",
+      "params": {
+        "mass": 45,
+        "stiffness": 9000,
+        "damping": 350,
+        "preload": 50,
+        "travel": 0.16,
+        "initialCompression": 0.075,
+        "initialVelocity": 0,
+        "tiltDegrees": 20,
+        "transverseForce": 100,
+        "probeTorque": 0,
+        "dt": 0.0005,
+        "duration": 2
+      },
+      "controls": {
+        "dt": 0.0005,
+        "substeps": 4,
+        "pgs": 1,
+        "centered": false,
+        "balanced": true,
+        "vertical": false
+      },
+      "representation": {
+        "gravityZ": 0,
+        "motorTarget": 0.040520627642595085,
+        "coordinateShift": 0,
+        "transverseForce": -50.93323273451011
+      },
+      "storedDt": 0.0005000000237487257,
+      "substepDt": 0.0001250000059371814,
+      "substepsPerTick": 4,
+      "additionalBodySubsteps": 0,
+      "internalPgsIterations": 1,
+      "ticks": 4000,
+      "integratedSubsteps": 16000,
+      "sampleCount": 401,
+      "errors": {
+        "compression": {
+          "maxAbsolute": 0.000041718051138665835,
+          "peakTime": 0.21500001021195203,
+          "signedAtPeak": 0.000041718051138665835
+        },
+        "velocity": {
+          "maxAbsolute": 0.0005900995392651431,
+          "peakTime": 0.3000000142492354,
+          "signedAtPeak": -0.0005900995392651431
+        },
+        "force": {
+          "maxAbsolute": 0.35742237867202675,
+          "peakTime": 0.18000000854954123,
+          "signedAtPeak": 0.35742237867202675
+        },
+        "earlyCompression": {
+          "maxAbsolute": 0.000041718051138665835,
+          "peakTime": 0.21500001021195203,
+          "signedAtPeak": 0.000041718051138665835
+        },
+        "lateCompression": {
+          "maxAbsolute": 0.000006259836478589298,
+          "peakTime": 1.1200000531971455,
+          "signedAtPeak": 0.000006259836478589298
+        }
+      },
+      "closure": {
+        "maxTranslation": 1.4882778789182938e-8,
+        "maxRotation": 0
+      },
+      "traceSha256": "711ca27efd4512d5e1e97ba3ba0ef1b30de19405c08b5bd899311450d78ad5fd"
+    },
+    {
+      "name": "net-force",
+      "params": {
+        "mass": 45,
+        "stiffness": 9000,
+        "damping": 350,
+        "preload": 50,
+        "travel": 0.16,
+        "initialCompression": 0.075,
+        "initialVelocity": 0,
+        "tiltDegrees": 20,
+        "transverseForce": 100,
+        "probeTorque": 0,
+        "dt": 0.00025,
+        "duration": 2
+      },
+      "controls": {
+        "dt": 0.00025,
+        "substeps": 4,
+        "pgs": 1,
+        "centered": false,
+        "balanced": true,
+        "vertical": false
+      },
+      "representation": {
+        "gravityZ": 0,
+        "motorTarget": 0.040520627642595085,
+        "coordinateShift": 0,
+        "transverseForce": -50.93323273451011
+      },
+      "storedDt": 0.0002500000118743628,
+      "substepDt": 0.0000625000029685907,
+      "substepsPerTick": 4,
+      "additionalBodySubsteps": 0,
+      "internalPgsIterations": 1,
+      "ticks": 8000,
+      "integratedSubsteps": 32000,
+      "sampleCount": 401,
+      "errors": {
+        "compression": {
+          "maxAbsolute": 0.000021018049787786125,
+          "peakTime": 0.21500001021195203,
+          "signedAtPeak": 0.000021018049787786125
+        },
+        "velocity": {
+          "maxAbsolute": 0.000297806509527182,
+          "peakTime": 0.30500001448672265,
+          "signedAtPeak": -0.000297806509527182
+        },
+        "force": {
+          "maxAbsolute": 0.1804012356917042,
+          "peakTime": 0.18000000854954123,
+          "signedAtPeak": 0.1804012356917042
+        },
+        "earlyCompression": {
+          "maxAbsolute": 0.000021018049787786125,
+          "peakTime": 0.21500001021195203,
+          "signedAtPeak": 0.000021018049787786125
+        },
+        "lateCompression": {
+          "maxAbsolute": 0.0000033059440114197036,
+          "peakTime": 1.1200000531971455,
+          "signedAtPeak": 0.0000033059440114197036
+        }
+      },
+      "closure": {
+        "maxTranslation": 1.456126812788251e-8,
+        "maxRotation": 0
+      },
+      "traceSha256": "ee6965c69e49583ce834b4d88e115a9601709a266dcced1d415bee76d31b24f8"
+    },
+    {
+      "name": "net-force",
+      "params": {
+        "mass": 45,
+        "stiffness": 9000,
+        "damping": 350,
+        "preload": 50,
+        "travel": 0.16,
+        "initialCompression": 0.075,
+        "initialVelocity": 0,
+        "tiltDegrees": 20,
+        "transverseForce": 100,
+        "probeTorque": 0,
+        "dt": 0.000125,
+        "duration": 2
+      },
+      "controls": {
+        "dt": 0.000125,
+        "substeps": 4,
+        "pgs": 1,
+        "centered": false,
+        "balanced": true,
+        "vertical": false
+      },
+      "representation": {
+        "gravityZ": 0,
+        "motorTarget": 0.040520627642595085,
+        "coordinateShift": 0,
+        "transverseForce": -50.93323273451011
+      },
+      "storedDt": 0.0001250000059371814,
+      "substepDt": 0.00003125000148429535,
+      "substepsPerTick": 4,
+      "additionalBodySubsteps": 0,
+      "internalPgsIterations": 1,
+      "ticks": 16000,
+      "integratedSubsteps": 64000,
+      "sampleCount": 401,
+      "errors": {
+        "compression": {
+          "maxAbsolute": 0.000010439131245921357,
+          "peakTime": 0.21500001021195203,
+          "signedAtPeak": 0.000010439131245921357
+        },
+        "velocity": {
+          "maxAbsolute": 0.0001465185800422486,
+          "peakTime": 0.3000000142492354,
+          "signedAtPeak": -0.0001465185800422486
+        },
+        "force": {
+          "maxAbsolute": 0.08952896817322653,
+          "peakTime": 0.18000000854954123,
+          "signedAtPeak": 0.08952896817322653
+        },
+        "earlyCompression": {
+          "maxAbsolute": 0.000010439131245921357,
+          "peakTime": 0.21500001021195203,
+          "signedAtPeak": 0.000010439131245921357
+        },
+        "lateCompression": {
+          "maxAbsolute": 0.000001602112982168613,
+          "peakTime": 1.13000005367212,
+          "signedAtPeak": 0.000001602112982168613
+        }
+      },
+      "closure": {
+        "maxTranslation": 1.4877163946948792e-8,
+        "maxRotation": 0
+      },
+      "traceSha256": "323e1abb3129c911e2a5645a7b1787f502ca681d46308d68a97cf82a74fa1cfc"
+    },
+    {
+      "name": "net-force",
+      "params": {
+        "mass": 45,
+        "stiffness": 9000,
+        "damping": 350,
+        "preload": 50,
+        "travel": 0.16,
+        "initialCompression": 0.075,
+        "initialVelocity": 0,
+        "tiltDegrees": 20,
+        "transverseForce": 100,
+        "probeTorque": 0,
+        "dt": 0.0000625,
+        "duration": 2
+      },
+      "controls": {
+        "dt": 0.0000625,
+        "substeps": 4,
+        "pgs": 1,
+        "centered": false,
+        "balanced": true,
+        "vertical": false
+      },
+      "representation": {
+        "gravityZ": 0,
+        "motorTarget": 0.040520627642595085,
+        "coordinateShift": 0,
+        "transverseForce": -50.93323273451011
+      },
+      "storedDt": 0.0000625000029685907,
+      "substepDt": 0.000015625000742147677,
+      "substepsPerTick": 4,
+      "additionalBodySubsteps": 0,
+      "internalPgsIterations": 1,
+      "ticks": 32000,
+      "integratedSubsteps": 128000,
+      "sampleCount": 401,
+      "errors": {
+        "compression": {
+          "maxAbsolute": 0.0000055197492555177086,
+          "peakTime": 0.2200000104494393,
+          "signedAtPeak": 0.0000055197492555177086
+        },
+        "velocity": {
+          "maxAbsolute": 0.00007569139176832884,
+          "peakTime": 0.30500001448672265,
+          "signedAtPeak": -0.00007569139176832884
+        },
+        "force": {
+          "maxAbsolute": 0.04749257592163758,
+          "peakTime": 0.1850000087870285,
+          "signedAtPeak": 0.04749257592163758
+        },
+        "earlyCompression": {
+          "maxAbsolute": 0.0000055197492555177086,
+          "peakTime": 0.2200000104494393,
+          "signedAtPeak": 0.0000055197492555177086
+        },
+        "lateCompression": {
+          "maxAbsolute": 0.0000023971889135387947,
+          "peakTime": 1.7600000835955143,
+          "signedAtPeak": -0.0000023971889135387947
+        }
+      },
+      "closure": {
+        "maxTranslation": 1.5663568527063954e-8,
+        "maxRotation": 0
+      },
+      "traceSha256": "6e7393ecb4bbf586eb7fa0faf9105635b77de194b4aeb600621ef14536269751"
+    },
+    {
+      "name": "net-force",
+      "params": {
+        "mass": 45,
+        "stiffness": 9000,
+        "damping": 350,
+        "preload": 50,
+        "travel": 0.16,
+        "initialCompression": 0.075,
+        "initialVelocity": 0,
+        "tiltDegrees": 20,
+        "transverseForce": 100,
+        "probeTorque": 0,
+        "dt": 0.00003125,
+        "duration": 2
+      },
+      "controls": {
+        "dt": 0.00003125,
+        "substeps": 4,
+        "pgs": 1,
+        "centered": false,
+        "balanced": true,
+        "vertical": false
+      },
+      "representation": {
+        "gravityZ": 0,
+        "motorTarget": 0.040520627642595085,
+        "coordinateShift": 0,
+        "transverseForce": -50.93323273451011
+      },
+      "storedDt": 0.00003125000148429535,
+      "substepDt": 0.000007812500371073838,
+      "substepsPerTick": 4,
+      "additionalBodySubsteps": 0,
+      "internalPgsIterations": 1,
+      "ticks": 64000,
+      "integratedSubsteps": 256000,
+      "sampleCount": 401,
+      "errors": {
+        "compression": {
+          "maxAbsolute": 0.0000056651005214611305,
+          "peakTime": 1.9050000904826447,
+          "signedAtPeak": 0.0000056651005214611305
+        },
+        "velocity": {
+          "maxAbsolute": 0.00003836705297249779,
+          "peakTime": 1.3500000641215593,
+          "signedAtPeak": 0.00003836705297249779
+        },
+        "force": {
+          "maxAbsolute": 0.05144414502768768,
+          "peakTime": 1.9050000904826447,
+          "signedAtPeak": 0.05144414502768768
+        },
+        "earlyCompression": {
+          "maxAbsolute": 0.0000018509019367729529,
+          "peakTime": 0.4250000201864168,
+          "signedAtPeak": -0.0000018509019367729529
+        },
+        "lateCompression": {
+          "maxAbsolute": 0.0000056651005214611305,
+          "peakTime": 1.9050000904826447,
+          "signedAtPeak": 0.0000056651005214611305
+        }
+      },
+      "closure": {
+        "maxTranslation": 1.538992711812971e-8,
+        "maxRotation": 0
+      },
+      "traceSha256": "d02d810e8891c23cd0246598adcf179994433d446e06658e6dbf99b8f956cf74"
+    },
+    {
+      "name": "net-force-centered",
+      "params": {
+        "mass": 45,
+        "stiffness": 9000,
+        "damping": 350,
+        "preload": 50,
+        "travel": 0.16,
+        "initialCompression": 0.075,
+        "initialVelocity": 0,
+        "tiltDegrees": 20,
+        "transverseForce": 100,
+        "probeTorque": 0,
+        "dt": 0.0005,
+        "duration": 2
+      },
+      "controls": {
+        "dt": 0.0005,
+        "substeps": 4,
+        "pgs": 1,
+        "centered": true,
+        "balanced": true,
+        "vertical": false
+      },
+      "representation": {
+        "gravityZ": 0,
+        "motorTarget": 0,
+        "coordinateShift": 0.040520627642595085,
+        "transverseForce": -50.93323273451011
+      },
+      "storedDt": 0.0005000000237487257,
+      "substepDt": 0.0001250000059371814,
+      "substepsPerTick": 4,
+      "additionalBodySubsteps": 0,
+      "internalPgsIterations": 1,
+      "ticks": 4000,
+      "integratedSubsteps": 16000,
+      "sampleCount": 401,
+      "errors": {
+        "compression": {
+          "maxAbsolute": 0.00004174953095654327,
+          "peakTime": 0.21500001021195203,
+          "signedAtPeak": 0.00004174953095654327
+        },
+        "velocity": {
+          "maxAbsolute": 0.0005901230912805921,
+          "peakTime": 0.3000000142492354,
+          "signedAtPeak": -0.0005901230912805921
+        },
+        "force": {
+          "maxAbsolute": 0.35770585822689327,
+          "peakTime": 0.18000000854954123,
+          "signedAtPeak": 0.35770585822689327
+        },
+        "earlyCompression": {
+          "maxAbsolute": 0.00004174953095654327,
+          "peakTime": 0.21500001021195203,
+          "signedAtPeak": 0.00004174953095654327
+        },
+        "lateCompression": {
+          "maxAbsolute": 0.000006262355934524844,
+          "peakTime": 1.1200000531971455,
+          "signedAtPeak": 0.000006262355934524844
+        }
+      },
+      "closure": {
+        "maxTranslation": 7.032958944278462e-9,
+        "maxRotation": 0
+      },
+      "traceSha256": "48ec0765fde1b20d9a7290350c9151b966a6f9c1d1ab4418ad3d10e0c3ad5bd6"
+    },
+    {
+      "name": "net-force-centered",
+      "params": {
+        "mass": 45,
+        "stiffness": 9000,
+        "damping": 350,
+        "preload": 50,
+        "travel": 0.16,
+        "initialCompression": 0.075,
+        "initialVelocity": 0,
+        "tiltDegrees": 20,
+        "transverseForce": 100,
+        "probeTorque": 0,
+        "dt": 0.00025,
+        "duration": 2
+      },
+      "controls": {
+        "dt": 0.00025,
+        "substeps": 4,
+        "pgs": 1,
+        "centered": true,
+        "balanced": true,
+        "vertical": false
+      },
+      "representation": {
+        "gravityZ": 0,
+        "motorTarget": 0,
+        "coordinateShift": 0.040520627642595085,
+        "transverseForce": -50.93323273451011
+      },
+      "storedDt": 0.0002500000118743628,
+      "substepDt": 0.0000625000029685907,
+      "substepsPerTick": 4,
+      "additionalBodySubsteps": 0,
+      "internalPgsIterations": 1,
+      "ticks": 8000,
+      "integratedSubsteps": 32000,
+      "sampleCount": 401,
+      "errors": {
+        "compression": {
+          "maxAbsolute": 0.00002106337445837575,
+          "peakTime": 0.21500001021195203,
+          "signedAtPeak": 0.00002106337445837575
+        },
+        "velocity": {
+          "maxAbsolute": 0.00029765626352182273,
+          "peakTime": 0.3000000142492354,
+          "signedAtPeak": -0.00029765626352182273
+        },
+        "force": {
+          "maxAbsolute": 0.1808939319488445,
+          "peakTime": 0.18000000854954123,
+          "signedAtPeak": 0.1808939319488445
+        },
+        "earlyCompression": {
+          "maxAbsolute": 0.00002106337445837575,
+          "peakTime": 0.21500001021195203,
+          "signedAtPeak": 0.00002106337445837575
+        },
+        "lateCompression": {
+          "maxAbsolute": 0.0000031789440988819195,
+          "peakTime": 1.1200000531971455,
+          "signedAtPeak": 0.0000031789440988819195
+        }
+      },
+      "closure": {
+        "maxTranslation": 6.753263112673872e-9,
+        "maxRotation": 0
+      },
+      "traceSha256": "b4ef25f726db192d026b21105a6e3d90dac51959ea2e708684f4df6c54d0f47d"
+    },
+    {
+      "name": "net-force-centered",
+      "params": {
+        "mass": 45,
+        "stiffness": 9000,
+        "damping": 350,
+        "preload": 50,
+        "travel": 0.16,
+        "initialCompression": 0.075,
+        "initialVelocity": 0,
+        "tiltDegrees": 20,
+        "transverseForce": 100,
+        "probeTorque": 0,
+        "dt": 0.000125,
+        "duration": 2
+      },
+      "controls": {
+        "dt": 0.000125,
+        "substeps": 4,
+        "pgs": 1,
+        "centered": true,
+        "balanced": true,
+        "vertical": false
+      },
+      "representation": {
+        "gravityZ": 0,
+        "motorTarget": 0,
+        "coordinateShift": 0.040520627642595085,
+        "transverseForce": -50.93323273451011
+      },
+      "storedDt": 0.0001250000059371814,
+      "substepDt": 0.00003125000148429535,
+      "substepsPerTick": 4,
+      "additionalBodySubsteps": 0,
+      "internalPgsIterations": 1,
+      "ticks": 16000,
+      "integratedSubsteps": 64000,
+      "sampleCount": 401,
+      "errors": {
+        "compression": {
+          "maxAbsolute": 0.000010641205517428198,
+          "peakTime": 0.21500001021195203,
+          "signedAtPeak": 0.000010641205517428198
+        },
+        "velocity": {
+          "maxAbsolute": 0.0001484524064154502,
+          "peakTime": 0.3000000142492354,
+          "signedAtPeak": -0.0001484524064154502
+        },
+        "force": {
+          "maxAbsolute": 0.09125062564214659,
+          "peakTime": 0.18000000854954123,
+          "signedAtPeak": 0.09125062564214659
+        },
+        "earlyCompression": {
+          "maxAbsolute": 0.000010641205517428198,
+          "peakTime": 0.21500001021195203,
+          "signedAtPeak": 0.000010641205517428198
+        },
+        "lateCompression": {
+          "maxAbsolute": 0.000001485102420713258,
+          "peakTime": 1.1200000531971455,
+          "signedAtPeak": 0.000001485102420713258
+        }
+      },
+      "closure": {
+        "maxTranslation": 6.780542422298702e-9,
+        "maxRotation": 0
+      },
+      "traceSha256": "81374db2cfe328957261eb2bb857adb90d4ac2de10165110f22979e781be0d0d"
+    },
+    {
+      "name": "net-force-centered",
+      "params": {
+        "mass": 45,
+        "stiffness": 9000,
+        "damping": 350,
+        "preload": 50,
+        "travel": 0.16,
+        "initialCompression": 0.075,
+        "initialVelocity": 0,
+        "tiltDegrees": 20,
+        "transverseForce": 100,
+        "probeTorque": 0,
+        "dt": 0.0000625,
+        "duration": 2
+      },
+      "controls": {
+        "dt": 0.0000625,
+        "substeps": 4,
+        "pgs": 1,
+        "centered": true,
+        "balanced": true,
+        "vertical": false
+      },
+      "representation": {
+        "gravityZ": 0,
+        "motorTarget": 0,
+        "coordinateShift": 0.040520627642595085,
+        "transverseForce": -50.93323273451011
+      },
+      "storedDt": 0.0000625000029685907,
+      "substepDt": 0.000015625000742147677,
+      "substepsPerTick": 4,
+      "additionalBodySubsteps": 0,
+      "internalPgsIterations": 1,
+      "ticks": 32000,
+      "integratedSubsteps": 128000,
+      "sampleCount": 401,
+      "errors": {
+        "compression": {
+          "maxAbsolute": 0.000005224914461535862,
+          "peakTime": 0.21500001021195203,
+          "signedAtPeak": 0.000005224914461535862
+        },
+        "velocity": {
+          "maxAbsolute": 0.00007217829337824444,
+          "peakTime": 0.30500001448672265,
+          "signedAtPeak": -0.00007217829337824444
+        },
+        "force": {
+          "maxAbsolute": 0.04523817869664981,
+          "peakTime": 0.17500000831205398,
+          "signedAtPeak": 0.04523817869664981
+        },
+        "earlyCompression": {
+          "maxAbsolute": 0.000005224914461535862,
+          "peakTime": 0.21500001021195203,
+          "signedAtPeak": 0.000005224914461535862
+        },
+        "lateCompression": {
+          "maxAbsolute": 8.232362201515686e-7,
+          "peakTime": 1.1200000531971455,
+          "signedAtPeak": 8.232362201515686e-7
+        }
+      },
+      "closure": {
+        "maxTranslation": 7.202307627754929e-9,
+        "maxRotation": 0
+      },
+      "traceSha256": "0091028272cb459c04f76b522be79eb3b0bf4a5531bc54ac5dea8dbac405d078"
+    },
+    {
+      "name": "net-force-centered",
+      "params": {
+        "mass": 45,
+        "stiffness": 9000,
+        "damping": 350,
+        "preload": 50,
+        "travel": 0.16,
+        "initialCompression": 0.075,
+        "initialVelocity": 0,
+        "tiltDegrees": 20,
+        "transverseForce": 100,
+        "probeTorque": 0,
+        "dt": 0.00003125,
+        "duration": 2
+      },
+      "controls": {
+        "dt": 0.00003125,
+        "substeps": 4,
+        "pgs": 1,
+        "centered": true,
+        "balanced": true,
+        "vertical": false
+      },
+      "representation": {
+        "gravityZ": 0,
+        "motorTarget": 0,
+        "coordinateShift": 0.040520627642595085,
+        "transverseForce": -50.93323273451011
+      },
+      "storedDt": 0.00003125000148429535,
+      "substepDt": 0.000007812500371073838,
+      "substepsPerTick": 4,
+      "additionalBodySubsteps": 0,
+      "internalPgsIterations": 1,
+      "ticks": 64000,
+      "integratedSubsteps": 256000,
+      "sampleCount": 401,
+      "errors": {
+        "compression": {
+          "maxAbsolute": 9.255256869164508e-7,
+          "peakTime": 0.6650000315858051,
+          "signedAtPeak": 9.255256869164508e-7
+        },
+        "velocity": {
+          "maxAbsolute": 0.000023326554038416436,
+          "peakTime": 0.14500000688713044,
+          "signedAtPeak": -0.000023326554038416436
+        },
+        "force": {
+          "maxAbsolute": 0.014307587039184,
+          "peakTime": 0.14500000688713044,
+          "signedAtPeak": -0.014307587039184
+        },
+        "earlyCompression": {
+          "maxAbsolute": 9.255256869164508e-7,
+          "peakTime": 0.6650000315858051,
+          "signedAtPeak": 9.255256869164508e-7
+        },
+        "lateCompression": {
+          "maxAbsolute": 3.0959784122486234e-7,
+          "peakTime": 1.1250000534346327,
+          "signedAtPeak": 3.0959784122486234e-7
+        }
+      },
+      "closure": {
+        "maxTranslation": 7.14224384718296e-9,
+        "maxRotation": 0
+      },
+      "traceSha256": "67c6cb06373efcadfd89f606323e32c4f658fbe2e96b744a4e81025d90d71930"
+    },
+    {
+      "name": "vertical",
+      "params": {
+        "mass": 45,
+        "stiffness": 9000,
+        "damping": 350,
+        "preload": 50,
+        "travel": 0.16,
+        "initialCompression": 0.075,
+        "initialVelocity": 0,
+        "tiltDegrees": 0,
+        "transverseForce": 0,
+        "probeTorque": 0,
+        "dt": 0.0005,
+        "duration": 2
+      },
+      "controls": {
+        "dt": 0.0005,
+        "substeps": 4,
+        "pgs": 1,
+        "centered": false,
+        "balanced": false,
+        "vertical": true
+      },
+      "representation": {
+        "gravityZ": -9.80665,
+        "motorTarget": -0.005555555555555556,
+        "coordinateShift": 0,
+        "transverseForce": 0
+      },
+      "storedDt": 0.0005000000237487257,
+      "substepDt": 0.0001250000059371814,
+      "substepsPerTick": 4,
+      "additionalBodySubsteps": 0,
+      "internalPgsIterations": 1,
+      "ticks": 4000,
+      "integratedSubsteps": 16000,
+      "sampleCount": 401,
+      "errors": {
+        "compression": {
+          "maxAbsolute": 0.000037946735199217985,
+          "peakTime": 0.21500001021195203,
+          "signedAtPeak": 0.000037946735199217985
+        },
+        "velocity": {
+          "maxAbsolute": 0.0005379693200235208,
+          "peakTime": 0.30500001448672265,
+          "signedAtPeak": -0.0005379693200235208
+        },
+        "force": {
+          "maxAbsolute": 0.3249005608780067,
+          "peakTime": 0.18000000854954123,
+          "signedAtPeak": 0.3249005608780067
+        },
+        "earlyCompression": {
+          "maxAbsolute": 0.000037946735199217985,
+          "peakTime": 0.21500001021195203,
+          "signedAtPeak": 0.000037946735199217985
+        },
+        "lateCompression": {
+          "maxAbsolute": 0.000005817919230606539,
+          "peakTime": 1.1200000531971455,
+          "signedAtPeak": 0.000005817919230606539
+        }
+      },
+      "closure": {
+        "maxTranslation": 4.4702903601034905e-9,
+        "maxRotation": 0
+      },
+      "traceSha256": "1882c119d06fbc18471d9ae09d4080a213ebbf1f875b66f3ef457a5141bf70aa"
+    },
+    {
+      "name": "vertical",
+      "params": {
+        "mass": 45,
+        "stiffness": 9000,
+        "damping": 350,
+        "preload": 50,
+        "travel": 0.16,
+        "initialCompression": 0.075,
+        "initialVelocity": 0,
+        "tiltDegrees": 0,
+        "transverseForce": 0,
+        "probeTorque": 0,
+        "dt": 0.00025,
+        "duration": 2
+      },
+      "controls": {
+        "dt": 0.00025,
+        "substeps": 4,
+        "pgs": 1,
+        "centered": false,
+        "balanced": false,
+        "vertical": true
+      },
+      "representation": {
+        "gravityZ": -9.80665,
+        "motorTarget": -0.005555555555555556,
+        "coordinateShift": 0,
+        "transverseForce": 0
+      },
+      "storedDt": 0.0002500000118743628,
+      "substepDt": 0.0000625000029685907,
+      "substepsPerTick": 4,
+      "additionalBodySubsteps": 0,
+      "internalPgsIterations": 1,
+      "ticks": 8000,
+      "integratedSubsteps": 32000,
+      "sampleCount": 401,
+      "errors": {
+        "compression": {
+          "maxAbsolute": 0.00001895893054795761,
+          "peakTime": 0.21500001021195203,
+          "signedAtPeak": 0.00001895893054795761
+        },
+        "velocity": {
+          "maxAbsolute": 0.000269360988343223,
+          "peakTime": 0.30500001448672265,
+          "signedAtPeak": -0.000269360988343223
+        },
+        "force": {
+          "maxAbsolute": 0.16226705243417427,
+          "peakTime": 0.18000000854954123,
+          "signedAtPeak": 0.16226705243417427
+        },
+        "earlyCompression": {
+          "maxAbsolute": 0.00001895893054795761,
+          "peakTime": 0.21500001021195203,
+          "signedAtPeak": 0.00001895893054795761
+        },
+        "lateCompression": {
+          "maxAbsolute": 0.000002845137572433931,
+          "peakTime": 1.1200000531971455,
+          "signedAtPeak": 0.000002845137572433931
+        }
+      },
+      "closure": {
+        "maxTranslation": 4.470334324935266e-9,
+        "maxRotation": 0
+      },
+      "traceSha256": "1dba10438090bbda7d3d23f62828fa4b67b9a88a6cc8634234a36f21b678e6d1"
+    },
+    {
+      "name": "vertical",
+      "params": {
+        "mass": 45,
+        "stiffness": 9000,
+        "damping": 350,
+        "preload": 50,
+        "travel": 0.16,
+        "initialCompression": 0.075,
+        "initialVelocity": 0,
+        "tiltDegrees": 0,
+        "transverseForce": 0,
+        "probeTorque": 0,
+        "dt": 0.000125,
+        "duration": 2
+      },
+      "controls": {
+        "dt": 0.000125,
+        "substeps": 4,
+        "pgs": 1,
+        "centered": false,
+        "balanced": false,
+        "vertical": true
+      },
+      "representation": {
+        "gravityZ": -9.80665,
+        "motorTarget": -0.005555555555555556,
+        "coordinateShift": 0,
+        "transverseForce": 0
+      },
+      "storedDt": 0.0001250000059371814,
+      "substepDt": 0.00003125000148429535,
+      "substepsPerTick": 4,
+      "additionalBodySubsteps": 0,
+      "internalPgsIterations": 1,
+      "ticks": 16000,
+      "integratedSubsteps": 64000,
+      "sampleCount": 401,
+      "errors": {
+        "compression": {
+          "maxAbsolute": 0.000009412874158148954,
+          "peakTime": 0.21500001021195203,
+          "signedAtPeak": 0.000009412874158148954
+        },
+        "velocity": {
+          "maxAbsolute": 0.00013434788003197085,
+          "peakTime": 0.3000000142492354,
+          "signedAtPeak": -0.00013434788003197085
+        },
+        "force": {
+          "maxAbsolute": 0.08052896787950203,
+          "peakTime": 0.18000000854954123,
+          "signedAtPeak": 0.08052896787950203
+        },
+        "earlyCompression": {
+          "maxAbsolute": 0.000009412874158148954,
+          "peakTime": 0.21500001021195203,
+          "signedAtPeak": 0.000009412874158148954
+        },
+        "lateCompression": {
+          "maxAbsolute": 0.0000019194835033167768,
+          "peakTime": 1.9850000942824408,
+          "signedAtPeak": -0.0000019194835033167768
+        }
+      },
+      "closure": {
+        "maxTranslation": 4.470345427165512e-9,
+        "maxRotation": 0
+      },
+      "traceSha256": "eb6de42818cfd58442c39169b3cc1e293b77346bbe4fb11935541ca08498105c"
+    },
+    {
+      "name": "vertical",
+      "params": {
+        "mass": 45,
+        "stiffness": 9000,
+        "damping": 350,
+        "preload": 50,
+        "travel": 0.16,
+        "initialCompression": 0.075,
+        "initialVelocity": 0,
+        "tiltDegrees": 0,
+        "transverseForce": 0,
+        "probeTorque": 0,
+        "dt": 0.0000625,
+        "duration": 2
+      },
+      "controls": {
+        "dt": 0.0000625,
+        "substeps": 4,
+        "pgs": 1,
+        "centered": false,
+        "balanced": false,
+        "vertical": true
+      },
+      "representation": {
+        "gravityZ": -9.80665,
+        "motorTarget": -0.005555555555555556,
+        "coordinateShift": 0,
+        "transverseForce": 0
+      },
+      "storedDt": 0.0000625000029685907,
+      "substepDt": 0.000015625000742147677,
+      "substepsPerTick": 4,
+      "additionalBodySubsteps": 0,
+      "internalPgsIterations": 1,
+      "ticks": 32000,
+      "integratedSubsteps": 128000,
+      "sampleCount": 401,
+      "errors": {
+        "compression": {
+          "maxAbsolute": 0.000008426976370261297,
+          "peakTime": 0.20500000973697752,
+          "signedAtPeak": 0.000008426976370261297
+        },
+        "velocity": {
+          "maxAbsolute": 0.00010450085416069399,
+          "peakTime": 0.3000000142492354,
+          "signedAtPeak": -0.00010450085416069399
+        },
+        "force": {
+          "maxAbsolute": 0.0791687276517905,
+          "peakTime": 0.17000000807456672,
+          "signedAtPeak": 0.0791687276517905
+        },
+        "earlyCompression": {
+          "maxAbsolute": 0.000008426976370261297,
+          "peakTime": 0.20500000973697752,
+          "signedAtPeak": 0.000008426976370261297
+        },
+        "lateCompression": {
+          "maxAbsolute": 0.0000044217655983669335,
+          "peakTime": 1.755000083358027,
+          "signedAtPeak": -0.0000044217655983669335
+        }
+      },
+      "closure": {
+        "maxTranslation": 4.470347647611561e-9,
+        "maxRotation": 0
+      },
+      "traceSha256": "9c713893d62f9d2e90d82b1ccdf538300508c02906d31b33c50564badb989497"
+    },
+    {
+      "name": "vertical",
+      "params": {
+        "mass": 45,
+        "stiffness": 9000,
+        "damping": 350,
+        "preload": 50,
+        "travel": 0.16,
+        "initialCompression": 0.075,
+        "initialVelocity": 0,
+        "tiltDegrees": 0,
+        "transverseForce": 0,
+        "probeTorque": 0,
+        "dt": 0.00003125,
+        "duration": 2
+      },
+      "controls": {
+        "dt": 0.00003125,
+        "substeps": 4,
+        "pgs": 1,
+        "centered": false,
+        "balanced": false,
+        "vertical": true
+      },
+      "representation": {
+        "gravityZ": -9.80665,
+        "motorTarget": -0.005555555555555556,
+        "coordinateShift": 0,
+        "transverseForce": 0
+      },
+      "storedDt": 0.00003125000148429535,
+      "substepDt": 0.000007812500371073838,
+      "substepsPerTick": 4,
+      "additionalBodySubsteps": 0,
+      "internalPgsIterations": 1,
+      "ticks": 64000,
+      "integratedSubsteps": 256000,
+      "sampleCount": 401,
+      "errors": {
+        "compression": {
+          "maxAbsolute": 0.000008287836488013456,
+          "peakTime": 0.21500001021195203,
+          "signedAtPeak": 0.000008287836488013456
+        },
+        "velocity": {
+          "maxAbsolute": 0.00009259596368120515,
+          "peakTime": 0.30500001448672265,
+          "signedAtPeak": -0.00009259596368120515
+        },
+        "force": {
+          "maxAbsolute": 0.0806852724701912,
+          "peakTime": 0.1850000087870285,
+          "signedAtPeak": 0.0806852724701912
+        },
+        "earlyCompression": {
+          "maxAbsolute": 0.000008287836488013456,
+          "peakTime": 0.21500001021195203,
+          "signedAtPeak": 0.000008287836488013456
+        },
+        "lateCompression": {
+          "maxAbsolute": 0.0000072726157353333876,
+          "peakTime": 1.9200000911951065,
+          "signedAtPeak": 0.0000072726157353333876
+        }
+      },
+      "closure": {
+        "maxTranslation": 4.470348979879191e-9,
+        "maxRotation": 0
+      },
+      "traceSha256": "e7e18b87fd432940a8329953a85a450295d2df129b613c59a95dd59a4c954d62"
+    },
+    {
+      "name": "vertical-net-force-centered",
+      "params": {
+        "mass": 45,
+        "stiffness": 9000,
+        "damping": 350,
+        "preload": 50,
+        "travel": 0.16,
+        "initialCompression": 0.075,
+        "initialVelocity": 0,
+        "tiltDegrees": 0,
+        "transverseForce": 0,
+        "probeTorque": 0,
+        "dt": 0.0005,
+        "duration": 2
+      },
+      "controls": {
+        "dt": 0.0005,
+        "substeps": 4,
+        "pgs": 1,
+        "centered": true,
+        "balanced": true,
+        "vertical": true
+      },
+      "representation": {
+        "gravityZ": 0,
+        "motorTarget": 0,
+        "coordinateShift": 0.043477694444444444,
+        "transverseForce": 0
+      },
+      "storedDt": 0.0005000000237487257,
+      "substepDt": 0.0001250000059371814,
+      "substepsPerTick": 4,
+      "additionalBodySubsteps": 0,
+      "internalPgsIterations": 1,
+      "ticks": 4000,
+      "integratedSubsteps": 16000,
+      "sampleCount": 401,
+      "errors": {
+        "compression": {
+          "maxAbsolute": 0.000038049121163875876,
+          "peakTime": 0.21500001021195203,
+          "signedAtPeak": 0.000038049121163875876
+        },
+        "velocity": {
+          "maxAbsolute": 0.0005388026477359809,
+          "peakTime": 0.3000000142492354,
+          "signedAtPeak": -0.0005388026477359809
+        },
+        "force": {
+          "maxAbsolute": 0.32578813441818966,
+          "peakTime": 0.18000000854954123,
+          "signedAtPeak": 0.32578813441818966
+        },
+        "earlyCompression": {
+          "maxAbsolute": 0.000038049121163875876,
+          "peakTime": 0.21500001021195203,
+          "signedAtPeak": 0.000038049121163875876
+        },
+        "lateCompression": {
+          "maxAbsolute": 0.0000057338369535281375,
+          "peakTime": 1.1200000531971455,
+          "signedAtPeak": 0.0000057338369535281375
+        }
+      },
+      "closure": {
+        "maxTranslation": 1.878817323941462e-9,
+        "maxRotation": 0
+      },
+      "traceSha256": "a6a4e4a6e5981a25dfe302e6e5100fe55f4d689e8b94609c946b1c4748a99061"
+    },
+    {
+      "name": "vertical-net-force-centered",
+      "params": {
+        "mass": 45,
+        "stiffness": 9000,
+        "damping": 350,
+        "preload": 50,
+        "travel": 0.16,
+        "initialCompression": 0.075,
+        "initialVelocity": 0,
+        "tiltDegrees": 0,
+        "transverseForce": 0,
+        "probeTorque": 0,
+        "dt": 0.00025,
+        "duration": 2
+      },
+      "controls": {
+        "dt": 0.00025,
+        "substeps": 4,
+        "pgs": 1,
+        "centered": true,
+        "balanced": true,
+        "vertical": true
+      },
+      "representation": {
+        "gravityZ": 0,
+        "motorTarget": 0,
+        "coordinateShift": 0.043477694444444444,
+        "transverseForce": 0
+      },
+      "storedDt": 0.0002500000118743628,
+      "substepDt": 0.0000625000029685907,
+      "substepsPerTick": 4,
+      "additionalBodySubsteps": 0,
+      "internalPgsIterations": 1,
+      "ticks": 8000,
+      "integratedSubsteps": 32000,
+      "sampleCount": 401,
+      "errors": {
+        "compression": {
+          "maxAbsolute": 0.000019058522544891654,
+          "peakTime": 0.21500001021195203,
+          "signedAtPeak": 0.000019058522544891654
+        },
+        "velocity": {
+          "maxAbsolute": 0.00026997193595217073,
+          "peakTime": 0.30500001448672265,
+          "signedAtPeak": -0.00026997193595217073
+        },
+        "force": {
+          "maxAbsolute": 0.16319094755476726,
+          "peakTime": 0.18000000854954123,
+          "signedAtPeak": 0.16319094755476726
+        },
+        "earlyCompression": {
+          "maxAbsolute": 0.000019058522544891654,
+          "peakTime": 0.21500001021195203,
+          "signedAtPeak": 0.000019058522544891654
+        },
+        "lateCompression": {
+          "maxAbsolute": 0.0000028766266060992196,
+          "peakTime": 1.1200000531971455,
+          "signedAtPeak": 0.0000028766266060992196
+        }
+      },
+      "closure": {
+        "maxTranslation": 1.878861288773237e-9,
+        "maxRotation": 0
+      },
+      "traceSha256": "be88b75308f2bf0dc7360f3ae4c458f8122e4181ce6077cf1f8d5888042fd53c"
+    },
+    {
+      "name": "vertical-net-force-centered",
+      "params": {
+        "mass": 45,
+        "stiffness": 9000,
+        "damping": 350,
+        "preload": 50,
+        "travel": 0.16,
+        "initialCompression": 0.075,
+        "initialVelocity": 0,
+        "tiltDegrees": 0,
+        "transverseForce": 0,
+        "probeTorque": 0,
+        "dt": 0.000125,
+        "duration": 2
+      },
+      "controls": {
+        "dt": 0.000125,
+        "substeps": 4,
+        "pgs": 1,
+        "centered": true,
+        "balanced": true,
+        "vertical": true
+      },
+      "representation": {
+        "gravityZ": 0,
+        "motorTarget": 0,
+        "coordinateShift": 0.043477694444444444,
+        "transverseForce": 0
+      },
+      "storedDt": 0.0001250000059371814,
+      "substepDt": 0.00003125000148429535,
+      "substepsPerTick": 4,
+      "additionalBodySubsteps": 0,
+      "internalPgsIterations": 1,
+      "ticks": 16000,
+      "integratedSubsteps": 64000,
+      "sampleCount": 401,
+      "errors": {
+        "compression": {
+          "maxAbsolute": 0.000009508740864784537,
+          "peakTime": 0.21500001021195203,
+          "signedAtPeak": 0.000009508740864784537
+        },
+        "velocity": {
+          "maxAbsolute": 0.0001347427608036078,
+          "peakTime": 0.3000000142492354,
+          "signedAtPeak": -0.0001347427608036078
+        },
+        "force": {
+          "maxAbsolute": 0.08155288704460872,
+          "peakTime": 0.18000000854954123,
+          "signedAtPeak": 0.08155288704460872
+        },
+        "earlyCompression": {
+          "maxAbsolute": 0.000009508740864784537,
+          "peakTime": 0.21500001021195203,
+          "signedAtPeak": 0.000009508740864784537
+        },
+        "lateCompression": {
+          "maxAbsolute": 0.000001441487622447224,
+          "peakTime": 1.1200000531971455,
+          "signedAtPeak": 0.000001441487622447224
+        }
+      },
+      "closure": {
+        "maxTranslation": 1.8788721689588783e-9,
+        "maxRotation": 0
+      },
+      "traceSha256": "e2df8f8ce5e984a05b39bab4bc71c2c41ac6919e9e174017e7be7890517d8752"
+    },
+    {
+      "name": "vertical-net-force-centered",
+      "params": {
+        "mass": 45,
+        "stiffness": 9000,
+        "damping": 350,
+        "preload": 50,
+        "travel": 0.16,
+        "initialCompression": 0.075,
+        "initialVelocity": 0,
+        "tiltDegrees": 0,
+        "transverseForce": 0,
+        "probeTorque": 0,
+        "dt": 0.0000625,
+        "duration": 2
+      },
+      "controls": {
+        "dt": 0.0000625,
+        "substeps": 4,
+        "pgs": 1,
+        "centered": true,
+        "balanced": true,
+        "vertical": true
+      },
+      "representation": {
+        "gravityZ": 0,
+        "motorTarget": 0,
+        "coordinateShift": 0.043477694444444444,
+        "transverseForce": 0
+      },
+      "storedDt": 0.0000625000029685907,
+      "substepDt": 0.000015625000742147677,
+      "substepsPerTick": 4,
+      "additionalBodySubsteps": 0,
+      "internalPgsIterations": 1,
+      "ticks": 32000,
+      "integratedSubsteps": 128000,
+      "sampleCount": 401,
+      "errors": {
+        "compression": {
+          "maxAbsolute": 0.000004770171605140983,
+          "peakTime": 0.21500001021195203,
+          "signedAtPeak": 0.000004770171605140983
+        },
+        "velocity": {
+          "maxAbsolute": 0.00006750127091637026,
+          "peakTime": 0.3000000142492354,
+          "signedAtPeak": -0.00006750127091637026
+        },
+        "force": {
+          "maxAbsolute": 0.04087308951443447,
+          "peakTime": 0.18000000854954123,
+          "signedAtPeak": 0.04087308951443447
+        },
+        "earlyCompression": {
+          "maxAbsolute": 0.000004770171605140983,
+          "peakTime": 0.21500001021195203,
+          "signedAtPeak": 0.000004770171605140983
+        },
+        "lateCompression": {
+          "maxAbsolute": 7.22128245048137e-7,
+          "peakTime": 1.1200000531971455,
+          "signedAtPeak": 7.22128245048137e-7
+        }
+      },
+      "closure": {
+        "maxTranslation": 1.8788748334941374e-9,
+        "maxRotation": 0
+      },
+      "traceSha256": "5a4f2a20108885c991f701f832e0a25a78e62755f6f8898fd1af31e8ae5937ef"
+    },
+    {
+      "name": "vertical-net-force-centered",
+      "params": {
+        "mass": 45,
+        "stiffness": 9000,
+        "damping": 350,
+        "preload": 50,
+        "travel": 0.16,
+        "initialCompression": 0.075,
+        "initialVelocity": 0,
+        "tiltDegrees": 0,
+        "transverseForce": 0,
+        "probeTorque": 0,
+        "dt": 0.00003125,
+        "duration": 2
+      },
+      "controls": {
+        "dt": 0.00003125,
+        "substeps": 4,
+        "pgs": 1,
+        "centered": true,
+        "balanced": true,
+        "vertical": true
+      },
+      "representation": {
+        "gravityZ": 0,
+        "motorTarget": 0,
+        "coordinateShift": 0.043477694444444444,
+        "transverseForce": 0
+      },
+      "storedDt": 0.00003125000148429535,
+      "substepDt": 0.000007812500371073838,
+      "substepsPerTick": 4,
+      "additionalBodySubsteps": 0,
+      "internalPgsIterations": 1,
+      "ticks": 64000,
+      "integratedSubsteps": 256000,
+      "sampleCount": 401,
+      "errors": {
+        "compression": {
+          "maxAbsolute": 0.000002388779781849204,
+          "peakTime": 0.21500001021195203,
+          "signedAtPeak": 0.000002388779781849204
+        },
+        "velocity": {
+          "maxAbsolute": 0.00003391519089983308,
+          "peakTime": 0.30500001448672265,
+          "signedAtPeak": -0.00003391519089983308
+        },
+        "force": {
+          "maxAbsolute": 0.020454587124049795,
+          "peakTime": 0.18000000854954123,
+          "signedAtPeak": 0.020454587124049795
+        },
+        "earlyCompression": {
+          "maxAbsolute": 0.000002388779781849204,
+          "peakTime": 0.21500001021195203,
+          "signedAtPeak": 0.000002388779781849204
+        },
+        "lateCompression": {
+          "maxAbsolute": 3.6106612440189867e-7,
+          "peakTime": 1.1200000531971455,
+          "signedAtPeak": 3.6106612440189867e-7
+        }
+      },
+      "closure": {
+        "maxTranslation": 1.8788750555387423e-9,
+        "maxRotation": 0
+      },
+      "traceSha256": "b1c8f1f0bb154eda42baadfb5b21f02ecf89e8b7ad9029a23ca6d2f727375a5d"
+    }
+  ]
+}

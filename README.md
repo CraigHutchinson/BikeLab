@@ -12,7 +12,7 @@ The Pages workflow runs the complete test suite on Windows and Linux with Node 2
 
 ## Run the laboratory
 
-Requires Node.js (tested with v24.19.0). No package installation or build step.
+Requires Node.js (tested with v24.19.0). No package installation or build step. The solver trial includes a pinned, locally served Rapier WASM module and its Apache-2.0 licence.
 
 ```powershell
 cd BikeLab
@@ -28,6 +28,8 @@ The wheel is constrained to vertical motion. Tyre contact is an illustrative cli
 The **suspension station** adds fork-scale and shock-scale fixtures, preload, independent compression/rebound damping, spring and damper curves, release/moving-base experiments and saved-run comparisons. It uses an uncalibrated axial coil/viscous-damper law. A trial outside stroke stops with the last valid samples and an explicit travel-limit diagnostic; end-stop impacts are not simulated. See [the model and parameter bounds](docs/SUSPENSION_MODEL.md).
 
 The **spatial terrain probe** adds editable ordered profiles with vertical faces, flat/rounded/square controls, nearest boundary points, approach normals and circle clearance. It is a geometry fixture for solver evaluation; it applies no forces or stresses. Use `node scripts/probe-terrain.mjs` for the same headless report. See [input conventions and limits](docs/TERRAIN_PROBE.md).
+
+The **Solver trial** station runs a pinned Rapier 3D prismatic assembly against an analytical spring/damper reference. Tilt, transverse load and a three-axis torque probe test constraints; saved-world restart is checked alongside replay and per-channel error plots. The default moving case fails the fixed accuracy gate, while the static preset passes. This is a first solver feasibility arm, not engine selection or a whole bicycle. See [the trial contract](docs/SOLVER_TRIAL.md) and [iteration 5 evidence](docs/ITERATION_5_EVIDENCE.md). Run `node scripts/trial-solver.mjs [setup.json]` for a complete headless report (exit 2 means unmet gates).
 
 ## Inspect numerical agreement
 
@@ -86,3 +88,5 @@ Develop toward a highly realistic riding and bike-setup experience in which geom
 The simulation shall ultimately be fully 3D, including lateral motion, turning forces, steering, lean and coupled braking/cornering grip. The planar rigs are intermediate validation tools. Next: enumerate whole-bike DOFs/constraints and evaluate multibody solver technology before implementing a hardtail and a full-suspension bicycle responding to the same road input. Production-bike selection and source-backed stock setups remain planned.
 
 Develop every visible experiment alongside its foundations. Keep physics independent of rendering, rider mechanics separate from control, and measured/fitted/illustrative parameters distinguishable. Add complexity only when a named experiment consumes it.
+
+The [PR #5 timestep investigation](docs/TIMESTEP_RESEARCH.md) separates accumulated float32 velocity and position rounding with reproducible engine/scalar controls. The solver viewer reports outer and internal timesteps; smaller steps are not assumed more accurate. The original physical fixture and accuracy gates remain unchanged.
