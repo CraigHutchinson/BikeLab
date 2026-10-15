@@ -43,7 +43,7 @@ The freely moving planar road mode is a later model configuration. Fixed restrai
 
 A wheel/carriage body with specified effective mass moves vertically above a prescribed platen. Its state comprises vertical position and velocity; the platen position/velocity comes from the experiment. Gravity and unilateral tyre contact determine vertical forces.
 
-Begin with an explicitly simplified elastic/damped radial tyre response. The unloaded radius defines a geometric contact reference. Contact must not pull the wheel toward the surface. Separation and recontact must remain possible. The exact contact law and integration method require primary-source review and independent tests before implementation.
+Begin with an explicitly simplified elastic/damped radial tyre response. The unloaded radius defines a geometric contact reference. Contact must not pull the wheel toward the surface. Separation and recontact must remain possible. The implemented Slice 1 law and integrator are specified in STACK_DECISION.md; analytical and review evidence is in REVIEW_2026-10-15.md. Later contact models still require primary-source review and independent tests.
 
 Show the tyre as an undeformed outline plus a deflection indicator first. Any later animated deformation must agree with contact depth and must be labelled if it exaggerates scale.
 

@@ -1,6 +1,6 @@
 # Slice 1 evidence — loaded wheel
 
-2026-10-14. Implementation available; visual inspection and physical calibration remain distinct open gates.
+Historical receipt for model bikelab-wheel-0.1, 2026-10-14. Current model and verification details are in [the 2026-10-15 review](REVIEW_2026-10-15.md). The measurements and 13-test count below describe the original iteration, not the current tree.
 
 ## Delivered
 

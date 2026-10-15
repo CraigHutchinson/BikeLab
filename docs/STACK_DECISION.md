@@ -6,7 +6,7 @@ Use buildless HTML/CSS/Canvas and JavaScript ES modules, with Node.js for a loop
 
 Alternatives considered: a native C++ graphics application gives a direct path to native libraries but adds windowing/plotting/build setup before this one-coordinate experiment; a game-engine scene offers integrated 3D tools but requires a separate decision about contact/solver semantics. Neither is rejected for the full bicycle. Reassess constrained multibody/3D technology before Slice 3/6 rather than expanding this ODE integrator into a general engine.
 
-The browser and headless runner import exactly the same physics module. A run is calculated with a fixed step, then its recorded samples are played back independently of rendering. UI controls create a fresh run. This makes single-step and replay inspectable and avoids render timing changing physics.
+The browser and headless runner import exactly the same physics module. A run is calculated in a cancellable browser worker with a fixed step, then its recorded samples are played back independently of rendering. UI controls create a fresh run. This makes single-step and replay inspectable and avoids render timing changing physics.
 
 Primary documentation checked:
 - [MDN modules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules): serve modules over HTTP; do not open the HTML through file://.
@@ -29,9 +29,9 @@ Support work rate W' = N y'. Effective loss D' = (N-kd)q in geometric contact, z
 When unclipped this is c q². During clipped unloading it is -kd q, also nonnegative.
 Thus K+V+U+D-W should remain at its initial value, subject to integration error. Report this effective loss honestly; it includes force-clipping loss, not only viscous damping.
 
-RK4 advances [z, v, W, D, normal impulse, time without positive load] together. All derivative arrays are allocated once per solver. Contact transitions are sampled, not root-located: event-time uncertainty is at least one solver step and formal smooth RK4 order does not apply across transitions.
+RK4 advances [z, v, W, D, normal impulse, time without positive load] together. All derivative arrays are allocated once per solver. Contact transitions are detected at integration endpoints independently of graph recording, not root-located: event-time resolution is one solver step and formal smooth RK4 order does not apply across transitions. Sub-step transitions can still be missed.
 
-Default step 0.5 ms; tests compare 0.5, 0.25 and 0.125 ms. Recording is at 200 Hz. Replay single-step means one recorded sample (5 ms), clearly distinguished from integration.
+Default step 0.5 ms; tests compare 0.5, 0.25 and 0.125 ms. Recording is at 200 Hz. Replay single-step means one recorded sample (default 5 ms), clearly distinguished from integration. Duration, integration step, recording interval and initial lift are configurable in the UI and preserved when loading/editing a setup.
 
 Initial centre is R-mg/k at rest, unless a bounded initial lift is specified. Sinusoidal forcing starts at zero position with nonzero platen velocity, so its transient is intentional. Analytical harmonic tests exclude settling. A single bump starts at 1 s and uses A sin^4(pi f (t-1)) over one duration 1/f; both endpoint velocity and acceleration vanish.
 

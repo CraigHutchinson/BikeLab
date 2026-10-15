@@ -13,7 +13,7 @@ node server.mjs
 
 Open http://127.0.0.1:4177 in a browser. Stop the server with Ctrl+C.
 
-The loaded-wheel station has adjustable supported mass, radius, radial stiffness/damping, and flat/bump/sinusoidal surface input. Run, pause, step, scrub and slow playback inspect the same recorded experiment. Pin a setup to compare identical forcing; save/load JSON records to reproduce runs.
+The loaded-wheel station has adjustable supported mass, radius, radial stiffness/damping, and flat/bump/sinusoidal surface input. Run, pause, step, scrub and slow playback inspect the same recorded experiment. Pin a setup to compare identical forcing; save JSON records or load their setup to rerun. Run and solver settings expose duration, integration/recording intervals and initial lift. Calculations run in a cancellable worker. Warnings identify coarse resolution and significant energy-balance error; they do not certify arbitrary setups.
 
 The wheel is constrained to vertical motion. Tyre contact is an illustrative clipped spring/damper surrogate. It is not a calibrated tyre, a suspension model or a complete bicycle.
 
@@ -26,15 +26,15 @@ node scripts/scenario.mjs setup.json run.json
 node scripts/verify-record.mjs run.json
 ```
 
-The optional setup file is a JSON object of SI overrides; see DEFAULTS and validate in dist/physics.js. Missing fields use defaults. Invalid values fail before simulation. Read the model note before changing solver settings.
+The optional setup file is a JSON object of SI overrides; see DEFAULTS and validate in dist/physics.js. Missing fields use defaults only for these intentional CLI overrides. Unknown fields and malformed setups fail. Output must be a new file; existing evidence is never overwritten. Saved run files require the complete setup. Read the model note before changing solver settings.
 
 Same-runtime replay is reproducible. Browser and Node recordings are checked for numerical agreement, not promised to be bit-identical across JavaScript runtimes.
 
 ## Current evidence
 
-13 automated tests pass. Browser controls, setup changes, comparison gating, playback/pause/step and browser save/load were exercised. A browser-exported run was compared with the headless solver. Screenshot capture failed in the available browser tooling: pixel-level visual QA remains open. No real-bike calibration or participant evidence exists yet.
+31 automated tests pass after the full prior-iteration review. Browser controls, setup changes, comparison gating, playback/pause/step and browser save/load were exercised. A browser-exported run was compared with the headless solver. Screenshot capture failed in the available browser tooling: pixel-level visual QA remains open. No real-bike calibration or participant evidence exists yet.
 
-See [Slice 1 evidence](docs/SLICE_1_EVIDENCE.md) for measured results and limitations.
+See [the current review](docs/REVIEW_2026-10-15.md) for findings, fixes and readiness. [Original Slice 1 evidence](docs/SLICE_1_EVIDENCE.md) is retained as a historical receipt.
 
 ## Design and implementation map
 
@@ -45,6 +45,8 @@ See [Slice 1 evidence](docs/SLICE_1_EVIDENCE.md) for measured results and limita
 - [Stack and model decision](docs/STACK_DECISION.md): primary references, equations and numerical assumptions.
 - dist/physics.js: shared headless/browser dynamics and recording.
 - dist/app.js, index.html, style.css: viewer and controls.
+- dist/calculation.js, worker.js: cancellable background calculation.
+- dist/ui-model.js: setup round-tripping and scene bounds.
 - test/physics.test.mjs: independent reference and regression checks.
 
 ## Product direction

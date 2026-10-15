@@ -1,6 +1,6 @@
 # Dynamic systems: component inventory
 
-Status: proposed scope, not implemented. Priority denotes the first consumer, not a promise that the full fidelity described below ships at that stage.
+Status: staged scope. The loaded-wheel station, radial contact surrogate, recording and viewer exist; suspension, full-bike and later systems remain proposed. Priority denotes the first consumer, not a promise that the full fidelity described below ships at that stage.
 
 ## System boundaries
 

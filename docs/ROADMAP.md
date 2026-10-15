@@ -1,6 +1,6 @@
 # Delivery and validation plan
 
-Status: 2026-10-14. Slice 1 implementation and numerical/interaction verification are delivered. Pixel-level visual inspection remains open; see SLICE_1_EVIDENCE.md. Later slices remain proposed.
+Status: reviewed 2026-10-15; see REVIEW_2026-10-15.md. Slice 1 implementation and numerical/interaction verification are delivered. Pixel-level visual inspection remains open; see SLICE_1_EVIDENCE.md. Later slices remain proposed.
 
 ## Definition of a received slice
 
@@ -136,7 +136,7 @@ Record the chosen stack and limitations in a short decision note before code. Us
 
 ## Next actionable work package
 
-Current delivery: stack decision and Slice 1 are implemented; pixel-level visual inspection remains open. Next implementation is Slice 2, the suspension station.
+Current delivery: Slice 1 has completed its code/numerical review and hardening pass (31 passing tests). Pixel-level visual inspection remains open. Close that acceptance item before the next implementation, Slice 2, the suspension station.
 
 Delivered: runnable wheel/platen station, headless scenario runner, controls/plots, saved input/replay, independent tests and an evidence note. Next: close visual inspection and add verified fork/shock force curves and transient experiments.
 
