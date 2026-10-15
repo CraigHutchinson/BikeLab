@@ -6,7 +6,7 @@ User requirements added to this iteration review:
 - Accept a defined ground profile, spatial height vector/points or contact geometry with enough metadata to interpret it. One obstacle height does not specify an impact.
 - Fine contact/impact computation need not run continuously. Activate it when needed, potentially at a separate physics rate, to support a real-time simulation without losing important events or changing the physical result arbitrarily.
 
-Status: required design/research and acceptance contract, not implemented terrain or adaptive physics. The current wheel station has a prescribed vertically moving flat platen and a lumped radial tyre surrogate. Its sine/bump controls are time histories, not spatial rocks. No sharp-edge stress, finite contact patch, carcass/rim impact model or real-time performance guarantee is claimed. Connect this work to [overload and failure](OVERLOAD_AND_FAILURE.md) and [3D dynamics](THREE_DIMENSIONAL_DYNAMICS.md).
+Status: the [spatial clearance probe](TERRAIN_PROBE.md) now supplies a bounded rigid planar geometry fixture. Dynamic spatial contact, stress and adaptive physics remain design/research and acceptance contracts. The current wheel station has a prescribed vertically moving flat platen and a lumped radial tyre surrogate. Its sine/bump controls are time histories, not spatial rocks. No sharp-edge stress, finite contact patch, carcass/rim impact model or real-time performance guarantee is claimed. Connect this work to [overload and failure](OVERLOAD_AND_FAILURE.md) and [3D dynamics](THREE_DIMENSIONAL_DYNAMICS.md).
 
 ## Geometry input contract
 

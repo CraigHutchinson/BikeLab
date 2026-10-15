@@ -9,6 +9,7 @@ import { createPreviewServer } from '../server.mjs';
 import { verifyRecord } from './record-validation.mjs';
 import { simulate as simulateSuspension } from '../dist/suspension.js';
 import { compareSuspension, comparisonReport } from '../dist/suspension-reference.js';
+import { fixture, probe } from '../dist/terrain.js';
 
 const require = createRequire(import.meta.url);
 let chromium;
@@ -135,6 +136,66 @@ try {
   await field('dt').fill('.25');await apply();
   assert.equal(await page.locator('#referenceResult').textContent(),'WITHIN NUMERICAL LIMITS');
   report.checks.push('reference: valid coarse integration fails declared limits; half-step refinement passes');
+
+  await page.goto(root+'terrain.html');
+  await page.waitForFunction(()=>document.getElementById('status').textContent==='GEOMETRIC OVERLAP');
+  const geometry=probe(fixture(),{center:[-.2,.36],radius:.36});
+  assert.equal(await page.locator('#gap').textContent(),(geometry.gap*1000).toFixed(2)+' mm');
+  assert.equal(await page.locator('#witnesses tbody tr').count(),1);
+  assert.match(await page.locator('#witnesses tbody').textContent(),/vertex 2/);
+  await shot('terrain-square-desktop');
+  const pendingProbe=page.waitForEvent('download');await page.locator('#save').click();
+  const probePath=join(dir,'terrain-probe.json');await (await pendingProbe).saveAs(probePath);
+  const savedProbe=JSON.parse(await readFile(probePath,'utf8'));
+  // Compare the complete profile, setup, witness geometry and diagnostics with Node.
+  assert.deepEqual(savedProbe,geometry);report.terrainProbe=savedProbe;
+  await page.locator('#fixture').selectOption('rounded');
+  const rounded=probe(fixture('rounded'),geometry.setup);
+  assert.equal(await page.locator('#gap').textContent(),(rounded.gap*1000).toFixed(2)+' mm');
+  await shot('terrain-rounded-desktop');
+  await field('x').fill('1');assert.equal(await page.locator('#save').isDisabled(),true);
+  assert.equal(await page.locator('#position').isDisabled(),true);
+  await page.locator('button[type="submit"]').click();
+  assert.equal(await page.locator('#status').textContent(),'UNAVAILABLE');
+  assert.match(await page.locator('#reason').textContent(),/domain/);
+  assert.equal(await page.locator('#witnesses tbody tr').count(),0);
+  await field('x').fill('0');await field('z').fill('0');await page.locator('button[type="submit"]').click();
+  assert.equal(await page.locator('#status').textContent(),'UNAVAILABLE');
+  await field('z').fill('.36');await page.locator('button[type="submit"]').click();
+  await page.locator('details summary').click();
+  await page.locator('#profileText').fill('{bad');await page.locator('#applyProfile').click();
+  assert.equal(await page.locator('#status').textContent(),'INPUT REJECTED');
+  assert.equal(await page.locator('#save').isDisabled(),true);
+  await page.locator('#restoreProfile').click();
+  assert.notEqual(await page.locator('#status').textContent(),'INPUT REJECTED');
+  const valley={...fixture('flat'),points:[[-2,2],[0,0],[2,2]]};
+  await page.locator('#profileText').fill(JSON.stringify(valley));await field('z').fill('1');
+  await page.locator('#applyProfile').click();
+  assert.equal(await page.locator('#count').textContent(),'2');
+  assert.equal(await page.locator('#fixture').inputValue(),'custom');
+  const profilePath=join(dir,'terrain-profile.json');await writeFile(profilePath,JSON.stringify(fixture('flat')));
+  await page.locator('#load').setInputFiles(profilePath);
+  await page.waitForFunction(()=>document.getElementById('count').textContent==='1');
+  assert.equal(await page.locator('#gap').textContent(),'640.00 mm');
+  await page.locator('#position').fill('.25');assert.equal(await field('x').inputValue(),'0.25');
+  // A late file read must not overwrite a newer position/profile edit.
+  await page.evaluate(()=>{
+    const original=File.prototype.text;
+    File.prototype.text=function(){return new Promise(resolve=>{window.finishTerrainRead=()=>original.call(this).then(resolve);});};
+    window.restoreTerrainRead=()=>{File.prototype.text=original;};
+  });
+  await page.locator('#load').setInputFiles(profilePath);
+  await page.waitForFunction(()=>typeof window.finishTerrainRead==='function');
+  await field('x').fill('-.2');
+  await page.evaluate(async()=>{await window.finishTerrainRead();window.restoreTerrainRead();});
+  assert.equal(await page.locator('#status').textContent(),'UNAPPLIED EDITS');
+  await page.locator('button[type="submit"]').click();
+  await field('z').fill('.36');await page.locator('button[type="submit"]').click();
+  await page.locator('#fixture').selectOption('square');
+  await page.locator('details summary').click();
+  await page.setViewportSize({width:390,height:844});await noOverflow();await shot('terrain-mobile');
+  await page.setViewportSize({width:320,height:780});await noOverflow();await shot('terrain-narrow');
+  report.checks.push('terrain: square/rounded/flat, complete browser/Node report agreement, unavailable/buried states, edit gating, custom profile, load, stale-file guard, co-nearest supports and mobile widths');
 
   // Pixel availability is separate from human inspection of captured images.
   const pixels=await page.locator('#rig').evaluate(canvas=>{

@@ -5,7 +5,7 @@ import { pathToFileURL } from 'node:url';
 
 const root = new URL('./dist/', import.meta.url);
 const assets = ['index.html', 'style.css', 'app.js', 'physics.js', 'worker.js', 'ui-model.js', 'calculation.js',
-  'suspension.html', 'suspension.js', 'suspension-app.js', 'suspension-ui-model.js', 'suspension-reference.js'];
+  'suspension.html', 'suspension.js', 'suspension-app.js', 'suspension-ui-model.js', 'suspension-reference.js', 'terrain.html', 'terrain.js', 'terrain-app.js'];
 const allowed = new Map(assets.map(name => ['/' + name, name]));
 allowed.set('/', 'index.html');
 const types = { html: 'text/html', css: 'text/css', js: 'text/javascript' };
