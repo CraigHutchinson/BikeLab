@@ -1,23 +1,17 @@
+import { oscillatorState } from '../dist/suspension-reference.js';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { G } from '../dist/physics.js';
 import { DEFAULTS, PRESETS, Solver, validate, element, simulate, serialize, replay, readRecord, sameScenario } from '../dist/suspension.js';
 const near = (a, b, tol, label = '') => assert.ok(Math.abs(a-b) <= tol, `${label}: ${a} vs ${b}, tolerance ${tol}`);
 
-// Independent fixed-base solution of m e'' + c e' + k e = 0, e=q-q_eq.
+// Shared analytical oracle, independently checked by suspension-reference.test.mjs.
 function reference(m, k, c, e0, u0, t) {
-  const alpha = c/(2*m), w0 = Math.sqrt(k/m), disc = alpha*alpha-w0*w0;
-  if (Math.abs(disc) < 1e-10*w0*w0) {
-    const b=u0+w0*e0, decay=Math.exp(-w0*t);
-    return [decay*(e0+b*t), decay*(b-w0*(e0+b*t))];
-  }
-  if (disc < 0) {
-    const w=Math.sqrt(-disc), b=(u0+alpha*e0)/w, co=Math.cos(w*t), si=Math.sin(w*t), decay=Math.exp(-alpha*t);
-    return [decay*(e0*co+b*si), decay*((b*w-alpha*e0)*co-(e0*w+alpha*b)*si)];
-  }
-  const r1=-alpha+Math.sqrt(disc), r2=-alpha-Math.sqrt(disc), a=(u0-r2*e0)/(r1-r2), b=e0-a;
-  return [a*Math.exp(r1*t)+b*Math.exp(r2*t), a*r1*Math.exp(r1*t)+b*r2*Math.exp(r2*t)];
+  const out = new Float64Array(2);
+  oscillatorState(m, k, c, e0, u0, t, out);
+  return out;
 }
+
 test('axial preload changes intercept but not stiffness; damper is signed and passive', () => {
   const p=validate(), a=new Float64Array(5), b=new Float64Array(5);
   for (const q of [0,.03,p.travel]) for (const u of [-2,-.001,0,.001,2]) {

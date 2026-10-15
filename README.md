@@ -1,6 +1,6 @@
 # BikeLab
 
-A mountain-bike simulation sandbox, starting with an instrumented virtual laboratory.
+A mountain-bike simulation sandbox aimed at the Gran Turismo of MTB: convincing riding, meaningful bike setup and detailed trails, developed through verified laboratory building blocks.
 
 ## Online laboratory
 
@@ -27,6 +27,12 @@ The wheel is constrained to vertical motion. Tyre contact is an illustrative cli
 
 The **suspension station** adds fork-scale and shock-scale fixtures, preload, independent compression/rebound damping, spring and damper curves, release/moving-base experiments and saved-run comparisons. It uses an uncalibrated axial coil/viscous-damper law. A trial outside stroke stops with the last valid samples and an explicit travel-limit diagnostic; end-stop impacts are not simulated. See [the model and parameter bounds](docs/SUSPENSION_MODEL.md).
 
+## Inspect numerical agreement
+
+In the suspension station, use **Use reference setup** to select fixed support and equal compression/rebound damping. The independent analytical trace and per-channel error measurements appear for supported interior-travel runs. Unsupported setups show why no reference comparison is available. This checks the synthetic equations, not physical fork accuracy.
+
+Run the same comparison headlessly with `node scripts/compare-suspension.mjs`, or supply a partial setup JSON file. See [architecture review](docs/ITERATION_3_ARCHITECTURE.md) and [current evidence](docs/ITERATION_3_EVIDENCE.md).
+
 ## Check or record
 
 ```powershell
@@ -44,7 +50,7 @@ Same-runtime replay is reproducible. Browser and Node recordings are checked for
 
 ## Current evidence
 
-47 automated tests pass on Linux and Windows. Chromium checks exercise both stations, real worker cancellation, setup changes, comparison gating, playback/pause/step, browser save/load and stroke-limit handling. Browser-exported wheel, fork-scale, shock-scale and stopped runs agree numerically with Node. Captured desktop/mobile screenshots have now been inspected, closing the earlier screenshot gap for these checked states. No real-bike calibration or participant evidence exists yet.
+The previous iteration passed 47 tests on Linux and Windows; the reference-comparison revision passes 54 locally, with hosted checks tracked in its PR. Chromium checks exercise both stations, real worker cancellation, setup changes, comparison gating, playback/pause/step, browser save/load and stroke-limit handling. Browser-exported wheel, fork-scale, shock-scale and stopped runs agree numerically with Node. Captured desktop/mobile screenshots have now been inspected, closing the earlier screenshot gap for these checked states. No real-bike calibration or participant evidence exists yet.
 
 See [the prior-iteration review](docs/ITERATION_2_REVIEW.md) and [Slice 2 evidence](docs/SLICE_2_EVIDENCE.md) for scope, receipts and remaining limits. [The first hardening review](docs/REVIEW_2026-10-15.md) and [original Slice 1 evidence](docs/SLICE_1_EVIDENCE.md) remain historical receipts.
 

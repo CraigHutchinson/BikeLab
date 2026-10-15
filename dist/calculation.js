@@ -23,7 +23,7 @@ export class Calculation {
         // Invalidate this ticket before invoking application callbacks.
         this.generation++; this.release();
         if (event.data.error) this.onError(event.data.error);
-        else this.onResult(event.data.run, event.data.milliseconds);
+        else this.onResult(event.data.run, event.data.milliseconds, event.data.comparison);
       };
       this.worker.onerror = event => {
         event.preventDefault();

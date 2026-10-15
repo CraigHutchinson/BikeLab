@@ -7,6 +7,8 @@ import { once } from 'node:events';
 import assert from 'node:assert/strict';
 import { createPreviewServer } from '../server.mjs';
 import { verifyRecord } from './record-validation.mjs';
+import { simulate as simulateSuspension } from '../dist/suspension.js';
+import { compareSuspension, comparisonReport } from '../dist/suspension-reference.js';
 
 const require = createRequire(import.meta.url);
 let chromium;
@@ -96,6 +98,34 @@ try {
   await page.setViewportSize({width:390,height:844});await noOverflow();await shot('suspension-mobile');
   await page.setViewportSize({width:320,height:780});await noOverflow();await shot('suspension-narrow');
   report.checks.push('suspension: actual worker cancellation, immediate travel limit, shock preset, mobile/narrow width');
+
+  await page.setViewportSize({width:1440,height:1100});
+  await page.locator('#forkPreset').click();await apply();
+  assert.equal(await page.locator('#referenceResult').textContent(),'UNAVAILABLE FOR THIS SETUP');
+  assert.match(await page.locator('#referenceReason').textContent(),/equal compression/);
+  await page.locator('#referenceSetup').click();await ready();
+  assert.equal(await field('profile').inputValue(),'flat');
+  assert.equal(await field('compressionDamping').inputValue(),await field('reboundDamping').inputValue());
+  assert.equal(await page.locator('#referenceResult').textContent(),'WITHIN NUMERICAL LIMITS');
+  assert.equal(await page.locator('.referenceLegend:visible').count(),2);
+  const referenceFile=await exportRun('suspension-reference');
+  const paired=compareSuspension(simulateSuspension(JSON.parse(await readFile(referenceFile,'utf8')).params));
+  assert.equal(paired.status,'pass');
+  const displayed=await page.locator('#referenceErrors').innerText();
+  for(const [key,scale]of [['compression',1000],['compressionVelocity',1],['force',1]])
+    assert.ok(displayed.includes((paired.errors[key].maxAbsolute*scale).toExponential(3)));
+  report.referenceComparison=comparisonReport(paired);
+  await page.locator('#scrub').fill('100');await shot('reference-desktop');
+  await field('reboundDamping').fill('700');
+  assert.equal(await page.locator('#referenceSetup').isDisabled(),true);
+  await apply();
+  assert.equal(await page.locator('#referenceResult').textContent(),'UNAVAILABLE FOR THIS SETUP');
+  assert.equal(await page.locator('.referenceLegend:visible').count(),0);
+  await page.locator('#load').setInputFiles(referenceFile);await ready();
+  assert.equal(await page.locator('#referenceResult').textContent(),'WITHIN NUMERICAL LIMITS');
+  await page.setViewportSize({width:390,height:844});await noOverflow();await shot('reference-mobile');
+  report.checks.push('reference: explicit compatible setup, unsupported state, worker overlays, dirty gating, save/load and Node metric agreement');
+
   // Pixel availability is separate from human inspection of captured images.
   const pixels=await page.locator('#rig').evaluate(canvas=>{
     const a=canvas.getContext('2d').getImageData(0,0,canvas.width,canvas.height).data;
