@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { Solver, simulate, validate, road, serialize, replay, sameScenario, G } from '../dist/physics.js';
+import { Solver, simulate, validate, road, serialize, replay, sameScenario, G, readRecord, MAX_RECORD_BYTES } from '../dist/physics.js';
 const near=(a,b,tol,label)=>assert.ok(Math.abs(a-b)<=tol, label+': '+a+' vs '+b+' (tol '+tol+')');
 test('static equilibrium at two supported-mass scales',()=>{
   for(const mass of [12,95]){
@@ -104,4 +104,71 @@ test('bump forcing is continuous at boundaries and derivative matches finite dif
 test('solver reset reconstruction reproduces each integration step',()=>{
   const a=new Solver(),b=new Solver();
   for(let i=0;i<3000;i++){a.step();b.step();assert.deepEqual(a.state,b.state);}
+});
+
+test('rejects malformed setup containers and unknown parameter names',()=>{
+  for(const input of [null,[],42,'',new Date(),{stifness:50000},{extra:1}])
+    assert.throws(()=>validate(input));
+});
+test('saved records require complete setup and explicit format',()=>{
+  const valid=JSON.parse(serialize(simulate({duration:.1})));
+  for(const key of Object.keys(valid.params)){
+    const bad=structuredClone(valid);delete bad.params[key];
+    assert.throws(()=>readRecord(JSON.stringify(bad)),/complete setup/);
+  }
+  for(const text of ['null','[]','false','{','{}'])assert.throws(()=>readRecord(text));
+  const bad=structuredClone(valid);bad.recordVersion=999;
+  assert.throws(()=>readRecord(JSON.stringify(bad)),/record format/);
+  assert.equal(readRecord('\uFEFF'+JSON.stringify(valid)).model,valid.model);
+});
+test('old records rerun explicitly and retain complete source setup',()=>{
+  const old=JSON.parse(serialize(simulate({duration:.1})));
+  old.model='bikelab-wheel-0.1';delete old.recordVersion;
+  const current=replay(JSON.stringify(old));
+  assert.equal(current.model,'bikelab-wheel-0.2');
+  assert.deepEqual(current.params,old.params);
+  assert.match(current.warnings[0],/Older model/);
+});
+test('maximum sample count records can be loaded after export',()=>{
+  const a=simulate({duration:30,sampleDt:.001,profile:'sine',amplitude:.001});
+  const text=serialize(a);
+  assert.ok(Buffer.byteLength(text)>8_000_000);
+  assert.ok(Buffer.byteLength(text)<MAX_RECORD_BYTES);
+  const b=replay(text);
+  assert.deepEqual(a.metrics,b.metrics);
+  assert.deepEqual(a.signals.height,b.signals.height);
+});
+test('event detection and metrics are independent of graph recording interval',()=>{
+  const p={mass:5,stiffness:300000,damping:3000,lift:.2,profile:'flat',duration:1};
+  const coarse=simulate({...p,sampleDt:.02}),fine=simulate({...p,sampleDt:.001});
+  assert.equal(coarse.events.length,3);
+  assert.deepEqual(coarse.events,fine.events);
+  assert.deepEqual(coarse.metrics,fine.metrics);
+  for(const event of coarse.events)assert.equal(event.uncertainty,coarse.params.dt);
+});
+test('reported energy residual includes every integration endpoint',()=>{
+  const p={mass:5,stiffness:300000,damping:400,lift:.2,profile:'sine',amplitude:.06,frequency:6,duration:2,sampleDt:.02};
+  const solver=new Solver(p);let peak=0;
+  for(let i=0;i<Math.round(p.duration/solver.p.dt);i++){
+    solver.step();peak=Math.max(peak,Math.abs(solver.energy()+solver.state[3]-solver.state[2]-solver.initialEnergy));
+  }
+  const run=simulate(p);
+  near(run.metrics.maxResidual,peak,1e-12,'maximum residual');
+  assert.ok(peak-Math.max(...run.signals.residual.map(Math.abs))>.004,'recording samples miss a material peak');
+});
+test('coarse component time scales and significant energy errors are surfaced',()=>{
+  const r=simulate({mass:5,stiffness:300000,damping:3000,lift:.2,profile:'flat',duration:1});
+  assert.ok(r.warnings.some(w=>w.includes('time scale')));
+  assert.ok(r.warnings.some(w=>w.includes('Energy balance')));
+  assert.ok(simulate({duration:.5}).warnings.some(w=>w.includes('before the bump')));
+});
+test('accepted extreme configurations remain finite or fail with a domain diagnostic',()=>{
+  for(const mass of [5,150])for(const damping of [0,3000])for(const profile of ['flat','sine','bump']){
+    try {
+      const r=simulate({mass,damping,stiffness:300000,profile,amplitude:.1,frequency:12,duration:2});
+      for(const values of Object.values(r.signals))assert.ok(values.every(Number.isFinite));
+      assert.ok(r.signals.force.every(v=>v>=0));
+      assert.ok(r.signals.loss.every(v=>v>=-1e-9));
+    } catch(error) { assert.match(error.message,/Compression exceeds/); }
+  }
 });

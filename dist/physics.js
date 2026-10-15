@@ -1,4 +1,4 @@
-export const MODEL = 'bikelab-wheel-0.1';
+export const MODEL = 'bikelab-wheel-0.2';
 export const G = 9.80665;
 export const DEFAULTS = Object.freeze({
   mass: 45, radius: 0.36, stiffness: 90000, damping: 400,
@@ -11,7 +11,15 @@ const bounds = {
   duration: [0.1, 30], dt: [0.00001, 0.0005], sampleDt: [0.001, 0.02],
   lift: [0, 0.2]
 };
+function isObject(value) {
+  return value !== null && typeof value === 'object' && !Array.isArray(value)
+    && (Object.getPrototypeOf(value) === Object.prototype || Object.getPrototypeOf(value) === null);
+}
 export function validate(input = {}) {
+  if (!isObject(input)) throw new Error('Setup must be a JSON object.');
+  for (const key of Object.keys(input)) {
+    if (!Object.hasOwn(DEFAULTS, key)) throw new Error('Unknown setup parameter: ' + key);
+  }
   const p = { ...DEFAULTS, ...input };
   for (const [key, range] of Object.entries(bounds)) {
     if (!Number.isFinite(p[key]) || p[key] < range[0] || p[key] > range[1])
@@ -52,6 +60,9 @@ export class Solver {
     this.maxForce = 0; this.maxCompression = 0;
     this.observe(0, this.state);
     this.initialEnergy = this.energy();
+    this.initialHeight = this.state[0];
+    this.maxResidual = 0;
+    this.energyScale = 0.5 * this.p.stiffness * this.compression ** 2;
   }
   observe(t, state) {
     road(this.p, t, this.base);
@@ -86,6 +97,10 @@ export class Solver {
     this.observe(this.t, s);
     this.maxForce = Math.max(this.maxForce, this.force);
     this.maxCompression = Math.max(this.maxCompression, this.compression);
+    this.maxResidual = Math.max(this.maxResidual, Math.abs(this.energy() + s[3] - s[2] - this.initialEnergy));
+    this.energyScale = Math.max(this.energyScale, 0.5 * this.p.mass * s[1] ** 2,
+      0.5 * this.p.stiffness * this.compression ** 2, Math.abs(s[2]), Math.abs(s[3]),
+      this.p.mass * G * Math.abs(s[0] - this.initialHeight));
     if (this.compression > 0.35 * this.p.radius) throw new Error('Compression exceeds surrogate range. Reduce excitation or change setup.');
   }
   energy() {
@@ -99,10 +114,20 @@ export function simulate(input = {}) {
   const count = Math.round(p.duration / p.sampleDt) + 1;
   const signals = Object.fromEntries(CHANNELS.map(key => [key, new Float64Array(count)]));
   const stride = Math.round(p.sampleDt / p.dt);
-  const events = []; // Recorded after integration from sampled signals.
-  let maxResidual = 0;
+  // Event storage is independent of graph sampling and allocated before integration.
+  const eventTimes = new Float64Array(20000), eventLoaded = new Uint8Array(20000);
+  let eventCount = 0, loaded = solver.force > 0;
   for (let n = 0; n < count; n++) {
-    if (n) for (let j = 0; j < stride; j++) solver.step();
+    if (n) for (let j = 0; j < stride; j++) {
+      solver.step();
+      const nowLoaded = solver.force > 0;
+      if (nowLoaded !== loaded) {
+        if (eventCount === eventTimes.length) throw new Error('Too many contact transitions; refine the experiment.');
+        eventTimes[eventCount] = solver.t;
+        eventLoaded[eventCount++] = nowLoaded ? 1 : 0;
+        loaded = nowLoaded;
+      }
+    }
     const s = solver.state, e = solver.energy();
     signals.time[n] = solver.t; signals.height[n] = s[0]; signals.velocity[n] = s[1];
     signals.platen[n] = solver.base[0]; signals.compression[n] = solver.compression;
@@ -110,29 +135,58 @@ export function simulate(input = {}) {
     signals.work[n] = s[2]; signals.loss[n] = s[3];
     signals.residual[n] = e + s[3] - s[2] - solver.initialEnergy;
     signals.unloaded[n] = s[5];
-    maxResidual = Math.max(maxResidual, Math.abs(signals.residual[n]));
   }
-  for (let n = 1; n < count; n++) {
-    if ((signals.force[n] > 0) !== (signals.force[n - 1] > 0))
-      events.push({ time: signals.time[n], type: signals.force[n] > 0 ? 'load-restored' : 'load-lost', uncertainty: p.sampleDt });
-  }
-  return { model: MODEL, params: p, signals, events, metrics: {
+  const events = Array.from({ length: eventCount }, (_, i) => ({
+    time: eventTimes[i], type: eventLoaded[i] ? 'load-restored' : 'load-lost', uncertainty: p.dt
+  }));
+  const relativeResidual = solver.maxResidual / Math.max(solver.energyScale, 1e-6);
+  const warnings = [];
+  if (p.dt * Math.max(Math.sqrt(p.stiffness / p.mass), p.damping / p.mass) > 0.1)
+    warnings.push('Integration step is coarse relative to the fastest component time scale. Reduce the step and compare.');
+  if (relativeResidual > 0.001)
+    warnings.push('Energy balance error exceeds 0.1% of the run energy scale. Refine the integration step before using these results.');
+  if (events.length) warnings.push('Contact transitions are resolved only to the integration step; refine it to check impact peaks.');
+  if (p.profile === 'bump' && p.duration <= 1)
+    warnings.push('This run ends before the bump begins at 1 s.');
+  return { model: MODEL, params: p, signals, events, warnings, metrics: {
     peakForce: Math.max(signals.force[0], solver.maxForce),
     peakCompression: Math.max(signals.compression[0], solver.maxCompression),
-    unloadedTime: solver.state[5], impulse: solver.state[4], maxResidual
+    unloadedTime: solver.state[5], impulse: solver.state[4],
+    maxResidual: solver.maxResidual, relativeResidual
   }};
 }
+export const MAX_RECORD_BYTES = 64 * 1024 * 1024;
 export function serialize(run) {
-  return JSON.stringify({ model: MODEL, params: run.params,
+  const text = JSON.stringify({ recordVersion: 1, model: MODEL, params: run.params,
     provenance: 'Illustrative, uncalibrated tyre surrogate', metrics: run.metrics, events: run.events,
+    warnings: run.warnings,
     signals: Object.fromEntries(CHANNELS.map(k => [k, Array.from(run.signals[k])])) }, null, 2);
+  if (new TextEncoder().encode(text).length > MAX_RECORD_BYTES) throw new Error('Run exceeds the 64 MiB record limit.');
+  return text;
+}
+export function readRecord(text) {
+  if (typeof text !== 'string' || new TextEncoder().encode(text).length > MAX_RECORD_BYTES)
+    throw new Error('Run file must be text within the 64 MiB limit.');
+  let record;
+  try { record = JSON.parse(text.replace(/^\uFEFF/, '')); }
+  catch { throw new Error('Run file is not valid JSON.'); }
+  if (!isObject(record)) throw new Error('Run file must contain a record object.');
+  if (record.model !== MODEL && record.model !== 'bikelab-wheel-0.1')
+    throw new Error('Unsupported model version.');
+  if (record.model === MODEL && record.recordVersion !== 1)
+    throw new Error('Unsupported record format.');
+  if (!isObject(record.params) || Object.keys(DEFAULTS).some(key => !Object.hasOwn(record.params, key)))
+    throw new Error('Saved runs must contain the complete setup; missing values cannot be replaced with defaults.');
+  validate(record.params);
+  return record;
 }
 export function replay(text) {
-  const record = JSON.parse(text);
-  if (record.model !== MODEL) throw new Error('Unsupported model version.');
-  if (!record.params || typeof record.params !== 'object') throw new Error('Missing setup.');
-  // Recompute from validated setup; imported plots cannot masquerade as solver evidence.
-  return simulate(record.params);
+  const record = readRecord(text);
+  // This is a setup rerun, not verification of the saved measurements.
+  const result = simulate(record.params);
+  if (record.model !== MODEL)
+    result.warnings.unshift('Older model setup rerun with current diagnostics. Original saved measurements were not verified.');
+  return result;
 }
 export function sameScenario(a, b) {
   return ['profile', 'amplitude', 'frequency', 'duration', 'dt', 'sampleDt', 'lift'].every(k => a[k] === b[k]);
