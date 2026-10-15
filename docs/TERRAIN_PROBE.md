@@ -12,7 +12,7 @@ The optional numbers are centre x, centre z and radius, all metres. With no argu
 
 ## Authored profile and saved evidence
 
-The viewer accepts full profile JSON through the editor or Load profile JSON. It retains the current circle position when a profile changes; controls mark edits until applied. A rejected edit retains the last applied drawing, disables report saving and shows an error. Restore applied profile restores the applied profile **and** circle position. Late file reads cannot overwrite a newer edit. A preset replaces profile/position edits with the preset and last applied circle position.
+The viewer accepts full profile JSON through the editor or Load profile JSON. It retains the current circle position when a profile changes; controls mark edits until applied. A rejected edit retains the last applied drawing, disables report saving and shows an error. Restore applied setup restores the applied profile **and** circle position. Late file reads cannot overwrite a newer edit. A preset replaces profile/position edits with the preset and last applied circle position.
 
 Example flat fixture:
 

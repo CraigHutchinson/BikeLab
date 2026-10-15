@@ -177,7 +177,7 @@ try {
   await page.locator('#load').setInputFiles(profilePath);
   await page.waitForFunction(()=>document.getElementById('count').textContent==='1');
   assert.equal(await page.locator('#gap').textContent(),'640.00 mm');
-  await page.locator('#position').fill('.25');assert.equal(await field('x').inputValue(),'0.25');
+  await page.locator('#position').fill('0.25');assert.equal(await field('x').inputValue(),'0.25');
   // A late file read must not overwrite a newer position/profile edit.
   await page.evaluate(()=>{
     const original=File.prototype.text;
