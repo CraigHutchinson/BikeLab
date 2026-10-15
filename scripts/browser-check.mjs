@@ -143,6 +143,19 @@ try {
   assert.equal(await page.locator('#gap').textContent(),(geometry.gap*1000).toFixed(2)+' mm');
   assert.equal(await page.locator('#witnesses tbody tr').count(),1);
   assert.match(await page.locator('#witnesses tbody').textContent(),/vertex 2/);
+  // Navigation/hidden panels can temporarily have no drawable canvas area.
+  await page.locator('#rig').evaluate(async canvas=>{
+    canvas.style.display='none';window.dispatchEvent(new Event('resize'));
+    await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));
+    canvas.style.display='block';canvas.style.width='20px';window.dispatchEvent(new Event('resize'));
+    canvas.width=1;
+    await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));
+    canvas.style.width='';
+  });
+  await page.waitForFunction(()=>{
+    const c=document.getElementById('rig');return c.width===Math.round(c.clientWidth*devicePixelRatio);
+  });
+  assert.deepEqual(errors,[]);
   await shot('terrain-square-desktop');
   const pendingProbe=page.waitForEvent('download');await page.locator('#save').click();
   const probePath=join(dir,'terrain-probe.json');await (await pendingProbe).saveAs(probePath);
@@ -195,7 +208,7 @@ try {
   await page.locator('details summary').click();
   await page.setViewportSize({width:390,height:844});await noOverflow();await shot('terrain-mobile');
   await page.setViewportSize({width:320,height:780});await noOverflow();await shot('terrain-narrow');
-  report.checks.push('terrain: square/rounded/flat, complete browser/Node report agreement, unavailable/buried states, edit gating, custom profile, load, stale-file guard, co-nearest supports and mobile widths');
+  report.checks.push('terrain: hidden/small canvas recovery, square/rounded/flat, complete browser/Node report agreement, unavailable/buried states, edit gating, custom profile, load, stale-file guard, co-nearest supports and mobile widths');
 
   // Pixel availability is separate from human inspection of captured images.
   const pixels=await page.locator('#rig').evaluate(canvas=>{
