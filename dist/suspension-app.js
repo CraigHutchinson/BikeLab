@@ -62,7 +62,7 @@ function referenceSummary() {
   const a = analytical;
   $('referenceResult').textContent = !a || a.status === 'unavailable' ? 'UNAVAILABLE FOR THIS SETUP'
     : a.status === 'pass' ? 'WITHIN NUMERICAL LIMITS' : 'EXCEEDS NUMERICAL LIMITS';
-  $('referenceReason').textContent = a?.status === 'unavailable' ? a.reason
+  $('referenceReason').textContent = !a ? 'Reference result unavailable; reload the laboratory.' : a.status === 'unavailable' ? a.reason
     : 'Independent closed form at ' + a.sampleCount + ' recorded times, 0–' + a.endTime + ' s. Limits: 0.001 mm, 0.0001 m/s, 0.1 N. Refine the integration step to compare accuracy.';
   $('referenceErrors').replaceChildren();
   if (a?.errors) for (const [key, label, scale, unit] of [['compression','Compression',1000,'mm'],

@@ -96,3 +96,13 @@ test('reference CLI reports complete configuration and distinct unsupported/inva
     assert.equal(invoke(path,'extra').status,1);
   }finally{await rm(dir,{recursive:true,force:true});}
 });
+
+test('a valid coarse candidate fails the declared limits and timestep refinement recovers',()=>{
+  const p={mass:1,stiffness:200000,preload:0,initialCompression:.00009,
+    compressionDamping:0,reboundDamping:0,duration:4};
+  const coarse=compareSuspension(simulate(p));
+  const refined=compareSuspension(simulate({...p,dt:.00025}));
+  assert.equal(coarse.status,'fail');assert.equal(refined.status,'pass');
+  assert.ok(coarse.errors.force.maxAbsolute>.3);
+  assert.ok(refined.errors.force.maxAbsolute<.03);
+});

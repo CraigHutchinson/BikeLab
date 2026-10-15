@@ -126,6 +126,16 @@ try {
   await page.setViewportSize({width:390,height:844});await noOverflow();await shot('reference-mobile');
   report.checks.push('reference: explicit compatible setup, unsupported state, worker overlays, dirty gating, save/load and Node metric agreement');
 
+
+  await page.setViewportSize({width:1440,height:1100});
+  for(const [name,value]of Object.entries({mass:'1',stiffness:'200',preload:'0',initialCompression:'.09',
+    compressionDamping:'0',reboundDamping:'0',duration:'4',dt:'.5'}))await field(name).fill(value);
+  await apply();assert.equal(await page.locator('#referenceResult').textContent(),'EXCEEDS NUMERICAL LIMITS');
+  await shot('reference-coarse-failure');
+  await field('dt').fill('.25');await apply();
+  assert.equal(await page.locator('#referenceResult').textContent(),'WITHIN NUMERICAL LIMITS');
+  report.checks.push('reference: valid coarse integration fails declared limits; half-step refinement passes');
+
   // Pixel availability is separate from human inspection of captured images.
   const pixels=await page.locator('#rig').evaluate(canvas=>{
     const a=canvas.getContext('2d').getImageData(0,0,canvas.width,canvas.height).data;
