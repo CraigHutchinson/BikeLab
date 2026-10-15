@@ -34,6 +34,9 @@ function apply(nextProfile = profile, nextSetup = fields()) {
 function draw() {
   if(!result)return;
   const canvas=$('rig'), w=canvas.clientWidth, h=canvas.clientHeight, dpr=devicePixelRatio||1;
+  // Navigation/visibility changes can report an empty or not-yet-laid-out box.
+  // Wait for a drawable content box instead of producing a negative scale.
+  if(w<=48||h<=58)return;
   canvas.width=Math.round(w*dpr); canvas.height=Math.round(h*dpr);
   const c=canvas.getContext('2d'); c.setTransform(dpr,0,0,dpr,0,0);
   const [cx,cz]=result.setup.center,r=result.setup.radius,points=profile.points;
@@ -81,4 +84,6 @@ $('save').onclick=()=>{
   const url=URL.createObjectURL(new Blob([JSON.stringify(result,null,2)],{type:'application/json'})),a=document.createElement('a');
   a.href=url;a.download='bikelab-terrain-probe.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
 };
-window.addEventListener('resize',draw); apply();
+window.addEventListener('resize',draw);
+new ResizeObserver(draw).observe($('rig'));
+apply();
