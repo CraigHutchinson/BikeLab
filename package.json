@@ -1,11 +1,12 @@
 {
   "name": "bikelab",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "private": true,
   "type": "module",
   "scripts": {
     "start": "node server.mjs",
     "test": "node --test",
-    "scenario": "node scripts/scenario.mjs"
+    "scenario": "node scripts/scenario.mjs",
+    "browser-check": "node scripts/browser-check.mjs"
   }
 }

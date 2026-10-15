@@ -1,6 +1,6 @@
 # Dynamic systems: component inventory
 
-Status: staged scope. The loaded-wheel station, radial contact surrogate, recording and viewer exist; suspension, full-bike and later systems remain proposed. Priority denotes the first consumer, not a promise that the full fidelity described below ships at that stage.
+Status: staged scope. The loaded-wheel station and bounded axial suspension station, recording and viewers exist. The suspension law includes preload and separate viscous compression/rebound damping; friction, air chambers, end-stop forces, full-bike and later systems remain proposed. Priority denotes the first consumer, not a promise that the full fidelity described below ships at that stage. Eventual full 3D dynamics, including lateral and turning forces, is required; see THREE_DIMENSIONAL_DYNAMICS.md.
 
 ## System boundaries
 

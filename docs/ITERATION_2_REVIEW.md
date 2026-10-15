@@ -18,3 +18,7 @@ Node v24.19.0: 31 socket-independent tests pass, zero skipped. The complete suit
 The earlier visual acceptance item therefore remains open. The continuation prepares Slice 2 and its repeatable browser checks as reviewable work while retaining that gate; it does not declare either slice visually received. Numerical, browser/headless, screenshot, calibration and participant evidence must remain distinct. A successful future browser run must inspect actual screenshots, including mobile and extreme valid states, before changing this status.
 
 Research was delegated to the user-requested GPT-6.1 Sol. See SUSPENSION_RESEARCH.md for primary sources actually read, derivations and preregistered validation targets. No physical calibration, final engine selection or 3D implementation is implied.
+
+## Subsequent closure during this iteration
+
+The socket limitation was avoided by running the repository's PR workflow on GitHub Actions, not by changing local sandbox policy. CI run 38721420155 passed all 47 tests on Linux and Windows, plus actual Chromium interactions and browser/headless exports. All eight captured screenshots were downloaded and inspected, including the wheel's desktop/high-lift/mobile states. This closes the earlier screenshot gap for those states. The review findings above describe the pre-implementation decision point; the final evidence and remaining limitations are in SLICE_2_EVIDENCE.md.

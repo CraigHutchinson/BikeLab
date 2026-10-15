@@ -1,0 +1,108 @@
+{
+  "checks": [
+    "wheel: step, comparison gating, save/load, high lift, mobile width",
+    "suspension: signed curves rendered, step/scrub/play/pause, pin gating, reject/discard, save/load and wrong-station rejection",
+    "suspension: actual worker cancellation, immediate travel limit, shock preset, mobile/narrow width",
+    "no captured page/console errors; rig has rendered pixels"
+  ],
+  "exports": [
+    {
+      "name": "wheel-browser",
+      "result": {
+        "result": "numerical agreement",
+        "normalizedTolerance": 1e-10,
+        "maxAbsoluteDifferences": {
+          "time": 0,
+          "height": 0,
+          "velocity": 1.1102230246251565e-16,
+          "platen": 8.673617379884035e-18,
+          "compression": 0,
+          "force": 1.1368683772161603e-13,
+          "energy": 0,
+          "work": 1.7763568394002505e-15,
+          "loss": 3.3306690738754696e-16,
+          "residual": 2.842170943040401e-14,
+          "unloaded": 0
+        }
+      }
+    },
+    {
+      "name": "suspension-browser",
+      "result": {
+        "result": "numerical agreement",
+        "normalizedTolerance": 1e-10,
+        "maxAbsoluteDifferences": {
+          "time": 0,
+          "height": 0,
+          "velocity": 0,
+          "base": 0,
+          "compression": 0,
+          "compressionVelocity": 0,
+          "springForce": 0,
+          "damperForce": 0,
+          "force": 0,
+          "energy": 0,
+          "work": 0,
+          "loss": 0,
+          "residual": 0
+        }
+      }
+    },
+    {
+      "name": "suspension-top-out",
+      "result": {
+        "result": "numerical agreement",
+        "normalizedTolerance": 1e-10,
+        "maxAbsoluteDifferences": {
+          "time": 0,
+          "height": 0,
+          "velocity": 0,
+          "base": 0,
+          "compression": 0,
+          "compressionVelocity": 0,
+          "springForce": 0,
+          "damperForce": 0,
+          "force": 0,
+          "energy": 0,
+          "work": 0,
+          "loss": 0,
+          "residual": 0
+        }
+      }
+    },
+    {
+      "name": "suspension-shock",
+      "result": {
+        "result": "numerical agreement",
+        "normalizedTolerance": 1e-10,
+        "maxAbsoluteDifferences": {
+          "time": 0,
+          "height": 0,
+          "velocity": 0,
+          "base": 0,
+          "compression": 0,
+          "compressionVelocity": 0,
+          "springForce": 0,
+          "damperForce": 0,
+          "force": 0,
+          "energy": 0,
+          "work": 0,
+          "loss": 0,
+          "residual": 0
+        }
+      }
+    }
+  ],
+  "screenshots": [
+    "wheel-desktop.png",
+    "wheel-high-lift.png",
+    "wheel-mobile.png",
+    "suspension-desktop.png",
+    "suspension-comparison.png",
+    "suspension-travel-limit.png",
+    "suspension-mobile.png",
+    "suspension-narrow.png"
+  ],
+  "browser": "141.0.7390.37",
+  "errors": []
+}

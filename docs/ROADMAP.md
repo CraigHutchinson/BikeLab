@@ -1,6 +1,6 @@
 # Delivery and validation plan
 
-Status: reviewed 2026-10-15; see REVIEW_2026-10-15.md. Slice 1 implementation and numerical/interaction verification are delivered. Pixel-level visual inspection remains open; see SLICE_1_EVIDENCE.md. Later slices remain proposed.
+Status: continued 2026-10-15 after review of the entire a1d96dd baseline; see ITERATION_2_REVIEW.md. Slice 1 visual inspection is now recorded, and the bounded Slice 2 axial station is implemented and verified; see SLICE_2_EVIDENCE.md. Whole-bike and later slices remain proposed. Full 3D simulation, including lateral motion and turning forces, is a required destination; see THREE_DIMENSIONAL_DYNAMICS.md.
 
 ## Definition of a received slice
 
@@ -12,7 +12,7 @@ Deliver the component map, rig contracts, parameter provenance model and this ro
 
 Completed: initial documentation.
 
-Completed for Slice 1: stack/model decision, implementation, analytical tests and browser interaction checks. Open: pixel-level visual inspection and physical reference hardware selection. See STACK_DECISION.md and SLICE_1_EVIDENCE.md.
+Completed for Slice 1: stack/model decision, implementation, analytical tests, browser interaction checks and subsequent desktop/mobile screenshot inspection. Open: physical reference hardware selection/calibration. See STACK_DECISION.md, SLICE_1_EVIDENCE.md and SLICE_2_EVIDENCE.md.
 
 ## Slice 1 - Loaded-wheel test
 
@@ -40,6 +40,8 @@ One vertical coordinate and velocity, gravity, prescribed support motion and uni
 These thresholds are proposed development gates, not claims of 0.1% real-world tyre accuracy.
 
 ## Slice 2 - Fork and shock stations
+
+Implemented bounded delivery: shared preloaded coil and asymmetric viscous damper, editable fork/shock-scale fixtures, force curves, release/moving-base experiments, comparisons, replay and complete saved setups. Stroke exits terminate explicitly; no end-stop impact, friction or air-spring law is claimed. Primary research, independent test gates and actual evidence are in SUSPENSION_RESEARCH.md, SUSPENSION_MODEL.md and SLICE_2_EVIDENCE.md.
 
 Experience: inspect spring and damping curves, compress a mechanism and compare rebound responses.
 
@@ -84,6 +86,8 @@ Trade-off: longitudinal contact cannot establish cornering grip. Next slice intr
 Experience: inspect and run steering, camber, slalom and constant-radius tests with a declared rider controller.
 
 Foundation: 3D body inertia, steering assembly, lateral/combined-slip tyre response and bounded balance control.
+
+Required contracts: full force/moment application at attachment/contact points, explicit x-forward/y-left/z-up signs, wheel gyroscopic effects, near-zero-speed slip, camber/lean coverage, combined traction budget and declared controller work. Use the detailed acceptance matrix in THREE_DIMENSIONAL_DYNAMICS.md, including rigid-bicycle benchmark, mirror tests, constant-radius force/moment balance and braking-in-turn. A 3D renderer alone does not satisfy this slice.
 
 Gate: independently checked reference manoeuvres, symmetry/sign tests, convergence, controller sensitivity and validation across held-out speeds/loads. Separate controller quality from mechanical model accuracy.
 
@@ -136,8 +140,8 @@ Record the chosen stack and limitations in a short decision note before code. Us
 
 ## Next actionable work package
 
-Current delivery: Slice 1 has completed its code/numerical review and hardening pass (31 passing tests). Pixel-level visual inspection remains open. Close that acceptance item before the next implementation, Slice 2, the suspension station.
+Current delivery: Slice 1 has been reviewed again, its screenshot gap is closed for the inspected states, and Slice 2 has a working visual/headless consumer with independent evidence (47 passing tests on Linux and Windows plus Chromium checks). Physical calibration remains open.
 
-Delivered: runnable wheel/platen station, headless scenario runner, controls/plots, saved input/replay, independent tests and an evidence note. Next: close visual inspection and add verified fork/shock force curves and transient experiments.
+Next: enumerate hardtail/full-suspension bodies, independent DOFs, joints, mass/inertia and fixture reactions; compare candidate multibody solvers against concrete geometry/constraint/energy tests before Slice 3 coding. Preserve the eventual 3D lateral/turning contract. Select source-backed component data when available; do not infer production-bike accuracy from the synthetic suspension fixtures.
 
 Do not require the user to pick a real bike, game controller or final graphics engine before this bounded slice can begin. Use clearly labelled illustrative parameters and keep the reference dataset question open.

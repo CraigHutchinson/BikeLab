@@ -1,6 +1,6 @@
 # Parameters and evidence
 
-Status: planning catalogue. No measured bike dataset is included yet. Do not treat illustrative defaults as real-bike specifications.
+Status: planning catalogue with implemented illustrative wheel and axial suspension fixtures. See SUSPENSION_MODEL.md for every consumed suspension input, SI bounds, default/preset values and uncertainty limitations. No measured bike dataset is included yet. Do not treat illustrative defaults as real-bike specifications. Lateral/turning contact, camber, full inertia and controller calibration requirements are specified in THREE_DIMENSIONAL_DYNAMICS.md.
 
 ## Provenance required for every physical parameter
 
