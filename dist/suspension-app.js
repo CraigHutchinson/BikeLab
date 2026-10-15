@@ -140,12 +140,14 @@ function plot(id) {
   const {c,w,h,dpr}=canvas(id), data=plots.get(id);
   let item=cache.get(id);
   if(!item || item.w!==w || item.h!==h || item.dpr!==dpr) {
-    let lo=0,hi=1;
+    let lo=0,hi=0;
     for(const v of data.series) for(const value of v.y) {lo=Math.min(lo,value*v.scale);hi=Math.max(hi,value*v.scale);}
+    if (lo===hi) hi=lo+1;
     const pad=(hi-lo)*.1; lo-=pad;hi+=pad;
+    const digits=Math.min(6,Math.max(0,2-Math.floor(Math.log10(hi-lo))));
     const px=x=>48+(w-60)*(x-data.xmin)/(data.xmax-data.xmin), py=y=>h-26-(h-40)*(y-lo)/(hi-lo);
     c.font='9px system-ui';c.fillStyle='#9aabb7';c.textAlign='right';
-    for(let i=0;i<4;i++){const y=lo+(hi-lo)*i/3;line(c,48,py(y),w-12,py(y),'#293841');c.fillText(y.toFixed(0),42,py(y)+3);}
+    for(let i=0;i<4;i++){const y=lo+(hi-lo)*i/3;line(c,48,py(y),w-12,py(y),'#293841');c.fillText(y.toFixed(digits),42,py(y)+3);}
     c.textAlign='center';
     for(let i=0;i<5;i++){const x=data.xmin+(data.xmax-data.xmin)*i/4;c.fillText(x.toFixed(data.xmax<1?3:1),px(x),h-7);}
     for(const v of data.series) {
