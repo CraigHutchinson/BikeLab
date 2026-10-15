@@ -103,5 +103,6 @@ function frame(now) {
   requestAnimationFrame(frame);
 }
 const observer=new ResizeObserver(draw);for(const id of ['rig','motionPlot','errorPlot'])observer.observe($(id));
-window.addEventListener('pagehide',()=>{job.cancel();stop();observer.disconnect();});
+window.addEventListener('pagehide',()=>{const interrupted=busy;job.cancel();stop();observer.disconnect();if(interrupted)reject('Calculation cancelled during navigation. Run again.');});
+window.addEventListener('pageshow',()=>{for(const id of ['rig','motionPlot','errorPlot'])observer.observe($(id));draw();});
 populate(DEFAULTS);apply();requestAnimationFrame(frame);

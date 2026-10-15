@@ -253,9 +253,12 @@ try {
   await page.locator('#release').click();await trialReady();
   await page.locator('#rig').evaluate(c=>{c.style.display='none';});await page.waitForTimeout(30);
   await page.locator('#rig').evaluate(c=>{c.style.display='';});await page.waitForTimeout(30);
-  await page.setViewportSize({width:390,height:844});await noOverflow();await shot('solver-mobile');
+  await page.evaluate(()=>{window.dispatchEvent(new PageTransitionEvent('pagehide',{persisted:true}));window.dispatchEvent(new PageTransitionEvent('pageshow',{persisted:true}));});
+  await page.setViewportSize({width:390,height:844});
+  await page.waitForFunction(()=>{const c=document.getElementById('rig');return c.width===Math.round(c.clientWidth*devicePixelRatio);});
+  await noOverflow();await shot('solver-mobile');
   await page.setViewportSize({width:320,height:780});await noOverflow();await shot('solver-narrow');
-  report.checks.push('solver: real WASM module worker; exact candidate browser/Node channels with tolerance-checked analytical channels; release failure and static pass; refinement, replay, dirty/invalid gating, cancellation, restore, hidden canvas and mobile widths');
+  report.checks.push('solver: real WASM module worker; exact candidate browser/Node channels with tolerance-checked analytical channels; release failure and static pass; refinement, replay, dirty/invalid gating, cancellation, restore, hidden canvas, page lifecycle resize recovery and mobile widths');
 
   // Pixel availability is separate from human inspection of captured images.
   const pixels=await page.locator('#rig').evaluate(canvas=>{
