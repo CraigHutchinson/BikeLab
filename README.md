@@ -50,6 +50,8 @@ See [the prior-iteration review](docs/ITERATION_2_REVIEW.md) and [Slice 2 eviden
 
 ## Design and implementation map
 
+- [Physics fidelity architecture](docs/PHYSICS_FIDELITY.md): detailed references, real-time abstractions, parallel comparison and state-preserving model swaps; next-iteration review brief.
+- [Layered terrain and traction](docs/LAYERED_TERRAIN.md): mud over roots, soil history, tread contamination and scanned/generated trail detail; staged requirements, not implemented physics.
 - [Component inventory](docs/COMPONENTS.md): hardtail/full-suspension systems and staged fidelity.
 - [Rig contracts](docs/RIG_DESIGN.md): bodies, constraints, contact, rider and experience.
 - [Parameters](docs/PARAMETERS.md): units, sources, calibration and uncertainty.

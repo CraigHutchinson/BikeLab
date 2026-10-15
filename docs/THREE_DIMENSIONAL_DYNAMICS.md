@@ -42,3 +42,7 @@ These requirements preserve both hardtail and full-suspension configurations. Ha
 Before whole-bike implementation, enumerate independent DOFs, constraints and force paths for both variants. Evaluate actual closed-loop linkage, prismatic/revolute joint, contact and inertia tests in candidate solvers, with headless replay and a renderer consuming the same snapshots. The existing one-coordinate RK4 code is not the selected general multibody engine.
 
 Do not infer bicycle suitability from a library's car tyre model. The primary Chrono documentation reviewed here states limitations in large camber and pressure dependence for documented models; a bicycle's lean envelope needs explicit coverage. Primary sources and research limitations are in [the research receipt](SUSPENSION_RESEARCH.md). No calibrated lateral tyre law, engine selection or 3D dynamics implementation is claimed by this iteration.
+
+## Terrain-dependent traction requirement
+
+Pure/combined-slip validation must include the material and state actually carrying each contact patch: finite soil layers, exposed or buried roots/rock, bulk and interface shear, root support/reinforcement and retained tyre contamination. A local scalar friction multiplier alone cannot fulfil this contract. Use the [layered-terrain experiments](LAYERED_TERRAIN.md) to establish normal/tangential coupling, low-speed/reversal behaviour, shared front/rear terrain history and mud-to-root-to-dry transitions before claiming realistic off-road handling. Keep the rigid/no-slip handling benchmark as a separate limiting case.

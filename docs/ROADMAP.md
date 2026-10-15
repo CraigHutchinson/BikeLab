@@ -142,11 +142,28 @@ Record the chosen stack and limitations in a short decision note before code. Us
 7. Review implementation quality and consumer boundaries before accepting each slice. If C++ is chosen, load cpp-write before authoring and run cpp-review before merge.
 8. Report completion honestly: mathematical, numerical, physical and user-experience evidence separately.
 
+## Layered-terrain workstream
+
+Integrate the [layered-terrain data and acceptance contracts](LAYERED_TERRAIN.md) in the spatial-contact and multibody design decision now. Implement their T0–T4 gates alongside the receiving slices:
+
+- Before whole-bike spatial contact: rigid geometry controls, then a finite soil cover over a supported buried root with a cutaway/force viewer. Establish distinct tyre/soil/root deformation and load paths.
+- With rolling and 3D slip: bulk/interface shear, mixed patches, root reinforcement/support and shared front/rear soil history; validate combined traction, reversal and repeated passes.
+- Before mud-surface fidelity claims: carried tyre coating, tread packing and pickup/shedding; clean/dirty transition controls and material/work budgets.
+- Before detailed trail fidelity claims: ingest scanned or generated tiles with provenance/uncertainty, 1–2 cm target detail where justified, persistent deformation and seam/active-region convergence. ML detail remains labelled synthetic until independently measured.
+
+The immediate PR adds the design and source-backed research boundaries only. No soil constitutive law, executable terrain schema or universal friction preset is selected. Initial fixture values may be illustrative; real trail and tyre claims require controlled measurements and held-out validation. This work does not replace the hardtail/full-suspension assembly, overload or production-bike catalogue gates.
+
+## System-wide physics fidelity architecture review
+
+Start the next iteration by reviewing the existing implementation and planned mechanisms together against [PHYSICS_FIDELITY.md](PHYSICS_FIDELITY.md). Detailed reference models may run slower than real time; reduced models need measured conformance, explicit capability/validity envelopes and compatible subsystem combinations. Support paired experiments first, bounded parallel/shadow comparisons where useful, and in-run replacement only after state-transfer verification.
+
+Review continuous simulation versus recorded playback, model/state ownership, worker/snapshot/record boundaries, coupling rates and resource budgets before choosing abstractions. Mud deformation/spin release and carried mass are a cross-system example. Produce a concrete model/coupling matrix and receiving comparison experiment; preserve the existing validated stations during any refactor. This architectural gate precedes the next major physics implementation, including whole-bike assembly and layered contact.
+
 ## Next actionable work package
 
 Current delivery: Slice 1 has been reviewed again, its screenshot gap is closed for the inspected states, and Slice 2 has a working visual/headless consumer with independent evidence (47 passing tests on Linux and Windows plus Chromium checks). Physical calibration remains open.
 
-Next: enumerate hardtail/full-suspension bodies, independent DOFs, joints, mass/inertia and fixture reactions; compare candidate multibody solvers against concrete geometry/constraint/energy tests before Slice 3 coding. Preserve the eventual 3D lateral/turning contract. Select source-backed component data when available; do not infer production-bike accuracy from the synthetic suspension fixtures.
+After that architecture review, enumerate hardtail/full-suspension bodies, independent DOFs, joints, mass/inertia and fixture reactions; compare candidate multibody solvers against concrete geometry/constraint/energy tests before Slice 3 coding. Preserve the eventual 3D lateral/turning contract. Select source-backed component data when available; do not infer production-bike accuracy from the synthetic suspension fixtures.
 
 Include overload capability in that design decision: geometry-derived travel limits, end-stop force/impulse paths, component deformation/failure state, pressure loss and safe termination of unsupported post-failure configurations. Research a bounded stop and wheel/rim/spoke/seal experiment next; require its independent physical/numerical evidence before enabling high-impact continuation. See OVERLOAD_AND_FAILURE.md.
 

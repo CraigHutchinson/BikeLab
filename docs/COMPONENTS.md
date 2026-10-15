@@ -18,7 +18,10 @@ The simulation advances physical state. The rider controller generates bounded a
 | Tyre contact geometry | Support surface, effective contact location and obstacle representation | Contact normal and contact patch approximation | Smooth rig inputs first; edge/rough-surface capability later |
 | Tyre tangential response | Slip-dependent longitudinal/lateral forces and combined grip | Wheel torque, body forces, surface properties | Braking/rolling and then 3D handling |
 | Tyre construction/setup | Inflation, dimensions, casing, compound, tread, insert and rim compatibility | Parameters or calibrated curves supplied to contact models | Measured tyre stage; no invented universal pressure-to-stiffness mapping |
-| Terrain | Geometric surface and material properties | Contact queries and prescribed rig motion | Platen and travelling-profile rig; later trail surfaces |
+| Terrain geometry/materials | Spatial surfaces, finite layer volumes, interfaces and embedded roots/rock | Contact geometry and coupled substrate load paths | Spatial-wheel station; then scanned/generated trail tiles |
+| Soil and root mechanics | Compaction, shear/plastic history, root support or composite reinforcement | Normal/tangential forces, evolving layer exposure and shared front/rear ruts | Finite-cover/root fixture, then rolling layered traction |
+| Tyre contamination | Coating distribution, packed tread voids and pickup/shedding state | Terrain material transfer and persistent geometry/grip changes | Mud-to-root-to-dry wheel experiment |
+| Terrain asset/state streaming | Immutable tiles, provenance, correlated fields and persistent deltas | Stable feature IDs, replay and bounded active regions | Detailed 1–2 cm trail ingestion after contact calibration |
 | Rider body | Segment masses/inertias, joints, geometry and posture | Forces through hands, pedals and saddle | Whole-bike fixed mass first; articulated rider next |
 | Rider contact | Hand/foot constraints, saddle contact and contact transitions | Body/contact reactions with explicit release conditions | Articulated rider; later loss of grip and impacts |
 | Rider controller | Delayed, bounded steering/lean/brake/pedal/posture actions | Commands only; no direct teleportation of bodies | Scripted rider first; balance and anticipatory control later |
@@ -27,6 +30,7 @@ The simulation advances physical state. The rider controller generates bounded a
 | Drivetrain | Crank/gear kinematics, drive torque and freewheel state | Wheel, frame, linkage and rider reactions | Rolling/pedalling slice; chain path effects when needed |
 | Air interaction | Aerodynamic forces with stated assumptions | Relative airflow and body forces | Riding slice if required by its speed range |
 | Solver | State advancement, joints, contact resolution and error reporting | Physical state and applied forces | Loaded-wheel station onward |
+| Physics model selection/comparison | Compatible model capabilities, validity/error criteria, reference comparisons and verified state adapters | Coupled state/impulse/work contracts and reproducible schedules | Next architecture review and paired experiment; live switching only after validation |
 | Experiment runner | Scenario input, initial state, clocks, run duration and repeatability | Prescribed motions and rider commands | Every station and regression test |
 | Recorder | Parameter snapshot, events, signals and result metadata | Immutable run evidence | Every station |
 | Visualisation | Camera, bodies, overlays, graphs, replay and comparisons | Read-only simulation snapshots | Every interactive slice |
@@ -78,3 +82,5 @@ Terrain/contact consumes actual spatial shape, with explicit geometry, normals a
 5. Which comparisons should a user be able to trust quantitatively, rather than only inspect qualitatively?
 
 These questions guide later refinement. They do not block the bounded loaded-wheel slice.
+
+Layered terrain, root reinforcement, mud retention and fine scanned/generated trails follow the data-oriented contracts and staged experiments in [LAYERED_TERRAIN.md](LAYERED_TERRAIN.md). Surface appearance alone never assigns physical strength or grip.

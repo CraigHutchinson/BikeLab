@@ -72,3 +72,9 @@ Runs must retain geometry content or a retrievable immutable geometry asset with
 ## Next delivery gate
 
 Research a spatial wheel/contact experiment with independently checkable planar shapes and a path to 3D surfaces. Establish an always-detailed reference first, then demonstrate adaptive activation and rate coupling against it. Include spatial contact, overload and measured real-time capability in the whole-bike solver decision. The smooth platen remains a separate controlled station; neither sharp-edge stress nor real-time high-impact handling is received by the current iteration.
+
+## Layered soil and material history
+
+The [layered-terrain contract](LAYERED_TERRAIN.md) extends geometry/material assignment into finite covers, buried roots/rocks, soil deformation and interface shear, fine-root reinforcement, and tyre-carried contamination. Mud over a buried root is the first acceptance family. Contact must transmit load through the cover to the substrate before exposure, without duplicating support or traction. Persistent terrain and tyre state must survive adaptive-detail changes. Scanned/ML-generated 1–2 cm trail detail is a separate data/provenance and convergence requirement, not a physical-accuracy claim. These mechanisms remain planned; current station physics is unchanged.
+
+Adaptive terrain/contact is one part of [system-wide physics fidelity](PHYSICS_FIDELITY.md). Use compatible subsystem tiers, coupled impulses/work, reference conformance and explicit state adapters; do not select terrain detail independently of tyre, bike and rider validity.
