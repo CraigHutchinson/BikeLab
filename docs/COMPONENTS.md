@@ -63,7 +63,11 @@ Whole-bike station: planar rigid bodies, front suspension, explicit rear mechani
 
 Articulated rider: passive joints and contact first, bounded actions second. Rider parameters must not be tuned solely to make a flawed bike model look stable.
 
-Later riding: 3D steering and lean, combined-slip grip, tread/material calibration, deformable terrain, structural compliance, temperature and damage. These require their own observed tests; they are not implicit in the early station.
+Later riding: 3D steering and lean, combined-slip grip, tread/material calibration, deformable terrain, structural compliance and temperature. These require their own observed tests; they are not implicit in the early station.
+
+Overload/failure is a required physical contract for high-impact behavior, not an optional cosmetic riding effect. Review every active assembly against [the component failure matrix](OVERLOAD_AND_FAILURE.md): suspension stops, rim/spokes/tyre seal, hub/axle, fork/shock mounts, frame/links, steering/rider supports, drivetrain and brakes. Preserve travel/clearance constraints and actual load redistribution after damage; stop explicitly where the model cannot represent the outcome.
+
+Terrain/contact consumes actual spatial shape, with explicit geometry, normals and material/motion metadata. Preserve square-edge, rounded and flat distinctions and finite tyre/multiple-contact behavior. Local stress requires a supported deformation/load-transfer law. Detailed impact work may activate on demand and substep separately, with predictive activation, consistent impulses/energy and persistent damage/pressure. See [TERRAIN_CONTACT.md](TERRAIN_CONTACT.md) for the fidelity, rate-coupling and measured real-time gates.
 
 ## Inventory expansion questions
 

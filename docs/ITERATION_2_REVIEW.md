@@ -22,3 +22,19 @@ Research was delegated to the user-requested GPT-6.1 Sol. See SUSPENSION_RESEARC
 ## Subsequent closure during this iteration
 
 The socket limitation was avoided by running the repository's PR workflow on GitHub Actions, not by changing local sandbox policy. CI run 38721420155 passed all 47 tests on Linux and Windows, plus actual Chromium interactions and browser/headless exports. All eight captured screenshots were downloaded and inspected, including the wheel's desktop/high-lift/mobile states. This closes the earlier screenshot gap for those states. The review findings above describe the pre-implementation decision point; the final evidence and remaining limitations are in SLICE_2_EVIDENCE.md.
+
+## User addendum: travel, high-impact loads and breakage
+
+Review requirement: suspension must respect its physical top-out/bottom-out limits. A high impact must resolve through stop reactions, admissible deformation and, when component capacity is exceeded, physical failure rather than impossible travel or intact geometry. This includes rim damage/fracture, individual spoke failure and tubeless pressure loss caused by rim/bead-seat deformation.
+
+**Current disposition:** the station already rejects out-of-stroke trial states, retains the last valid samples and reports travel-limit. Its boundary tests cover both exits, inward/outward boundary motion, state rollback and step refinement. This enforces the bounded model's stroke but does not compute end-stop impact loads or predict which component breaks. Existing successful test/visual evidence must not be read as validation of crash survivability.
+
+**Open requirement before high-impact capability can be accepted:** establish end-stop/load-path behavior and the failure basis for every active component. [Overload and failure contract](OVERLOAD_AND_FAILURE.md) supplies the review matrix, data/provenance requirements, coupled rim/spoke/seal/pressure behavior, post-failure handling and acceptance gates. No arbitrary universal breaking force is approved. Bottom-out can be survivable; a rim strike or lateral overload can cause damage before bottom-out. Damage must be determined from the supported component criterion and load path.
+
+## User addendum: spatial rock contact and adaptive computation
+
+A square rock edge is not equivalent to a rounded obstacle or flat support of the same height. Review input support for spatial profile vertices/height samples with coordinates, 3D surfaces or well-defined contact candidates. Contact location, normal, patch/deformation and moment arm must drive loads and the failure assessment. Preserve front-face/edge geometry and multiple contacts; a single under-axle height cannot determine local stress.
+
+Fine contact/impact computation should activate only where needed and may use a separate physics rate to support real-time execution. Require predictive feature/contact detection, explicit fidelity/error criteria, conservative force/impulse/work exchange, consistent state transfers and persistent pressure/damage state. Compare adaptive runs against a converged always-detailed reference, then measure real-time costs under repeated/simultaneous impacts. Budget pressure must not suppress failures or permit overtravel/tunnelling.
+
+**Current disposition:** the time-driven flat platen is not a spatial obstacle model, and the current solver has no adaptive multirate contact. [Terrain/contact and real-time contract](TERRAIN_CONTACT.md) defines inputs, stress limitations, switching/rate synchronization, geometry/timestep convergence and performance gates. These are required future capabilities, not claims supported by the existing 47-test receipt.

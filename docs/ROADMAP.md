@@ -22,6 +22,8 @@ A side-view loaded wheel on a vertically moving platen. Controls expose effectiv
 
 Use a smooth single bump and sinusoidal excitation first. Do not introduce edge impacts until the contact geometry and integration have appropriate tests. Do not expose tyre tread or inflation as controls before a consumed mapping exists.
 
+Required spatial-contact extension: consume a defined ground profile/surface or contact geometry, distinguishing square rock edges from rounded/flat support through tyre-envelope contact locations, normals and supported local deformation/stress. The existing temporal flat platen does not do this. [TERRAIN_CONTACT.md](TERRAIN_CONTACT.md) also requires adaptive detail and independently validated multiple physics rates where useful for real time; activation must precede impact and preserve force/work and damage state.
+
 ### Mechanics
 
 One vertical coordinate and velocity, gravity, prescribed support motion and unilateral elastic/damped contact. Research the actual contact law and integration method before implementation, including relative velocity, separation behaviour and energy accounting. Demonstrate independent limiting cases before enabling arbitrary input combinations.
@@ -42,6 +44,8 @@ These thresholds are proposed development gates, not claims of 0.1% real-world t
 ## Slice 2 - Fork and shock stations
 
 Implemented bounded delivery: shared preloaded coil and asymmetric viscous damper, editable fork/shock-scale fixtures, force curves, release/moving-base experiments, comparisons, replay and complete saved setups. Stroke exits terminate explicitly; no end-stop impact, friction or air-spring law is claimed. Primary research, independent test gates and actual evidence are in SUSPENSION_RESEARCH.md, SUSPENSION_MODEL.md and SLICE_2_EVIDENCE.md.
+
+User-required extension: maintain admissible travel during overload, model top-out/bottom-out load paths before continuing through impacts, and establish physical failure criteria for active components. Rim deformation/fracture, spoke failure and deformation-induced tubeless leakage are explicit review cases. The component matrix and release gates in [OVERLOAD_AND_FAILURE.md](OVERLOAD_AND_FAILURE.md) are required for high-impact claims; the current stop-at-domain-limit behavior is a fallback, not a damage simulation.
 
 Experience: inspect spring and damping curves, compress a mechanism and compare rebound responses.
 
@@ -143,5 +147,9 @@ Record the chosen stack and limitations in a short decision note before code. Us
 Current delivery: Slice 1 has been reviewed again, its screenshot gap is closed for the inspected states, and Slice 2 has a working visual/headless consumer with independent evidence (47 passing tests on Linux and Windows plus Chromium checks). Physical calibration remains open.
 
 Next: enumerate hardtail/full-suspension bodies, independent DOFs, joints, mass/inertia and fixture reactions; compare candidate multibody solvers against concrete geometry/constraint/energy tests before Slice 3 coding. Preserve the eventual 3D lateral/turning contract. Select source-backed component data when available; do not infer production-bike accuracy from the synthetic suspension fixtures.
+
+Include overload capability in that design decision: geometry-derived travel limits, end-stop force/impulse paths, component deformation/failure state, pressure loss and safe termination of unsupported post-failure configurations. Research a bounded stop and wheel/rim/spoke/seal experiment next; require its independent physical/numerical evidence before enabling high-impact continuation. See OVERLOAD_AND_FAILURE.md.
+
+Couple it to the spatial geometry and adaptive-computation experiment in TERRAIN_CONTACT.md. Establish converged flat/rounded/square-edge references before optimizing contact detail or update rates. Include 3D surface contact, event detection, conservative synchronization and measured worst-case real-time capability in solver selection.
 
 Do not require the user to pick a real bike, game controller or final graphics engine before this bounded slice can begin. Use clearly labelled illustrative parameters and keep the reference dataset question open.

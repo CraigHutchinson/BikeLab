@@ -57,6 +57,8 @@ See [the prior-iteration review](docs/ITERATION_2_REVIEW.md) and [Slice 2 eviden
 - [Stack and model decision](docs/STACK_DECISION.md): primary references, equations and numerical assumptions.
 - [Suspension model](docs/SUSPENSION_MODEL.md): signed forces, support work, travel limits and presets.
 - [3D dynamics requirements](docs/THREE_DIMENSIONAL_DYNAMICS.md): lateral/turning forces, steering/lean, combined slip and independent handling gates.
+- [Overload and failure requirements](docs/OVERLOAD_AND_FAILURE.md): travel limits, end-stop load paths, component strength/damage, rim/spoke failure and tubeless air loss. These physical failure models are planned; current out-of-stroke runs stop explicitly.
+- [Terrain/contact and real-time requirements](docs/TERRAIN_CONTACT.md): spatial ground profiles, square-edge versus rounded contact, local load/stress limitations, on-demand detail and validated multiple physics rates. These extend beyond the current flat-platen model.
 - dist/physics.js: shared headless/browser dynamics and recording.
 - dist/suspension.js: shared axial element, suspension experiment and recording.
 - dist/app.js, index.html, style.css: viewer and controls.

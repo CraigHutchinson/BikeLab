@@ -79,3 +79,11 @@ These metrics describe particular tests. They must not collapse into a universal
 - What bounds should the UI enforce from actual component specifications?
 
 No unavailable measurement should be replaced by an apparently precise invented value.
+
+## Strength, damage and pressure-loss data
+
+Terrain inputs must retain geometry/asset revision, positions or height-vector origin/spacing, topology/interpolation, frame, material/motion and physical edge radius where supported. Contact samples need points/normals and declared provenance; do not infer local stress from heights alone. Adaptive detail/rate settings require versioned activation/error thresholds, step bounds, synchronization, hysteresis and effective schedules. Preserve pressure/damage through model switches and record any budget-driven decisions for reproducibility. See [TERRAIN_CONTACT.md](TERRAIN_CONTACT.md).
+
+The [overload/failure contract](OVERLOAD_AND_FAILURE.md) requires a sourced failure basis for every active component before predicting survivability. Store geometry/material and assembly/preload, local load mode and failure variables (with SI units), rate/cycle dependence where consumed, uncertainty, source and validation envelope. Service ratings or a passed standard test must not be silently converted into ultimate breaking forces. Keep stock data, fitted failure parameters and illustrative overrides separate.
+
+Include top/bottom-out stop geometry and response; rim/bead-seat deformation and strength; individual spoke/nipple tension, strength and fatigue; tyre/bead compatibility, seal state, pressure and leak-rate model; and the other structural/attachment components in the matrix. Damaged state, changed load paths, accumulated history and any stochastic seed belong in the saved setup/run. Unsupported criteria must remain explicit rather than defaulting to an indestructible component or an invented threshold.
