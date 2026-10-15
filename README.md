@@ -52,9 +52,9 @@ Same-runtime replay is reproducible. Browser and Node recordings are checked for
 
 ## Current evidence
 
-The prior iteration recorded 55 automated tests passing on Windows and Linux, including independent analytical-reference verification and coarse-step failure/refinement. Chromium checks exercise both stations, real worker cancellation, setup changes, comparison gating, playback/pause/step, browser save/load and stroke-limit handling. Browser-exported wheel, fork-scale, shock-scale and stopped runs agree numerically with Node. Captured desktop/mobile screenshots have now been inspected, closing the earlier screenshot gap for these checked states. No real-bike calibration or participant evidence exists yet.
+64 automated tests pass on Windows and Linux, including spatial geometry, independent analytical-reference verification and coarse-step failure/refinement. Chromium checks exercise both dynamic stations and the spatial terrain probe, real worker cancellation, setup changes, comparison gating, playback/pause/step, browser save/load and stroke-limit handling. Browser-exported wheel, fork-scale, shock-scale and stopped runs agree numerically with Node. Captured desktop/mobile screenshots have now been inspected, closing the earlier screenshot gap for these checked states. No real-bike calibration or participant evidence exists yet.
 
-The continuation reviews main 672e5e7 and adds independently checked spatial geometry; see [iteration 4 review](docs/ITERATION_4_REVIEW.md) and [solver research](docs/SOLVER_RESEARCH.md). Complete-suite and browser evidence for this revision is pending CI.
+The continuation reviews main 672e5e7 and adds independently checked spatial geometry; see [iteration 4 review](docs/ITERATION_4_REVIEW.md) and [solver research](docs/SOLVER_RESEARCH.md). The [iteration 4 evidence receipt](docs/ITERATION_4_EVIDENCE.md) records complete-suite CI, browser/headless geometry agreement and inspected desktop/narrow views.
 
 See [the prior-iteration review](docs/ITERATION_2_REVIEW.md) and [Slice 2 evidence](docs/SLICE_2_EVIDENCE.md) for scope, receipts and remaining limits. [The first hardening review](docs/REVIEW_2026-10-15.md) and [original Slice 1 evidence](docs/SLICE_1_EVIDENCE.md) remain historical receipts.
 

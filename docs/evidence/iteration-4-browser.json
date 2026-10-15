@@ -1,0 +1,255 @@
+{
+  "checks": [
+    "wheel: step, comparison gating, save/load, high lift, mobile width",
+    "suspension: signed curves rendered, step/scrub/play/pause, pin gating, reject/discard, save/load and wrong-station rejection",
+    "suspension: actual worker cancellation, immediate travel limit, shock preset, mobile/narrow width",
+    "reference: explicit compatible setup, unsupported state, worker overlays, dirty gating, save/load and Node metric agreement",
+    "reference: valid coarse integration fails declared limits; half-step refinement passes",
+    "terrain: square/rounded/flat, complete browser/Node report agreement, unavailable/buried states, edit gating, custom profile, load, stale-file guard, co-nearest supports and mobile widths",
+    "no captured page/console errors; rig has rendered pixels"
+  ],
+  "exports": [
+    {
+      "name": "wheel-browser",
+      "result": {
+        "result": "numerical agreement",
+        "normalizedTolerance": 1e-10,
+        "maxAbsoluteDifferences": {
+          "time": 0,
+          "height": 0,
+          "velocity": 1.1102230246251565e-16,
+          "platen": 8.673617379884035e-18,
+          "compression": 0,
+          "force": 1.1368683772161603e-13,
+          "energy": 0,
+          "work": 1.7763568394002505e-15,
+          "loss": 3.3306690738754696e-16,
+          "residual": 2.842170943040401e-14,
+          "unloaded": 0
+        }
+      }
+    },
+    {
+      "name": "suspension-browser",
+      "result": {
+        "result": "numerical agreement",
+        "normalizedTolerance": 1e-10,
+        "maxAbsoluteDifferences": {
+          "time": 0,
+          "height": 0,
+          "velocity": 0,
+          "base": 0,
+          "compression": 0,
+          "compressionVelocity": 0,
+          "springForce": 0,
+          "damperForce": 0,
+          "force": 0,
+          "energy": 0,
+          "work": 0,
+          "loss": 0,
+          "residual": 0
+        }
+      }
+    },
+    {
+      "name": "suspension-top-out",
+      "result": {
+        "result": "numerical agreement",
+        "normalizedTolerance": 1e-10,
+        "maxAbsoluteDifferences": {
+          "time": 0,
+          "height": 0,
+          "velocity": 0,
+          "base": 0,
+          "compression": 0,
+          "compressionVelocity": 0,
+          "springForce": 0,
+          "damperForce": 0,
+          "force": 0,
+          "energy": 0,
+          "work": 0,
+          "loss": 0,
+          "residual": 0
+        }
+      }
+    },
+    {
+      "name": "suspension-shock",
+      "result": {
+        "result": "numerical agreement",
+        "normalizedTolerance": 1e-10,
+        "maxAbsoluteDifferences": {
+          "time": 0,
+          "height": 0,
+          "velocity": 0,
+          "base": 0,
+          "compression": 0,
+          "compressionVelocity": 0,
+          "springForce": 0,
+          "damperForce": 0,
+          "force": 0,
+          "energy": 0,
+          "work": 0,
+          "loss": 0,
+          "residual": 0
+        }
+      }
+    },
+    {
+      "name": "suspension-reference",
+      "result": {
+        "result": "numerical agreement",
+        "normalizedTolerance": 1e-10,
+        "maxAbsoluteDifferences": {
+          "time": 0,
+          "height": 0,
+          "velocity": 0,
+          "base": 0,
+          "compression": 0,
+          "compressionVelocity": 0,
+          "springForce": 0,
+          "damperForce": 0,
+          "force": 0,
+          "energy": 0,
+          "work": 0,
+          "loss": 0,
+          "residual": 0
+        }
+      }
+    }
+  ],
+  "screenshots": [
+    "wheel-desktop.png",
+    "wheel-high-lift.png",
+    "wheel-mobile.png",
+    "suspension-desktop.png",
+    "suspension-comparison.png",
+    "suspension-travel-limit.png",
+    "suspension-mobile.png",
+    "suspension-narrow.png",
+    "reference-desktop.png",
+    "reference-mobile.png",
+    "reference-coarse-failure.png",
+    "terrain-square-desktop.png",
+    "terrain-rounded-desktop.png",
+    "terrain-mobile.png",
+    "terrain-narrow.png"
+  ],
+  "browser": "141.0.7390.37",
+  "referenceComparison": {
+    "comparison": "axial-comparison-1",
+    "candidate": "bikelab-suspension-0.1",
+    "reference": "axial-closed-form-1",
+    "params": {
+      "mass": 45,
+      "stiffness": 9000,
+      "preload": 50,
+      "compressionDamping": 350,
+      "reboundDamping": 350,
+      "travel": 0.16,
+      "initialCompression": 0.075,
+      "initialVelocity": 0,
+      "profile": "flat",
+      "amplitude": 0.005,
+      "frequency": 2,
+      "duration": 4,
+      "dt": 0.0005,
+      "sampleDt": 0.005
+    },
+    "limits": {
+      "compression": 0.000001,
+      "compressionVelocity": 0.0001,
+      "force": 0.1
+    },
+    "scope": "Recorded-time numerical agreement; not hardware calibration or a continuous-time error bound.",
+    "status": "pass",
+    "sampleCount": 801,
+    "startTime": 0,
+    "endTime": 4,
+    "errors": {
+      "compression": {
+        "maxAbsolute": 9.148445889728407e-13,
+        "rms": 2.2059867697546354e-13,
+        "limit": 0.000001
+      },
+      "compressionVelocity": {
+        "maxAbsolute": 1.2184489528443976e-11,
+        "rms": 3.182470290370654e-12,
+        "limit": 0.0001
+      },
+      "force": {
+        "maxAbsolute": 8.166693987732287e-9,
+        "rms": 1.9933912747810237e-9,
+        "limit": 0.1
+      }
+    }
+  },
+  "terrainProbe": {
+    "model": "bikelab-clearance-1",
+    "profile": {
+      "format": "bikelab-profile-1",
+      "units": "m",
+      "axes": "x-forward,z-up",
+      "solid": "below",
+      "interpolation": "linear",
+      "source": {
+        "kind": "illustrative",
+        "description": "Synthetic square rigid reference surface."
+      },
+      "points": [
+        [
+          -1,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0.1
+        ],
+        [
+          0.2,
+          0.1
+        ],
+        [
+          0.2,
+          0
+        ],
+        [
+          1,
+          0
+        ]
+      ]
+    },
+    "setup": {
+      "center": [
+        -0.2,
+        0.36
+      ],
+      "radius": 0.36
+    },
+    "tieTolerance": 1e-10,
+    "status": "available",
+    "distance": 0.3280243893371345,
+    "gap": -0.03197561066286547,
+    "witnesses": [
+      {
+        "point": [
+          0,
+          0.1
+        ],
+        "normal": [
+          -0.6097107608496924,
+          0.7926239891046001
+        ],
+        "feature": {
+          "kind": "vertex",
+          "index": 2
+        }
+      }
+    ]
+  },
+  "errors": []
+}
