@@ -170,3 +170,7 @@ Include overload capability in that design decision: geometry-derived travel lim
 Couple it to the spatial geometry and adaptive-computation experiment in TERRAIN_CONTACT.md. Establish converged flat/rounded/square-edge references before optimizing contact detail or update rates. Include 3D surface contact, event detection, conservative synchronization and measured worst-case real-time capability in solver selection.
 
 Do not require the user to pick a real bike, game controller or final graphics engine before this bounded slice can begin. Use clearly labelled illustrative parameters and keep the reference dataset question open.
+
+## Iteration 4 continuation
+
+Reviewed merged main 672e5e7 before implementation; see [ITERATION_4_REVIEW.md](ITERATION_4_REVIEW.md) and [the 64-test/browser evidence receipt](ITERATION_4_EVIDENCE.md). The [spatial clearance probe](TERRAIN_PROBE.md) supplies authored planar geometry and visible/headless nearest-point/normal/gap queries for flat, rounded and square fixtures. It is the geometry prerequisite of T0, not a dynamic tyre, stress or layered-soil model. [SOLVER_RESEARCH.md](SOLVER_RESEARCH.md) compares Rapier, MuJoCo and Chrono from primary sources and proposes explicit coupled trials; no multibody solver is selected yet. Next implement those bounded constraint/reaction/travel and spatial-contact trials before whole-bike dynamics. Preserve all overload, layered-terrain, multirate and eventual 3D gates.

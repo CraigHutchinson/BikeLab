@@ -8,7 +8,7 @@ import { spawnSync } from 'node:child_process';
 test('scenario CLI rejects invalid inputs without overwriting evidence',async()=>{
   const dir=await mkdtemp(join(tmpdir(),'bikelab-test-')),input=join(dir,'input.json'),output=join(dir,'output.json');
   const cli=fileURLToPath(new URL('../scripts/scenario.mjs',import.meta.url));
-  const run=(...args)=>spawnSync(process.execPath,[cli,...args],{encoding:'utf8'});
+  const run=(...args)=>{const r=spawnSync(process.execPath,[cli,...args],{encoding:'utf8'});assert.ifError(r.error);return r;};
   try {
     await writeFile(input,JSON.stringify({stifness:50000}));
     assert.equal(run(input,output).status,1);

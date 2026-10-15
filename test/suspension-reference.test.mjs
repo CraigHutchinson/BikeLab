@@ -85,7 +85,7 @@ test('comparison detects altered channels and rejects malformed or misaligned re
 });
 test('reference CLI reports complete configuration and distinct unsupported/invalid exits',async()=>{
   const cli=fileURLToPath(new URL('../scripts/compare-suspension.mjs',import.meta.url));
-  const invoke=(...args)=>spawnSync(process.execPath,[cli,...args],{encoding:'utf8'});
+  const invoke=(...args)=>{const r=spawnSync(process.execPath,[cli,...args],{encoding:'utf8'});assert.ifError(r.error);return r;};
   const good=invoke();assert.equal(good.status,0);
   const report=JSON.parse(good.stdout);assert.equal(report.status,'pass');
   assert.deepEqual(Object.keys(report.params).sort(),Object.keys(DEFAULTS).sort());

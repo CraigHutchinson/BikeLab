@@ -33,7 +33,7 @@ test('suspension setup edits retain precision, require all fields, and replay of
 test('suspension CLI preserves evidence, verifies exports, and signals a travel limit with exit 2',async()=>{
   const dir=await mkdtemp(join(tmpdir(),'bikelab-suspension-')), input=join(dir,'setup.json'),output=join(dir,'run.json');
   const cli=fileURLToPath(new URL('../scripts/scenario.mjs',import.meta.url));
-  const run=(...args)=>spawnSync(process.execPath,[cli,'--suspension',...args],{encoding:'utf8'});
+  const run=(...args)=>{const r=spawnSync(process.execPath,[cli,'--suspension',...args],{encoding:'utf8'});assert.ifError(r.error);return r;};
   try {
     await writeFile(input,JSON.stringify({duration:.1}));
     assert.equal(run(input,output).status,0);
