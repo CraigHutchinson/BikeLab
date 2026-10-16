@@ -190,3 +190,11 @@ Next balanced dynamics slice: passive articulated rider compliance on the existi
 [Review of merged PR #6](ITERATION_7_REVIEW.md) precedes the [guided-rider extension](RIDER_MODEL.md). The same visible hardtail/full-suspension fixture now receives one passive rider coordinate, configurable mass partition/spring/damping/travel, signed histories and energy/loss evidence. Fixed mode remains the exact original baseline. This is a bounded prerequisite to the anatomical hand/foot/saddle, posture and control contracts above, not completion of them.
 
 Next prioritize the coupled fixture's strict travel/end-stop and attachment-load-path experiment: converge a supported stop model with independent momentum/work checks and explicit ultimate boundaries before allowing impact continuation. Then add observable component loads and sourced failure/pressure-loss criteria; do not infer rim/spoke/seal survival from axial rider or axle loads. Preserve 3D lateral/turning, spatial corner contact, layered root/soil and tyre mud history, detailed trail provenance, and validated adaptive/multirate real-time gates. See [iteration 7 evidence](ITERATION_7_EVIDENCE.md).
+
+
+
+## Iteration 8 — fork travel buffers
+
+The [fork-buffer model](FORK_BUFFERS.md) receives finite top/bottom travel forces in the coupled viewer and headless runner, with independent impulse/work checks, engagement/energy plots and retained ultimate-bound termination. The review of merged PR #7 precedes implementation; see ITERATION_8_REVIEW.md. Precision polishing remains parked unless a receiving feature fails its declared budget.
+
+Next dynamics extension: shock buffers through the existing changing linkage leverage, then explicit rider attachment-limit/load paths. The spatial follow-up above is a separate priority: deformed tyre envelope, all load-bearing contact regions and distributed material-dependent grip. Neither fork buffer loads nor nearest rigid-circle witnesses substitute for contact pressure, traction, component damage or real-bike calibration.

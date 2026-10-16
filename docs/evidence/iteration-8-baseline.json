@@ -1,0 +1,26 @@
+[
+  {
+    "bike": "hardtail",
+    "rider": "fixed",
+    "samples": 801,
+    "originalChannelsExact": true
+  },
+  {
+    "bike": "hardtail",
+    "rider": "compliant",
+    "samples": 801,
+    "originalChannelsExact": true
+  },
+  {
+    "bike": "full",
+    "rider": "fixed",
+    "samples": 801,
+    "originalChannelsExact": true
+  },
+  {
+    "bike": "full",
+    "rider": "compliant",
+    "samples": 801,
+    "originalChannelsExact": true
+  }
+]

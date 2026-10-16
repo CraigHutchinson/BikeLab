@@ -3,11 +3,11 @@ import {rigLandmarks} from './bike-geometry.js';
 import {Calculation} from './calculation.js';
 const $=id=>document.getElementById(id),form=$('setup');
 let run=null,index=0,playing=false,last=0,elapsed=0,frameRequest=0;
-const canvases=['rig','loads','travel','riderTravelPlot','riderForcePlot'];
+const canvases=['rig','loads','travel','riderTravelPlot','riderForcePlot','bufferForcePlot','bufferEnergyPlot'];
 const controls=['play','reset','step','scrub','save'];
 function stop(){playing=false;$('play').textContent='Play';cancelAnimationFrame(frameRequest);}
 function invalidate(status='SETUP CHANGED'){stop();run=null;index=0;controls.forEach(id=>$(id).disabled=true);$('status').textContent=status;$('termination').textContent='';$('assembly').textContent='Coupled bicycle';draw();}
-function updateFields(){form.elements.shockStiffness.disabled=form.elements.shockDamping.disabled=form.elements.bike.value==='hardtail';form.elements.delay.disabled=form.elements.input.value!=='travelling';for(const key of ['riderMass','riderStiffness','riderDamping','riderTravel'])form.elements[key].disabled=form.elements.rider.value==='fixed';}
+function updateFields(){for(const key of ['forkBufferWidth','forkBufferStiffness','forkBufferDamping'])form.elements[key].disabled=form.elements.forkBuffer.value==='none';form.elements.shockStiffness.disabled=form.elements.shockDamping.disabled=form.elements.bike.value==='hardtail';form.elements.delay.disabled=form.elements.input.value!=='travelling';for(const key of ['riderMass','riderStiffness','riderDamping','riderTravel'])form.elements[key].disabled=form.elements.rider.value==='fixed';}
 const calculation=new Calculation({
   createWorker:()=>new Worker(new URL('./bike-worker.js',import.meta.url),{type:'module'}),
   onBusy:busy=>{$('cancel').disabled=!busy;},
@@ -16,15 +16,17 @@ const calculation=new Calculation({
     $('status').textContent=run.status==='complete'?'READY':'TRAVEL LIMIT';
     $('assembly').textContent=(run.params.bike==='full'?'Single-pivot full suspension':'Hardtail')+' · '+run.dofs+' coordinates · '+(run.params.rider==='compliant'?'passive rider':'fixed rider');
     $('compute').textContent=`${Math.round(ms)} ms offline calculation`;
-    $('termination').textContent=run.termination?`${run.termination.reason} at trial ${run.termination.trialTime.toFixed(6)} s. Replay ends at last valid ${run.termination.lastValidTime.toFixed(6)} s; no end-stop impact simulated.`:'';
-    $('evidence').textContent=`${run.engine}. Initial front / rear loads ${run.initial.frontForce.toFixed(1)} / ${run.initial.rearForce.toFixed(1)} N. Peak integration-step load ${run.summary.peakForce.toFixed(1)} N. Maximum energy/work residual ${run.summary.maxResidual.toFixed(4)} J. Support work ${run.summary.work.toFixed(3)} J; dissipation ${run.summary.loss.toFixed(3)} J (rider ${run.summary.riderLoss.toFixed(3)} J).`;
+    $('termination').textContent=run.termination?`${run.termination.reason} at trial ${run.termination.trialTime.toFixed(6)} s. Replay ends at last valid ${run.termination.lastValidTime.toFixed(6)} s; ultimate domain exceeded; no rigid impact or damage continuation.`:'';
+    $('evidence').textContent=`${run.engine}. Initial front / rear loads ${run.initial.frontForce.toFixed(1)} / ${run.initial.rearForce.toFixed(1)} N. Peak integration-step load ${run.summary.peakForce.toFixed(1)} N. Maximum energy/work residual ${run.summary.maxResidual.toFixed(4)} J. Support work ${run.summary.work.toFixed(3)} J; dissipation ${run.summary.loss.toFixed(3)} J (rider ${run.summary.riderLoss.toFixed(3)} J, fork buffers ${run.summary.bufferLoss.toFixed(3)} J). Peak top / bottom buffer force ${run.summary.peakTopForce.toFixed(1)} / ${run.summary.peakBottomForce.toFixed(1)} N.`;
     draw();
   }
 });
-function params(){const p={...DEFAULTS};for(const key of Object.keys(p))if(form.elements[key]){const value=form.elements[key].value;if(!value.trim())throw new Error('Missing setup value: '+key);p[key]=['bike','input','rider'].includes(key)?value:Number(value);}return validate(p);}
+function params(){const p={...DEFAULTS};for(const key of Object.keys(p))if(form.elements[key]){const value=form.elements[key].value;if(!value.trim())throw new Error('Missing setup value: '+key);p[key]=['bike','input','rider','forkBuffer'].includes(key)?value:Number(value);}return validate(p);}
 function submit(){invalidate('CALCULATING');$('error').textContent='';const ticket=calculation.begin();try{calculation.launch(ticket,{params:params()});}catch(e){calculation.fail(ticket,e.message);}}
 form.addEventListener('submit',e=>{e.preventDefault();submit();});
 form.addEventListener('input',()=>{calculation.cancel();invalidate();updateFields();});
+function bufferExample(stiffness){calculation.cancel();const p={...DEFAULTS,bike:'hardtail',forkBuffer:'progressive',forkStiffness:stiffness,forkDamping:200,amplitude:.08,bumpDuration:.2};for(const [key,value] of Object.entries(p))if(form.elements[key])form.elements[key].value=String(value);updateFields();submit();}
+$('bufferExample').onclick=()=>bufferExample(9000);$('bottomBufferExample').onclick=()=>bufferExample(4000);
 $('cancel').onclick=()=>{calculation.cancel();invalidate('CANCELLED');$('error').textContent='Calculation cancelled. Change setup or calculate again.';};
 $('reset').onclick=()=>{stop();index=0;draw();};
 $('step').onclick=()=>{stop();index=Math.min(index+1,run.signals.time.length-1);draw();};
@@ -62,7 +64,7 @@ function scene(){const ctx=context('rig');if(!ctx)return;const {c,w,h}=ctx;c.fon
   const landmarks=rigLandmarks({bike:run.params.bike,pitch:s.pitch[k],heave:s.heave[k],fork:s.fork[k],rearAngle:s.rearAngle[k]});
   const {bb,seat,headBottom,headTop,pivot,shockFrame,shockArm}=Object.fromEntries(Object.entries(landmarks).map(([name,p])=>[name,point(...p)]));
   line(bb,seat,'#e5edf2',5);line(seat,headTop,'#e5edf2',5);line(headBottom,bb,'#e5edf2',5);line(headBottom,headTop,'#e5edf2',7);
-  line(headBottom,front,'#70e2ce',6);
+  line(headBottom,front,Math.abs(s.forkBufferForce[k])>1e-6?'#f2b373':'#70e2ce',6);
   if(run.params.bike==='hardtail'){line(bb,rear,'#f2b373',5);line(seat,rear,'#f2b373',4);}
   else {
     line(bb,pivot,'#e5edf2',4);line(pivot,rear,'#f2b373',5);line(pivot,shockArm,'#f2b373',3);line(shockArm,rear,'#f2b373',3);
@@ -83,6 +85,7 @@ function scene(){const ctx=context('rig');if(!ctx)return;const {c,w,h}=ctx;c.fon
   c.fillStyle='#9aabb7';c.fillText(passive?'Passive rider COM · frame guide':'Fixed rider + frame COM',16,22);c.fillText('Two prescribed flat platens',16,h-10);
 }
 function plot(id,keys,factor){const ctx=context(id);if(!ctx||!run)return;const {c,w,h}=ctx,s=run.signals,n=s.time.length;
+  if(id.startsWith('buffer')&&run.params.forkBuffer==='none'){c.font='11px system-ui';c.fillStyle='#9aabb7';c.fillText('Enable fork buffers to resolve this channel.',8,28);return;}
   if(id.startsWith('rider')&&run.params.rider==='fixed'){c.font='11px system-ui';c.fillStyle='#9aabb7';c.fillText('Select passive rider to resolve this channel.',8,28);return;}
   let hi=1,lo=0;for(const key of keys)for(const v of s[key]){hi=Math.max(hi,v*factor);lo=Math.min(lo,v*factor);}hi*=1.1;lo*=1.1;
   const x=t=>36+(w-46)*t/run.params.duration,y=v=>h-22-(h-35)*(v-lo)/(hi-lo);
@@ -90,10 +93,13 @@ function plot(id,keys,factor){const ctx=context(id);if(!ctx||!run)return;const {
   keys.forEach((key,j)=>{c.beginPath();for(let i=0;i<n;i++){const px=x(s.time[i]),py=y(s[key][i]*factor);if(i===0)c.moveTo(px,py);else c.lineTo(px,py);}c.strokeStyle=id.startsWith('rider')?'#c2a3ff':j?'#f2b373':'#70e2ce';c.lineWidth=1.5;c.stroke();});
   c.beginPath();c.moveTo(x(s.time[index]),8);c.lineTo(x(s.time[index]),h-22);c.strokeStyle='#e5edf2';c.lineWidth=1;c.stroke();
 }
-function draw(){scene();for(const id of canvases.slice(1))if(!run)context(id);if(!run){for(const id of ['pitch','fork','shock','riderCompression','riderForce'])$(id).textContent='—';$('time').textContent='0.000 s';$('scrub').value=0;$('compute').textContent='';$('evidence').textContent='Calculate the current setup to create an experiment record.';return;}
+function draw(){scene();for(const id of canvases.slice(1))if(!run)context(id);if(!run){for(const id of ['pitch','fork','shock','riderCompression','riderForce','bufferForce','bufferState'])$(id).textContent='—';$('time').textContent='0.000 s';$('scrub').value=0;$('compute').textContent='';$('evidence').textContent='Calculate the current setup to create an experiment record.';return;}
   const s=run.signals;$('scrub').value=index;$('time').textContent=s.time[index].toFixed(3)+' s';$('pitch').textContent=(s.pitch[index]*180/Math.PI).toFixed(2)+'°';$('fork').textContent=(s.fork[index]*1000).toFixed(1)+' mm';$('shock').textContent=run.params.bike==='full'?(s.shock[index]*1000).toFixed(1)+' mm':'Rigid';
   $('riderCompression').textContent=run.params.rider==='compliant'?(s.riderCompression[index]*1000).toFixed(1)+' mm':'Fixed';
   $('riderForce').textContent=run.params.rider==='compliant'?s.riderForce[index].toFixed(1)+' N':'Not resolved';
+  $('bufferForce').textContent=run.params.forkBuffer==='none'?'Disabled':s.forkBufferForce[index].toFixed(1)+' N';
+  $('bufferState').textContent=run.params.forkBuffer==='none'?'No buffers':s.forkTopForce[index]>0?'Top-out':s.forkBottomForce[index]>0?'Bottom-out':'Free travel';
+  plot('bufferForcePlot',['forkBufferForce'],1);plot('bufferEnergyPlot',['forkBufferEnergy','forkBufferDissipation'],1);
   plot('riderTravelPlot',['riderCompression'],1000);plot('riderForcePlot',['riderForce'],1);
   plot('loads',['frontForce','rearForce'],1);plot('travel',['fork','shock'],1000);
 }

@@ -93,7 +93,7 @@ test('rider controls affect dynamics; repeat, sample cadence and energy loss are
 });
 
 test('v0.1 records migrate explicitly to fixed mode; v0.2 requires every rider setting',()=>{
-  const legacy=Object.fromEntries(Object.entries(DEFAULTS).filter(([k])=>!k.startsWith('rider')));
+  const legacy=Object.fromEntries(Object.entries(DEFAULTS).filter(([k])=>!k.startsWith('rider')&&!k.startsWith('forkBuffer')));
   assert.deepEqual(setupFromRecord({model:LEGACY_MODEL,params:legacy}),DEFAULTS);
   assert.throws(()=>setupFromRecord({model:MODEL,params:legacy}),/Incomplete/);
   assert.throws(()=>setupFromRecord({model:LEGACY_MODEL,params:{...legacy,rider:'compliant'}}),/Unknown legacy/);

@@ -58,3 +58,6 @@ MuJoCo is received here for this bounded assembly. The previous Rapier carriage 
 - [Pinned force assembly](https://github.com/google-deepmind/mujoco/blob/3.16.0/src/engine/engine_core_smooth.c): external force/torque ordering.
 
 The unmodified official @mujoco/mujoco 3.16.0 JS/WASM artifact, Apache license, dependency/runtime notices and integrity/provenance receipt are in `dist/vendor/mujoco-3.16.0`. Source commit a892750516336d8358949f4518fcc4fbbd85beae; Emscripten 4.0.10. The shipped source map/build inputs informed the notice inventory. No package install is needed to run the site. The ~10.8 MB WASM binary is downloaded when this station calculates; no real-time or load-time target is claimed.
+
+
+Iteration 8 adds optional [fork travel buffers](FORK_BUFFERS.md) in model v0.3. Earlier no-stop descriptions above describe the no-buffer baseline; fork buffers act inside the same ultimate stroke, with explicit force/energy ownership. Shock/rider stop and impact/failure qualification remain open.
