@@ -49,3 +49,5 @@ Use `node scripts/bike-rig.mjs [setup.json] [run.json]` for the same diagnostics
 v0.5 records require all seven geometry fields. Complete v0.1–v0.4 records explicitly restore original geometry (and their existing rider/fork/shock migration rules). The old encoded arm z offset is retained exactly for numerical replay. Four pre-change v0.4 hardtail/full and fixed/passive records reproduce every channel and summary exactly, checked by immutable trace hashes. Stored sample arrays and stored `geometry` objects are not trusted on import; the complete setup is validated and rerun.
 
 The original 25 mm BB drop remains corrected. Next work requires measured production geometry and mass distribution, rider attachment load paths and supported end-stop/failure loads. The separate distributed contact, layered soil/root/mud, 3D traction and adaptive-rate gates remain open.
+
+The [manufacturer catalogue](GEOMETRY_CATALOGUE.md) now collates eight selectable reference configurations and source links. Published fit/shock dimensions are kept separate from estimated linkage coordinates; catalogue selection is informational until a complete supported mechanism can be calibrated.

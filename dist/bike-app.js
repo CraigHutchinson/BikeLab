@@ -1,3 +1,4 @@
+import './geometry-reference-app.js';
 import {GEOMETRY_KEYS,PHOTO_GEOMETRY,REFERENCE_GEOMETRY,geometryLabel,linkageDiagnostics} from './linkage.js';
 import {DEFAULTS,GEOMETRY as g,validate,rigRecord,setupFromRecord} from './bike-rig.js';
 import {rigLandmarks} from './bike-geometry.js';

@@ -1,4 +1,5 @@
 import {GEOMETRY_KEYS} from '../dist/linkage.js';
+import {CATALOGUE} from '../dist/geometry-catalogue.js';
 import assert from 'node:assert/strict';
 import {readFile,writeFile} from 'node:fs/promises';
 import {join} from 'node:path';
@@ -9,6 +10,12 @@ export async function checkBike({page,root,dir,report}) {
   const exportRun=async name=>{const pending=page.waitForEvent('download');await page.locator('#save').click();const download=await pending,path=join(dir,name+'.json');await download.saveAs(path);return {path,record:JSON.parse(await readFile(path,'utf8'))};};
   const apply=async()=>{await page.locator('button[type=submit]').click();await ready();};
   await page.setViewportSize({width:1440,height:1100});await page.goto(root+'bike.html');await ready();
+  assert.equal(await page.locator('#manufacturerReference option').count(),CATALOGUE.records.length);
+  for(const r of CATALOGUE.records){await page.locator('#manufacturerReference').selectOption(r.id);assert.match(await page.locator('#referenceReadiness').textContent(),/Reference only/);assert.equal(await page.locator('#save').isDisabled(),false);}
+  assert.match(await page.locator('#referenceDimensions').textContent(),/62.5 mm/);
+  const catalogueDownload=page.waitForEvent('download');await page.locator('#manufacturerReferences details summary').click();await page.locator('#exportCatalogue').click();const catalogueFile=await catalogueDownload;const cataloguePath=join(dir,'geometry-catalogue.json');await catalogueFile.saveAs(cataloguePath);assert.deepEqual(JSON.parse(await readFile(cataloguePath,'utf8')),CATALOGUE);await page.locator('#manufacturerReferences details summary').click();
+  await page.locator('#manufacturerReference').selectOption('orange-five-2020-m');
+  report.checks.push('manufacturer catalogue: eight sourced configurations selectable, SI JSON export exact, missing mechanism data explicit, reference selection leaves the calculated rig intact');
   assert.match(await page.locator('#geometryName').textContent(),/Annotated/);
   assert.match(await page.locator('#configuration').textContent(),/210.0 mm; stroke 55.0 mm/);
   await page.locator('#geometrySettings summary').click();
