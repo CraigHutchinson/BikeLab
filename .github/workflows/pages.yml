@@ -46,6 +46,7 @@ jobs:
           NODE_PATH: ${{ runner.temp }}/bikelab-browser/node_modules
         run: node scripts/browser-check.mjs
       - name: Download geometry review references
+        if: always()
         run: node scripts/geometry-reference.mjs
       - name: Preserve browser evidence
         if: always()
