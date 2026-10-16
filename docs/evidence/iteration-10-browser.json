@@ -1,0 +1,55 @@
+{
+  "browser": "156.0.4314.8",
+  "exports": [
+    {
+      "name": "shockTopExample",
+      "result": {
+        "maxBrowserNodeDifference": 4.615685611497611e-11,
+        "summary": {
+          "maxResidual": 0.11756678756921701,
+          "peakForce": 1124.8844497711075,
+          "peakRiderForce": 0,
+          "peakTopForce": 47.81896685078885,
+          "peakBottomForce": 0,
+          "work": 73.68132488762089,
+          "loss": 73.73388421330424,
+          "riderLoss": 0,
+          "bufferLoss": 0.005390827659643306,
+          "shockBufferLoss": 3.4050061715228708,
+          "peakShockTopForce": 3523.1032141940814,
+          "peakShockBottomForce": 0
+        }
+      }
+    },
+    {
+      "name": "shockBottomExample",
+      "result": {
+        "maxBrowserNodeDifference": 3.774403012357652e-11,
+        "summary": {
+          "maxResidual": 0.0599249766023604,
+          "peakForce": 1402.9110088363736,
+          "peakRiderForce": 0,
+          "peakTopForce": 0,
+          "peakBottomForce": 0,
+          "work": 71.4891877201249,
+          "loss": 71.50961162197167,
+          "riderLoss": 0,
+          "bufferLoss": 0,
+          "shockBufferLoss": 0.9900752295853088,
+          "peakShockTopForce": 0,
+          "peakShockBottomForce": 1899.0207053880306
+        }
+      }
+    }
+  ],
+  "checks": [
+    "shock buffers: both end presets, worker/headless signals, engagement, save/load, dormant hardtail controls, disabled settings, responsive plots and lifecycle"
+  ],
+  "screenshots": [
+    "shockTopExample-desktop.png",
+    "shockBottomExample-desktop.png",
+    "shock-buffers-mobile-390.png",
+    "shock-buffers-mobile-320.png"
+  ],
+  "errors": []
+}

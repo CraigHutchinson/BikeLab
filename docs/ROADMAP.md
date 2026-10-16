@@ -210,3 +210,8 @@ Next dynamics extension: shock buffers through the existing changing linkage lev
 [R0a](ITERATION_9_EVIDENCE.md) receives the request-first design in a separate viewer/headless replay: finite-width swept bounds, static layered samples, explicit stepped-rock geometry, async source reuse, owned outputs and missing-data admission. See [scope](ITERATION_9_SCOPE.md) for the implemented subset and remaining R0 gates. This does not complete the full R0 contract or change bicycle forces. The [image review](GEOMETRY_VISUAL_REVIEW.md) closes the BB/frame drawing comparison while retaining sourced physical linkage calibration as a follow-up.
 
 Next terrain work: asymmetric/multimodal optional route ribbons, resolved root/reinforcement and known-void controls, source transforms/import, and bounded leased outputs/shared state identities as required by the first loaded-tyre consumer. R1 must add physically supported distributed deformable contact; geometry arrays and normals are not springs or forces. Shock/rider end-stop loads, damage/leakage, 3D turning traction, contamination and measured multirate operation remain open.
+
+
+## Iteration 10 — rear shock dynamics
+
+[Rear shock buffers](SHOCK_BUFFERS.md) now map axial top/bottom forces through the changing single-pivot derivative, with visible swing moment, total shock force and stored/lost energy. [Review](ITERATION_10_REVIEW.md) captures model/configuration gaps; [evidence](ITERATION_10_EVIDENCE.md) records bounded receiving checks. Hardtail and disabled-buffer baselines remain unchanged. Next focus on sag/load/leverage configuration diagnostics and sourced geometry/mass inputs, followed by rider attachment load paths. Terrain follow-ups remain separate.

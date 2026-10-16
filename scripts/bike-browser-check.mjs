@@ -68,7 +68,7 @@ export async function checkBike({page,root,dir,report}) {
     assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));await shot('rider-mobile-'+width);
   }
   const legacy=JSON.parse(await readFile(join(dir,'bike-hardtail.json'),'utf8'));legacy.model='bikelab-planar-rig-0.1';legacy.params.dt=.0001;
-  for(const key of Object.keys(legacy.params))if((key.startsWith('rider')||key.startsWith('forkBuffer')))delete legacy.params[key];
+  for(const key of Object.keys(legacy.params))if((key.startsWith('rider')||(key.startsWith('forkBuffer')||key.startsWith('shockBuffer'))))delete legacy.params[key];
   const legacyPath=join(dir,'bike-legacy.json');await writeFile(legacyPath,JSON.stringify(legacy));
   await page.locator('#load').setInputFiles(legacyPath);await ready();
   assert.equal(await page.locator('[name=rider]').inputValue(),'fixed');assert.equal(await page.locator('[name=riderMass]').isDisabled(),true);
@@ -89,6 +89,22 @@ export async function checkBike({page,root,dir,report}) {
   await page.locator('#bottomBufferExample').click();await ready();const bottom=await exportRun('fork-bottom-buffer'),bottomNode=await runRig(bottom.record.params);assert.ok(bottom.record.summary.peakBottomForce>100);for(const [key,values] of Object.entries(bottom.record.signals))for(let i=0;i<values.length;i++)assert.ok(Math.abs(values[i]-bottomNode.signals[key][i])<1e-8,key);const bottomIndex=bottom.record.signals.forkBottomForce.indexOf(Math.max(...bottom.record.signals.forkBottomForce));await page.locator('#scrub').fill(String(bottomIndex));assert.equal(await page.locator('#bufferState').textContent(),'Bottom-out');await shot('fork-bottom-buffer-desktop');
   await page.evaluate(()=>{window.dispatchEvent(new PageTransitionEvent('pagehide',{persisted:true}));window.dispatchEvent(new PageTransitionEvent('pageshow',{persisted:true}));});
   for(const width of [390,320]){await page.setViewportSize({width,height:844});await page.waitForFunction(()=>['bufferForcePlot','bufferEnergyPlot'].every(id=>{const c=document.getElementById(id);return c.width===Math.round(c.clientWidth*devicePixelRatio);}));assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));await shot('fork-buffers-mobile-'+width);}
+  await page.setViewportSize({width:1440,height:1100});
+  for(const [id,channel,state] of [['shockTopExample','shockTopForce','Top-out'],['shockBottomExample','shockBottomForce','Bottom-out']]){
+    await page.locator('#'+id).click();await ready();assert.equal(await page.locator('#status').textContent(),'READY');
+    const saved=await exportRun(id),node=await runRig(saved.record.params);let max=0;
+    for(const [key,values] of Object.entries(saved.record.signals))for(let i=0;i<values.length;i++){const error=Math.abs(values[i]-node.signals[key][i]);max=Math.max(max,error);assert.ok(error<1e-8,key);}
+    const values=saved.record.signals[channel],peak=values.indexOf(Math.max(...values));assert.ok(values[peak]>100);
+    await page.locator('#scrub').fill(String(peak));assert.equal(await page.locator('#shockBufferState').textContent(),state);await shot(id+'-desktop');
+    await page.locator('#load').setInputFiles(saved.path);await ready();assert.equal(await page.locator('[name=shockBuffer]').inputValue(),'progressive');
+    report.exports.push({name:id,result:{maxBrowserNodeDifference:max,summary:saved.record.summary}});
+  }
+  await page.locator('[name=bike]').selectOption('hardtail');assert.equal(await page.locator('[name=shockBuffer]').isDisabled(),true);assert.equal(await page.locator('[name=shockBufferWidth]').isDisabled(),true);await apply();assert.equal(await page.locator('#shockBufferForce').textContent(),'No shock');assert.equal(await page.locator('#shockTotal').textContent(),'No shock');
+  await page.locator('#shockBottomExample').click();await ready();await page.locator('#shockBufferSettings summary').click();assert.equal(await page.locator('[name=shockBufferWidth]').isDisabled(),false);
+  await page.locator('[name=shockBuffer]').selectOption('none');assert.equal(await page.locator('[name=shockBufferWidth]').isDisabled(),true);await apply();await page.locator('#shockBottomExample').click();await ready();
+  await page.evaluate(()=>{window.dispatchEvent(new PageTransitionEvent('pagehide',{persisted:true}));window.dispatchEvent(new PageTransitionEvent('pageshow',{persisted:true}));});
+  for(const width of [390,320]){await page.setViewportSize({width,height:844});await page.waitForFunction(()=>['shockBufferForcePlot','shockBufferEnergyPlot'].every(id=>{const c=document.getElementById(id);return c.width===Math.round(c.clientWidth*devicePixelRatio);}));assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));await shot('shock-buffers-mobile-'+width);}
+  report.checks.push('shock buffers: both end presets, worker/headless signals, engagement, save/load, dormant hardtail controls, disabled settings, responsive plots and lifecycle');
   report.checks.push('fork buffers: supported top/bottom loading; real worker/headless parity; unbuffered control and weak-buffer ultimate termination; setup reconstruction, engagement display and responsive plots');
   report.checks.push('rider: both compliant assemblies; exact setup restoration and explicit v0.1 fixed migration; browser/Node channels; mass control; invalid mass budget; settling and dynamic rider travel rejection; signed plots; five-canvas lifecycle and mobile recovery');
   report.checks.push('bicycle: both actual assemblies; WASM worker under Pages path; browser/Node sample agreement; setup save/load; replay; dirty/cancel/rejection and travel-limit handling; mobile and page lifecycle');
