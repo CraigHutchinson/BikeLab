@@ -1,0 +1,33 @@
+{
+  "browser": "156.0.4314.8",
+  "checks": [
+    "fork buffers: supported top/bottom loading; real worker/headless parity; unbuffered control and weak-buffer ultimate termination; setup reconstruction, engagement display and responsive plots"
+  ],
+  "exports": [
+    {
+      "name": "fork-buffers",
+      "result": {
+        "maxBrowserNodeDifference": 1.5575096767861396e-11,
+        "summary": {
+          "maxResidual": 0.2252574659810307,
+          "peakForce": 3047.0450153225897,
+          "peakRiderForce": 0,
+          "peakTopForce": 711.870827595388,
+          "peakBottomForce": 0,
+          "work": 206.70789789577444,
+          "loss": 206.89131577371964,
+          "riderLoss": 0,
+          "bufferLoss": 2.713770825660699
+        }
+      }
+    }
+  ],
+  "screenshots": [
+    "fork-buffers-desktop.png",
+    "fork-buffers-ultimate.png",
+    "fork-bottom-buffer-desktop.png",
+    "fork-buffers-mobile-390.png",
+    "fork-buffers-mobile-320.png"
+  ],
+  "errors": []
+}

@@ -68,11 +68,28 @@ export async function checkBike({page,root,dir,report}) {
     assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));await shot('rider-mobile-'+width);
   }
   const legacy=JSON.parse(await readFile(join(dir,'bike-hardtail.json'),'utf8'));legacy.model='bikelab-planar-rig-0.1';legacy.params.dt=.0001;
-  for(const key of Object.keys(legacy.params))if(key.startsWith('rider'))delete legacy.params[key];
+  for(const key of Object.keys(legacy.params))if((key.startsWith('rider')||key.startsWith('forkBuffer')))delete legacy.params[key];
   const legacyPath=join(dir,'bike-legacy.json');await writeFile(legacyPath,JSON.stringify(legacy));
   await page.locator('#load').setInputFiles(legacyPath);await ready();
   assert.equal(await page.locator('[name=rider]').inputValue(),'fixed');assert.equal(await page.locator('[name=riderMass]').isDisabled(),true);
   assert.equal(await page.locator('#riderForce').textContent(),'Not resolved');assert.equal(await page.locator('[name=dt]').inputValue(),'0.0001');
+  // Fork buffer receiving experiment and unbuffered control use identical forcing.
+  await page.setViewportSize({width:1440,height:1100});await page.locator('#bufferExample').click();await ready();
+  assert.equal(await page.locator('#status').textContent(),'READY');
+  await page.locator('#bufferSettings summary').click();assert.equal(await page.locator('[name=forkBufferWidth]').isDisabled(),false);
+  const buffered=await exportRun('fork-buffers'),bufferNode=await runRig(buffered.record.params);
+  assert.ok(buffered.record.summary.peakTopForce>100);
+  let bufferDifference=0;for(const [key,values] of Object.entries(buffered.record.signals))for(let i=0;i<values.length;i++){const difference=Math.abs(values[i]-bufferNode.signals[key][i]);bufferDifference=Math.max(bufferDifference,difference);assert.ok(difference<1e-8,key);}
+  report.exports.push({name:'fork-buffers',result:{maxBrowserNodeDifference:bufferDifference,summary:buffered.record.summary}});
+  const peakIndex=buffered.record.signals.forkTopForce.indexOf(Math.max(...buffered.record.signals.forkTopForce));
+  await page.locator('#scrub').fill(String(peakIndex));assert.equal(await page.locator('#bufferState').textContent(),'Top-out');await shot('fork-buffers-desktop');
+  await page.locator('[name=forkBuffer]').selectOption('none');await apply();assert.equal(await page.locator('#status').textContent(),'TRAVEL LIMIT');assert.equal(await page.locator('[name=forkBufferWidth]').isDisabled(),true);
+  await page.locator('#load').setInputFiles(buffered.path);await ready();assert.equal(await page.locator('[name=forkBuffer]').inputValue(),'progressive');
+  await page.locator('[name=forkBufferWidth]').fill('.005');await page.locator('[name=forkBufferStiffness]').fill('50000');await page.locator('[name=forkBufferDamping]').fill('0');await apply();assert.equal(await page.locator('#status').textContent(),'TRAVEL LIMIT');await shot('fork-buffers-ultimate');
+  await page.locator('#bottomBufferExample').click();await ready();const bottom=await exportRun('fork-bottom-buffer'),bottomNode=await runRig(bottom.record.params);assert.ok(bottom.record.summary.peakBottomForce>100);for(const [key,values] of Object.entries(bottom.record.signals))for(let i=0;i<values.length;i++)assert.ok(Math.abs(values[i]-bottomNode.signals[key][i])<1e-8,key);const bottomIndex=bottom.record.signals.forkBottomForce.indexOf(Math.max(...bottom.record.signals.forkBottomForce));await page.locator('#scrub').fill(String(bottomIndex));assert.equal(await page.locator('#bufferState').textContent(),'Bottom-out');await shot('fork-bottom-buffer-desktop');
+  await page.evaluate(()=>{window.dispatchEvent(new PageTransitionEvent('pagehide',{persisted:true}));window.dispatchEvent(new PageTransitionEvent('pageshow',{persisted:true}));});
+  for(const width of [390,320]){await page.setViewportSize({width,height:844});await page.waitForFunction(()=>['bufferForcePlot','bufferEnergyPlot'].every(id=>{const c=document.getElementById(id);return c.width===Math.round(c.clientWidth*devicePixelRatio);}));assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));await shot('fork-buffers-mobile-'+width);}
+  report.checks.push('fork buffers: supported top/bottom loading; real worker/headless parity; unbuffered control and weak-buffer ultimate termination; setup reconstruction, engagement display and responsive plots');
   report.checks.push('rider: both compliant assemblies; exact setup restoration and explicit v0.1 fixed migration; browser/Node channels; mass control; invalid mass budget; settling and dynamic rider travel rejection; signed plots; five-canvas lifecycle and mobile recovery');
   report.checks.push('bicycle: both actual assemblies; WASM worker under Pages path; browser/Node sample agreement; setup save/load; replay; dirty/cancel/rejection and travel-limit handling; mobile and page lifecycle');
 }

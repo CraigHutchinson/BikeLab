@@ -196,3 +196,10 @@ User-prioritized spatial follow-up (2026-10-16): receive the [deformed tyre and 
 ### Terrain request-first receiving sequence
 
 [Terrain sampling contract](TERRAIN_SAMPLING_CONTRACT.md): R0 is a prescribed-motion request/cache viewer and headless replay with straight, cornering, reversal, seam and soil-over-rock cutaway fixtures. It shows mandatory versus prefetched coverage, off-patch acquisition and explicit missing data. R1 adds loaded distributed tyre contact; R2 adds layered response/shared soil history; R3 adds 3D rolling traction and measured fidelity-tier conformance. These are named receiving stages, not implemented terrain physics. Retain the scoped checkpoints in [terrain request scope](TERRAIN_REQUEST_SCOPE.md).
+
+
+## Iteration 8 — fork travel buffers
+
+The [fork-buffer model](FORK_BUFFERS.md) receives finite top/bottom travel forces in the coupled viewer and headless runner, with independent impulse/work checks, engagement/energy plots and retained ultimate-bound termination. The review of merged PR #7 precedes implementation; see ITERATION_8_REVIEW.md. Precision polishing remains parked unless a receiving feature fails its declared budget.
+
+Next dynamics extension: shock buffers through the existing changing linkage leverage, then explicit rider attachment-limit/load paths. The spatial follow-up above is a separate priority: deformed tyre envelope, all load-bearing contact regions and distributed material-dependent grip. Neither fork buffer loads nor nearest rigid-circle witnesses substitute for contact pressure, traction, component damage or real-bike calibration.
