@@ -54,6 +54,8 @@ Same-runtime replay is reproducible. Browser and Node recordings are checked for
 
 ## Current evidence
 
+The [terrain-request station](https://craighutchinson.github.io/BikeLab/terrain-request.html) receives finite-width swept geometry, 2 cm synthetic layered cells and explicit rock faces through a bounded async cache. Run `node scripts/terrain-request.mjs straight [record.json]` or pass a saved JSON to verify replay. See [R0a scope and evidence](docs/ITERATION_9_EVIDENCE.md); this data experiment computes no contact forces. The [real-image geometry review](docs/GEOMETRY_VISUAL_REVIEW.md) confirms corrected BB/frame drawing and records the remaining synthetic linkage dimensions.
+
 The bicycle station now includes optional [progressive fork travel buffers](docs/FORK_BUFFERS.md), top-out/bottom-out experiments, engagement display and force/energy histories. Ultimate boundaries remain explicit; this does not certify impacts or component survival.
 
 The [coupled bicycle rig](https://craighutchinson.github.io/BikeLab/bike.html) adds hardtail/full-suspension selection, two moving platens, fork/shock setup, frame pitch, axle loads, recorded replay and JSON export. Run the identical model with `node scripts/bike-rig.mjs [setup.json] [run.json]`. Select the original fixed rider or a [passive guided rider](docs/RIDER_MODEL.md) with adjustable mass partition, spring/damping and travel. See [model and scope](docs/BIKE_RIG.md) and [iteration 7 evidence](docs/ITERATION_7_EVIDENCE.md). It remains an uncalibrated planar fixture with explicit unsupported-travel termination. Further solver precision polishing is parked; supported end-stop/load paths are next.

@@ -203,3 +203,10 @@ User-prioritized spatial follow-up (2026-10-16): receive the [deformed tyre and 
 The [fork-buffer model](FORK_BUFFERS.md) receives finite top/bottom travel forces in the coupled viewer and headless runner, with independent impulse/work checks, engagement/energy plots and retained ultimate-bound termination. The review of merged PR #7 precedes implementation; see ITERATION_8_REVIEW.md. Precision polishing remains parked unless a receiving feature fails its declared budget.
 
 Next dynamics extension: shock buffers through the existing changing linkage leverage, then explicit rider attachment-limit/load paths. The spatial follow-up above is a separate priority: deformed tyre envelope, all load-bearing contact regions and distributed material-dependent grip. Neither fork buffer loads nor nearest rigid-circle witnesses substitute for contact pressure, traction, component damage or real-bike calibration.
+
+
+## Iteration 9 — terrain request receiving subset
+
+[R0a](ITERATION_9_EVIDENCE.md) receives the request-first design in a separate viewer/headless replay: finite-width swept bounds, static layered samples, explicit stepped-rock geometry, async source reuse, owned outputs and missing-data admission. See [scope](ITERATION_9_SCOPE.md) for the implemented subset and remaining R0 gates. This does not complete the full R0 contract or change bicycle forces. The [image review](GEOMETRY_VISUAL_REVIEW.md) closes the BB/frame drawing comparison while retaining sourced physical linkage calibration as a follow-up.
+
+Next terrain work: asymmetric/multimodal optional route ribbons, resolved root/reinforcement and known-void controls, source transforms/import, and bounded leased outputs/shared state identities as required by the first loaded-tyre consumer. R1 must add physically supported distributed deformable contact; geometry arrays and normals are not springs or forces. Shock/rider end-stop loads, damage/leakage, 3D turning traction, contamination and measured multirate operation remain open.

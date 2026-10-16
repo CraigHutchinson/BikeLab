@@ -1,0 +1,16 @@
+[
+  {
+    "name": "orange-five-2020.jpg",
+    "page": "https://orangebikes.com/blogs/bike-archive-2020/five-factory-2020",
+    "url": "https://orangebikes.com/cdn/shop/articles/2020_Orange_Five-Factory_Fizzy.jpg?v=1765881897",
+    "sha256": "98d4269a3c0babfb1c1c23c3301cba9d9bdd8e21f6a6fb854b50c281747f3fd7",
+    "bytes": 303635
+  },
+  {
+    "name": "orange-crush-2023.jpg",
+    "page": "https://www.tredz.co.uk/.Orange-Crush-Comp-27-5-Mountain-Bike-2023-Hardtail-MTB_250279.htm",
+    "url": "https://tredz.azureedge.net/prodimg/250279-857858_1_Supersize.jpg",
+    "sha256": "553dba4ed0049d01a8bd83f3417faf90cad5d7733b210cff8f0a56dc5bc85449",
+    "bytes": 150663
+  }
+]
