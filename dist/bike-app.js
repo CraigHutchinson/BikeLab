@@ -1,25 +1,27 @@
 import {DEFAULTS,GEOMETRY as g,validate,rigRecord,setupFromRecord} from './bike-rig.js';
+import {rigLandmarks} from './bike-geometry.js';
 import {Calculation} from './calculation.js';
 const $=id=>document.getElementById(id),form=$('setup');
 let run=null,index=0,playing=false,last=0,elapsed=0,frameRequest=0;
+const canvases=['rig','loads','travel','riderTravelPlot','riderForcePlot'];
 const controls=['play','reset','step','scrub','save'];
 function stop(){playing=false;$('play').textContent='Play';cancelAnimationFrame(frameRequest);}
-function invalidate(status='SETUP CHANGED'){stop();run=null;index=0;controls.forEach(id=>$(id).disabled=true);$('status').textContent=status;$('termination').textContent='';draw();}
-function updateFields(){form.elements.shockStiffness.disabled=form.elements.shockDamping.disabled=form.elements.bike.value==='hardtail';form.elements.delay.disabled=form.elements.input.value!=='travelling';}
+function invalidate(status='SETUP CHANGED'){stop();run=null;index=0;controls.forEach(id=>$(id).disabled=true);$('status').textContent=status;$('termination').textContent='';$('assembly').textContent='Coupled bicycle';draw();}
+function updateFields(){form.elements.shockStiffness.disabled=form.elements.shockDamping.disabled=form.elements.bike.value==='hardtail';form.elements.delay.disabled=form.elements.input.value!=='travelling';for(const key of ['riderMass','riderStiffness','riderDamping','riderTravel'])form.elements[key].disabled=form.elements.rider.value==='fixed';}
 const calculation=new Calculation({
   createWorker:()=>new Worker(new URL('./bike-worker.js',import.meta.url),{type:'module'}),
   onBusy:busy=>{$('cancel').disabled=!busy;},
   onError:message=>{invalidate('SETUP REJECTED');$('error').textContent=message;},
   onResult:(result,ms)=>{run=result;index=0;controls.forEach(id=>$(id).disabled=false);$('scrub').max=run.signals.time.length-1;
     $('status').textContent=run.status==='complete'?'READY':'TRAVEL LIMIT';
-    $('assembly').textContent=(run.params.bike==='full'?'Single-pivot full suspension':'Hardtail')+' · '+run.dofs+' coordinates';
+    $('assembly').textContent=(run.params.bike==='full'?'Single-pivot full suspension':'Hardtail')+' · '+run.dofs+' coordinates · '+(run.params.rider==='compliant'?'passive rider':'fixed rider');
     $('compute').textContent=`${Math.round(ms)} ms offline calculation`;
     $('termination').textContent=run.termination?`${run.termination.reason} at trial ${run.termination.trialTime.toFixed(6)} s. Replay ends at last valid ${run.termination.lastValidTime.toFixed(6)} s; no end-stop impact simulated.`:'';
-    $('evidence').textContent=`${run.engine}. Initial front / rear loads ${run.initial.frontForce.toFixed(1)} / ${run.initial.rearForce.toFixed(1)} N. Peak integration-step load ${run.summary.peakForce.toFixed(1)} N. Maximum energy/work residual ${run.summary.maxResidual.toFixed(4)} J. Support work ${run.summary.work.toFixed(3)} J; dissipation ${run.summary.loss.toFixed(3)} J.`;
+    $('evidence').textContent=`${run.engine}. Initial front / rear loads ${run.initial.frontForce.toFixed(1)} / ${run.initial.rearForce.toFixed(1)} N. Peak integration-step load ${run.summary.peakForce.toFixed(1)} N. Maximum energy/work residual ${run.summary.maxResidual.toFixed(4)} J. Support work ${run.summary.work.toFixed(3)} J; dissipation ${run.summary.loss.toFixed(3)} J (rider ${run.summary.riderLoss.toFixed(3)} J).`;
     draw();
   }
 });
-function params(){const p={...DEFAULTS};for(const key of Object.keys(p))if(form.elements[key]){const value=form.elements[key].value;if(!value.trim())throw new Error('Missing setup value: '+key);p[key]=['bike','input'].includes(key)?value:Number(value);}return validate(p);}
+function params(){const p={...DEFAULTS};for(const key of Object.keys(p))if(form.elements[key]){const value=form.elements[key].value;if(!value.trim())throw new Error('Missing setup value: '+key);p[key]=['bike','input','rider'].includes(key)?value:Number(value);}return validate(p);}
 function submit(){invalidate('CALCULATING');$('error').textContent='';const ticket=calculation.begin();try{calculation.launch(ticket,{params:params()});}catch(e){calculation.fail(ticket,e.message);}}
 form.addEventListener('submit',e=>{e.preventDefault();submit();});
 form.addEventListener('input',()=>{calculation.cancel();invalidate();updateFields();});
@@ -38,6 +40,8 @@ $('load').onchange=async()=>{const file=$('load').files[0];if(!file)return;inval
     const p=setupFromRecord(record);
     // The UI exposes all setup parameters except the fixed recording cadence.
     if(p.sampleDt!==DEFAULTS.sampleDt)throw new Error('This viewer requires a 5 ms recording interval.');
+    for(const option of form.elements.dt.querySelectorAll('[data-imported]'))option.remove();
+    if(!Array.from(form.elements.dt.options).some(option=>option.value===String(p.dt))){const option=new Option((p.dt*1000)+' ms',String(p.dt));option.dataset.imported='true';form.elements.dt.add(option);}
     for(const [key,value] of Object.entries(p))if(form.elements[key])form.elements[key].value=String(value);
     updateFields();$('error').textContent='';calculation.launch(ticket,{params:p});
   }catch(e){calculation.fail(ticket,e.message);}finally{$('load').value='';}
@@ -55,26 +59,45 @@ function scene(){const ctx=context('rig');if(!ctx)return;const {c,w,h}=ctx;c.fon
     line(point(x-.38,base),point(x+.38,base),'#728b98',5);c.fillStyle=color;c.fillText(force.toFixed(0)+' N',point(x-.13,base-.09)[0],point(x,base-.09)[1]);
     line(center,point(x,z+.08),color,2);
   }
-  const bb=local(-.12,-.15),seat=local(-.23,.18),head=local(g.frontX-.55*Math.cos(g.headAngle),g.axleZ+.55*Math.sin(g.headAngle)),pivot=local(0,g.pivotZ);
-  line(bb,seat,'#e5edf2',5);line(seat,head,'#e5edf2',5);line(head,bb,'#e5edf2',5);line(bb,pivot,'#e5edf2',5);
-  line(head,front,'#70e2ce',6);line(pivot,rear,'#f2b373',5);
-  if(run.params.bike==='hardtail')line(seat,rear,'#f2b373',4);
-  else {const a=s.rearAngle[k],x=Math.cos(a)*g.shockArmX+Math.sin(a)*g.shockArmZ,z=g.pivotZ-Math.sin(a)*g.shockArmX+Math.cos(a)*g.shockArmZ;line(pivot,local(x,z),'#f2b373',3);line(local(x,z),rear,'#f2b373',2);line(seat,local(g.shockFrameX,g.shockFrameZ),'#e5edf2',3);line(local(g.shockFrameX,g.shockFrameZ),local(x,z),'#c2a3ff',7);}
-  const com=local(0,0);c.beginPath();c.arc(...com,8,0,Math.PI*2);c.fillStyle='#c2a3ff';c.fill();
-  c.fillStyle='#9aabb7';c.fillText('Fixed rider + frame COM',16,22);c.fillText('Two prescribed flat platens',16,h-10);
+  const landmarks=rigLandmarks({bike:run.params.bike,pitch:s.pitch[k],heave:s.heave[k],fork:s.fork[k],rearAngle:s.rearAngle[k]});
+  const {bb,seat,headBottom,headTop,pivot,shockFrame,shockArm}=Object.fromEntries(Object.entries(landmarks).map(([name,p])=>[name,point(...p)]));
+  line(bb,seat,'#e5edf2',5);line(seat,headTop,'#e5edf2',5);line(headBottom,bb,'#e5edf2',5);line(headBottom,headTop,'#e5edf2',7);
+  line(headBottom,front,'#70e2ce',6);
+  if(run.params.bike==='hardtail'){line(bb,rear,'#f2b373',5);line(seat,rear,'#f2b373',4);}
+  else {
+    line(bb,pivot,'#e5edf2',4);line(pivot,rear,'#f2b373',5);line(pivot,shockArm,'#f2b373',3);line(shockArm,rear,'#f2b373',3);
+    // Frame eye is welded to the front frame; arm eye rotates with the actual swingarm.
+    line(seat,shockFrame,'#e5edf2',3);line(shockFrame,headTop,'#e5edf2',3);line(shockFrame,shockArm,'#c2a3ff',7);
+    for(const p of [pivot,shockFrame,shockArm]){c.beginPath();c.arc(...p,3,0,2*Math.PI);c.fillStyle='#e5edf2';c.fill();}
+  }
+  c.beginPath();c.arc(...bb,6,0,Math.PI*2);c.fillStyle='#10191f';c.fill();c.strokeStyle='#e5edf2';c.lineWidth=2;c.stroke();
+  c.fillStyle='#e5edf2';c.fillText('BB',bb[0]+9,bb[1]+12);
+  const com=local(0,0),passive=run.params.rider==='compliant';
+  if(passive){
+    line(local(0,-run.params.riderTravel),local(0,run.params.riderTravel),'#526a7c',2);
+    for(const z of [-run.params.riderTravel,run.params.riderTravel])line(local(-.035,z),local(.035,z),'#c2a3ff',2);
+    line(com,point(s.riderX[k],s.riderZ[k]),'#c2a3ff',5);
+    c.beginPath();c.arc(...com,4,0,Math.PI*2);c.fillStyle='#e5edf2';c.fill();
+  }
+  c.beginPath();c.arc(...point(s.riderX[k],s.riderZ[k]),8,0,Math.PI*2);c.fillStyle='#c2a3ff';c.fill();
+  c.fillStyle='#9aabb7';c.fillText(passive?'Passive rider COM · frame guide':'Fixed rider + frame COM',16,22);c.fillText('Two prescribed flat platens',16,h-10);
 }
 function plot(id,keys,factor){const ctx=context(id);if(!ctx||!run)return;const {c,w,h}=ctx,s=run.signals,n=s.time.length;
-  let hi=1;for(const key of keys)for(const v of s[key])hi=Math.max(hi,v*factor);hi*=1.1;
-  const x=t=>36+(w-46)*t/run.params.duration,y=v=>h-22-(h-35)*v/hi;
-  c.font='10px system-ui';c.fillStyle='#9aabb7';c.fillText(hi.toFixed(0),0,14);c.fillText('0',16,h-21);c.fillText(run.params.duration+' s',w-25,h-3);
-  keys.forEach((key,j)=>{c.beginPath();for(let i=0;i<n;i++){const px=x(s.time[i]),py=y(s[key][i]*factor);if(i===0)c.moveTo(px,py);else c.lineTo(px,py);}c.strokeStyle=j?'#f2b373':'#70e2ce';c.lineWidth=1.5;c.stroke();});
+  if(id.startsWith('rider')&&run.params.rider==='fixed'){c.font='11px system-ui';c.fillStyle='#9aabb7';c.fillText('Select passive rider to resolve this channel.',8,28);return;}
+  let hi=1,lo=0;for(const key of keys)for(const v of s[key]){hi=Math.max(hi,v*factor);lo=Math.min(lo,v*factor);}hi*=1.1;lo*=1.1;
+  const x=t=>36+(w-46)*t/run.params.duration,y=v=>h-22-(h-35)*(v-lo)/(hi-lo);
+  c.font='10px system-ui';c.fillStyle='#9aabb7';c.fillText(hi.toFixed(0),0,14);c.fillText(lo.toFixed(0),0,h-21);c.fillText(run.params.duration+' s',w-25,h-3);
+  keys.forEach((key,j)=>{c.beginPath();for(let i=0;i<n;i++){const px=x(s.time[i]),py=y(s[key][i]*factor);if(i===0)c.moveTo(px,py);else c.lineTo(px,py);}c.strokeStyle=id.startsWith('rider')?'#c2a3ff':j?'#f2b373':'#70e2ce';c.lineWidth=1.5;c.stroke();});
   c.beginPath();c.moveTo(x(s.time[index]),8);c.lineTo(x(s.time[index]),h-22);c.strokeStyle='#e5edf2';c.lineWidth=1;c.stroke();
 }
-function draw(){scene();for(const id of ['loads','travel'])if(!run)context(id);if(!run){for(const id of ['pitch','fork','shock'])$(id).textContent='—';$('time').textContent='0.000 s';$('scrub').value=0;$('compute').textContent='';$('evidence').textContent='Calculate the current setup to create an experiment record.';return;}
+function draw(){scene();for(const id of canvases.slice(1))if(!run)context(id);if(!run){for(const id of ['pitch','fork','shock','riderCompression','riderForce'])$(id).textContent='—';$('time').textContent='0.000 s';$('scrub').value=0;$('compute').textContent='';$('evidence').textContent='Calculate the current setup to create an experiment record.';return;}
   const s=run.signals;$('scrub').value=index;$('time').textContent=s.time[index].toFixed(3)+' s';$('pitch').textContent=(s.pitch[index]*180/Math.PI).toFixed(2)+'°';$('fork').textContent=(s.fork[index]*1000).toFixed(1)+' mm';$('shock').textContent=run.params.bike==='full'?(s.shock[index]*1000).toFixed(1)+' mm':'Rigid';
+  $('riderCompression').textContent=run.params.rider==='compliant'?(s.riderCompression[index]*1000).toFixed(1)+' mm':'Fixed';
+  $('riderForce').textContent=run.params.rider==='compliant'?s.riderForce[index].toFixed(1)+' N':'Not resolved';
+  plot('riderTravelPlot',['riderCompression'],1000);plot('riderForcePlot',['riderForce'],1);
   plot('loads',['frontForce','rearForce'],1);plot('travel',['fork','shock'],1000);
 }
-const resize=new ResizeObserver(draw);for(const id of ['rig','loads','travel'])resize.observe($(id));
+const resize=new ResizeObserver(draw);for(const id of canvases)resize.observe($(id));
 window.addEventListener('pagehide',()=>{stop();if(!$('cancel').disabled){calculation.cancel();invalidate('CANCELLED');}resize.disconnect();});
-window.addEventListener('pageshow',()=>{for(const id of ['rig','loads','travel'])resize.observe($(id));draw();});
+window.addEventListener('pageshow',()=>{for(const id of canvases)resize.observe($(id));draw();});
 updateFields();submit();

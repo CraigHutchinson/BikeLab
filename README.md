@@ -54,11 +54,11 @@ Same-runtime replay is reproducible. Browser and Node recordings are checked for
 
 ## Current evidence
 
-The [coupled bicycle rig](https://craighutchinson.github.io/BikeLab/bike.html) adds hardtail/full-suspension selection, two moving platens, fork/shock setup, frame pitch, axle loads, recorded replay and JSON export. Run the identical model with `node scripts/bike-rig.mjs [setup.json] [run.json]`. See [model and scope](docs/BIKE_RIG.md) and [iteration 6 evidence](docs/ITERATION_6_EVIDENCE.md). It is an uncalibrated planar fixture with a fixed rider and explicit unsupported-travel termination. Further solver precision polishing is parked; the next dynamics slice is rider compliance.
+The [coupled bicycle rig](https://craighutchinson.github.io/BikeLab/bike.html) adds hardtail/full-suspension selection, two moving platens, fork/shock setup, frame pitch, axle loads, recorded replay and JSON export. Run the identical model with `node scripts/bike-rig.mjs [setup.json] [run.json]`. Select the original fixed rider or a [passive guided rider](docs/RIDER_MODEL.md) with adjustable mass partition, spring/damping and travel. See [model and scope](docs/BIKE_RIG.md) and [iteration 7 evidence](docs/ITERATION_7_EVIDENCE.md). It remains an uncalibrated planar fixture with explicit unsupported-travel termination. Further solver precision polishing is parked; supported end-stop/load paths are next.
 
 The following receipts describe earlier iterations:
 
-64 automated tests pass on Windows and Linux, including spatial geometry, independent analytical-reference verification and coarse-step failure/refinement. Chromium checks exercise both dynamic stations and the spatial terrain probe, real worker cancellation, setup changes, comparison gating, playback/pause/step, browser save/load and stroke-limit handling. Browser-exported wheel, fork-scale, shock-scale and stopped runs agree numerically with Node. Captured desktop/mobile screenshots have now been inspected, closing the earlier screenshot gap for these checked states. No real-bike calibration or participant evidence exists yet.
+Each iteration retains separate numerical and browser evidence. The rider continuation passes 95 tests on Windows/Linux plus Chromium worker/headless and interaction checks, including independent mechanics, refinement, domain and legacy-record checks. [Its evidence note](docs/ITERATION_7_EVIDENCE.md) records the tested scope and receipts. No real-bike calibration or participant evidence exists yet.
 
 The continuation reviews main 672e5e7 and adds independently checked spatial geometry; see [iteration 4 review](docs/ITERATION_4_REVIEW.md) and [solver research](docs/SOLVER_RESEARCH.md). The [iteration 4 evidence receipt](docs/ITERATION_4_EVIDENCE.md) records complete-suite CI, browser/headless geometry agreement and inspected desktop/narrow views.
 
@@ -89,7 +89,7 @@ See [the prior-iteration review](docs/ITERATION_2_REVIEW.md) and [Slice 2 eviden
 
 Develop toward a highly realistic riding and bike-setup experience in which geometry, suspension, tyres, rider behaviour, braking and terrain interact coherently. Realism must be demonstrated through physical evidence, not inferred from plausible animation.
 
-The simulation shall ultimately be fully 3D, including lateral motion, turning forces, steering, lean and coupled braking/cornering grip. The planar rigs are intermediate validation tools. Next: enumerate whole-bike DOFs/constraints and evaluate multibody solver technology before implementing a hardtail and a full-suspension bicycle responding to the same road input. Production-bike selection and source-backed stock setups remain planned.
+The simulation shall ultimately be fully 3D, including lateral motion, turning forces, steering, lean and coupled braking/cornering grip. The planar rigs are intermediate validation tools. The coupled hardtail/full-suspension fixture and passive guided rider are intermediate steps; supported end-stop/load paths and anatomical rider attachments remain open. Production-bike selection and source-backed stock setups remain planned.
 
 Develop every visible experiment alongside its foundations. Keep physics independent of rendering, rider mechanics separate from control, and measured/fitted/illustrative parameters distinguishable. Add complexity only when a named experiment consumes it.
 

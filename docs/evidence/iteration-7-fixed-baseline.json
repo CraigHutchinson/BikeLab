@@ -1,0 +1,14 @@
+[
+  {
+    "bike": "hardtail",
+    "baseline": "e3654fe",
+    "samples": 801,
+    "legacyChannelMaxAbsoluteDifference": 0
+  },
+  {
+    "bike": "full",
+    "baseline": "e3654fe",
+    "samples": 801,
+    "legacyChannelMaxAbsoluteDifference": 0
+  }
+]

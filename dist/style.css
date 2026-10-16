@@ -13,3 +13,5 @@
 .solver-page .plots h2{margin-bottom:16px}.solver-page .legend{margin-top:0;margin-bottom:10px}
 
 .bike-page .plots h2{margin-bottom:16px}.bike-page .legend{margin-top:0}.bike-page #evidence{font-size:12px;line-height:1.8}.bike-page .readouts strong{font-size:21px}
+
+.bike-page .rider-readouts{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:18px}.bike-page .rider-readouts small{display:block;font-size:9px;color:var(--muted);letter-spacing:.6px}.bike-page .rider-readouts strong{font-size:19px;font-weight:500;color:var(--violet)}.bike-page #riderSettings{grid-column:1/-1}.bike-page #riderSettings label{margin-top:12px}.bike-page .readouts strong,.bike-page .rider-readouts strong{overflow-wrap:anywhere}
