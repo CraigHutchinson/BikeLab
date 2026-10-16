@@ -54,6 +54,8 @@ Same-runtime replay is reproducible. Browser and Node recordings are checked for
 
 ## Current evidence
 
+The [terrain-request station](https://craighutchinson.github.io/BikeLab/terrain-request.html) receives finite-width swept geometry, 2 cm synthetic layered cells and explicit rock faces through a bounded async cache. Run `node scripts/terrain-request.mjs straight [record.json]` or pass a saved JSON to verify replay. See [R0a scope and evidence](docs/ITERATION_9_EVIDENCE.md); this data experiment computes no contact forces. The [real-image geometry review](docs/GEOMETRY_VISUAL_REVIEW.md) confirms corrected BB/frame drawing and records the remaining synthetic linkage dimensions.
+
 The bicycle station now includes optional [progressive fork travel buffers](docs/FORK_BUFFERS.md), top-out/bottom-out experiments, engagement display and force/energy histories. Ultimate boundaries remain explicit; this does not certify impacts or component survival.
 
 The [coupled bicycle rig](https://craighutchinson.github.io/BikeLab/bike.html) adds hardtail/full-suspension selection, two moving platens, fork/shock setup, frame pitch, axle loads, recorded replay and JSON export. Run the identical model with `node scripts/bike-rig.mjs [setup.json] [run.json]`. Select the original fixed rider or a [passive guided rider](docs/RIDER_MODEL.md) with adjustable mass partition, spring/damping and travel. See [model and scope](docs/BIKE_RIG.md) and [iteration 7 evidence](docs/ITERATION_7_EVIDENCE.md). It remains an uncalibrated planar fixture with explicit unsupported-travel termination. Further solver precision polishing is parked; supported end-stop/load paths are next.
@@ -79,6 +81,7 @@ See [the prior-iteration review](docs/ITERATION_2_REVIEW.md) and [Slice 2 eviden
 - [3D dynamics requirements](docs/THREE_DIMENSIONAL_DYNAMICS.md): lateral/turning forces, steering/lean, combined slip and independent handling gates.
 - [Overload and failure requirements](docs/OVERLOAD_AND_FAILURE.md): travel limits, end-stop load paths, component strength/damage, rim/spoke failure and tubeless air loss. These physical failure models are planned; current out-of-stroke runs stop explicitly.
 - [Terrain/contact and real-time requirements](docs/TERRAIN_CONTACT.md): spatial ground profiles, square-edge versus rounded contact, local load/stress limitations, on-demand detail and validated multiple physics rates. These extend beyond the current flat-platen model.
+- [Terrain sampling contract](docs/TERRAIN_SAMPLING_CONTRACT.md): wheel swept requests, cache admission, compact layered extracts and shared soil history. Proposed design; the first receiving slice is a request/cutaway viewer, before dynamic contact.
 - dist/physics.js: shared headless/browser dynamics and recording.
 - dist/suspension.js: shared axial element, suspension experiment and recording.
 - dist/app.js, index.html, style.css: viewer and controls.

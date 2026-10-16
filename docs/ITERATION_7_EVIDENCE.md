@@ -42,3 +42,7 @@ The [browser receipt](evidence/iteration-7-browser.json) records Chromium 141.0.
 Downloaded and visually inspected the passive full-suspension desktop, hardtail stopped-run, 390 px mobile and 320 px narrow screenshots. The guide/lump and static frame marker are distinct; rider readouts and signed plot labels are visible; the stopped view identifies the rejected trial and last valid time; controls/readouts wrap without horizontal page overflow. These are headless captures and automated interactions, not native input/display or participant evidence.
 
 Artifact `12030996455`, archive SHA-256 `30f4df5871199da1416fd8d41ac3bbbdbc5bd33e198d85f6f72891e149df64bb`, retains the images and exported reports. This follow-up records evidence only; the final head's hosted checks and deployment are linked in PR #7.
+
+## Geometry review continuation
+
+The subsequent user-requested [real-image geometry review](GEOMETRY_VISUAL_REVIEW.md) corrected the BB, hardtail stays and frame/fork drawing. Final PR #7 head `e3de595d9a9417fe4e86fe605f86be7284debeb3` passed run [38879501878](https://github.com/CraigHutchinson/BikeLab/actions/runs/38879501878), including 97 tests and browser/reference-image capture. These display corrections do not change the fixed/passive dynamics compared above. The source photographs and corrected captures were inspected; actual suspension dimensions remain illustrative, as detailed in the review.

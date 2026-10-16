@@ -191,6 +191,11 @@ Next balanced dynamics slice: passive articulated rider compliance on the existi
 
 Next prioritize the coupled fixture's strict travel/end-stop and attachment-load-path experiment: converge a supported stop model with independent momentum/work checks and explicit ultimate boundaries before allowing impact continuation. Then add observable component loads and sourced failure/pressure-loss criteria; do not infer rim/spoke/seal survival from axial rider or axle loads. Preserve 3D lateral/turning, spatial corner contact, layered root/soil and tyre mud history, detailed trail provenance, and validated adaptive/multirate real-time gates. See [iteration 7 evidence](ITERATION_7_EVIDENCE.md).
 
+User-prioritized spatial follow-up (2026-10-16): receive the [deformed tyre and distributed contact experiment](TERRAIN_CONTACT.md#follow-up-deforming-tyre-and-distributed-contact-user-request-2026-10-16). Render the loaded tyre and all force-carrying regions, with local loads/normals and resultant moments; then feed that same footprint into mixed-material grip and shear. The existing nearest-point clearance visualization does not satisfy this requirement. Start with flat/rounded/square/two-support controls, verify resolution-independent load distribution, and retain the mud-over-root and fidelity-tier contracts. This is planned alongside the next dynamics slices, not an implemented contact patch.
+
+### Terrain request-first receiving sequence
+
+[Terrain sampling contract](TERRAIN_SAMPLING_CONTRACT.md): R0 is a prescribed-motion request/cache viewer and headless replay with straight, cornering, reversal, seam and soil-over-rock cutaway fixtures. It shows mandatory versus prefetched coverage, off-patch acquisition and explicit missing data. R1 adds loaded distributed tyre contact; R2 adds layered response/shared soil history; R3 adds 3D rolling traction and measured fidelity-tier conformance. These are named receiving stages, not implemented terrain physics. Retain the scoped checkpoints in [terrain request scope](TERRAIN_REQUEST_SCOPE.md).
 
 
 ## Iteration 8 — fork travel buffers
@@ -198,3 +203,10 @@ Next prioritize the coupled fixture's strict travel/end-stop and attachment-load
 The [fork-buffer model](FORK_BUFFERS.md) receives finite top/bottom travel forces in the coupled viewer and headless runner, with independent impulse/work checks, engagement/energy plots and retained ultimate-bound termination. The review of merged PR #7 precedes implementation; see ITERATION_8_REVIEW.md. Precision polishing remains parked unless a receiving feature fails its declared budget.
 
 Next dynamics extension: shock buffers through the existing changing linkage leverage, then explicit rider attachment-limit/load paths. The spatial follow-up above is a separate priority: deformed tyre envelope, all load-bearing contact regions and distributed material-dependent grip. Neither fork buffer loads nor nearest rigid-circle witnesses substitute for contact pressure, traction, component damage or real-bike calibration.
+
+
+## Iteration 9 — terrain request receiving subset
+
+[R0a](ITERATION_9_EVIDENCE.md) receives the request-first design in a separate viewer/headless replay: finite-width swept bounds, static layered samples, explicit stepped-rock geometry, async source reuse, owned outputs and missing-data admission. See [scope](ITERATION_9_SCOPE.md) for the implemented subset and remaining R0 gates. This does not complete the full R0 contract or change bicycle forces. The [image review](GEOMETRY_VISUAL_REVIEW.md) closes the BB/frame drawing comparison while retaining sourced physical linkage calibration as a follow-up.
+
+Next terrain work: asymmetric/multimodal optional route ribbons, resolved root/reinforcement and known-void controls, source transforms/import, and bounded leased outputs/shared state identities as required by the first loaded-tyre consumer. R1 must add physically supported distributed deformable contact; geometry arrays and normals are not springs or forces. Shock/rider end-stop loads, damage/leakage, 3D turning traction, contamination and measured multirate operation remain open.

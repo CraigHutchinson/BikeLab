@@ -1,0 +1,101 @@
+{
+  "implementationHead": "9bf1552d5dca532e8cde010c3c15b2f16cc74aa3",
+  "run": 38910737877,
+  "artifact": 12050725473,
+  "archiveSha256": "262bd041034cb24e2e35132c749f1e0bad835c1589163b7ab8755c6a9cca3969",
+  "browser": "141.0.7390.37",
+  "tests": {
+    "ubuntu": 118,
+    "windows": 118,
+    "skipped": 0
+  },
+  "terrainRequest": {
+    "agreement": [
+      {
+        "maxDifference": 0,
+        "numbers": 80547,
+        "geometryTolerance": 1e-12,
+        "discreteFieldsExact": true
+      },
+      {
+        "maxDifference": 6.938893903907228e-18,
+        "numbers": 268792,
+        "geometryTolerance": 1e-12,
+        "discreteFieldsExact": true
+      },
+      {
+        "maxDifference": 6.938893903907228e-18,
+        "numbers": 267916,
+        "geometryTolerance": 1e-12,
+        "discreteFieldsExact": true
+      },
+      {
+        "maxDifference": 0,
+        "numbers": 80813,
+        "geometryTolerance": 1e-12,
+        "discreteFieldsExact": true
+      },
+      {
+        "maxDifference": 2.7755575615628914e-17,
+        "numbers": 239685,
+        "geometryTolerance": 1e-12,
+        "discreteFieldsExact": true
+      },
+      {
+        "maxDifference": 0,
+        "numbers": 42350,
+        "geometryTolerance": 1e-12,
+        "discreteFieldsExact": true
+      },
+      {
+        "maxDifference": 0,
+        "numbers": 80813,
+        "geometryTolerance": 1e-12,
+        "discreteFieldsExact": true
+      }
+    ]
+  },
+  "screenshots": [
+    "wheel-desktop.png",
+    "wheel-high-lift.png",
+    "wheel-mobile.png",
+    "suspension-desktop.png",
+    "suspension-comparison.png",
+    "suspension-travel-limit.png",
+    "suspension-mobile.png",
+    "suspension-narrow.png",
+    "reference-desktop.png",
+    "reference-mobile.png",
+    "reference-coarse-failure.png",
+    "terrain-square-desktop.png",
+    "terrain-rounded-desktop.png",
+    "terrain-mobile.png",
+    "terrain-narrow.png",
+    "solver-desktop.png",
+    "solver-equilibrium.png",
+    "solver-mobile.png",
+    "solver-narrow.png",
+    "bike-full-desktop.png",
+    "bike-hardtail-desktop.png",
+    "bike-limit.png",
+    "bike-mobile-390.png",
+    "bike-mobile-320.png",
+    "rider-full-desktop.png",
+    "rider-hardtail-desktop.png",
+    "rider-limit.png",
+    "rider-mobile-390.png",
+    "rider-mobile-320.png",
+    "fork-buffers-desktop.png",
+    "fork-buffers-ultimate.png",
+    "fork-bottom-buffer-desktop.png",
+    "fork-buffers-mobile-390.png",
+    "fork-buffers-mobile-320.png",
+    "terrain-request-step.png",
+    "terrain-request-off-centre.png",
+    "terrain-request-transverse.png",
+    "terrain-request-missing.png",
+    "terrain-request-mobile-390.png",
+    "terrain-request-mobile-320.png"
+  ],
+  "errors": []
+}
