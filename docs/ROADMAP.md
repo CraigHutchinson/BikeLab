@@ -215,3 +215,8 @@ Next terrain work: asymmetric/multimodal optional route ribbons, resolved root/r
 ## Iteration 10 — rear shock dynamics
 
 [Rear shock buffers](SHOCK_BUFFERS.md) now map axial top/bottom forces through the changing single-pivot derivative, with visible swing moment, total shock force and stored/lost energy. [Review](ITERATION_10_REVIEW.md) captures model/configuration gaps; [evidence](ITERATION_10_EVIDENCE.md) records bounded receiving checks. Hardtail and disabled-buffer baselines remain unchanged. Next focus on sag/load/leverage configuration diagnostics and sourced geometry/mass inputs, followed by rider attachment load paths. Terrain follow-ups remain separate.
+
+
+## Connected dynamics follow-ups
+
+[Dynamics delivery plan](DYNAMICS_DELIVERY_PLAN.md) tracks D1–D12 from distributed tyre contact through moving wheel/bike, rolling/braking, rider contacts, 3D handling, soil/mud, configuration, damage and measured fidelity. Next receive D1a: a bounded loaded spatial tyre experiment; keep existing geometry stations honest about their lack of forces.
