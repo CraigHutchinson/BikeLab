@@ -11,3 +11,11 @@ Sketch an efficient vector/array representation for top surface and variable-dep
 The force consumer must retain distributed deformable-tyre contact, local normals/load/material, resultant moments and a shared traction budget. A nearest-point probe or array of independent whole-wheel springs is insufficient. Connect representation and cache ownership to persistent deformation, front/rear soil history, retained tyre mud and supported fidelity-tier transfers.
 
 Next checkpoints: (1) request/corridor and cache handshake; (2) layer/vector layouts and source translation with worked examples; (3) review corrections and staged receiving checks. This PR is design work, not a claim that a terrain cache or deformable contact solver is implemented.
+
+## Captured design checkpoints
+
+The [terrain sampling contract](TERRAIN_SAMPLING_CONTRACT.md) now specifies the request/corridor and cache handshake, layered array layout, explicit feature geometry, shared accepted state, worked straight/turn/soil-over-rock cases and R0-R3 receiving gates. Its first implementation is R0: prescribed wheel motion, visible coverage/cache/cutaway data and shared headless replay. Dynamic tyre contact, soil response and traction follow separately. The incremental commit history retains the scope, request-first contract, layer/state extension and review corrections.
+
+## Width and probabilistic lookahead refinement
+
+User direction, 2026-10-16: extract across tyre width plus tolerance so berm walls, grooves and rock edges are represented. Optional lookahead should widen with route uncertainty: a stable straight path may justify a narrower, longer request; bumps, steering and slip can increase variance and introduce asymmetric outward-corner bias. Represent the predicted route distribution and its footprint-expanded corridor, rather than assume one symmetric cone fits every case. Prediction confidence governs prefetch priority only; mandatory next-step coverage remains conservative. The request viewer must make both envelopes and any missing coverage visible.

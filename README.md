@@ -77,6 +77,7 @@ See [the prior-iteration review](docs/ITERATION_2_REVIEW.md) and [Slice 2 eviden
 - [3D dynamics requirements](docs/THREE_DIMENSIONAL_DYNAMICS.md): lateral/turning forces, steering/lean, combined slip and independent handling gates.
 - [Overload and failure requirements](docs/OVERLOAD_AND_FAILURE.md): travel limits, end-stop load paths, component strength/damage, rim/spoke failure and tubeless air loss. These physical failure models are planned; current out-of-stroke runs stop explicitly.
 - [Terrain/contact and real-time requirements](docs/TERRAIN_CONTACT.md): spatial ground profiles, square-edge versus rounded contact, local load/stress limitations, on-demand detail and validated multiple physics rates. These extend beyond the current flat-platen model.
+- [Terrain sampling contract](docs/TERRAIN_SAMPLING_CONTRACT.md): wheel swept requests, cache admission, compact layered extracts and shared soil history. Proposed design; the first receiving slice is a request/cutaway viewer, before dynamic contact.
 - dist/physics.js: shared headless/browser dynamics and recording.
 - dist/suspension.js: shared axial element, suspension experiment and recording.
 - dist/app.js, index.html, style.css: viewer and controls.

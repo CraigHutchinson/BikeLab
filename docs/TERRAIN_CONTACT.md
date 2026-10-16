@@ -97,3 +97,5 @@ Grip must consume this same distributed state: local normal load/pressure where 
 4. **3D and fidelity tiers:** extend to finite width, camber and lateral/combined slip before claiming cornering grip. Compare reduced real-time patches against a detailed reference with measured force/moment/work and footprint errors; preserve deformation, pressure, soil and mud history through any supported tier transfer. Scan/ML provenance and fine 1–2 cm terrain resolution remain separate from physical contact-model fidelity.
 
 This is explicit follow-up work, not implemented deformable contact. It should precede claims about grip profiles on detailed terrain. The current fork-buffer iteration continues independently; no nearest-point visualization is relabelled as a deformation or traction solution.
+
+The [terrain sampling contract](TERRAIN_SAMPLING_CONTRACT.md) is the request-first prerequisite: wheel corridors, mandatory coverage, source/cache/state ownership and layered extracts feed this distributed contact consumer. R0 receives visible data delivery; R1-R3 receive tyre loads, layered state and rolling grip separately.
