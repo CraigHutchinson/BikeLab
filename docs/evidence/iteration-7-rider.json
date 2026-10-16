@@ -1,0 +1,768 @@
+{
+  "format": "bikelab-rider-evidence-1",
+  "runtime": "v24.19.0",
+  "scope": "Illustrative smooth platen fixture; endpoint domain checking. No anatomy, impact, calibration or real-time claim.",
+  "rows": [
+    {
+      "params": {
+        "bike": "hardtail",
+        "mass": 82,
+        "rider": "fixed",
+        "riderMass": 70,
+        "riderStiffness": 12000,
+        "riderDamping": 900,
+        "riderTravel": 0.15,
+        "forkStiffness": 9000,
+        "forkDamping": 700,
+        "shockStiffness": 70000,
+        "shockDamping": 2400,
+        "tyreStiffness": 90000,
+        "tyreDamping": 300,
+        "amplitude": 0.025,
+        "bumpDuration": 0.4,
+        "delay": 0.25,
+        "input": "travelling",
+        "duration": 4,
+        "dt": 0.00025,
+        "sampleDt": 0.005
+      },
+      "engine": "MuJoCo 3.16.0",
+      "riderModel": {
+        "kind": "fixed-lump",
+        "frameMass": 82,
+        "riderMass": 0,
+        "frameInertia": 8,
+        "riderInertia": 0,
+        "axis": [
+          0,
+          0,
+          1
+        ],
+        "origin": [
+          0,
+          0,
+          0
+        ],
+        "rest": 0,
+        "forceScope": "Rider force unresolved"
+      },
+      "status": "complete",
+      "dofs": 3,
+      "initial": {
+        "qpos": [
+          -0.016946703305407543,
+          0.024626785107666672,
+          0.032927343856704205
+        ],
+        "qvel": [
+          6.946149507362659e-15,
+          -6.7033448814644766e-15,
+          2.120715655146039e-15
+        ],
+        "frontForce": 352.7866820343338,
+        "rearForce": 520.0051679656736,
+        "comX": 0.002363953009379003
+      },
+      "summary": {
+        "maxResidual": 0.0075938455189543674,
+        "peakForce": 794.491838512287,
+        "peakRiderForce": 0,
+        "work": 5.4816673261062965,
+        "loss": 5.483480748889584,
+        "riderLoss": 0
+      },
+      "static": {
+        "weightResidual": 7.503331289626658e-12,
+        "frontMomentResidual": 3.069544618483633e-12,
+        "riderSagResidual": null
+      },
+      "peaks": {
+        "frontForce": 518.6626644396282,
+        "rearForce": 794.3471609755946,
+        "riderForce": 0
+      },
+      "traceSha256": "201f44e94125706aa6dacbd319cada85fde144109abea1e76a0edd2182d7d202"
+    },
+    {
+      "params": {
+        "bike": "hardtail",
+        "mass": 82,
+        "rider": "fixed",
+        "riderMass": 70,
+        "riderStiffness": 12000,
+        "riderDamping": 900,
+        "riderTravel": 0.15,
+        "forkStiffness": 9000,
+        "forkDamping": 700,
+        "shockStiffness": 70000,
+        "shockDamping": 2400,
+        "tyreStiffness": 90000,
+        "tyreDamping": 300,
+        "amplitude": 0.025,
+        "bumpDuration": 0.4,
+        "delay": 0.25,
+        "input": "travelling",
+        "duration": 4,
+        "dt": 0.0000625,
+        "sampleDt": 0.005
+      },
+      "engine": "MuJoCo 3.16.0",
+      "riderModel": {
+        "kind": "fixed-lump",
+        "frameMass": 82,
+        "riderMass": 0,
+        "frameInertia": 8,
+        "riderInertia": 0,
+        "axis": [
+          0,
+          0,
+          1
+        ],
+        "origin": [
+          0,
+          0,
+          0
+        ],
+        "rest": 0,
+        "forceScope": "Rider force unresolved"
+      },
+      "status": "complete",
+      "dofs": 3,
+      "initial": {
+        "qpos": [
+          -0.01694670330540739,
+          0.024626785107666468,
+          0.03292734385670385
+        ],
+        "qvel": [
+          -6.881349418274662e-15,
+          -1.7195248050819977e-14,
+          2.720345842493573e-15
+        ],
+        "frontForce": 352.7866820343306,
+        "rearForce": 520.0051679656692,
+        "comX": 0.0023639530093790056
+      },
+      "summary": {
+        "maxResidual": 0.0019053845815051318,
+        "peakForce": 794.727655980616,
+        "peakRiderForce": 0,
+        "work": 5.490577958484622,
+        "loss": 5.491019708107594,
+        "riderLoss": 0
+      },
+      "static": {
+        "weightResidual": -1.1368683772161603e-13,
+        "frontMomentResidual": -5.684341886080802e-14,
+        "riderSagResidual": null
+      },
+      "peaks": {
+        "frontForce": 518.9199898824213,
+        "rearForce": 794.5802414338721,
+        "riderForce": 0
+      },
+      "traceSha256": "11a19822a651666d98043ad9d3d76d51f67c64b136bad54da525a28e13645bb5"
+    },
+    {
+      "params": {
+        "bike": "hardtail",
+        "mass": 82,
+        "rider": "compliant",
+        "riderMass": 70,
+        "riderStiffness": 12000,
+        "riderDamping": 900,
+        "riderTravel": 0.15,
+        "forkStiffness": 9000,
+        "forkDamping": 700,
+        "shockStiffness": 70000,
+        "shockDamping": 2400,
+        "tyreStiffness": 90000,
+        "tyreDamping": 300,
+        "amplitude": 0.025,
+        "bumpDuration": 0.4,
+        "delay": 0.25,
+        "input": "travelling",
+        "duration": 4,
+        "dt": 0.00025,
+        "sampleDt": 0.005
+      },
+      "engine": "MuJoCo 3.16.0",
+      "riderModel": {
+        "kind": "passive-frame-guide",
+        "frameMass": 12,
+        "riderMass": 70,
+        "frameInertia": 1.170731707317073,
+        "riderInertia": 6.829268292682927,
+        "axis": [
+          0,
+          0,
+          1
+        ],
+        "origin": [
+          0,
+          0,
+          0
+        ],
+        "rest": 0,
+        "forceScope": "Axial spring/damper only; transverse guide wrench unavailable"
+      },
+      "status": "complete",
+      "dofs": 4,
+      "initial": {
+        "qpos": [
+          -0.0169152809494101,
+          0.024536739761290366,
+          0.03283690450737537,
+          -0.057188238878214497
+        ],
+        "qvel": [
+          -1.9403317574077864e-11,
+          3.841678373911146e-11,
+          4.769059620938004e-11,
+          -8.184091172937687e-11
+        ],
+        "frontForce": 351.9111935535482,
+        "rearForce": 520.8806565200872,
+        "comX": 0.0012636024052410726
+      },
+      "summary": {
+        "maxResidual": 0.004261335449200487,
+        "peakForce": 630.44056097904,
+        "peakRiderForce": 823.3060998804318,
+        "work": 5.07042406344805,
+        "loss": 5.071740293674493,
+        "riderLoss": 3.584364720925827
+      },
+      "static": {
+        "weightResidual": 7.363541953964159e-8,
+        "frontMomentResidual": 3.224727151973639e-8,
+        "riderSagResidual": -3.0759110813960433e-9
+      },
+      "peaks": {
+        "frontForce": 421.7346432929749,
+        "rearForce": 630.1514795216722,
+        "riderForce": 823.2999243535883
+      },
+      "traceSha256": "00d1da2fc483445fa3b7b2175c1f91b467a0361133bea35f01530e951d56b147"
+    },
+    {
+      "params": {
+        "bike": "hardtail",
+        "mass": 82,
+        "rider": "compliant",
+        "riderMass": 70,
+        "riderStiffness": 12000,
+        "riderDamping": 900,
+        "riderTravel": 0.15,
+        "forkStiffness": 9000,
+        "forkDamping": 700,
+        "shockStiffness": 70000,
+        "shockDamping": 2400,
+        "tyreStiffness": 90000,
+        "tyreDamping": 300,
+        "amplitude": 0.025,
+        "bumpDuration": 0.4,
+        "delay": 0.25,
+        "input": "travelling",
+        "duration": 4,
+        "dt": 0.0000625,
+        "sampleDt": 0.005
+      },
+      "engine": "MuJoCo 3.16.0",
+      "riderModel": {
+        "kind": "passive-frame-guide",
+        "frameMass": 12,
+        "riderMass": 70,
+        "frameInertia": 1.170731707317073,
+        "riderInertia": 6.829268292682927,
+        "axis": [
+          0,
+          0,
+          1
+        ],
+        "origin": [
+          0,
+          0,
+          0
+        ],
+        "rest": 0,
+        "forceScope": "Axial spring/damper only; transverse guide wrench unavailable"
+      },
+      "status": "complete",
+      "dofs": 4,
+      "initial": {
+        "qpos": [
+          -0.016915280949438654,
+          0.024536739761354245,
+          0.03283690450745379,
+          -0.05718823887834452
+        ],
+        "qvel": [
+          -1.8851913662877803e-11,
+          3.754599437339986e-11,
+          4.658393197862886e-11,
+          -7.983850501945835e-11
+        ],
+        "frontForce": 351.91119355350946,
+        "rearForce": 520.8806565199762,
+        "comX": 0.0012636024052332263
+      },
+      "summary": {
+        "maxResidual": 0.001077089504065043,
+        "peakForce": 630.5737731272704,
+        "peakRiderForce": 823.3135934880853,
+        "work": 5.078088148000322,
+        "loss": 5.078407574845577,
+        "riderLoss": 3.590786114301111
+      },
+      "static": {
+        "weightResidual": 7.348569397436222e-8,
+        "frontMomentResidual": 3.219128075215849e-8,
+        "riderSagResidual": -1.5146497389650904e-9
+      },
+      "peaks": {
+        "frontForce": 421.90343144102695,
+        "rearForce": 630.2985213331102,
+        "riderForce": 823.3027661918721
+      },
+      "traceSha256": "c2d7d757f39f4ae343a1586cfb81797252bbd6cef14e83a167f5c5972305ae6f"
+    },
+    {
+      "params": {
+        "bike": "full",
+        "mass": 82,
+        "rider": "fixed",
+        "riderMass": 70,
+        "riderStiffness": 12000,
+        "riderDamping": 900,
+        "riderTravel": 0.15,
+        "forkStiffness": 9000,
+        "forkDamping": 700,
+        "shockStiffness": 70000,
+        "shockDamping": 2400,
+        "tyreStiffness": 90000,
+        "tyreDamping": 300,
+        "amplitude": 0.025,
+        "bumpDuration": 0.4,
+        "delay": 0.25,
+        "input": "travelling",
+        "duration": 4,
+        "dt": 0.00025,
+        "sampleDt": 0.005
+      },
+      "engine": "MuJoCo 3.16.0",
+      "riderModel": {
+        "kind": "fixed-lump",
+        "frameMass": 82,
+        "riderMass": 0,
+        "frameInertia": 8,
+        "riderInertia": 0,
+        "axis": [
+          0,
+          0,
+          1
+        ],
+        "origin": [
+          0,
+          0,
+          0
+        ],
+        "rest": 0,
+        "forceScope": "Rider force unresolved"
+      },
+      "status": "complete",
+      "dofs": 4,
+      "initial": {
+        "qpos": [
+          -0.04275822196789828,
+          -0.014236004048248138,
+          0.0320750754693872,
+          0.0953798654144848
+        ],
+        "qvel": [
+          -4.467204770158823e-9,
+          -3.6675781968646688e-9,
+          1.7910418106544817e-9,
+          1.205307956252749e-8
+        ],
+        "frontForce": 350.0995299981765,
+        "rearForce": 522.6923216384326,
+        "comX": 0.002689229923315721
+      },
+      "summary": {
+        "maxResidual": 0.003570679450035641,
+        "peakForce": 667.5138386929283,
+        "peakRiderForce": 0,
+        "work": 8.166456763044616,
+        "loss": 8.168243247146798,
+        "riderLoss": 0
+      },
+      "static": {
+        "weightResidual": 0.0000016366092268071952,
+        "frontMomentResidual": 3.582255203582463e-7,
+        "riderSagResidual": null
+      },
+      "peaks": {
+        "frontForce": 424.4725684381619,
+        "rearForce": 667.3354454642297,
+        "riderForce": 0
+      },
+      "traceSha256": "8245969e502e0052d96ffb8c8a2d19e128859bfd500c7b3309487f503c609d28"
+    },
+    {
+      "params": {
+        "bike": "full",
+        "mass": 82,
+        "rider": "fixed",
+        "riderMass": 70,
+        "riderStiffness": 12000,
+        "riderDamping": 900,
+        "riderTravel": 0.15,
+        "forkStiffness": 9000,
+        "forkDamping": 700,
+        "shockStiffness": 70000,
+        "shockDamping": 2400,
+        "tyreStiffness": 90000,
+        "tyreDamping": 300,
+        "amplitude": 0.025,
+        "bumpDuration": 0.4,
+        "delay": 0.25,
+        "input": "travelling",
+        "duration": 4,
+        "dt": 0.0000625,
+        "sampleDt": 0.005
+      },
+      "engine": "MuJoCo 3.16.0",
+      "riderModel": {
+        "kind": "fixed-lump",
+        "frameMass": 82,
+        "riderMass": 0,
+        "frameInertia": 8,
+        "riderInertia": 0,
+        "axis": [
+          0,
+          0,
+          1
+        ],
+        "origin": [
+          0,
+          0,
+          0
+        ],
+        "rest": 0,
+        "forceScope": "Rider force unresolved"
+      },
+      "status": "complete",
+      "dofs": 4,
+      "initial": {
+        "qpos": [
+          -0.042758221974216186,
+          -0.014236004053181376,
+          0.03207507547211289,
+          0.09537986543129898
+        ],
+        "qvel": [
+          -4.4366655910812216e-9,
+          -3.6077407581518786e-9,
+          1.8086478902697238e-9,
+          1.1953807370427461e-8
+        ],
+        "frontForce": 350.09953003802985,
+        "rearForce": 522.6923217106888,
+        "comX": 0.0026892299232956947
+      },
+      "summary": {
+        "maxResidual": 0.0009024898323559682,
+        "peakForce": 667.8163059073665,
+        "peakRiderForce": 0,
+        "work": 8.178139562078766,
+        "loss": 8.178576098889232,
+        "riderLoss": 0
+      },
+      "static": {
+        "weightResidual": 0.0000017487187733422616,
+        "frontMomentResidual": 3.978893232670089e-7,
+        "riderSagResidual": null
+      },
+      "peaks": {
+        "frontForce": 424.5326019721328,
+        "rearForce": 667.6289909013377,
+        "riderForce": 0
+      },
+      "traceSha256": "f2f86b7035e0a4fceda6cc067315f3085d49301380efa266652ceb6975b87076"
+    },
+    {
+      "params": {
+        "bike": "full",
+        "mass": 82,
+        "rider": "compliant",
+        "riderMass": 70,
+        "riderStiffness": 12000,
+        "riderDamping": 900,
+        "riderTravel": 0.15,
+        "forkStiffness": 9000,
+        "forkDamping": 700,
+        "shockStiffness": 70000,
+        "shockDamping": 2400,
+        "tyreStiffness": 90000,
+        "tyreDamping": 300,
+        "amplitude": 0.025,
+        "bumpDuration": 0.4,
+        "delay": 0.25,
+        "input": "travelling",
+        "duration": 4,
+        "dt": 0.00025,
+        "sampleDt": 0.005
+      },
+      "engine": "MuJoCo 3.16.0",
+      "riderModel": {
+        "kind": "passive-frame-guide",
+        "frameMass": 12,
+        "riderMass": 70,
+        "frameInertia": 1.170731707317073,
+        "riderInertia": 6.829268292682927,
+        "axis": [
+          0,
+          0,
+          1
+        ],
+        "origin": [
+          0,
+          0,
+          0
+        ],
+        "rest": 0,
+        "forceScope": "Axial spring/damper only; transverse guide wrench unavailable"
+      },
+      "status": "complete",
+      "dofs": 5,
+      "initial": {
+        "qpos": [
+          -0.04274948629614742,
+          -0.01414802226629006,
+          0.032126622997684186,
+          0.0952854202357252,
+          -0.05719972855503916
+        ],
+        "qvel": [
+          8.30227586250575e-8,
+          1.758965580845379e-9,
+          -8.66902964300001e-8,
+          -1.7365230999442934e-7,
+          1.6886358040468832e-7
+        ],
+        "frontForce": 350.60115317885055,
+        "rearForce": 522.1904729410808,
+        "comX": 0.003323643172990195
+      },
+      "summary": {
+        "maxResidual": 0.0027646609749467643,
+        "peakForce": 580.2624635515318,
+        "peakRiderForce": 771.3982089958837,
+        "work": 4.417332183213191,
+        "loss": 4.418384914040043,
+        "riderLoss": 2.0650606848941635
+      },
+      "static": {
+        "weightResidual": -0.00022388006857454457,
+        "frontMomentResidual": -0.0000834900412769457,
+        "riderSagResidual": -0.00005477559852806735
+      },
+      "peaks": {
+        "frontForce": 413.01841406977456,
+        "rearForce": 580.1705061962127,
+        "riderForce": 771.3963941698336
+      },
+      "traceSha256": "5c3868a482e950f5a6fe0d268eacc25bc61529d863f12e356fe51114116560e0"
+    },
+    {
+      "params": {
+        "bike": "full",
+        "mass": 82,
+        "rider": "compliant",
+        "riderMass": 70,
+        "riderStiffness": 12000,
+        "riderDamping": 900,
+        "riderTravel": 0.15,
+        "forkStiffness": 9000,
+        "forkDamping": 700,
+        "shockStiffness": 70000,
+        "shockDamping": 2400,
+        "tyreStiffness": 90000,
+        "tyreDamping": 300,
+        "amplitude": 0.025,
+        "bumpDuration": 0.4,
+        "delay": 0.25,
+        "input": "travelling",
+        "duration": 4,
+        "dt": 0.0000625,
+        "sampleDt": 0.005
+      },
+      "engine": "MuJoCo 3.16.0",
+      "riderModel": {
+        "kind": "passive-frame-guide",
+        "frameMass": 12,
+        "riderMass": 70,
+        "frameInertia": 1.170731707317073,
+        "riderInertia": 6.829268292682927,
+        "axis": [
+          0,
+          0,
+          1
+        ],
+        "origin": [
+          0,
+          0,
+          0
+        ],
+        "rest": 0,
+        "forceScope": "Axial spring/damper only; transverse guide wrench unavailable"
+      },
+      "status": "complete",
+      "dofs": 5,
+      "initial": {
+        "qpos": [
+          -0.04274948621249469,
+          -0.01414802227177474,
+          0.03212662290459567,
+          0.09528542006718439,
+          -0.05719972837665843
+        ],
+        "qvel": [
+          8.13367730957866e-8,
+          7.861145282729196e-10,
+          -8.573084164332268e-8,
+          -1.69528303696084e-7,
+          1.6679415932183705e-7
+        ],
+        "frontForce": 350.60115289694335,
+        "rearForce": 522.1904726843107,
+        "comX": 0.003323643173507756
+      },
+      "summary": {
+        "maxResidual": 0.0007007479271692318,
+        "peakForce": 580.3795435581538,
+        "peakRiderForce": 771.3946176426423,
+        "work": 4.42094402979316,
+        "loss": 4.421198246524819,
+        "riderLoss": 2.067540035765785
+      },
+      "static": {
+        "weightResidual": -0.00022441874591550004,
+        "frontMomentResidual": -0.00008375100645707789,
+        "riderSagResidual": -0.00005691611397651286
+      },
+      "peaks": {
+        "frontForce": 413.0633926851606,
+        "rearForce": 580.2940582595346,
+        "riderForce": 771.3936941910281
+      },
+      "traceSha256": "5b6be7118fdde7c2c712fb37fe4b2d8372fa59ad2300824b823f056e65ffa771"
+    }
+  ],
+  "refinement": [
+    {
+      "bike": "hardtail",
+      "rider": "fixed",
+      "relativeEndpointRiderPeakDifference": null,
+      "relativePeakDifferences": {
+        "frontForce": 0.0004958865486207402,
+        "rearForce": 0.0002933378482414873,
+        "riderForce": null
+      },
+      "maxCompressionDifferences": {
+        "fork": 0.000016315220505089267,
+        "shock": 0,
+        "riderCompression": 0
+      }
+    },
+    {
+      "bike": "hardtail",
+      "rider": "compliant",
+      "relativeEndpointRiderPeakDifference": 0.000009101765976848625,
+      "relativePeakDifferences": {
+        "frontForce": 0.0004000634635170952,
+        "rearForce": 0.0002332891581707085,
+        "riderForce": 0.0000034517535960866205
+      },
+      "maxCompressionDifferences": {
+        "fork": 0.000007585422854755608,
+        "shock": 0,
+        "riderCompression": 0.0000068307785502721985
+      }
+    },
+    {
+      "bike": "full",
+      "rider": "fixed",
+      "relativeEndpointRiderPeakDifference": null,
+      "relativePeakDifferences": {
+        "frontForce": 0.00014141089210116723,
+        "rearForce": 0.00043968347856154885,
+        "riderForce": null
+      },
+      "maxCompressionDifferences": {
+        "fork": 0.000009703946387287776,
+        "shock": 0.000004356244738490389,
+        "riderCompression": 0
+      }
+    },
+    {
+      "bike": "full",
+      "rider": "compliant",
+      "relativeEndpointRiderPeakDifference": 0.000004655662820644655,
+      "relativePeakDifferences": {
+        "frontForce": 0.00010889034512021627,
+        "rearForce": 0.00021291285265344372,
+        "riderForce": 0.000003500130770854179
+      },
+      "maxCompressionDifferences": {
+        "fork": 0.000006239453552700502,
+        "shock": 0.000002622374043692588,
+        "riderCompression": 0.000004129402957728234
+      }
+    }
+  ],
+  "travel": {
+    "params": {
+      "bike": "hardtail",
+      "mass": 82,
+      "rider": "compliant",
+      "riderMass": 70,
+      "riderStiffness": 12000,
+      "riderDamping": 900,
+      "riderTravel": 0.059,
+      "forkStiffness": 9000,
+      "forkDamping": 700,
+      "shockStiffness": 70000,
+      "shockDamping": 2400,
+      "tyreStiffness": 90000,
+      "tyreDamping": 300,
+      "amplitude": 0.025,
+      "bumpDuration": 0.4,
+      "delay": 0.25,
+      "input": "travelling",
+      "duration": 4,
+      "dt": 0.000125,
+      "sampleDt": 0.005
+    },
+    "status": "terminated",
+    "termination": {
+      "reason": "Rider travel limit",
+      "trialTime": 1.11625,
+      "trialQpos": [
+        -0.014328439015737996,
+        0.018350432398963713,
+        0.03538235690844597,
+        -0.05900430447520374
+      ],
+      "lastValidTime": 1.116125,
+      "lastValidQpos": [
+        -0.014338117810909358,
+        0.018374284833714442,
+        0.0353776859224376,
+        -0.058998546984875104
+      ]
+    },
+    "lastRiderCompression": 0.058998546984875104
+  }
+}

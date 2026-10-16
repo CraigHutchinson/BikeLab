@@ -2,7 +2,11 @@
 
 Open `bike.html`, or run `node scripts/bike-rig.mjs [setup.json] [run.json]`. The headless runner accepts a partial setup object or a complete saved rig record. Exit 0 means the requested interval completed, 2 means an unsupported trial state stopped it (partial evidence is saved), and 1 means setup/I/O failure. Completion is not a physical accuracy certification. Imported record samples are never trusted: loading reconstructs the setup and reruns it.
 
-## Assembly and scope
+## Passive rider extension
+
+Iteration 7 adds selectable [passive guided rider compliance](RIDER_MODEL.md), while preserving the fixed mode described below. Compliant mode splits the same total frame-plus-rider mass and adds one frame-local slide, producing 4/5 coordinates. It includes rider spring energy, damping loss, COM/axial-force telemetry, configurable travel rejection and explicit v0.1 fixed-record migration. The guide is a synthetic aggregate mechanism; anatomical attachments remain open.
+
+## Assembly and scope (fixed baseline)
 
 The rig compares an illustrative hardtail and single-pivot full-suspension bike on two prescribed vertical platens. Both use world x forward, y left, z up. Positive rotation about +y pitches the nose down. The world frame attachment permits z translation followed by y rotation; all other frame motion is fixed. Front fork compression is a third coordinate, along (-cos 65°, 0, sin 65°). The full-suspension rear swingarm adds one hinge; the hardtail has no rear suspension coordinate. Wheel spin is locked. This is a three/four-coordinate fixture, not a freely moving bicycle or a real-time riding implementation.
 
