@@ -1,3 +1,4 @@
+import {GEOMETRY_KEYS,REFERENCE_GEOMETRY} from '../dist/linkage.js';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {runRig,validate,DEFAULTS,MODEL,FORK_BUFFER_MODEL,PREVIOUS_MODEL,LEGACY_MODEL,setupFromRecord,shockLength,shockCompressionJacobian,getRuntime,modelXML,GEOMETRY as g} from '../dist/bike-rig.js';
@@ -39,7 +40,7 @@ test('hardtail buffers are dormant and summary peaks/loss do not depend on recor
 test('shock schema migrations preserve fork and rider choices and reject invalid dormant fields',()=>{
  for(const p of [{shockBuffer:'rigid'},{shockBufferWidth:0},{shockBufferWidth:.04},{shockBufferStiffness:Infinity},{shockBufferDamping:-1}])assert.throws(()=>validate({...p,bike:'hardtail'}));
  for(const model of [LEGACY_MODEL,PREVIOUS_MODEL,FORK_BUFFER_MODEL]){
-  const params=Object.fromEntries(Object.entries({...DEFAULTS,rider:'compliant',forkBuffer:'progressive'}).filter(([k])=>!k.startsWith('shockBuffer')&&(model===FORK_BUFFER_MODEL||!k.startsWith('forkBuffer'))&&(model!==LEGACY_MODEL||!k.startsWith('rider'))));
+  const params=Object.fromEntries(Object.entries({...DEFAULTS,rider:'compliant',forkBuffer:'progressive'}).filter(([k])=>!GEOMETRY_KEYS.includes(k)&&!k.startsWith('shockBuffer')&&(model===FORK_BUFFER_MODEL||!k.startsWith('forkBuffer'))&&(model!==LEGACY_MODEL||!k.startsWith('rider'))));
   const p=setupFromRecord({model,params});assert.equal(p.shockBuffer,'none');assert.equal(p.rider,model===LEGACY_MODEL?'fixed':'compliant');assert.equal(p.forkBuffer,model===FORK_BUFFER_MODEL?'progressive':'none');
   assert.throws(()=>setupFromRecord({model,params:{...params,shockBuffer:'none'}}),/Unknown/);assert.throws(()=>setupFromRecord({model:MODEL,params}),/Incomplete/);
  }

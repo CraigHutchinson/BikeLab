@@ -54,6 +54,8 @@ Same-runtime replay is reproducible. Browser and Node recordings are checked for
 
 ## Current evidence
 
+The bicycle station now uses the [annotated high-eye shock layout and editable geometry](docs/GEOMETRY_CONFIGURATION.md), with settled sag/load split and a linkage-ratio plot. Earlier saved runs retain their original geometry; the new 210 × 55 mm layout is image-informed and explicitly uncalibrated.
+
 The [terrain-request station](https://craighutchinson.github.io/BikeLab/terrain-request.html) receives finite-width swept geometry, 2 cm synthetic layered cells and explicit rock faces through a bounded async cache. Run `node scripts/terrain-request.mjs straight [record.json]` or pass a saved JSON to verify replay. See [R0a scope and evidence](docs/ITERATION_9_EVIDENCE.md); this data experiment computes no contact forces. The [real-image geometry review](docs/GEOMETRY_VISUAL_REVIEW.md) confirms corrected BB/frame drawing and records the remaining synthetic linkage dimensions.
 
 The bicycle station now includes optional [progressive fork travel buffers](docs/FORK_BUFFERS.md), top-out/bottom-out experiments, engagement display and force/energy histories. Ultimate boundaries remain explicit; this does not certify impacts or component survival.

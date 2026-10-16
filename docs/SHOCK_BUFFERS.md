@@ -4,6 +4,8 @@ Optional progressive shock buffers complete the coupled rig's first fork/rear tr
 
 ## Geometry and work
 
+The dimensions/presets in this receipt refer to the original geometry. Model v0.5 adds [configured geometry](GEOMETRY_CONFIGURATION.md); it applies the same derivative/work mapping to each run and retains original geometry for these named presets.
+
 Let theta be swing rotation about local +y, L(theta) the distance between the existing shock eyes, and s=L(0)-L(theta) positive compression. The geometry helper computes j=ds/dtheta analytically from the derivative of the two-dimensional eye separation. It changes from about 0.1777 m/rad at zero swing toward 0.199 m/rad at 0.4 rad; no constant leverage factor is used. The original 65 mm shock bound is reached before the 0.4 rad angle bound.
 
 The existing travelBuffer law takes s and sdot=-tendon velocity. Its compression-positive force B=Ft-Fb maps to swing generalized moment Q=B*j. Thus Q*thetaDot=B*sdot=-Udot-D. Apply Q once at the named swing coordinate. The articulated system supplies the internal frame reaction; no duplicate Cartesian shock/wheel force is added. This direct mapping is valid for the fixed two-eye single-pivot geometry. Changed linkage topology requires a new derived/verified mapping.

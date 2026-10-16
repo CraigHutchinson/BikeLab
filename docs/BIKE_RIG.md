@@ -6,7 +6,9 @@ Open `bike.html`, or run `node scripts/bike-rig.mjs [setup.json] [run.json]`. Th
 
 Iteration 7 adds selectable [passive guided rider compliance](RIDER_MODEL.md), while preserving the fixed mode described below. Compliant mode splits the same total frame-plus-rider mass and adds one frame-local slide, producing 4/5 coordinates. It includes rider spring energy, damping loss, COM/axial-force telemetry, configurable travel rejection and explicit v0.1 fixed-record migration. The guide is a synthetic aggregate mechanism; anatomical attachments remain open.
 
-## Assembly and scope (fixed baseline)
+## Assembly and scope (original fixed baseline)
+
+Model v0.5 adds [editable geometry and the annotated high-eye default](GEOMETRY_CONFIGURATION.md). Dimensions below document the original reference preset, which old records and original buffer examples retain. Each new run records its actual configured geometry.
 
 The rig compares an illustrative hardtail and single-pivot full-suspension bike on two prescribed vertical platens. Both use world x forward, y left, z up. Positive rotation about +y pitches the nose down. The world frame attachment permits z translation followed by y rotation; all other frame motion is fixed. Front fork compression is a third coordinate, along (-cos 65°, 0, sin 65°). The full-suspension rear swingarm adds one hinge; the hardtail has no rear suspension coordinate. Wheel spin is locked. This is a three/four-coordinate fixture, not a freely moving bicycle or a real-time riding implementation.
 

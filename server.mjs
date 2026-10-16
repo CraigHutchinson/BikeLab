@@ -4,7 +4,7 @@ import { resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
 
 const root = new URL('./dist/', import.meta.url);
-const assets = ['terrain-request.html','terrain-request.js','terrain-request-app.js','travel-buffer.js', 'bike.html', 'bike-app.js', 'bike-geometry.js', 'bike-rig.js', 'bike-worker.js', 'vendor/mujoco-3.16.0/mujoco.js', 'vendor/mujoco-3.16.0/mujoco.wasm', 'vendor/mujoco-3.16.0/LICENSE', 'vendor/mujoco-3.16.0/provenance.json', 'vendor/mujoco-3.16.0/NOTICES.txt', 'index.html', 'style.css', 'app.js', 'physics.js', 'worker.js', 'ui-model.js', 'calculation.js',
+const assets = ['terrain-request.html','terrain-request.js','terrain-request-app.js','travel-buffer.js', 'bike.html', 'bike-app.js', 'linkage.js','bike-geometry.js', 'bike-rig.js', 'bike-worker.js', 'vendor/mujoco-3.16.0/mujoco.js', 'vendor/mujoco-3.16.0/mujoco.wasm', 'vendor/mujoco-3.16.0/LICENSE', 'vendor/mujoco-3.16.0/provenance.json', 'vendor/mujoco-3.16.0/NOTICES.txt', 'index.html', 'style.css', 'app.js', 'physics.js', 'worker.js', 'ui-model.js', 'calculation.js',
   'suspension.html', 'suspension.js', 'suspension-app.js', 'suspension-ui-model.js', 'suspension-reference.js', 'terrain.html', 'terrain.js', 'terrain-app.js', 'solver.html', 'solver-app.js', 'solver-config.js', 'solver-trial.js', 'solver-worker.js',
   'vendor/rapier-0.21.0/rapier.mjs', 'vendor/rapier-0.21.0/LICENSE', 'vendor/rapier-0.21.0/provenance.json'];
 const allowed = new Map(assets.map(name => ['/' + name, name]));
