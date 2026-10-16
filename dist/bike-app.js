@@ -1,4 +1,5 @@
 import {DEFAULTS,GEOMETRY as g,validate,rigRecord,setupFromRecord} from './bike-rig.js';
+import {rigLandmarks} from './bike-geometry.js';
 import {Calculation} from './calculation.js';
 const $=id=>document.getElementById(id),form=$('setup');
 let run=null,index=0,playing=false,last=0,elapsed=0,frameRequest=0;
@@ -58,11 +59,19 @@ function scene(){const ctx=context('rig');if(!ctx)return;const {c,w,h}=ctx;c.fon
     line(point(x-.38,base),point(x+.38,base),'#728b98',5);c.fillStyle=color;c.fillText(force.toFixed(0)+' N',point(x-.13,base-.09)[0],point(x,base-.09)[1]);
     line(center,point(x,z+.08),color,2);
   }
-  const bb=local(-.12,-.15),seat=local(-.23,.18),head=local(g.frontX-.55*Math.cos(g.headAngle),g.axleZ+.55*Math.sin(g.headAngle)),pivot=local(0,g.pivotZ);
-  line(bb,seat,'#e5edf2',5);line(seat,head,'#e5edf2',5);line(head,bb,'#e5edf2',5);line(bb,pivot,'#e5edf2',5);
-  line(head,front,'#70e2ce',6);line(pivot,rear,'#f2b373',5);
-  if(run.params.bike==='hardtail')line(seat,rear,'#f2b373',4);
-  else {const a=s.rearAngle[k],x=Math.cos(a)*g.shockArmX+Math.sin(a)*g.shockArmZ,z=g.pivotZ-Math.sin(a)*g.shockArmX+Math.cos(a)*g.shockArmZ;line(pivot,local(x,z),'#f2b373',3);line(local(x,z),rear,'#f2b373',2);line(seat,local(g.shockFrameX,g.shockFrameZ),'#e5edf2',3);line(local(g.shockFrameX,g.shockFrameZ),local(x,z),'#c2a3ff',7);}
+  const landmarks=rigLandmarks({bike:run.params.bike,pitch:s.pitch[k],heave:s.heave[k],fork:s.fork[k],rearAngle:s.rearAngle[k]});
+  const {bb,seat,headBottom,headTop,pivot,shockFrame,shockArm}=Object.fromEntries(Object.entries(landmarks).map(([name,p])=>[name,point(...p)]));
+  line(bb,seat,'#e5edf2',5);line(seat,headTop,'#e5edf2',5);line(headBottom,bb,'#e5edf2',5);line(headBottom,headTop,'#e5edf2',7);
+  line(headBottom,front,'#70e2ce',6);
+  if(run.params.bike==='hardtail'){line(bb,rear,'#f2b373',5);line(seat,rear,'#f2b373',4);}
+  else {
+    line(bb,pivot,'#e5edf2',4);line(pivot,rear,'#f2b373',5);line(pivot,shockArm,'#f2b373',3);line(shockArm,rear,'#f2b373',3);
+    // Frame eye is welded to the front frame; arm eye rotates with the actual swingarm.
+    line(seat,shockFrame,'#e5edf2',3);line(shockFrame,headTop,'#e5edf2',3);line(shockFrame,shockArm,'#c2a3ff',7);
+    for(const p of [pivot,shockFrame,shockArm]){c.beginPath();c.arc(...p,3,0,2*Math.PI);c.fillStyle='#e5edf2';c.fill();}
+  }
+  c.beginPath();c.arc(...bb,6,0,Math.PI*2);c.fillStyle='#10191f';c.fill();c.strokeStyle='#e5edf2';c.lineWidth=2;c.stroke();
+  c.fillStyle='#e5edf2';c.fillText('BB',bb[0]+9,bb[1]+12);
   const com=local(0,0),passive=run.params.rider==='compliant';
   if(passive){
     line(local(0,-run.params.riderTravel),local(0,run.params.riderTravel),'#526a7c',2);

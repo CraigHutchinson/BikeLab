@@ -10,7 +10,7 @@ Review covered mass/inertia ownership, native force/energy signs, COM statics, d
 
 ## Numerical evidence
 
-The local complete suite ran 95 tests: 89 passed, six failed because child-process spawning or loopback binding is denied by the workspace (EPERM). No test was skipped or relaxed. Hosted CI must supply the unfiltered Windows/Linux and browser result before delivery. The seven new rider tests pass locally, including native locked-child mass matrix/gravity agreement, force-pair work, an independent fixed-guide damped oscillator, both-assembly statics/refinement, domain rejection/termination, repeat/cadence invariance and record migration.
+The local complete suite ran 95 tests: 89 passed, six failed because child-process spawning or loopback binding is denied by the workspace (EPERM). No test was skipped or relaxed. Hosted CI subsequently supplied the unfiltered Windows/Linux and browser result; see the continuation receipt below. The seven new rider tests pass locally, including native locked-child mass matrix/gravity agreement, force-pair work, an independent fixed-guide damped oscillator, both-assembly statics/refinement, domain rejection/termination, repeat/cadence invariance and record migration.
 
 [Baseline comparison](evidence/iteration-7-fixed-baseline.json): for both original fixed variants, all original recorded channels match the captured pre-edit merged baseline exactly, at all 801 samples in the same runtime. This is separate from cross-runtime browser tolerance and not a universal determinism claim.
 
@@ -27,8 +27,18 @@ With 59 mm rider travel, the hardtail rejects the first violating trial at 1.116
 
 ## Browser and publication status
 
-The expanded browser script exercises both passive assemblies in real workers; compares every recorded channel with the same Node model at 1e-8 tolerance; edits rider mass; rejects incompatible mass/travel; loads complete and legacy records including an imported 0.1 ms step; checks all five canvases after lifecycle/viewport changes; and captures desktop, stopped and 390/320 px views. Hosted results and actual screenshot inspection remain pending at the implementation commit; record them in the PR and continuation receipt before delivery.
+The expanded browser script exercises both passive assemblies in real workers; compares every recorded channel with the same Node model at 1e-8 tolerance; edits rider mass; rejects incompatible mass/travel; loads complete and legacy records including an imported 0.1 ms step; checks all five canvases after lifecycle/viewport changes; and captures desktop, stopped and 390/320 px views. These checks passed at the implementation commit; the continuation receipt below records hosted execution and actual screenshot inspection.
 
 ## Remaining physics
 
 This is a guided aggregate mass and bilateral spring, not independent anatomical posture/hand/foot/saddle contacts, active control or measured rider biomechanics. Axial force excludes transverse guide reactions. No real-bike transient calibration, full attachment-wrench qualification, native end-stop/failure continuation, spatial/layered terrain, free 3D riding or real-time budget is established. Supported stop/load-path evidence is the next received mechanics gate; all user-required failure, tyre-contact, terrain-history and 3D contracts remain open.
+
+## Hosted continuation receipt
+
+Implementation head `aa09453b8fedf8300bf4f0d51b8051d83d8ea9d2` passed [run 38865221227](https://github.com/CraigHutchinson/BikeLab/actions/runs/38865221227): **95/95 tests on Ubuntu and Windows**, no skips, and the full Chromium browser/headless suite. This closes the local EPERM verification gap without changing test coverage. Pages jobs are intentionally skipped for a pull request.
+
+The [browser receipt](evidence/iteration-7-browser.json) records Chromium 141.0.7390.37, 29 captures across all stations, no captured page/console errors, all rider/legacy/domain/lifecycle interactions, and 801 samples for each fixed/passive assembly. Largest observed rider browser/Node channel difference was 1.513e-11, below the declared 1e-8 tolerance. This is numerical agreement, not exact cross-runtime identity.
+
+Downloaded and visually inspected the passive full-suspension desktop, hardtail stopped-run, 390 px mobile and 320 px narrow screenshots. The guide/lump and static frame marker are distinct; rider readouts and signed plot labels are visible; the stopped view identifies the rejected trial and last valid time; controls/readouts wrap without horizontal page overflow. These are headless captures and automated interactions, not native input/display or participant evidence.
+
+Artifact `12030996455`, archive SHA-256 `30f4df5871199da1416fd8d41ac3bbbdbc5bd33e198d85f6f72891e149df64bb`, retains the images and exported reports. This follow-up records evidence only; the final head's hosted checks and deployment are linked in PR #7.

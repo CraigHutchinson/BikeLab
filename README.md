@@ -58,7 +58,7 @@ The [coupled bicycle rig](https://craighutchinson.github.io/BikeLab/bike.html) a
 
 The following receipts describe earlier iterations:
 
-Each iteration retains separate numerical and browser evidence. The merged iteration 6 baseline passed 88 tests on Windows/Linux plus Chromium worker/headless and interaction checks. The rider continuation adds independent mechanics, refinement, domain and legacy-record checks; [its evidence note](docs/ITERATION_7_EVIDENCE.md) records the current verification status. No real-bike calibration or participant evidence exists yet.
+Each iteration retains separate numerical and browser evidence. The rider continuation passes 95 tests on Windows/Linux plus Chromium worker/headless and interaction checks, including independent mechanics, refinement, domain and legacy-record checks. [Its evidence note](docs/ITERATION_7_EVIDENCE.md) records the tested scope and receipts. No real-bike calibration or participant evidence exists yet.
 
 The continuation reviews main 672e5e7 and adds independently checked spatial geometry; see [iteration 4 review](docs/ITERATION_4_REVIEW.md) and [solver research](docs/SOLVER_RESEARCH.md). The [iteration 4 evidence receipt](docs/ITERATION_4_EVIDENCE.md) records complete-suite CI, browser/headless geometry agreement and inspected desktop/narrow views.
 
