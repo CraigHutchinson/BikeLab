@@ -50,7 +50,7 @@ function steppedRock(){
   const p=[[5.8,-.2],[6.4,-.2],[6.4,.05],[6,.05],[6,-.03],[5.8,-.03]],n=p.length;
   const vertices=[...p.map(([x,z])=>freeze([x,-.1,z])),...p.map(([x,z])=>freeze([x,.1,z]))];
   const faces=[{indices:[0,1,2,3,4,5],normal:[0,-1,0]},{indices:[6,11,10,9,8,7],normal:[0,1,0]}];
-  for(let i=0;i<n;i++){const j=(i+1)%n,dx=p[j][0]-p[i][0],dz=p[j][1]-p[i][1],l=Math.hypot(dx,dz);faces.push({indices:[i,j,j+n,i+n],normal:[dz/l||0,0,-dx/l||0]});}
+  for(let i=0;i<n;i++){const j=(i+1)%n,dx=p[j][0]-p[i][0],dz=p[j][1]-p[i][1],l=Math.hypot(dx,dz);faces.push({indices:[i,i+n,j+n,j],normal:[dz/l||0,0,-dx/l||0]});}
   return freeze({id:'stepped-rock',bounds:freeze([5.8,6.4,-.1,.1,-.2,.05]),vertices:freeze(vertices),faces:freeze(faces.map(f=>freeze({indices:freeze(f.indices),normal:freeze(f.normal)}))),material:2});
 }
 const FEATURES=freeze([steppedRock(),cuboid('off-centre-edge',4.8,5.4,.12,.14,-.2,.07)]);
@@ -148,7 +148,7 @@ export class TerrainCache {
       for(const key of wanted.slice(0,optionalBudget)){if(stale())break;try{await this.#tile(key);}catch{optionalClipped=true;}}
       if(stale())return result('cancelled',{reason:'superseded or reset'});
       return result('complete',{request:q,ids:new Uint32Array(region.ids),x,y,top,normal,offset,upper,lower,material,features,optionalClipped,tiles:keys,spacing:.02,knownDepth:[GRID.zMin,GRID.zMax],ownership:'owned copies; no cache aliases'});
-    }catch(error){return result(stale()?'cancelled':'failed',{reason:error.message});}
+    }catch(error){return result(stale()?'cancelled':error.message==='pending tile budget'?'pending':'failed',{reason:error.message});}
     finally{this.#active--;}
   }
 }
@@ -171,7 +171,27 @@ export async function replay(name='straight',{delay,onWait=()=>{},onFrame=()=>{}
   }
   return {format:FORMAT,track:name,dt:.05,source:'synthetic analytic v1; static epoch 0',grid:GRID,envelope:ENVELOPE,limits:LIMITS,frames};
 }
+// Geometry is compared in metres/radians against the 1e-12 numerical budget.
+// Discrete identities, masks, offsets, counts, statuses and structure stay exact.
+const FLOAT_FIELDS=new Set(['x','y','top','normal','upper','lower','a','b','box','optional','vertices','bounds','time','dt','spacing','depth','knownDepth','radius','width','margin','behind']);
+export function compareReplay(actual,expected){
+  let maxDifference=0,numbers=0;
+  function walk(a,b,path='',field=''){
+    if(typeof b==='number'){
+      if(typeof a!=='number'||!Number.isFinite(a))throw Error('Invalid number at '+path);
+      const difference=Math.abs(a-b);numbers++;
+      if(FLOAT_FIELDS.has(field)){maxDifference=Math.max(maxDifference,difference);if(difference>1e-12)throw Error('Record differs at '+path);}
+      else if(a!==b)throw Error('Record identity/count differs at '+path);
+      return;
+    }
+    if(b===null||typeof b!=='object'){if(a!==b)throw Error('Record differs at '+path);return;}
+    if(!a||typeof a!=='object'||Array.isArray(a)!==Array.isArray(b))throw Error('Record shape differs at '+path);
+    const keys=Object.keys(b);if(keys.length!==Object.keys(a).length||keys.some(k=>!Object.hasOwn(a,k)))throw Error('Record fields differ at '+path);
+    for(const k of keys)walk(a[k],b[k],path+'/'+k,Array.isArray(b)?field:k);
+  }
+  walk(actual,expected);return {maxDifference,numbers,geometryTolerance:1e-12,discreteFieldsExact:true};
+}
 export async function verifyReplay(record){
   if(!record||record.format!==FORMAT||!TRACKS.includes(record.track))throw Error('Unsupported terrain record');
-  const expected=await replay(record.track);if(JSON.stringify(expected)!==JSON.stringify(record))throw Error('Record differs from deterministic source replay');return expected;
+  const expected=await replay(record.track);compareReplay(record,expected);return expected;
 }

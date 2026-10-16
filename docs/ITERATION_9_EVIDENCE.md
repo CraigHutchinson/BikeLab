@@ -18,10 +18,17 @@ Identical tile loads deduplicate across wheels. Every response owns its extracti
 
 Local new tests check independent flat/ramp/step expectations, unit normals, exact layer spans, finite-width off-centre geometry, seam identities, continuous-sweep containment at 1,001 intermediate poses, mirror/reverse/stationary cases, hole/depth/domain/revision/budget rejection, forged coverage, optional clipping, reuse/front–rear deduplication, eviction and owned-output isolation, cancellation/reset/out-of-order responses, queue limits and deterministic replay. Geometry tolerances are 1e-12. The missing-cell fixture accepts 13 intervals and holds interval 13 before accepting its swept movement.
 
-The browser script requires exact equality with Node records for all six presets, replay controls, cut direction/row, export/verified import, invalid-file rejection, delayed cancellation/supersession and 390/320 px layout checks. Hosted execution and capture inspection are recorded below when available; source code for a check is not evidence of execution.
+The browser script requires exact discrete identities/structure and geometric agreement within 1e-12 with Node records for all six presets, replay controls, cut direction/row, export/verified import, invalid-file rejection, delayed cancellation/supersession and 390/320 px layout checks. Hosted execution and capture inspection are recorded below when available; source code for a check is not evidence of execution.
 
 ## Remaining gates
 
 This is **R0a**, not completion of [R0](TERRAIN_SAMPLING_CONTRACT.md). Multimodal/asymmetric probabilistic ribbons, arbitrary source transforms/raster imports, resolved roots/composites/voids/overhangs, mutable snapshot membership and leased zero-copy results remain unimplemented. Replay deterministically awaits required static data; wall-clock availability events are not reproduced. Returned owned arrays remain the caller's storage responsibility. No solver loop is allocation-free or benchmarked here.
 
 R1–R3 still require a deformable distributed tyre, force/moment/work references, layered shared soil history, mud ownership, rolling 3D combined traction, calibrated component damage and verified adaptive-rate/fidelity transitions. Existing bicycle forces, fork travel guards and supported stop limits remain unchanged. Full shock/rider attachment stops and source-backed production-bike geometry are separate follow-ups.
+
+
+## Hosted review corrections
+
+Initial head `942396e` passed all 116 tests on Ubuntu and Windows in [run 38909011962](https://github.com/CraigHutchinson/BikeLab/actions/runs/38909011962). Chromium exposed a last-bit difference in a turning swept-box coordinate: −0.03947548956610583 versus −0.039475489566105824 m. The originally requested exact cross-runtime JSON gate was too strong for trigonometric geometry. Comparison/import now applies the already declared 1e-12 geometric budget only to floating geometry/time fields; IDs, cells, masks, offsets, counts, revisions, status and schema remain exact. Tests distinguish tolerated floating error from real geometric or identity corruption. Same-runtime replay remains identical. This threshold correction is explicit, not an exact-equality claim.
+
+Read-only GPT-6.1 Sol review found a receiving-run lifecycle gap: repeated clicks could retain multiple cancelled loads. Calculation/import are now serialized by an active-operation guard and disabled initiation controls until pending work settles. Publication cancellation remains immediate. A subsequent independent face-winding check corrected polygon winding to agree with outward normals; pending source-queue exhaustion now reports a wait rather than I/O failure. These corrections have focused regressions.

@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {GRID,FORMAT,ENVELOPE,LIMITS,TerrainCache,makeRequest,sweptBox,envelopeCorners,fixtureColumn,replay,verifyReplay,serializable} from '../dist/terrain-request.js';
+import {GRID,FORMAT,ENVELOPE,LIMITS,TerrainCache,makeRequest,sweptBox,envelopeCorners,fixtureColumn,replay,verifyReplay,serializable,compareReplay} from '../dist/terrain-request.js';
 const close=(a,b)=>assert.ok(Math.abs(a-b)<1e-12,`${a} != ${b}`);
 const request=(overrides={})=>makeRequest({a:[6,0,0],b:[6.01,0,0],...overrides});
 const gate=()=>{let resolve,reject;const promise=new Promise((a,b)=>{resolve=a;reject=b;});return {promise,resolve,reject};};
@@ -44,6 +44,7 @@ test('typed extraction agrees with independent grid and layer expectations acros
   const step=r.features.find(f=>f.id==='stepped-rock'),face=step.faces.find(f=>f.normal[0]===-1&&f.indices.every(i=>step.vertices[i][0]===6));assert.ok(face);
   assert.deepEqual(face.normal,[-1,0,0]);assert.deepEqual([...new Set(face.indices.map(i=>step.vertices[i][2]))].sort((a,b)=>a-b),[-.03,.05]);
   assert.equal(new Set(r.features.map(f=>f.id)).size,r.features.length);
+  for(const feature of r.features)for(const face of feature.faces){const [a,b,c]=face.indices.slice(0,3).map(i=>feature.vertices[i]),u=b.map((v,i)=>v-a[i]),v=c.map((x,i)=>x-a[i]),cross=[u[1]*v[2]-u[2]*v[1],u[2]*v[0]-u[0]*v[2],u[0]*v[1]-u[1]*v[0]];assert.ok(cross.reduce((sum,x,i)=>sum+x*face.normal[i],0)>0,'outward winding agrees with face normal');}
   assert.equal(cache.bytes,cache.resident.length*97600);
 });
 
@@ -113,4 +114,22 @@ test('out-of-order disjoint loads and queue pressure retain the newest request',
   assert.equal((await limited.request(request({sequence:4}))).status,'pending');g.resolve();
   const results=await Promise.all(promises);assert.equal(results.at(-1).status,'complete');assert.ok(results.slice(0,-1).every(r=>r.status==='cancelled'));
   assert.ok(limited.bytes<=LIMITS.tiles*97600);
+});
+
+
+test('global pending-load pressure is a visible wait, not a source failure',async()=>{
+  const g=gate(),cache=new TerrainCache({delay:()=>g.promise});
+  const a=cache.request(request({a:[2,0,0],b:[2.01,0,0]})),b=cache.request(request({sequence:1}));
+  const wait=await cache.request(request({sequence:2,a:[4,0,0],b:[4.01,0,0]}));
+  assert.equal(wait.status,'pending');assert.match(wait.reason,/budget/);g.resolve();await Promise.all([a,b]);
+  assert.equal((await cache.request(request({sequence:3,a:[4,0,0],b:[4.01,0,0]}))).status,'complete');
+});
+
+
+test('cross-runtime geometry tolerance never relaxes source identities or topology',async()=>{
+  const base=await replay('straight'),near=structuredClone(base);near.frames[0].response.top[0]+=5e-13;
+  assert.ok(compareReplay(near,base).maxDifference>0);await verifyReplay(near);
+  near.frames[0].response.top[0]+=2e-12;assert.throws(()=>compareReplay(near,base),/differs/);
+  const wrong=structuredClone(base);wrong.frames[0].response.ids[0]++;assert.throws(()=>compareReplay(wrong,base),/identity/);
+  const shape=structuredClone(base);shape.frames[0].response.offset.pop();assert.throws(()=>compareReplay(shape,base),/fields/);
 });
