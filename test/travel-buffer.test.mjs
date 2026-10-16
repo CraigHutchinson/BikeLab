@@ -53,7 +53,7 @@ test('weak buffers retain ultimate guard and recording cadence cannot alter load
 });
 test('buffer settings and versioned reconstruction reject unsupported or ambiguous inputs',()=>{
   for(const p of [{forkBuffer:'rigid'},{forkBufferWidth:0},{forkBufferWidth:.1},{forkBufferStiffness:NaN},{forkBufferDamping:-1}])assert.throws(()=>validate(p));
-  const previous=Object.fromEntries(Object.entries(DEFAULTS).filter(([k])=>!k.startsWith('forkBuffer')));
+  const previous=Object.fromEntries(Object.entries(DEFAULTS).filter(([k])=>!k.startsWith('forkBuffer')&&!k.startsWith('shockBuffer')));
   for(const rider of ['fixed','compliant'])assert.equal(setupFromRecord({model:PREVIOUS_MODEL,params:{...previous,rider}}).rider,rider);
   assert.equal(setupFromRecord({model:PREVIOUS_MODEL,params:previous}).forkBuffer,'none');
   assert.throws(()=>setupFromRecord({model:PREVIOUS_MODEL,params:DEFAULTS}),/Unknown legacy/);

@@ -49,3 +49,5 @@ The constitutive law is a documented surrogate derived from its stated potential
 - [Derivative implementation](https://github.com/google-deepmind/mujoco/blob/a892750516336d8358949f4518fcc4fbbd85beae/src/engine/engine_derivative.c): custom applied force is excluded from the native implicit derivative.
 
 Independent tests cover the potential gradient, passive work identity, symmetry/free travel, one-coordinate impact momentum and conservative turning depth at two masses. Coupled checks cover four bike/rider modes, three steps, both buffer directions, no-buffer preservation, weak-buffer ultimate termination, cadence invariance and schema migration. `node scripts/buffer-evidence.mjs` regenerates all receiving runs and enforces the 2% finest-pair peak, 0.2 mm travel and 1% work-scale residual limits. These are numerical budgets for these scenarios, not general parameter or physical-calibration certification.
+
+Model v0.4 additionally supports [shock buffers](SHOCK_BUFFERS.md). Complete v0.3 records retain fork settings and migrate with shock buffers disabled. The earlier fork-only limitation above describes the initial iteration.
