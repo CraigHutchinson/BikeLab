@@ -1,7 +1,7 @@
 import {writeFile,readFile} from 'node:fs/promises';
 import assert from 'node:assert/strict';
-import {runRig} from '../dist/bike-rig.js';
-const report={model:'bikelab-planar-rig-0.4',runs:[],comparisons:[]};
+import {runRig,MODEL} from '../dist/bike-rig.js';
+const report={model:MODEL,runs:[],comparisons:[]};
 for(const rider of ['fixed','compliant'])for(const shockStiffness of [30000,70000]){
  const runs=[];for(const dt of [.000125,.0000625,.00003125]){const r=await runRig({bike:'full',rider,shockStiffness,shockDamping:900,shockBuffer:'progressive',forkBuffer:'progressive',input:'rear',amplitude:.08,bumpDuration:.2,dt});assert.equal(r.status,'complete');assert.ok(r.summary.maxResidual/Math.max(1,Math.abs(r.summary.work),r.summary.loss)<.01);runs.push(r);report.runs.push({params:r.params,status:r.status,summary:r.summary,minShock:Math.min(...r.signals.shock),maxShock:Math.max(...r.signals.shock)});}
  const [a,b]=runs.slice(1),key=shockStiffness===30000?'peakShockBottomForce':'peakShockTopForce',relativePeak=Math.abs(a.summary[key]-b.summary[key])/b.summary[key];let maxTravel=0;for(let i=0;i<a.signals.time.length;i++)maxTravel=Math.max(maxTravel,Math.abs(a.signals.shock[i]-b.signals.shock[i]));assert.ok(relativePeak<.02&&maxTravel<.0002);report.comparisons.push({rider,shockStiffness,relativePeak,maxTravel});

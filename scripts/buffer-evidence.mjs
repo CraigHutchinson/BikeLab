@@ -1,7 +1,7 @@
 import {writeFile} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
 import assert from 'node:assert/strict';
-import {runRig} from '../dist/bike-rig.js';
+import {runRig,MODEL} from '../dist/bike-rig.js';
 const scenarios=[];for(const bike of ['hardtail','full'])for(const rider of ['fixed','compliant'])scenarios.push({name:bike+'-'+rider+'-top',setup:{bike,rider,forkStiffness:9000}});
 scenarios.push({name:'hardtail-fixed-bottom',setup:{bike:'hardtail',rider:'fixed',forkStiffness:4000}});
 const rows=[];
@@ -11,5 +11,5 @@ for(const scenario of scenarios){const runs=[];for(const dt of [.000125,.0000625
  assert.ok(peakDifference<.02);assert.ok(travelDifference<.0002);for(const r of runs)assert.ok(r.summary.maxResidual/Math.max(1,Math.abs(r.summary.work),r.summary.loss)<.01);
  rows.at(-1).refinement={peakKey,relativePeakDifference:peakDifference,maxTravelDifference:travelDifference};
 }
-const receipt={model:rows.length?'bikelab-planar-rig-0.3':null,node:process.version,baseline:'30b81657d5a5f1631525ee5a5240fd8c0c2c6ad9',rows};
+const receipt={model:rows.length?MODEL:null,node:process.version,baseline:'30b81657d5a5f1631525ee5a5240fd8c0c2c6ad9',rows};
 await writeFile('docs/evidence/iteration-8-buffers.json',JSON.stringify(receipt,null,2)+'\n');console.log(JSON.stringify(rows.filter(r=>r.refinement).map(r=>({scenario:r.scenario,...r.refinement,residual:r.summary.maxResidual})),null,2));
