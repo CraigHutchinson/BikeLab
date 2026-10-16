@@ -16,8 +16,8 @@ export async function checkTerrainRequest({page,root,dir,report}){
   for(const name of ['left','right','reverse','steer','missing']){
     await page.locator('#track').selectOption(name);assert.equal(await page.locator('#save').isDisabled(),true);await page.locator('#calculate').click();await ready();
     const saved=await save('terrain-request-'+name);agreement.push(compareReplay(saved.value,await replay(name)));
-    if(name==='left'){await page.locator('#row').selectOption('0.13');await page.locator('#scrub').fill('2');await shot('terrain-request-off-centre');await page.locator('#cutMode').selectOption('cross');await shot('terrain-request-transverse');}
-    if(name==='missing'){assert.equal(await page.locator('#status').textContent(),'MISSING DATA');assert.match(await page.locator('#detail').textContent(),/Movement held/);await shot('terrain-request-missing');}
+    if(name==='left'){await page.locator('#row').selectOption('0.13');await page.locator('#scrub').fill('5');await shot('terrain-request-off-centre');await page.locator('#cutMode').selectOption('cross');await shot('terrain-request-transverse');}
+    if(name==='missing'){assert.equal(await page.locator('#status').textContent(),'MISSING DATA');assert.match(await page.locator('#detail').textContent(),/Movement held/);await page.locator('#cutMode').selectOption('long');await page.locator('#row').selectOption('0.01');await shot('terrain-request-missing');}
   }
   await page.locator('#load').setInputFiles(first.path);await ready();assert.equal(await page.locator('#track').inputValue(),'straight');assert.equal(await page.locator('#status').textContent(),'VERIFIED');
   await page.locator('#load').setInputFiles({name:'invalid.json',mimeType:'application/json',buffer:Buffer.from('{"format":"wrong"}')});await page.waitForFunction(()=>document.getElementById('status').textContent==='REJECTED');assert.equal(await page.locator('#save').isDisabled(),true);
