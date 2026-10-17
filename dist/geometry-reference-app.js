@@ -3,7 +3,7 @@ const $=id=>document.getElementById(id),select=$('manufacturerReference');
 for(const r of CATALOGUE.records)select.add(new Option(`${r.brand} ${r.model} · ${r.year} · ${r.size} · ${r.configuration}`,r.id));
 function showReference(){
   const r=CATALOGUE.records.find(r=>r.id===select.value),body=$('referenceDimensions');body.replaceChildren();
-  $('referenceDescription').textContent=`${r.topology}. ${r.notes.join(' ')}`;
+  $('referenceDescription').textContent=`${r.brand} ${r.model} · ${r.year} · size ${r.size} · ${r.configuration}. ${r.topology}. ${r.notes.join(' ')}`;
   for(const row of referenceRows(r)){
     const tr=document.createElement('tr'),name=document.createElement('th'),value=document.createElement('td');name.scope='row';name.textContent=row.label;value.textContent=row.display+(row.value===null?'':' '+row.unit);tr.append(name,value);body.append(tr);
   }

@@ -11,7 +11,7 @@ export async function checkBike({page,root,dir,report}) {
   const apply=async()=>{await page.locator('button[type=submit]').click();await ready();};
   await page.setViewportSize({width:1440,height:1100});await page.goto(root+'bike.html');await ready();
   assert.equal(await page.locator('#manufacturerReference option').count(),CATALOGUE.records.length);
-  for(const r of CATALOGUE.records){await page.locator('#manufacturerReference').selectOption(r.id);assert.match(await page.locator('#referenceReadiness').textContent(),/Reference only/);assert.equal(await page.locator('#save').isDisabled(),false);}
+  for(const r of CATALOGUE.records){await page.locator('#manufacturerReference').selectOption(r.id);assert.ok((await page.locator('#referenceDescription').textContent()).includes(`${r.year} · size ${r.size} · ${r.configuration}`));assert.match(await page.locator('#referenceReadiness').textContent(),/Reference only/);assert.equal(await page.locator('#save').isDisabled(),false);}
   assert.match(await page.locator('#referenceDimensions').textContent(),/62.5 mm/);
   const catalogueDownload=page.waitForEvent('download');await page.locator('#manufacturerReferences details summary').click();await page.locator('#exportCatalogue').click();const catalogueFile=await catalogueDownload;const cataloguePath=join(dir,'geometry-catalogue.json');await catalogueFile.saveAs(cataloguePath);assert.deepEqual(JSON.parse(await readFile(cataloguePath,'utf8')),CATALOGUE);await page.locator('#manufacturerReferences details summary').click();
   await page.locator('#manufacturerReference').selectOption('orange-five-2020-m');

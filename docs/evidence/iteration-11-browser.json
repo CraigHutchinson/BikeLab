@@ -1,0 +1,152 @@
+{
+  "testedHead": "12cd02209325bd2d564b7c06b7c07a04289a047f",
+  "workflowRun": 38948418276,
+  "workflowUrl": "https://github.com/CraigHutchinson/BikeLab/actions/runs/38948418276",
+  "testsPerPlatform": 132,
+  "platforms": [
+    "ubuntu-latest",
+    "windows-latest"
+  ],
+  "artifactId": 12066244250,
+  "artifactSha256": "e27cf612f8a064f8d0b6893287130d0d2afad5f2a868563b3afda5d9d3aa937f",
+  "browser": "141.0.7390.37",
+  "browserErrors": [],
+  "capturedScreenshots": 48,
+  "checks": [
+    "manufacturer catalogue: eight sourced configurations selectable, SI JSON export exact, missing mechanism data explicit, reference selection leaves the calculated rig intact",
+    "geometry: annotated/reference/custom physical setups, diagnostics, changed/invalid gating, custom reload and browser/headless channels",
+    "shock buffers: both end presets, worker/headless signals, engagement, save/load, dormant hardtail controls, disabled settings, responsive plots and lifecycle",
+    "bicycle: both actual assemblies; WASM worker under Pages path; browser/Node sample agreement; setup save/load; replay; dirty/cancel/rejection and travel-limit handling; mobile and page lifecycle"
+  ],
+  "bikeAgreement": [
+    {
+      "name": "bike-full",
+      "result": {
+        "dofs": 4,
+        "samples": 801,
+        "maxBrowserNodeDifference": 1.517719283583574e-11
+      }
+    },
+    {
+      "name": "bike-hardtail",
+      "result": {
+        "dofs": 3,
+        "samples": 801,
+        "maxBrowserNodeDifference": 1.5290879673557356e-11
+      }
+    },
+    {
+      "name": "rider-full",
+      "result": {
+        "dofs": 5,
+        "samples": 801,
+        "maxBrowserNodeDifference": 1.4949819160392508e-11,
+        "summary": {
+          "maxResidual": 0.0014197508701272454,
+          "peakForce": 584.6989158373037,
+          "peakRiderForce": 772.3763202453788,
+          "peakTopForce": 0,
+          "peakBottomForce": 0,
+          "work": 4.513520630569764,
+          "loss": 4.514042166864686,
+          "riderLoss": 2.09902359137727,
+          "bufferLoss": 0,
+          "shockBufferLoss": 0,
+          "peakShockTopForce": 0,
+          "peakShockBottomForce": 0
+        }
+      }
+    },
+    {
+      "name": "rider-hardtail",
+      "result": {
+        "dofs": 4,
+        "samples": 801,
+        "maxBrowserNodeDifference": 1.48929757415317e-11,
+        "summary": {
+          "maxResidual": 0.002146340839885852,
+          "peakForce": 630.5293701907377,
+          "peakRiderForce": 823.3112555212471,
+          "peakTopForce": 0,
+          "peakBottomForce": 0,
+          "work": 5.07553478705345,
+          "loss": 5.076180064909395,
+          "riderLoss": 3.588644770014549,
+          "bufferLoss": 0,
+          "shockBufferLoss": 0,
+          "peakShockTopForce": 0,
+          "peakShockBottomForce": 0
+        }
+      }
+    },
+    {
+      "name": "fork-buffers",
+      "result": {
+        "maxBrowserNodeDifference": 1.5575096767861396e-11,
+        "summary": {
+          "maxResidual": 0.2252574659810307,
+          "peakForce": 3047.0450153225897,
+          "peakRiderForce": 0,
+          "peakTopForce": 711.870827595388,
+          "peakBottomForce": 0,
+          "work": 206.70789789577444,
+          "loss": 206.89131577371964,
+          "riderLoss": 0,
+          "bufferLoss": 2.713770825660699,
+          "shockBufferLoss": 0,
+          "peakShockTopForce": 0,
+          "peakShockBottomForce": 0
+        }
+      }
+    },
+    {
+      "name": "shockTopExample",
+      "result": {
+        "maxBrowserNodeDifference": 4.615685611497611e-11,
+        "summary": {
+          "maxResidual": 0.11756678756921701,
+          "peakForce": 1124.8844497711075,
+          "peakRiderForce": 0,
+          "peakTopForce": 47.81896685078885,
+          "peakBottomForce": 0,
+          "work": 73.68132488762089,
+          "loss": 73.73388421330424,
+          "riderLoss": 0,
+          "bufferLoss": 0.005390827659643306,
+          "shockBufferLoss": 3.4050061715228708,
+          "peakShockTopForce": 3523.1032141940814,
+          "peakShockBottomForce": 0
+        }
+      }
+    },
+    {
+      "name": "shockBottomExample",
+      "result": {
+        "maxBrowserNodeDifference": 3.774403012357652e-11,
+        "summary": {
+          "maxResidual": 0.0599249766023604,
+          "peakForce": 1402.9110088363736,
+          "peakRiderForce": 0,
+          "peakTopForce": 0,
+          "peakBottomForce": 0,
+          "work": 71.4891877201249,
+          "loss": 71.50961162197167,
+          "riderLoss": 0,
+          "bufferLoss": 0,
+          "shockBufferLoss": 0.9900752295853088,
+          "peakShockTopForce": 0,
+          "peakShockBottomForce": 1899.0207053880306
+        }
+      }
+    }
+  ],
+  "inspectedCaptures": [
+    "geometry-annotated.png",
+    "geometry-reference.png",
+    "bike-hardtail-desktop.png",
+    "geometry-annotated-mobile-320.png",
+    "geometry-annotated-mobile-390.png"
+  ],
+  "comparisonPhotoSha256": "98d4269a3c0babfb1c1c23c3301cba9d9bdd8e21f6a6fb854b50c281747f3fd7",
+  "scope": "Mechanism arrangement and UI inspection, not production-bike calibration. Narrow selector identity follow-up is covered by subsequent exact-head CI."
+}
