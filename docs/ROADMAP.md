@@ -215,3 +215,10 @@ Next terrain work: asymmetric/multimodal optional route ribbons, resolved root/r
 ## Iteration 10 — rear shock dynamics
 
 [Rear shock buffers](SHOCK_BUFFERS.md) now map axial top/bottom forces through the changing single-pivot derivative, with visible swing moment, total shock force and stored/lost energy. [Review](ITERATION_10_REVIEW.md) captures model/configuration gaps; [evidence](ITERATION_10_EVIDENCE.md) records bounded receiving checks. Hardtail and disabled-buffer baselines remain unchanged. Next focus on sag/load/leverage configuration diagnostics and sourced geometry/mass inputs, followed by rider attachment load paths. Terrain follow-ups remain separate.
+
+
+## Iteration 11 — annotated linkage and configuration diagnostics
+
+The [manufacturer catalogue](GEOMETRY_CATALOGUE.md) receives eight source-linked reference configurations and a selectable/exportable viewer table. Continue searching for dimensioned suspension drawings/CAD and verified mass data before promoting any reference into a production simulation preset; fit charts and exploded parts schematics alone do not determine linkage kinematics.
+
+The [geometry/configuration slice](GEOMETRY_CONFIGURATION.md) corrects the high swingarm shock-eye mechanism identified by the user's image annotations, changes the actual native geometry and shared drawing, and receives the next sag/load/leverage view from iteration 10. Versioned geometry controls/presets preserve old recorded physics. See [review](ITERATION_11_REVIEW.md) and [evidence](ITERATION_11_EVIDENCE.md). Source measurements, uncertainty and mass distribution remain prerequisites for production presets. Next bike dynamics work: explicit rider attachment/limit load paths and observable fixture/pivot wrenches, then component failure criteria. Separate terrain R0/R1 and eventual 3D lateral/turning, shared layered soil/mud and multirate gates remain required.

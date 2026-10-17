@@ -24,3 +24,8 @@ Tests independently compare drawn front/rear axle and shock-eye coordinates agai
 The bottom bracket and hardtail topology are corrected. The drawn suspension now agrees with its simulated geometry; **the physical linkage is still synthetic, not a validated real-bike geometry**. The Orange photograph shows a considerably shorter, more horizontal shock arrangement. BikeLab's current unloaded spring attachment distance is 351.141 mm, with a main pivot 165 mm above its displayed BB. Neither number is an inferred manufacturer dimension. Its zero-offset fork also differs from the reference bicycle.
 
 Moving a displayed shock eye to resemble the photo while leaving the solver unchanged would create another error. Moving the physical eye changes leverage, spring force, equilibrium and travel, so a production-bike geometry preset needs sourced pivot/eye coordinates, spring dimensions and a fresh static/virtual-work/travel/refinement matrix. Photography alone does not provide those calibrated coordinates. This is an explicit follow-up, not a completed geometry-calibration claim. No braking, drivetrain or rider attachment force is applied at the decorative BB yet.
+
+
+## Annotated correction follow-up
+
+The user subsequently identified the main pivot and both shock eyes explicitly. [Iteration 11](GEOMETRY_CONFIGURATION.md) corrects the physical geometry and shared drawing from those landmarks, placing the arm eye above the pivot and receiving the 210 × 55 mm shock layout. This supersedes the old steep-linkage default described above; original geometry remains available for historical replay. Estimated pivot placement and image-derived offsets still do not establish calibrated production-bike geometry.

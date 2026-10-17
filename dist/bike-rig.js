@@ -1,16 +1,15 @@
+import {GEOMETRY,PHOTO_GEOMETRY,REFERENCE_GEOMETRY,GEOMETRY_KEYS,geometryFor,validateGeometry,strokeAngle,shockLength,shockCompressionJacobian} from './linkage.js';
+export {GEOMETRY,PHOTO_GEOMETRY,REFERENCE_GEOMETRY,GEOMETRY_KEYS,geometryFor,shockLength,shockCompressionJacobian};
 import {travelBuffer} from './travel-buffer.js';
 import loadMujoco from './vendor/mujoco-3.16.0/mujoco.js';
 
-export const MODEL = 'bikelab-planar-rig-0.4';
+export const MODEL = 'bikelab-planar-rig-0.5';
+export const SHOCK_BUFFER_MODEL = 'bikelab-planar-rig-0.4';
 export const FORK_BUFFER_MODEL = 'bikelab-planar-rig-0.3';
 export const PREVIOUS_MODEL = 'bikelab-planar-rig-0.2';
 export const LEGACY_MODEL = 'bikelab-planar-rig-0.1';
 export const G = 9.80665;
-export const GEOMETRY = Object.freeze({radius:.36, frameHeight:.65, headAngle:65*Math.PI/180,
-  frontX:.70, axleZ:-.29, rearX:-.45, pivotZ:-.15, armZ:-.14,
-  shockFrameX:-.08, shockFrameZ:.15, shockArmX:-.20, shockArmZ:-.03,
-  forkTravel:.16, shockTravel:.065, rearAngleMax:.4, wheelMass:3, rearMass:4, frameInertia:8});
-export const DEFAULTS = Object.freeze({bike:'full',mass:82,rider:'fixed',riderMass:70,
+export const DEFAULTS = Object.freeze({...PHOTO_GEOMETRY,bike:'full',mass:82,rider:'fixed',riderMass:70,
   riderStiffness:12000,riderDamping:900,riderTravel:.15,forkBuffer:'none',forkBufferWidth:.02,forkBufferStiffness:300000,forkBufferDamping:1500,forkStiffness:9000,forkDamping:700,
   shockBuffer:'none',shockBufferWidth:.008,shockBufferStiffness:1000000,shockBufferDamping:3000,shockStiffness:70000,shockDamping:2400,tyreStiffness:90000,tyreDamping:300,
   amplitude:.025,bumpDuration:.4,delay:.25,input:'travelling',duration:4,dt:.000125,sampleDt:.005});
@@ -32,20 +31,8 @@ export function validate(input={}) {
   if(!['travelling','together','front','rear'].includes(p.input))throw new Error('Unknown platen input.');
   for(const [key,[lo,hi]] of Object.entries(bounds))if(!Number.isFinite(p[key])||p[key]<lo||p[key]>hi)throw new Error(`${key} must be between ${lo} and ${hi} (SI).`);
   for(const n of [p.sampleDt/p.dt,p.duration/p.sampleDt,4/p.dt])if(Math.abs(n-Math.round(n))>1e-7)throw new Error('Time intervals must align with the fixed step.');
+  validateGeometry(p);
   return Object.freeze(p);
-}
-export function shockLength(angle) {
-  const g=GEOMETRY,c=Math.cos(angle),s=Math.sin(angle);
-  return Math.hypot(c*g.shockArmX+s*g.shockArmZ-g.shockFrameX,
-    g.pivotZ-s*g.shockArmX+c*g.shockArmZ-g.shockFrameZ);
-}
-// Compression s=L(0)-L(theta); ds/dtheta maps axial force into swing moment.
-export function shockCompressionJacobian(angle) {
-  const g=GEOMETRY,c=Math.cos(angle),s=Math.sin(angle);
-  const x=c*g.shockArmX+s*g.shockArmZ-g.shockFrameX;
-  const z=g.pivotZ-s*g.shockArmX+c*g.shockArmZ-g.shockFrameZ;
-  const dx=-s*g.shockArmX+c*g.shockArmZ,dz=-c*g.shockArmX-s*g.shockArmZ;
-  return -(x*dx+z*dz)/Math.hypot(x,z);
 }
 // Caller-owned outputs: front height/velocity, rear height/velocity.
 export function platens(p,t,out) {
@@ -60,13 +47,13 @@ export function platens(p,t,out) {
   }
 }
 export function modelXML(p) {
-  const g=GEOMETRY,compliant=p.rider==='compliant',frameMass=compliant?p.mass-p.riderMass:p.mass;
+  const g=geometryFor(p),compliant=p.rider==='compliant',frameMass=compliant?p.mass-p.riderMass:p.mass;
   const frameInertia=g.frameInertia*frameMass/p.mass,riderInertia=g.frameInertia*p.riderMass/p.mass;
   // Append this child after the original front/rear tree; their legacy addresses remain unchanged.
   const rider=compliant?`<body name="rider"><joint name="riderSlide" type="slide" axis="0 0 1" springref="0" stiffness="${p.riderStiffness}" damping="${p.riderDamping}"/>
     <inertial pos="0 0 0" mass="${p.riderMass}" diaginertia="${riderInertia} ${riderInertia} ${riderInertia}"/></body>`:'';
-  const rear=p.bike==='full'?`<body name="rear" pos="0 0 ${g.pivotZ}"><joint name="swing" type="hinge" axis="0 1 0"/>
-    <inertial pos="${g.rearX} 0 ${g.armZ}" mass="${g.rearMass}" diaginertia=".13 .13 .13"/>
+  const rear=p.bike==='full'?`<body name="rear" pos="${g.pivotX} 0 ${g.pivotZ}"><joint name="swing" type="hinge" axis="0 1 0"/>
+    <inertial pos="${g.armX} 0 ${g.armZ}" mass="${g.rearMass}" diaginertia=".13 .13 .13"/>
     <site name="shockArm" pos="${g.shockArmX} 0 ${g.shockArmZ}"/></body>`:
     `<body name="rear" pos="${g.rearX} 0 ${g.axleZ}"><inertial pos="0 0 0" mass="${g.rearMass}" diaginertia=".13 .13 .13"/></body>`;
   return `<mujoco model="BikeLab illustrative ${p.bike}"><compiler angle="radian" fusestatic="false"/>
@@ -79,7 +66,7 @@ export function modelXML(p) {
       <joint name="fork" type="slide" axis="${-Math.cos(g.headAngle)} 0 ${Math.sin(g.headAngle)}" stiffness="${p.forkStiffness}" damping="${p.forkDamping}"/>
       <inertial pos="0 0 0" mass="${g.wheelMass}" diaginertia=".1 .1 .1"/>
     </body>${rear}${rider}</body></worldbody>
-    ${p.bike==='full'?`<tendon><spatial name="shock" stiffness="${p.shockStiffness}" damping="${p.shockDamping}" springlength="${shockLength(0)}"><site site="shockFrame"/><site site="shockArm"/></spatial></tendon>`:''}</mujoco>`;
+    ${p.bike==='full'?`<tendon><spatial name="shock" stiffness="${p.shockStiffness}" damping="${p.shockDamping}" springlength="${shockLength(0,g)}"><site site="shockFrame"/><site site="shockArm"/></spatial></tendon>`:''}</mujoco>`;
 }
 let runtime;
 export function getRuntime(){return runtime??=loadMujoco();}
@@ -88,7 +75,7 @@ const names=['time','heave','pitch','fork','shock','rearAngle','frontX','frontZ'
 
 // Entire integration and observation path is shared by the worker and CLI.
 export async function runRig(input={}) {
-  const p=validate(input),g=GEOMETRY,mj=await getRuntime();
+  const p=validate(input),g=geometryFor(p),mj=await getRuntime();
   let model,data,velocity;
   try {
     model=mj.MjModel.from_xml_string(modelXML(p)); data=new mj.MjData(model);velocity=new mj.DoubleBuffer(6);
@@ -99,9 +86,9 @@ export async function runRig(input={}) {
     const rider=compliant?mj.mj_name2id(model,bodyType,'rider'):frame;
     const riderJoint=compliant?mj.mj_name2id(model,mj.mjtObj.mjOBJ_JOINT.value,'riderSlide'):-1;
     const riderQ=compliant?model.jnt_qposadr[riderJoint]:-1,riderV=compliant?model.jnt_dofadr[riderJoint]:-1;
-    const q=data.qpos; q[2]=.04;if(p.bike==='full')q[3]=.12;
-    const rearZ=p.bike==='full'?g.pivotZ-Math.sin(.12)*g.rearX+Math.cos(.12)*g.armZ:g.axleZ;
-    const rearX=p.bike==='full'?Math.cos(.12)*g.rearX+Math.sin(.12)*g.armZ:g.rearX;
+    const q=data.qpos; q[2]=.04;if(p.bike==='full')q[3]=shockLength(0,g)-shockLength(.12,g)>.8*g.shockTravel?.4*strokeAngle(g):.12;
+    const rearZ=p.bike==='full'?g.pivotZ-Math.sin(q[3])*g.armX+Math.cos(q[3])*g.armZ:g.axleZ;
+    const rearX=p.bike==='full'?g.pivotX+Math.cos(q[3])*g.armX+Math.sin(q[3])*g.armZ:g.rearX;
     const frontZ=g.axleZ+q[2]*Math.sin(g.headAngle),frontX=g.frontX-q[2]*Math.cos(g.headAngle);
     q[1]=Math.atan2(frontZ-rearZ,frontX-rearX);
     q[0]=g.radius-.006+Math.sin(q[1])*rearX-Math.cos(q[1])*rearZ-g.frameHeight;
@@ -123,8 +110,8 @@ export async function runRig(input={}) {
       if(p.forkBuffer==='progressive')travelBuffer(data.qpos[2],data.qvel[forkV],g.forkTravel,p.forkBufferWidth,p.forkBufferStiffness,p.forkBufferDamping,buffer);
       data.qfrc_applied[forkV]=buffer[0];
       if(swingV>=0){
-        shockJacobian=shockCompressionJacobian(data.qpos[swingQ]);
-        if(p.shockBuffer==='progressive')travelBuffer(shockLength(0)-data.ten_length[shockId],-data.ten_velocity[shockId],g.shockTravel,p.shockBufferWidth,p.shockBufferStiffness,p.shockBufferDamping,shockBuffer);
+        shockJacobian=shockCompressionJacobian(data.qpos[swingQ],g);
+        if(p.shockBuffer==='progressive')travelBuffer(shockLength(0,g)-data.ten_length[shockId],-data.ten_velocity[shockId],g.shockTravel,p.shockBufferWidth,p.shockBufferStiffness,p.shockBufferDamping,shockBuffer);
         shockMoment=shockBuffer[0]*shockJacobian;
         data.qfrc_applied[swingV]=shockMoment;
       }
@@ -150,7 +137,7 @@ export async function runRig(input={}) {
       for(let i=0;i<data.qpos.length;i++)if(!Number.isFinite(data.qpos[i])||!Number.isFinite(data.qvel[i]))return 'Nonfinite state';
       if(compliant&&Math.abs(data.qpos[riderQ])>p.riderTravel)return 'Rider travel limit';
       if(data.qpos[2]<-1e-9||data.qpos[2]>g.forkTravel)return 'Fork travel limit';
-      if(p.bike==='full'&&(data.qpos[3]<-1e-9||data.qpos[3]>g.rearAngleMax||shockLength(0)-data.ten_length[shockId]>g.shockTravel))return 'Rear suspension travel limit';
+      if(p.bike==='full'&&(data.qpos[3]<-1e-9||data.qpos[3]>g.rearAngleMax||shockLength(0,g)-data.ten_length[shockId]>g.shockTravel))return 'Rear suspension travel limit';
       if(Math.max(depths[0],depths[1])>.2*g.radius)return 'Tyre surrogate compression limit';
       if(Math.abs(data.qpos[1])>.5)return 'Fixture pitch limit';
       if(!Number.isFinite(energy)||!Number.isFinite(maxSpeed)||maxSpeed>100)return 'Unstable state';
@@ -172,7 +159,7 @@ export async function runRig(input={}) {
     function record(t) {
       const k=count++; signals.time[k]=t;signals.heave[k]=data.qpos[0]+g.frameHeight;signals.pitch[k]=data.qpos[1];
       signals.fork[k]=data.qpos[2];signals.rearAngle[k]=p.bike==='full'?data.qpos[3]:0;
-      signals.shock[k]=p.bike==='full'?shockLength(0)-data.ten_length[shockId]:0;
+      signals.shock[k]=p.bike==='full'?shockLength(0,g)-data.ten_length[shockId]:0;
       signals.shockForce[k]=p.bike==='full'?p.shockStiffness*signals.shock[k]-p.shockDamping*data.ten_velocity[shockId]:0;
       signals.shockBufferForce[k]=shockBuffer[0];signals.shockTopForce[k]=shockBuffer[3];signals.shockBottomForce[k]=shockBuffer[4];
       signals.shockBufferEnergy[k]=shockBuffer[1];signals.shockBufferDissipation[k]=shockBufferLoss;signals.shockBufferMoment[k]=shockMoment;
@@ -224,11 +211,11 @@ export function rigRecord(run) {
 }
 
 export function setupFromRecord(record) {
-  if(record?.model===LEGACY_MODEL||record?.model===PREVIOUS_MODEL||record?.model===FORK_BUFFER_MODEL) {
-    const keys=Object.keys(DEFAULTS).filter(key=>!shockBufferKeys.includes(key)&&(record.model===FORK_BUFFER_MODEL||!bufferKeys.includes(key))&&(record.model!==LEGACY_MODEL||!riderKeys.includes(key)));
+  if(record?.model===LEGACY_MODEL||record?.model===PREVIOUS_MODEL||record?.model===FORK_BUFFER_MODEL||record?.model===SHOCK_BUFFER_MODEL) {
+    const keys=Object.keys(DEFAULTS).filter(key=>!GEOMETRY_KEYS.includes(key)&&(record.model===SHOCK_BUFFER_MODEL||!shockBufferKeys.includes(key))&&([SHOCK_BUFFER_MODEL,FORK_BUFFER_MODEL].includes(record.model)||!bufferKeys.includes(key))&&(record.model!==LEGACY_MODEL||!riderKeys.includes(key)));
     if(!record.params||keys.some(key=>!Object.hasOwn(record.params,key)))throw new Error('Incomplete legacy bicycle rig setup.');
     if(Object.keys(record.params).some(key=>!keys.includes(key)))throw new Error('Unknown legacy setup parameter.');
-    return validate({...record.params,...(record.model===LEGACY_MODEL?{rider:'fixed'}:{}),...(record.model!==FORK_BUFFER_MODEL?{forkBuffer:'none'}:{}),shockBuffer:'none'});
+    return validate({...record.params,...(record.model===LEGACY_MODEL?{rider:'fixed'}:{}),...(![SHOCK_BUFFER_MODEL,FORK_BUFFER_MODEL].includes(record.model)?{forkBuffer:'none'}:{}),...(record.model!==SHOCK_BUFFER_MODEL?{shockBuffer:'none'}:{}),...REFERENCE_GEOMETRY});
   }
   if(record?.model!==MODEL)throw new Error("Unsupported bicycle rig record.");
   if(!record.params || Object.keys(DEFAULTS).some(key=>!Object.hasOwn(record.params,key)))throw new Error("Incomplete bicycle rig setup.");

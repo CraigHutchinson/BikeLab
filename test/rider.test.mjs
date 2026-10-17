@@ -1,3 +1,4 @@
+import {GEOMETRY_KEYS,REFERENCE_GEOMETRY} from '../dist/linkage.js';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {runRig,validate,modelXML,getRuntime,DEFAULTS,GEOMETRY as g,G,MODEL,LEGACY_MODEL,setupFromRecord} from '../dist/bike-rig.js';
@@ -93,8 +94,8 @@ test('rider controls affect dynamics; repeat, sample cadence and energy loss are
 });
 
 test('v0.1 records migrate explicitly to fixed mode; v0.2 requires every rider setting',()=>{
-  const legacy=Object.fromEntries(Object.entries(DEFAULTS).filter(([k])=>!k.startsWith('rider')&&!k.startsWith('forkBuffer')&&!k.startsWith('shockBuffer')));
-  assert.deepEqual(setupFromRecord({model:LEGACY_MODEL,params:legacy}),DEFAULTS);
+  const legacy=Object.fromEntries(Object.entries(DEFAULTS).filter(([k])=>!GEOMETRY_KEYS.includes(k)&&!k.startsWith('rider')&&!k.startsWith('forkBuffer')&&!k.startsWith('shockBuffer')));
+  assert.deepEqual(setupFromRecord({model:LEGACY_MODEL,params:legacy}),{...DEFAULTS,...REFERENCE_GEOMETRY});
   assert.throws(()=>setupFromRecord({model:MODEL,params:legacy}),/Incomplete/);
   assert.throws(()=>setupFromRecord({model:LEGACY_MODEL,params:{...legacy,rider:'compliant'}}),/Unknown legacy/);
   const p=validate({rider:'compliant'});assert.deepEqual(setupFromRecord({model:MODEL,params:p,signals:'ignored'}),p);
