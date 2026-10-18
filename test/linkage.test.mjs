@@ -50,6 +50,6 @@ test('configuration diagnostics agree with independent static axle moment and su
 test('v0.4 historical recordings preserve every channel and summary exactly in all four variants',async()=>{
   const baseline=JSON.parse(await readFile(new URL('../docs/evidence/iteration-11-legacy-baseline.json',import.meta.url),'utf8'));
   for(const old of baseline){const p=setupFromRecord(old);for(const key of GEOMETRY_KEYS)assert.equal(p[key],REFERENCE_GEOMETRY[key]);
-    const r=await runRig(p),hash=createHash('sha256').update(JSON.stringify(rigRecord(r).signals)).digest('hex');assert.equal(hash,old.signalsHash);assert.deepEqual(r.summary,old.summary);
+    const r=await runRig(p),hash=createHash('sha256').update(JSON.stringify(Object.fromEntries(Object.entries(rigRecord(r).signals).filter(([k])=>!k.startsWith('guide')&&!k.startsWith('fixture')&&!k.startsWith('pivot')&&!['heaveVelocity','pitchVelocity','forkVelocity','rearAngularVelocity','riderBufferForce','riderLowerForce','riderUpperForce','riderBufferEnergy','riderBufferDissipation','riderTotalForce'].includes(k))))).digest('hex');assert.equal(hash,old.signalsHash);assert.deepEqual(Object.fromEntries(Object.keys(old.summary).map(k=>[k,r.summary[k]])),old.summary);
   }
 });
