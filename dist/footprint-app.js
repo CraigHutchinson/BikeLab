@@ -43,7 +43,7 @@ function draw(){
  const peak=Math.max(0,...contacts.map(q=>q.normalForce)),forceScale=peak?42/peak:0;
  for(const q of contacts){c.fillStyle='#f2b373';c.beginPath();c.arc(x(q.x),z(q.z),2,0,2*Math.PI);c.fill();arrow(q.x,q.z,q.forceX*forceScale,q.forceZ*forceScale,'#f2b373');}
  if(result.summary){const s=result.summary,length=Math.hypot(s.forceX,s.forceZ);if(length)arrow(p.centerX,p.height,65*s.forceX/length,65*s.forceZ/length,'#88b9ff');}
- c.restore();c.fillStyle='#9aabb7';c.font='11px system-ui';c.fillText('x →   z ↑  ·  equal geometry scale',12,17);c.fillText(peak?`42 px = ${peak.toFixed(2)} N local force`:'No active contact forces',12,h-12);
+ c.restore();c.fillStyle='#9aabb7';c.font='11px system-ui';c.fillText('x →   z ↑  ·  equal geometry scale',12,17);c.fillText(peak?`42 px = ${peak.toFixed(2)} N local force`:result.status==='unsupported'?'Contact forces unavailable':'No active contact forces',12,h-12);
 }
 function apply(useEditor=false){try{const p=fields(),changed=custom||useEditor;calculate(p,changed?parseProfile($('profileText').value):footprintFixture(p.fixture,p.terrainSegments),changed);}catch(error){reject(error);}}
 form.oninput=edits;

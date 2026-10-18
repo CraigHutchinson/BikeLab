@@ -93,7 +93,7 @@ export function solveFootprint(input={},authoredProfile){
   contacts.push({node:i,feature:feature[i],x,z,nx:nx[i],nz:nz[i],normalForce,forceX,forceZ,radialReaction});
  }
  const intrusion=contourIntrusion(points,outline),tolerance=2e-4;
- if(intrusion>tolerance)return unavailable('Displayed contour cuts through terrain; increase tyre resolution or change the pose.',{contourIntrusion:intrusion,contourTolerance:tolerance});
+ if(intrusion>tolerance)return unavailable('Candidate tyre contour cuts through terrain; refine or change the pose. Sharp corners may remain unsupported.',{contourIntrusion:intrusion,contourTolerance:tolerance});
  return {...base,status:'solved',outline,contacts,deformation:Array.from(solution.u),summary:{forceX:fx,forceZ:fz,momentY:moment,energy:solution.energy,maxDeformation,activeNodes:contacts.length,residual:solution.residual,iterations:solution.iterations,contourIntrusion:intrusion,contourTolerance:tolerance}};
 }
 export function setupFromRecord(record){

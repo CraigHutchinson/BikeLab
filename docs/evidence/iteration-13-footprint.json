@@ -154,7 +154,7 @@
           "rotation": 0
         },
         "status": "unsupported",
-        "reason": "Displayed contour cuts through terrain; increase tyre resolution or change the pose.",
+        "reason": "Candidate tyre contour cuts through terrain; refine or change the pose. Sharp corners may remain unsupported.",
         "contourIntrusion": 0.0019191585891328161
       },
       {
@@ -171,7 +171,7 @@
           "rotation": 0
         },
         "status": "unsupported",
-        "reason": "Displayed contour cuts through terrain; increase tyre resolution or change the pose.",
+        "reason": "Candidate tyre contour cuts through terrain; refine or change the pose. Sharp corners may remain unsupported.",
         "contourIntrusion": 0.000483962790203768
       },
       {
@@ -408,7 +408,7 @@
           "rotation": 0
         },
         "status": "unsupported",
-        "reason": "Displayed contour cuts through terrain; increase tyre resolution or change the pose.",
+        "reason": "Candidate tyre contour cuts through terrain; refine or change the pose. Sharp corners may remain unsupported.",
         "contourIntrusion": 0.000271046216625305
       },
       {
@@ -425,7 +425,7 @@
           "rotation": 0
         },
         "status": "unsupported",
-        "reason": "Displayed contour cuts through terrain; increase tyre resolution or change the pose.",
+        "reason": "Candidate tyre contour cuts through terrain; refine or change the pose. Sharp corners may remain unsupported.",
         "contourIntrusion": 0.0006586749896910077
       },
       {
@@ -866,7 +866,7 @@
         "rotation": 0
       },
       "status": "unsupported",
-      "reason": "Displayed contour cuts through terrain; increase tyre resolution or change the pose.",
+      "reason": "Candidate tyre contour cuts through terrain; refine or change the pose. Sharp corners may remain unsupported.",
       "contourIntrusion": 0.0031194358716390425
     },
     {

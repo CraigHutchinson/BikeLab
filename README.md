@@ -54,6 +54,8 @@ Same-runtime replay is reproducible. Browser and Node recordings are checked for
 
 ## Current evidence
 
+The [tyre-footprint station](https://craighutchinson.github.io/BikeLab/footprint.html) adds prescribed-pose radial deformation, every active local normal force and a resultant hub wrench on flat, rounded, square-step-top and two-support terrain. Its worker and headless runner share the same uncalibrated static mechanics. Run `node scripts/footprint.mjs [setup-or-record.json]`; see [model limits](docs/STATIC_FOOTPRINT.md) and [iteration 13 evidence](docs/ITERATION_13_EVIDENCE.md). Exposed sharp edges and rim strikes remain explicitly unsupported; pressure, stress, impact and traction are separate receiving work.
+
 The bicycle station now exposes [rider travel stops and attachment loads](docs/RIDER_STOPS_LOADS.md): lower/upper compliant stops, total guide reaction, fixture wrench and corrected rear-pivot load. The experiment works on both assemblies and retains ultimate travel termination. Finer optional headless recording separates force-integral sampling error from solver timestep error; no real-time or component-strength claim follows.
 
 The bicycle station now uses the [annotated high-eye shock layout and editable geometry](docs/GEOMETRY_CONFIGURATION.md), with settled sag/load split and a linkage-ratio plot. Earlier saved runs retain their original geometry; the new 210 × 55 mm layout is image-informed and explicitly uncalibrated.
@@ -64,7 +66,7 @@ The [terrain-request station](https://craighutchinson.github.io/BikeLab/terrain-
 
 The bicycle station now includes optional [progressive fork travel buffers](docs/FORK_BUFFERS.md), top-out/bottom-out experiments, engagement display and force/energy histories. Ultimate boundaries remain explicit; this does not certify impacts or component survival.
 
-The [coupled bicycle rig](https://craighutchinson.github.io/BikeLab/bike.html) adds hardtail/full-suspension selection, two moving platens, fork/shock setup, frame pitch, axle loads, recorded replay and JSON export. Run the identical model with `node scripts/bike-rig.mjs [setup.json] [run.json]`. Select the original fixed rider or a [passive guided rider](docs/RIDER_MODEL.md) with adjustable mass partition, spring/damping and travel. See [model and scope](docs/BIKE_RIG.md) and [iteration 7 evidence](docs/ITERATION_7_EVIDENCE.md). It remains an uncalibrated planar fixture with explicit unsupported-travel termination. Further solver precision polishing is parked; supported end-stop/load paths are next.
+The [coupled bicycle rig](https://craighutchinson.github.io/BikeLab/bike.html) adds hardtail/full-suspension selection, two moving platens, fork/shock setup, frame pitch, axle loads, recorded replay and JSON export. Run the identical model with `node scripts/bike-rig.mjs [setup.json] [run.json]`. Select the original fixed rider or a [passive guided rider](docs/RIDER_MODEL.md) with adjustable mass partition, spring/damping and travel. See [model and scope](docs/BIKE_RIG.md) and [iteration 7 evidence](docs/ITERATION_7_EVIDENCE.md). It remains an uncalibrated planar fixture with explicit unsupported-travel termination. Further solver precision polishing is parked; the received buffers and reactions do not yet resolve anatomical contacts or component stress.
 
 The following receipts describe earlier iterations:
 
