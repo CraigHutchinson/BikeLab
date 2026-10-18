@@ -1,0 +1,3 @@
+import {readFile,stat} from 'node:fs/promises';
+import {experiment,replay,example} from '../dist/wheel-limits.js';
+try{const args=process.argv.slice(2);if(args.length>1)throw Error('Usage: node scripts/wheel-limits.mjs [input-or-record.json]');let r;if(!args.length)r=experiment(example());else{if((await stat(args[0])).size>2*1024*1024)throw Error('Input exceeds 2 MiB.');const input=JSON.parse((await readFile(args[0],'utf8')).replace(/^\uFEFF/,''));r=input?.model?replay(input):experiment(input);}console.log(JSON.stringify(r,null,2));if(r.status!=='clear')process.exitCode=2;}catch(error){console.error(error.message);process.exitCode=1;}

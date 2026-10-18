@@ -1,0 +1,1516 @@
+{
+  "scope": "Continuous geometry and declared service limits; no impact, blowout or fracture prediction.",
+  "geometry": [
+    {
+      "name": "flat",
+      "status": "rim-contact",
+      "params": {
+        "fixture": "flat",
+        "centerX": 0,
+        "height": 0.345,
+        "radius": 0.36,
+        "rimRadius": 0.29,
+        "foundation": 300000,
+        "coupling": 30,
+        "nodes": 512,
+        "terrainSegments": 128,
+        "rotation": 0
+      },
+      "delta": [
+        0,
+        -0.12
+      ],
+      "sweep": {
+        "status": "rim-contact",
+        "fraction": 0.4583333333333333,
+        "center": [
+          0,
+          0.29
+        ],
+        "distance": 0.05499999999999999,
+        "events": [
+          "rim-contact"
+        ],
+        "tolerances": {
+          "fraction": 1e-10,
+          "initialGapM": 1e-10,
+          "discriminantRelative": 7.105427357601002e-15
+        },
+        "initialClearance": 0.05499999999999999,
+        "clearance": {
+          "model": "bikelab-clearance-1",
+          "profile": {
+            "format": "bikelab-profile-1",
+            "units": "m",
+            "axes": "x-forward,z-up",
+            "solid": "below",
+            "interpolation": "linear",
+            "source": {
+              "kind": "illustrative",
+              "description": "Synthetic flat rigid reference surface."
+            },
+            "points": [
+              [
+                -1,
+                0
+              ],
+              [
+                1,
+                0
+              ]
+            ]
+          },
+          "setup": {
+            "center": [
+              0,
+              0.29
+            ],
+            "radius": 0.29
+          },
+          "tieTolerance": 1e-10,
+          "status": "available",
+          "distance": 0.29,
+          "gap": 0,
+          "witnesses": [
+            {
+              "point": [
+                0,
+                0
+              ],
+              "normal": [
+                0,
+                1
+              ],
+              "feature": {
+                "kind": "segment",
+                "index": 0
+              }
+            }
+          ]
+        }
+      },
+      "staticStartingStatus": "solved"
+    },
+    {
+      "name": "edge",
+      "status": "rim-contact",
+      "params": {
+        "fixture": "step",
+        "centerX": -0.4,
+        "height": 0.36,
+        "radius": 0.36,
+        "rimRadius": 0.29,
+        "foundation": 300000,
+        "coupling": 30,
+        "nodes": 512,
+        "terrainSegments": 128,
+        "rotation": 0
+      },
+      "delta": [
+        0.7,
+        0
+      ],
+      "sweep": {
+        "status": "rim-contact",
+        "fraction": 0.3879252488762126,
+        "center": [
+          -0.12845232578665122,
+          0.36
+        ],
+        "distance": 0.2715476742133488,
+        "events": [
+          "rim-contact"
+        ],
+        "tolerances": {
+          "fraction": 1e-10,
+          "initialGapM": 1e-10,
+          "discriminantRelative": 7.105427357601002e-15
+        },
+        "initialClearance": 0.07,
+        "clearance": {
+          "model": "bikelab-clearance-1",
+          "profile": {
+            "format": "bikelab-profile-1",
+            "units": "m",
+            "axes": "x-forward,z-up",
+            "solid": "below",
+            "interpolation": "linear",
+            "source": {
+              "kind": "illustrative",
+              "description": "Synthetic square rigid reference surface."
+            },
+            "points": [
+              [
+                -1,
+                0
+              ],
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                0.1
+              ],
+              [
+                0.2,
+                0.1
+              ],
+              [
+                0.2,
+                0
+              ],
+              [
+                1,
+                0
+              ]
+            ]
+          },
+          "setup": {
+            "center": [
+              -0.12845232578665122,
+              0.36
+            ],
+            "radius": 0.29
+          },
+          "tieTolerance": 1e-10,
+          "status": "available",
+          "distance": 0.29,
+          "gap": 0,
+          "witnesses": [
+            {
+              "point": [
+                0,
+                0.1
+              ],
+              "normal": [
+                -0.4429390544367284,
+                0.8965517241379312
+              ],
+              "feature": {
+                "kind": "vertex",
+                "index": 2
+              }
+            }
+          ]
+        }
+      },
+      "staticStartingStatus": "solved"
+    },
+    {
+      "name": "rounded",
+      "status": "rim-contact",
+      "params": {
+        "fixture": "rounded",
+        "centerX": -0.4,
+        "height": 0.36,
+        "radius": 0.36,
+        "rimRadius": 0.29,
+        "foundation": 300000,
+        "coupling": 30,
+        "nodes": 512,
+        "terrainSegments": 128,
+        "rotation": 0
+      },
+      "delta": [
+        0.7,
+        0
+      ],
+      "sweep": {
+        "status": "rim-contact",
+        "fraction": 0.5000010911910543,
+        "center": [
+          -0.04999923616626206,
+          0.36
+        ],
+        "distance": 0.35000076383373796,
+        "events": [
+          "rim-contact"
+        ],
+        "tolerances": {
+          "fraction": 1e-10,
+          "initialGapM": 1e-10,
+          "discriminantRelative": 7.105427357601002e-15
+        },
+        "initialClearance": 0.07,
+        "clearance": {
+          "model": "bikelab-clearance-1",
+          "profile": {
+            "format": "bikelab-profile-1",
+            "units": "m",
+            "axes": "x-forward,z-up",
+            "solid": "below",
+            "interpolation": "linear",
+            "source": {
+              "kind": "illustrative",
+              "description": "Synthetic 0.1 m radius semicircle sampled with 128 straight segments."
+            },
+            "points": [
+              [
+                -1,
+                0
+              ],
+              [
+                0,
+                0
+              ],
+              [
+                0.00003011813037957778,
+                0.002454122852291233
+              ],
+              [
+                0.00012045437948275672,
+                0.004906767432741797
+              ],
+              [
+                0.0002709543321309793,
+                0.007356456359966773
+              ],
+              [
+                0.0004815273327803127,
+                0.009801714032956084
+              ],
+              [
+                0.0007520465401290033,
+                0.012241067519921635
+              ],
+              [
+                0.0010823490035219013,
+                0.01467304744553618
+              ],
+              [
+                0.001472235761105875,
+                0.01709618887603012
+              ],
+              [
+                0.001921471959676957,
+                0.01950903220161286
+              ],
+              [
+                0.002429786996147154,
+                0.021910124015687007
+              ],
+              [
+                0.0029968746805456026,
+                0.02429801799032641
+              ],
+              [
+                0.0036223934204560188,
+                0.02667127574748985
+              ],
+              [
+                0.00430596642677912,
+                0.02902846772544624
+              ],
+              [
+                0.005047181940696338,
+                0.03136817403988914
+              ],
+              [
+                0.005845593481697928,
+                0.03368898533922204
+              ],
+              [
+                0.006700720116526115,
+                0.03598950365349884
+              ],
+              [
+                0.007612046748871323,
+                0.03826834323650899
+              ],
+              [
+                0.008579024429646934,
+                0.04052413140049899
+              ],
+              [
+                0.009601070687655672,
+                0.04275550934302821
+              ],
+              [
+                0.010677569880448476,
+                0.04496113296546069
+              ],
+              [
+                0.011807873565164509,
+                0.04713967368259979
+              ],
+              [
+                0.012991300889128865,
+                0.04928981922297842
+              ],
+              [
+                0.0142271389999728,
+                0.05141027441932218
+              ],
+              [
+                0.015514643475029288,
+                0.05349976198870972
+              ],
+              [
+                0.016853038769745463,
+                0.05555702330196022
+              ],
+              [
+                0.01824151868484164,
+                0.05758081914178455
+              ],
+              [
+                0.01967924685193552,
+                0.05956993044924335
+              ],
+              [
+                0.02116535723733938,
+                0.061523159058062694
+              ],
+              [
+                0.022698954663726303,
+                0.06343932841636456
+              ],
+              [
+                0.024279115349351538,
+                0.06531728429537767
+              ],
+              [
+                0.025904887464504117,
+                0.06715589548470186
+              ],
+              [
+                0.02757529170485333,
+                0.06895405447370671
+              ],
+              [
+                0.029289321881345254,
+                0.07071067811865477
+              ],
+              [
+                0.031045945526293306,
+                0.07242470829514669
+              ],
+              [
+                0.032844104515298164,
+                0.0740951125354959
+              ],
+              [
+                0.03468271570462235,
+                0.07572088465064847
+              ],
+              [
+                0.03656067158363546,
+                0.07730104533627372
+              ],
+              [
+                0.03847684094193733,
+                0.07883464276266064
+              ],
+              [
+                0.04043006955075667,
+                0.0803207531480645
+              ],
+              [
+                0.04241918085821547,
+                0.08175848131515838
+              ],
+              [
+                0.04444297669803981,
+                0.08314696123025454
+              ],
+              [
+                0.0465002380112903,
+                0.08448535652497073
+              ],
+              [
+                0.048589725580677846,
+                0.08577286100002722
+              ],
+              [
+                0.05071018077702161,
+                0.08700869911087115
+              ],
+              [
+                0.05286032631740023,
+                0.08819212643483551
+              ],
+              [
+                0.055038867034539335,
+                0.08932243011955153
+              ],
+              [
+                0.05724449065697182,
+                0.09039892931234435
+              ],
+              [
+                0.059475868599501026,
+                0.09142097557035307
+              ],
+              [
+                0.06173165676349103,
+                0.09238795325112868
+              ],
+              [
+                0.06401049634650119,
+                0.09329927988347389
+              ],
+              [
+                0.06631101466077802,
+                0.09415440651830209
+              ],
+              [
+                0.06863182596011086,
+                0.09495281805930367
+              ],
+              [
+                0.07097153227455379,
+                0.0956940335732209
+              ],
+              [
+                0.07332872425251018,
+                0.09637760657954399
+              ],
+              [
+                0.07570198200967362,
+                0.0970031253194544
+              ],
+              [
+                0.07808987598431304,
+                0.09757021300385287
+              ],
+              [
+                0.08049096779838719,
+                0.09807852804032305
+              ],
+              [
+                0.08290381112396988,
+                0.09852776423889413
+              ],
+              [
+                0.08532695255446385,
+                0.0989176509964781
+              ],
+              [
+                0.08775893248007839,
+                0.099247953459871
+              ],
+              [
+                0.09019828596704393,
+                0.09951847266721969
+              ],
+              [
+                0.09264354364003327,
+                0.09972904566786903
+              ],
+              [
+                0.0950932325672582,
+                0.09987954562051725
+              ],
+              [
+                0.09754587714770879,
+                0.09996988186962043
+              ],
+              [
+                0.1,
+                0.1
+              ],
+              [
+                0.10245412285229123,
+                0.09996988186962043
+              ],
+              [
+                0.10490676743274181,
+                0.09987954562051725
+              ],
+              [
+                0.10735645635996675,
+                0.09972904566786903
+              ],
+              [
+                0.10980171403295608,
+                0.09951847266721969
+              ],
+              [
+                0.11224106751992163,
+                0.099247953459871
+              ],
+              [
+                0.11467304744553618,
+                0.0989176509964781
+              ],
+              [
+                0.11709618887603014,
+                0.09852776423889413
+              ],
+              [
+                0.11950903220161284,
+                0.09807852804032305
+              ],
+              [
+                0.12191012401568699,
+                0.09757021300385287
+              ],
+              [
+                0.1242980179903264,
+                0.0970031253194544
+              ],
+              [
+                0.12667127574748985,
+                0.09637760657954399
+              ],
+              [
+                0.12902846772544624,
+                0.0956940335732209
+              ],
+              [
+                0.13136817403988915,
+                0.09495281805930367
+              ],
+              [
+                0.13368898533922202,
+                0.09415440651830209
+              ],
+              [
+                0.13598950365349882,
+                0.09329927988347389
+              ],
+              [
+                0.138268343236509,
+                0.09238795325112868
+              ],
+              [
+                0.140524131400499,
+                0.09142097557035307
+              ],
+              [
+                0.14275550934302822,
+                0.09039892931234433
+              ],
+              [
+                0.14496113296546068,
+                0.08932243011955154
+              ],
+              [
+                0.14713967368259978,
+                0.0881921264348355
+              ],
+              [
+                0.1492898192229784,
+                0.08700869911087114
+              ],
+              [
+                0.15141027441932217,
+                0.08577286100002722
+              ],
+              [
+                0.15349976198870974,
+                0.0844853565249707
+              ],
+              [
+                0.15555702330196025,
+                0.08314696123025453
+              ],
+              [
+                0.15758081914178454,
+                0.08175848131515838
+              ],
+              [
+                0.15956993044924336,
+                0.08032075314806449
+              ],
+              [
+                0.1615231590580627,
+                0.07883464276266063
+              ],
+              [
+                0.16343932841636455,
+                0.07730104533627369
+              ],
+              [
+                0.16531728429537768,
+                0.07572088465064847
+              ],
+              [
+                0.16715589548470183,
+                0.07409511253549592
+              ],
+              [
+                0.1689540544737067,
+                0.07242470829514669
+              ],
+              [
+                0.17071067811865476,
+                0.07071067811865475
+              ],
+              [
+                0.17242470829514672,
+                0.06895405447370669
+              ],
+              [
+                0.17409511253549592,
+                0.06715589548470184
+              ],
+              [
+                0.17572088465064847,
+                0.06531728429537768
+              ],
+              [
+                0.17730104533627372,
+                0.06343932841636456
+              ],
+              [
+                0.17883464276266064,
+                0.06152315905806269
+              ],
+              [
+                0.1803207531480645,
+                0.05956993044924334
+              ],
+              [
+                0.18175848131515837,
+                0.057580819141784534
+              ],
+              [
+                0.18314696123025453,
+                0.05555702330196022
+              ],
+              [
+                0.18448535652497072,
+                0.05349976198870972
+              ],
+              [
+                0.1857728610000272,
+                0.051410274419322166
+              ],
+              [
+                0.18700869911087115,
+                0.049289819222978405
+              ],
+              [
+                0.18819212643483552,
+                0.04713967368259977
+              ],
+              [
+                0.18932243011955155,
+                0.04496113296546066
+              ],
+              [
+                0.19039892931234434,
+                0.042755509343028214
+              ],
+              [
+                0.1914209755703531,
+                0.040524131400498986
+              ],
+              [
+                0.19238795325112867,
+                0.03826834323650898
+              ],
+              [
+                0.1932992798834739,
+                0.03598950365349881
+              ],
+              [
+                0.1941544065183021,
+                0.03368898533922201
+              ],
+              [
+                0.19495281805930367,
+                0.03136817403988915
+              ],
+              [
+                0.1956940335732209,
+                0.029028467725446233
+              ],
+              [
+                0.196377606579544,
+                0.02667127574748984
+              ],
+              [
+                0.1970031253194544,
+                0.02429801799032639
+              ],
+              [
+                0.19757021300385286,
+                0.021910124015686983
+              ],
+              [
+                0.19807852804032305,
+                0.019509032201612826
+              ],
+              [
+                0.19852776423889412,
+                0.01709618887603012
+              ],
+              [
+                0.19891765099647812,
+                0.014673047445536175
+              ],
+              [
+                0.199247953459871,
+                0.012241067519921621
+              ],
+              [
+                0.1995184726672197,
+                0.009801714032956061
+              ],
+              [
+                0.19972904566786903,
+                0.007356456359966743
+              ],
+              [
+                0.19987954562051724,
+                0.004906767432741802
+              ],
+              [
+                0.19996988186962045,
+                0.002454122852291229
+              ],
+              [
+                0.2,
+                0
+              ],
+              [
+                1,
+                0
+              ]
+            ]
+          },
+          "setup": {
+            "center": [
+              -0.04999923616626206,
+              0.36
+            ],
+            "radius": 0.29
+          },
+          "tieTolerance": 1e-10,
+          "status": "available",
+          "distance": 0.29000000000000004,
+          "gap": 5.551115123125783e-17,
+          "witnesses": [
+            {
+              "point": [
+                0.06173165676349103,
+                0.09238795325112868
+              ],
+              "normal": [
+                -0.38527894113707956,
+                0.9228001612030043
+              ],
+              "feature": {
+                "kind": "vertex",
+                "index": 49
+              }
+            }
+          ]
+        }
+      },
+      "staticStartingStatus": "solved"
+    },
+    {
+      "name": "domain",
+      "status": "domain-boundary",
+      "params": {
+        "fixture": "flat",
+        "centerX": 0,
+        "height": 0.345,
+        "radius": 0.36,
+        "rimRadius": 0.29,
+        "foundation": 300000,
+        "coupling": 30,
+        "nodes": 512,
+        "terrainSegments": 128,
+        "rotation": 0
+      },
+      "delta": [
+        1,
+        0
+      ],
+      "sweep": {
+        "status": "domain-boundary",
+        "fraction": 0.64,
+        "center": [
+          0.64,
+          0.345
+        ],
+        "distance": 0.64,
+        "events": [
+          "authored-domain-boundary"
+        ],
+        "tolerances": {
+          "fraction": 1e-10,
+          "initialGapM": 1e-10,
+          "discriminantRelative": 7.105427357601002e-15
+        },
+        "initialClearance": 0.05499999999999999,
+        "clearance": {
+          "model": "bikelab-clearance-1",
+          "profile": {
+            "format": "bikelab-profile-1",
+            "units": "m",
+            "axes": "x-forward,z-up",
+            "solid": "below",
+            "interpolation": "linear",
+            "source": {
+              "kind": "illustrative",
+              "description": "Synthetic flat rigid reference surface."
+            },
+            "points": [
+              [
+                -1,
+                0
+              ],
+              [
+                1,
+                0
+              ]
+            ]
+          },
+          "setup": {
+            "center": [
+              0.64,
+              0.345
+            ],
+            "radius": 0.29
+          },
+          "tieTolerance": 1e-10,
+          "status": "available",
+          "distance": 0.345,
+          "gap": 0.05499999999999999,
+          "witnesses": [
+            {
+              "point": [
+                0.6400000000000001,
+                0
+              ],
+              "normal": [
+                -3.218037752536686e-16,
+                1
+              ],
+              "feature": {
+                "kind": "segment",
+                "index": 0
+              }
+            }
+          ]
+        }
+      },
+      "staticStartingStatus": "solved"
+    },
+    {
+      "name": "separated",
+      "status": "clear",
+      "params": {
+        "fixture": "flat",
+        "centerX": 0,
+        "height": 0.345,
+        "radius": 0.36,
+        "rimRadius": 0.29,
+        "foundation": 300000,
+        "coupling": 30,
+        "nodes": 512,
+        "terrainSegments": 128,
+        "rotation": 0
+      },
+      "delta": [
+        0,
+        0.1
+      ],
+      "sweep": {
+        "status": "clear",
+        "fraction": 1,
+        "center": [
+          0,
+          0.44499999999999995
+        ],
+        "distance": 0.1,
+        "events": [],
+        "tolerances": {
+          "fraction": 1e-10,
+          "initialGapM": 1e-10,
+          "discriminantRelative": 7.105427357601002e-15
+        },
+        "initialClearance": 0.05499999999999999,
+        "clearance": {
+          "model": "bikelab-clearance-1",
+          "profile": {
+            "format": "bikelab-profile-1",
+            "units": "m",
+            "axes": "x-forward,z-up",
+            "solid": "below",
+            "interpolation": "linear",
+            "source": {
+              "kind": "illustrative",
+              "description": "Synthetic flat rigid reference surface."
+            },
+            "points": [
+              [
+                -1,
+                0
+              ],
+              [
+                1,
+                0
+              ]
+            ]
+          },
+          "setup": {
+            "center": [
+              0,
+              0.44499999999999995
+            ],
+            "radius": 0.29
+          },
+          "tieTolerance": 1e-10,
+          "status": "available",
+          "distance": 0.44499999999999995,
+          "gap": 0.15499999999999997,
+          "witnesses": [
+            {
+              "point": [
+                0,
+                0
+              ],
+              "normal": [
+                0,
+                1
+              ],
+              "feature": {
+                "kind": "segment",
+                "index": 0
+              }
+            }
+          ]
+        }
+      },
+      "staticStartingStatus": "solved"
+    }
+  ],
+  "pressure": [
+    {
+      "pressure": 180000,
+      "assessment": {
+        "status": "within-declared-limits",
+        "issues": [],
+        "unknown": [],
+        "bounds": [
+          {
+            "owner": "tyreMaxPressure",
+            "maximumPa": 350000,
+            "source": {
+              "kind": "illustrative",
+              "reference": "Synthetic assembly declaration for limit-check demonstrations; not a production preset."
+            }
+          },
+          {
+            "owner": "rimMaxPressure",
+            "maximumPa": 300000,
+            "source": {
+              "kind": "illustrative",
+              "reference": "Synthetic assembly declaration for limit-check demonstrations; not a production preset."
+            }
+          },
+          {
+            "owner": "schwalbe-hookless-width-guidance",
+            "maximumPa": 250000,
+            "source": {
+              "title": "Schwalbe hookless guidance, pp. 1–2",
+              "url": "https://www.schwalbe.com/media/1f/82/33/1706602649/Hookless_Info_EN.pdf",
+              "accessed": "2026-10-18",
+              "scope": "Schwalbe TLE/TLR (2020 onward), ISO/ETRTO compliant tubeless hookless rims; service recommendations, not burst pressures."
+            }
+          }
+        ],
+        "knownMaximumPa": 250000,
+        "fieldSources": {
+          "tyreId": {
+            "kind": "illustrative",
+            "reference": "Synthetic assembly declaration for limit-check demonstrations; not a production preset."
+          },
+          "rimId": {
+            "kind": "illustrative",
+            "reference": "Synthetic assembly declaration for limit-check demonstrations; not a production preset."
+          },
+          "brand": {
+            "kind": "illustrative",
+            "reference": "Synthetic assembly declaration for limit-check demonstrations; not a production preset."
+          },
+          "rimType": {
+            "kind": "illustrative",
+            "reference": "Synthetic assembly declaration for limit-check demonstrations; not a production preset."
+          },
+          "construction": {
+            "kind": "illustrative",
+            "reference": "Synthetic assembly declaration for limit-check demonstrations; not a production preset."
+          },
+          "tyreBsd": {
+            "kind": "illustrative",
+            "reference": "Synthetic assembly declaration for limit-check demonstrations; not a production preset."
+          },
+          "rimBsd": {
+            "kind": "illustrative",
+            "reference": "Synthetic assembly declaration for limit-check demonstrations; not a production preset."
+          },
+          "tyreWidth": {
+            "kind": "illustrative",
+            "reference": "Synthetic assembly declaration for limit-check demonstrations; not a production preset."
+          },
+          "rimInnerWidth": {
+            "kind": "illustrative",
+            "reference": "Synthetic assembly declaration for limit-check demonstrations; not a production preset."
+          },
+          "tyreTubelessApproved": {
+            "kind": "illustrative",
+            "reference": "Synthetic assembly declaration for limit-check demonstrations; not a production preset."
+          },
+          "rimTubelessApproved": {
+            "kind": "illustrative",
+            "reference": "Synthetic assembly declaration for limit-check demonstrations; not a production preset."
+          },
+          "standardCompliant": {
+            "kind": "illustrative",
+            "reference": "Synthetic assembly declaration for limit-check demonstrations; not a production preset."
+          },
+          "widthPairApproved": {
+            "kind": "illustrative",
+            "reference": "Synthetic assembly declaration for limit-check demonstrations; not a production preset."
+          },
+          "pairApproved": {
+            "kind": "illustrative",
+            "reference": "Synthetic assembly declaration for limit-check demonstrations; not a production preset."
+          },
+          "pressure": {
+            "kind": "illustrative",
+            "reference": "Synthetic assembly declaration for limit-check demonstrations; not a production preset."
+          },
+          "tyreMaxPressure": {
+            "kind": "illustrative",
+            "reference": "Synthetic assembly declaration for limit-check demonstrations; not a production preset."
+          },
+          "rimMaxPressure": {
+            "kind": "illustrative",
+            "reference": "Synthetic assembly declaration for limit-check demonstrations; not a production preset."
+          }
+        },
+        "scope": "Tubeless assembly/service assessment only; no survival certification.",
+        "failureCriteria": {
+          "burstPressurePa": null,
+          "beadReleaseForceN": null,
+          "casingCutCriterion": null,
+          "rimYieldCriterion": null,
+          "rimFractureCriterion": null,
+          "spokeFractureCriterion": null,
+          "spokeFatigueCriterion": null,
+          "leakAreaLaw": null
+        }
+      }
+    },
+    {
+      "pressure": 250000,
+      "assessment": {
+        "status": "within-declared-limits",
+        "issues": [],
+        "unknown": [],
+        "bounds": [
+          {
+            "owner": "tyreMaxPressure",
+            "maximumPa": 350000,
+            "source": {
+              "kind": "illustrative",
+              "reference": "Synthetic assembly declaration for limit-check demonstrations; not a production preset."
+            }
+          },
+          {
+            "owner": "rimMaxPressure",
+            "maximumPa": 300000,
+            "source": {
+              "kind": "illustrative",
+              "reference": "Synthetic assembly declaration for limit-check demonstrations; not a production preset."
+            }
+          },
+          {
+            "owner": "schwalbe-hookless-width-guidance",
+            "maximumPa": 250000,
+            "source": {
+              "title": "Schwalbe hookless guidance, pp. 1–2",
+              "url": "https://www.schwalbe.com/media/1f/82/33/1706602649/Hookless_Info_EN.pdf",
+              "accessed": "2026-10-18",
+              "scope": "Schwalbe TLE/TLR (2020 onward), ISO/ETRTO compliant tubeless hookless rims; service recommendations, not burst pressures."
+            }
+          }
+        ],
+        "knownMaximumPa": 250000,
+        "fieldSources": {
+          "tyreId": {
+            "kind": "illustrative",
+            "reference": "Synthetic assembly declaration for limit-check demonstrations; not a production preset."
+          },
+          "rimId": {
+            "kind": "illustrative",
+            "reference": "Synthetic assembly declaration for limit-check demonstrations; not a production preset."
+          },
+          "brand": {
+            "kind": "illustrative",
+            "reference": "Synthetic assembly declaration for limit-check demonstrations; not a production preset."
+          },
+          "rimType": {
+            "kind": "illustrative",
+            "reference": "Synthetic assembly declaration for limit-check demonstrations; not a production preset."
+          },
+          "construction": {
+            "kind": "illustrative",
+            "reference": "Synthetic assembly declaration for limit-check demonstrations; not a production preset."
+          },
+          "tyreBsd": {
+            "kind": "illustrative",
+            "reference": "Synthetic assembly declaration for limit-check demonstrations; not a production preset."
+          },
+          "rimBsd": {
+            "kind": "illustrative",
+            "reference": "Synthetic assembly declaration for limit-check demonstrations; not a production preset."
+          },
+          "tyreWidth": {
+            "kind": "illustrative",
+            "reference": "Synthetic assembly declaration for limit-check demonstrations; not a production preset."
+          },
+          "rimInnerWidth": {
+            "kind": "illustrative",
+            "reference": "Synthetic assembly declaration for limit-check demonstrations; not a production preset."
+          },
+          "tyreTubelessApproved": {
+            "kind": "illustrative",
+            "reference": "Synthetic assembly declaration for limit-check demonstrations; not a production preset."
+          },
+          "rimTubelessApproved": {
+            "kind": "illustrative",
+            "reference": "Synthetic assembly declaration for limit-check demonstrations; not a production preset."
+          },
+          "standardCompliant": {
+            "kind": "illustrative",
+            "reference": "Synthetic assembly declaration for limit-check demonstrations; not a production preset."
+          },
+          "widthPairApproved": {
+            "kind": "illustrative",
+            "reference": "Synthetic assembly declaration for limit-check demonstrations; not a production preset."
+          },
+          "pairApproved": {
+            "kind": "illustrative",
+            "reference": "Synthetic assembly declaration for limit-check demonstrations; not a production preset."
+          },
+          "pressure": {
+            "kind": "illustrative",
+            "reference": "Synthetic assembly declaration for limit-check demonstrations; not a production preset."
+          },
+          "tyreMaxPressure": {
+            "kind": "illustrative",
+            "reference": "Synthetic assembly declaration for limit-check demonstrations; not a production preset."
+          },
+          "rimMaxPressure": {
+            "kind": "illustrative",
+            "reference": "Synthetic assembly declaration for limit-check demonstrations; not a production preset."
+          }
+        },
+        "scope": "Tubeless assembly/service assessment only; no survival certification.",
+        "failureCriteria": {
+          "burstPressurePa": null,
+          "beadReleaseForceN": null,
+          "casingCutCriterion": null,
+          "rimYieldCriterion": null,
+          "rimFractureCriterion": null,
+          "spokeFractureCriterion": null,
+          "spokeFatigueCriterion": null,
+          "leakAreaLaw": null
+        }
+      }
+    },
+    {
+      "pressure": 250001,
+      "assessment": {
+        "status": "incompatible",
+        "issues": [
+          {
+            "code": "pressure-exceeded",
+            "detail": "Inflation exceeds the lowest known applicable service maximum. Blowout behaviour is unsupported."
+          }
+        ],
+        "unknown": [],
+        "bounds": [
+          {
+            "owner": "tyreMaxPressure",
+            "maximumPa": 350000,
+            "source": {
+              "kind": "illustrative",
+              "reference": "Synthetic assembly declaration for limit-check demonstrations; not a production preset."
+            }
+          },
+          {
+            "owner": "rimMaxPressure",
+            "maximumPa": 300000,
+            "source": {
+              "kind": "illustrative",
+              "reference": "Synthetic assembly declaration for limit-check demonstrations; not a production preset."
+            }
+          },
+          {
+            "owner": "schwalbe-hookless-width-guidance",
+            "maximumPa": 250000,
+            "source": {
+              "title": "Schwalbe hookless guidance, pp. 1–2",
+              "url": "https://www.schwalbe.com/media/1f/82/33/1706602649/Hookless_Info_EN.pdf",
+              "accessed": "2026-10-18",
+              "scope": "Schwalbe TLE/TLR (2020 onward), ISO/ETRTO compliant tubeless hookless rims; service recommendations, not burst pressures."
+            }
+          }
+        ],
+        "knownMaximumPa": 250000,
+        "fieldSources": {
+          "tyreId": {
+            "kind": "illustrative",
+            "reference": "Synthetic assembly declaration for limit-check demonstrations; not a production preset."
+          },
+          "rimId": {
+            "kind": "illustrative",
+            "reference": "Synthetic assembly declaration for limit-check demonstrations; not a production preset."
+          },
+          "brand": {
+            "kind": "illustrative",
+            "reference": "Synthetic assembly declaration for limit-check demonstrations; not a production preset."
+          },
+          "rimType": {
+            "kind": "illustrative",
+            "reference": "Synthetic assembly declaration for limit-check demonstrations; not a production preset."
+          },
+          "construction": {
+            "kind": "illustrative",
+            "reference": "Synthetic assembly declaration for limit-check demonstrations; not a production preset."
+          },
+          "tyreBsd": {
+            "kind": "illustrative",
+            "reference": "Synthetic assembly declaration for limit-check demonstrations; not a production preset."
+          },
+          "rimBsd": {
+            "kind": "illustrative",
+            "reference": "Synthetic assembly declaration for limit-check demonstrations; not a production preset."
+          },
+          "tyreWidth": {
+            "kind": "illustrative",
+            "reference": "Synthetic assembly declaration for limit-check demonstrations; not a production preset."
+          },
+          "rimInnerWidth": {
+            "kind": "illustrative",
+            "reference": "Synthetic assembly declaration for limit-check demonstrations; not a production preset."
+          },
+          "tyreTubelessApproved": {
+            "kind": "illustrative",
+            "reference": "Synthetic assembly declaration for limit-check demonstrations; not a production preset."
+          },
+          "rimTubelessApproved": {
+            "kind": "illustrative",
+            "reference": "Synthetic assembly declaration for limit-check demonstrations; not a production preset."
+          },
+          "standardCompliant": {
+            "kind": "illustrative",
+            "reference": "Synthetic assembly declaration for limit-check demonstrations; not a production preset."
+          },
+          "widthPairApproved": {
+            "kind": "illustrative",
+            "reference": "Synthetic assembly declaration for limit-check demonstrations; not a production preset."
+          },
+          "pairApproved": {
+            "kind": "illustrative",
+            "reference": "Synthetic assembly declaration for limit-check demonstrations; not a production preset."
+          },
+          "pressure": {
+            "kind": "illustrative",
+            "reference": "Synthetic assembly declaration for limit-check demonstrations; not a production preset."
+          },
+          "tyreMaxPressure": {
+            "kind": "illustrative",
+            "reference": "Synthetic assembly declaration for limit-check demonstrations; not a production preset."
+          },
+          "rimMaxPressure": {
+            "kind": "illustrative",
+            "reference": "Synthetic assembly declaration for limit-check demonstrations; not a production preset."
+          }
+        },
+        "scope": "Tubeless assembly/service assessment only; no survival certification.",
+        "failureCriteria": {
+          "burstPressurePa": null,
+          "beadReleaseForceN": null,
+          "casingCutCriterion": null,
+          "rimYieldCriterion": null,
+          "rimFractureCriterion": null,
+          "spokeFractureCriterion": null,
+          "spokeFatigueCriterion": null,
+          "leakAreaLaw": null
+        }
+      }
+    },
+    {
+      "pressure": 0,
+      "assessment": {
+        "status": "incompatible",
+        "issues": [
+          {
+            "code": "deflated-regime",
+            "detail": "Zero gauge pressure requires a supported deflated tyre model; continuation is unsupported."
+          }
+        ],
+        "unknown": [],
+        "bounds": [
+          {
+            "owner": "tyreMaxPressure",
+            "maximumPa": 350000,
+            "source": {
+              "kind": "illustrative",
+              "reference": "Synthetic assembly declaration for limit-check demonstrations; not a production preset."
+            }
+          },
+          {
+            "owner": "rimMaxPressure",
+            "maximumPa": 300000,
+            "source": {
+              "kind": "illustrative",
+              "reference": "Synthetic assembly declaration for limit-check demonstrations; not a production preset."
+            }
+          },
+          {
+            "owner": "schwalbe-hookless-width-guidance",
+            "maximumPa": 250000,
+            "source": {
+              "title": "Schwalbe hookless guidance, pp. 1–2",
+              "url": "https://www.schwalbe.com/media/1f/82/33/1706602649/Hookless_Info_EN.pdf",
+              "accessed": "2026-10-18",
+              "scope": "Schwalbe TLE/TLR (2020 onward), ISO/ETRTO compliant tubeless hookless rims; service recommendations, not burst pressures."
+            }
+          }
+        ],
+        "knownMaximumPa": 250000,
+        "fieldSources": {
+          "tyreId": {
+            "kind": "illustrative",
+            "reference": "Synthetic assembly declaration for limit-check demonstrations; not a production preset."
+          },
+          "rimId": {
+            "kind": "illustrative",
+            "reference": "Synthetic assembly declaration for limit-check demonstrations; not a production preset."
+          },
+          "brand": {
+            "kind": "illustrative",
+            "reference": "Synthetic assembly declaration for limit-check demonstrations; not a production preset."
+          },
+          "rimType": {
+            "kind": "illustrative",
+            "reference": "Synthetic assembly declaration for limit-check demonstrations; not a production preset."
+          },
+          "construction": {
+            "kind": "illustrative",
+            "reference": "Synthetic assembly declaration for limit-check demonstrations; not a production preset."
+          },
+          "tyreBsd": {
+            "kind": "illustrative",
+            "reference": "Synthetic assembly declaration for limit-check demonstrations; not a production preset."
+          },
+          "rimBsd": {
+            "kind": "illustrative",
+            "reference": "Synthetic assembly declaration for limit-check demonstrations; not a production preset."
+          },
+          "tyreWidth": {
+            "kind": "illustrative",
+            "reference": "Synthetic assembly declaration for limit-check demonstrations; not a production preset."
+          },
+          "rimInnerWidth": {
+            "kind": "illustrative",
+            "reference": "Synthetic assembly declaration for limit-check demonstrations; not a production preset."
+          },
+          "tyreTubelessApproved": {
+            "kind": "illustrative",
+            "reference": "Synthetic assembly declaration for limit-check demonstrations; not a production preset."
+          },
+          "rimTubelessApproved": {
+            "kind": "illustrative",
+            "reference": "Synthetic assembly declaration for limit-check demonstrations; not a production preset."
+          },
+          "standardCompliant": {
+            "kind": "illustrative",
+            "reference": "Synthetic assembly declaration for limit-check demonstrations; not a production preset."
+          },
+          "widthPairApproved": {
+            "kind": "illustrative",
+            "reference": "Synthetic assembly declaration for limit-check demonstrations; not a production preset."
+          },
+          "pairApproved": {
+            "kind": "illustrative",
+            "reference": "Synthetic assembly declaration for limit-check demonstrations; not a production preset."
+          },
+          "pressure": {
+            "kind": "illustrative",
+            "reference": "Synthetic assembly declaration for limit-check demonstrations; not a production preset."
+          },
+          "tyreMaxPressure": {
+            "kind": "illustrative",
+            "reference": "Synthetic assembly declaration for limit-check demonstrations; not a production preset."
+          },
+          "rimMaxPressure": {
+            "kind": "illustrative",
+            "reference": "Synthetic assembly declaration for limit-check demonstrations; not a production preset."
+          }
+        },
+        "scope": "Tubeless assembly/service assessment only; no survival certification.",
+        "failureCriteria": {
+          "burstPressurePa": null,
+          "beadReleaseForceN": null,
+          "casingCutCriterion": null,
+          "rimYieldCriterion": null,
+          "rimFractureCriterion": null,
+          "spokeFractureCriterion": null,
+          "spokeFatigueCriterion": null,
+          "leakAreaLaw": null
+        }
+      }
+    }
+  ],
+  "sourceBands": [
+    [
+      18,
+      24,
+      550000
+    ],
+    [
+      25,
+      29,
+      500000
+    ],
+    [
+      30,
+      34,
+      450000
+    ],
+    [
+      35,
+      39,
+      400000
+    ],
+    [
+      40,
+      44,
+      350000
+    ],
+    [
+      45,
+      54,
+      300000
+    ],
+    [
+      55,
+      64,
+      250000
+    ],
+    [
+      65,
+      74,
+      200000
+    ],
+    [
+      75,
+      84,
+      150000
+    ]
+  ]
+}

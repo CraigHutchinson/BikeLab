@@ -65,3 +65,7 @@ Expose enabled/unsupported failure models and their applicability. A diagnostic 
 ## Delivery sequence
 
 During this iteration's review, retain existing travel-domain enforcement and record the missing physical outcome as an open requirement. Next, before claiming high-impact capability, research and validate a bounded stop/load-path experiment and source-backed wheel/rim/spoke/seal cases with visual and headless consumers. Feed their attachment-load, deformation and damage-state requirements into the whole-bike solver decision now. Expand to the remaining component rows as their assemblies become active; do not postpone the entire overload contract to optional cosmetic damage after a playable trail.
+
+## Received geometric and assembly limits
+
+[Iteration 14](WHEEL_LIMITS.md) adds an explicit continuous rim-contact boundary and declared tyre/rim service-pressure assessment. Known incompatibility/overpressure blocks this experiment; unknown evidence never becomes a survival pass. Reports keep burst pressure, bead release, casing cut, rim/spoke damage and leakage criteria null. First rigid-rim contact is geometric only; physical failure can occur before or after it depending on supported local mechanics. The complete component inventory and post-failure energy/topology requirements above remain open.

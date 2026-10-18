@@ -54,6 +54,8 @@ Same-runtime replay is reproducible. Browser and Node recordings are checked for
 
 ## Current evidence
 
+The [wheel-limit station](https://craighutchinson.github.io/BikeLab/wheel-limits.html) traces continuous first rim contact, including between-sample obstacles, and checks declared tubeless fit/maximum-pressure limits. It blocks incompatible or overpressure declarations and keeps blowout/fracture criteria unknown. Run `node scripts/wheel-limits.mjs [input-or-record.json]`; see [scope](docs/WHEEL_LIMITS.md) and [iteration 14 evidence](docs/ITERATION_14_EVIDENCE.md). This is geometry and service-limit assessment, not impact or damage simulation.
+
 The [tyre-footprint station](https://craighutchinson.github.io/BikeLab/footprint.html) adds prescribed-pose radial deformation, every active local normal force and a resultant hub wrench on flat, rounded, square-step-top and two-support terrain. Its worker and headless runner share the same uncalibrated static mechanics. Run `node scripts/footprint.mjs [setup-or-record.json]`; see [model limits](docs/STATIC_FOOTPRINT.md) and [iteration 13 evidence](docs/ITERATION_13_EVIDENCE.md). Exposed sharp edges and rim strikes remain explicitly unsupported; pressure, stress, impact and traction are separate receiving work.
 
 The bicycle station now exposes [rider travel stops and attachment loads](docs/RIDER_STOPS_LOADS.md): lower/upper compliant stops, total guide reaction, fixture wrench and corrected rear-pivot load. The experiment works on both assemblies and retains ultimate travel termination. Finer optional headless recording separates force-integral sampling error from solver timestep error; no real-time or component-strength claim follows.
@@ -102,7 +104,7 @@ See [the prior-iteration review](docs/ITERATION_2_REVIEW.md) and [Slice 2 eviden
 
 Develop toward a highly realistic riding and bike-setup experience in which geometry, suspension, tyres, rider behaviour, braking and terrain interact coherently. Realism must be demonstrated through physical evidence, not inferred from plausible animation.
 
-The simulation shall ultimately be fully 3D, including lateral motion, turning forces, steering, lean and coupled braking/cornering grip. The planar rigs are intermediate validation tools. The coupled hardtail/full-suspension fixture and passive guided rider are intermediate steps; supported end-stop/load paths and anatomical rider attachments remain open. Production-bike selection and source-backed stock setups remain planned.
+The simulation shall ultimately be fully 3D, including lateral motion, turning forces, steering, lean and coupled braking/cornering grip. The planar rigs are intermediate validation tools. The coupled hardtail/full-suspension fixture and passive guided rider are intermediate steps; the received stop/load experiments still require anatomical rider attachments and sourced component failure laws. Production-bike selection and source-backed stock setups remain planned.
 
 Develop every visible experiment alongside its foundations. Keep physics independent of rendering, rider mechanics separate from control, and measured/fitted/illustrative parameters distinguishable. Add complexity only when a named experiment consumes it.
 
