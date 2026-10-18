@@ -104,7 +104,7 @@ function plot(id,keys,factor){const ctx=context(id);if(!ctx||!run)return;const {
 function draw(){scene();drawConfiguration();for(const id of canvases.slice(1))if(!run)context(id);if(!run){for(const id of ['pitch','fork','shock','riderCompression','riderForce','bufferForce','bufferState','shockBufferForce','shockBufferState','shockMoment','shockTotal','attachmentLoads','riderStopState'])$(id).textContent='—';$('time').textContent='0.000 s';$('scrub').value=0;$('compute').textContent='';$('evidence').textContent='Calculate the current setup to create an experiment record.';return;}
   const s=run.signals;$('scrub').value=index;$('time').textContent=s.time[index].toFixed(3)+' s';$('pitch').textContent=(s.pitch[index]*180/Math.PI).toFixed(2)+'°';$('fork').textContent=(s.fork[index]*1000).toFixed(1)+' mm';$('shock').textContent=run.params.bike==='full'?(s.shock[index]*1000).toFixed(1)+' mm':'Rigid';
   $('riderCompression').textContent=run.params.rider==='compliant'?(s.riderCompression[index]*1000).toFixed(1)+' mm':'Fixed';
-  $('riderForce').textContent=run.params.rider==='compliant'?s.riderForce[index].toFixed(1)+' N':'Not resolved';
+  $('riderForce').textContent=run.params.rider==='compliant'?s.riderTotalForce[index].toFixed(1)+' N':'Not resolved';
   $('bufferForce').textContent=run.params.forkBuffer==='none'?'Disabled':s.forkBufferForce[index].toFixed(1)+' N';
   $('bufferState').textContent=run.params.forkBuffer==='none'?'No buffers':s.forkTopForce[index]>0?'Top-out':s.forkBottomForce[index]>0?'Bottom-out':'Free travel';
   $('shockBufferForce').textContent=run.params.bike==='hardtail'?'No shock':run.params.shockBuffer==='none'?'Disabled':s.shockBufferForce[index].toFixed(1)+' N';

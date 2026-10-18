@@ -142,7 +142,7 @@ export async function checkBike({page,root,dir,report}) {
   for(const bike of ['full','hardtail']){
     await page.locator('[name=bike]').selectOption(bike);await apply();const saved=await exportRun('rider-stops-'+bike),node=await runRig(saved.record.params);assert.equal(saved.record.status,'complete');let max=0;
     for(const [key,values] of Object.entries(saved.record.signals))for(let i=0;i<values.length;i++){const e=Math.abs(values[i]-node.signals[key][i]);max=Math.max(max,e);assert.ok(e<1e-8,key);}
-    for(const [channel,state] of [['riderLowerForce','Lower stop'],['riderUpperForce','Upper stop']]){const values=saved.record.signals[channel];assert.ok(Math.max(...values)>20);await page.locator('#scrub').fill(String(values.indexOf(Math.max(...values))));assert.match(await page.locator('#riderStopState').textContent(),new RegExp(state));await shot('rider-stops-'+bike+'-'+state.split(' ')[0]);}
+    for(const [channel,state] of [['riderLowerForce','Lower stop'],['riderUpperForce','Upper stop']]){const values=saved.record.signals[channel];assert.ok(Math.max(...values)>20);await page.locator('#scrub').fill(String(values.indexOf(Math.max(...values))));assert.equal(await page.locator('#riderForce').textContent(),saved.record.signals.riderTotalForce[values.indexOf(Math.max(...values))].toFixed(1)+' N');assert.match(await page.locator('#riderStopState').textContent(),new RegExp(state));await shot('rider-stops-'+bike+'-'+state.split(' ')[0]);}
     await page.locator('#load').setInputFiles(saved.path);await ready();assert.equal(await page.locator('[name=riderBuffer]').inputValue(),'progressive');
     report.exports.push({name:'rider-stops-'+bike,result:{maxBrowserNodeDifference:max,summary:saved.record.summary}});
   }

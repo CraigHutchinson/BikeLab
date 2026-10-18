@@ -1,0 +1,74 @@
+{
+  "testedHead": "79eebee81a93df4010fcf088337817ec322f83c8",
+  "workflowRun": 39105523338,
+  "testsPerPlatform": 138,
+  "platforms": [
+    "ubuntu-latest",
+    "windows-latest"
+  ],
+  "artifactId": 12127782665,
+  "artifactSha256": "6e97042aac7b03726dbc9a6dd1e9cf06e8d021b61aa24fb5343e28e887a7746b",
+  "browser": "141.0.7390.37",
+  "browserErrors": [],
+  "captureCount": 55,
+  "checks": [
+    "rider stops and loads: both assemblies, lower/upper engagement, worker/headless parity, record reconstruction, invalid overlapping zones, weak-stop ultimate termination, fixed-mode dormancy, responsive plots and lifecycle"
+  ],
+  "agreement": [
+    {
+      "name": "rider-stops-full",
+      "result": {
+        "maxBrowserNodeDifference": 3.058175934711471e-11,
+        "summary": {
+          "riderBufferLoss": 0.5023618678522775,
+          "peakRiderLowerForce": 522.4685208030928,
+          "peakRiderUpperForce": 82.39722663468244,
+          "maxResidual": 0.15765900025212432,
+          "peakForce": 1480.2922071138244,
+          "peakRiderForce": 267.3513740432267,
+          "peakTopForce": 156.26870632564209,
+          "peakBottomForce": 0,
+          "work": 174.62898466275274,
+          "loss": 174.71188712522454,
+          "riderLoss": 0,
+          "bufferLoss": 0.05332590989305903,
+          "shockBufferLoss": 0.37022670540263647,
+          "peakShockTopForce": 1049.6648027938381,
+          "peakShockBottomForce": 0
+        }
+      }
+    },
+    {
+      "name": "rider-stops-hardtail",
+      "result": {
+        "maxBrowserNodeDifference": 2.9331204132176936e-11,
+        "summary": {
+          "riderBufferLoss": 3.442783612323155,
+          "peakRiderLowerForce": 1712.123882153081,
+          "peakRiderUpperForce": 272.9289009552731,
+          "maxResidual": 0.5074405854988981,
+          "peakForce": 4846.1369130635585,
+          "peakRiderForce": 449.61791811740176,
+          "peakTopForce": 164.72631891922893,
+          "peakBottomForce": 0,
+          "work": 275.2675014703256,
+          "loss": 275.3959169164558,
+          "riderLoss": 0,
+          "bufferLoss": 0.06926605982800678,
+          "shockBufferLoss": 0,
+          "peakShockTopForce": 0,
+          "peakShockBottomForce": 0
+        }
+      }
+    }
+  ],
+  "inspected": [
+    "rider-stops-full-Lower.png",
+    "rider-stops-full-Upper.png",
+    "rider-stops-hardtail-Upper.png",
+    "rider-stops-ultimate.png",
+    "rider-stops-mobile-320.png",
+    "rider-stops-mobile-390.png"
+  ],
+  "followup": "Primary axial readout changed to total including stop after inspection; final exact-head browser assertion verifies displayed value against export."
+}
