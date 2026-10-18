@@ -1,0 +1,889 @@
+{
+  "model": "bikelab-static-radial-ring-0.1",
+  "scope": "Uncalibrated static radial-guidance surrogate; not impact, pressure or stress.",
+  "tyre": {
+    "flat": [
+      {
+        "params": {
+          "fixture": "flat",
+          "centerX": 0,
+          "height": 0.345,
+          "radius": 0.36,
+          "rimRadius": 0.29,
+          "foundation": 300000,
+          "coupling": 30,
+          "nodes": 64,
+          "terrainSegments": 128,
+          "rotation": 0
+        },
+        "status": "solved",
+        "summary": {
+          "forceX": 0,
+          "forceZ": 651.9643142108463,
+          "momentY": -4.440892098500626e-16,
+          "energy": 3.8556380220282116,
+          "maxDeformation": 0.014583931217714563,
+          "activeNodes": 6,
+          "residual": 2.7460600598983923e-8,
+          "iterations": 7,
+          "contourIntrusion": 0,
+          "contourTolerance": 0.0002
+        }
+      },
+      {
+        "params": {
+          "fixture": "flat",
+          "centerX": 0,
+          "height": 0.345,
+          "radius": 0.36,
+          "rimRadius": 0.29,
+          "foundation": 300000,
+          "coupling": 30,
+          "nodes": 128,
+          "terrainSegments": 128,
+          "rotation": 0
+        },
+        "status": "solved",
+        "summary": {
+          "forceX": 0,
+          "forceZ": 643.0725539849782,
+          "momentY": -7.771561172376096e-16,
+          "energy": 3.8665471076926354,
+          "maxDeformation": 0.014896061145750816,
+          "activeNodes": 12,
+          "residual": 2.616957014775668e-8,
+          "iterations": 12,
+          "contourIntrusion": 0,
+          "contourTolerance": 0.0002
+        }
+      },
+      {
+        "params": {
+          "fixture": "flat",
+          "centerX": 0,
+          "height": 0.345,
+          "radius": 0.36,
+          "rimRadius": 0.29,
+          "foundation": 300000,
+          "coupling": 30,
+          "nodes": 256,
+          "terrainSegments": 128,
+          "rotation": 0
+        },
+        "status": "solved",
+        "summary": {
+          "forceX": 0,
+          "forceZ": 644.2272515595849,
+          "momentY": -3.6956881999117286e-11,
+          "energy": 3.8712184088601895,
+          "maxDeformation": 0.014974020178272096,
+          "activeNodes": 22,
+          "residual": 9.985117929610648e-8,
+          "iterations": 26,
+          "contourIntrusion": 0,
+          "contourTolerance": 0.0002
+        }
+      },
+      {
+        "params": {
+          "fixture": "flat",
+          "centerX": 0,
+          "height": 0.345,
+          "radius": 0.36,
+          "rimRadius": 0.29,
+          "foundation": 300000,
+          "coupling": 30,
+          "nodes": 512,
+          "terrainSegments": 128,
+          "rotation": 0
+        },
+        "status": "solved",
+        "summary": {
+          "forceX": 0,
+          "forceZ": 643.9218690040559,
+          "momentY": -2.8286628594997865e-10,
+          "energy": 3.8716093434480037,
+          "maxDeformation": 0.014993505350237468,
+          "activeNodes": 44,
+          "residual": 8.400064372174404e-8,
+          "iterations": 79,
+          "contourIntrusion": 0,
+          "contourTolerance": 0.0002
+        }
+      },
+      {
+        "params": {
+          "fixture": "flat",
+          "centerX": 0,
+          "height": 0.345,
+          "radius": 0.36,
+          "rimRadius": 0.29,
+          "foundation": 300000,
+          "coupling": 30,
+          "nodes": 1024,
+          "terrainSegments": 128,
+          "rotation": 0
+        },
+        "status": "solved",
+        "summary": {
+          "forceX": 0,
+          "forceZ": 643.7601366281618,
+          "momentY": -1.4063842312950214e-9,
+          "energy": 3.871785495379473,
+          "maxDeformation": 0.014998376356662624,
+          "activeNodes": 86,
+          "residual": 9.929136373971825e-8,
+          "iterations": 272,
+          "contourIntrusion": 0,
+          "contourTolerance": 0.0002
+        }
+      }
+    ],
+    "rounded": [
+      {
+        "params": {
+          "fixture": "rounded",
+          "centerX": 0.1,
+          "height": 0.44,
+          "radius": 0.36,
+          "rimRadius": 0.29,
+          "foundation": 300000,
+          "coupling": 30,
+          "nodes": 64,
+          "terrainSegments": 128,
+          "rotation": 0
+        },
+        "status": "unsupported",
+        "reason": "Candidate tyre contour cuts through terrain; refine or change the pose. Sharp corners may remain unsupported.",
+        "contourIntrusion": 0.0019191585891328161
+      },
+      {
+        "params": {
+          "fixture": "rounded",
+          "centerX": 0.1,
+          "height": 0.44,
+          "radius": 0.36,
+          "rimRadius": 0.29,
+          "foundation": 300000,
+          "coupling": 30,
+          "nodes": 128,
+          "terrainSegments": 128,
+          "rotation": 0
+        },
+        "status": "unsupported",
+        "reason": "Candidate tyre contour cuts through terrain; refine or change the pose. Sharp corners may remain unsupported.",
+        "contourIntrusion": 0.000483962790203768
+      },
+      {
+        "params": {
+          "fixture": "rounded",
+          "centerX": 0.1,
+          "height": 0.44,
+          "radius": 0.36,
+          "rimRadius": 0.29,
+          "foundation": 300000,
+          "coupling": 30,
+          "nodes": 256,
+          "terrainSegments": 128,
+          "rotation": 0
+        },
+        "status": "solved",
+        "summary": {
+          "forceX": -1.6475709685437323e-13,
+          "forceZ": 476.7282670518955,
+          "momentY": 9.070522111187529e-14,
+          "energy": 3.8868812918349613,
+          "maxDeformation": 0.019880932652965255,
+          "activeNodes": 12,
+          "residual": 6.172414762723119e-8,
+          "iterations": 28,
+          "contourIntrusion": 0.0001503659080623887,
+          "contourTolerance": 0.0002
+        }
+      },
+      {
+        "params": {
+          "fixture": "rounded",
+          "centerX": 0.1,
+          "height": 0.44,
+          "radius": 0.36,
+          "rimRadius": 0.29,
+          "foundation": 300000,
+          "coupling": 30,
+          "nodes": 512,
+          "terrainSegments": 128,
+          "rotation": 0
+        },
+        "status": "solved",
+        "summary": {
+          "forceX": 1.4997776354164216e-9,
+          "forceZ": 479.5989395610112,
+          "momentY": -6.577918210126654e-10,
+          "energy": 3.8927580987783768,
+          "maxDeformation": 0.019967993762831593,
+          "activeNodes": 22,
+          "residual": 9.854565256119372e-8,
+          "iterations": 83,
+          "contourIntrusion": 0.000040245764230978365,
+          "contourTolerance": 0.0002
+        }
+      },
+      {
+        "params": {
+          "fixture": "rounded",
+          "centerX": 0.1,
+          "height": 0.44,
+          "radius": 0.36,
+          "rimRadius": 0.29,
+          "foundation": 300000,
+          "coupling": 30,
+          "nodes": 1024,
+          "terrainSegments": 128,
+          "rotation": 0
+        },
+        "status": "solved",
+        "summary": {
+          "forceX": 5.764248189876753e-9,
+          "forceZ": 479.3175840762488,
+          "momentY": -2.542780541681111e-9,
+          "energy": 3.894161025449709,
+          "maxDeformation": 0.019985597814669354,
+          "activeNodes": 42,
+          "residual": 9.749246212297347e-8,
+          "iterations": 291,
+          "contourIntrusion": 0.000015495364561080027,
+          "contourTolerance": 0.0002
+        }
+      }
+    ],
+    "stepTop": [
+      {
+        "params": {
+          "fixture": "step",
+          "centerX": 0.1,
+          "height": 0.445,
+          "radius": 0.36,
+          "rimRadius": 0.29,
+          "foundation": 300000,
+          "coupling": 30,
+          "nodes": 64,
+          "terrainSegments": 128,
+          "rotation": 0
+        },
+        "status": "solved",
+        "summary": {
+          "forceX": 0,
+          "forceZ": 651.9643142108487,
+          "momentY": -8.881784197001252e-16,
+          "energy": 3.8556380220282427,
+          "maxDeformation": 0.014583931217714619,
+          "activeNodes": 6,
+          "residual": 2.7460600598983923e-8,
+          "iterations": 7,
+          "contourIntrusion": 0,
+          "contourTolerance": 0.0002
+        }
+      },
+      {
+        "params": {
+          "fixture": "step",
+          "centerX": 0.1,
+          "height": 0.445,
+          "radius": 0.36,
+          "rimRadius": 0.29,
+          "foundation": 300000,
+          "coupling": 30,
+          "nodes": 128,
+          "terrainSegments": 128,
+          "rotation": 0
+        },
+        "status": "solved",
+        "summary": {
+          "forceX": 0,
+          "forceZ": 643.0725539849815,
+          "momentY": 4.773959005888173e-15,
+          "energy": 3.866547107692665,
+          "maxDeformation": 0.014896061145750872,
+          "activeNodes": 12,
+          "residual": 2.6169570147757636e-8,
+          "iterations": 12,
+          "contourIntrusion": 0,
+          "contourTolerance": 0.0002
+        }
+      },
+      {
+        "params": {
+          "fixture": "step",
+          "centerX": 0.1,
+          "height": 0.445,
+          "radius": 0.36,
+          "rimRadius": 0.29,
+          "foundation": 300000,
+          "coupling": 30,
+          "nodes": 256,
+          "terrainSegments": 128,
+          "rotation": 0
+        },
+        "status": "solved",
+        "summary": {
+          "forceX": 0,
+          "forceZ": 644.2272515587965,
+          "momentY": -1.9984014443252818e-15,
+          "energy": 3.8712184088602113,
+          "maxDeformation": 0.014974020178272096,
+          "activeNodes": 22,
+          "residual": 7.88341432322833e-8,
+          "iterations": 27,
+          "contourIntrusion": 0,
+          "contourTolerance": 0.0002
+        }
+      },
+      {
+        "params": {
+          "fixture": "step",
+          "centerX": 0.1,
+          "height": 0.445,
+          "radius": 0.36,
+          "rimRadius": 0.29,
+          "foundation": 300000,
+          "coupling": 30,
+          "nodes": 512,
+          "terrainSegments": 128,
+          "rotation": 0
+        },
+        "status": "solved",
+        "summary": {
+          "forceX": 0,
+          "forceZ": 643.921869004479,
+          "momentY": -2.4362092898577714e-10,
+          "energy": 3.8716093434480197,
+          "maxDeformation": 0.014993505350237468,
+          "activeNodes": 44,
+          "residual": 8.694628339727626e-8,
+          "iterations": 79,
+          "contourIntrusion": 0,
+          "contourTolerance": 0.0002
+        }
+      },
+      {
+        "params": {
+          "fixture": "step",
+          "centerX": 0.1,
+          "height": 0.445,
+          "radius": 0.36,
+          "rimRadius": 0.29,
+          "foundation": 300000,
+          "coupling": 30,
+          "nodes": 1024,
+          "terrainSegments": 128,
+          "rotation": 0
+        },
+        "status": "solved",
+        "summary": {
+          "forceX": 0,
+          "forceZ": 643.760136623371,
+          "momentY": -1.0610050060755327e-9,
+          "energy": 3.8717854953794917,
+          "maxDeformation": 0.01499837635666268,
+          "activeNodes": 86,
+          "residual": 9.856168238795526e-8,
+          "iterations": 273,
+          "contourIntrusion": 0,
+          "contourTolerance": 0.0002
+        }
+      }
+    ],
+    "twoSupports": [
+      {
+        "params": {
+          "fixture": "bridge",
+          "centerX": 0,
+          "height": 0.383,
+          "radius": 0.36,
+          "rimRadius": 0.29,
+          "foundation": 300000,
+          "coupling": 30,
+          "nodes": 64,
+          "terrainSegments": 128,
+          "rotation": 0
+        },
+        "status": "unsupported",
+        "reason": "Candidate tyre contour cuts through terrain; refine or change the pose. Sharp corners may remain unsupported.",
+        "contourIntrusion": 0.000271046216625305
+      },
+      {
+        "params": {
+          "fixture": "bridge",
+          "centerX": 0,
+          "height": 0.383,
+          "radius": 0.36,
+          "rimRadius": 0.29,
+          "foundation": 300000,
+          "coupling": 30,
+          "nodes": 128,
+          "terrainSegments": 128,
+          "rotation": 0
+        },
+        "status": "unsupported",
+        "reason": "Candidate tyre contour cuts through terrain; refine or change the pose. Sharp corners may remain unsupported.",
+        "contourIntrusion": 0.0006586749896910077
+      },
+      {
+        "params": {
+          "fixture": "bridge",
+          "centerX": 0,
+          "height": 0.383,
+          "radius": 0.36,
+          "rimRadius": 0.29,
+          "foundation": 300000,
+          "coupling": 30,
+          "nodes": 256,
+          "terrainSegments": 128,
+          "rotation": 0
+        },
+        "status": "solved",
+        "summary": {
+          "forceX": 1.9944480872391424e-8,
+          "forceZ": 102.35447575820577,
+          "momentY": -3.941268311713486e-9,
+          "energy": 0.2142754786730943,
+          "maxDeformation": 0.004649715926749509,
+          "activeNodes": 8,
+          "residual": 7.011056158306313e-8,
+          "iterations": 27,
+          "contourIntrusion": 0.0001776056340161286,
+          "contourTolerance": 0.0002
+        }
+      },
+      {
+        "params": {
+          "fixture": "bridge",
+          "centerX": 0,
+          "height": 0.383,
+          "radius": 0.36,
+          "rimRadius": 0.29,
+          "foundation": 300000,
+          "coupling": 30,
+          "nodes": 512,
+          "terrainSegments": 128,
+          "rotation": 0
+        },
+        "status": "solved",
+        "summary": {
+          "forceX": 3.284531530090007e-8,
+          "forceZ": 101.21817120365336,
+          "momentY": -7.260373968698275e-9,
+          "energy": 0.2167477026259505,
+          "maxDeformation": 0.004757213723924236,
+          "activeNodes": 14,
+          "residual": 8.31258904103978e-8,
+          "iterations": 80,
+          "contourIntrusion": 0.00004695829069353147,
+          "contourTolerance": 0.0002
+        }
+      },
+      {
+        "params": {
+          "fixture": "bridge",
+          "centerX": 0,
+          "height": 0.383,
+          "radius": 0.36,
+          "rimRadius": 0.29,
+          "foundation": 300000,
+          "coupling": 30,
+          "nodes": 1024,
+          "terrainSegments": 128,
+          "rotation": 0
+        },
+        "status": "solved",
+        "summary": {
+          "forceX": 3.4452131855928006e-8,
+          "forceZ": 101.23281570343755,
+          "momentY": -7.800269378327451e-9,
+          "energy": 0.21739888675460733,
+          "maxDeformation": 0.004775605264455363,
+          "activeNodes": 28,
+          "residual": 9.692983086011263e-8,
+          "iterations": 279,
+          "contourIntrusion": 0.000014208332693256553,
+          "contourTolerance": 0.0002
+        }
+      }
+    ]
+  },
+  "terrain": {
+    "rounded": [
+      {
+        "params": {
+          "fixture": "rounded",
+          "centerX": 0.1,
+          "height": 0.44,
+          "radius": 0.36,
+          "rimRadius": 0.29,
+          "foundation": 300000,
+          "coupling": 30,
+          "nodes": 1024,
+          "terrainSegments": 32,
+          "rotation": 0
+        },
+        "status": "solved",
+        "summary": {
+          "forceX": 5.304779282511163e-9,
+          "forceZ": 476.3034064814792,
+          "momentY": -2.356261186164943e-9,
+          "energy": 3.8573213677785585,
+          "maxDeformation": 0.019947147203259463,
+          "activeNodes": 42,
+          "residual": 9.524344486169916e-8,
+          "iterations": 291,
+          "contourIntrusion": 0.000060618011692839535,
+          "contourTolerance": 0.0002
+        }
+      },
+      {
+        "params": {
+          "fixture": "rounded",
+          "centerX": 0.1,
+          "height": 0.44,
+          "radius": 0.36,
+          "rimRadius": 0.29,
+          "foundation": 300000,
+          "coupling": 30,
+          "nodes": 1024,
+          "terrainSegments": 64,
+          "rotation": 0
+        },
+        "status": "solved",
+        "summary": {
+          "forceX": 5.887978993257548e-9,
+          "forceZ": 478.6847957709579,
+          "momentY": -2.5813202686464365e-9,
+          "energy": 3.8867705067708638,
+          "maxDeformation": 0.019972790920162187,
+          "activeNodes": 42,
+          "residual": 9.709939489109423e-8,
+          "iterations": 291,
+          "contourIntrusion": 0.000030804913576293336,
+          "contourTolerance": 0.0002
+        }
+      },
+      {
+        "params": {
+          "fixture": "rounded",
+          "centerX": 0.1,
+          "height": 0.44,
+          "radius": 0.36,
+          "rimRadius": 0.29,
+          "foundation": 300000,
+          "coupling": 30,
+          "nodes": 1024,
+          "terrainSegments": 128,
+          "rotation": 0
+        },
+        "status": "solved",
+        "summary": {
+          "forceX": 5.764248189876753e-9,
+          "forceZ": 479.3175840762488,
+          "momentY": -2.542780541681111e-9,
+          "energy": 3.894161025449709,
+          "maxDeformation": 0.019985597814669354,
+          "activeNodes": 42,
+          "residual": 9.749246212297347e-8,
+          "iterations": 291,
+          "contourIntrusion": 0.000015495364561080027,
+          "contourTolerance": 0.0002
+        }
+      },
+      {
+        "params": {
+          "fixture": "rounded",
+          "centerX": 0.1,
+          "height": 0.44,
+          "radius": 0.36,
+          "rimRadius": 0.29,
+          "foundation": 300000,
+          "coupling": 30,
+          "nodes": 1024,
+          "terrainSegments": 256,
+          "rotation": 0
+        },
+        "status": "solved",
+        "summary": {
+          "forceX": 5.869715380413254e-9,
+          "forceZ": 479.5737952458289,
+          "momentY": -2.581098113019209e-9,
+          "energy": 3.896014792771137,
+          "maxDeformation": 0.019991999212706446,
+          "activeNodes": 42,
+          "residual": 9.756203520605136e-8,
+          "iterations": 291,
+          "contourIntrusion": 0.000009932598929049408,
+          "contourTolerance": 0.0002
+        }
+      },
+      {
+        "params": {
+          "fixture": "rounded",
+          "centerX": 0.1,
+          "height": 0.44,
+          "radius": 0.36,
+          "rimRadius": 0.29,
+          "foundation": 300000,
+          "coupling": 30,
+          "nodes": 1024,
+          "terrainSegments": 512,
+          "rotation": 0
+        },
+        "status": "solved",
+        "summary": {
+          "forceX": 5.825603999198847e-9,
+          "forceZ": 479.5844605429769,
+          "momentY": -2.565712975410861e-9,
+          "energy": 3.8965192445406798,
+          "maxDeformation": 0.019992563843473754,
+          "activeNodes": 42,
+          "residual": 9.757227436317245e-8,
+          "iterations": 291,
+          "contourIntrusion": 0.000009354498518007737,
+          "contourTolerance": 0.0002
+        }
+      }
+    ],
+    "twoSupports": [
+      {
+        "params": {
+          "fixture": "bridge",
+          "centerX": 0,
+          "height": 0.383,
+          "radius": 0.36,
+          "rimRadius": 0.29,
+          "foundation": 300000,
+          "coupling": 30,
+          "nodes": 1024,
+          "terrainSegments": 32,
+          "rotation": 0
+        },
+        "status": "solved",
+        "summary": {
+          "forceX": 3.148191087334884e-8,
+          "forceZ": 99.95841072348425,
+          "momentY": -6.774394878394929e-9,
+          "energy": 0.21288865486688205,
+          "maxDeformation": 0.004705442260737436,
+          "activeNodes": 28,
+          "residual": 9.557159919786963e-8,
+          "iterations": 279,
+          "contourIntrusion": 0.000053503904791800394,
+          "contourTolerance": 0.0002
+        }
+      },
+      {
+        "params": {
+          "fixture": "bridge",
+          "centerX": 0,
+          "height": 0.383,
+          "radius": 0.36,
+          "rimRadius": 0.29,
+          "foundation": 300000,
+          "coupling": 30,
+          "nodes": 1024,
+          "terrainSegments": 64,
+          "rotation": 0
+        },
+        "status": "solved",
+        "summary": {
+          "forceX": 3.339940408443598e-8,
+          "forceZ": 100.94464467178665,
+          "momentY": -7.439574515460956e-9,
+          "energy": 0.21642334018848952,
+          "maxDeformation": 0.0047734945057093525,
+          "activeNodes": 28,
+          "residual": 9.636387201318944e-8,
+          "iterations": 279,
+          "contourIntrusion": 0.000027053060291042097,
+          "contourTolerance": 0.0002
+        }
+      },
+      {
+        "params": {
+          "fixture": "bridge",
+          "centerX": 0,
+          "height": 0.383,
+          "radius": 0.36,
+          "rimRadius": 0.29,
+          "foundation": 300000,
+          "coupling": 30,
+          "nodes": 1024,
+          "terrainSegments": 128,
+          "rotation": 0
+        },
+        "status": "solved",
+        "summary": {
+          "forceX": 3.4452131855928006e-8,
+          "forceZ": 101.23281570343755,
+          "momentY": -7.800269378327451e-9,
+          "energy": 0.21739888675460733,
+          "maxDeformation": 0.004775605264455363,
+          "activeNodes": 28,
+          "residual": 9.692983086011263e-8,
+          "iterations": 279,
+          "contourIntrusion": 0.000014208332693256553,
+          "contourTolerance": 0.0002
+        }
+      },
+      {
+        "params": {
+          "fixture": "bridge",
+          "centerX": 0,
+          "height": 0.383,
+          "radius": 0.36,
+          "rimRadius": 0.29,
+          "foundation": 300000,
+          "coupling": 30,
+          "nodes": 1024,
+          "terrainSegments": 256,
+          "rotation": 0
+        },
+        "status": "solved",
+        "summary": {
+          "forceX": 3.393688790447394e-8,
+          "forceZ": 101.31393273151538,
+          "momentY": -7.616314568609228e-9,
+          "energy": 0.2176303826036494,
+          "maxDeformation": 0.0047766603060881985,
+          "activeNodes": 28,
+          "residual": 9.687043525461613e-8,
+          "iterations": 279,
+          "contourIntrusion": 0.000012169535546849297,
+          "contourTolerance": 0.0002
+        }
+      },
+      {
+        "params": {
+          "fixture": "bridge",
+          "centerX": 0,
+          "height": 0.383,
+          "radius": 0.36,
+          "rimRadius": 0.29,
+          "foundation": 300000,
+          "coupling": 30,
+          "nodes": 1024,
+          "terrainSegments": 512,
+          "rotation": 0
+        },
+        "status": "solved",
+        "summary": {
+          "forceX": 3.372365938911735e-8,
+          "forceZ": 101.40748768559001,
+          "momentY": -7.53919070922704e-9,
+          "energy": 0.21768737063803645,
+          "maxDeformation": 0.004777187777252334,
+          "activeNodes": 28,
+          "residual": 9.68662501670411e-8,
+          "iterations": 279,
+          "contourIntrusion": 0.000011846504994930673,
+          "contourTolerance": 0.0002
+        }
+      }
+    ]
+  },
+  "derivatives": [
+    {
+      "key": "centerX",
+      "epsilon": 2e-7,
+      "reported": -110.5089113129381,
+      "energyDerivative": -110.50891130237606,
+      "error": 1.0562033025962592e-8
+    },
+    {
+      "key": "centerX",
+      "epsilon": 1e-7,
+      "reported": -110.5089113129381,
+      "energyDerivative": -110.50891130515161,
+      "error": 7.786482569827058e-9
+    },
+    {
+      "key": "height",
+      "epsilon": 2e-7,
+      "reported": 221.13920660640588,
+      "energyDerivative": 221.13920658262123,
+      "error": -2.3784650693414733e-8
+    },
+    {
+      "key": "height",
+      "epsilon": 1e-7,
+      "reported": 221.13920660640588,
+      "energyDerivative": 221.13920659982966,
+      "error": -6.576215128006879e-9
+    },
+    {
+      "key": "rotation",
+      "epsilon": 2e-7,
+      "reported": -0.02667659406097478,
+      "energyDerivative": -0.026676598707808807,
+      "error": -4.646834028676494e-9
+    },
+    {
+      "key": "rotation",
+      "epsilon": 1e-7,
+      "reported": -0.02667659406097478,
+      "energyDerivative": -0.026676590936247635,
+      "error": 3.1247271436996016e-9
+    }
+  ],
+  "holdingWork": [
+    {
+      "steps": 32,
+      "energyChange": 7.689863328815692,
+      "holdingWork": 7.690679827571313,
+      "error": 0.0008164987556211756
+    },
+    {
+      "steps": 64,
+      "energyChange": 7.689863328815692,
+      "holdingWork": 7.690073224340145,
+      "error": 0.00020989552445271897
+    },
+    {
+      "steps": 128,
+      "energyChange": 7.689863328815692,
+      "holdingWork": 7.6899029888344455,
+      "error": 0.000039660018753551185
+    }
+  ],
+  "unsupported": [
+    {
+      "params": {
+        "fixture": "step",
+        "centerX": -0.2,
+        "height": 0.36,
+        "radius": 0.36,
+        "rimRadius": 0.29,
+        "foundation": 300000,
+        "coupling": 30,
+        "nodes": 512,
+        "terrainSegments": 128,
+        "rotation": 0
+      },
+      "status": "unsupported",
+      "reason": "Candidate tyre contour cuts through terrain; refine or change the pose. Sharp corners may remain unsupported.",
+      "contourIntrusion": 0.0031194358716390425
+    },
+    {
+      "params": {
+        "fixture": "flat",
+        "centerX": 0,
+        "height": 0.29,
+        "radius": 0.36,
+        "rimRadius": 0.29,
+        "foundation": 300000,
+        "coupling": 30,
+        "nodes": 512,
+        "terrainSegments": 128,
+        "rotation": 0
+      },
+      "status": "unsupported",
+      "reason": "Rim reaches terrain; rim strike and damage are unsupported."
+    }
+  ]
+}

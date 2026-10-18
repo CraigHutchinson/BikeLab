@@ -15,3 +15,7 @@
 .bike-page .plots h2{margin-bottom:16px}.bike-page .legend{margin-top:0}.bike-page #evidence{font-size:12px;line-height:1.8}.bike-page .readouts strong{font-size:21px}
 
 .bike-page .rider-readouts{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:18px}.bike-page .rider-readouts small{display:block;font-size:9px;color:var(--muted);letter-spacing:.6px}.bike-page .rider-readouts strong{font-size:19px;font-weight:500;color:var(--violet)}.bike-page #riderSettings{grid-column:1/-1}.bike-page #riderSettings label{margin-top:12px}.bike-page .readouts strong,.bike-page .rider-readouts strong{overflow-wrap:anywhere}
+
+.footprint-page .readouts strong{font-size:17px;overflow-wrap:anywhere}.footprint-page .panel-title{flex-wrap:wrap}.footprint-page .contact-table{max-height:300px;overflow:auto}.footprint-page #diagnostics{font-size:12px}.footprint-page #rig{height:420px}@media(max-width:700px){.footprint-page #rig{height:300px}.footprint-page .readouts{grid-template-columns:1fr;gap:8px}.footprint-page .readouts>div{border:0}}
+
+@media(max-width:400px){.footprint-page .setup label>span{float:none;display:block}}

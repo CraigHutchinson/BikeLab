@@ -1,0 +1,15 @@
+{
+  "implementationHead": "fe3e0d27635ef500cf9d2d9b205dc3135a875fa5",
+  "workflowRun": 39125897860,
+  "browser": "Chromium 141.0.7390.37",
+  "browserJob": "success",
+  "browserErrors": [],
+  "captureCount": 60,
+  "footprintCaptureCount": 5,
+  "maxFootprintBrowserNodeDifference": 1.1102230246251565e-16,
+  "browserArtifact": {"id": 12136515778, "sha256": "178ecff6cca3b66559ace66034cb5a6ecf1a7b919611bf699e3499d6f7250f78"},
+  "footprintArtifact": {"id": 12136302130, "sha256": "17a5b0b88e1f5ba539af2bb360e09afa8b3632c13a6910d93d67564d007ae005"},
+  "inspected": ["footprint-flat.png", "footprint-two-supports.png", "footprint-unsupported-edge.png", "footprint-mobile-320.png", "footprint-mobile-390.png"],
+  "fullSuiteAtThisHead": "145/146 on both platforms; only new CLI strict-object assertion failed on JSON negative-zero normalization. Corrected to exact serialized-output comparison for the final PR head.",
+  "scope": "Static uncalibrated radial model and browser interaction evidence; no impact, pressure, stress, real-bike or participant calibration."
+}
