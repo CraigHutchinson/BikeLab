@@ -47,7 +47,7 @@ test('unknown evidence and incompatible components cannot masquerade as strength
  const a=illustrativeAssembly();for(const patch of [{rimBsd:.622},{widthPairApproved:false},{pairApproved:false},{rimTubelessApproved:false},{construction:'other'},{standardCompliant:false}])assert.equal(assessAssembly({...a,...patch},.32).status,'incompatible');
  assert.equal(assessAssembly(a,.29).status,'incompatible');assert.equal(assessAssembly({...a,rimMaxPressure:null},.305).status,'unknown');
  assert.equal(assessAssembly({...a,pressure:0},.305).status,'incompatible');assert.throws(()=>assessAssembly(a,NaN));
- assert.equal(assessAssembly({...a,pressure:null},.305).status,'unknown');assert.throws(()=>validateAssembly({pressure:Infinity}));assert.throws(()=>validateAssembly({rimType:'fake'}));assert.throws(()=>validateAssembly({tyreId:3}));assert.throws(()=>validateAssembly({sources:{extra:{}}}));
+ assert.equal(assessAssembly({...a,brand:'unknown'},.305).status,'unknown');assert.equal(assessAssembly({...a,pressure:null},.305).status,'unknown');assert.throws(()=>validateAssembly({pressure:Infinity}));assert.throws(()=>validateAssembly({rimType:'fake'}));assert.throws(()=>validateAssembly({tyreId:3}));assert.throws(()=>validateAssembly({sources:{extra:{}}}));
 });
 test('assessment is consumed, replay owns inputs and historical static law is not pressure-scaled',()=>{
  const a=example(),r=experiment(a);assert.equal(r.assessment.status,'unknown');assert.equal(r.status,'rim-contact');assert.equal(r.staticAtStart.status,'solved');

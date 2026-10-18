@@ -26,6 +26,7 @@ export function assessAssembly(input={},rimRadius){
  for(const k of ['tyreId','rimId'])if(!a[k].trim())missing(k,'Exact component identity is missing.');
  for(const k of NUMBERS)if(a[k]===null)missing(k,'Required assembly/pressure evidence is missing.');
  if(a.rimType==='unknown')missing('rimType','Hooked/hookless construction is unknown.');
+ if(a.brand==='unknown')missing('brand','Brand-specific service guidance cannot be resolved.');
  if(a.tyreBsd!==null&&a.rimBsd!==null&&Math.abs(a.tyreBsd-a.rimBsd)>1e-9)issue('bead-seat-mismatch','Tyre and rim bead-seat diameters differ.');
  if(rimRadius!==undefined&&a.rimBsd!==null&&rimRadius<a.rimBsd/2)issue('rim-envelope-mismatch','The drawn outer rim radius is smaller than its declared bead-seat radius.');
  for(const k of FLAGS){if(a[k]===false)issue(k,'Declared assembly requirement is not satisfied.');else if(a[k]===null)missing(k,'Assembly approval is unverified.');}
