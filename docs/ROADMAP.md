@@ -217,6 +217,20 @@ Next terrain work: asymmetric/multimodal optional route ribbons, resolved root/r
 [Rear shock buffers](SHOCK_BUFFERS.md) now map axial top/bottom forces through the changing single-pivot derivative, with visible swing moment, total shock force and stored/lost energy. [Review](ITERATION_10_REVIEW.md) captures model/configuration gaps; [evidence](ITERATION_10_EVIDENCE.md) records bounded receiving checks. Hardtail and disabled-buffer baselines remain unchanged. Next focus on sag/load/leverage configuration diagnostics and sourced geometry/mass inputs, followed by rider attachment load paths. Terrain follow-ups remain separate.
 
 
-## Connected dynamics follow-ups
+## Iteration 11 — annotated linkage and configuration diagnostics
 
-[Dynamics delivery plan](DYNAMICS_DELIVERY_PLAN.md) tracks D1–D12 from distributed tyre contact through moving wheel/bike, rolling/braking, rider contacts, 3D handling, soil/mud, configuration, damage and measured fidelity. Next receive D1a: a bounded loaded spatial tyre experiment; keep existing geometry stations honest about their lack of forces.
+The [manufacturer catalogue](GEOMETRY_CATALOGUE.md) receives eight source-linked reference configurations and a selectable/exportable viewer table. Continue searching for dimensioned suspension drawings/CAD and verified mass data before promoting any reference into a production simulation preset; fit charts and exploded parts schematics alone do not determine linkage kinematics.
+
+The [geometry/configuration slice](GEOMETRY_CONFIGURATION.md) corrects the high swingarm shock-eye mechanism identified by the user's image annotations, changes the actual native geometry and shared drawing, and receives the next sag/load/leverage view from iteration 10. Versioned geometry controls/presets preserve old recorded physics. See [review](ITERATION_11_REVIEW.md) and [evidence](ITERATION_11_EVIDENCE.md). Source measurements, uncertainty and mass distribution remain prerequisites for production presets. Next bike dynamics work: explicit rider attachment/limit load paths and observable fixture/pivot wrenches, then component failure criteria. Separate terrain R0/R1 and eventual 3D lateral/turning, shared layered soil/mud and multirate gates remain required.
+
+## Iteration 12 — rider stops and attachment reactions
+
+The [rider stop/load slice](RIDER_STOPS_LOADS.md) receives finite lower/upper guide stops and observable guide, fixture and rear-attachment wrenches, with current-state diagnostic solves and explicit load origins. [Review](ITERATION_12_REVIEW.md) precedes the implementation. The native spatial shock and generalized buffer contributions are separated before reporting the pivot-bearing load. Fixed recording rate is not a guarantee of converged force impulses; headless evidence separately refines observation and integration.
+
+Next dynamics work: measured anatomical attachment locations, hand/foot/saddle contact and independently articulated rider, then component stress/failure criteria using appropriate load paths. Existing lumped guide reactions do not resolve those loads. The manufacturer catalogue still requires dimensioned suspension coordinates and mass/inertia before calibrated presets. Terrain R1 distributed tyre contact, layered deformation/mud, pressure loss, 3D lateral/turning and measured multirate operation remain open.
+
+## Iteration 13 — static distributed tyre footprint
+
+The [D1a footprint station](STATIC_FOOTPRINT.md) receives PR #14's static radial-ring checkpoint with a worker-based viewer, headless replay, all active local loads and independent energy/contact verification. See [review](ITERATION_13_REVIEW.md), [evidence](ITERATION_13_EVIDENCE.md) and the [connected delivery plan](DYNAMICS_DELIVERY_PLAN.md). Supported fixtures include flat, rounded, square-step-top and two separated supports. Exposed corners, rim strikes and unresolved contour intersections are visibly unsupported; no calibrated pressure/stress or impact response is claimed.
+
+Next spatial slice: explicit sharp-feature/normal-cone constraints with compatible energy weights and receiving evidence, then free moving-wheel impacts before whole-bike spatial contact. Keep layered soil over roots/rock, shared material history/mud, sourced rim/spoke/bead failure and pressure loss, finite-width 3D lateral/turning and measured fidelity/multirate gates open. The existing bicycle rig remains a separate moving-platen experiment.

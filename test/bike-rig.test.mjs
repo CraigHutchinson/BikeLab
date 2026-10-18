@@ -35,7 +35,7 @@ test('native linkage matches independent rotated geometry and shock generalized 
     for(const angle of [0,.05,.15,.3]){
       d.qpos[0]=.03;d.qpos[1]=.1;d.qpos[2]=.04;d.qpos[3]=angle;mj.mj_forward(m,d);
       assert.ok(Math.abs(d.ten_length[0]-shockLength(angle))<1e-12);
-      const localX=Math.cos(angle)*g.rearX+Math.sin(angle)*g.armZ,localZ=g.pivotZ-Math.sin(angle)*g.rearX+Math.cos(angle)*g.armZ;
+      const localX=g.pivotX+Math.cos(angle)*g.armX+Math.sin(angle)*g.armZ,localZ=g.pivotZ-Math.sin(angle)*g.armX+Math.cos(angle)*g.armZ;
       assert.ok(Math.abs(d.xipos[9]-(Math.cos(.1)*localX+Math.sin(.1)*localZ))<1e-12);
       assert.ok(Math.abs(d.xipos[11]-(.68-Math.sin(.1)*localX+Math.cos(.1)*localZ))<1e-12);
       const h=1e-6,gradient=(shockLength(angle+h)-shockLength(angle-h))/(2*h);

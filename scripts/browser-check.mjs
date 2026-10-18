@@ -1,3 +1,4 @@
+import {checkFootprint} from './footprint-browser-check.mjs';
 import {checkTerrainRequest} from './terrain-request-browser-check.mjs';
 import {checkBike} from './bike-browser-check.mjs';
 // Optional development check. CI installs pinned Playwright separately from the application.
@@ -266,6 +267,7 @@ try {
 
   await checkBike({page,root,dir,report});
   await checkTerrainRequest({page,root,dir,report});
+  await checkFootprint({page,root,dir,report});
 
   // Pixel availability is separate from human inspection of captured images.
   const pixels=await page.locator('#rig').evaluate(canvas=>{

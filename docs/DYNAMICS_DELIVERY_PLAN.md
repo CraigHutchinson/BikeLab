@@ -1,12 +1,12 @@
 # Connected bicycle dynamics delivery plan
 
-Reviewed main 29c5532 before this iteration. The terrain probe/request stations provide geometry; the bicycle rig still has two lumped vertical tyre reactions on moving platens, constrained horizontal motion and no wheel spin. They are not yet a moving spatial bike/contact simulation.
+Originally planned against main 29c5532; received against main 1a364dc in iteration 13. The terrain probe/request stations provide geometry; the bicycle rig still has two lumped vertical tyre reactions on moving platens, constrained horizontal motion and no wheel spin. They are not yet a moving spatial bike/contact simulation.
 
 ## Tracked follow-ups and receiving sequence
 
 | ID | Work and visible consumer | Gate / dependency | Status |
 |---|---|---|---|
-| D1 | Loaded spatial tyre: deformed outline, rim, all active regions, local normal forces, resultant force/moment; flat/round/edge/two-support controls | Source-backed reduced compliance family; independent energy/contact equilibrium and tyre/terrain refinement; label planar force versus real area/pressure | Next: bounded static radial-ring experiment D1a |
+| D1 | Loaded spatial tyre: deformed outline, rim, all active regions, local normal forces, resultant force/moment; flat/round/edge/two-support controls | Source-backed reduced compliance family; independent energy/contact equilibrium and tyre/terrain refinement; label planar force versus real area/pressure | D1a received: [static radial experiment](STATIC_FOOTPRINT.md); corner and physical tyre gates remain open |
 | D2 | Freely translating and rotating wheel into bump/step/wall; known mass and angular inertia | D1 plus contact search over complete motion, no tunnelling, momentum/impulse/work and separation/recontact checks | Planned |
 | D3 | Both spatial wheels coupled to moving hardtail/full bike, suspension and rider | D2; free planar translation, tyre moments, load transfer, take-off/landing and rigid-ground controls | Planned |
 | D4 | Rolling/sliding, drive/brake torque, rolling loss and combined traction | Wheel spin and contact-point velocity, local shear/history and consistent wheel/frame reactions; near-zero/reversal and locked-wheel controls | Planned |
@@ -14,7 +14,7 @@ Reviewed main 29c5532 before this iteration. The terrain probe/request stations 
 | D6 | Finite-width 3D tyre, camber, steering/lean and lateral/combined grip | D1/D4 finite-area semantics and 3D dynamics; fork/terrain side contacts, berm/groove controls | Planned |
 | D7 | Soil cover over roots/rock, reinforcement, shared ruts/exposure | Coupled footprint and supported layer/interface constitutive laws; no duplicate soil/rock support; front/rear accepted state | Planned |
 | D8 | Mud pickup, tread packing, deformation/spin shedding and carried mass | D4/D7 transfer mass, momentum/work, angular state and deposit/outflow accounting | Planned |
-| D9 | Suspension/geometry/configuration realism | Sag/load/leverage diagnostics; sourced geometry/travel/mass/inertia, preload, air/coil, separate compression/rebound, friction/thermal limits; production-bike catalogue with provenance | Fork/shock finite buffers received; remaining configuration planned |
+| D9 | Suspension/geometry/configuration realism | Sag/load/leverage diagnostics; sourced geometry/travel/mass/inertia, preload, air/coil, separate compression/rebound, friction/thermal limits; production-bike catalogue with provenance | Fork/shock/rider buffers, annotated linkage and sag/load diagnostics received; measured production configuration remains open |
 | D10 | Rim/spoke/frame/attachment failure, tyre inserts/beads and pressure loss | Supported local loads, material/geometry/state criteria; impact response first, damage second; preserve mass/work and update failed topology | Planned |
 | D11 | Terrain request/cache completion and trail ingestion | Asymmetric/multimodal prefetch, transforms, known voids/roots, leases/shared state; scan/ML provenance, 1–2 cm resolution distinct from accuracy | R0a received; remaining gates planned |
 | D12 | Real-time fidelity and detailed references across the joined system | Compatible tier combinations, convergence/calibration, shadow comparisons, conservative state transfer, worst-case costs and input/render budgets | Planned; offline replay is not real-time simulation |

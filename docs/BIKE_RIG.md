@@ -6,7 +6,9 @@ Open `bike.html`, or run `node scripts/bike-rig.mjs [setup.json] [run.json]`. Th
 
 Iteration 7 adds selectable [passive guided rider compliance](RIDER_MODEL.md), while preserving the fixed mode described below. Compliant mode splits the same total frame-plus-rider mass and adds one frame-local slide, producing 4/5 coordinates. It includes rider spring energy, damping loss, COM/axial-force telemetry, configurable travel rejection and explicit v0.1 fixed-record migration. The guide is a synthetic aggregate mechanism; anatomical attachments remain open.
 
-## Assembly and scope (fixed baseline)
+## Assembly and scope (original fixed baseline)
+
+Model v0.5 adds [editable geometry and the annotated high-eye default](GEOMETRY_CONFIGURATION.md). Dimensions below document the original reference preset, which old records and original buffer examples retain. Each new run records its actual configured geometry.
 
 The rig compares an illustrative hardtail and single-pivot full-suspension bike on two prescribed vertical platens. Both use world x forward, y left, z up. Positive rotation about +y pitches the nose down. The world frame attachment permits z translation followed by y rotation; all other frame motion is fixed. Front fork compression is a third coordinate, along (-cos 65°, 0, sin 65°). The full-suspension rear swingarm adds one hinge; the hardtail has no rear suspension coordinate. Wheel spin is locked. This is a three/four-coordinate fixture, not a freely moving bicycle or a real-time riding implementation.
 
@@ -63,3 +65,5 @@ The unmodified official @mujoco/mujoco 3.16.0 JS/WASM artifact, Apache license, 
 Iteration 8 adds optional [fork travel buffers](FORK_BUFFERS.md) in model v0.3. Earlier no-stop descriptions above describe the no-buffer baseline; fork buffers act inside the same ultimate stroke, with explicit force/energy ownership. Shock/rider stop and impact/failure qualification remain open.
 
 Model v0.4 adds optional [rear shock buffers](SHOCK_BUFFERS.md), including strict old-record migration, hardtail dormant settings and force/work telemetry. Historical no-shock-stop statements above describe earlier baseline versions.
+
+Model v0.6 adds [centered rider stops and attachment wrenches](RIDER_STOPS_LOADS.md). Guide, fixture and rear-bearing loads use named origins and a separate accepted-state diagnostic solve. Headless recording supports 0.25 ms for impulse verification; the viewer retains 5 ms recording. This adds observable model load paths, not anatomy, component strength or impact failure continuation.

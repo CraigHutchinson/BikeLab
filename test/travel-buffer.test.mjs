@@ -1,3 +1,5 @@
+import {RIDER_BUFFER_KEYS} from '../dist/bike-rig.js';
+import {GEOMETRY_KEYS,REFERENCE_GEOMETRY} from '../dist/linkage.js';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {travelBuffer} from '../dist/travel-buffer.js';
@@ -53,10 +55,10 @@ test('weak buffers retain ultimate guard and recording cadence cannot alter load
 });
 test('buffer settings and versioned reconstruction reject unsupported or ambiguous inputs',()=>{
   for(const p of [{forkBuffer:'rigid'},{forkBufferWidth:0},{forkBufferWidth:.1},{forkBufferStiffness:NaN},{forkBufferDamping:-1}])assert.throws(()=>validate(p));
-  const previous=Object.fromEntries(Object.entries(DEFAULTS).filter(([k])=>!k.startsWith('forkBuffer')&&!k.startsWith('shockBuffer')));
+  const previous=Object.fromEntries(Object.entries(DEFAULTS).filter(([k])=>!RIDER_BUFFER_KEYS.includes(k)&&!GEOMETRY_KEYS.includes(k)&&!k.startsWith('forkBuffer')&&!k.startsWith('shockBuffer')));
   for(const rider of ['fixed','compliant'])assert.equal(setupFromRecord({model:PREVIOUS_MODEL,params:{...previous,rider}}).rider,rider);
   assert.equal(setupFromRecord({model:PREVIOUS_MODEL,params:previous}).forkBuffer,'none');
   assert.throws(()=>setupFromRecord({model:PREVIOUS_MODEL,params:DEFAULTS}),/Unknown legacy/);
   assert.throws(()=>setupFromRecord({model:MODEL,params:previous}),/Incomplete/);
-  const oldest=Object.fromEntries(Object.entries(previous).filter(([k])=>!k.startsWith('rider')));assert.equal(setupFromRecord({model:LEGACY_MODEL,params:oldest}).forkBuffer,'none');
+  const oldest=Object.fromEntries(Object.entries(previous).filter(([k])=>!RIDER_BUFFER_KEYS.includes(k)&&!GEOMETRY_KEYS.includes(k)&&!k.startsWith('rider')));assert.equal(setupFromRecord({model:LEGACY_MODEL,params:oldest}).forkBuffer,'none');
 });
