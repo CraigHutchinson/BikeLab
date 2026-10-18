@@ -65,3 +65,5 @@ The unmodified official @mujoco/mujoco 3.16.0 JS/WASM artifact, Apache license, 
 Iteration 8 adds optional [fork travel buffers](FORK_BUFFERS.md) in model v0.3. Earlier no-stop descriptions above describe the no-buffer baseline; fork buffers act inside the same ultimate stroke, with explicit force/energy ownership. Shock/rider stop and impact/failure qualification remain open.
 
 Model v0.4 adds optional [rear shock buffers](SHOCK_BUFFERS.md), including strict old-record migration, hardtail dormant settings and force/work telemetry. Historical no-shock-stop statements above describe earlier baseline versions.
+
+Model v0.6 adds [centered rider stops and attachment wrenches](RIDER_STOPS_LOADS.md). Guide, fixture and rear-bearing loads use named origins and a separate accepted-state diagnostic solve. Headless recording supports 0.25 ms for impulse verification; the viewer retains 5 ms recording. This adds observable model load paths, not anatomy, component strength or impact failure continuation.

@@ -54,6 +54,8 @@ Same-runtime replay is reproducible. Browser and Node recordings are checked for
 
 ## Current evidence
 
+The bicycle station now exposes [rider travel stops and attachment loads](docs/RIDER_STOPS_LOADS.md): lower/upper compliant stops, total guide reaction, fixture wrench and corrected rear-pivot load. The experiment works on both assemblies and retains ultimate travel termination. Finer optional headless recording separates force-integral sampling error from solver timestep error; no real-time or component-strength claim follows.
+
 The bicycle station now uses the [annotated high-eye shock layout and editable geometry](docs/GEOMETRY_CONFIGURATION.md), with settled sag/load split and a linkage-ratio plot. Earlier saved runs retain their original geometry; the new 210 × 55 mm layout is image-informed and explicitly uncalibrated.
 
 Its [manufacturer reference catalogue](docs/GEOMETRY_CATALOGUE.md) provides eight selectable Orange, Santa Cruz and Transition configurations with source links, SI JSON export and explicit missing linkage data. Published frame charts and service drawings are collated as references; complete production-bike simulation presets still require dimensioned suspension coordinates and calibration.
