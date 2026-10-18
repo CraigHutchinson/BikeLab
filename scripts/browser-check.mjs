@@ -1,3 +1,4 @@
+import {checkWheelLimits} from './wheel-limits-browser-check.mjs';
 import {checkFootprint} from './footprint-browser-check.mjs';
 import {checkTerrainRequest} from './terrain-request-browser-check.mjs';
 import {checkBike} from './bike-browser-check.mjs';
@@ -268,6 +269,7 @@ try {
   await checkBike({page,root,dir,report});
   await checkTerrainRequest({page,root,dir,report});
   await checkFootprint({page,root,dir,report});
+  await checkWheelLimits({page,root,dir,report});
 
   // Pixel availability is separate from human inspection of captured images.
   const pixels=await page.locator('#rig').evaluate(canvas=>{
