@@ -23,7 +23,7 @@ test('connected rim guard accepts typed state and catches a thin between-endpoin
 test('both connected bikes receive square and faceted impacts within bounded contact and travel support',async()=>{
  for(const bike of ['full','hardtail'])for(const name of ['square','faceted']){
   const r=await run(preset(name,bike)),m=impactMetrics(r),g=geometryFor(r.scenario.bike);assert.equal(r.status,'completed');
-  for(let k=0;k<2;k++){assert.ok(m.contacts[k]>0);assert.ok(m.peakSampledHorizontal[k]>20,'both wheels meet the rock');}
+  for(let k=0;k<2;k++){assert.ok(m.contacts[k]>0);assert.ok(m.peakSampledContactHorizontal[k]>20,'both wheels meet the rock');}
   assert.ok(m.maxWitnessDistance<=m.witnessBudget);assert.ok(m.maxNormalAngleError<.005,'native normal within declared 0.005 rad surface/cone accuracy budget');
   assert.ok(m.maxWrenchError<1e-7);assert.ok(r.summary.maxSampledRootWrench<1e-7);assert.ok(r.summary.maxSampledBearingMoment<1e-7);assert.ok(r.summary.maxDiagnosticDifference<1e-7);assert.ok(r.summary.maxResidual/r.summary.initialEnergy<.005);
   for(const f of r.frames){assert.ok(f.fork>=0&&f.fork<=g.forkTravel);assert.ok(f.shock>=0&&f.shock<=g.shockTravel);assert.ok(Math.abs(f.riderOffset)<=r.scenario.bike.riderTravel);for(const w of f.wheels){assert.ok(w.limits.rimGap>0);assert.ok(w.limits.penetration<=r.scenario.wheel.maxPenetration);assert.ok(w.limits.strain<=r.scenario.wheel.maxStrain);}for(const c of f.contacts){assert.ok(c.normalForce>0);near(Math.hypot(...c.normal),1,1e-8);}}

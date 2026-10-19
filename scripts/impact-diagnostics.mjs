@@ -5,11 +5,11 @@ export function impactMetrics(r){
  const points=r.scenario.profile.points,faces=points.slice(1).map((b,i)=>{const a=points[i],dx=b[0]-a[0],dz=b[1]-a[1],length=Math.hypot(dx,dz);return {a,b,normal:[-dz/length,dx/length],angle:Math.atan2(dx,-dz)};});
  // The contact midpoint can lie half the admitted overlap below the surface.
  const witnessBudget=r.scenario.wheel.maxPenetration/2+1e-5;
- const out={contacts:[0,0],peakSampledHorizontal:[0,0],maxWitnessDistance:0,maxNormalAngleError:0,maxWrenchError:0,maxMomentumResidual:[0,0,0],witnessBudget};
+ const out={contacts:[0,0],peakSampledContactHorizontal:[0,0],maxWitnessDistance:0,maxNormalAngleError:0,maxWrenchError:0,maxMomentumResidual:[0,0,0],witnessBudget};
  for(const f of r.frames){
   const sums=[[0,0,0],[0,0,0]];
   for(const c of f.contacts){
-   out.contacts[c.wheel]++;out.peakSampledHorizontal[c.wheel]=Math.max(out.peakSampledHorizontal[c.wheel],Math.abs(c.force[0]));
+   out.contacts[c.wheel]++;out.peakSampledContactHorizontal[c.wheel]=Math.max(out.peakSampledContactHorizontal[c.wheel],Math.abs(c.force[0]));
    const angle=Math.atan2(c.normal[1],c.normal[0]);let nearest=Infinity,error=Infinity;
    for(let i=0;i<faces.length;i++){
     const face=faces[i],d=distance(c.point,face.a,face.b);nearest=Math.min(nearest,d);
