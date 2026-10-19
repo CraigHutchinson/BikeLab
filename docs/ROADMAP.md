@@ -242,3 +242,10 @@ The [wheel-limit station](WHEEL_LIMITS.md) receives continuous first rim-contact
 Next: a richer sharp-feature casing/contact formulation with independent energy/normal-cone verification, then dynamic impact/momentum and supported local stress before fracture or seal-loss continuation. Obtain exact component construction, local load/strength and leak/pressure data. Preserve rigid travel limits, layered materials/mud, 3D lateral/turning and measured multirate gates.
 
 Product priority reaffirmed 2026-10-18: deliver a connected moving MTB **including the rider** for synthetic data and game simulation. The [integration milestones and shared execution/data contract](DYNAMICS_DELIVERY_PLAN.md#product-destination-and-next-integration-milestones) order the next work: dynamic spatial wheel contact → moving hardtail/full bike and rider trail runs → articulated contacts/control → 3D riding, supported terrain/damage and measured real-time fidelity. Stations remain verification tools; scenario/label provenance and offline/game parity accompany the first connected run.
+
+
+## Iteration 15 — moving spatial wheel checkpoint
+
+The [moving-wheel station](MOVING_WHEEL.md) connects deforming edge contacts to free hub translation/spin, with distributed mass, local normal arrows, work/momentum diagnostics and owned replay. [Review](ITERATION_15_REVIEW.md) precedes implementation; [evidence](ITERATION_15_EVIDENCE.md) distinguishes fixed collision-tolerance asymmetry, timestep error and unresolved tyre-mesh sensitivity. It remains an experimental D1b/D2 subset, not a calibrated tyre, damage model or proof against tunnelling.
+
+Next: bounded smooth-ground two-wheel integration with the moving hardtail/full-suspension frame and existing rider; verify attachment loads, finite travel and whole-system work before extending corner/high-speed support. Then rolling/braking, articulated hand/foot/saddle contacts and shared scenario/data/game execution. Preserve sourced component failure/pressure-loss criteria, layered soil/mud over roots, 3D lateral/turning and measured real-time/multirate gates.

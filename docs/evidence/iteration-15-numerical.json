@@ -1,0 +1,1128 @@
+{
+  "model": "bikelab-moving-wheel-0.1",
+  "baseParams": {
+    "fixture": "flat",
+    "nodes": 64,
+    "terrainSegments": 32,
+    "radius": 0.36,
+    "rimRadius": 0.29,
+    "skin": 0.008,
+    "hubMass": 3,
+    "tyreMass": 1,
+    "hubInertia": 0.08,
+    "foundation": 300000,
+    "extension": 500,
+    "edgeViscosity": 0.5,
+    "centerX": -0.4,
+    "height": 0.39,
+    "rotation": 0,
+    "velocityX": 1,
+    "velocityZ": 0,
+    "omega": 0,
+    "gravity": 9.80665,
+    "forceX": 0,
+    "forceZ": 0,
+    "torque": 0,
+    "duration": 0.35,
+    "dt": 0.00003125,
+    "sampleDt": 0.005,
+    "contactTime": 0.001,
+    "contactImpedance": 0.99,
+    "collisionTolerance": 1e-10,
+    "collisionIterations": 100,
+    "maxPenetration": 0.0005,
+    "maxStrain": 0.25,
+    "maxDisplacement": 0.06
+  },
+  "refinement": [
+    {
+      "name": "flat",
+      "patch": {
+        "dt": 0.000125
+      },
+      "status": "completed",
+      "termination": null,
+      "summary": {
+        "acceptedTime": 0.29999999999998084,
+        "peakPenetration": 0.00047371465579809993,
+        "peakForce": 395.84834759983016,
+        "maxStrain": 0.010349354872401517,
+        "maxDeformation": 0.01031480744897496,
+        "maxResidual": 0.1284575441692978,
+        "contactSteps": 553,
+        "steps": 2400,
+        "initialEnergy": 17.298374000000003,
+        "finalEnergy": 17.151063394002303,
+        "initialMomentum": [
+          4,
+          0,
+          1.5599999999999996
+        ]
+      },
+      "hub": [
+        -0.10000000000043702,
+        0.35634803792014136,
+        -6.36025134875473e-9
+      ],
+      "impulse": [
+        -1.3790174111636706e-11,
+        14.6877321982696,
+        3.100225015644329
+      ],
+      "momentumResidual": [
+        1.0288265773853068e-12,
+        -0.005053865744354624,
+        -0.0012408853216965277
+      ]
+    },
+    {
+      "name": "flat",
+      "patch": {
+        "dt": 0.0000625
+      },
+      "status": "completed",
+      "termination": null,
+      "summary": {
+        "acceptedTime": 0.2999999999999961,
+        "peakPenetration": 0.0004613000620279691,
+        "peakForce": 392.41603501446,
+        "maxStrain": 0.010354372675710044,
+        "maxDeformation": 0.010338425903526283,
+        "maxResidual": 0.04557495100404779,
+        "contactSteps": 1099,
+        "steps": 4800,
+        "initialEnergy": 17.298374000000003,
+        "finalEnergy": 17.152820898782974,
+        "initialMomentum": [
+          4,
+          0,
+          1.5599999999999996
+        ]
+      },
+      "hub": [
+        -0.10000000000095982,
+        0.3562210457245965,
+        -7.100663562655581e-9
+      ],
+      "impulse": [
+        -4.562259333273373e-11,
+        14.680200871030543,
+        3.098554977976061
+      ],
+      "momentumResidual": [
+        9.627619441621815e-13,
+        -0.0026569514317085208,
+        -0.0006334445088405083
+      ]
+    },
+    {
+      "name": "flat",
+      "patch": {
+        "dt": 0.00003125
+      },
+      "status": "completed",
+      "termination": null,
+      "summary": {
+        "acceptedTime": 0.3000000000000037,
+        "peakPenetration": 0.0003546051710843767,
+        "peakForce": 378.4176454808552,
+        "maxStrain": 0.010369003302992619,
+        "maxDeformation": 0.010410456534401636,
+        "maxResidual": 0.018600084813189394,
+        "contactSteps": 2196,
+        "steps": 9600,
+        "initialEnergy": 17.298374000000003,
+        "finalEnergy": 17.151155915055163,
+        "initialMomentum": [
+          4,
+          0,
+          1.5599999999999996
+        ]
+      },
+      "hub": [
+        -0.10000000000010645,
+        0.356147767087299,
+        -1.4029511477929258e-8
+      ],
+      "impulse": [
+        -1.1915787972090139e-11,
+        14.673729596384254,
+        3.097429488347961
+      ],
+      "momentumResidual": [
+        3.57922196532409e-13,
+        -0.0013719799031175484,
+        -0.00032107266965697434
+      ]
+    },
+    {
+      "name": "flat",
+      "patch": {
+        "nodes": 32,
+        "dt": 0.00003125
+      },
+      "status": "completed",
+      "termination": null,
+      "summary": {
+        "acceptedTime": 0.3000000000000037,
+        "peakPenetration": 0.00048524853805880386,
+        "peakForce": 402.2204575102429,
+        "maxStrain": 0.010514695517123807,
+        "maxDeformation": 0.010645416090577278,
+        "maxResidual": 0.018101526673889715,
+        "contactSteps": 2171,
+        "steps": 9600,
+        "initialEnergy": 17.298374000000003,
+        "finalEnergy": 17.16753512878341,
+        "initialMomentum": [
+          4,
+          0,
+          1.56
+        ]
+      },
+      "hub": [
+        -0.10000000000123582,
+        0.3551519971762097,
+        -1.5297168730935904e-8
+      ],
+      "impulse": [
+        -4.086738076255878e-11,
+        14.581304022231793,
+        3.084290479733812
+      ],
+      "momentumResidual": [
+        6.002326943652442e-14,
+        -0.0016993072272182275,
+        -0.00035380540113161274
+      ]
+    },
+    {
+      "name": "flat",
+      "patch": {
+        "nodes": 128,
+        "dt": 0.00003125
+      },
+      "status": "completed",
+      "termination": null,
+      "summary": {
+        "acceptedTime": 0.3000000000000037,
+        "peakPenetration": 0.000485006951104934,
+        "peakForce": 374.02384197548577,
+        "maxStrain": 0.009453444322956583,
+        "maxDeformation": 0.010535539160607472,
+        "maxResidual": 0.017267471814031224,
+        "contactSteps": 2200,
+        "steps": 9600,
+        "initialEnergy": 17.298373999999995,
+        "finalEnergy": 17.176861048789135,
+        "initialMomentum": [
+          4,
+          0,
+          1.5599999999999998
+        ]
+      },
+      "hub": [
+        -0.10000000000054193,
+        0.35513057562616446,
+        -5.684742078375074e-9
+      ],
+      "impulse": [
+        -5.9613635547966556e-12,
+        14.632104055717987,
+        3.0892486416785783
+      ],
+      "momentumResidual": [
+        1.1359683949103104e-13,
+        -0.001575832271525357,
+        -0.00034145791032846873
+      ]
+    },
+    {
+      "name": "square",
+      "patch": {
+        "dt": 0.000125
+      },
+      "status": "completed",
+      "termination": null,
+      "summary": {
+        "acceptedTime": 0.29999999999998084,
+        "peakPenetration": 0.00030559979379857737,
+        "peakForce": 238.39996333638805,
+        "maxStrain": 0.059021571945965245,
+        "maxDeformation": 0.014895754783838392,
+        "maxResidual": 0.049554608518332405,
+        "contactSteps": 761,
+        "steps": 2400,
+        "initialEnergy": 20.64533,
+        "finalEnergy": 20.54239767892332,
+        "initialMomentum": [
+          6,
+          2.0816681711721685e-17,
+          3.0357439999999993
+        ]
+      },
+      "hub": [
+        -0.1264305187179437,
+        0.4823263680188939,
+        1.1053821851343728
+      ],
+      "impulse": [
+        -4.129648718864944,
+        11.217456741169551,
+        1.1321497664697413
+      ],
+      "momentumResidual": [
+        3.8435493454613834e-7,
+        4.038462080302452e-7,
+        -0.0006730708102091754
+      ]
+    },
+    {
+      "name": "square",
+      "patch": {
+        "dt": 0.0000625
+      },
+      "status": "completed",
+      "termination": null,
+      "summary": {
+        "acceptedTime": 0.2999999999999961,
+        "peakPenetration": 0.00027405266269138646,
+        "peakForce": 231.23575177322525,
+        "maxStrain": 0.05904142256996403,
+        "maxDeformation": 0.014931770673784664,
+        "maxResidual": 0.019341616150327867,
+        "contactSteps": 1525,
+        "steps": 4800,
+        "initialEnergy": 20.64533,
+        "finalEnergy": 20.535513506236267,
+        "initialMomentum": [
+          6,
+          2.0816681711721685e-17,
+          3.0357439999999993
+        ]
+      },
+      "hub": [
+        -0.12670610176849773,
+        0.482424405222329,
+        1.1029727993716079
+      ],
+      "impulse": [
+        -4.134088086145055,
+        11.21918004466174,
+        1.1282955497393556
+      ],
+      "momentumResidual": [
+        0.000007137676420576611,
+        0.000003896631467270595,
+        -0.0003325988907239008
+      ]
+    },
+    {
+      "name": "square",
+      "patch": {
+        "dt": 0.00003125
+      },
+      "status": "completed",
+      "termination": null,
+      "summary": {
+        "acceptedTime": 0.3000000000000037,
+        "peakPenetration": 0.0002603468122093656,
+        "peakForce": 228.64239726196234,
+        "maxStrain": 0.059615933467633164,
+        "maxDeformation": 0.015046939394647747,
+        "maxResidual": 0.007479341174981419,
+        "contactSteps": 3058,
+        "steps": 9600,
+        "initialEnergy": 20.64533,
+        "finalEnergy": 20.54422259837429,
+        "initialMomentum": [
+          6,
+          2.0816681711721685e-17,
+          3.0357439999999993
+        ]
+      },
+      "hub": [
+        -0.12392988654978265,
+        0.4836503083960943,
+        1.0871356953822027
+      ],
+      "impulse": [
+        -4.0680040227296335,
+        11.246839578105792,
+        1.1378720186436613
+      ],
+      "momentumResidual": [
+        -0.0000036333820556677665,
+        -0.000002615277900019919,
+        -0.00017215271998649584
+      ]
+    },
+    {
+      "name": "square",
+      "patch": {
+        "nodes": 32,
+        "dt": 0.00003125
+      },
+      "status": "completed",
+      "termination": null,
+      "summary": {
+        "acceptedTime": 0.3000000000000037,
+        "peakPenetration": 0.0002752007574924782,
+        "peakForce": 269.0524560797957,
+        "maxStrain": 0.00795792260148609,
+        "maxDeformation": 0.01140024940690403,
+        "maxResidual": 0.005877238232852813,
+        "contactSteps": 2574,
+        "steps": 9600,
+        "initialEnergy": 20.645329999999994,
+        "finalEnergy": 20.62075244709494,
+        "initialMomentum": [
+          6,
+          4.163336342344337e-17,
+          3.0357439999999998
+        ]
+      },
+      "hub": [
+        -0.14632796935702025,
+        0.4642925759248469,
+        1.2566508868929571
+      ],
+      "impulse": [
+        -4.512159356799455,
+        10.54196537023959,
+        1.092618269042085
+      ],
+      "momentumResidual": [
+        5.270378373722906e-7,
+        8.601511147787733e-7,
+        -0.00015409717701997394
+      ]
+    },
+    {
+      "name": "square",
+      "patch": {
+        "nodes": 128,
+        "dt": 0.00003125
+      },
+      "status": "completed",
+      "termination": null,
+      "summary": {
+        "acceptedTime": 0.3000000000000037,
+        "peakPenetration": 0.00032694826753734436,
+        "peakForce": 230.17373779058315,
+        "maxStrain": 0.10887410954283672,
+        "maxDeformation": 0.01726203525871296,
+        "maxResidual": 0.006212437943600574,
+        "contactSteps": 3382,
+        "steps": 9600,
+        "initialEnergy": 20.64533000000002,
+        "finalEnergy": 20.593733897748734,
+        "initialMomentum": [
+          6,
+          -7.45931094670027e-17,
+          3.0357440000000007
+        ]
+      },
+      "hub": [
+        -0.12729293093421523,
+        0.4785398802297973,
+        1.1631133475167685
+      ],
+      "impulse": [
+        -4.256466156433467,
+        11.246078584172153,
+        1.1306794846480412
+      ],
+      "momentumResidual": [
+        -3.92466713350359e-7,
+        -3.9385600381081076e-7,
+        -0.00016808819360747407
+      ]
+    },
+    {
+      "name": "square",
+      "patch": {
+        "dt": 0.000015625
+      },
+      "status": "completed",
+      "termination": null,
+      "summary": {
+        "acceptedTime": 0.30000000000000754,
+        "peakPenetration": 0.000258504608036096,
+        "peakForce": 230.09727012845354,
+        "maxStrain": 0.05939342089860977,
+        "maxDeformation": 0.01500541354505639,
+        "maxResidual": 0.003218387632094616,
+        "contactSteps": 6113,
+        "steps": 19200,
+        "initialEnergy": 20.64533,
+        "finalEnergy": 20.53490461573303,
+        "initialMomentum": [
+          6,
+          2.0816681711721685e-17,
+          3.0357439999999993
+        ]
+      },
+      "hub": [
+        -0.12523571195882527,
+        0.4830919386597449,
+        1.0928342689542818
+      ],
+      "impulse": [
+        -4.097560294808859,
+        11.233056503291769,
+        1.1319484710894618
+      ],
+      "momentumResidual": [
+        0.0000011566764834824994,
+        -9.388088031414554e-7,
+        -0.00008430802163905682
+      ]
+    },
+    {
+      "name": "square",
+      "patch": {
+        "dt": 0.0000078125
+      },
+      "status": "completed",
+      "termination": null,
+      "summary": {
+        "acceptedTime": 0.3000000000000094,
+        "peakPenetration": 0.0002661525474530538,
+        "peakForce": 229.10874616444843,
+        "maxStrain": 0.05928899136802013,
+        "maxDeformation": 0.015008140249009044,
+        "maxResidual": 0.0015211374884115947,
+        "contactSteps": 12231,
+        "steps": 38400,
+        "initialEnergy": 20.64533,
+        "finalEnergy": 20.535292731715455,
+        "initialMomentum": [
+          6,
+          2.0816681711721685e-17,
+          3.0357439999999993
+        ]
+      },
+      "hub": [
+        -0.12534298232496122,
+        0.48306443276242317,
+        1.0936061530323873
+      ],
+      "impulse": [
+        -4.100156076782751,
+        11.232237759762217,
+        1.1316354421116055
+      ],
+      "momentumResidual": [
+        5.026400797802921e-7,
+        8.734300394053207e-9,
+        -0.000042084385853069506
+      ]
+    },
+    {
+      "name": "rounded",
+      "patch": {
+        "dt": 0.000125
+      },
+      "status": "completed",
+      "termination": null,
+      "summary": {
+        "acceptedTime": 0.29999999999998084,
+        "peakPenetration": 0.00029862373440793424,
+        "peakForce": 372.60584043899934,
+        "maxStrain": 0.021362677207345415,
+        "maxDeformation": 0.016595632156592124,
+        "maxResidual": 0.037483873533755915,
+        "contactSteps": 680,
+        "steps": 2400,
+        "initialEnergy": 20.64533,
+        "finalEnergy": 20.555594634784367,
+        "initialMomentum": [
+          6,
+          2.0816681711721685e-17,
+          3.0357439999999993
+        ]
+      },
+      "hub": [
+        -0.11703335238159679,
+        0.4774208129112535,
+        1.1904204713429551
+      ],
+      "impulse": [
+        -5.156009041063555,
+        12.836957566252888,
+        0.7812515669419615
+      ],
+      "momentumResidual": [
+        0.000033402649069813606,
+        0.00001184250725927427,
+        -0.0006685208521539643
+      ]
+    },
+    {
+      "name": "rounded",
+      "patch": {
+        "dt": 0.0000625
+      },
+      "status": "completed",
+      "termination": null,
+      "summary": {
+        "acceptedTime": 0.2999999999999961,
+        "peakPenetration": 0.0003529388355916884,
+        "peakForce": 373.8154633286057,
+        "maxStrain": 0.02151555671938543,
+        "maxDeformation": 0.016633814086440074,
+        "maxResidual": 0.01740592944116065,
+        "contactSteps": 1360,
+        "steps": 4800,
+        "initialEnergy": 20.64533,
+        "finalEnergy": 20.55727534371924,
+        "initialMomentum": [
+          6,
+          2.0816681711721685e-17,
+          3.0357439999999993
+        ]
+      },
+      "hub": [
+        -0.1175763036562838,
+        0.4775092900718648,
+        1.1896603362955325
+      ],
+      "impulse": [
+        -5.167703213438626,
+        12.83809663517552,
+        0.7768823009375355
+      ],
+      "momentumResidual": [
+        0.0000021396263880646416,
+        0.000006384985708152158,
+        -0.0003411286797909696
+      ]
+    },
+    {
+      "name": "rounded",
+      "patch": {
+        "dt": 0.00003125
+      },
+      "status": "completed",
+      "termination": null,
+      "summary": {
+        "acceptedTime": 0.3000000000000037,
+        "peakPenetration": 0.0003776842743322068,
+        "peakForce": 374.6189435237054,
+        "maxStrain": 0.022053397433197786,
+        "maxDeformation": 0.016720876205746932,
+        "maxResidual": 0.006857136822370324,
+        "contactSteps": 2724,
+        "steps": 9600,
+        "initialEnergy": 20.64533,
+        "finalEnergy": 20.572378772664578,
+        "initialMomentum": [
+          6,
+          2.0816681711721685e-17,
+          3.0357439999999993
+        ]
+      },
+      "hub": [
+        -0.1178071512036854,
+        0.4772173493254498,
+        1.1959179759605534
+      ],
+      "impulse": [
+        -5.173332192974861,
+        12.827223442123515,
+        0.7803510903624861
+      ],
+      "momentumResidual": [
+        -0.000006804518736913678,
+        -0.000005560258129477802,
+        -0.00017546747261310003
+      ]
+    },
+    {
+      "name": "rounded",
+      "patch": {
+        "nodes": 32,
+        "dt": 0.00003125
+      },
+      "status": "completed",
+      "termination": null,
+      "summary": {
+        "acceptedTime": 0.3000000000000037,
+        "peakPenetration": 0.00035422419937723975,
+        "peakForce": 451.2819728634504,
+        "maxStrain": 0.01467049270945786,
+        "maxDeformation": 0.011617466627660951,
+        "maxResidual": 0.007247751502766318,
+        "contactSteps": 2297,
+        "steps": 9600,
+        "initialEnergy": 20.645329999999994,
+        "finalEnergy": 20.58708592559471,
+        "initialMomentum": [
+          6,
+          4.163336342344337e-17,
+          3.0357439999999998
+        ]
+      },
+      "hub": [
+        -0.12026686804729797,
+        0.4808356736730978,
+        1.1713901862119886
+      ],
+      "impulse": [
+        -5.116534921090308,
+        12.69471136599213,
+        0.7836270068234985
+      ],
+      "momentumResidual": [
+        0.000012292468602126405,
+        0.000010087943071113159,
+        -0.0001653078271561803
+      ]
+    },
+    {
+      "name": "rounded",
+      "patch": {
+        "nodes": 128,
+        "dt": 0.00003125
+      },
+      "status": "completed",
+      "termination": null,
+      "summary": {
+        "acceptedTime": 0.3000000000000037,
+        "peakPenetration": 0.00030038719371615254,
+        "peakForce": 353.4993282237773,
+        "maxStrain": 0.04406581282551336,
+        "maxDeformation": 0.017123659873017047,
+        "maxResidual": 0.007367296513562292,
+        "contactSteps": 2906,
+        "steps": 9600,
+        "initialEnergy": 20.64533000000002,
+        "finalEnergy": 20.574699363907936,
+        "initialMomentum": [
+          6,
+          -7.45931094670027e-17,
+          3.0357440000000007
+        ]
+      },
+      "hub": [
+        -0.11355460737753775,
+        0.4766818270149532,
+        1.192896979517096
+      ],
+      "impulse": [
+        -5.128882206068311,
+        12.899680064450667,
+        0.7876233686311183
+      ],
+      "momentumResidual": [
+        9.097057480644821e-7,
+        -0.0000012274369129983143,
+        -0.00017600642589998827
+      ]
+    },
+    {
+      "name": "rounded",
+      "patch": {
+        "terrainSegments": 16,
+        "dt": 0.00003125
+      },
+      "status": "completed",
+      "termination": null,
+      "summary": {
+        "acceptedTime": 0.3000000000000037,
+        "peakPenetration": 0.0003628677905307062,
+        "peakForce": 384.2089295210949,
+        "maxStrain": 0.014267886423045217,
+        "maxDeformation": 0.015822701647344558,
+        "maxResidual": 0.007153743588086417,
+        "contactSteps": 2719,
+        "steps": 9600,
+        "initialEnergy": 20.64533,
+        "finalEnergy": 20.577117150378903,
+        "initialMomentum": [
+          6,
+          2.0816681711721685e-17,
+          3.0357439999999993
+        ]
+      },
+      "hub": [
+        -0.11780903589846609,
+        0.47745638952453084,
+        1.1939932608692922
+      ],
+      "impulse": [
+        -5.171710200144509,
+        12.831548126231684,
+        0.7796778610572297
+      ],
+      "momentumResidual": [
+        -0.000006113432350574044,
+        -0.0000032088175760947024,
+        -0.0001754031764522601
+      ]
+    },
+    {
+      "name": "rounded",
+      "patch": {
+        "terrainSegments": 64,
+        "dt": 0.00003125
+      },
+      "status": "completed",
+      "termination": null,
+      "summary": {
+        "acceptedTime": 0.3000000000000037,
+        "peakPenetration": 0.0003687282125626355,
+        "peakForce": 371.37844798219044,
+        "maxStrain": 0.025151053151647007,
+        "maxDeformation": 0.017059801144069933,
+        "maxResidual": 0.006883786817418122,
+        "contactSteps": 2726,
+        "steps": 9600,
+        "initialEnergy": 20.64533,
+        "finalEnergy": 20.569088552717673,
+        "initialMomentum": [
+          6,
+          2.0816681711721685e-17,
+          3.0357439999999993
+        ]
+      },
+      "hub": [
+        -0.11729286124843558,
+        0.47778810881188033,
+        1.1905996913514543
+      ],
+      "impulse": [
+        -5.155602900072222,
+        12.843062434749806,
+        0.7809945024271974
+      ],
+      "momentumResidual": [
+        -0.000005931372750289654,
+        -0.000004489622176251373,
+        -0.0001754368324156097
+      ]
+    }
+  ],
+  "reflection": [
+    {
+      "params": {
+        "fixture": "square",
+        "nodes": 64,
+        "terrainSegments": 32,
+        "radius": 0.36,
+        "rimRadius": 0.29,
+        "skin": 0.008,
+        "hubMass": 3,
+        "tyreMass": 1,
+        "hubInertia": 0.08,
+        "foundation": 300000,
+        "extension": 500,
+        "edgeViscosity": 0.5,
+        "centerX": -0.4,
+        "height": 0.37,
+        "rotation": 0,
+        "velocityX": 1.5,
+        "velocityZ": 0,
+        "omega": 4,
+        "gravity": 9.80665,
+        "forceX": 0,
+        "forceZ": 0,
+        "torque": 0,
+        "duration": 0.2,
+        "dt": 0.0000625,
+        "sampleDt": 0.005,
+        "contactTime": 0.001,
+        "contactImpedance": 0.99,
+        "collisionTolerance": 0.000001,
+        "collisionIterations": 35,
+        "maxPenetration": 0.0005,
+        "maxStrain": 0.25,
+        "maxDisplacement": 0.06
+      },
+      "status": [
+        "completed",
+        "completed"
+      ],
+      "hubError": [
+        -0.00043016992678646115,
+        -0.00021355628602320875,
+        0.002388920076479506
+      ],
+      "impulseError": [
+        -0.025143481700983905,
+        -0.012714339237055228
+      ]
+    },
+    {
+      "params": {
+        "fixture": "square",
+        "nodes": 64,
+        "terrainSegments": 32,
+        "radius": 0.36,
+        "rimRadius": 0.29,
+        "skin": 0.008,
+        "hubMass": 3,
+        "tyreMass": 1,
+        "hubInertia": 0.08,
+        "foundation": 300000,
+        "extension": 500,
+        "edgeViscosity": 0.5,
+        "centerX": -0.4,
+        "height": 0.37,
+        "rotation": 0,
+        "velocityX": 1.5,
+        "velocityZ": 0,
+        "omega": 4,
+        "gravity": 9.80665,
+        "forceX": 0,
+        "forceZ": 0,
+        "torque": 0,
+        "duration": 0.2,
+        "dt": 0.0000625,
+        "sampleDt": 0.005,
+        "contactTime": 0.001,
+        "contactImpedance": 0.99,
+        "collisionTolerance": 1e-10,
+        "collisionIterations": 100,
+        "maxPenetration": 0.0005,
+        "maxStrain": 0.25,
+        "maxDisplacement": 0.06
+      },
+      "status": [
+        "completed",
+        "completed"
+      ],
+      "hubError": [
+        9.198679984390168e-9,
+        1.7897597848204327e-9,
+        -5.401559721729399e-8
+      ],
+      "impulseError": [
+        3.824376166861043e-7,
+        3.3426479539855336e-7
+      ]
+    }
+  ],
+  "acceleration": [
+    {
+      "params": {
+        "fixture": "flight",
+        "nodes": 64,
+        "terrainSegments": 32,
+        "radius": 0.36,
+        "rimRadius": 0.29,
+        "skin": 0.008,
+        "hubMass": 3,
+        "tyreMass": 1,
+        "hubInertia": 0.08,
+        "foundation": 300000,
+        "extension": 500,
+        "edgeViscosity": 0.5,
+        "centerX": -0.4,
+        "height": 1,
+        "rotation": 0,
+        "velocityX": 0.5,
+        "velocityZ": 0.4,
+        "omega": 0,
+        "gravity": 9.80665,
+        "forceX": 3,
+        "forceZ": 2,
+        "torque": 0,
+        "duration": 0.2,
+        "dt": 0.000125,
+        "sampleDt": 0.005,
+        "contactTime": 0.001,
+        "contactImpedance": 0.99,
+        "collisionTolerance": 1e-10,
+        "collisionIterations": 100,
+        "maxPenetration": 0.0005,
+        "maxStrain": 0.25,
+        "maxDisplacement": 0.06
+      },
+      "status": "completed",
+      "termination": null,
+      "summary": {
+        "acceptedTime": 0.19999999999999182,
+        "peakPenetration": 0,
+        "peakForce": 0,
+        "maxStrain": 0.000004972728325114417,
+        "maxDeformation": 0.0000031645057278622826,
+        "maxResidual": 0.00456340348389811,
+        "contactSteps": 0,
+        "steps": 1600,
+        "initialEnergy": 40.04660000000002,
+        "finalEnergy": 40.174771826682374,
+        "initialMomentum": [
+          2,
+          1.6000000000000059,
+          2.6400000000000006
+        ]
+      },
+      "hub": [
+        -0.28499027367422713,
+        0.8937509010921821,
+        1.207912418148467e-18
+      ],
+      "impulse": [
+        0,
+        0,
+        0
+      ],
+      "momentumResidual": [
+        1.6209256159527285e-14,
+        -3.0819791163594346e-13,
+        -0.0002476662500059401
+      ],
+      "residual": -0.00456340348389811,
+      "expectedAngularResidual": -0.00024766624999998985,
+      "expectedEnergyResidual": -0.004563352961124814
+    },
+    {
+      "params": {
+        "fixture": "flight",
+        "nodes": 64,
+        "terrainSegments": 32,
+        "radius": 0.36,
+        "rimRadius": 0.29,
+        "skin": 0.008,
+        "hubMass": 3,
+        "tyreMass": 1,
+        "hubInertia": 0.08,
+        "foundation": 300000,
+        "extension": 500,
+        "edgeViscosity": 0.5,
+        "centerX": -0.4,
+        "height": 1,
+        "rotation": 0,
+        "velocityX": 0.5,
+        "velocityZ": 0.4,
+        "omega": 0,
+        "gravity": 9.80665,
+        "forceX": 3,
+        "forceZ": 2,
+        "torque": 0,
+        "duration": 0.2,
+        "dt": 0.0000625,
+        "sampleDt": 0.005,
+        "contactTime": 0.001,
+        "contactImpedance": 0.99,
+        "collisionTolerance": 1e-10,
+        "collisionIterations": 100,
+        "maxPenetration": 0.0005,
+        "maxStrain": 0.25,
+        "maxDisplacement": 0.06
+      },
+      "status": "completed",
+      "termination": null,
+      "summary": {
+        "acceptedTime": 0.1999999999999849,
+        "peakPenetration": 0,
+        "peakForce": 0,
+        "maxStrain": 0.000003096971779248392,
+        "maxDeformation": 0.0000031053888408552976,
+        "maxResidual": 0.002281677939661164,
+        "contactSteps": 0,
+        "steps": 3200,
+        "initialEnergy": 40.04660000000002,
+        "finalEnergy": 40.177052555569084,
+        "initialMomentum": [
+          2,
+          1.6000000000000059,
+          2.6400000000000006
+        ]
+      },
+      "hub": [
+        -0.2849952186670418,
+        0.893808895992805,
+        -1.2747115784602782e-18
+      ],
+      "impulse": [
+        0,
+        0,
+        0
+      ],
+      "momentumResidual": [
+        4.6629367034256575e-14,
+        -5.826450433232822e-13,
+        -0.00012383312500241495
+      ],
+      "residual": -0.002281677939661164,
+      "expectedAngularResidual": -0.00012383312499999064,
+      "expectedEnergyResidual": -0.002281676480562328
+    },
+    {
+      "params": {
+        "fixture": "flight",
+        "nodes": 64,
+        "terrainSegments": 32,
+        "radius": 0.36,
+        "rimRadius": 0.29,
+        "skin": 0.008,
+        "hubMass": 3,
+        "tyreMass": 1,
+        "hubInertia": 0.08,
+        "foundation": 300000,
+        "extension": 500,
+        "edgeViscosity": 0.5,
+        "centerX": -0.4,
+        "height": 1,
+        "rotation": 0,
+        "velocityX": 0.5,
+        "velocityZ": 0.4,
+        "omega": 0,
+        "gravity": 9.80665,
+        "forceX": 3,
+        "forceZ": 2,
+        "torque": 0,
+        "duration": 0.2,
+        "dt": 0.00003125,
+        "sampleDt": 0.005,
+        "contactTime": 0.001,
+        "contactImpedance": 0.99,
+        "collisionTolerance": 1e-10,
+        "collisionIterations": 100,
+        "maxPenetration": 0.0005,
+        "maxStrain": 0.25,
+        "maxDisplacement": 0.06
+      },
+      "status": "completed",
+      "termination": null,
+      "summary": {
+        "acceptedTime": 0.20000000000001475,
+        "peakPenetration": 0,
+        "peakForce": 0,
+        "maxStrain": 0.0000016752862349589392,
+        "maxDeformation": 0.000002961734992285592,
+        "maxResidual": 0.0011408291474866716,
+        "contactSteps": 0,
+        "steps": 6400,
+        "initialEnergy": 40.04660000000002,
+        "finalEnergy": 40.17819544056833,
+        "initialMomentum": [
+          2,
+          1.6000000000000059,
+          2.6400000000000006
+        ]
+      },
+      "hub": [
+        -0.28499711977001796,
+        0.8938382743720713,
+        -9.195497041412905e-19
+      ],
+      "impulse": [
+        0,
+        0,
+        0
+      ],
+      "momentumResidual": [
+        -4.418687638008123e-14,
+        5.453415496958769e-13,
+        -0.00006191656249998623
+      ],
+      "residual": -0.0011408291474866716,
+      "expectedAngularResidual": -0.00006191656250000456,
+      "expectedEnergyResidual": -0.0011408382402813342
+    }
+  ]
+}

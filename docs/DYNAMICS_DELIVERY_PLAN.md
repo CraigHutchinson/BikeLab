@@ -7,7 +7,7 @@ Originally planned against main 29c5532; received against main 1a364dc in iterat
 | ID | Work and visible consumer | Gate / dependency | Status |
 |---|---|---|---|
 | D1 | Loaded spatial tyre: deformed outline, rim, all active regions, local normal forces, resultant force/moment; flat/round/edge/two-support controls | Source-backed reduced compliance family; independent energy/contact equilibrium and tyre/terrain refinement; label planar force versus real area/pressure | D1a received: [static radial experiment](STATIC_FOOTPRINT.md); corner and physical tyre gates remain open |
-| D2 | Freely translating and rotating wheel into bump/step/wall; known mass and angular inertia | D1 plus contact search over complete motion, no tunnelling, momentum/impulse/work and separation/recontact checks | Planned |
+| D2 | Freely translating and rotating wheel into bump/step/wall; known mass and angular inertia | D1 plus contact search over complete motion, no tunnelling, momentum/impulse/work and separation/recontact checks | Experimental checkpoint: [moving wheel](MOVING_WHEEL.md); bounded dynamics and replay received, swept contact/mesh gates remain open |
 | D3 | Both spatial wheels coupled to moving hardtail/full bike, suspension and rider | D2; free planar translation, tyre moments, load transfer, take-off/landing and rigid-ground controls | Planned |
 | D4 | Rolling/sliding, drive/brake torque, rolling loss and combined traction | Wheel spin and contact-point velocity, local shear/history and consistent wheel/frame reactions; near-zero/reversal and locked-wheel controls | Planned |
 | D5 | Rider hand/foot/saddle contacts, posture, active control and release | Observable attachment forces/moments, mass/COM/inertia, work accounting; no inferred injury model | Planned |
@@ -43,3 +43,9 @@ D12 must establish representative hardware budgets, worst-case physics cost, lat
 - Separate convergence, physical calibration, browser captures and participant/native-device evidence.
 - Preserve failed/out-of-domain states explicitly. Impact detection, rigid continuation and structural failure need their own gates.
 - Retain all existing terrain/contact, layered-terrain, 3D dynamics, overload and physics-fidelity requirements; this plan orders them rather than replacing their detail.
+
+## Iteration 15 receiving checkpoint
+
+The [moving-wheel experiment](MOVING_WHEEL.md) consumes force-driven translation/spin and distributed material inertia in the existing native engine. It is an experimental D1b/D2 subset: independent energy, momentum, local-wrench, reflection, replay and timestep controls accompany the viewer. It does not close sharp-corner mesh convergence, complete temporal collision detection, inflated casing stress or physical failure. See [evidence](ITERATION_15_EVIDENCE.md).
+
+The next integration iteration should review this checkpoint, then assemble two wheels under a freely moving hardtail/full-suspension frame and existing rider on a bounded smooth rigid trail. Establish attachment reactions, suspension travel, mass/work and whole-system take-off/landing before enabling corners/high-speed inputs. Keep this exploratory integration distinct from acceptance of D2's unresolved collision/mesh requirements. Add supported traction/brake/drive and articulated hand/foot/saddle contacts to that same connected consumer; do not let another isolated station replace the bike/rider objective.

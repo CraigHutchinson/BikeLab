@@ -1,0 +1,35 @@
+# Moving-wheel experiment
+
+Iteration 15 receives a force-driven planar wheel in `moving-wheel.html`, using the same `run`/`replay` implementation in the browser worker and `node scripts/moving-wheel.mjs [setup-or-record.json]`. CLI exit codes are 0 completed, 2 model/assembly boundary, 1 invalid input. Saved records contain the complete initial setup, authored terrain, assembly declarations, model/engine identity, contact samples, work ledger and termination. Import recomputes the motion; it does not trust saved labels. This is a reduced, uncalibrated mechanics experiment, not an inflated tyre or a full MTB.
+
+## Coordinates and constitutive model
+
+SI throughout: x forward, y left, z up. Hub coordinates are x, z and rotation about +y (positive spin moves the top of a wheel toward +x). Each of N material nodes has two hub-local displacement coordinates. Node centerline radius is R = outer radius − capsule skin radius. Native one-dimensional MuJoCo flex edges form a closed capsule chain and distribute contact to their endpoints, including edge-interior contacts. Terrain is the solid beneath an authored ordered polyline; vertical faces are retained through adjacent convex slabs. Collinear subdivisions are merged before collision decomposition.
+
+The foundation energy is `Σ ½ k ds (u²+v²)`, where `ds=2πR/N`, `k` is N/m² and u,v are hub-local displacements. Edge energy is `Σ ½ EA/L0 (L−L0)²`, where `L0=2R sin(π/N)` is each rest chord and `EA` is N. Edge viscosity has units N·s; the native dashpot coefficient is viscosity/L0. The model resists both tension and compression and has no independent bending, inflation or measured casing constitutive law. Native energy includes joint and edge elastic energy, gravity and kinetic energy; no second copy is added to the ledger. Each node has mass tyreMass/N and y inertia `nodeMass*skin²/2`. Rigid-spin inertia is hubInertia + tyreMass*(R²+skin²/2); the actual deforming inertia follows the node motion.
+
+All contacts are unilateral, frictionless normal constraints (`condim=1`). Hub spin is independent of travel; initial spin does not impose rolling. All mechanical constants and launch presets are illustrative. Declared assembly/service data is separately assessed by the [wheel-limit schema](WHEEL_LIMITS.md). Pressure does not determine ring stiffness, load capacity or leakage. Incompatible declarations block simulation; unknown assembly evidence leaves an explicitly uncalibrated experiment.
+
+## Native solver and work
+
+The existing pinned MuJoCo WASM runtime integrates with implicitfast, Newton limit 100 and tolerance 1e−10. Collision accuracy is separately configurable: default geometric tolerance 1e−10 m and collision iteration limit 100. The native defaults (1e−6, 35) caused visible reflected-impact asymmetry in the control experiment. Solver tolerance alone did not fix collision normals. See the [review](ITERATION_15_REVIEW.md) and [evidence](ITERATION_15_EVIDENCE.md).
+
+Default dt is 31.25 µs, with independently fixed 5 ms observations. Admitted dt ranges from 7.8125 to 250 µs, subject to stiffness/mass and contact-time admission checks; admission is not a convergence certificate. Contact is soft: positive compliance permits small overlap. The geometric collision algorithm operates at discrete integration times. Neither its `ccd` naming nor the motion guard proves temporal continuous collision detection.
+
+At each accepted step, trapezoidal endpoint quadrature accumulates external work, signed native constraint work, nonnegative edge damping loss and contact impulse. Residual is `E−E0 + dampingLoss − constraintWork − externalWork`. Signed constraint work includes soft-contact storage/release and cannot all be called dissipation. Semi-implicit position updates introduce first-order work and origin-angular-momentum quadrature error under constant acceleration; independent free-flight expressions check this explicitly. They are reported errors, not silently corrected physical state.
+
+`groundWrench=[Fx,Fz,My]` is the total terrain action about the moving hub. It is NOT a hub-bearing reaction, rim stress or load from the hub into the future bicycle. Each recorded contact carries its point, unit normal, normal force, vector force, distance and material edge/vertex identity. Their forces and moments independently sum to the native generalized root wrench. Total body momentum and world-origin angular momentum are calculated independently from all bodies. Native postconstraint RNE does not account for these flex contacts; reusing the existing rig's body-wrench extractor would omit this load path.
+
+## Supported-state boundaries
+
+Every step checks finite state, acceleration and force/work rates; native solver/contact capacity; tyre/rim clearance; authored-domain coverage; contour burial, intersections and touches; geometric overlap; edge strain, hub-relative deformation, spin increment and node displacement per step. Default overlap limit is 0.5 mm, strain limit 0.25 and relative displacement limit 60 mm. These are numerical/model support boundaries, not failure properties. A straight hub-segment rim sweep adds conservative checks near the rigid rim boundary. It does not solve curved within-step rim or deforming-casing CCD.
+
+On any failed step, qpos, qvel, warm start and time are restored and native state is recomputed. The report ends at the last accepted state, with the attempted time and diagnostic. A rejected initial state produces no accepted frames. Summary peaks include the initial accepted state. Fixed storage is reserved before integration; native contact snapshots and small guard results still allocate. No real-time performance claim is made.
+
+Limits prevent unsupported continuation; they do not simulate fracture. The required next mechanisms remain rim/spoke/bead construction and strength, deformation-induced seal loss, puncture/blowout and changed pressure/topology with mass/work accounting. A component service maximum must never be converted into a burst threshold.
+
+## Receiving interface and limits
+
+`wheelParts(params,prefix)` exports native node bodies, flex declaration and mass/length references for future assembly under bike axles. A whole-bike consumer must resolve actual attachment reactions and preserve finite fork/shock travel and rider limits. Ground resultants alone cannot establish component stress.
+
+This checkpoint advances D1b/D2 but does not close them: sharp-corner mesh sensitivity and complete swept deforming contact remain open. Next deliver a bounded, smooth rigid-ground moving hardtail/full-suspension run with the existing rider, keeping corner/high-speed cases unsupported until their checks pass. Then add supported rolling/braking and articulated hand/foot/saddle contacts. Keep 3D lateral/turning, layered loam/mud over roots/rock, source-backed damage/pressure loss, scanned/generated trail provenance and measured multirate fidelity in the [connected plan](DYNAMICS_DELIVERY_PLAN.md). Offline labels and game playback must retain the same model scope and termination; this experiment does not supply calibrated training ground truth.
