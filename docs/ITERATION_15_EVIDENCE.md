@@ -1,0 +1,40 @@
+# Iteration 15 evidence — experimental moving wheel
+
+Base: main `14ef9380e55a5c953af9b9cdc3ad3f5886df3b26`. Review: [iteration 15](ITERATION_15_REVIEW.md). Model: [moving wheel](MOVING_WHEEL.md). This is a D1b/D2 checkpoint, not completion of the whole-bike/rider, failure or real-time milestones.
+
+## Independent mechanics
+
+Eight focused tests cover mass/rigid-spin inertia across 32/64/128 nodes; independently summed spring energy and finite-difference force gradients; free-flight linear/angular momentum with spin and externally loaded acceleration; local contact force/moment sums; edge-interior and distributed contacts on square/rounded fixtures; reflection and exact collinear-subdivision equivalence; timestep refinement; initial peak metrics and exact contour touch rejection; last-accepted-state rollback, domain/strain/rim boundaries and declared assembly refusal; complete replay and observation-rate independence. CLI validation separately checks shared output and exit status.
+
+The acceleration control explains the first-order residual instead of treating tighter timestep as a universal cure. With `ax=Fx/M`, `az=Fz/M−g`, semi-implicit position updates and trapezoidal endpoint work give energy error `½ M g az h t`; origin-angular-momentum residual is `−½ h t M(vz ax−vx az)`. The test compares these independent expressions to the measured residual. With h=62.5 µs, M=4 kg, g=9.80665 m/s², Fx=3 N, Fz=2 N, vx=.5 m/s, vz=.4 m/s, t=.2 s: about −.002282 J and −.000123833 kg·m²/s. Both halve with h.
+
+## Collision precision and refinement
+
+Reproduce the [machine-readable receipt](evidence/iteration-15-numerical.json) with `node scripts/moving-wheel-evidence.mjs`. This serial script independently varies integration step, tyre nodes, terrain segmentation and collision settings. The physical window is .3 s for refinement and .2 s for reflection/acceleration. It is not a timing benchmark.
+
+Native defaults for collision search (tolerance 1e−6, 35 iterations) produced a 0.430 mm reflected x difference and .0251 N·s horizontal impulse mismatch in the spinning square-edge control at 62.5 µs. Tightening collision tolerance to 1e−10 and its limit to 100 reduced these to approximately 9.2e−9 m and 3.8e−7 N·s. Tight Newton tolerance alone does not tighten geometric collision. GPT‑6.1 Sol checked pinned convex/GJK source: flex-element contact uses one witness pair; dim-1 flex does not receive the dim-2 normal correction or the rigid capsule shrink-to-line optimization. See [convex source](https://github.com/google-deepmind/mujoco/blob/a892750516336d8358949f4518fcc4fbbd85beae/src/engine/engine_collision_convex.c#L1658) and [GJK source](https://github.com/google-deepmind/mujoco/blob/a892750516336d8358949f4518fcc4fbbd85beae/src/engine/engine_collision_gjk.c#L2437).
+
+With corrected collision accuracy, square-edge max work residual falls from .007479 to .003218 to .001521 J at 31.25, 15.625 and 7.8125 µs. The two finest final hub positions differ by about .111 mm and horizontal impulse by .00260 N·s. Existing test budgets remain 2 mm and .04 N·s; no widened tolerance hid the earlier failure. Coarser 62.5→31.25 µs showed about 3.0 mm displacement and .0661 N·s impulse difference, so it did not meet those gates. Default is now 31.25 µs. This does not establish monotonic event/peak convergence for arbitrary configurations.
+
+**Tyre-mesh convergence remains open.** At 31.25 µs, square-edge horizontal impulse changes from −4.0680 N·s (64 nodes) to −4.2565 N·s (128 nodes), about 4.6%; final position changes about 6.1 mm. Local edge strain is more sensitive. Rounded and flat controls are less sensitive, but that does not validate square-corner stress. Rounded terrain 32→64 segments changes horizontal impulse by about .0177 N·s. Collinear splitting is removed before collision and produces identical trajectories. These are distinct tests: unchanged author subdivision, actual geometry refinement and casing-mesh refinement cannot substitute for one another.
+
+## Supported-state and consumer evidence
+
+Overload stops on geometric overlap admission and returns the last accepted state. Rim/casing limits, contour touches, authored-domain exits, large strain/displacement, excessive motion and invalid declarations suppress unsupported continuation. These numerical/model boundaries do not determine a breakage load. No rim/spoke fracture, bead release, deflation, inflated casing stress or subsequent damaged motion is implemented.
+
+The viewer renders every active normal arrow plus the resultant, deforming capsule outline, rigid rim/spin marker, trajectory and synchronized force/work plots at equal spatial scale. Worker cancellation, rapid playback toggling, edit gating, full import/recompute, stale-file suppression, hidden canvas and mobile layouts have automated browser checks. Browser and Node use the same mechanics; the comparison checks complete reports, including contacts and termination, with normalized numeric tolerance 1e−7.
+
+Local focused mechanics passed. `node --test` was run; local child-process and loopback restrictions prevent a complete local CLI/server receipt (direct CLI test reports `spawnSync ... EPERM`). Hosted Linux/Windows/Chromium validation and actual screenshot inspection are required before acceptance. The first hosted candidate passed all 163 tests on both Linux and Windows. Its Chromium run reached the moving-wheel comparisons but failed the original 1e−7 normalized tolerance: rounded contact differed by up to about 3.68e−7 normalized (4.12e−6 N in a local normal load). Initial node coordinates differed by 5.55e−17 m. Canonical binary64 circle coordinates/chord ratios replace runtime trigonometry for the three supported meshes, preserving exact reflection symmetry. The tolerance is unchanged; final hosted receipts follow below.
+
+No calibrated real-tyre evidence, physical hardware test, participant assessment or real-time benchmark is claimed. High-speed swept casing contact, finite-width 3D traction, articulated rider, layered soil/mud, scanned/generated trail accuracy and supported failure/pressure evolution remain open.
+
+
+## Resumed validation, 2026-10-19
+
+At code head `9086f1b`, the complete local suite passes all 164 tests, with no failures or skips. The prior subprocess/loopback restrictions did not recur in this execution. This includes finite diagnostics and exact JSON recomputation of initial rim/domain rejection and attempted domain exit.
+
+The full local Edge 156.0.4314.30 run completed 19 check groups, produced 73 captures and recorded zero page/console errors. All nine complete moving-wheel browser/Node comparisons were exactly equal in numeric fields; the normalized comparison tolerance stays 1e-7. Flat and square impacts, overload termination, assembly rejection and the 320 px layout were visually inspected. All nine station navigation sets and active-page markers agree. The [compact receipt](evidence/iteration-15-resume.json) includes production-asset hashes and the full browser-report hash.
+
+The second hosted failure was a record-boundary defect: unmeasured inner clearance used Infinity, which JSON serialized as null. It now uses explicit null at its source, with finite numeric record fields. This does not change forces, timesteps, tolerances or supported contact geometry. Complete records for rejection and termination remain part of the acceptance gate.
+
+Hosted [run 39218472766](https://github.com/CraigHutchinson/BikeLab/actions/runs/39218472766) passed at the same code head: 164 tests on Linux and Windows, plus Chromium 141.0.7390.37 with 19 check groups, 73 captures, zero browser errors and all nine moving-wheel comparisons numerically exact. Downloaded rounded-impact and 390 px captures were inspected. Artifact identities/digests are retained in the compact receipt. Final documentation-only head validation is recorded in PR #17.

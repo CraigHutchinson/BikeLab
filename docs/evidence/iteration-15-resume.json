@@ -1,0 +1,137 @@
+{
+  "date": "2026-10-19",
+  "codeHead": "9086f1b4c7223d62c45c370f9a44d479401e00ad",
+  "fullSuite": {
+    "tests": 164,
+    "passed": 164,
+    "failed": 0,
+    "skipped": 0
+  },
+  "browser": "156.0.4314.30",
+  "browserChecks": 19,
+  "captures": 73,
+  "errors": [],
+  "movingWheel": {
+    "agreement": [
+      {
+        "name": "moving-flat",
+        "maxAbsolute": 0
+      },
+      {
+        "name": "moving-square",
+        "maxAbsolute": 0
+      },
+      {
+        "name": "moving-rounded",
+        "maxAbsolute": 0
+      },
+      {
+        "name": "moving-flight",
+        "maxAbsolute": 0
+      },
+      {
+        "name": "moving-overload",
+        "maxAbsolute": 0
+      },
+      {
+        "name": "moving-replayed",
+        "maxAbsolute": 0
+      },
+      {
+        "name": "moving-overpressure",
+        "maxAbsolute": 0
+      },
+      {
+        "name": "moving-invalid-start",
+        "maxAbsolute": 0
+      },
+      {
+        "name": "moving-superseded",
+        "maxAbsolute": 0
+      }
+    ]
+  },
+  "normalizedComparisonTolerance": 1e-7,
+  "inspectedCaptures": [
+    "flat-impact",
+    "square",
+    "overload",
+    "assembly-rejected",
+    "mobile-320"
+  ],
+  "consistentStationPages": 9,
+  "reportSha256": "2ec18013144e4ee9c798dea46a148b426fd1815fb06e9d5462da96b184858135",
+  "assets": {
+    "moving-wheel.js": "0d0e4ee0959d43783c501a6013de7379ff84e84bfb6ade434bb4720b370ba502",
+    "moving-wheel-app.js": "489ea4cb19189721d82788c48fde54f13ee3c59c1057e5dd3fb276894d205d6d",
+    "moving-wheel-worker.js": "8c6427dba11bd0307c98f1b6d792d690ceb202304f13807debf7b21b5a95e592",
+    "moving-wheel.html": "c751864ae4b05aa8b287d39966a645b86eefd99cb47f847fe3f02a08481f513a"
+  },
+  "scope": "Numerical/replay and rendered UI evidence; no physical calibration, real-time performance or participant claim.",
+  "hosted": {
+    "run": "https://github.com/CraigHutchinson/BikeLab/actions/runs/39218472766",
+    "head": "9086f1b4c7223d62c45c370f9a44d479401e00ad",
+    "linux": "passed",
+    "windows": "passed",
+    "browser": "141.0.7390.37",
+    "checks": 19,
+    "captures": 73,
+    "errors": [],
+    "movingWheel": {
+      "agreement": [
+        {
+          "name": "moving-flat",
+          "maxAbsolute": 0
+        },
+        {
+          "name": "moving-square",
+          "maxAbsolute": 0
+        },
+        {
+          "name": "moving-rounded",
+          "maxAbsolute": 0
+        },
+        {
+          "name": "moving-flight",
+          "maxAbsolute": 0
+        },
+        {
+          "name": "moving-overload",
+          "maxAbsolute": 0
+        },
+        {
+          "name": "moving-replayed",
+          "maxAbsolute": 0
+        },
+        {
+          "name": "moving-overpressure",
+          "maxAbsolute": 0
+        },
+        {
+          "name": "moving-invalid-start",
+          "maxAbsolute": 0
+        },
+        {
+          "name": "moving-superseded",
+          "maxAbsolute": 0
+        }
+      ]
+    },
+    "artifacts": [
+      {
+        "id": 12170657190,
+        "name": "footprint-evidence",
+        "sha256": "f88b4f31f942237a46b8359a991fc3db27ac3b0d92f332a8e10ad091aa6e8088"
+      },
+      {
+        "id": 12170452582,
+        "name": "browser-evidence",
+        "sha256": "7b65c0c7055efd30cbe936f0c27a55d7a7d57bd820d2b30b14169c9ad4466611"
+      }
+    ],
+    "inspectedCaptures": [
+      "moving/rounded.png",
+      "moving/mobile-390.png"
+    ]
+  }
+}
