@@ -1,6 +1,6 @@
 # Connected bicycle dynamics delivery plan
 
-Originally planned against main 29c5532; received against main 1a364dc in iteration 13. The terrain probe/request stations provide geometry; the bicycle rig still has two lumped vertical tyre reactions on moving platens, constrained horizontal motion and no wheel spin. They are not yet a moving spatial bike/contact simulation.
+Current receiving checkpoint: iteration 15, based on main `14ef938`. The static footprint produces distributed normal loads, the wheel-limit station checks geometry and declared service limits, and the moving-wheel experiment receives force-driven translation/spin. The bicycle rig still has two lumped vertical tyre reactions on moving platens, constrained horizontal motion and no wheel spin. Connecting both spatial wheels to the frame, suspension and rider is the next integration milestone.
 
 ## Tracked follow-ups and receiving sequence
 
@@ -19,13 +19,13 @@ Originally planned against main 29c5532; received against main 1a364dc in iterat
 | D11 | Terrain request/cache completion and trail ingestion | Asymmetric/multimodal prefetch, transforms, known voids/roots, leases/shared state; scan/ML provenance, 1–2 cm resolution distinct from accuracy | R0a received; remaining gates planned |
 | D12 | Real-time fidelity and detailed references across the joined system | Compatible tier combinations, convergence/calibration, shadow comparisons, conservative state transfer, worst-case costs and input/render budgets | Planned; offline replay is not real-time simulation |
 
-D1a is deliberately smaller than D1: a static planar radial-ring compliance experiment against the existing authored polyline terrain. It should establish distributed contact and load-sharing visibility before adding wheel inertia, rolling or whole-bike attachment. A radial ring cannot establish calibrated pressure, true contact area, tread mechanics or full casing strain. Resolve the mathematical model and its limits from primary sources before implementation. Capture acceptance evidence and unsupported outcomes rather than silently extending it to wall crashes.
+D1a is deliberately smaller than D1: a static planar radial-ring compliance experiment against the existing authored polyline terrain. It established distributed contact and load-sharing visibility; iteration 15 adds a separate richer wheel-inertia/contact model. A radial ring cannot establish calibrated pressure, true contact area, tread mechanics or full casing strain. The source review, acceptance evidence and unsupported outcomes are recorded with each model. Do not silently extend the radial model to wall crashes.
 
 ## Product destination and next integration milestones
 
 User direction, 2026-10-18: the destination is simulated mountain-bike dynamics **including the rider**, serving both synthetic-data generation and game simulation. Standalone stations are verification tools. They are not the final product, and further isolated diagnostics should be justified by a blocker in the connected simulation.
 
-The immediate receiving target is D1b/D2: a wheel with mass and spin moving over authored flat, rounded and square-edge terrain. First resolve the sharp-feature casing/contact formulation that the scalar radial surrogate cannot support. Then consume the same contact forces in dynamic motion, with separation/recontact, impact impulse and energy checks, continuous contact search and explicit rim/support limits. Do not mistake a prescribed geometric sweep for this dynamic milestone. The next iteration should deliver the smallest defensible part of that path, with its whole-bike interface identified before authoring.
+Iteration 15 receives an experimental D1b/D2 subset: a wheel with mass and spin moving over authored flat, rounded and square-edge terrain. Native capsule-edge contact replaces the scalar radial surrogate for this experiment, with separation/recontact, impulse/work checks and explicit rim/support limits. Sharp-corner tyre-mesh convergence and complete swept deforming contact remain unresolved. The next receiving target is bounded smooth-ground D3 integration; retain these D2 gaps as explicit restrictions and follow-ups rather than treating the standalone checkpoint as complete contact physics.
 
 Next integrate D3/D4: front and rear spatial wheel contacts driving the existing hardtail/full-suspension and rider model on a short trail, with forward motion, wheel spin, braking/drive inputs, load transfer, take-off and landing. Keep existing suspension travel buffers and ultimate boundaries. This becomes the end-to-end regression scenario and visible consumer; support forces must come from the same contact model used headlessly, with no parallel animation-only bike motion.
 
