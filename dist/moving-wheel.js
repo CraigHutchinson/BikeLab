@@ -53,19 +53,20 @@ function centerGap(points,x,z,r){let d=Infinity;for(let i=1;i<points.length;i++)
 // Geometric guards are independent of the native contact manifold.
 // null inner clearance means the guard stopped before measuring any casing edge.
 // Never leak the internal minimum sentinel into replay records.
-export function geometryLimits(p,profile,hub,xyz,previous){const points=profile.points,n=p.nodes,x=hub[0],z=hub[1];let penetration=0,inner=null,movement=0;
- if(x-p.radius<points[0][0]||x+p.radius>points.at(-1)[0])return {reason:'authored-domain',penetration,inner,movement};
- const rimGap=centerGap(points,x,z,p.rimRadius);if(rimGap<=1e-8)return {reason:'rim-contact',rimGap,penetration,inner,movement};
+function geometryResult(out,reason,rimGap,penetration,inner,movement){out.reason=reason;out.rimGap=rimGap;out.penetration=penetration;out.inner=inner;out.movement=movement;return out;}
+export function geometryLimits(p,profile,hub,xyz,previous,out={}){const points=profile.points,n=p.nodes,x=hub[0],z=hub[1];let penetration=0,inner=null,movement=0;
+ if(x-p.radius<points[0][0]||x+p.radius>points.at(-1)[0])return geometryResult(out,'authored-domain',null,penetration,inner,movement);
+ const rimGap=centerGap(points,x,z,p.rimRadius);if(rimGap<=1e-8)return geometryResult(out,'rim-contact',rimGap,penetration,inner,movement);
  for(let i=0;i<n;i++){const j=(i+1)%n,ax=xyz[3*i],az=xyz[3*i+2],bx=xyz[3*j],bz=xyz[3*j+2];
-  if(ax-p.skin<points[0][0]||ax+p.skin>points.at(-1)[0])return {reason:'casing-domain',rimGap,penetration,inner,movement};
-  if(az<=groundHeight(points,ax))return {reason:'casing-centreline-crossing',rimGap,penetration,inner,movement};
+  if(ax-p.skin<points[0][0]||ax+p.skin>points.at(-1)[0])return geometryResult(out,'casing-domain',rimGap,penetration,inner,movement);
+  if(az<=groundHeight(points,ax))return geometryResult(out,'casing-centreline-crossing',rimGap,penetration,inner,movement);
   inner=Math.min(inner??Infinity,pointSegment(x,z,ax,az,bx,bz)-p.skin-p.rimRadius);
   if(previous)movement=Math.max(movement,Math.hypot(ax-previous[3*i],az-previous[3*i+2]));
   for(let k=1;k<points.length;k++){const a=points[k-1],b=points[k];if(Math.max(ax,bx)+p.skin<a[0]||Math.min(ax,bx)-p.skin>b[0]||Math.min(az,bz)-p.skin>Math.max(a[1],b[1]))continue;penetration=Math.max(penetration,p.skin-segmentDistance(ax,az,bx,bz,...a,...b));}
-  for(let k=i+2;k<n;k++){if(i===0&&k===n-1)continue;const l=(k+1)%n,cx=xyz[3*k],cz=xyz[3*k+2],dx=xyz[3*l],dz=xyz[3*l+2];if(Math.max(ax,bx)+1e-10<Math.min(cx,dx)||Math.min(ax,bx)-1e-10>Math.max(cx,dx)||Math.max(az,bz)+1e-10<Math.min(cz,dz)||Math.min(az,bz)-1e-10>Math.max(cz,dz))continue;if(segmentDistance(ax,az,bx,bz,cx,cz,dx,dz)<=1e-10)return {reason:'casing-self-crossing',rimGap,penetration,inner,movement};}
+  for(let k=i+2;k<n;k++){if(i===0&&k===n-1)continue;const l=(k+1)%n,cx=xyz[3*k],cz=xyz[3*k+2],dx=xyz[3*l],dz=xyz[3*l+2];if(Math.max(ax,bx)+1e-10<Math.min(cx,dx)||Math.min(ax,bx)-1e-10>Math.max(cx,dx)||Math.max(az,bz)+1e-10<Math.min(cz,dz)||Math.min(az,bz)-1e-10>Math.max(cz,dz))continue;if(segmentDistance(ax,az,bx,bz,cx,cz,dx,dz)<=1e-10)return geometryResult(out,'casing-self-crossing',rimGap,penetration,inner,movement);}
  }
  const reason=inner<=0?'casing-rim-contact':penetration>p.maxPenetration?'contact-penetration-limit':movement>p.skin/4?'motion-resolution-limit':null;
- return {reason,rimGap,penetration,inner,movement};
+ return geometryResult(out,reason,rimGap,penetration,inner,movement);
 }
 export function inputFromRecord(r){if(r?.model!==MODEL||!r.params||!r.profile||!r.assembly||Object.keys(DEFAULTS).some(k=>!Object.hasOwn(r.params,k))||Object.keys(ASSEMBLY_DEFAULTS).some(k=>!Object.hasOwn(r.assembly,k)))throw Error('Incomplete or unsupported moving-wheel record.');return {params:validate(r.params),profile:structuredClone(validateProfile(r.profile)),assembly:validateAssembly(r.assembly)};}
 export async function run(input={}){
