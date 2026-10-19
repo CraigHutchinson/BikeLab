@@ -6,13 +6,19 @@ export const MODEL='bikelab-moving-wheel-0.1';
 export const DEFAULTS=Object.freeze({fixture:'flat',nodes:64,terrainSegments:32,radius:.36,rimRadius:.29,skin:.008,hubMass:3,tyreMass:1,hubInertia:.08,foundation:300000,extension:500,edgeViscosity:.5,centerX:-.4,height:.39,rotation:0,velocityX:1,velocityZ:0,omega:0,gravity:9.80665,forceX:0,forceZ:0,torque:0,duration:.35,dt:.00003125,sampleDt:.005,contactTime:.001,contactImpedance:.99,collisionTolerance:1e-10,collisionIterations:100,maxPenetration:.0005,maxStrain:.25,maxDisplacement:.06});
 const bounds={radius:[.25,.45],rimRadius:[.15,.4],skin:[.003,.015],hubMass:[1,30],tyreMass:[.5,3],hubInertia:[.02,.5],foundation:[50000,600000],extension:[0,2000],edgeViscosity:[0,3],centerX:[-5,5],height:[.15,2],rotation:[-Math.PI,Math.PI],velocityX:[-5,5],velocityZ:[-5,5],omega:[-30,30],gravity:[0,15],forceX:[-100,100],forceZ:[-100,100],torque:[-10,10],duration:[.02,1],dt:[.0000078125,.00025],sampleDt:[.001,.02],contactTime:[.0005,.005],contactImpedance:[.95,.999],collisionTolerance:[1e-12,1e-6],collisionIterations:[35,200],maxPenetration:[.00005,.001],maxStrain:[.05,.3],maxDisplacement:[.005,.07]};
 const plain=a=>a&&typeof a==='object'&&!Array.isArray(a)&&[Object.prototype,null].includes(Object.getPrototypeOf(a));
+// Canonical binary64 geometry for the three supported meshes. JS transcendental
+// functions may differ by an ulp between runtimes; contact can amplify that.
+// sin(i*pi/64), i=0..32; reflect the quarter circle for exact mesh symmetry.
+const quarterSin=Object.freeze([0,0.049067674327418015,0.0980171403295606,0.14673047445536175,0.19509032201612825,0.24298017990326387,0.29028467725446233,0.33688985339222005,0.3826834323650898,0.4275550934302821,0.47139673682599764,0.5141027441932217,0.5555702330196022,0.5956993044924334,0.6343932841636455,0.6715589548470183,0.7071067811865475,0.7409511253549591,0.7730104533627369,0.8032075314806448,0.8314696123025452,0.8577286100002721,0.8819212643483549,0.9039892931234433,0.9238795325112867,0.9415440651830208,0.9569403357322089,0.970031253194544,0.9807852804032304,0.989176509964781,0.9951847266721968,0.9987954562051724,1]);
+const chordRatio=Object.freeze({32:0.1960342806591212,64:0.09813534865483603,128:0.049082457045824576});
+const ringSin=i=>{i%=128;return i<=32?quarterSin[i]:i<=64?quarterSin[64-i]:i<=96?-quarterSin[i-64]:-quarterSin[128-i];};
 export function validate(input={}){
  if(!plain(input))throw Error('Parameters must be an object.');for(const k of Object.keys(input))if(!Object.hasOwn(DEFAULTS,k))throw Error('Unknown parameter: '+k);
  const p={...DEFAULTS,...input};for(const [k,[lo,hi]] of Object.entries(bounds))if(!Number.isFinite(p[k])||p[k]<lo||p[k]>hi)throw Error(k+' outside supported SI range.');
  if(!['flat','square','rounded','flight','overload'].includes(p.fixture)||![32,64,128].includes(p.nodes)||![16,32,64].includes(p.terrainSegments))throw Error('Unsupported fixture or resolution.');
  if(!Number.isInteger(p.collisionIterations))throw Error('Collision iteration limit must be an integer.');
  if(p.radius-p.rimRadius<2*p.skin+.02)throw Error('Insufficient casing/rim clearance.');
- const R=p.radius-p.skin,ds=2*Math.PI*R/p.nodes,L=2*R*Math.sin(Math.PI/p.nodes);
+ const R=p.radius-p.skin,ds=2*Math.PI*R/p.nodes,L=R*chordRatio[p.nodes];
  if(p.dt*Math.sqrt((p.foundation*ds+4*p.extension/L)/(p.tyreMass/p.nodes))>.55)throw Error('Timestep exceeds the ring stiffness/mass admission bound; reduce dt.');
  if(p.contactTime<4*p.dt)throw Error('Contact time must be at least four integration steps.');
  if(p.duration/p.sampleDt>400)throw Error('Recording exceeds 400 intervals; increase sampleDt.');
@@ -26,8 +32,8 @@ export function canonicalProfile(input){const profile=structuredClone(validatePr
 const contact=p=>`condim="1" friction="0 0 0" solref="${p.contactTime} 1" solimp="${p.contactImpedance} ${p.contactImpedance} .001"`;
 export function wheelParts(input={},prefix='wheel'){
  const p=validate(input);if(!/^[a-z][a-z0-9_]*$/.test(prefix))throw Error('Invalid assembly prefix.');
- const n=p.nodes,R=p.radius-p.skin,ds=2*Math.PI*R/n,L=2*R*Math.sin(Math.PI/n),mass=p.tyreMass/n,inertia=mass*p.skin**2/2;
- const body=Array.from({length:n},(_,i)=>{const a=2*Math.PI*i/n;return `<body name="${prefix}_n${i}" pos="${R*Math.sin(a)} 0 ${-R*Math.cos(a)}"><joint name="${prefix}_u${i}" type="slide" axis="1 0 0" stiffness="${p.foundation*ds}"/><joint name="${prefix}_v${i}" type="slide" axis="0 0 1" stiffness="${p.foundation*ds}"/><inertial pos="0 0 0" mass="${mass}" diaginertia="${inertia} ${inertia} ${inertia}"/></body>`;}).join('');
+ const n=p.nodes,R=p.radius-p.skin,ds=2*Math.PI*R/n,L=R*chordRatio[n],mass=p.tyreMass/n,inertia=mass*p.skin**2/2;
+ const body=Array.from({length:n},(_,i)=>{const a=i*128/n;return `<body name="${prefix}_n${i}" pos="${R*ringSin(a)} 0 ${-R*ringSin(a+32)}"><joint name="${prefix}_u${i}" type="slide" axis="1 0 0" stiffness="${p.foundation*ds}"/><joint name="${prefix}_v${i}" type="slide" axis="0 0 1" stiffness="${p.foundation*ds}"/><inertial pos="0 0 0" mass="${mass}" diaginertia="${inertia} ${inertia} ${inertia}"/></body>`;}).join('');
  return {nodes:body,flex:`<flex name="${prefix}_casing" dim="1" radius="${p.skin}" body="${Array.from({length:n},(_,i)=>prefix+'_n'+i).join(' ')}" element="${Array.from({length:n},(_,i)=>i+' '+((i+1)%n)).join(' ')}"><edge stiffness="${p.extension/L}" damping="${p.edgeViscosity/L}"/><contact ${contact(p)} selfcollide="none"/></flex>`,reference:{centerlineRadius:R,arcWeight:ds,chordLength:L,nodeMass:mass,nodeInertia:inertia,totalMass:p.hubMass+p.tyreMass,rigidSpinInertia:p.hubInertia+p.tyreMass*(R*R+p.skin*p.skin/2)}};
 }
 export function modelXML(input={},authored){const p=validate(input),profile=canonicalProfile(authored??wheelFixture(p)),parts=wheelParts(p),floor=Math.min(...profile.points.map(q=>q[1]))-1;let assets='',geoms='';
