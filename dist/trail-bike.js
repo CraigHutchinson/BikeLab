@@ -89,6 +89,8 @@ export async function run(input={}){
    }
   }
   function guard(previous=false){
+   // A stopped check must not expose another wheel's stale accepted diagnostics.
+   for(const wheel of wheels){const d=wheel.limits;d.reason='not-evaluated';d.rimGap=null;d.penetration=null;d.inner=null;d.movement=null;d.strain=null;d.deformation=null;}
    if(!Number.isFinite(energy)||!Number.isFinite(lossPower)||!Number.isFinite(constraintPower)||!Number.isFinite(gravityMoment)||!ground.every(Number.isFinite))return 'nonfinite-state';
    for(let i=0;i<model.nv;i++)if(!Number.isFinite(data.qpos[i])||!Number.isFinite(data.qvel[i])||!Number.isFinite(data.qacc[i]))return 'nonfinite-state';
    if(data.solver_niter[0]>=100)return 'native-solver-iteration-limit';if(data.ncon>512)return 'contact-capacity-limit';
@@ -98,7 +100,7 @@ export async function run(input={}){
    if(Math.hypot(wheels[0].hub[0]-wheels[1].hub[0],wheels[0].hub[1]-wheels[1].hub[1])<2*(w.radius+w.maxDisplacement))return 'wheel-separation-limit';
    for(const wheel of wheels){const limits=geometryLimits(w,a.profile,wheel.hub,wheel.xyz,previous?wheel.oldXYZ:undefined,wheel.limits);wheel.limits=limits;if(limits.reason)return wheel.name+'-'+limits.reason;
     let strain=0,deformation=0;for(let i=0;i<w.nodes;i++){strain=Math.max(strain,Math.abs(data.flexedge_length[wheel.edge+i]/model.flexedge_length0[wheel.edge+i]-1));deformation=Math.max(deformation,Math.hypot(data.qpos[wheel.nodeJoints[i][0].q],data.qpos[wheel.nodeJoints[i][1].q]));}limits.strain=strain;limits.deformation=deformation;
-    if(strain>w.maxStrain)return wheel.name+'-casing-strain-limit';if(deformation>w.maxDisplacement)return wheel.name+'-casing-displacement-limit';
+    if(strain>w.maxStrain){limits.reason='casing-strain-limit';return wheel.name+'-'+limits.reason;}if(deformation>w.maxDisplacement){limits.reason='casing-displacement-limit';return wheel.name+'-'+limits.reason;}
     if(previous&&Math.abs(data.qpos[wheel.spin.q]-oldQ[wheel.spin.q])>.01)return wheel.name+'-spin-resolution-limit';
     if(previous&&limits.rimGap<.01){wheel.move[0]=wheel.hub[0]-wheel.oldHub[0];wheel.move[1]=wheel.hub[1]-wheel.oldHub[1];const swept=sweepRim(a.profile,wheel.oldHub,wheel.move,w.rimRadius,w.radius);if(swept.status!=='clear')return wheel.name+'-swept-'+swept.status;}
    }

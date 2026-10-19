@@ -37,3 +37,13 @@ test('configuration, unsupported terrain, initial travel and terminated replay r
  const limited=await run(preset('limit'));assert.equal(limited.status,'terminated');near(last(limited).time,limited.termination.time);assert.ok(limited.termination.attemptedTime>last(limited).time);for(const w of last(limited).wheels)assert.ok(w.limits.penetration<=limited.scenario.wheel.maxPenetration);assert.deepEqual(await replay(JSON.parse(JSON.stringify(limited))),limited);
  const incomplete=JSON.parse(JSON.stringify(bad));delete incomplete.scenario.motion.dt;assert.throws(()=>replay(incomplete));
 });
+
+test('airborne angular momentum includes frame rotation, wheel spin and displaced rider',async()=>{
+ const a=short('flight','full',{duration:.02,clearance:.4,forkCompression:.02,rearAngle:.04,riderOffset:-.04,pitchOffset:.06,pitchVelocity:.3,omega:1.2,velocityX:.7,velocityZ:.2});
+ const r=await run(a);assert.equal(r.status,'completed');const f=r.frames[0],O=f.frame,spin=r.massBudget.eachWheelRigidSpinInertia,parts=[[12,8*12/82,O,.3],[70,8*70/82,f.rider,.3],[.5,.01,f.wheels[0].hub,.3],[1.5,.02,f.wheels[1].hub,.3],[2.5,spin,f.wheels[0].hub,1.5],[2.5,spin,f.wheels[1].hub,1.5]],expected=[0,0,0];
+ for(const [mass,inertia,at,omega] of parts){const vx=.7+.3*(at[1]-O[1]),vz=.2-.3*(at[0]-O[0]);expected[0]+=mass*vx;expected[1]+=mass*vz;expected[2]+=inertia*omega+mass*(at[1]*vx-at[0]*vz);}
+ for(let i=0;i<3;i++)near(r.summary.initialMomentum[i],expected[i],1e-9);for(const x of last(r).momentumResidual)near(x,0,.002);assert.ok(r.frames.every(f=>f.contacts.length===0));
+});
+test('contact trajectory and work remain unchanged when only observation cadence changes',async()=>{
+ const a=short('flat','full',{duration:.06}),r=await run(a),fine=await run({...a,motion:{...a.motion,sampleDt:.0025}});assert.ok(r.frames.some(f=>f.contacts.length));assert.deepEqual(last(fine),last(r));
+});
