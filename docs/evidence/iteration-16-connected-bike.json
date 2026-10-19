@@ -1,0 +1,2832 @@
+{
+  "model": "bikelab-trail-bike-0.1",
+  "note": "Synthetic numerical controls, not physical calibration or real-time performance qualification.",
+  "rows": [
+    {
+      "name": "full-bump",
+      "status": "completed",
+      "termination": null,
+      "scenario": {
+        "bike": {
+          "pivotX": 0.04,
+          "pivotZ": -0.235,
+          "shockArmX": -0.054607848086069846,
+          "shockArmZ": 0.18996325604011804,
+          "shockFrameX": 0.19332203501088832,
+          "shockFrameZ": -0.015623078508508775,
+          "shockTravel": 0.055,
+          "bike": "full",
+          "mass": 82,
+          "rider": "compliant",
+          "riderMass": 70,
+          "riderStiffness": 12000,
+          "riderDamping": 900,
+          "riderTravel": 0.15,
+          "riderBuffer": "progressive",
+          "riderBufferWidth": 0.015,
+          "riderBufferStiffness": 300000,
+          "riderBufferDamping": 1500,
+          "forkBuffer": "progressive",
+          "forkBufferWidth": 0.02,
+          "forkBufferStiffness": 300000,
+          "forkBufferDamping": 1500,
+          "forkStiffness": 9000,
+          "forkDamping": 700,
+          "shockBuffer": "progressive",
+          "shockBufferWidth": 0.008,
+          "shockBufferStiffness": 1000000,
+          "shockBufferDamping": 3000,
+          "shockStiffness": 70000,
+          "shockDamping": 2400
+        },
+        "wheel": {
+          "nodes": 64,
+          "tyreMass": 1,
+          "hubMass": 1.5,
+          "hubInertia": 0.04,
+          "skin": 0.008,
+          "rimRadius": 0.29,
+          "foundation": 300000,
+          "extension": 500,
+          "edgeViscosity": 0.5,
+          "contactTime": 0.0005,
+          "contactImpedance": 0.99,
+          "collisionTolerance": 1e-10,
+          "collisionIterations": 100,
+          "maxPenetration": 0.0005,
+          "maxStrain": 0.25,
+          "maxDisplacement": 0.06
+        },
+        "motion": {
+          "centerX": -0.5,
+          "clearance": 0.012,
+          "velocityX": 2,
+          "velocityZ": 0,
+          "omega": 5,
+          "pitchOffset": 0,
+          "pitchVelocity": 0,
+          "forkCompression": 0.04,
+          "rearAngle": 0.08,
+          "riderOffset": -0.05,
+          "gravity": 9.80665,
+          "duration": 1,
+          "dt": 0.00003125,
+          "sampleDt": 0.005
+        },
+        "profile": {
+          "format": "bikelab-profile-1",
+          "units": "m",
+          "axes": "x-forward,z-up",
+          "solid": "below",
+          "interpolation": "linear",
+          "source": {
+            "kind": "illustrative",
+            "description": "Synthetic 15 mm polynomial bump over 0.8 m, 32 straight segments."
+          },
+          "points": [
+            [
+              -3,
+              0
+            ],
+            [
+              0.6,
+              0
+            ],
+            [
+              0.625,
+              0.0002199554443359375
+            ],
+            [
+              0.65,
+              0.0008239746093749999
+            ],
+            [
+              0.675,
+              0.0017324066162109374
+            ],
+            [
+              0.7,
+              0.00287109375
+            ],
+            [
+              0.725,
+              0.0041713714599609375
+            ],
+            [
+              0.75,
+              0.005570068359375
+            ],
+            [
+              0.775,
+              0.0070095062255859375
+            ],
+            [
+              0.8,
+              0.0084375
+            ],
+            [
+              0.825,
+              0.009807357788085938
+            ],
+            [
+              0.85,
+              0.011077880859375
+            ],
+            [
+              0.875,
+              0.012213363647460935
+            ],
+            [
+              0.9,
+              0.01318359375
+            ],
+            [
+              0.925,
+              0.013963851928710939
+            ],
+            [
+              0.95,
+              0.014534912109375001
+            ],
+            [
+              0.975,
+              0.014883041381835936
+            ],
+            [
+              1,
+              0.015
+            ],
+            [
+              1.025,
+              0.01488304138183594
+            ],
+            [
+              1.05,
+              0.014534912109375001
+            ],
+            [
+              1.075,
+              0.013963851928710934
+            ],
+            [
+              1.1,
+              0.01318359375
+            ],
+            [
+              1.125,
+              0.012213363647460937
+            ],
+            [
+              1.15,
+              0.011077880859375
+            ],
+            [
+              1.175,
+              0.009807357788085936
+            ],
+            [
+              1.2000000000000002,
+              0.0084375
+            ],
+            [
+              1.225,
+              0.0070095062255859375
+            ],
+            [
+              1.25,
+              0.005570068359375
+            ],
+            [
+              1.275,
+              0.0041713714599609375
+            ],
+            [
+              1.3,
+              0.00287109375
+            ],
+            [
+              1.3250000000000002,
+              0.0017324066162109374
+            ],
+            [
+              1.35,
+              0.0008239746093749999
+            ],
+            [
+              1.375,
+              0.0002199554443359375
+            ],
+            [
+              1.4,
+              0
+            ],
+            [
+              5,
+              0
+            ]
+          ]
+        },
+        "assembly": {
+          "tyreId": "",
+          "rimId": "",
+          "brand": "unknown",
+          "rimType": "unknown",
+          "construction": "unknown",
+          "tyreBsd": null,
+          "rimBsd": null,
+          "tyreWidth": null,
+          "rimInnerWidth": null,
+          "tyreTubelessApproved": null,
+          "rimTubelessApproved": null,
+          "standardCompliant": null,
+          "widthPairApproved": null,
+          "pairApproved": null,
+          "pressure": null,
+          "tyreMaxPressure": null,
+          "rimMaxPressure": null,
+          "sources": {}
+        }
+      },
+      "massBudget": {
+        "total": 89,
+        "frameAndRider": 82,
+        "frontCarrier": 0.5,
+        "rearCarrier": 1.5,
+        "eachHub": 1.5,
+        "eachTyre": 1,
+        "eachWheelRigidSpinInertia": 0.163936
+      },
+      "summary": {
+        "acceptedTime": 1.0000000000005038,
+        "steps": 32000,
+        "peakForce": 1371.5987776228292,
+        "peakPenetration": 0.00018461013646432593,
+        "maxResidual": 1.1668208829860385,
+        "maxSampledRootWrench": 3.058175934711471e-11,
+        "maxSampledBearingMoment": 5.329070518200751e-13,
+        "maxDiagnosticDifference": 0,
+        "initialEnergy": 705.8662838200501,
+        "finalEnergy": 683.9206439147238,
+        "initialMomentum": [
+          178,
+          9.020562075079397e-17,
+          102.16592029878878
+        ]
+      },
+      "last": {
+        "frame": [
+          1.4818321186109809,
+          0.6092024964490018,
+          -0.00046239204980725993
+        ],
+        "fork": 0.033702854256829604,
+        "shock": 0.017046335856445688,
+        "rider": [
+          1.481859547179249,
+          0.5498836428377866
+        ],
+        "wheels": [
+          {
+            "hub": [
+              2.1677085734710553,
+              0.35006477181325135,
+              -2.5183479789937757
+            ],
+            "ground": [
+              0,
+              348.52316654140486,
+              -2.2947365431270255
+            ],
+            "bearing": [
+              -0.2946330574011248,
+              -319.2642671115502,
+              1.687538997430238e-14
+            ]
+          },
+          {
+            "hub": [
+              1.029024449344245,
+              0.3616315589613411,
+              -1.3294883159600428
+            ],
+            "ground": [
+              3.6513651726022402,
+              477.9800975325917,
+              1.6889201542732406
+            ],
+            "bearing": [
+              -4.35513416218488,
+              -466.70634099582327,
+              -6.661338147750939e-16
+            ]
+          }
+        ],
+        "impulse": [
+          -5.06301034635111,
+          879.9143868844877,
+          -451.3326943192234
+        ],
+        "momentumResidual": [
+          -0.00005125044394205247,
+          -0.01291398501234653,
+          -0.007544512985134588
+        ],
+        "residual": 1.1668152014866227
+      }
+    },
+    {
+      "name": "hardtail-bump",
+      "status": "completed",
+      "termination": null,
+      "scenario": {
+        "bike": {
+          "pivotX": 0.04,
+          "pivotZ": -0.235,
+          "shockArmX": -0.054607848086069846,
+          "shockArmZ": 0.18996325604011804,
+          "shockFrameX": 0.19332203501088832,
+          "shockFrameZ": -0.015623078508508775,
+          "shockTravel": 0.055,
+          "bike": "hardtail",
+          "mass": 82,
+          "rider": "compliant",
+          "riderMass": 70,
+          "riderStiffness": 12000,
+          "riderDamping": 900,
+          "riderTravel": 0.15,
+          "riderBuffer": "progressive",
+          "riderBufferWidth": 0.015,
+          "riderBufferStiffness": 300000,
+          "riderBufferDamping": 1500,
+          "forkBuffer": "progressive",
+          "forkBufferWidth": 0.02,
+          "forkBufferStiffness": 300000,
+          "forkBufferDamping": 1500,
+          "forkStiffness": 9000,
+          "forkDamping": 700,
+          "shockBuffer": "progressive",
+          "shockBufferWidth": 0.008,
+          "shockBufferStiffness": 1000000,
+          "shockBufferDamping": 3000,
+          "shockStiffness": 70000,
+          "shockDamping": 2400
+        },
+        "wheel": {
+          "nodes": 64,
+          "tyreMass": 1,
+          "hubMass": 1.5,
+          "hubInertia": 0.04,
+          "skin": 0.008,
+          "rimRadius": 0.29,
+          "foundation": 300000,
+          "extension": 500,
+          "edgeViscosity": 0.5,
+          "contactTime": 0.0005,
+          "contactImpedance": 0.99,
+          "collisionTolerance": 1e-10,
+          "collisionIterations": 100,
+          "maxPenetration": 0.0005,
+          "maxStrain": 0.25,
+          "maxDisplacement": 0.06
+        },
+        "motion": {
+          "centerX": -0.5,
+          "clearance": 0.012,
+          "velocityX": 2,
+          "velocityZ": 0,
+          "omega": 5,
+          "pitchOffset": 0,
+          "pitchVelocity": 0,
+          "forkCompression": 0.04,
+          "rearAngle": 0.08,
+          "riderOffset": -0.05,
+          "gravity": 9.80665,
+          "duration": 1,
+          "dt": 0.00003125,
+          "sampleDt": 0.005
+        },
+        "profile": {
+          "format": "bikelab-profile-1",
+          "units": "m",
+          "axes": "x-forward,z-up",
+          "solid": "below",
+          "interpolation": "linear",
+          "source": {
+            "kind": "illustrative",
+            "description": "Synthetic 15 mm polynomial bump over 0.8 m, 32 straight segments."
+          },
+          "points": [
+            [
+              -3,
+              0
+            ],
+            [
+              0.6,
+              0
+            ],
+            [
+              0.625,
+              0.0002199554443359375
+            ],
+            [
+              0.65,
+              0.0008239746093749999
+            ],
+            [
+              0.675,
+              0.0017324066162109374
+            ],
+            [
+              0.7,
+              0.00287109375
+            ],
+            [
+              0.725,
+              0.0041713714599609375
+            ],
+            [
+              0.75,
+              0.005570068359375
+            ],
+            [
+              0.775,
+              0.0070095062255859375
+            ],
+            [
+              0.8,
+              0.0084375
+            ],
+            [
+              0.825,
+              0.009807357788085938
+            ],
+            [
+              0.85,
+              0.011077880859375
+            ],
+            [
+              0.875,
+              0.012213363647460935
+            ],
+            [
+              0.9,
+              0.01318359375
+            ],
+            [
+              0.925,
+              0.013963851928710939
+            ],
+            [
+              0.95,
+              0.014534912109375001
+            ],
+            [
+              0.975,
+              0.014883041381835936
+            ],
+            [
+              1,
+              0.015
+            ],
+            [
+              1.025,
+              0.01488304138183594
+            ],
+            [
+              1.05,
+              0.014534912109375001
+            ],
+            [
+              1.075,
+              0.013963851928710934
+            ],
+            [
+              1.1,
+              0.01318359375
+            ],
+            [
+              1.125,
+              0.012213363647460937
+            ],
+            [
+              1.15,
+              0.011077880859375
+            ],
+            [
+              1.175,
+              0.009807357788085936
+            ],
+            [
+              1.2000000000000002,
+              0.0084375
+            ],
+            [
+              1.225,
+              0.0070095062255859375
+            ],
+            [
+              1.25,
+              0.005570068359375
+            ],
+            [
+              1.275,
+              0.0041713714599609375
+            ],
+            [
+              1.3,
+              0.00287109375
+            ],
+            [
+              1.3250000000000002,
+              0.0017324066162109374
+            ],
+            [
+              1.35,
+              0.0008239746093749999
+            ],
+            [
+              1.375,
+              0.0002199554443359375
+            ],
+            [
+              1.4,
+              0
+            ],
+            [
+              5,
+              0
+            ]
+          ]
+        },
+        "assembly": {
+          "tyreId": "",
+          "rimId": "",
+          "brand": "unknown",
+          "rimType": "unknown",
+          "construction": "unknown",
+          "tyreBsd": null,
+          "rimBsd": null,
+          "tyreWidth": null,
+          "rimInnerWidth": null,
+          "tyreTubelessApproved": null,
+          "rimTubelessApproved": null,
+          "standardCompliant": null,
+          "widthPairApproved": null,
+          "pairApproved": null,
+          "pressure": null,
+          "tyreMaxPressure": null,
+          "rimMaxPressure": null,
+          "sources": {}
+        }
+      },
+      "massBudget": {
+        "total": 89,
+        "frameAndRider": 82,
+        "frontCarrier": 0.5,
+        "rearCarrier": 1.5,
+        "eachHub": 1.5,
+        "eachTyre": 1,
+        "eachWheelRigidSpinInertia": 0.163936
+      },
+      "summary": {
+        "acceptedTime": 1.0000000000005038,
+        "steps": 32000,
+        "peakForce": 1276.9275293083708,
+        "peakPenetration": 0.00016669978038913284,
+        "maxResidual": 1.1743637987864677,
+        "maxSampledRootWrench": 6.934897101018578e-12,
+        "maxSampledBearingMoment": 4.3010039973978564e-13,
+        "maxDiagnosticDifference": 0,
+        "initialEnergy": 716.1825003441846,
+        "finalEnergy": 694.7853375007326,
+        "initialMomentum": [
+          178,
+          2.1510571102112408e-16,
+          106.0346632573172
+        ]
+      },
+      "last": {
+        "frame": [
+          1.4836014002510856,
+          0.6350190714946642,
+          0.037299306213425074
+        ],
+        "fork": 0.033674894507071826,
+        "shock": 0,
+        "rider": [
+          1.4814865196601812,
+          0.5783451022727004
+        ],
+        "wheels": [
+          {
+            "hub": [
+              2.1592166098666836,
+              0.3501466150625767,
+              -2.4735313494334625
+            ],
+            "ground": [
+              -1.5114380857994547e-9,
+              341.96834189698734,
+              -0.18133548882426842
+            ],
+            "bearing": [
+              0.540015706985843,
+              -314.2490657272675,
+              -4.4853010194856324e-14
+            ]
+          },
+          {
+            "hub": [
+              1.023100101713893,
+              0.3620015738034732,
+              -1.388718120607718
+            ],
+            "ground": [
+              3.803306598988783,
+              470.1477855136268,
+              -0.9816055186771386
+            ],
+            "bearing": [
+              -1.0364019251916696,
+              -455.160594529066,
+              6.661338147750939e-14
+            ]
+          }
+        ],
+        "impulse": [
+          -4.706109828842531,
+          876.8210305809259,
+          -444.95551779130096
+        ],
+        "momentumResidual": [
+          -0.00007079919771246779,
+          -0.012691801685605242,
+          -0.008004076842439645
+        ],
+        "residual": 1.1743637987864677
+      }
+    },
+    {
+      "name": "flat-dt-0.00003125",
+      "status": "completed",
+      "termination": null,
+      "scenario": {
+        "bike": {
+          "pivotX": 0.04,
+          "pivotZ": -0.235,
+          "shockArmX": -0.054607848086069846,
+          "shockArmZ": 0.18996325604011804,
+          "shockFrameX": 0.19332203501088832,
+          "shockFrameZ": -0.015623078508508775,
+          "shockTravel": 0.055,
+          "bike": "full",
+          "mass": 82,
+          "rider": "compliant",
+          "riderMass": 70,
+          "riderStiffness": 12000,
+          "riderDamping": 900,
+          "riderTravel": 0.15,
+          "riderBuffer": "progressive",
+          "riderBufferWidth": 0.015,
+          "riderBufferStiffness": 300000,
+          "riderBufferDamping": 1500,
+          "forkBuffer": "progressive",
+          "forkBufferWidth": 0.02,
+          "forkBufferStiffness": 300000,
+          "forkBufferDamping": 1500,
+          "forkStiffness": 9000,
+          "forkDamping": 700,
+          "shockBuffer": "progressive",
+          "shockBufferWidth": 0.008,
+          "shockBufferStiffness": 1000000,
+          "shockBufferDamping": 3000,
+          "shockStiffness": 70000,
+          "shockDamping": 2400
+        },
+        "wheel": {
+          "nodes": 64,
+          "tyreMass": 1,
+          "hubMass": 1.5,
+          "hubInertia": 0.04,
+          "skin": 0.008,
+          "rimRadius": 0.29,
+          "foundation": 300000,
+          "extension": 500,
+          "edgeViscosity": 0.5,
+          "contactTime": 0.0005,
+          "contactImpedance": 0.99,
+          "collisionTolerance": 1e-10,
+          "collisionIterations": 100,
+          "maxPenetration": 0.0005,
+          "maxStrain": 0.25,
+          "maxDisplacement": 0.06
+        },
+        "motion": {
+          "centerX": -0.5,
+          "clearance": 0.012,
+          "velocityX": 2,
+          "velocityZ": 0,
+          "omega": 5,
+          "pitchOffset": 0,
+          "pitchVelocity": 0,
+          "forkCompression": 0.04,
+          "rearAngle": 0.08,
+          "riderOffset": -0.05,
+          "gravity": 9.80665,
+          "duration": 0.15,
+          "dt": 0.00003125,
+          "sampleDt": 0.005
+        },
+        "profile": {
+          "format": "bikelab-profile-1",
+          "units": "m",
+          "axes": "x-forward,z-up",
+          "solid": "below",
+          "interpolation": "linear",
+          "source": {
+            "kind": "illustrative",
+            "description": "Synthetic flat rigid trail."
+          },
+          "points": [
+            [
+              -3,
+              0
+            ],
+            [
+              5,
+              0
+            ]
+          ]
+        },
+        "assembly": {
+          "tyreId": "",
+          "rimId": "",
+          "brand": "unknown",
+          "rimType": "unknown",
+          "construction": "unknown",
+          "tyreBsd": null,
+          "rimBsd": null,
+          "tyreWidth": null,
+          "rimInnerWidth": null,
+          "tyreTubelessApproved": null,
+          "rimTubelessApproved": null,
+          "standardCompliant": null,
+          "widthPairApproved": null,
+          "pairApproved": null,
+          "pressure": null,
+          "tyreMaxPressure": null,
+          "rimMaxPressure": null,
+          "sources": {}
+        }
+      },
+      "massBudget": {
+        "total": 89,
+        "frameAndRider": 82,
+        "frontCarrier": 0.5,
+        "rearCarrier": 1.5,
+        "eachHub": 1.5,
+        "eachTyre": 1,
+        "eachWheelRigidSpinInertia": 0.163936
+      },
+      "summary": {
+        "acceptedTime": 0.14999999999999805,
+        "steps": 4800,
+        "peakForce": 1371.598794709623,
+        "peakPenetration": 0.0001846101235280801,
+        "maxResidual": 0.21896337906501295,
+        "maxSampledRootWrench": 7.048583938740194e-12,
+        "maxSampledBearingMoment": 2.9909408283401717e-13,
+        "maxDiagnosticDifference": 0,
+        "initialEnergy": 705.8662838200501,
+        "finalEnergy": 690.1525444314295,
+        "initialMomentum": [
+          178,
+          9.020562075079397e-17,
+          102.16592029878878
+        ]
+      },
+      "last": {
+        "frame": [
+          -0.20114008830579788,
+          0.5977409230231282,
+          -0.01908257362330185
+        ],
+        "fork": 0.03161901791115846,
+        "shock": 0.018528068469202574,
+        "rider": [
+          -0.20010705991925049,
+          0.5436128471504429
+        ],
+        "wheels": [
+          {
+            "hub": [
+              0.4903589262038072,
+              0.3495470773388514,
+              0.7435778014920584
+            ],
+            "ground": [
+              4.955609256285243e-10,
+              319.3436302154045,
+              3.111599113603102
+            ],
+            "bearing": [
+              -1.8571887954547335,
+              -341.7942158698806,
+              -1.4210854715202004e-13
+            ]
+          },
+          {
+            "hub": [
+              -0.6494092576931441,
+              0.3454815175322423,
+              0.8214096200858259
+            ],
+            "ground": [
+              6.689901965728495e-10,
+              552.236921248689,
+              0.4633868006059396
+            ],
+            "bearing": [
+              3.17403685389485,
+              -576.216955729648,
+              -4.707345624410664e-14
+            ]
+          }
+        ],
+        "impulse": [
+          -1.930940393045792e-10,
+          114.15849226202934,
+          36.35395505131661
+        ],
+        "momentumResidual": [
+          0.00003601606379938082,
+          -0.013619099200155915,
+          -0.0072818515003945095
+        ],
+        "residual": 0.21894526571674078
+      }
+    },
+    {
+      "name": "flat-dt-0.000015625",
+      "status": "completed",
+      "termination": null,
+      "scenario": {
+        "bike": {
+          "pivotX": 0.04,
+          "pivotZ": -0.235,
+          "shockArmX": -0.054607848086069846,
+          "shockArmZ": 0.18996325604011804,
+          "shockFrameX": 0.19332203501088832,
+          "shockFrameZ": -0.015623078508508775,
+          "shockTravel": 0.055,
+          "bike": "full",
+          "mass": 82,
+          "rider": "compliant",
+          "riderMass": 70,
+          "riderStiffness": 12000,
+          "riderDamping": 900,
+          "riderTravel": 0.15,
+          "riderBuffer": "progressive",
+          "riderBufferWidth": 0.015,
+          "riderBufferStiffness": 300000,
+          "riderBufferDamping": 1500,
+          "forkBuffer": "progressive",
+          "forkBufferWidth": 0.02,
+          "forkBufferStiffness": 300000,
+          "forkBufferDamping": 1500,
+          "forkStiffness": 9000,
+          "forkDamping": 700,
+          "shockBuffer": "progressive",
+          "shockBufferWidth": 0.008,
+          "shockBufferStiffness": 1000000,
+          "shockBufferDamping": 3000,
+          "shockStiffness": 70000,
+          "shockDamping": 2400
+        },
+        "wheel": {
+          "nodes": 64,
+          "tyreMass": 1,
+          "hubMass": 1.5,
+          "hubInertia": 0.04,
+          "skin": 0.008,
+          "rimRadius": 0.29,
+          "foundation": 300000,
+          "extension": 500,
+          "edgeViscosity": 0.5,
+          "contactTime": 0.0005,
+          "contactImpedance": 0.99,
+          "collisionTolerance": 1e-10,
+          "collisionIterations": 100,
+          "maxPenetration": 0.0005,
+          "maxStrain": 0.25,
+          "maxDisplacement": 0.06
+        },
+        "motion": {
+          "centerX": -0.5,
+          "clearance": 0.012,
+          "velocityX": 2,
+          "velocityZ": 0,
+          "omega": 5,
+          "pitchOffset": 0,
+          "pitchVelocity": 0,
+          "forkCompression": 0.04,
+          "rearAngle": 0.08,
+          "riderOffset": -0.05,
+          "gravity": 9.80665,
+          "duration": 0.15,
+          "dt": 0.000015625,
+          "sampleDt": 0.005
+        },
+        "profile": {
+          "format": "bikelab-profile-1",
+          "units": "m",
+          "axes": "x-forward,z-up",
+          "solid": "below",
+          "interpolation": "linear",
+          "source": {
+            "kind": "illustrative",
+            "description": "Synthetic flat rigid trail."
+          },
+          "points": [
+            [
+              -3,
+              0
+            ],
+            [
+              5,
+              0
+            ]
+          ]
+        },
+        "assembly": {
+          "tyreId": "",
+          "rimId": "",
+          "brand": "unknown",
+          "rimType": "unknown",
+          "construction": "unknown",
+          "tyreBsd": null,
+          "rimBsd": null,
+          "tyreWidth": null,
+          "rimInnerWidth": null,
+          "tyreTubelessApproved": null,
+          "rimTubelessApproved": null,
+          "standardCompliant": null,
+          "widthPairApproved": null,
+          "pairApproved": null,
+          "pressure": null,
+          "tyreMaxPressure": null,
+          "rimMaxPressure": null,
+          "sources": {}
+        }
+      },
+      "massBudget": {
+        "total": 89,
+        "frameAndRider": 82,
+        "frontCarrier": 0.5,
+        "rearCarrier": 1.5,
+        "eachHub": 1.5,
+        "eachTyre": 1,
+        "eachWheelRigidSpinInertia": 0.163936
+      },
+      "summary": {
+        "acceptedTime": 0.15000000000000185,
+        "steps": 9600,
+        "peakForce": 1361.4191148307623,
+        "peakPenetration": 0.00016797558330945012,
+        "maxResidual": 0.08472502720734182,
+        "maxSampledRootWrench": 2.9558577807620168e-12,
+        "maxSampledBearingMoment": 3.517186542012496e-13,
+        "maxDiagnosticDifference": 0,
+        "initialEnergy": 705.8662838200501,
+        "finalEnergy": 690.3123711712872,
+        "initialMomentum": [
+          178,
+          9.020562075079397e-17,
+          102.16592029878878
+        ]
+      },
+      "last": {
+        "frame": [
+          -0.20113979970956317,
+          0.5977362820502622,
+          -0.019076640484245917
+        ],
+        "fork": 0.03161202746155541,
+        "shock": 0.01853074434414595,
+        "rider": [
+          -0.20010722479674375,
+          0.5436151356656234
+        ],
+        "wheels": [
+          {
+            "hub": [
+              0.4903608168260922,
+              0.3495320556189421,
+              0.749011235487496
+            ],
+            "ground": [
+              -9.509335541224573e-10,
+              367.0747615453906,
+              -3.9026778857113134
+            ],
+            "bearing": [
+              0.796509543379081,
+              -340.4710516346508,
+              -2.34035013590983e-13
+            ]
+          },
+          {
+            "hub": [
+              -0.6494107106232303,
+              0.3454862167970275,
+              0.8199654719681324
+            ],
+            "ground": [
+              -3.969944373238832e-10,
+              611.2953082017261,
+              2.8548143058476874
+            ],
+            "bearing": [
+              -2.2394826172361912,
+              -570.741397049296,
+              1.1590728377086634e-13
+            ]
+          }
+        ],
+        "impulse": [
+          -1.666849463631451e-9,
+          114.14434468743036,
+          36.37993599478066
+        ],
+        "momentumResidual": [
+          0.000020389904337086604,
+          -0.0076429848792827215,
+          -0.003720778231624422
+        ],
+        "residual": 0.0845854938349076
+      }
+    },
+    {
+      "name": "flat-dt-0.0000078125",
+      "status": "completed",
+      "termination": null,
+      "scenario": {
+        "bike": {
+          "pivotX": 0.04,
+          "pivotZ": -0.235,
+          "shockArmX": -0.054607848086069846,
+          "shockArmZ": 0.18996325604011804,
+          "shockFrameX": 0.19332203501088832,
+          "shockFrameZ": -0.015623078508508775,
+          "shockTravel": 0.055,
+          "bike": "full",
+          "mass": 82,
+          "rider": "compliant",
+          "riderMass": 70,
+          "riderStiffness": 12000,
+          "riderDamping": 900,
+          "riderTravel": 0.15,
+          "riderBuffer": "progressive",
+          "riderBufferWidth": 0.015,
+          "riderBufferStiffness": 300000,
+          "riderBufferDamping": 1500,
+          "forkBuffer": "progressive",
+          "forkBufferWidth": 0.02,
+          "forkBufferStiffness": 300000,
+          "forkBufferDamping": 1500,
+          "forkStiffness": 9000,
+          "forkDamping": 700,
+          "shockBuffer": "progressive",
+          "shockBufferWidth": 0.008,
+          "shockBufferStiffness": 1000000,
+          "shockBufferDamping": 3000,
+          "shockStiffness": 70000,
+          "shockDamping": 2400
+        },
+        "wheel": {
+          "nodes": 64,
+          "tyreMass": 1,
+          "hubMass": 1.5,
+          "hubInertia": 0.04,
+          "skin": 0.008,
+          "rimRadius": 0.29,
+          "foundation": 300000,
+          "extension": 500,
+          "edgeViscosity": 0.5,
+          "contactTime": 0.0005,
+          "contactImpedance": 0.99,
+          "collisionTolerance": 1e-10,
+          "collisionIterations": 100,
+          "maxPenetration": 0.0005,
+          "maxStrain": 0.25,
+          "maxDisplacement": 0.06
+        },
+        "motion": {
+          "centerX": -0.5,
+          "clearance": 0.012,
+          "velocityX": 2,
+          "velocityZ": 0,
+          "omega": 5,
+          "pitchOffset": 0,
+          "pitchVelocity": 0,
+          "forkCompression": 0.04,
+          "rearAngle": 0.08,
+          "riderOffset": -0.05,
+          "gravity": 9.80665,
+          "duration": 0.15,
+          "dt": 0.0000078125,
+          "sampleDt": 0.005
+        },
+        "profile": {
+          "format": "bikelab-profile-1",
+          "units": "m",
+          "axes": "x-forward,z-up",
+          "solid": "below",
+          "interpolation": "linear",
+          "source": {
+            "kind": "illustrative",
+            "description": "Synthetic flat rigid trail."
+          },
+          "points": [
+            [
+              -3,
+              0
+            ],
+            [
+              5,
+              0
+            ]
+          ]
+        },
+        "assembly": {
+          "tyreId": "",
+          "rimId": "",
+          "brand": "unknown",
+          "rimType": "unknown",
+          "construction": "unknown",
+          "tyreBsd": null,
+          "rimBsd": null,
+          "tyreWidth": null,
+          "rimInnerWidth": null,
+          "tyreTubelessApproved": null,
+          "rimTubelessApproved": null,
+          "standardCompliant": null,
+          "widthPairApproved": null,
+          "pairApproved": null,
+          "pressure": null,
+          "tyreMaxPressure": null,
+          "rimMaxPressure": null,
+          "sources": {}
+        }
+      },
+      "massBudget": {
+        "total": 89,
+        "frameAndRider": 82,
+        "frontCarrier": 0.5,
+        "rearCarrier": 1.5,
+        "eachHub": 1.5,
+        "eachTyre": 1,
+        "eachWheelRigidSpinInertia": 0.163936
+      },
+      "summary": {
+        "acceptedTime": 0.15000000000000377,
+        "steps": 19200,
+        "peakForce": 1358.2220588040677,
+        "peakPenetration": 0.00017212641740010567,
+        "maxResidual": 0.03709777033256284,
+        "maxSampledRootWrench": 3.510081114654895e-12,
+        "maxSampledBearingMoment": 3.6548541970660153e-13,
+        "maxDiagnosticDifference": 0,
+        "initialEnergy": 705.8662838200501,
+        "finalEnergy": 690.5084381736057,
+        "initialMomentum": [
+          178,
+          9.020562075079397e-17,
+          102.16592029878878
+        ]
+      },
+      "last": {
+        "frame": [
+          -0.2011399051440222,
+          0.5977301720125155,
+          -0.01907739433140557
+        ],
+        "fork": 0.031605311989365246,
+        "shock": 0.018527216596081336,
+        "rider": [
+          -0.2001073610049809,
+          0.5436127776611013
+        ],
+        "wheels": [
+          {
+            "hub": [
+              0.49036385216764267,
+              0.34952043582972064,
+              0.752832424465322
+            ],
+            "ground": [
+              6.22804918748443e-10,
+              375.04414240881965,
+              -1.7814053809047028
+            ],
+            "bearing": [
+              0.9504343461315475,
+              -341.5969965290834,
+              5.861977570020827e-14
+            ]
+          },
+          {
+            "hub": [
+              -0.6494103030829292,
+              0.34547096145507533,
+              0.8290222019640894
+            ],
+            "ground": [
+              8.322444955410901e-10,
+              610.170547907527,
+              2.7289148358395012
+            ],
+            "bearing": [
+              -2.787574883725832,
+              -573.0155354372014,
+              -1.509903313490213e-14
+            ]
+          }
+        ],
+        "impulse": [
+          -9.172018629397182e-9,
+          114.14324607615369,
+          36.4133719567927
+        ],
+        "momentumResidual": [
+          0.000011649165904721667,
+          -0.003848297530311129,
+          -0.0018496097309963488
+        ],
+        "residual": 0.037082265722279906
+      }
+    },
+    {
+      "name": "bump-mesh-64-16",
+      "status": "completed",
+      "termination": null,
+      "scenario": {
+        "bike": {
+          "pivotX": 0.04,
+          "pivotZ": -0.235,
+          "shockArmX": -0.054607848086069846,
+          "shockArmZ": 0.18996325604011804,
+          "shockFrameX": 0.19332203501088832,
+          "shockFrameZ": -0.015623078508508775,
+          "shockTravel": 0.055,
+          "bike": "full",
+          "mass": 82,
+          "rider": "compliant",
+          "riderMass": 70,
+          "riderStiffness": 12000,
+          "riderDamping": 900,
+          "riderTravel": 0.15,
+          "riderBuffer": "progressive",
+          "riderBufferWidth": 0.015,
+          "riderBufferStiffness": 300000,
+          "riderBufferDamping": 1500,
+          "forkBuffer": "progressive",
+          "forkBufferWidth": 0.02,
+          "forkBufferStiffness": 300000,
+          "forkBufferDamping": 1500,
+          "forkStiffness": 9000,
+          "forkDamping": 700,
+          "shockBuffer": "progressive",
+          "shockBufferWidth": 0.008,
+          "shockBufferStiffness": 1000000,
+          "shockBufferDamping": 3000,
+          "shockStiffness": 70000,
+          "shockDamping": 2400
+        },
+        "wheel": {
+          "nodes": 64,
+          "tyreMass": 1,
+          "hubMass": 1.5,
+          "hubInertia": 0.04,
+          "skin": 0.008,
+          "rimRadius": 0.29,
+          "foundation": 300000,
+          "extension": 500,
+          "edgeViscosity": 0.5,
+          "contactTime": 0.0005,
+          "contactImpedance": 0.99,
+          "collisionTolerance": 1e-10,
+          "collisionIterations": 100,
+          "maxPenetration": 0.0005,
+          "maxStrain": 0.25,
+          "maxDisplacement": 0.06
+        },
+        "motion": {
+          "centerX": -0.5,
+          "clearance": 0.012,
+          "velocityX": 2,
+          "velocityZ": 0,
+          "omega": 5,
+          "pitchOffset": 0,
+          "pitchVelocity": 0,
+          "forkCompression": 0.04,
+          "rearAngle": 0.08,
+          "riderOffset": -0.05,
+          "gravity": 9.80665,
+          "duration": 0.4,
+          "dt": 0.000015625,
+          "sampleDt": 0.005
+        },
+        "profile": {
+          "format": "bikelab-profile-1",
+          "units": "m",
+          "axes": "x-forward,z-up",
+          "solid": "below",
+          "interpolation": "linear",
+          "source": {
+            "kind": "illustrative",
+            "description": "Synthetic 15 mm polynomial bump over 0.8 m, 16 straight segments."
+          },
+          "points": [
+            [
+              -3,
+              0
+            ],
+            [
+              0.6,
+              0
+            ],
+            [
+              0.65,
+              0.0008239746093749999
+            ],
+            [
+              0.7,
+              0.00287109375
+            ],
+            [
+              0.75,
+              0.005570068359375
+            ],
+            [
+              0.8,
+              0.0084375
+            ],
+            [
+              0.85,
+              0.011077880859375
+            ],
+            [
+              0.9,
+              0.01318359375
+            ],
+            [
+              0.95,
+              0.014534912109375001
+            ],
+            [
+              1,
+              0.015
+            ],
+            [
+              1.05,
+              0.014534912109375001
+            ],
+            [
+              1.1,
+              0.01318359375
+            ],
+            [
+              1.15,
+              0.011077880859375
+            ],
+            [
+              1.2000000000000002,
+              0.0084375
+            ],
+            [
+              1.25,
+              0.005570068359375
+            ],
+            [
+              1.3,
+              0.00287109375
+            ],
+            [
+              1.35,
+              0.0008239746093749999
+            ],
+            [
+              1.4,
+              0
+            ],
+            [
+              5,
+              0
+            ]
+          ]
+        },
+        "assembly": {
+          "tyreId": "",
+          "rimId": "",
+          "brand": "unknown",
+          "rimType": "unknown",
+          "construction": "unknown",
+          "tyreBsd": null,
+          "rimBsd": null,
+          "tyreWidth": null,
+          "rimInnerWidth": null,
+          "tyreTubelessApproved": null,
+          "rimTubelessApproved": null,
+          "standardCompliant": null,
+          "widthPairApproved": null,
+          "pairApproved": null,
+          "pressure": null,
+          "tyreMaxPressure": null,
+          "rimMaxPressure": null,
+          "sources": {}
+        }
+      },
+      "massBudget": {
+        "total": 89,
+        "frameAndRider": 82,
+        "frontCarrier": 0.5,
+        "rearCarrier": 1.5,
+        "eachHub": 1.5,
+        "eachTyre": 1,
+        "eachWheelRigidSpinInertia": 0.163936
+      },
+      "summary": {
+        "acceptedTime": 0.40000000000012975,
+        "steps": 25600,
+        "peakForce": 1361.4191114990138,
+        "peakPenetration": 0.00016797558408888566,
+        "maxResidual": 0.2272104049964515,
+        "maxSampledRootWrench": 1.0913936421275139e-11,
+        "maxSampledBearingMoment": 3.601563491884008e-13,
+        "maxDiagnosticDifference": 0,
+        "initialEnergy": 705.8662838200501,
+        "finalEnergy": 688.6585725681861,
+        "initialMomentum": [
+          178,
+          9.020562075079397e-17,
+          102.16592029878878
+        ]
+      },
+      "last": {
+        "frame": [
+          0.2942880349324502,
+          0.6034580411643085,
+          -0.02907668647475595
+        ],
+        "fork": 0.034478189734456564,
+        "shock": 0.01846654115532345,
+        "rider": [
+          0.2961064429388226,
+          0.5409373162137279
+        ],
+        "wheels": [
+          {
+            "hub": [
+              0.9869497885204666,
+              0.3647424594399337,
+              1.9421515804453204
+            ],
+            "ground": [
+              -0.49992219074096056,
+              334.9827962427376,
+              0.7188796880762369
+            ],
+            "bearing": [
+              -1.8368169795755156,
+              -312.14862704843375,
+              -1.5432100042289676e-13
+            ]
+          },
+          {
+            "hub": [
+              -0.15143048995850322,
+              0.3465777103672631,
+              2.1777376344965065
+            ],
+            "ground": [
+              -3.0920546123525128e-9,
+              543.8052734015973,
+              1.2156604971173364
+            ],
+            "bearing": [
+              1.5610794691016618,
+              -510.146088972236,
+              -2.637889906509372e-13
+            ]
+          }
+        ],
+        "impulse": [
+          -3.0582867721986253,
+          359.7823455318179,
+          24.08354023405848
+        ],
+        "momentumResidual": [
+          0.00000510182250712532,
+          -0.0068651139138751205,
+          -0.0035019457136371557
+        ],
+        "residual": 0.22720197491474758
+      }
+    },
+    {
+      "name": "bump-mesh-64-32",
+      "status": "completed",
+      "termination": null,
+      "scenario": {
+        "bike": {
+          "pivotX": 0.04,
+          "pivotZ": -0.235,
+          "shockArmX": -0.054607848086069846,
+          "shockArmZ": 0.18996325604011804,
+          "shockFrameX": 0.19332203501088832,
+          "shockFrameZ": -0.015623078508508775,
+          "shockTravel": 0.055,
+          "bike": "full",
+          "mass": 82,
+          "rider": "compliant",
+          "riderMass": 70,
+          "riderStiffness": 12000,
+          "riderDamping": 900,
+          "riderTravel": 0.15,
+          "riderBuffer": "progressive",
+          "riderBufferWidth": 0.015,
+          "riderBufferStiffness": 300000,
+          "riderBufferDamping": 1500,
+          "forkBuffer": "progressive",
+          "forkBufferWidth": 0.02,
+          "forkBufferStiffness": 300000,
+          "forkBufferDamping": 1500,
+          "forkStiffness": 9000,
+          "forkDamping": 700,
+          "shockBuffer": "progressive",
+          "shockBufferWidth": 0.008,
+          "shockBufferStiffness": 1000000,
+          "shockBufferDamping": 3000,
+          "shockStiffness": 70000,
+          "shockDamping": 2400
+        },
+        "wheel": {
+          "nodes": 64,
+          "tyreMass": 1,
+          "hubMass": 1.5,
+          "hubInertia": 0.04,
+          "skin": 0.008,
+          "rimRadius": 0.29,
+          "foundation": 300000,
+          "extension": 500,
+          "edgeViscosity": 0.5,
+          "contactTime": 0.0005,
+          "contactImpedance": 0.99,
+          "collisionTolerance": 1e-10,
+          "collisionIterations": 100,
+          "maxPenetration": 0.0005,
+          "maxStrain": 0.25,
+          "maxDisplacement": 0.06
+        },
+        "motion": {
+          "centerX": -0.5,
+          "clearance": 0.012,
+          "velocityX": 2,
+          "velocityZ": 0,
+          "omega": 5,
+          "pitchOffset": 0,
+          "pitchVelocity": 0,
+          "forkCompression": 0.04,
+          "rearAngle": 0.08,
+          "riderOffset": -0.05,
+          "gravity": 9.80665,
+          "duration": 0.4,
+          "dt": 0.000015625,
+          "sampleDt": 0.005
+        },
+        "profile": {
+          "format": "bikelab-profile-1",
+          "units": "m",
+          "axes": "x-forward,z-up",
+          "solid": "below",
+          "interpolation": "linear",
+          "source": {
+            "kind": "illustrative",
+            "description": "Synthetic 15 mm polynomial bump over 0.8 m, 32 straight segments."
+          },
+          "points": [
+            [
+              -3,
+              0
+            ],
+            [
+              0.6,
+              0
+            ],
+            [
+              0.625,
+              0.0002199554443359375
+            ],
+            [
+              0.65,
+              0.0008239746093749999
+            ],
+            [
+              0.675,
+              0.0017324066162109374
+            ],
+            [
+              0.7,
+              0.00287109375
+            ],
+            [
+              0.725,
+              0.0041713714599609375
+            ],
+            [
+              0.75,
+              0.005570068359375
+            ],
+            [
+              0.775,
+              0.0070095062255859375
+            ],
+            [
+              0.8,
+              0.0084375
+            ],
+            [
+              0.825,
+              0.009807357788085938
+            ],
+            [
+              0.85,
+              0.011077880859375
+            ],
+            [
+              0.875,
+              0.012213363647460935
+            ],
+            [
+              0.9,
+              0.01318359375
+            ],
+            [
+              0.925,
+              0.013963851928710939
+            ],
+            [
+              0.95,
+              0.014534912109375001
+            ],
+            [
+              0.975,
+              0.014883041381835936
+            ],
+            [
+              1,
+              0.015
+            ],
+            [
+              1.025,
+              0.01488304138183594
+            ],
+            [
+              1.05,
+              0.014534912109375001
+            ],
+            [
+              1.075,
+              0.013963851928710934
+            ],
+            [
+              1.1,
+              0.01318359375
+            ],
+            [
+              1.125,
+              0.012213363647460937
+            ],
+            [
+              1.15,
+              0.011077880859375
+            ],
+            [
+              1.175,
+              0.009807357788085936
+            ],
+            [
+              1.2000000000000002,
+              0.0084375
+            ],
+            [
+              1.225,
+              0.0070095062255859375
+            ],
+            [
+              1.25,
+              0.005570068359375
+            ],
+            [
+              1.275,
+              0.0041713714599609375
+            ],
+            [
+              1.3,
+              0.00287109375
+            ],
+            [
+              1.3250000000000002,
+              0.0017324066162109374
+            ],
+            [
+              1.35,
+              0.0008239746093749999
+            ],
+            [
+              1.375,
+              0.0002199554443359375
+            ],
+            [
+              1.4,
+              0
+            ],
+            [
+              5,
+              0
+            ]
+          ]
+        },
+        "assembly": {
+          "tyreId": "",
+          "rimId": "",
+          "brand": "unknown",
+          "rimType": "unknown",
+          "construction": "unknown",
+          "tyreBsd": null,
+          "rimBsd": null,
+          "tyreWidth": null,
+          "rimInnerWidth": null,
+          "tyreTubelessApproved": null,
+          "rimTubelessApproved": null,
+          "standardCompliant": null,
+          "widthPairApproved": null,
+          "pairApproved": null,
+          "pressure": null,
+          "tyreMaxPressure": null,
+          "rimMaxPressure": null,
+          "sources": {}
+        }
+      },
+      "massBudget": {
+        "total": 89,
+        "frameAndRider": 82,
+        "frontCarrier": 0.5,
+        "rearCarrier": 1.5,
+        "eachHub": 1.5,
+        "eachTyre": 1,
+        "eachWheelRigidSpinInertia": 0.163936
+      },
+      "summary": {
+        "acceptedTime": 0.40000000000012975,
+        "steps": 25600,
+        "peakForce": 1361.4191114990138,
+        "peakPenetration": 0.00016797558408888566,
+        "maxResidual": 0.22284961153060123,
+        "maxSampledRootWrench": 5.343281372915953e-12,
+        "maxSampledBearingMoment": 4.0589753780295723e-13,
+        "maxDiagnosticDifference": 0,
+        "initialEnergy": 705.8662838200501,
+        "finalEnergy": 688.6902911970633,
+        "initialMomentum": [
+          178,
+          9.020562075079397e-17,
+          102.16592029878878
+        ]
+      },
+      "last": {
+        "frame": [
+          0.2943811736718842,
+          0.6034394984215062,
+          -0.029071772640465142
+        ],
+        "fork": 0.034502705519024617,
+        "shock": 0.018472522694177734,
+        "rider": [
+          0.2961996926845083,
+          0.5409043827188992
+        ],
+        "wheels": [
+          {
+            "hub": [
+              0.9870307519522066,
+              0.36474242136780266,
+              1.903236003756929
+            ],
+            "ground": [
+              -1.269803025583542,
+              328.0687211411852,
+              -0.941632741621865
+            ],
+            "bearing": [
+              0.14046095341971165,
+              -306.5031983513634,
+              3.0242475190789264e-13
+            ]
+          },
+          {
+            "hub": [
+              -0.1513393145672174,
+              0.34657628512949434,
+              2.182845105688538
+            ],
+            "ground": [
+              -2.700431878110976e-9,
+              539.5921584330764,
+              1.6781426454386343
+            ],
+            "bearing": [
+              -1.9494227033683096,
+              -510.31155567771043,
+              3.9968028886505635e-14
+            ]
+          }
+        ],
+        "impulse": [
+          -2.9968119896529624,
+          359.80576535119525,
+          24.047103791905602
+        ],
+        "momentumResidual": [
+          0.00000997007057268462,
+          -0.006778507513672594,
+          -0.003539047047880217
+        ],
+        "residual": 0.22284961153060123
+      }
+    },
+    {
+      "name": "bump-mesh-64-64",
+      "status": "completed",
+      "termination": null,
+      "scenario": {
+        "bike": {
+          "pivotX": 0.04,
+          "pivotZ": -0.235,
+          "shockArmX": -0.054607848086069846,
+          "shockArmZ": 0.18996325604011804,
+          "shockFrameX": 0.19332203501088832,
+          "shockFrameZ": -0.015623078508508775,
+          "shockTravel": 0.055,
+          "bike": "full",
+          "mass": 82,
+          "rider": "compliant",
+          "riderMass": 70,
+          "riderStiffness": 12000,
+          "riderDamping": 900,
+          "riderTravel": 0.15,
+          "riderBuffer": "progressive",
+          "riderBufferWidth": 0.015,
+          "riderBufferStiffness": 300000,
+          "riderBufferDamping": 1500,
+          "forkBuffer": "progressive",
+          "forkBufferWidth": 0.02,
+          "forkBufferStiffness": 300000,
+          "forkBufferDamping": 1500,
+          "forkStiffness": 9000,
+          "forkDamping": 700,
+          "shockBuffer": "progressive",
+          "shockBufferWidth": 0.008,
+          "shockBufferStiffness": 1000000,
+          "shockBufferDamping": 3000,
+          "shockStiffness": 70000,
+          "shockDamping": 2400
+        },
+        "wheel": {
+          "nodes": 64,
+          "tyreMass": 1,
+          "hubMass": 1.5,
+          "hubInertia": 0.04,
+          "skin": 0.008,
+          "rimRadius": 0.29,
+          "foundation": 300000,
+          "extension": 500,
+          "edgeViscosity": 0.5,
+          "contactTime": 0.0005,
+          "contactImpedance": 0.99,
+          "collisionTolerance": 1e-10,
+          "collisionIterations": 100,
+          "maxPenetration": 0.0005,
+          "maxStrain": 0.25,
+          "maxDisplacement": 0.06
+        },
+        "motion": {
+          "centerX": -0.5,
+          "clearance": 0.012,
+          "velocityX": 2,
+          "velocityZ": 0,
+          "omega": 5,
+          "pitchOffset": 0,
+          "pitchVelocity": 0,
+          "forkCompression": 0.04,
+          "rearAngle": 0.08,
+          "riderOffset": -0.05,
+          "gravity": 9.80665,
+          "duration": 0.4,
+          "dt": 0.000015625,
+          "sampleDt": 0.005
+        },
+        "profile": {
+          "format": "bikelab-profile-1",
+          "units": "m",
+          "axes": "x-forward,z-up",
+          "solid": "below",
+          "interpolation": "linear",
+          "source": {
+            "kind": "illustrative",
+            "description": "Synthetic 15 mm polynomial bump over 0.8 m, 64 straight segments."
+          },
+          "points": [
+            [
+              -3,
+              0
+            ],
+            [
+              0.6,
+              0
+            ],
+            [
+              0.6124999999999999,
+              0.00005677700042724609
+            ],
+            [
+              0.625,
+              0.0002199554443359375
+            ],
+            [
+              0.6375,
+              0.0004790639877319337
+            ],
+            [
+              0.65,
+              0.0008239746093749999
+            ],
+            [
+              0.6625,
+              0.0012449026107788086
+            ],
+            [
+              0.675,
+              0.0017324066162109374
+            ],
+            [
+              0.6875,
+              0.002277388572692871
+            ],
+            [
+              0.7,
+              0.00287109375
+            ],
+            [
+              0.7125,
+              0.003505110740661621
+            ],
+            [
+              0.725,
+              0.0041713714599609375
+            ],
+            [
+              0.7375,
+              0.004862151145935058
+            ],
+            [
+              0.75,
+              0.005570068359375
+            ],
+            [
+              0.7625,
+              0.0062880849838256835
+            ],
+            [
+              0.775,
+              0.0070095062255859375
+            ],
+            [
+              0.7875,
+              0.007727980613708494
+            ],
+            [
+              0.8,
+              0.0084375
+            ],
+            [
+              0.8125,
+              0.009132399559020996
+            ],
+            [
+              0.825,
+              0.009807357788085938
+            ],
+            [
+              0.8375,
+              0.010457396507263182
+            ],
+            [
+              0.85,
+              0.011077880859375
+            ],
+            [
+              0.8625,
+              0.011664519309997559
+            ],
+            [
+              0.875,
+              0.012213363647460935
+            ],
+            [
+              0.8875,
+              0.01272080898284912
+            ],
+            [
+              0.9,
+              0.01318359375
+            ],
+            [
+              0.9125,
+              0.013598799705505371
+            ],
+            [
+              0.925,
+              0.013963851928710939
+            ],
+            [
+              0.9375,
+              0.014276518821716308
+            ],
+            [
+              0.95,
+              0.014534912109375001
+            ],
+            [
+              0.9625,
+              0.014737486839294435
+            ],
+            [
+              0.975,
+              0.014883041381835936
+            ],
+            [
+              0.9875,
+              0.014970717430114746
+            ],
+            [
+              1,
+              0.015
+            ],
+            [
+              1.0125,
+              0.014970717430114747
+            ],
+            [
+              1.025,
+              0.01488304138183594
+            ],
+            [
+              1.0375,
+              0.014737486839294434
+            ],
+            [
+              1.05,
+              0.014534912109375001
+            ],
+            [
+              1.0625,
+              0.014276518821716306
+            ],
+            [
+              1.075,
+              0.013963851928710934
+            ],
+            [
+              1.0875,
+              0.013598799705505371
+            ],
+            [
+              1.1,
+              0.01318359375
+            ],
+            [
+              1.1125,
+              0.012720808982849122
+            ],
+            [
+              1.125,
+              0.012213363647460937
+            ],
+            [
+              1.1375,
+              0.011664519309997557
+            ],
+            [
+              1.15,
+              0.011077880859375
+            ],
+            [
+              1.1625,
+              0.010457396507263182
+            ],
+            [
+              1.175,
+              0.009807357788085936
+            ],
+            [
+              1.1875,
+              0.009132399559020996
+            ],
+            [
+              1.2000000000000002,
+              0.0084375
+            ],
+            [
+              1.2125,
+              0.007727980613708496
+            ],
+            [
+              1.225,
+              0.0070095062255859375
+            ],
+            [
+              1.2375,
+              0.0062880849838256835
+            ],
+            [
+              1.25,
+              0.005570068359375
+            ],
+            [
+              1.2625000000000002,
+              0.004862151145935058
+            ],
+            [
+              1.275,
+              0.0041713714599609375
+            ],
+            [
+              1.2875,
+              0.003505110740661621
+            ],
+            [
+              1.3,
+              0.00287109375
+            ],
+            [
+              1.3125,
+              0.002277388572692871
+            ],
+            [
+              1.3250000000000002,
+              0.0017324066162109374
+            ],
+            [
+              1.3375,
+              0.0012449026107788088
+            ],
+            [
+              1.35,
+              0.0008239746093749999
+            ],
+            [
+              1.3625,
+              0.0004790639877319336
+            ],
+            [
+              1.375,
+              0.0002199554443359375
+            ],
+            [
+              1.3875000000000002,
+              0.00005677700042724609
+            ],
+            [
+              1.4,
+              0
+            ],
+            [
+              5,
+              0
+            ]
+          ]
+        },
+        "assembly": {
+          "tyreId": "",
+          "rimId": "",
+          "brand": "unknown",
+          "rimType": "unknown",
+          "construction": "unknown",
+          "tyreBsd": null,
+          "rimBsd": null,
+          "tyreWidth": null,
+          "rimInnerWidth": null,
+          "tyreTubelessApproved": null,
+          "rimTubelessApproved": null,
+          "standardCompliant": null,
+          "widthPairApproved": null,
+          "pairApproved": null,
+          "pressure": null,
+          "tyreMaxPressure": null,
+          "rimMaxPressure": null,
+          "sources": {}
+        }
+      },
+      "massBudget": {
+        "total": 89,
+        "frameAndRider": 82,
+        "frontCarrier": 0.5,
+        "rearCarrier": 1.5,
+        "eachHub": 1.5,
+        "eachTyre": 1,
+        "eachWheelRigidSpinInertia": 0.163936
+      },
+      "summary": {
+        "acceptedTime": 0.40000000000012975,
+        "steps": 25600,
+        "peakForce": 1361.4191114990138,
+        "peakPenetration": 0.00016797558408888566,
+        "maxResidual": 0.21932119373033981,
+        "maxSampledRootWrench": 1.1596057447604835e-11,
+        "maxSampledBearingMoment": 4.2454928461665986e-13,
+        "maxDiagnosticDifference": 0,
+        "initialEnergy": 705.8662838200501,
+        "finalEnergy": 688.7221559946877,
+        "initialMomentum": [
+          178,
+          9.020562075079397e-17,
+          102.16592029878878
+        ]
+      },
+      "last": {
+        "frame": [
+          0.29434461691438607,
+          0.6034372115055151,
+          -0.029093393315359154
+        ],
+        "fork": 0.03449945389940084,
+        "shock": 0.018477036820067072,
+        "rider": [
+          0.29616472135953736,
+          0.5408941155929179
+        ],
+        "wheels": [
+          {
+            "hub": [
+              0.9870008151622265,
+              0.3647522043121907,
+              1.9163367694112667
+            ],
+            "ground": [
+              -1.6950719849967442,
+              327.1466346047083,
+              0.3015479244177275
+            ],
+            "bearing": [
+              2.1110528836353586,
+              -307.4089398919981,
+              2.1316282072803006e-14
+            ]
+          },
+          {
+            "hub": [
+              -0.15137084670094803,
+              0.3465756267745202,
+              2.1799651609215225
+            ],
+            "ground": [
+              -1.4487966382148443e-9,
+              532.8459779253984,
+              3.050358242526201
+            ],
+            "bearing": [
+              -1.8071128151180955,
+              -509.8739479270351,
+              -8.881784197001252e-15
+            ]
+          }
+        ],
+        "impulse": [
+          -3.0188440378835897,
+          359.8000652582488,
+          24.060158468972386
+        ],
+        "momentumResidual": [
+          0.000013455610123447315,
+          -0.006719030088220279,
+          -0.0035565676219775355
+        ],
+        "residual": 0.2192118808982625
+      }
+    },
+    {
+      "name": "bump-mesh-128-32",
+      "status": "completed",
+      "termination": null,
+      "scenario": {
+        "bike": {
+          "pivotX": 0.04,
+          "pivotZ": -0.235,
+          "shockArmX": -0.054607848086069846,
+          "shockArmZ": 0.18996325604011804,
+          "shockFrameX": 0.19332203501088832,
+          "shockFrameZ": -0.015623078508508775,
+          "shockTravel": 0.055,
+          "bike": "full",
+          "mass": 82,
+          "rider": "compliant",
+          "riderMass": 70,
+          "riderStiffness": 12000,
+          "riderDamping": 900,
+          "riderTravel": 0.15,
+          "riderBuffer": "progressive",
+          "riderBufferWidth": 0.015,
+          "riderBufferStiffness": 300000,
+          "riderBufferDamping": 1500,
+          "forkBuffer": "progressive",
+          "forkBufferWidth": 0.02,
+          "forkBufferStiffness": 300000,
+          "forkBufferDamping": 1500,
+          "forkStiffness": 9000,
+          "forkDamping": 700,
+          "shockBuffer": "progressive",
+          "shockBufferWidth": 0.008,
+          "shockBufferStiffness": 1000000,
+          "shockBufferDamping": 3000,
+          "shockStiffness": 70000,
+          "shockDamping": 2400
+        },
+        "wheel": {
+          "nodes": 128,
+          "tyreMass": 1,
+          "hubMass": 1.5,
+          "hubInertia": 0.04,
+          "skin": 0.008,
+          "rimRadius": 0.29,
+          "foundation": 300000,
+          "extension": 500,
+          "edgeViscosity": 0.5,
+          "contactTime": 0.0005,
+          "contactImpedance": 0.99,
+          "collisionTolerance": 1e-10,
+          "collisionIterations": 100,
+          "maxPenetration": 0.0005,
+          "maxStrain": 0.25,
+          "maxDisplacement": 0.06
+        },
+        "motion": {
+          "centerX": -0.5,
+          "clearance": 0.012,
+          "velocityX": 2,
+          "velocityZ": 0,
+          "omega": 5,
+          "pitchOffset": 0,
+          "pitchVelocity": 0,
+          "forkCompression": 0.04,
+          "rearAngle": 0.08,
+          "riderOffset": -0.05,
+          "gravity": 9.80665,
+          "duration": 0.4,
+          "dt": 0.000015625,
+          "sampleDt": 0.005
+        },
+        "profile": {
+          "format": "bikelab-profile-1",
+          "units": "m",
+          "axes": "x-forward,z-up",
+          "solid": "below",
+          "interpolation": "linear",
+          "source": {
+            "kind": "illustrative",
+            "description": "Synthetic 15 mm polynomial bump over 0.8 m, 32 straight segments."
+          },
+          "points": [
+            [
+              -3,
+              0
+            ],
+            [
+              0.6,
+              0
+            ],
+            [
+              0.625,
+              0.0002199554443359375
+            ],
+            [
+              0.65,
+              0.0008239746093749999
+            ],
+            [
+              0.675,
+              0.0017324066162109374
+            ],
+            [
+              0.7,
+              0.00287109375
+            ],
+            [
+              0.725,
+              0.0041713714599609375
+            ],
+            [
+              0.75,
+              0.005570068359375
+            ],
+            [
+              0.775,
+              0.0070095062255859375
+            ],
+            [
+              0.8,
+              0.0084375
+            ],
+            [
+              0.825,
+              0.009807357788085938
+            ],
+            [
+              0.85,
+              0.011077880859375
+            ],
+            [
+              0.875,
+              0.012213363647460935
+            ],
+            [
+              0.9,
+              0.01318359375
+            ],
+            [
+              0.925,
+              0.013963851928710939
+            ],
+            [
+              0.95,
+              0.014534912109375001
+            ],
+            [
+              0.975,
+              0.014883041381835936
+            ],
+            [
+              1,
+              0.015
+            ],
+            [
+              1.025,
+              0.01488304138183594
+            ],
+            [
+              1.05,
+              0.014534912109375001
+            ],
+            [
+              1.075,
+              0.013963851928710934
+            ],
+            [
+              1.1,
+              0.01318359375
+            ],
+            [
+              1.125,
+              0.012213363647460937
+            ],
+            [
+              1.15,
+              0.011077880859375
+            ],
+            [
+              1.175,
+              0.009807357788085936
+            ],
+            [
+              1.2000000000000002,
+              0.0084375
+            ],
+            [
+              1.225,
+              0.0070095062255859375
+            ],
+            [
+              1.25,
+              0.005570068359375
+            ],
+            [
+              1.275,
+              0.0041713714599609375
+            ],
+            [
+              1.3,
+              0.00287109375
+            ],
+            [
+              1.3250000000000002,
+              0.0017324066162109374
+            ],
+            [
+              1.35,
+              0.0008239746093749999
+            ],
+            [
+              1.375,
+              0.0002199554443359375
+            ],
+            [
+              1.4,
+              0
+            ],
+            [
+              5,
+              0
+            ]
+          ]
+        },
+        "assembly": {
+          "tyreId": "",
+          "rimId": "",
+          "brand": "unknown",
+          "rimType": "unknown",
+          "construction": "unknown",
+          "tyreBsd": null,
+          "rimBsd": null,
+          "tyreWidth": null,
+          "rimInnerWidth": null,
+          "tyreTubelessApproved": null,
+          "rimTubelessApproved": null,
+          "standardCompliant": null,
+          "widthPairApproved": null,
+          "pairApproved": null,
+          "pressure": null,
+          "tyreMaxPressure": null,
+          "rimMaxPressure": null,
+          "sources": {}
+        }
+      },
+      "massBudget": {
+        "total": 89,
+        "frameAndRider": 82,
+        "frontCarrier": 0.5,
+        "rearCarrier": 1.5,
+        "eachHub": 1.5,
+        "eachTyre": 1,
+        "eachWheelRigidSpinInertia": 0.163936
+      },
+      "summary": {
+        "acceptedTime": 0.40000000000012975,
+        "steps": 25600,
+        "peakForce": 1344.1385248370243,
+        "peakPenetration": 0.00021416321834907305,
+        "maxResidual": 0.20142535621925672,
+        "maxSampledRootWrench": 3.694822225952521e-12,
+        "maxSampledBearingMoment": 8.848477506262498e-13,
+        "maxDiagnosticDifference": 0,
+        "initialEnergy": 705.8662838200501,
+        "finalEnergy": 688.4175853835579,
+        "initialMomentum": [
+          178,
+          2.636779683484747e-16,
+          102.16592029878882
+        ]
+      },
+      "last": {
+        "frame": [
+          0.2943796509546956,
+          0.6033458201767157,
+          -0.02911470982639189
+        ],
+        "fork": 0.034498483249282806,
+        "shock": 0.0184719614675328,
+        "rider": [
+          0.29620130985311477,
+          0.5407951658665001
+        ],
+        "wheels": [
+          {
+            "hub": [
+              0.9870413726261887,
+              0.36467471065776086,
+              1.903493174953608
+            ],
+            "ground": [
+              -1.1804680331018034,
+              330.5228554045296,
+              -0.4340675806648615
+            ],
+            "bearing": [
+              0.634387117878428,
+              -311.5722302569919,
+              -2.9531932455029164e-14
+            ]
+          },
+          {
+            "hub": [
+              -0.15132974206870392,
+              0.34646206856372974,
+              2.182636110631553
+            ],
+            "ground": [
+              9.150653568212874e-10,
+              523.2345080232559,
+              1.442048566414936
+            ],
+            "bearing": [
+              -1.9247405703632294,
+              -509.27009776768466,
+              1.8118839761882555e-13
+            ]
+          }
+        ],
+        "impulse": [
+          -3.002117386694567,
+          359.85844243935406,
+          23.971142442671884
+        ],
+        "momentumResidual": [
+          0.00000942768953660078,
+          -0.006670240967935115,
+          -0.003502710110737439
+        ],
+        "residual": 0.19971465624689522
+      }
+    }
+  ],
+  "meshDifferences": [
+    {
+      "name": "bump-mesh-64-16",
+      "frameDistance": 0.00009496661568143313,
+      "pitchDifference": -0.0000049138342908087995,
+      "impulseDifference": [
+        -0.061474782545662965,
+        -0.02341981937735227,
+        0.036436442152876225
+      ]
+    },
+    {
+      "name": "bump-mesh-64-32",
+      "frameDistance": 0,
+      "pitchDifference": 0,
+      "impulseDifference": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "bump-mesh-64-64",
+      "frameDistance": 0.000036628220043135747,
+      "pitchDifference": -0.000021620674894012176,
+      "impulseDifference": [
+        -0.02203204823062732,
+        -0.005700092946426594,
+        0.013054677066783427
+      ]
+    },
+    {
+      "name": "bump-mesh-128-32",
+      "frameDistance": 0.00009369061967282045,
+      "pitchDifference": -0.00004293718592674953,
+      "impulseDifference": [
+        -0.00530539704160482,
+        0.05267708815881633,
+        -0.07596134923371878
+      ]
+    }
+  ],
+  "sampling": [
+    {
+      "sampleDt": 0.001,
+      "dt": 0.00003125,
+      "errors": [
+        [
+          -0.0018627917608892812,
+          0.02013880610829677,
+          -0.005092755278741
+        ],
+        [
+          0.00015268621716588897,
+          0.18615038122479696,
+          0.16375680733069053
+        ]
+      ],
+      "endFrame": [
+        -0.4400753801455449,
+        0.6055174679940734,
+        -0.0022690366758208263
+      ]
+    },
+    {
+      "sampleDt": 0.0005,
+      "dt": 0.00003125,
+      "errors": [
+        [
+          0.0012244416168372685,
+          0.010778046780802353,
+          -0.005349157265680096
+        ],
+        [
+          0.0004128703312066724,
+          0.009654469961006773,
+          0.007351241733095482
+        ]
+      ],
+      "endFrame": [
+        -0.4400753801455449,
+        0.6055174679940734,
+        -0.0022690366758208263
+      ]
+    },
+    {
+      "sampleDt": 0.00025,
+      "dt": 0.00003125,
+      "errors": [
+        [
+          0.0019425435325941612,
+          -0.021037588519546624,
+          0.0022708787739847344
+        ],
+        [
+          0.00048125569830450134,
+          0.01621898977551764,
+          0.01725816720371609
+        ]
+      ],
+      "endFrame": [
+        -0.4400753801455449,
+        0.6055174679940734,
+        -0.0022690366758208263
+      ]
+    },
+    {
+      "sampleDt": 0.000125,
+      "dt": 0.00003125,
+      "errors": [
+        [
+          0.002129918560440508,
+          -0.0040271125521836315,
+          0.000865493424685726
+        ],
+        [
+          0.0004976971616152599,
+          0.02724495868031601,
+          0.026792859787976242
+        ]
+      ],
+      "endFrame": [
+        -0.4400753801455449,
+        0.6055174679940734,
+        -0.0022690366758208263
+      ]
+    },
+    {
+      "sampleDt": 0.000125,
+      "dt": 0.000015625,
+      "errors": [
+        [
+          0.0010332561812684792,
+          -0.007714229076260515,
+          0.002633698192490458
+        ],
+        [
+          0.00022468826547352035,
+          -0.017411815763774874,
+          -0.017401313184969458
+        ]
+      ],
+      "endFrame": [
+        -0.44007527793962814,
+        0.6055209534910114,
+        -0.0022681050940496755
+      ]
+    },
+    {
+      "sampleDt": 0.000125,
+      "dt": 0.0000078125,
+      "errors": [
+        [
+          0.0004876487181542759,
+          0.05475880470516714,
+          -0.019455249546448734
+        ],
+        [
+          0.0000974441808659428,
+          0.0014593815302964275,
+          -0.0006303254040610495
+        ]
+      ],
+      "endFrame": [
+        -0.44007512374417274,
+        0.6055245461970667,
+        -0.002266666421842693
+      ]
+    }
+  ]
+}
