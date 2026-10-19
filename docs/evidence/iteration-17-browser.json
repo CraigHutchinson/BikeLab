@@ -1,0 +1,101 @@
+{
+  "headSha": "0afda98a5104f4486c5d41b248b4bf498b0ada19",
+  "mergedMainSha": "a9afcd5e1752452d14457df22a01bf81b3161809",
+  "runId": 39269197164,
+  "runUrl": "https://github.com/CraigHutchinson/BikeLab/actions/runs/39269197164",
+  "tests": {
+    "linux": {
+      "passed": 177,
+      "failed": 0,
+      "skipped": 0,
+      "jobId": 118116716066
+    },
+    "windows": {
+      "passed": 177,
+      "failed": 0,
+      "skipped": 0,
+      "jobId": 118116716418
+    }
+  },
+  "browser": "141.0.7390.37",
+  "agreement": [
+    {
+      "name": "full-bump",
+      "maxAbsolute": 0
+    },
+    {
+      "name": "hardtail-bump",
+      "maxAbsolute": 0
+    },
+    {
+      "name": "fixed-rider",
+      "maxAbsolute": 0
+    },
+    {
+      "name": "flight",
+      "maxAbsolute": 0
+    },
+    {
+      "name": "limit",
+      "maxAbsolute": 0
+    },
+    {
+      "name": "invalid-travel",
+      "maxAbsolute": 0
+    },
+    {
+      "name": "superseded-flight",
+      "maxAbsolute": 0
+    },
+    {
+      "name": "full-square",
+      "maxAbsolute": 0
+    },
+    {
+      "name": "full-faceted",
+      "maxAbsolute": 0
+    },
+    {
+      "name": "full-edge-limit",
+      "maxAbsolute": 0
+    },
+    {
+      "name": "hardtail-square",
+      "maxAbsolute": 0
+    },
+    {
+      "name": "hardtail-faceted",
+      "maxAbsolute": 0
+    },
+    {
+      "name": "hardtail-edge-limit",
+      "maxAbsolute": 0
+    }
+  ],
+  "errors": [],
+  "artifacts": [
+    {
+      "id": 12195307351,
+      "name": "trail-bike-evidence",
+      "sizeBytes": 11499883,
+      "digest": "sha256:95f224e41a394202951197698721ac45eba5d785a7f75ff1dbcd6d934ee3e9c8"
+    },
+    {
+      "id": 12195302355,
+      "name": "browser-evidence",
+      "sizeBytes": 30663576,
+      "digest": "sha256:48e220e634232a724c0a8ce2e4bf163d7032c0b5b24c1ea282292dc1ad6c9a62"
+    }
+  ],
+  "visuallyInspected": [
+    "full-square.png",
+    "full-faceted.png",
+    "full-edge-limit.png",
+    "hardtail-square.png",
+    "hardtail-faceted.png",
+    "hardtail-edge-limit.png",
+    "square-mobile-320.png",
+    "square-mobile-390.png"
+  ],
+  "findings": "Authored corners, contact arrows, actual casing deformation, force histories and support stops visible. 320/390 px layouts fit. Tall-stop close-up clips the frame tip; numerical near-zero force auto-scale exaggerates noise. Follow-up viewer fixes require recapture."
+}

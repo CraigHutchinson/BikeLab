@@ -19,4 +19,6 @@ for(const name of ['square','faceted']){
  const baseline=records.get(name+'-dt-0.000015625').frames.at(-1);
  for(const row of rows.filter(r=>r.name.startsWith(name+'-')))differences.push({name:row.name,relativeTo:name+'-dt-0.000015625',positionDistance:Math.hypot(row.last.frame[0]-baseline.frame[0],row.last.frame[1]-baseline.frame[1]),pitchDifference:row.last.frame[2]-baseline.frame[2],impulseDifference:row.last.impulse.map((v,i)=>v-baseline.impulse[i])});
 }
-await writeFile('docs/evidence/iteration-17-impacts.json',JSON.stringify({model:MODEL,note:'Synthetic frictionless faceted-impact MVP. Sampled contact metrics are not all-step extrema. Not calibrated component stress, fracture, full CCD or real-time qualification.',rows,differences},null,2)+'\n');
+const normalPrecision=[];
+for(const collisionTolerance of [1e-10,1e-12]){const r=await run({...preset('faceted'),wheel:{collisionTolerance,collisionIterations:200},motion:{duration:.3}});normalPrecision.push({collisionTolerance,collisionIterations:200,status:r.status,summary:r.summary,metrics:impactMetrics(r)});}
+await writeFile('docs/evidence/iteration-17-impacts.json',JSON.stringify({model:MODEL,note:'Synthetic frictionless faceted-impact MVP. Sampled contact metrics are not all-step extrema. Not calibrated component stress, fracture, full CCD or real-time qualification.',rows,differences,normalPrecision},null,2)+'\n');
