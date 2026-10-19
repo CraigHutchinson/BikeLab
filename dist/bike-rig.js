@@ -1,3 +1,4 @@
+import {bikeAssembly} from './bike-assembly.js';
 import {LOAD_CHANNELS,createLoadObserver} from './rig-loads.js';
 import {GEOMETRY,PHOTO_GEOMETRY,REFERENCE_GEOMETRY,GEOMETRY_KEYS,geometryFor,validateGeometry,strokeAngle,shockLength,shockCompressionJacobian} from './linkage.js';
 export {GEOMETRY,PHOTO_GEOMETRY,REFERENCE_GEOMETRY,GEOMETRY_KEYS,geometryFor,shockLength,shockCompressionJacobian};
@@ -51,28 +52,7 @@ export function platens(p,t,out) {
     out[2*wheel+1]=4*p.amplitude*Math.PI/p.bumpDuration*s**3*c;
   }
 }
-export function modelXML(p) {
-  const g=geometryFor(p),compliant=p.rider==='compliant',frameMass=compliant?p.mass-p.riderMass:p.mass;
-  const frameInertia=g.frameInertia*frameMass/p.mass,riderInertia=g.frameInertia*p.riderMass/p.mass;
-  // Append this child after the original front/rear tree; their legacy addresses remain unchanged.
-  const rider=compliant?`<body name="rider"><joint name="riderSlide" type="slide" axis="0 0 1" springref="0" stiffness="${p.riderStiffness}" damping="${p.riderDamping}"/>
-    <inertial pos="0 0 0" mass="${p.riderMass}" diaginertia="${riderInertia} ${riderInertia} ${riderInertia}"/></body>`:'';
-  const rear=p.bike==='full'?`<body name="rear" pos="${g.pivotX} 0 ${g.pivotZ}"><joint name="swing" type="hinge" axis="0 1 0"/>
-    <inertial pos="${g.armX} 0 ${g.armZ}" mass="${g.rearMass}" diaginertia=".13 .13 .13"/>
-    <site name="shockArm" pos="${g.shockArmX} 0 ${g.shockArmZ}"/></body>`:
-    `<body name="rear" pos="${g.rearX} 0 ${g.axleZ}"><inertial pos="0 0 0" mass="${g.rearMass}" diaginertia=".13 .13 .13"/></body>`;
-  return `<mujoco model="BikeLab illustrative ${p.bike}"><compiler angle="radian" fusestatic="false"/>
-    <option timestep="${p.dt}" gravity="0 0 -${G}" integrator="implicitfast"/>
-    <worldbody><body name="frame" pos="0 0 ${g.frameHeight}">
-    <joint name="heave" type="slide" axis="0 0 1"/><joint name="pitch" type="hinge" axis="0 1 0"/>
-    <inertial pos="0 0 0" mass="${frameMass}" diaginertia="${frameInertia} ${frameInertia} ${frameInertia}"/>
-    <site name="shockFrame" pos="${g.shockFrameX} 0 ${g.shockFrameZ}"/>
-    <body name="front" pos="${g.frontX} 0 ${g.axleZ}">
-      <joint name="fork" type="slide" axis="${-Math.cos(g.headAngle)} 0 ${Math.sin(g.headAngle)}" stiffness="${p.forkStiffness}" damping="${p.forkDamping}"/>
-      <inertial pos="0 0 0" mass="${g.wheelMass}" diaginertia=".1 .1 .1"/>
-    </body>${rear}${rider}</body></worldbody>
-    ${p.bike==='full'?`<tendon><spatial name="shock" stiffness="${p.shockStiffness}" damping="${p.shockDamping}" springlength="${shockLength(0,g)}"><site site="shockFrame"/><site site="shockArm"/></spatial></tendon>`:''}</mujoco>`;
-}
+export function modelXML(p){const parts=bikeAssembly(p);return `<mujoco model="BikeLab illustrative ${p.bike}"><compiler angle="radian" fusestatic="false"/><option timestep="${p.dt}" gravity="0 0 -${G}" integrator="implicitfast"/><worldbody>${parts.body}</worldbody>${parts.tendon}</mujoco>`;}
 let runtime;
 export function getRuntime(){return runtime??=loadMujoco();}
 const names=[...LOAD_CHANNELS,'heaveVelocity','pitchVelocity','forkVelocity','rearAngularVelocity','riderBufferForce','riderLowerForce','riderUpperForce','riderBufferEnergy','riderBufferDissipation','riderTotalForce','time','heave','pitch','fork','shock','rearAngle','frontX','frontZ','rearX','rearZ','frontBase','rearBase',
