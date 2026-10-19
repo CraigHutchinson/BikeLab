@@ -96,3 +96,5 @@ First bounded architectural slice: compare the existing axial station with its i
 No full multibody engine, real-time budget, physical terrain ground truth, in-run LOD transfer or model-learning system is approved as implemented by this PR. The review must decide the minimum next changes using these named consumers.
 
 Iteration 3 follow-through: [architecture review](ITERATION_3_ARCHITECTURE.md) and [reference-comparison evidence](ITERATION_3_EVIDENCE.md). The first paired analytical/numerical experiment is implemented in the suspension viewer and headless report; full LOD scheduling, reference shadowing and in-run state transfer remain planned.
+
+Iteration 17: [contact-aware wheel resolution](ADAPTIVE_WHEEL.md) applies these requirements to the connected faceted-impact consumer. It distinguishes persistent material coordinates, contact hierarchy and circular storage; records nonuniform stiffness/mass and rotating-imbalance pitfalls; and stages measured query work, fixed nonuniform meshes, then conservative live adaptation. The fixed current mesh remains unchanged.

@@ -1,6 +1,6 @@
 # Delivery and validation plan
 
-Status: continued 2026-10-15 after review of the entire a1d96dd baseline; see ITERATION_2_REVIEW.md. Slice 1 visual inspection is now recorded, and the bounded Slice 2 axial station is implemented and verified; see SLICE_2_EVIDENCE.md. Whole-bike and later slices remain proposed. Full 3D simulation, including lateral motion and turning forces, is a required destination; see THREE_DIMENSIONAL_DYNAMICS.md.
+Current status: iteration 17 consolidates merged PRs #17/#18 and extends the connected bike/rider to a bounded sharp-edge/faceted impact MVP. See [current delivery sequence](DYNAMICS_DELIVERY_PLAN.md), [evidence](ITERATION_17_EVIDENCE.md) and [adaptive wheel decision](ADAPTIVE_WHEEL.md). The entries below preserve historical slice decisions. Full 3D simulation, including lateral motion and turning forces, remains a required destination; see THREE_DIMENSIONAL_DYNAMICS.md.
 
 ## Definition of a received slice
 
@@ -249,3 +249,9 @@ Product priority reaffirmed 2026-10-18: deliver a connected moving MTB **includi
 The [moving-wheel station](MOVING_WHEEL.md) connects deforming edge contacts to free hub translation/spin, with distributed mass, local normal arrows, work/momentum diagnostics and owned replay. [Review](ITERATION_15_REVIEW.md) precedes implementation; [evidence](ITERATION_15_EVIDENCE.md) distinguishes fixed collision-tolerance asymmetry, timestep error and unresolved tyre-mesh sensitivity. It remains an experimental D1b/D2 subset, not a calibrated tyre, damage model or proof against tunnelling.
 
 Next: bounded smooth-ground two-wheel integration with the moving hardtail/full-suspension frame and existing rider; verify attachment loads, finite travel and whole-system work before extending corner/high-speed support. Then rolling/braking, articulated hand/foot/saddle contacts and shared scenario/data/game execution. Preserve sourced component failure/pressure-loss criteria, layered soil/mud over roots, 3D lateral/turning and measured real-time/multirate gates.
+
+## Iteration 17 — connected faceted impact MVP
+
+After consolidating merged PRs #17/#18, the same moving hardtail/full-suspension bike and passive rider now receive square edges and coarse faceted rocks. Authored terrain is retained, horizontal forces are inspectable, and severe impacts stop at existing component/contact limits. The near-rim sweep now accepts native typed state and activates using a displacement bound. [Evidence](ITERATION_17_EVIDENCE.md) separates timestep, casing mesh and native normal accuracy; no stress, fracture or complete swept-casing claim follows.
+
+Next: D4 traction/brake/drive controls in this connected consumer, then D5 anatomical rider contacts/control. [Contact-aware wheel resolution](ADAPTIVE_WHEEL.md) defines persistent rotating material coordinates, hierarchy versus circular storage, nonuniform mass/stiffness and conservation gates. Instrument first, validate fixed nonuniform meshes between runs next, and only then attempt live remeshing or multirate optimisation. Preserve layered terrain/mud, 3D lateral/turning, sourced failure/pressure loss and shared offline/game execution.

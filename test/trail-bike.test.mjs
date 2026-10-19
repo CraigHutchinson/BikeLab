@@ -30,9 +30,9 @@ test('complete wheel momentum includes bearing, ground and gravity impulses',asy
   for(let j=0;j<3;j++)near(last(r).wheels[k].momentum[j]-r.frames[0].wheels[k].momentum[j],impulse[j],.06);
  }
 });
-test('configuration, unsupported terrain, initial travel and terminated replay remain explicit',async()=>{
+test('configuration, invalid terrain, initial travel and terminated replay remain explicit',async()=>{
  for(const a of [{other:1},{wheel:{radius:.4}},{bike:{tyreStiffness:1}},{motion:{gravity:NaN}},{motion:{sampleDt:.003}},{motion:{duration:1.5,sampleDt:.001}},{wheel:{nodes:128,extension:2000,foundation:600000,tyreMass:.5},motion:{dt:.0000625}}])assert.throws(()=>validate(a));
- const steep=preset('flat');steep.profile.points=[[-3,0],[0,0],[.01,.1],[5,.1]];assert.throws(()=>validate(steep));
+ const steep=preset('flat');steep.profile.points=[[-3,0],[0,0],[-.01,.1],[5,.1]];assert.throws(()=>validate(steep));
  const bad=await run(short('flight','full',{riderOffset:.2}));assert.equal(bad.status,'initial-state-rejected');assert.equal(bad.termination.reason,'rider-travel-limit');assert.equal(bad.frames.length,0);
  const limited=await run(preset('limit'));assert.equal(limited.status,'terminated');near(last(limited).time,limited.termination.time);assert.ok(limited.termination.attemptedTime>last(limited).time);for(const w of last(limited).wheels)assert.ok(w.limits.penetration<=limited.scenario.wheel.maxPenetration);assert.deepEqual(await replay(JSON.parse(JSON.stringify(limited))),limited);
  const incomplete=JSON.parse(JSON.stringify(bad));delete incomplete.scenario.motion.dt;assert.throws(()=>replay(incomplete));
