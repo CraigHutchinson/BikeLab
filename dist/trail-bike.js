@@ -6,7 +6,8 @@ import {fixture} from './terrain.js';
 import {travelBuffer} from './travel-buffer.js';
 import {validateAssembly,assessAssembly,ASSEMBLY_DEFAULTS,sweepRim} from './wheel-limits.js';
 import {interfaceWrench} from './rig-loads.js';
-export const MODEL='bikelab-trail-bike-0.1';
+export const MODEL='bikelab-trail-bike-0.2';
+const LEGACY_MODEL='bikelab-trail-bike-0.1';
 const omit=new Set(['tyreStiffness','tyreDamping','amplitude','bumpDuration','delay','input','duration','dt','sampleDt']);
 export const BIKE_DEFAULTS=Object.freeze({...Object.fromEntries(Object.entries(RIG_DEFAULTS).filter(([k])=>!omit.has(k))),rider:'compliant',forkBuffer:'progressive',shockBuffer:'progressive',riderBuffer:'progressive'});
 export const WHEEL_DEFAULTS=Object.freeze({nodes:64,tyreMass:1,hubMass:1.5,hubInertia:.04,skin:.008,rimRadius:.29,foundation:300000,extension:500,edgeViscosity:.5,contactTime:.0005,contactImpedance:.99,collisionTolerance:1e-10,collisionIterations:100,maxPenetration:.0005,maxStrain:.25,maxDisplacement:.06});
@@ -23,22 +24,29 @@ export function smoothProfile(kind='bump',segments=32){
  if(kind==='bump')for(let i=0;i<=segments;i++){const t=i/segments;p.points.push([.6+.8*t,.015*16*t*t*(1-t)*(1-t)]);}
  p.points.push([5,0]);p.source.description=kind==='flat'?'Synthetic flat rigid trail.':'Synthetic 15 mm polynomial bump over 0.8 m, '+segments+' straight segments.';return p;
 }
+export function impactProfile(kind='square'){
+ if(!['square','faceted','edge-limit'].includes(kind))throw Error('Unknown impact profile.');
+ const profile=fixture('flat');
+ profile.points=kind==='faceted'?[[-3,0],[.6,0],[.68,.045],[.85,.06],[1,.015],[1.08,0],[5,0]]:[[-3,0],[.6,0],[.6,kind==='edge-limit'?.2:.04],[.9,kind==='edge-limit'?.2:.04],[.9,0],[5,0]];
+ profile.source.description=kind==='faceted'?'Synthetic coarse faceted 60 mm rock; authored corners are not smoothed.':kind==='square'?'Synthetic 40 mm square-edged rock, 300 mm long.':'Synthetic 200 mm square obstacle for support-limit inspection.';return profile;
+}
+export function profileSupport(profile){
+ let verticalFaces=0,maxSlope=0,maxTurn=0,previousSlope=0;
+ for(let i=1;i<profile.points.length;i++){const a=profile.points[i-1],b=profile.points[i],dx=b[0]-a[0],dz=b[1]-a[1],s=dz/dx;if(dx===0)verticalFaces++;else maxSlope=Math.max(maxSlope,Math.abs(s));maxTurn=Math.max(maxTurn,Math.abs(Math.atan(s)-Math.atan(previousSlope)));previousSlope=s;}
+ return {geometry:'authored-faceted-polyline',regime:verticalFaces||maxSlope>.25||maxTurn>.08?'experimental-sharp-impact':'smooth-reference',segments:profile.points.length-1,verticalFaces,maxFiniteSlope:maxSlope,maxTangentChange:maxTurn,temporalCollision:'Discrete native contact with motion and near-rim sweep guards; not complete swept-casing CCD.',accuracy:'Uncalibrated; sharp-corner loads remain sensitive to casing mesh. No fracture or pressure-loss prediction.'};
+}
 export function validate(input={}){
  fields(input,{bike:0,wheel:0,motion:0,profile:0,assembly:0},'scenario');
  const bike=fields(input.bike??{},BIKE_DEFAULTS,'bike'),wheel=fields(input.wheel??{},WHEEL_DEFAULTS,'wheel'),motion=fields(input.motion??{},MOTION_DEFAULTS,'motion');validateRig(bike);
  for(const [k,[lo,hi]] of Object.entries(ranges))if(!Number.isFinite(motion[k])||motion[k]<lo||motion[k]>hi)throw Error(k+' outside supported SI range.');
  if(motion.duration/motion.sampleDt>300)throw Error('At most 300 recording intervals.');
  for(const x of [motion.duration/motion.sampleDt,motion.sampleDt/motion.dt])if(Math.abs(x-Math.round(x))>1e-7)throw Error('Observation and duration must align to fixed steps.');
- const wp=validateWheel({...wheel,dt:motion.dt}),profile=canonicalProfile(input.profile??smoothProfile()),assembly=validateAssembly(input.assembly??{});let previousSlope=0;
- for(let i=1;i<profile.points.length;i++){
-  const a=profile.points[i-1],b=profile.points[i],s=(b[1]-a[1])/(b[0]-a[0]);
-  if(!Number.isFinite(s)||Math.abs(s)>.25||Math.abs(Math.atan(s)-Math.atan(previousSlope))>.08)throw Error('Trail requires gentle slopes and resolved smooth transitions; sharp faces are unsupported.');previousSlope=s;
- }
+ const wp=validateWheel({...wheel,dt:motion.dt}),profile=canonicalProfile(input.profile??smoothProfile()),assembly=validateAssembly(input.assembly??{});
  return {bike:Object.freeze(bike),wheel:Object.freeze(wheel),motion:Object.freeze(motion),profile,assembly,wheelParams:wp};
 }
 export function preset(name='bump',bike='full'){
- if(!['flat','bump','flight','limit'].includes(name))throw Error('Unknown connected bike preset.');
- const a={bike:{bike},profile:smoothProfile(name==='bump'?'bump':'flat')};
+ if(!['flat','bump','flight','limit','square','faceted','edge-limit'].includes(name))throw Error('Unknown connected bike preset.');
+ const a={bike:{bike},profile:['square','faceted','edge-limit'].includes(name)?impactProfile(name):smoothProfile(name==='bump'?'bump':'flat')};
  if(name==='flight'){a.bike={bike,rider:'compliant',forkBuffer:'none',shockBuffer:'none',riderBuffer:'none'};a.motion={clearance:.3,gravity:0,forkCompression:0,rearAngle:0,riderOffset:0,velocityX:1,velocityZ:.3,omega:0,duration:.2};}
  if(name==='limit')a.motion={clearance:.1,velocityZ:-3,duration:.3};return a;
 }
@@ -50,12 +58,18 @@ export function modelXML(input={}){
 }
 function joint(mj,model,name){const id=mj.mj_name2id(model,mj.mjtObj.mjOBJ_JOINT.value,name);return id<0?null:{q:model.jnt_qposadr[id],v:model.jnt_dofadr[id]};}
 function translateWrench(w,from,to,out){out[0]=w[0];out[1]=w[1];out[2]=w[2]+(from[1]-to[1])*w[0]-(from[0]-to[0])*w[1];return out;}
+// Distance to a fixed contour is 1-Lipschitz. A straight hub step shorter than
+// its initial rim clearance cannot hit it. This does not bound curved paths.
+export function rimSweep(profile,start,delta,initialGap,rimRadius,tyreRadius){
+ if(initialGap>Math.hypot(...delta)+1e-8)return null;
+ return sweepRim(profile,Array.from(start),Array.from(delta),rimRadius,tyreRadius);
+}
 // Complete wheel subtrees are the smallest supported load-observation boundary.
 // Native RNE omits flex contacts; node-level interface loads are not reported.
 export async function run(input={}){
  const a=validate(input),p=a.bike,w=a.wheelParams,m=a.motion,g=geometryFor(p);
  const assessment=assessAssembly(a.assembly,w.rimRadius),scenario={bike:p,wheel:a.wheel,motion:m,profile:a.profile,assembly:a.assembly};
- const report={model:MODEL,engine:'MuJoCo 3.16.0',units:'SI; x forward, y left, z up; moments about +y. Ground and bearing wrenches at their wheel hub; momentum and impulse about world origin.',parameterProvenance:'Mass, inertia, stiffness, damping and launch are illustrative; no physical calibration. Assembly evidence retains its own provenance.',scenario,assessment,scope:'Illustrative planar bike and guided rider; frictionless deformable rings, rigid smooth ground. No inflation calibration, traction, frame collision or anatomical rider.'};
+ const report={model:MODEL,engine:'MuJoCo 3.16.0',units:'SI; x forward, y left, z up; moments about +y. Ground and bearing wrenches at their wheel hub; momentum and impulse about world origin.',parameterProvenance:'Mass, inertia, stiffness, damping and launch are illustrative; no physical calibration. Assembly evidence retains its own provenance.',scenario,assessment,contactSupport:profileSupport(a.profile),scope:'Illustrative planar bike and guided rider; frictionless deformable rings, authored rigid faceted ground. No inflation calibration, traction, frame collision or anatomical rider.'};
  if(assessment.status==='incompatible')return {...report,status:'assembly-rejected',termination:{reason:'assembly-service-limit',time:0},frames:[]};
  const mj=await getRuntime();let model,data,diagnostic,velocityBuffer,forceBuffer;
  try{
@@ -64,7 +78,7 @@ export async function run(input={}){
   const frameBody=body('frame'),frontBody=body('front'),rearBody=body('rear'),riderBody=p.rider==='compliant'?body('rider'):frameBody,armSite=id(mj.mjtObj.mjOBJ_SITE.value,'shockArm'),frameSite=id(mj.mjtObj.mjOBJ_SITE.value,'shockFrame');
   const wheels=['frontwheel','rearwheel'].map(name=>{
    const flex=id(mj.mjtObj.mjOBJ_FLEX.value,name+'_casing'),hubBody=body(name);
-   return {name,flex,body:hubBody,spin:joint(mj,model,name+'Spin'),vertex:3*model.flex_vertadr[flex],edge:model.flex_edgeadr[flex],nodeJoints:Array.from({length:w.nodes},(_,i)=>[joint(mj,model,name+'_u'+i),joint(mj,model,name+'_v'+i)]),bodies:[hubBody,...Array.from({length:w.nodes},(_,i)=>body(name+'_n'+i))],hub:new Float64Array(2),oldHub:new Float64Array(2),move:new Float64Array(2),xyz:new Float64Array(3*w.nodes),oldXYZ:new Float64Array(3*w.nodes),ground:new Float64Array(3),limits:{}};
+   return {name,flex,body:hubBody,spin:joint(mj,model,name+'Spin'),vertex:3*model.flex_vertadr[flex],edge:model.flex_edgeadr[flex],nodeJoints:Array.from({length:w.nodes},(_,i)=>[joint(mj,model,name+'_u'+i),joint(mj,model,name+'_v'+i)]),bodies:[hubBody,...Array.from({length:w.nodes},(_,i)=>body(name+'_n'+i))],hub:new Float64Array(2),oldHub:[0,0],move:[0,0],oldRimGap:0,xyz:new Float64Array(3*w.nodes),oldXYZ:new Float64Array(3*w.nodes),ground:new Float64Array(3),limits:{}};
   });
   const rearAngle=j.swing?m.rearAngle:0,rearX=j.swing?g.pivotX+Math.cos(rearAngle)*g.armX+Math.sin(rearAngle)*g.armZ:g.rearX,rearZ=j.swing?g.pivotZ-Math.sin(rearAngle)*g.armX+Math.cos(rearAngle)*g.armZ:g.axleZ;
   const frontX=g.frontX-m.forkCompression*Math.cos(g.headAngle),frontZ=g.axleZ+m.forkCompression*Math.sin(g.headAngle),pitch=Math.atan2(frontZ-rearZ,frontX-rearX)+m.pitchOffset;
@@ -102,7 +116,7 @@ export async function run(input={}){
     let strain=0,deformation=0;for(let i=0;i<w.nodes;i++){strain=Math.max(strain,Math.abs(data.flexedge_length[wheel.edge+i]/model.flexedge_length0[wheel.edge+i]-1));deformation=Math.max(deformation,Math.hypot(data.qpos[wheel.nodeJoints[i][0].q],data.qpos[wheel.nodeJoints[i][1].q]));}limits.strain=strain;limits.deformation=deformation;
     if(strain>w.maxStrain){limits.reason='casing-strain-limit';return wheel.name+'-'+limits.reason;}if(deformation>w.maxDisplacement){limits.reason='casing-displacement-limit';return wheel.name+'-'+limits.reason;}
     if(previous&&Math.abs(data.qpos[wheel.spin.q]-oldQ[wheel.spin.q])>.01)return wheel.name+'-spin-resolution-limit';
-    if(previous&&limits.rimGap<.01){wheel.move[0]=wheel.hub[0]-wheel.oldHub[0];wheel.move[1]=wheel.hub[1]-wheel.oldHub[1];const swept=sweepRim(a.profile,wheel.oldHub,wheel.move,w.rimRadius,w.radius);if(swept.status!=='clear')return wheel.name+'-swept-'+swept.status;}
+    if(previous){wheel.move[0]=wheel.hub[0]-wheel.oldHub[0];wheel.move[1]=wheel.hub[1]-wheel.oldHub[1];const swept=rimSweep(a.profile,wheel.oldHub,wheel.move,wheel.oldRimGap,w.rimRadius,w.radius);if(swept&&swept.status!=='clear')return wheel.name+'-swept-'+swept.status;}
    }
    return null;
   }
@@ -126,7 +140,7 @@ export async function run(input={}){
   }
   observe();initialEnergy=energy;const initialReason=guard();if(initialReason)return {...report,massBudget,status:'initial-state-rejected',termination:{reason:initialReason,time:0},frames:[]};peakForce=Math.hypot(ground[0],ground[1]);for(const wheel of wheels)peakPenetration=Math.max(peakPenetration,wheel.limits.penetration);record();
   for(let step=1;step<=steps;step++){
-   oldQ.set(data.qpos);oldV.set(data.qvel);oldWarm.set(data.qacc_warmstart);for(const wheel of wheels){wheel.oldXYZ.set(wheel.xyz);wheel.oldHub.set(wheel.hub);}const time=data.time,oldLoss=lossPower,oldConstraint=constraintPower,oldX=ground[0],oldZ=ground[1],oldY=ground[2],oldGravity=gravityMoment;
+   oldQ.set(data.qpos);oldV.set(data.qvel);oldWarm.set(data.qacc_warmstart);for(const wheel of wheels){wheel.oldXYZ.set(wheel.xyz);wheel.oldHub[0]=wheel.hub[0];wheel.oldHub[1]=wheel.hub[1];wheel.oldRimGap=wheel.limits.rimGap;}const time=data.time,oldLoss=lossPower,oldConstraint=constraintPower,oldX=ground[0],oldZ=ground[1],oldY=ground[2],oldGravity=gravityMoment;
    mj.mj_step(model,data);observe();const reason=guard(true)||(Math.abs(data.time-time-m.dt)>1e-9?'native-clock-reset':null);
    if(reason){termination={reason,time,attemptedTime:time+m.dt,attemptedLimits:wheels.map(wheel=>({...wheel.limits}))};data.qpos.set(oldQ);data.qvel.set(oldV);data.qacc_warmstart.set(oldWarm);data.time=time;observe();guard();break;}
    loss+=.5*m.dt*(oldLoss+lossPower);constraintWork+=.5*m.dt*(oldConstraint+constraintPower);impulse[0]+=.5*m.dt*(oldX+ground[0]);impulse[1]+=.5*m.dt*(oldZ+ground[1]);impulse[2]+=.5*m.dt*(oldY+ground[2]);gravityImpulse+=.5*m.dt*(oldGravity+gravityMoment);
@@ -138,5 +152,5 @@ export async function run(input={}){
    const {contactData,contactCount,...rest}=f;return {...rest,...Object.fromEntries(['frame','rider','momentum','momentumResidual','impulse','root','forkLoad','pivot','guide'].map(key=>[key,array(f[key])])),wheels:f.wheels.map(v=>({...v,hub:array(v.hub),ground:array(v.ground),bearing:array(v.bearing),momentum:array(v.momentum),centerOfMass:array(v.centerOfMass),nodes:Array.from({length:w.nodes},(_,i)=>[v.nodes[2*i],v.nodes[2*i+1]])})),contacts:Array.from({length:contactCount},(_,i)=>{const k=8*i,nx=contactData[k+3],nz=contactData[k+4],force=contactData[k+5];return {wheel:contactData[k],point:[contactData[k+1],contactData[k+2]],normal:[nx,nz],force:[nx*force,nz*force],normalForce:force,edge:contactData[k+6],vertex:contactData[k+7]};})};})};
  }finally{forceBuffer?.delete();velocityBuffer?.delete();diagnostic?.delete();data?.delete();model?.delete();}
 }
-export function inputFromRecord(r){if(r?.model!==MODEL||!r.scenario)throw Error('Unsupported connected-bike record.');for(const [key,defaults] of Object.entries({bike:BIKE_DEFAULTS,wheel:WHEEL_DEFAULTS,motion:MOTION_DEFAULTS,assembly:ASSEMBLY_DEFAULTS}))if(!r.scenario[key]||Object.keys(defaults).some(k=>!Object.hasOwn(r.scenario[key],k)))throw Error('Incomplete connected-bike record.');if(!r.scenario.profile)throw Error('Missing terrain profile.');const a=validate(r.scenario);return {bike:a.bike,wheel:a.wheel,motion:a.motion,profile:a.profile,assembly:a.assembly};}
+export function inputFromRecord(r){if(![MODEL,LEGACY_MODEL].includes(r?.model)||!r.scenario)throw Error('Unsupported connected-bike record.');for(const [key,defaults] of Object.entries({bike:BIKE_DEFAULTS,wheel:WHEEL_DEFAULTS,motion:MOTION_DEFAULTS,assembly:ASSEMBLY_DEFAULTS}))if(!r.scenario[key]||Object.keys(defaults).some(k=>!Object.hasOwn(r.scenario[key],k)))throw Error('Incomplete connected-bike record.');if(!r.scenario.profile)throw Error('Missing terrain profile.');const a=validate(r.scenario);if(r.model===LEGACY_MODEL&&profileSupport(a.profile).regime!=='smooth-reference')throw Error('Legacy trail records only admitted smooth profiles.');return {bike:a.bike,wheel:a.wheel,motion:a.motion,profile:a.profile,assembly:a.assembly};}
 export const replay=r=>run(inputFromRecord(r));
