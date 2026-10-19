@@ -9,3 +9,10 @@ Primary references read: MuJoCo [flex XML](https://mujoco.readthedocs.io/en/3.3.
 GPT-6.1 Sol researched [IPC](https://ipc-sim.github.io/file/IPC-paper-350ppi.pdf), [convergent IPC](https://arxiv.org/html/2307.15908v1) and [Chrono tyres](https://api.projectchrono.org/10.0.0/wheeled_tire.html). A custom barrier solver requires feasible continuous collision checks, self-contact and careful continuum contact weights; naïve pair sums do not establish mesh convergence. That is a larger solver change than this receiving feature needs. A single equivalent envelope contact would discard the desired local loads. Native flex is therefore the bounded engine-reuse path, subject to the gates below.
 
 Gates: free-flight and momentum/spin controls; independent spring energy/gradient and mass/inertia checks; flat, rounded and exposed square-corner contacts between material vertices; unilateral local normal loads and their resultant wrench; timestep, tyre and terrain refinement separately; signed constraint-work and damping ledger; strict rim/casing/domain/solver termination with rollback; owned replay, fixed observation times, worker cancellation and browser/headless agreement. Preserve missing damage/deflation criteria. Do not claim calibrated stress, real-time performance, frictional rolling, whole-bike trail dynamics or 3D turning from this slice.
+
+
+## Resume review, 2026-10-19
+
+Updated from the old local D1a checkpoint to PR #17 head `24e278c`; merged geometry, rider-load, footprint and wheel-limit work is retained. The older uncommitted viewer draft is preserved in a named local stash and is not reapplied over its merged successor.
+
+Hosted run 39213774896 passed both platform suites but exposed `Infinity` in the early-return inner-clearance diagnostic. JSON converted that sentinel to null, breaking complete rejected-state replay comparison. The source now emits explicit unavailable clearance as null before any edge is measured. A regression checks finite record numbers and exact serialized recomputation for rim rejection, initial domain rejection and an attempted domain-exit step. No solver settings or numerical comparison tolerance changed.

@@ -48,13 +48,15 @@ function segmentDistance(ax,az,bx,bz,cx,cz,dx,dz){return intersects(ax,az,bx,bz,
 function groundHeight(points,x){let height=-Infinity;for(let i=1;i<points.length;i++){const a=points[i-1],b=points[i];if(a[0]<=x&&x<=b[0])height=Math.max(height,a[0]===b[0]?Math.max(a[1],b[1]):a[1]+(b[1]-a[1])*(x-a[0])/(b[0]-a[0]));}return height;}
 function centerGap(points,x,z,r){let d=Infinity;for(let i=1;i<points.length;i++)d=Math.min(d,pointSegment(x,z,...points[i-1],...points[i]));return z<=groundHeight(points,x)?-r:d-r;}
 // Geometric guards are independent of the native contact manifold.
-export function geometryLimits(p,profile,hub,xyz,previous){const points=profile.points,n=p.nodes,x=hub[0],z=hub[1];let penetration=0,inner=Infinity,movement=0;
+// null inner clearance means the guard stopped before measuring any casing edge.
+// Never leak the internal minimum sentinel into replay records.
+export function geometryLimits(p,profile,hub,xyz,previous){const points=profile.points,n=p.nodes,x=hub[0],z=hub[1];let penetration=0,inner=null,movement=0;
  if(x-p.radius<points[0][0]||x+p.radius>points.at(-1)[0])return {reason:'authored-domain',penetration,inner,movement};
  const rimGap=centerGap(points,x,z,p.rimRadius);if(rimGap<=1e-8)return {reason:'rim-contact',rimGap,penetration,inner,movement};
  for(let i=0;i<n;i++){const j=(i+1)%n,ax=xyz[3*i],az=xyz[3*i+2],bx=xyz[3*j],bz=xyz[3*j+2];
   if(ax-p.skin<points[0][0]||ax+p.skin>points.at(-1)[0])return {reason:'casing-domain',rimGap,penetration,inner,movement};
   if(az<=groundHeight(points,ax))return {reason:'casing-centreline-crossing',rimGap,penetration,inner,movement};
-  inner=Math.min(inner,pointSegment(x,z,ax,az,bx,bz)-p.skin-p.rimRadius);
+  inner=Math.min(inner??Infinity,pointSegment(x,z,ax,az,bx,bz)-p.skin-p.rimRadius);
   if(previous)movement=Math.max(movement,Math.hypot(ax-previous[3*i],az-previous[3*i+2]));
   for(let k=1;k<points.length;k++){const a=points[k-1],b=points[k];if(Math.max(ax,bx)+p.skin<a[0]||Math.min(ax,bx)-p.skin>b[0]||Math.min(az,bz)-p.skin>Math.max(a[1],b[1]))continue;penetration=Math.max(penetration,p.skin-segmentDistance(ax,az,bx,bz,...a,...b));}
   for(let k=i+2;k<n;k++){if(i===0&&k===n-1)continue;const l=(k+1)%n,cx=xyz[3*k],cz=xyz[3*k+2],dx=xyz[3*l],dz=xyz[3*l+2];if(Math.max(ax,bx)+1e-10<Math.min(cx,dx)||Math.min(ax,bx)-1e-10>Math.max(cx,dx)||Math.max(az,bz)+1e-10<Math.min(cz,dz)||Math.min(az,bz)-1e-10>Math.max(cz,dz))continue;if(segmentDistance(ax,az,bx,bz,cx,cz,dx,dz)<=1e-10)return {reason:'casing-self-crossing',rimGap,penetration,inner,movement};}

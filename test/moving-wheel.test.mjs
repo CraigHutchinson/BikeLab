@@ -65,3 +65,17 @@ test('configuration and replay are strict, owned and independent of observation 
  const finer=await run({...a,params:{...a.params,sampleDt:.0025}});assert.deepEqual(last(finer),last(r));a.params.centerX=1;assert.equal(r.params.centerX,-.4);
  const xml=modelXML();assert.match(xml,/dim="1"/);assert.match(xml,/condim="1"/);assert.throws(()=>wheelParts({},'bad"name'));
 });
+
+// Rejected initial/attempted states are records too. Unmeasured clearance must
+// remain explicit and stable through JSON rather than silently changing Infinity.
+test('boundary diagnostics remain finite and preserve unavailable clearance through JSON',async()=>{
+ const finite=(value,path='report')=>{if(typeof value==='number')assert.ok(Number.isFinite(value),path);else if(value&&typeof value==='object')for(const [key,item] of Object.entries(value))finite(item,path+'.'+key);};
+ const a=short('flight',{duration:.02});
+ for(const patch of [{height:.29},{centerX:1.7},{centerX:1.63,velocityX:1}]){
+  const r=await run({...a,params:{...a.params,...patch}});finite(r);
+  const diagnostic=r.diagnostics??r.termination.attemptedDiagnostics;
+  assert.equal(diagnostic.inner,null);
+  const saved=JSON.stringify(r),rebuilt=await replay(JSON.parse(saved));
+  assert.equal(JSON.stringify(rebuilt),saved);
+ }
+});
