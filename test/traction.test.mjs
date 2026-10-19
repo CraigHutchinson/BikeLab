@@ -37,9 +37,20 @@ test('deformed flex contact velocity matches independent weighted point velociti
 });
 
 test('connected sliding tyres close contact wrenches, Coulomb bounds and signed work on both bikes',async()=>{
- for(const bike of ['full','hardtail']){const a=preset('sliding',bike);a.motion.duration=.08;const r=await run(a);assert.equal(r.status,'completed');assert.ok(r.frames[0].contacts.length===0);assert.ok(r.frames.some(f=>f.contacts.length>=4));assert.ok(last(r).tangentWork<-.5);assert.ok(r.summary.maxPowerResidual<1e-8);assert.ok(r.summary.maxSampledRootWrench<1e-7);assert.ok(r.summary.maxSampledBearingMoment<1e-7);
+ for(const bike of ['full','hardtail']){const a=preset('sliding',bike);a.motion.duration=.08;const r=await run(a);assert.equal(r.status,'completed');assert.ok(r.frames[0].contacts.length===0);assert.ok(r.frames.some(f=>f.contacts.length>=4));assert.ok(last(r).tangentWork<-.5);assert.ok(r.summary.maxPowerResidual<1e-8);assert.ok(r.summary.maxSampledLateralContactForce<1e-6);assert.ok(r.summary.maxSampledConeExcess<1e-7);assert.ok(r.summary.maxSampledRootWrench<1e-7);assert.ok(r.summary.maxSampledBearingMoment<1e-7);
   for(const f of r.frames){near(f.normalWork+f.tangentWork,f.constraintWork,1e-8);for(let k=0;k<2;k++){const w=f.wheels[k],sum=[0,0,0];for(const c of f.contacts.filter(c=>c.wheel===k)){near(c.force[0]*c.normal[0]+c.force[1]*c.normal[1],c.normalForce);assert.ok(Math.abs(c.tangentForce)<=r.scenario.surface.friction*c.normalForce+1e-7);assert.ok(Number.isFinite(c.slip));sum[0]+=c.force[0];sum[1]+=c.force[1];sum[2]+=(c.point[1]-w.hub[1])*c.force[0]-(c.point[0]-w.hub[0])*c.force[1];}for(let j=0;j<3;j++)near(sum[j],w.ground[j],1e-7);}}
   const finer=await run({...a,motion:{...a.motion,sampleDt:.0025}});assert.deepEqual(last(finer),last(r));assert.deepEqual(await replay(JSON.parse(JSON.stringify(r))),r);
  }
 });
 
+
+test('inclined contact exports scalar slip and work from independently derived rigid launch kinematics',async()=>{
+ const a=preset('flight');a.motion={...a.motion,duration:.02,clearance:.1,velocityX:.2,velocityZ:.03,pitchVelocity:.05,omega:1};const launch=(await run(a)).frames[0],hub=launch.wheels[0].hub,slope=.1,offset=hub[1]-slope*hub[0]-.36*Math.hypot(1,slope)+.0002*Math.hypot(1,slope);
+ a.profile.points=[[-3,-3*slope+offset],[5,5*slope+offset]];a.surface={friction:.6};const r=await run(a),f=r.frames[0];assert.ok(f?.contacts.length);assert.ok(r.summary.maxSampledLateralContactForce<1e-6);assert.ok(r.summary.maxSampledConeExcess<1e-7);
+ let pn=0,pt=0;for(const c of f.contacts){const w=f.wheels[c.wheel],m=a.motion,omega=m.omega+m.pitchVelocity,vx=m.velocityX+m.pitchVelocity*(w.hub[1]-f.frame[1])+omega*(c.point[1]-w.hub[1]),vz=m.velocityZ-m.pitchVelocity*(w.hub[0]-f.frame[0])-omega*(c.point[0]-w.hub[0]);near(c.slip,c.normal[1]*vx-c.normal[0]*vz,1e-10);near(c.normalVelocity,c.normal[0]*vx+c.normal[1]*vz,1e-10);pn+=c.normalForce*c.normalVelocity;pt+=c.tangentForce*c.slip;}
+ near(pn,f.normalPower);near(pt,f.tangentPower);near(pn+pt,f.constraintPower);
+});
+
+test('traction support stops preserve accepted work and replay without failed endpoints',async()=>{
+ for(const bike of ['full','hardtail']){const a=preset('limit',bike);a.surface={friction:.6};const r=await run(a);assert.equal(r.status,'terminated');const f=last(r);near(f.time,r.termination.time);near(f.normalWork+f.tangentWork,f.constraintWork);for(const w of f.wheels)assert.ok(w.limits.penetration<=r.scenario.wheel.maxPenetration);assert.ok(r.summary.maxSampledLateralContactForce<1e-6);assert.ok(r.summary.maxSampledConeExcess<1e-7);assert.deepEqual(await replay(JSON.parse(JSON.stringify(r))),r);}
+});
