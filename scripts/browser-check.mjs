@@ -17,6 +17,7 @@ import { simulate as simulateSuspension } from '../dist/suspension.js';
 import { compareSuspension, comparisonReport } from '../dist/suspension-reference.js';
 import { fixture, probe } from '../dist/terrain.js';
 import { runTrial, trialReport } from '../dist/solver-trial.js';
+import { inspectNativePosture } from '../dist/rider-native.js';
 import { constructPosture } from '../dist/rider-posture.js';
 import { createHash } from 'node:crypto';
 
@@ -71,13 +72,24 @@ try {
     }else assert.equal(actual,expected);
   };
   comparePosture(browserPostures,postureInputs.map(input=>constructPosture(input)));
+  const postureConstructionMax=postureMaxDifference;
+  const browserNative=await page.evaluate(async({root,inputs})=>{
+    const {inspectNativePosture}=await import(root+'rider-native.js');
+    const reports=[]; for(const input of inputs)reports.push(await inspectNativePosture(input));
+    return reports;
+  },{root,inputs:postureInputs});
+  const nativeExpected=[];for(const input of postureInputs)nativeExpected.push(await inspectNativePosture(input));
+  postureMaxDifference=0;comparePosture(browserNative,nativeExpected);
+  report.riderNative={cases:browserNative.length,maxAbsolute:postureMaxDifference,normalizedTolerance:1e-12};
+  await writeFile(join(dir,'rider-native-browser.json'),JSON.stringify(browserNative,null,2));
+  report.checks.push('native rider construction: named attachments, full inertia and sparse-fixture site Jacobians agree across browser/Node; no integrated rider claim');
   const invalidPosture=await page.evaluate(async root=>{
     const {constructPosture,DEFAULTS}=await import(root+'rider-posture.js');
     try{constructPosture({foot:[...DEFAULTS.hip]});return null;}catch(error){return error.message;}
   },root);
   assert.match(invalidPosture,/Leg chain/);
   await writeFile(join(dir,'rider-posture-browser.json'),JSON.stringify(browserPostures,null,2));
-  report.riderPosture={cases:browserPostures.length,maxAbsolute:postureMaxDifference,normalizedTolerance:1e-12};
+  report.riderPosture={cases:browserPostures.length,maxAbsolute:postureConstructionMax,normalizedTolerance:1e-12};
   report.checks.push('rider posture construction: complete browser/Node reports for both bend branches and mass scaling; unreachable pose rejection; no dynamic rider claim');
   await page.locator('#step').click();assert.equal(await page.locator('#time').textContent(),'0.005 s');
   await page.locator('#pin').click();await field('damping').fill('900');await apply();
