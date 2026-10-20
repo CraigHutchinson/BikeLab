@@ -11,6 +11,7 @@ test('commands reject incomplete, unordered, unbounded and sparse schedules; leg
  for(const commands of [null,[],new Array(1),[command(1)],[command(0),command(0)],[command(0),command(.5)],[command(0),command(999999)],[{tick:0,rearDrive:0}],[{...command(0),other:1}],[command(0,NaN)],[command(0,121)],[command(0,0,-1)],[command(0,0,0,201)],Array.from({length:65},(_,i)=>command(i))])assert.throws(()=>validate({commands}));
  const owned=[command(0),command(5,4)];const a=validate({commands:owned});owned[1].rearDrive=9;assert.equal(a.commands[1].rearDrive,4);assert.ok(Object.isFrozen(a.commands[1]));
  const saved=JSON.parse(await readFile(new URL('./fixtures/trail-bike-0.3.json',import.meta.url),'utf8')),r=await replay(saved);
+ assert.ok(saved.frames.some(f=>f.contacts.some(c=>c.slip!==null)),'historical control must include loaded traction');
  const walk=(a,b)=>{if(a&&typeof a==='object')for(const k of Object.keys(a))walk(a[k],b[k]);else assert.equal(a,b);};walk(saved.frames,r.frames);assert.equal(last(r).driveWork,0);assert.equal(last(r).brakeWork,0);
  const bad=structuredClone(r);delete bad.scenario.commands;assert.throws(()=>replay(bad),/commands/);saved.scenario.commands=[command(0,1)];assert.throws(()=>replay(saved),/Legacy/);
 });
