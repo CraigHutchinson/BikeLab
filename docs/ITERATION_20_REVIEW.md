@@ -74,4 +74,6 @@ The five-body topology and implementation sequence are engineering proposals. No
 
 User-requested whole-system stretch goals are recorded in [RIDER_MANOEUVRES.md](RIDER_MANOEUVRES.md): pumping, manuals/powered wheelies, bunny hops, endos and landing absorption, followed by 3D berm pumping. Their acceptance requires active rider work, contact-state and momentum checks after the passive slice; visual resemblance alone does not establish precision or calibration.
 
+The first implementation increment is the separate [posture construction specification](RIDER_POSTURE.md): owned versioned parameters, feasible two-link geometry, mass/COM/full inertia aggregation and independent construction tests. This does not yet implement the native rider tree, attachment constraints, saddle contact or the connected visual consumer.
+
 Preserve the remaining destination: active rider controls and release, finite-width 3D steering/lean/lateral and combined tyre forces, sharp/faceted impact limits, layered soil over roots/rock and shared mud history, sourced rim/spoke/frame/bead failure and tyre pressure loss, scan/ML provenance, and measured adaptive/multirate fidelity. Unsupported overload must continue to terminate rather than invent extra suspension or limb travel.
