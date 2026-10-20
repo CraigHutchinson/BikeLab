@@ -16,6 +16,12 @@ Next balanced slice D4b adds controlled rear hub drive and separate front/rear b
 
 GPT-6.1 Sol rechecked pinned MuJoCo 3.16.0 sources. [Friction rows](https://github.com/google-deepmind/mujoco/blob/3.16.0/src/engine/engine_core_constraint.c#L985) are rebuilt from current DOF friction loss, use a scalar identity Jacobian and identify their DOF. [Post-constraint RNE](https://github.com/google-deepmind/mujoco/blob/3.16.0/src/engine/engine_core_smooth.c#L2303) omits flex contacts and leaves generalized drive/brake moments in the inferred interface wrench. [Friction-loss formulation](https://github.com/google-deepmind/mujoco/blob/3.16.0/doc/computation/index.rst#L797) bounds solved force and is regularized. Map positive hub rotation/torque to +y (forward rolling on flat ground); work uses wheel angle relative to its carrier.
 
+## Resumed implementation review
+
+After PR #22 was available, reviewed its implementation at `42fdac8dfbfdf5f336d12d3c06f4f3b11bc8fea1` against the merged traction baseline above. GPT-6.1 Sol independently checked native brake-row ownership, endpoint command timing, countertorque/work, bearing-versus-carrier accounting and rollback. No consequential mechanics defect was found. Modern replay with an explicit `commands: undefined` did bypass the required schedule through new-run defaults; the follow-up rejects it and adds a regression. Model documentation now describes version 0.4 and the implemented control contract.
+
+The [iteration evidence](ITERATION_19_EVIDENCE.md) records independent rotor/pair controls, both connected assemblies, thirteen sensitivity trials, hosted Linux/Windows/browser results and actual screenshot inspection. It also identifies the untested new-command rejection subpath and unresolved timestep/mesh sensitivity. These limits remain visible when receiving D4b.
+
 ## Retained follow-ups
 
 Chain/crank/freehub mechanics, rider power/actuation limits, brake hydraulics/thermal fade, rolling loss and physically calibrated grip remain open. Preserve articulated rider D5, finite-width 3D steering/combined traction D6, layered soil/roots/rock D7, shared mud pickup/packing/deformation-spin shedding and carried mass D8, measured bike setup/catalogue D9, damage/pressure loss D10, scanned/generated terrain request/cache D11, and conservation-qualified physics tiers/adaptation D12. This iteration must receive the connected controls before expanding those mechanisms.
