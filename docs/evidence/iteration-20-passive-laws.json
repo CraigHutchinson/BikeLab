@@ -30,7 +30,147 @@
     "normalizedTolerance": 1e-12
   },
   "browser": {
-    "status": "Pending hosted run; local loopback blocked. No new visual receiving evidence."
+    "status": "passed-hosted",
+    "job": 118895533371,
+    "version": "141.0.7390.37",
+    "riderPassive": {
+      "cases": 2,
+      "maxAbsolute": 0,
+      "normalizedTolerance": 1e-12
+    },
+    "riderNative": {
+      "cases": 2,
+      "maxAbsolute": 0,
+      "normalizedTolerance": 1e-12
+    },
+    "riderPosture": {
+      "cases": 2,
+      "maxAbsolute": 1.1010950736807999e-16,
+      "normalizedTolerance": 1e-12
+    },
+    "trailBike": {
+      "agreement": [
+        {
+          "name": "full-bump",
+          "maxAbsolute": 0
+        },
+        {
+          "name": "hardtail-bump",
+          "maxAbsolute": 0
+        },
+        {
+          "name": "fixed-rider",
+          "maxAbsolute": 0
+        },
+        {
+          "name": "flight",
+          "maxAbsolute": 0
+        },
+        {
+          "name": "limit",
+          "maxAbsolute": 0
+        },
+        {
+          "name": "invalid-travel",
+          "maxAbsolute": 0
+        },
+        {
+          "name": "superseded-flight",
+          "maxAbsolute": 0
+        },
+        {
+          "name": "full-square",
+          "maxAbsolute": 0
+        },
+        {
+          "name": "full-faceted",
+          "maxAbsolute": 0
+        },
+        {
+          "name": "full-edge-limit",
+          "maxAbsolute": 0
+        },
+        {
+          "name": "hardtail-square",
+          "maxAbsolute": 0
+        },
+        {
+          "name": "hardtail-faceted",
+          "maxAbsolute": 0
+        },
+        {
+          "name": "hardtail-edge-limit",
+          "maxAbsolute": 0
+        },
+        {
+          "name": "full-coast",
+          "maxAbsolute": 0
+        },
+        {
+          "name": "full-sliding",
+          "maxAbsolute": 0
+        },
+        {
+          "name": "hardtail-coast",
+          "maxAbsolute": 0
+        },
+        {
+          "name": "hardtail-sliding",
+          "maxAbsolute": 0
+        },
+        {
+          "name": "full-drive",
+          "maxAbsolute": 0
+        },
+        {
+          "name": "full-brake",
+          "maxAbsolute": 0
+        },
+        {
+          "name": "hardtail-drive",
+          "maxAbsolute": 0
+        },
+        {
+          "name": "hardtail-brake",
+          "maxAbsolute": 0
+        },
+        {
+          "name": "authored-drive-brake",
+          "maxAbsolute": 0
+        },
+        {
+          "name": "legacy-traction",
+          "maxAbsolute": 0
+        }
+      ]
+    },
+    "checks": [
+      "native rider construction: named attachments, full inertia and sparse-fixture site Jacobians agree across browser/Node; no integrated rider claim",
+      "passive rider initialization: canonical laws, nonzero rest offsets, unwrapped springs and native force/energy decomposition agree across browser/Node; no dynamic or stop-enforcement claim",
+      "rider posture construction: complete browser/Node reports for both bend branches and mass scaling; unreachable pose rejection; no dynamic rider claim",
+      "wheel: step, comparison gating, save/load, high lift, mobile width",
+      "suspension: signed curves rendered, step/scrub/play/pause, pin gating, reject/discard, save/load and wrong-station rejection",
+      "suspension: actual worker cancellation, immediate travel limit, shock preset, mobile/narrow width",
+      "reference: explicit compatible setup, unsupported state, worker overlays, dirty gating, save/load and Node metric agreement",
+      "reference: valid coarse integration fails declared limits; half-step refinement passes",
+      "terrain: hidden/small canvas recovery, square/rounded/flat, complete browser/Node report agreement, unavailable/buried states, edit gating, custom profile, load, stale-file guard, co-nearest supports and mobile widths",
+      "solver: real WASM module worker; exact candidate browser/Node channels with tolerance-checked analytical channels; release failure and static pass; refinement, replay, dirty/invalid gating, cancellation, restore, hidden canvas, page lifecycle resize recovery and mobile widths",
+      "manufacturer catalogue: eight sourced configurations selectable, SI JSON export exact, missing mechanism data explicit, reference selection leaves the calculated rig intact",
+      "geometry: annotated/reference/custom physical setups, diagnostics, changed/invalid gating, custom reload and browser/headless channels",
+      "shock buffers: both end presets, worker/headless signals, engagement, save/load, dormant hardtail controls, disabled settings, responsive plots and lifecycle",
+      "fork buffers: supported top/bottom loading; real worker/headless parity; unbuffered control and weak-buffer ultimate termination; setup reconstruction, engagement display and responsive plots",
+      "rider: both compliant assemblies; exact setup restoration and explicit v0.1 fixed migration; browser/Node channels; mass control; invalid mass budget; settling and dynamic rider travel rejection; signed plots; five-canvas lifecycle and mobile recovery",
+      "bicycle: both actual assemblies; WASM worker under Pages path; browser/Node sample agreement; setup save/load; replay; dirty/cancel/rejection and travel-limit handling; mobile and page lifecycle",
+      "rider stops and loads: both assemblies, lower/upper engagement, worker/headless parity, record reconstruction, invalid overlapping zones, weak-stop ultimate termination, fixed-mode dormancy, responsive plots and lifecycle",
+      "terrain R0a: six browser/Node replays with exact discrete identities and 1e-12 geometric tolerance; explicit missing-data stop; cut directions/rows; play/pause/rewind/scrub; export/verified import and invalid rejection; delayed wait/cancel/supersession; mobile 390/320",
+      "static footprint: browser/Node complete report agreement; flat/round/step-top/two-supports; explicit edge/rim rejection; all contact rows; zoom; owned authored profile and recomputed import; edit/invalid/cancel/supersession gating; hidden-canvas recovery; 390/320 px inspection captures",
+      "wheel limits: full browser/Node report agreement; continuous flat/corner/round/domain/separation cases; first-contact clipping; declared pressure and bead-seat rejection; zero-pressure refusal; owned import; edit/cancel/restore/supersession; canvas recovery and 390/320 px captures",
+      "moving wheel: complete browser/Node reports; flat/square/rounded/flight/overload; replay, rejection, dirty/cancel/restore/supersession and delayed imports; time-based playback, rapid pause/resume, lifecycle, canvas recovery and 390/320 px captures",
+      "connected trail bike: full/hardtail smooth, square and coarse-faceted rocks, flight and overload stops; complete browser/headless records, homogeneous coast/sliding traction on both bikes, slip plots and grip input validation, drive/brake apply-release on both bikes, authored schedule add/remove/restore and time validation, legacy traction import, spin/brake histories, horizontal impact plots, inputs/replay, dirty/cancel/restore/supersession, delayed imports, playback/lifecycle and 390/320 px layouts; identical ten-station navigation",
+      "no captured page/console errors; rig has rendered pixels"
+    ],
+    "noCapturedPageOrConsoleErrors": true,
+    "visualScope": "Existing station regression captures only; no rendered articulated rider or new manual visual acceptance."
   },
   "cases": [
     {
@@ -1081,5 +1221,43 @@
         "ownership": "Native qfrc_passive and energy[0] already include these spring loads and potentials; joint entries are a decomposition, not an additional force or energy."
       }
     }
-  ]
+  ],
+  "followUpRootWrenchProbe": {
+    "scope": "Intentionally off-manifold forward-only diagnostic, no terrain or time integration; not an admitted initial state or drift budget.",
+    "model": "nativePostureXML({})",
+    "q": {
+      "riderX": 0.007,
+      "riderPitch": 0.03
+    },
+    "allOtherQAndVelocity": 0,
+    "pairMy": 0.7276048077375648,
+    "rootConstraintFx": 0,
+    "rootConstraintFz": 0,
+    "rootConstraintMy": 0.7276048077375683,
+    "conclusion": "Separate closure pair moment from tyre-ground impulse before articulated integration."
+  },
+  "implementationCommit": "e1de59918617f0a90e34017b17588a25824a4f7a",
+  "hosted": {
+    "run": 39500226732,
+    "url": "https://github.com/CraigHutchinson/BikeLab/actions/runs/39500226732",
+    "linux": {
+      "job": 118895533775,
+      "tests": 201,
+      "pass": 201,
+      "fail": 0,
+      "skip": 0
+    },
+    "windows": {
+      "job": 118895533844,
+      "tests": 201,
+      "pass": 201,
+      "fail": 0,
+      "skip": 0
+    },
+    "browser": {
+      "job": 118895533371,
+      "status": "completed",
+      "conclusion": "success"
+    }
+  }
 }
