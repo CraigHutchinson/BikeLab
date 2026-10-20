@@ -13,7 +13,7 @@ test('commands reject incomplete, unordered, unbounded and sparse schedules; leg
  const saved=JSON.parse(await readFile(new URL('./fixtures/trail-bike-0.3.json',import.meta.url),'utf8')),r=await replay(saved);
  assert.ok(saved.frames.some(f=>f.contacts.some(c=>c.slip!==null)),'historical control must include loaded traction');
  const walk=(a,b)=>{if(a&&typeof a==='object')for(const k of Object.keys(a))walk(a[k],b[k]);else assert.equal(a,b);};walk(saved.frames,r.frames);assert.equal(last(r).driveWork,0);assert.equal(last(r).brakeWork,0);
- const bad=structuredClone(r);delete bad.scenario.commands;assert.throws(()=>replay(bad),/commands/);saved.scenario.commands=[command(0,1)];assert.throws(()=>replay(saved),/Legacy/);
+ const bad=structuredClone(r);delete bad.scenario.commands;assert.throws(()=>replay(bad),/commands/);bad.scenario.commands=undefined;assert.throws(()=>replay(bad),/commands/);saved.scenario.commands=[command(0,1)];assert.throws(()=>replay(saved),/Legacy/);
 });
 
 test('native rotor brakes bound solved torque through reversal, near rest, release and capacity changes',async()=>{

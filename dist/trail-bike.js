@@ -184,7 +184,7 @@ export function inputFromRecord(r){
  if(!r.scenario.profile)throw Error('Missing terrain profile.');
  if([MODEL,'bikelab-trail-bike-0.3'].includes(r.model)&&(!r.scenario.surface||!Object.hasOwn(r.scenario.surface,'friction')))throw Error('Incomplete connected-bike surface.');
  if([LEGACY_MODEL,'bikelab-trail-bike-0.2'].includes(r.model)&&r.scenario.surface?.friction)throw Error('Legacy trail records are frictionless.');
- if(r.model===MODEL&&!Object.hasOwn(r.scenario,'commands'))throw Error('Incomplete connected-bike commands.');
+ if(r.model===MODEL&&!Array.isArray(r.scenario.commands))throw Error('Incomplete connected-bike commands.');
  if(r.model!==MODEL&&Object.hasOwn(r.scenario,'commands'))throw Error('Legacy records do not contain drive/brake commands.');
  const a=validate(r.scenario);if(r.model===LEGACY_MODEL&&profileSupport(a.profile).regime!=='smooth-reference')throw Error('Legacy trail records only admitted smooth profiles.');return {bike:a.bike,wheel:a.wheel,motion:a.motion,profile:a.profile,assembly:a.assembly,surface:a.surface,commands:a.commands};
 }
