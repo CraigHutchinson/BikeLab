@@ -17,6 +17,7 @@ import { simulate as simulateSuspension } from '../dist/suspension.js';
 import { compareSuspension, comparisonReport } from '../dist/suspension-reference.js';
 import { fixture, probe } from '../dist/terrain.js';
 import { runTrial, trialReport } from '../dist/solver-trial.js';
+import { constructPosture } from '../dist/rider-posture.js';
 import { createHash } from 'node:crypto';
 
 const require = createRequire(import.meta.url);
@@ -52,6 +53,32 @@ try {
   };
   const noOverflow=async()=>assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'horizontal overflow');
   await page.goto(root);await ready();
+  // Construction parity only; the articulated rider is not yet in the simulation.
+  const postureInputs=[{}, {riderMass:35,kneeSide:-1,elbowSide:1}];
+  const browserPostures=await page.evaluate(async({root,inputs})=>{
+    const {constructPosture}=await import(root+'rider-posture.js');
+    return inputs.map(input=>constructPosture(input));
+  },{root,inputs:postureInputs});
+  let postureMaxDifference=0;
+  const comparePosture=(actual,expected)=>{
+    if(typeof expected==='number'){
+      assert.ok(Number.isFinite(actual));
+      const delta=Math.abs(actual-expected);postureMaxDifference=Math.max(postureMaxDifference,delta);
+      assert.ok(delta<=1e-12*Math.max(1,Math.abs(expected)));
+    }else if(expected&&typeof expected==='object'){
+      assert.deepEqual(Object.keys(actual),Object.keys(expected));
+      for(const key of Object.keys(expected))comparePosture(actual[key],expected[key]);
+    }else assert.equal(actual,expected);
+  };
+  comparePosture(browserPostures,postureInputs.map(input=>constructPosture(input)));
+  const invalidPosture=await page.evaluate(async root=>{
+    const {constructPosture,DEFAULTS}=await import(root+'rider-posture.js');
+    try{constructPosture({foot:[...DEFAULTS.hip]});return null;}catch(error){return error.message;}
+  },root);
+  assert.match(invalidPosture,/Leg chain/);
+  await writeFile(join(dir,'rider-posture-browser.json'),JSON.stringify(browserPostures,null,2));
+  report.riderPosture={cases:browserPostures.length,maxAbsolute:postureMaxDifference,normalizedTolerance:1e-12};
+  report.checks.push('rider posture construction: complete browser/Node reports for both bend branches and mass scaling; unreachable pose rejection; no dynamic rider claim');
   await page.locator('#step').click();assert.equal(await page.locator('#time').textContent(),'0.005 s');
   await page.locator('#pin').click();await field('damping').fill('900');await apply();
   assert.match(await page.locator('#comparison').textContent(),/Pinned:/);
