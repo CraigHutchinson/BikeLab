@@ -1,0 +1,150 @@
+{
+  "physicsCheckpoint": "8825b4448c1d18a2d4d1d0a73f60e0a7f404e317",
+  "note": "Final UI additionally updates the preset-driven chart accessible label and History channel label. Physics is unchanged from the full 183-test checkpoint.",
+  "localTests": {
+    "passed": 183,
+    "failed": 0,
+    "skipped": 0,
+    "node": "24.19.0"
+  },
+  "hostedCheckpoint": {
+    "run": 39314132354,
+    "url": "https://github.com/CraigHutchinson/BikeLab/actions/runs/39314132354",
+    "linux": "success",
+    "windows": "success",
+    "browser": "success"
+  },
+  "localFullBrowser": {
+    "checks": [
+      "connected trail bike: full/hardtail smooth, square and coarse-faceted rocks, flight and overload stops; complete browser/headless records, homogeneous coast/sliding traction on both bikes, slip plots and grip input validation, horizontal impact plots, inputs/replay, dirty/cancel/restore/supersession, delayed imports, playback/lifecycle and 390/320 px layouts; identical ten-station navigation"
+    ],
+    "screenshots": [
+      "trail-bike/full-bump.png",
+      "trail-bike/hardtail-bump.png",
+      "trail-bike/flight.png",
+      "trail-bike/limit.png",
+      "trail-bike/initial-rejection.png",
+      "trail-bike/mobile-390.png",
+      "trail-bike/mobile-320.png",
+      "trail-bike/full-square.png",
+      "trail-bike/square-mobile-390.png",
+      "trail-bike/square-mobile-320.png",
+      "trail-bike/full-faceted.png",
+      "trail-bike/full-edge-limit.png",
+      "trail-bike/hardtail-square.png",
+      "trail-bike/hardtail-faceted.png",
+      "trail-bike/hardtail-edge-limit.png",
+      "trail-bike/full-coast.png",
+      "trail-bike/full-sliding.png",
+      "trail-bike/traction-mobile-320.png",
+      "trail-bike/hardtail-coast.png",
+      "trail-bike/hardtail-sliding.png"
+    ],
+    "browser": "156.0.4314.30",
+    "trailBike": {
+      "agreement": [
+        {
+          "name": "full-bump",
+          "maxAbsolute": 4.440892098500626e-16
+        },
+        {
+          "name": "hardtail-bump",
+          "maxAbsolute": 4.440892098500626e-16
+        },
+        {
+          "name": "fixed-rider",
+          "maxAbsolute": 2.7755575615628914e-17
+        },
+        {
+          "name": "flight",
+          "maxAbsolute": 0
+        },
+        {
+          "name": "limit",
+          "maxAbsolute": 2.7755575615628914e-17
+        },
+        {
+          "name": "invalid-travel",
+          "maxAbsolute": 0
+        },
+        {
+          "name": "superseded-flight",
+          "maxAbsolute": 0
+        },
+        {
+          "name": "full-square",
+          "maxAbsolute": 4.440892098500626e-16
+        },
+        {
+          "name": "full-faceted",
+          "maxAbsolute": 4.440892098500626e-16
+        },
+        {
+          "name": "full-edge-limit",
+          "maxAbsolute": 5.551115123125783e-17
+        },
+        {
+          "name": "hardtail-square",
+          "maxAbsolute": 4.440892098500626e-16
+        },
+        {
+          "name": "hardtail-faceted",
+          "maxAbsolute": 4.440892098500626e-16
+        },
+        {
+          "name": "hardtail-edge-limit",
+          "maxAbsolute": 5.551115123125783e-17
+        },
+        {
+          "name": "full-coast",
+          "maxAbsolute": 2.220446049250313e-16
+        },
+        {
+          "name": "full-sliding",
+          "maxAbsolute": 2.220446049250313e-16
+        },
+        {
+          "name": "hardtail-coast",
+          "maxAbsolute": 2.220446049250313e-16
+        },
+        {
+          "name": "hardtail-sliding",
+          "maxAbsolute": 1.1102230246251565e-16
+        }
+      ]
+    },
+    "errors": []
+  },
+  "finalUI": {
+    "exports": [
+      {
+        "bike": "full",
+        "maxAbsolute": 2.220446049250313e-16
+      },
+      {
+        "bike": "hardtail",
+        "maxAbsolute": 1.1102230246251565e-16
+      }
+    ],
+    "screenshots": [
+      "full.png",
+      "mobile-320.png",
+      "hardtail.png"
+    ],
+    "errors": [],
+    "browser": "156.0.4314.30"
+  },
+  "visuallyInspected": [
+    "full.png",
+    "hardtail.png",
+    "mobile-320.png"
+  ],
+  "runtimeFileSha256": {
+    "dist/trail-bike.js": "c7e19b7d2e4353c376f93092b985b1ad9ab880e8cdba0d3d094e87aea51efaa1",
+    "dist/moving-wheel.js": "45b1068fabf5413dfc90bfd2ee47f46600deb093b756d7c8d1bdc8ad24411e35",
+    "dist/trail-bike-app.js": "06421aa017c01316abbd9fa0603e524b11c3e767d353dd7c337c80d910f80f9b",
+    "dist/trail-bike.html": "e615458d33d26cf2c51191c163cf593ea2108191ee63f6c63f80f2d64cb5e9ce",
+    "scripts/trail-bike-browser-check.mjs": "decd37f0c2578f7bdb9769e4010c402909c70d5d895ee7b09239fb64073e62b5",
+    "test/traction.test.mjs": "227bf8ea07e1d5d6d709066e90c9b9cc3a30e1f8f65e02ef15e4130930b84501"
+  }
+}
