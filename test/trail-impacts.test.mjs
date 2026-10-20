@@ -37,5 +37,5 @@ test('collinear terrain subdivision cannot create duplicate support or change th
  const r=await run(a),s=await run(split);assert.deepEqual(s,r);
 });
 test('legacy smooth records migrate without changing physics; false legacy sharp records are rejected',async()=>{
- const r=await run({...preset('flat'),motion:{duration:.02}}),saved=structuredClone(r);saved.model='bikelab-trail-bike-0.1';delete saved.contactSupport;saved.frames[0].frame[0]=999;const migrated=await replay(saved);assert.equal(migrated.model,MODEL);assert.deepEqual(migrated,r);saved.scenario.profile=preset('square').profile;assert.throws(()=>replay(saved),/Legacy/);
+ const r=await run({...preset('flat'),motion:{duration:.02}}),saved=structuredClone(r);saved.model='bikelab-trail-bike-0.1';delete saved.scenario.commands;delete saved.scenario.surface;delete saved.contactSupport;saved.frames[0].frame[0]=999;const migrated=await replay(saved);assert.equal(migrated.model,MODEL);assert.deepEqual(migrated,r);saved.scenario.profile=preset('square').profile;assert.throws(()=>replay(saved),/Legacy/);
 });

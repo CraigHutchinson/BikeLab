@@ -18,6 +18,7 @@ test('commands reject incomplete, unordered, unbounded and sparse schedules; leg
 test('native rotor brakes bound solved torque through reversal, near rest, release and capacity changes',async()=>{
  const mj=await getRuntime(),model=mj.MjModel.from_xml_string('<mujoco><option gravity="0 0 0" timestep=".0001"/><worldbody><body><joint type="hinge" axis="0 1 0"/><inertial pos="0 0 0" mass="1" diaginertia=".4 .4 .4"/></body></worldbody></mujoco>'),d=new mj.MjData(model);
  try{
+  assert.deepEqual(Array.from(model.dof_solref),[.02,1]);assert.deepEqual(Array.from(model.dof_solimp),[.9,.95,.001,.5,2]);
   const observe=(speed,drive,capacity)=>{d.qvel[0]=speed;d.qfrc_applied[0]=drive;model.dof_frictionloss[0]=capacity;mj.mj_forward(model,d);let torque=0,rows=0;for(let i=0;i<d.nefc;i++){assert.equal(d.efc_type[i],mj.mjtConstraint.mjCNSTR_FRICTION_DOF.value);assert.equal(d.efc_id[i],0);near(d.efc_vel[i],speed);torque+=d.efc_force[i];rows++;}near(d.qacc[0],(drive+torque)/.4);assert.ok(Math.abs(torque)<=capacity+1e-12);assert.equal(rows,capacity?1:0);return torque;};
   for(const sign of [-1,1]){near(observe(2*sign,0,.8),-.8*sign);const rest=observe(1e-8*sign,0,.8);assert.ok(rest*sign<=0);const hold=observe(0,.4*sign,.8);assert.ok(hold*sign<0&&Math.abs(hold)<=.4);near(observe(0,2*sign,.8),-.8*sign);near(observe(sign,.4*sign,0),0);}
   observe(1,0,.8);for(let i=0;i<6000;i++)mj.mj_step(model,d);assert.ok(Math.abs(d.qvel[0])<.01,'regularized braking should approach rest');
