@@ -78,6 +78,8 @@ Next D5 starts with a bounded, source-backed planar rider attachment design on t
 
 The [iteration 20 review](ITERATION_20_REVIEW.md) records the first D5a topology proposal, source limits and required contact/equality work routing. It is a design checkpoint; articulated rider mechanics remain unimplemented.
 
+The [iteration 20 handoff](ITERATION_20_HANDOFF.md) records construction completeness, remaining design decisions, verified CI and the next small implementation steps.
+
 The [whole-system manoeuvre stretch goals](RIDER_MANOEUVRES.md) turn later rider actuation into pump-track, manual/wheelie, bunny-hop, endo and landing-absorption acceptance cases. They preserve explicit rider work, physical contact transitions, finite travel and overload handling; 3D berm pumping remains behind D6. These are planned demonstrations and validation targets, not present capabilities.
 
 All D6–D12 gates remain required. In particular, preserve finite suspension travel and explicit unsupported-overload termination until supported rim/spoke/frame/bead failure and pressure-loss models can continue the event. Keep eventual 3D lateral/turning forces, layered terrain/mud and rotating material history, scan/ML provenance, and measured on-demand/multirate fidelity in the receiving design.

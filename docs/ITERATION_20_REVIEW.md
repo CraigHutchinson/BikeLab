@@ -1,5 +1,7 @@
 # Iteration 20 review — passive articulated rider
 
+For the current completeness assessment, verified results and resume order, start with the [session handoff](ITERATION_20_HANDOFF.md).
+
 Design checkpoint only; no articulated rider is implemented or validated by this note. Reviewed merged PR #22 at main `e73f6cc9d5bd130ec632bcb4d890ad7286ddb4cf` before selecting the next increment. Its final PR run [39404903865](https://github.com/CraigHutchinson/BikeLab/actions/runs/39404903865) passed 188 tests on Linux and Windows and 23 exact connected-bike browser/headless comparisons. The main [test and Pages run](https://github.com/CraigHutchinson/BikeLab/actions/runs/39409826183) also passed and published the tested assets. The [iteration 19 evidence](ITERATION_19_EVIDENCE.md) retains unresolved casing/timestep sensitivity and physical calibration limits.
 
 The next D5a receiving slice extends the existing connected Trail bike, for both hardtail and full suspension, with a passive planar articulated posture. Keep the current fixed and guided rider modes and their historical replay unchanged. This is preparation for MTB synthetic data and game dynamics, not a biomechanical or injury model.
