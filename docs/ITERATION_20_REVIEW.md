@@ -72,4 +72,6 @@ GPT-6.1 Sol performed the bounded source review; the pinned native XML and RNE s
 
 The five-body topology and implementation sequence are engineering proposals. No numerical defaults or release thresholds are sourced from these references in this checkpoint.
 
+User-requested whole-system stretch goals are recorded in [RIDER_MANOEUVRES.md](RIDER_MANOEUVRES.md): pumping, manuals/powered wheelies, bunny hops, endos and landing absorption, followed by 3D berm pumping. Their acceptance requires active rider work, contact-state and momentum checks after the passive slice; visual resemblance alone does not establish precision or calibration.
+
 Preserve the remaining destination: active rider controls and release, finite-width 3D steering/lean/lateral and combined tyre forces, sharp/faceted impact limits, layered soil over roots/rock and shared mud history, sourced rim/spoke/frame/bead failure and tyre pressure loss, scan/ML provenance, and measured adaptive/multirate fidelity. Unsupported overload must continue to terminate rather than invent extra suspension or limb travel.
