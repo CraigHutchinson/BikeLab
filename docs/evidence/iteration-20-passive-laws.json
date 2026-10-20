@@ -1,0 +1,1085 @@
+{
+  "scope": "Static passive hinge-law/configuration/native mapping only; no integration or connected rider acceptance.",
+  "baseRemote": "92f2b01af1462967a68d99a81fa9a9eeeccb98a2",
+  "nativeSourceCommit": "a892750516336d8358949f4518fcc4fbbd85beae",
+  "node": "v24.19.0",
+  "sourceSha256": {
+    "dist/rider-passive.js": "75b2df2185dd9b19c00eb2a461fb2eb943c8e65eaf3c6f8c1e48137c9f91f8fe",
+    "dist/rider-native.js": "ec849b8aea5040718ae09a30043f8e49822a28975871014dc3bd31c0c93814ff",
+    "test/rider-passive.test.mjs": "9aefbccc6f12e876c9e802ffbd561cb5bad3dd077ca73ca9e8c0442cecceadab",
+    "scripts/rider-posture.mjs": "d4740271a50d869789180c7286a52db27045b1664fbf9ba6f60f716190d0e123",
+    "scripts/browser-check.mjs": "077627b5149e91203c08fae142eee0612534520b9813ad0aa0875b484c100eab"
+  },
+  "focused": {
+    "command": "node test/rider-passive.test.mjs",
+    "tests": 5,
+    "pass": 5,
+    "fail": 0,
+    "skip": 0
+  },
+  "fullSuite": {
+    "command": "node --test",
+    "filePass": 28,
+    "fileFail": 9,
+    "restriction": "Process spawning and loopback denied in this cloud sandbox; full pass not claimed."
+  },
+  "cliRoundTripExact": true,
+  "previousNativeReports": {
+    "cases": 2,
+    "maxAbsolute": 1.7763568394002505e-15,
+    "normalizedTolerance": 1e-12
+  },
+  "browser": {
+    "status": "Pending hosted run; local loopback blocked. No new visual receiving evidence."
+  },
+  "cases": [
+    {
+      "format": "bikelab-rider-native-passive-0.1",
+      "spec": {
+        "format": "bikelab-rider-passive-0.1",
+        "posture": {
+          "format": "bikelab-rider-posture-0.1",
+          "riderMass": 70,
+          "hip": [
+            -0.15,
+            0.25
+          ],
+          "trunkPitch": 0.55,
+          "hand": [
+            0.45,
+            0.32
+          ],
+          "foot": [
+            0,
+            -0.3
+          ],
+          "elbowSide": -1,
+          "kneeSide": 1,
+          "minBendSine": 0.05,
+          "segments": {
+            "trunk": {
+              "massFraction": 0.6,
+              "length": 0.55,
+              "comFraction": 0.5,
+              "inertiaPerMass": [
+                0.02880833333333334,
+                0.02880833333333334,
+                0.0072
+              ]
+            },
+            "thighs": {
+              "massFraction": 0.2,
+              "length": 0.43,
+              "comFraction": 0.5,
+              "inertiaPerMass": [
+                0.01700833333333333,
+                0.01700833333333333,
+                0.0032
+              ]
+            },
+            "shanksFeet": {
+              "massFraction": 0.1,
+              "length": 0.43,
+              "comFraction": 0.5,
+              "inertiaPerMass": [
+                0.01663333333333333,
+                0.01663333333333333,
+                0.0024500000000000004
+              ]
+            },
+            "upperArms": {
+              "massFraction": 0.055,
+              "length": 0.3,
+              "comFraction": 0.5,
+              "inertiaPerMass": [
+                0.008125,
+                0.008125,
+                0.0012500000000000002
+              ]
+            },
+            "forearmsHands": {
+              "massFraction": 0.045,
+              "length": 0.3,
+              "comFraction": 0.5,
+              "inertiaPerMass": [
+                0.007899999999999999,
+                0.007899999999999999,
+                0.0008
+              ]
+            }
+          }
+        },
+        "joints": {
+          "hip": {
+            "restAngle": 1.4792200037917318,
+            "stiffness": 120,
+            "damping": 8,
+            "minAngle": 1.1792200037917318,
+            "maxAngle": 1.7792200037917318
+          },
+          "knee": {
+            "restAngle": 1.6922412012942722,
+            "stiffness": 90,
+            "damping": 6,
+            "minAngle": 1.3922412012942722,
+            "maxAngle": 1.9922412012942723
+          },
+          "shoulder": {
+            "restAngle": 2.492056379089391,
+            "stiffness": 25,
+            "damping": 2,
+            "minAngle": 2.192056379089391,
+            "maxAngle": 2.7920563790893906
+          },
+          "elbow": {
+            "restAngle": -1.1301027328714,
+            "stiffness": 15,
+            "damping": 1.5,
+            "minAngle": -1.4301027328714,
+            "maxAngle": -0.8301027328713999
+          }
+        }
+      },
+      "engine": "MuJoCo 3.16.0",
+      "scope": "Initial native passive-law evaluation only; no integration, enforced stops, saddle, connected-bike dynamics, strength or anatomical calibration.",
+      "coordinates": "SI; frame x forward, y left, z up; joint values are zero deviations from the constructed posture. Tensors row-major in world axes.",
+      "dofs": [
+        {
+          "name": "travel",
+          "index": 0
+        },
+        {
+          "name": "heave",
+          "index": 1
+        },
+        {
+          "name": "pitch",
+          "index": 2
+        },
+        {
+          "name": "riderX",
+          "index": 3
+        },
+        {
+          "name": "riderZ",
+          "index": 4
+        },
+        {
+          "name": "riderPitch",
+          "index": 5
+        },
+        {
+          "name": "riderHip",
+          "index": 6
+        },
+        {
+          "name": "riderKnee",
+          "index": 7
+        },
+        {
+          "name": "riderShoulder",
+          "index": 8
+        },
+        {
+          "name": "riderElbow",
+          "index": 9
+        }
+      ],
+      "qpos": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "equalityRows": 6,
+      "closure": {
+        "solref": [
+          0.02,
+          1
+        ],
+        "solimp": [
+          0.9,
+          0.95,
+          0.001,
+          0.5,
+          2
+        ]
+      },
+      "segments": [
+        {
+          "name": "trunk",
+          "mass": 42,
+          "proximal": [
+            -0.15,
+            0,
+            0.25
+          ],
+          "distal": [
+            0.1374779759118626,
+            0,
+            0.7188884871327282
+          ],
+          "com": [
+            -0.006261012044068703,
+            0,
+            0.4844442435663641
+          ],
+          "inertiaCOM": [
+            0.9620055799998917,
+            0,
+            -0.40440761981187795,
+            0,
+            1.2099500000000003,
+            0,
+            -0.404407619811878,
+            0,
+            0.5503444200001089
+          ]
+        },
+        {
+          "name": "thighs",
+          "mass": 14,
+          "proximal": [
+            -0.15,
+            0,
+            0.25
+          ],
+          "distal": [
+            0.23560301152633853,
+            0,
+            0.059709912234455764
+          ],
+          "com": [
+            0.04280150576316927,
+            0,
+            0.15485495611722788
+          ],
+          "inertiaCOM": [
+            0.082658614810131,
+            0,
+            0.07671653344859863,
+            0,
+            0.23811666666666673,
+            0,
+            0.07671653344859863,
+            0,
+            0.20025805185653572
+          ]
+        },
+        {
+          "name": "shanksFeet",
+          "mass": 7,
+          "proximal": [
+            0.23560301152633853,
+            0,
+            0.059709912234455764
+          ],
+          "distal": [
+            8.326672684688674e-17,
+            0,
+            -0.30000000000000027
+          ],
+          "com": [
+            0.1178015057631693,
+            0,
+            -0.12014504388277225
+          ],
+          "inertiaCOM": [
+            0.0866275106595504,
+            0,
+            -0.04550642111322776,
+            0,
+            0.1164333333333333,
+            0,
+            -0.04550642111322776,
+            0,
+            0.04695582267378292
+          ]
+        },
+        {
+          "name": "upperArms",
+          "mass": 3.85,
+          "proximal": [
+            0.1374779759118626,
+            0,
+            0.7188884871327282
+          ],
+          "distal": [
+            0.16728957504953187,
+            0,
+            0.4203733810545686
+          ],
+          "com": [
+            0.15238377548069723,
+            0,
+            0.5696309340936484
+          ],
+          "inertiaCOM": [
+            0.031019876551269483,
+            0,
+            0.0026172337288413055,
+            0,
+            0.031281250000000003,
+            0,
+            0.002617233728841306,
+            0,
+            0.005073873448730517
+          ]
+        },
+        {
+          "name": "forearmsHands",
+          "mass": 3.15,
+          "proximal": [
+            0.16728957504953187,
+            0,
+            0.4203733810545686
+          ],
+          "distal": [
+            0.4500000000000003,
+            0,
+            0.32000000000000023
+          ],
+          "com": [
+            0.3086447875247661,
+            0,
+            0.3701866905272844
+          ],
+          "inertiaCOM": [
+            0.0050235916826449085,
+            0,
+            0.007051585401095601,
+            0,
+            0.024884999999999997,
+            0,
+            0.007051585401095601,
+            0,
+            0.022381408317355092
+          ]
+        }
+      ],
+      "aggregate": {
+        "mass": 70,
+        "com": [
+          0.038853967592562384,
+          0,
+          0.35761113542386536
+        ],
+        "inertiaCOM": [
+          4.189836541011326,
+          0,
+          0.04866862313408005,
+          0,
+          5.05140199393815,
+          0,
+          0.04866862313407999,
+          0,
+          1.2332479529268252
+        ]
+      },
+      "attachments": [
+        {
+          "name": "hand",
+          "rider": [
+            0.4500000000000003,
+            0,
+            0.32000000000000023
+          ],
+          "bike": [
+            0.45,
+            0,
+            0.32
+          ],
+          "gap": [
+            2.7755575615628914e-16,
+            0,
+            2.220446049250313e-16
+          ],
+          "jacobian": [
+            [
+              0,
+              0,
+              2.220446049250313e-16,
+              1,
+              0,
+              0.07000000000000023,
+              0,
+              0,
+              -0.398888487132728,
+              -0.10037338105456839
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              -2.7755575615628914e-16,
+              0,
+              1,
+              -0.6000000000000003,
+              0,
+              0,
+              -0.31252202408813773,
+              -0.28271042495046844
+            ]
+          ],
+          "residual": [
+            2.7755575615628914e-16,
+            0,
+            2.220446049250313e-16
+          ]
+        },
+        {
+          "name": "foot",
+          "rider": [
+            8.326672684688674e-17,
+            0,
+            -0.30000000000000027
+          ],
+          "bike": [
+            0,
+            0,
+            -0.3
+          ],
+          "gap": [
+            8.326672684688674e-17,
+            0,
+            -2.7755575615628914e-16
+          ],
+          "jacobian": [
+            [
+              0,
+              0,
+              -3.3306690738754696e-16,
+              1,
+              0,
+              -0.5500000000000003,
+              -0.5500000000000003,
+              -0.35970991223445603,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              -8.326672684688674e-17,
+              0,
+              1,
+              -0.15000000000000008,
+              -0.15000000000000008,
+              0.23560301152633845,
+              0,
+              0
+            ]
+          ],
+          "residual": [
+            8.326672684688674e-17,
+            0,
+            -2.7755575615628914e-16
+          ]
+        }
+      ],
+      "passive": {
+        "joints": [
+          {
+            "name": "hip",
+            "angle": 1.4792200037917318,
+            "springref": 0,
+            "stiffness": 120,
+            "damping": 8,
+            "nativeTorque": 0,
+            "torque": 0,
+            "springEnergy": 0,
+            "dampingLossPower": 0
+          },
+          {
+            "name": "knee",
+            "angle": 1.6922412012942722,
+            "springref": 0,
+            "stiffness": 90,
+            "damping": 6,
+            "nativeTorque": 0,
+            "torque": 0,
+            "springEnergy": 0,
+            "dampingLossPower": 0
+          },
+          {
+            "name": "shoulder",
+            "angle": 2.492056379089391,
+            "springref": 0,
+            "stiffness": 25,
+            "damping": 2,
+            "nativeTorque": 0,
+            "torque": 0,
+            "springEnergy": 0,
+            "dampingLossPower": 0
+          },
+          {
+            "name": "elbow",
+            "angle": -1.1301027328714,
+            "springref": 0,
+            "stiffness": 15,
+            "damping": 1.5,
+            "nativeTorque": 0,
+            "torque": 0,
+            "springEnergy": 0,
+            "dampingLossPower": 0
+          }
+        ],
+        "nativePotentialIncludingGravity": 245.4877068843114,
+        "ownership": "Native qfrc_passive and energy[0] already include these spring loads and potentials; joint entries are a decomposition, not an additional force or energy."
+      }
+    },
+    {
+      "format": "bikelab-rider-native-passive-0.1",
+      "spec": {
+        "format": "bikelab-rider-passive-0.1",
+        "posture": {
+          "format": "bikelab-rider-posture-0.1",
+          "riderMass": 35,
+          "hip": [
+            -0.15,
+            0.25
+          ],
+          "trunkPitch": 0.55,
+          "hand": [
+            0.45,
+            0.32
+          ],
+          "foot": [
+            0,
+            -0.3
+          ],
+          "elbowSide": -1,
+          "kneeSide": 1,
+          "minBendSine": 0.05,
+          "segments": {
+            "trunk": {
+              "massFraction": 0.6,
+              "length": 0.55,
+              "comFraction": 0.5,
+              "inertiaPerMass": [
+                0.02880833333333334,
+                0.02880833333333334,
+                0.0072
+              ]
+            },
+            "thighs": {
+              "massFraction": 0.2,
+              "length": 0.43,
+              "comFraction": 0.5,
+              "inertiaPerMass": [
+                0.01700833333333333,
+                0.01700833333333333,
+                0.0032
+              ]
+            },
+            "shanksFeet": {
+              "massFraction": 0.1,
+              "length": 0.43,
+              "comFraction": 0.5,
+              "inertiaPerMass": [
+                0.01663333333333333,
+                0.01663333333333333,
+                0.0024500000000000004
+              ]
+            },
+            "upperArms": {
+              "massFraction": 0.055,
+              "length": 0.3,
+              "comFraction": 0.5,
+              "inertiaPerMass": [
+                0.008125,
+                0.008125,
+                0.0012500000000000002
+              ]
+            },
+            "forearmsHands": {
+              "massFraction": 0.045,
+              "length": 0.3,
+              "comFraction": 0.5,
+              "inertiaPerMass": [
+                0.007899999999999999,
+                0.007899999999999999,
+                0.0008
+              ]
+            }
+          }
+        },
+        "joints": {
+          "hip": {
+            "restAngle": 1.5992200037917317,
+            "stiffness": 120,
+            "damping": 8,
+            "minAngle": 1.1792200037917318,
+            "maxAngle": 1.7792200037917318
+          },
+          "knee": {
+            "restAngle": 1.6922412012942722,
+            "stiffness": 90,
+            "damping": 6,
+            "minAngle": 1.3922412012942722,
+            "maxAngle": 1.9922412012942723
+          },
+          "shoulder": {
+            "restAngle": -1,
+            "stiffness": 25,
+            "damping": 2,
+            "minAngle": -1.2,
+            "maxAngle": 3.3
+          },
+          "elbow": {
+            "restAngle": -1.1301027328714,
+            "stiffness": 15,
+            "damping": 1.5,
+            "minAngle": -1.4301027328714,
+            "maxAngle": -0.8301027328713999
+          }
+        }
+      },
+      "engine": "MuJoCo 3.16.0",
+      "scope": "Initial native passive-law evaluation only; no integration, enforced stops, saddle, connected-bike dynamics, strength or anatomical calibration.",
+      "coordinates": "SI; frame x forward, y left, z up; joint values are zero deviations from the constructed posture. Tensors row-major in world axes.",
+      "dofs": [
+        {
+          "name": "travel",
+          "index": 0
+        },
+        {
+          "name": "heave",
+          "index": 1
+        },
+        {
+          "name": "pitch",
+          "index": 2
+        },
+        {
+          "name": "riderX",
+          "index": 3
+        },
+        {
+          "name": "riderZ",
+          "index": 4
+        },
+        {
+          "name": "riderPitch",
+          "index": 5
+        },
+        {
+          "name": "riderHip",
+          "index": 6
+        },
+        {
+          "name": "riderKnee",
+          "index": 7
+        },
+        {
+          "name": "riderShoulder",
+          "index": 8
+        },
+        {
+          "name": "riderElbow",
+          "index": 9
+        }
+      ],
+      "qpos": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "equalityRows": 6,
+      "closure": {
+        "solref": [
+          0.02,
+          1
+        ],
+        "solimp": [
+          0.9,
+          0.95,
+          0.001,
+          0.5,
+          2
+        ]
+      },
+      "segments": [
+        {
+          "name": "trunk",
+          "mass": 21,
+          "proximal": [
+            -0.15,
+            0,
+            0.25
+          ],
+          "distal": [
+            0.1374779759118626,
+            0,
+            0.7188884871327282
+          ],
+          "com": [
+            -0.006261012044068703,
+            0,
+            0.4844442435663641
+          ],
+          "inertiaCOM": [
+            0.48100278999994583,
+            0,
+            -0.20220380990593897,
+            0,
+            0.6049750000000002,
+            0,
+            -0.202203809905939,
+            0,
+            0.27517221000005443
+          ]
+        },
+        {
+          "name": "thighs",
+          "mass": 7,
+          "proximal": [
+            -0.15,
+            0,
+            0.25
+          ],
+          "distal": [
+            0.23560301152633853,
+            0,
+            0.059709912234455764
+          ],
+          "com": [
+            0.04280150576316927,
+            0,
+            0.15485495611722788
+          ],
+          "inertiaCOM": [
+            0.0413293074050655,
+            0,
+            0.03835826672429932,
+            0,
+            0.11905833333333336,
+            0,
+            0.03835826672429932,
+            0,
+            0.10012902592826786
+          ]
+        },
+        {
+          "name": "shanksFeet",
+          "mass": 3.5,
+          "proximal": [
+            0.23560301152633853,
+            0,
+            0.059709912234455764
+          ],
+          "distal": [
+            8.326672684688674e-17,
+            0,
+            -0.30000000000000027
+          ],
+          "com": [
+            0.1178015057631693,
+            0,
+            -0.12014504388277225
+          ],
+          "inertiaCOM": [
+            0.0433137553297752,
+            0,
+            -0.02275321055661388,
+            0,
+            0.05821666666666665,
+            0,
+            -0.02275321055661388,
+            0,
+            0.02347791133689146
+          ]
+        },
+        {
+          "name": "upperArms",
+          "mass": 1.925,
+          "proximal": [
+            0.1374779759118626,
+            0,
+            0.7188884871327282
+          ],
+          "distal": [
+            0.16728957504953187,
+            0,
+            0.4203733810545686
+          ],
+          "com": [
+            0.15238377548069723,
+            0,
+            0.5696309340936484
+          ],
+          "inertiaCOM": [
+            0.015509938275634742,
+            0,
+            0.0013086168644206528,
+            0,
+            0.015640625000000002,
+            0,
+            0.001308616864420653,
+            0,
+            0.0025369367243652584
+          ]
+        },
+        {
+          "name": "forearmsHands",
+          "mass": 1.575,
+          "proximal": [
+            0.16728957504953187,
+            0,
+            0.4203733810545686
+          ],
+          "distal": [
+            0.4500000000000003,
+            0,
+            0.32000000000000023
+          ],
+          "com": [
+            0.3086447875247661,
+            0,
+            0.3701866905272844
+          ],
+          "inertiaCOM": [
+            0.0025117958413224542,
+            0,
+            0.0035257927005478006,
+            0,
+            0.012442499999999999,
+            0,
+            0.0035257927005478006,
+            0,
+            0.011190704158677546
+          ]
+        }
+      ],
+      "aggregate": {
+        "mass": 35,
+        "com": [
+          0.038853967592562384,
+          0,
+          0.35761113542386536
+        ],
+        "inertiaCOM": [
+          2.094918270505663,
+          0,
+          0.024334311567040023,
+          0,
+          2.525700996969075,
+          0,
+          0.024334311567039996,
+          0,
+          0.6166239764634126
+        ]
+      },
+      "attachments": [
+        {
+          "name": "hand",
+          "rider": [
+            0.4500000000000003,
+            0,
+            0.32000000000000023
+          ],
+          "bike": [
+            0.45,
+            0,
+            0.32
+          ],
+          "gap": [
+            2.7755575615628914e-16,
+            0,
+            2.220446049250313e-16
+          ],
+          "jacobian": [
+            [
+              0,
+              0,
+              2.220446049250313e-16,
+              1,
+              0,
+              0.07000000000000023,
+              0,
+              0,
+              -0.398888487132728,
+              -0.10037338105456839
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              -2.7755575615628914e-16,
+              0,
+              1,
+              -0.6000000000000003,
+              0,
+              0,
+              -0.31252202408813773,
+              -0.28271042495046844
+            ]
+          ],
+          "residual": [
+            2.7755575615628914e-16,
+            0,
+            2.220446049250313e-16
+          ]
+        },
+        {
+          "name": "foot",
+          "rider": [
+            8.326672684688674e-17,
+            0,
+            -0.30000000000000027
+          ],
+          "bike": [
+            0,
+            0,
+            -0.3
+          ],
+          "gap": [
+            8.326672684688674e-17,
+            0,
+            -2.7755575615628914e-16
+          ],
+          "jacobian": [
+            [
+              0,
+              0,
+              -3.3306690738754696e-16,
+              1,
+              0,
+              -0.5500000000000003,
+              -0.5500000000000003,
+              -0.3597099122344561,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              -8.326672684688674e-17,
+              0,
+              1,
+              -0.15000000000000008,
+              -0.15000000000000008,
+              0.23560301152633845,
+              0,
+              0
+            ]
+          ],
+          "residual": [
+            8.326672684688674e-17,
+            0,
+            -2.7755575615628914e-16
+          ]
+        }
+      ],
+      "passive": {
+        "joints": [
+          {
+            "name": "hip",
+            "angle": 1.4792200037917318,
+            "springref": 0.11999999999999988,
+            "stiffness": 120,
+            "damping": 8,
+            "nativeTorque": 14.399999999999986,
+            "torque": 14.399999999999986,
+            "springEnergy": 0.8639999999999983,
+            "dampingLossPower": 0
+          },
+          {
+            "name": "knee",
+            "angle": 1.6922412012942722,
+            "springref": 0,
+            "stiffness": 90,
+            "damping": 6,
+            "nativeTorque": 0,
+            "torque": 0,
+            "springEnergy": 0,
+            "dampingLossPower": 0
+          },
+          {
+            "name": "shoulder",
+            "angle": 2.492056379089391,
+            "springref": -3.492056379089391,
+            "stiffness": 25,
+            "damping": 2,
+            "nativeTorque": -87.30140947723477,
+            "torque": -87.30140947723477,
+            "springEnergy": 152.43072193423635,
+            "dampingLossPower": 0
+          },
+          {
+            "name": "elbow",
+            "angle": -1.1301027328714,
+            "springref": 0,
+            "stiffness": 15,
+            "damping": 1.5,
+            "nativeTorque": 0,
+            "torque": 0,
+            "springEnergy": 0,
+            "dampingLossPower": 0
+          }
+        ],
+        "nativePotentialIncludingGravity": 276.03857537639203,
+        "ownership": "Native qfrc_passive and energy[0] already include these spring loads and potentials; joint entries are a decomposition, not an additional force or energy."
+      }
+    }
+  ]
+}

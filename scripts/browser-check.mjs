@@ -17,7 +17,8 @@ import { simulate as simulateSuspension } from '../dist/suspension.js';
 import { compareSuspension, comparisonReport } from '../dist/suspension-reference.js';
 import { fixture, probe } from '../dist/terrain.js';
 import { runTrial, trialReport } from '../dist/solver-trial.js';
-import { inspectNativePosture } from '../dist/rider-native.js';
+import { inspectNativePosture, inspectNativePassive } from '../dist/rider-native.js';
+import { DEFAULTS as PASSIVE_DEFAULTS } from '../dist/rider-passive.js';
 import { constructPosture } from '../dist/rider-posture.js';
 import { createHash } from 'node:crypto';
 
@@ -83,6 +84,19 @@ try {
   report.riderNative={cases:browserNative.length,maxAbsolute:postureMaxDifference,normalizedTolerance:1e-12};
   await writeFile(join(dir,'rider-native-browser.json'),JSON.stringify(browserNative,null,2));
   report.checks.push('native rider construction: named attachments, full inertia and sparse-fixture site Jacobians agree across browser/Node; no integrated rider claim');
+  const passiveInputs=[{}, {posture:{riderMass:35},joints:{
+    hip:{...PASSIVE_DEFAULTS.joints.hip,restAngle:PASSIVE_DEFAULTS.joints.hip.restAngle+.12},
+    shoulder:{...PASSIVE_DEFAULTS.joints.shoulder,restAngle:-1,minAngle:-1.2,maxAngle:3.3}
+  }}];
+  const browserPassive=await page.evaluate(async({root,inputs})=>{
+    const {inspectNativePassive}=await import(root+'rider-native.js');
+    const reports=[];for(const input of inputs)reports.push(await inspectNativePassive(input));return reports;
+  },{root,inputs:passiveInputs});
+  const passiveExpected=[];for(const input of passiveInputs)passiveExpected.push(await inspectNativePassive(input));
+  postureMaxDifference=0;comparePosture(browserPassive,passiveExpected);
+  report.riderPassive={cases:browserPassive.length,maxAbsolute:postureMaxDifference,normalizedTolerance:1e-12};
+  await writeFile(join(dir,'rider-passive-browser.json'),JSON.stringify(browserPassive,null,2));
+  report.checks.push('passive rider initialization: canonical laws, nonzero rest offsets, unwrapped springs and native force/energy decomposition agree across browser/Node; no dynamic or stop-enforcement claim');
   const invalidPosture=await page.evaluate(async root=>{
     const {constructPosture,DEFAULTS}=await import(root+'rider-posture.js');
     try{constructPosture({foot:[...DEFAULTS.hip]});return null;}catch(error){return error.message;}

@@ -1,6 +1,7 @@
 // Native construction prerequisite for the connected rider. No time integration.
 import {constructPosture, SEGMENTS} from './rider-posture.js';
 import {getRuntime} from './moving-wheel.js';
+import {compilePassiveRider, evaluatePassiveRider, LOAD_STRIDE} from './rider-passive.js';
 
 export const FORMAT = 'bikelab-rider-native-0.1';
 export const RIDER_JOINTS = Object.freeze(['riderX', 'riderZ', 'riderPitch', 'riderHip', 'riderKnee', 'riderShoulder', 'riderElbow']);
@@ -10,20 +11,36 @@ export const CLOSURE = Object.freeze({solref: Object.freeze([.02, 1]), solimp: O
 const quat = angle => `${Math.cos(angle / 2)} 0 ${Math.sin(angle / 2)} 0`;
 const xyz = point => `${point[0]} 0 ${point[1]}`;
 const hinge = name => `<joint name="${name}" type="hinge" axis="0 1 0" ref="0" stiffness="0" damping="0" frictionloss="0" limited="false"/>`;
+const passiveHinge = law => `<joint name="${law.nativeName}" type="hinge" axis="0 1 0" ref="0" springref="${law.springref}" stiffness="${law.stiffness}" damping="${law.damping}" frictionloss="0" limited="false"/>`;
 
 // Fragments belong under one frame body and one top-level equality element.
 // All joint values are deviations from the solved posture; no stabilization
 // step is used to close the starting pose. Names are reserved to this assembly.
 export function riderParts(input = {}) {
-  const posture = constructPosture(input), {spec, joints} = posture, s = spec.segments;
+  return partsFromPosture(constructPosture(input));
+}
+
+// Static passive-law prerequisite. These fragments do not enforce ultimate
+// domains: a future integrator must own candidate guards and rollback.
+export function passiveRiderParts(input = {}) {
+  const passive = compilePassiveRider(input);
+  return {...partsFromPosture(passive.posture, passive), passive};
+}
+
+function partsFromPosture(posture, passive) {
+  const {spec, joints} = posture, s = spec.segments;
+  const joint = name => {
+    const law = passive?.laws.find(law => law.nativeName === name);
+    return law ? passiveHinge(law) : hinge(name);
+  };
   const inertial = name => {
     const p = s[name], mass = spec.riderMass * p.massFraction;
     return `<inertial pos="0 0 ${p.comFraction * p.length}" mass="${mass}" diaginertia="${p.inertiaPerMass.map(x => mass * x).join(' ')}"/>`;
   };
   const end = name => `<site name="rider_${name}_end" pos="0 0 ${s[name].length}"/>`;
-  const leaf = (name, joint, angle, length, attachment) => `<body name="rider_${name}" pos="0 0 ${length}" quat="${quat(angle)}">${hinge(joint)}${inertial(name)}${end(name)}<site name="rider_${attachment}" pos="0 0 ${s[name].length}"/></body>`;
-  const legs = `<body name="rider_thighs" quat="${quat(joints.hip)}">${hinge('riderHip')}${inertial('thighs')}${end('thighs')}${leaf('shanksFeet', 'riderKnee', joints.knee, s.thighs.length, 'foot')}</body>`;
-  const arms = `<body name="rider_upperArms" pos="0 0 ${s.trunk.length}" quat="${quat(joints.shoulder)}">${hinge('riderShoulder')}${inertial('upperArms')}${end('upperArms')}${leaf('forearmsHands', 'riderElbow', joints.elbow, s.upperArms.length, 'hand')}</body>`;
+  const leaf = (name, jointName, angle, length, attachment) => `<body name="rider_${name}" pos="0 0 ${length}" quat="${quat(angle)}">${joint(jointName)}${inertial(name)}${end(name)}<site name="rider_${attachment}" pos="0 0 ${s[name].length}"/></body>`;
+  const legs = `<body name="rider_thighs" quat="${quat(joints.hip)}">${joint('riderHip')}${inertial('thighs')}${end('thighs')}${leaf('shanksFeet', 'riderKnee', joints.knee, s.thighs.length, 'foot')}</body>`;
+  const arms = `<body name="rider_upperArms" pos="0 0 ${s.trunk.length}" quat="${quat(joints.shoulder)}">${joint('riderShoulder')}${inertial('upperArms')}${end('upperArms')}${leaf('forearmsHands', 'riderElbow', joints.elbow, s.upperArms.length, 'hand')}</body>`;
   const c = Math.cos(spec.trunkPitch), sn = Math.sin(spec.trunkPitch);
   // Slides precede the hinge. Inverse-rest-rotated axes keep translations in
   // the parent frame's x/z directions despite the trunk's baked quaternion.
@@ -40,6 +57,10 @@ export function nativePostureXML(input = {}) {
   return fixtureXML(riderParts(input));
 }
 
+export function nativePassiveXML(input = {}) {
+  return fixtureXML(passiveRiderParts(input));
+}
+
 function fixtureXML(p) {
   return `<mujoco model="BikeLab rider construction"><compiler angle="radian" fusestatic="false"/><option gravity="0 0 -9.80665" jacobian="sparse" solver="Newton" tolerance="1e-12"/><worldbody><body name="frame"><joint name="travel" type="slide" axis="1 0 0"/><joint name="heave" type="slide" axis="0 0 1"/>${hinge('pitch')}<inertial pos="0 0 0" mass="12" diaginertia=".2 .5 .4"/>${p.sites}${p.body}</body></worldbody><equality>${p.equality}</equality></mujoco>`;
 }
@@ -53,10 +74,17 @@ function centralTensor(model, data, body) {
 }
 
 export async function inspectNativePosture(input = {}) {
+  return inspectParts(riderParts(input));
+}
+
+export async function inspectNativePassive(input = {}) {
+  return inspectParts(passiveRiderParts(input));
+}
+
+async function inspectParts(parts) {
   const mj = await getRuntime();
   let model, data, riderJacobian, bikeJacobian, rotationJacobian;
   try {
-    const parts = riderParts(input);
     model = mj.MjModel.from_xml_string(fixtureXML(parts)); data = new mj.MjData(model);
     mj.mj_forward(model, data);
     riderJacobian = new mj.DoubleBuffer(3 * model.nv);
@@ -99,10 +127,24 @@ export async function inspectNativePosture(input = {}) {
         jacobian: [0, 1, 2].map(axis => dofs.map(({index}) => jr[axis * model.nv + index] - jb[axis * model.nv + index])),
         residual: rows.map(row => data.efc_pos[row])};
     });
-    return {format: FORMAT, spec: parts.posture.spec, engine: 'MuJoCo 3.16.0',
+    const report = {format: FORMAT, spec: parts.posture.spec, engine: 'MuJoCo 3.16.0',
       scope: 'Native initial construction only; no integration, passive joint law, saddle, connected-bike dynamics or anatomical calibration.',
       coordinates: 'SI; frame x forward, y left, z up; joint values are zero deviations from the constructed posture. Tensors row-major in world axes.',
       dofs, qpos: Array.from(data.qpos), equalityRows: data.nefc, closure: CLOSURE,
       segments, aggregate: {mass, com, inertiaCOM}, attachments};
+    if (parts.passive) {
+      const values = evaluatePassiveRider(parts.passive, [0, 0, 0, 0], [0, 0, 0, 0], new Float64Array(4 * LOAD_STRIDE));
+      mj.mj_energyPos(model, data);
+      report.format = 'bikelab-rider-native-passive-0.1'; report.spec = parts.passive.spec;
+      report.scope = 'Initial native passive-law evaluation only; no integration, enforced stops, saddle, connected-bike dynamics, strength or anatomical calibration.';
+      report.passive = {joints: parts.passive.laws.map((law, i) => {
+        const joint = id('mjOBJ_JOINT', law.nativeName), q = model.jnt_qposadr[joint], v = model.jnt_dofadr[joint], at = i * LOAD_STRIDE;
+        return {name: law.name, angle: law.angle0, springref: model.qpos_spring[q],
+          stiffness: model.jnt_stiffness[joint], damping: model.dof_damping[v],
+          nativeTorque: data.qfrc_passive[v], torque: values[at], springEnergy: values[at + 1], dampingLossPower: values[at + 2]};
+      }), nativePotentialIncludingGravity: data.energy[0],
+      ownership: 'Native qfrc_passive and energy[0] already include these spring loads and potentials; joint entries are a decomposition, not an additional force or energy.'};
+    }
+    return report;
   } finally {rotationJacobian?.delete(); bikeJacobian?.delete(); riderJacobian?.delete(); data?.delete(); model?.delete();}
 }
