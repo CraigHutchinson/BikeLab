@@ -1,0 +1,171 @@
+{
+  "model": "bikelab-trail-bike-0.4",
+  "scope": "Hosted browser/headless agreement and inspected captures; separate from convergence, physical calibration and real-time evidence.",
+  "revision": "42fdac8dfbfdf5f336d12d3c06f4f3b11bc8fea1",
+  "workflowRun": {
+    "id": 39386186885,
+    "url": "https://github.com/CraigHutchinson/BikeLab/actions/runs/39386186885",
+    "conclusion": "success"
+  },
+  "tests": [
+    {
+      "os": "Linux",
+      "jobId": 118506475132,
+      "tests": 188,
+      "pass": 188,
+      "fail": 0,
+      "skipped": 0
+    },
+    {
+      "os": "Windows",
+      "jobId": 118506475191,
+      "tests": 188,
+      "pass": 188,
+      "fail": 0,
+      "skipped": 0
+    }
+  ],
+  "browser": {
+    "jobId": 118506474891,
+    "version": "141.0.7390.37",
+    "checks": [
+      "connected trail bike: full/hardtail smooth, square and coarse-faceted rocks, flight and overload stops; complete browser/headless records, homogeneous coast/sliding traction on both bikes, slip plots and grip input validation, drive/brake apply-release on both bikes, authored schedule add/remove/restore and time validation, legacy traction import, spin/brake histories, horizontal impact plots, inputs/replay, dirty/cancel/restore/supersession, delayed imports, playback/lifecycle and 390/320 px layouts; identical ten-station navigation",
+      "no captured page/console errors; rig has rendered pixels"
+    ],
+    "agreement": [
+      {
+        "name": "full-bump",
+        "maxAbsolute": 0
+      },
+      {
+        "name": "hardtail-bump",
+        "maxAbsolute": 0
+      },
+      {
+        "name": "fixed-rider",
+        "maxAbsolute": 0
+      },
+      {
+        "name": "flight",
+        "maxAbsolute": 0
+      },
+      {
+        "name": "limit",
+        "maxAbsolute": 0
+      },
+      {
+        "name": "invalid-travel",
+        "maxAbsolute": 0
+      },
+      {
+        "name": "superseded-flight",
+        "maxAbsolute": 0
+      },
+      {
+        "name": "full-square",
+        "maxAbsolute": 0
+      },
+      {
+        "name": "full-faceted",
+        "maxAbsolute": 0
+      },
+      {
+        "name": "full-edge-limit",
+        "maxAbsolute": 0
+      },
+      {
+        "name": "hardtail-square",
+        "maxAbsolute": 0
+      },
+      {
+        "name": "hardtail-faceted",
+        "maxAbsolute": 0
+      },
+      {
+        "name": "hardtail-edge-limit",
+        "maxAbsolute": 0
+      },
+      {
+        "name": "full-coast",
+        "maxAbsolute": 0
+      },
+      {
+        "name": "full-sliding",
+        "maxAbsolute": 0
+      },
+      {
+        "name": "hardtail-coast",
+        "maxAbsolute": 0
+      },
+      {
+        "name": "hardtail-sliding",
+        "maxAbsolute": 0
+      },
+      {
+        "name": "full-drive",
+        "maxAbsolute": 0
+      },
+      {
+        "name": "full-brake",
+        "maxAbsolute": 0
+      },
+      {
+        "name": "hardtail-drive",
+        "maxAbsolute": 0
+      },
+      {
+        "name": "hardtail-brake",
+        "maxAbsolute": 0
+      },
+      {
+        "name": "authored-drive-brake",
+        "maxAbsolute": 0
+      },
+      {
+        "name": "legacy-traction",
+        "maxAbsolute": 0
+      }
+    ]
+  },
+  "artifact": {
+    "id": 12248121941,
+    "name": "trail-bike-evidence",
+    "sizeBytes": 20210676,
+    "sha256": "2a1c57e01e9b3e2d73c27a08d13b63790d935696f3b72c1938a9071f7df64413",
+    "downloadedSha256Verified": true
+  },
+  "inspection": {
+    "screenshots": [
+      {
+        "file": "full-drive.png",
+        "sha256": "ebb725410ce50f9c1370907c46fdbc41f038c307b242c7135a9c6f1a6b537470"
+      },
+      {
+        "file": "full-brake.png",
+        "sha256": "268aeec2ad67a868a1c93a9e68e66a30b06d04684a6ef469afa3ed78e4a2cc64"
+      },
+      {
+        "file": "hardtail-drive.png",
+        "sha256": "f774b2617c96c7ca7bcc6f5019379f53e986c9e35314a7baa8bb55d6b5bc53d0"
+      },
+      {
+        "file": "hardtail-brake.png",
+        "sha256": "2a984278456187633ada1386a107748d33a28f28a789c330385b43af87cb69fe"
+      },
+      {
+        "file": "brake-mobile-320.png",
+        "sha256": "c2891bf594cb98bb2192c63ad66ed20c0c8ecf2475424daae399753962165c41"
+      },
+      {
+        "file": "brake-mobile-viewport.png",
+        "sha256": "66e4f625284859e7797f7604952aba8ab26143244feae0b499e955a4ef45c905"
+      }
+    ],
+    "observations": "Actual full-suspension and hardtail drive/brake captures show the casing/contact arrows, timed three-row command editor, wheel-spin plot and separate command-capacity/solved-torque readouts. The 320 px full-page and bike viewport captures are legible; the sidebar is long. No geometry or overflow defect was observed in these states. The unchanged synthetic geometry is not production-bike calibration."
+  },
+  "followup": {
+    "revision": "eb5c3d05b735b94d6a1c4d05fbe65ae375104b4d",
+    "change": "Reject programmatic modern records with commands: undefined; document version 0.4 and torque/work ownership.",
+    "validation": "Focused drive-controls test file passes locally. Fresh exact-head hosted checks remain merge gates; final run and publication links are on PR #22."
+  }
+}

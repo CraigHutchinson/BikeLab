@@ -1,0 +1,2426 @@
+{
+  "scope": "Uncalibrated planar hub torque and native regularized dry-friction brakes. Numerical sensitivity is distinct from convergence, physical calibration and real-time evidence.",
+  "trials": [
+    {
+      "label": "full-coast",
+      "scenario": {
+        "bike": {
+          "pivotX": 0.04,
+          "pivotZ": -0.235,
+          "shockArmX": -0.054607848086069846,
+          "shockArmZ": 0.18996325604011804,
+          "shockFrameX": 0.19332203501088832,
+          "shockFrameZ": -0.015623078508508775,
+          "shockTravel": 0.055,
+          "bike": "full",
+          "mass": 82,
+          "rider": "compliant",
+          "riderMass": 70,
+          "riderStiffness": 12000,
+          "riderDamping": 900,
+          "riderTravel": 0.15,
+          "riderBuffer": "progressive",
+          "riderBufferWidth": 0.015,
+          "riderBufferStiffness": 300000,
+          "riderBufferDamping": 1500,
+          "forkBuffer": "progressive",
+          "forkBufferWidth": 0.02,
+          "forkBufferStiffness": 300000,
+          "forkBufferDamping": 1500,
+          "forkStiffness": 9000,
+          "forkDamping": 700,
+          "shockBuffer": "progressive",
+          "shockBufferWidth": 0.008,
+          "shockBufferStiffness": 1000000,
+          "shockBufferDamping": 3000,
+          "shockStiffness": 70000,
+          "shockDamping": 2400
+        },
+        "wheel": {
+          "nodes": 64,
+          "tyreMass": 1,
+          "hubMass": 1.5,
+          "hubInertia": 0.04,
+          "skin": 0.008,
+          "rimRadius": 0.29,
+          "foundation": 300000,
+          "extension": 500,
+          "edgeViscosity": 0.5,
+          "contactTime": 0.0005,
+          "contactImpedance": 0.99,
+          "collisionTolerance": 1e-10,
+          "collisionIterations": 100,
+          "maxPenetration": 0.0005,
+          "maxStrain": 0.25,
+          "maxDisplacement": 0.06
+        },
+        "motion": {
+          "centerX": -0.5,
+          "clearance": 0.012,
+          "velocityX": 1.5,
+          "velocityZ": 0,
+          "omega": 4.166666666666667,
+          "pitchOffset": 0,
+          "pitchVelocity": 0,
+          "forkCompression": 0.04,
+          "rearAngle": 0.08,
+          "riderOffset": -0.05,
+          "gravity": 9.80665,
+          "duration": 0.3,
+          "dt": 0.00003125,
+          "sampleDt": 0.005
+        },
+        "profile": {
+          "format": "bikelab-profile-1",
+          "units": "m",
+          "axes": "x-forward,z-up",
+          "solid": "below",
+          "interpolation": "linear",
+          "source": {
+            "kind": "illustrative",
+            "description": "Synthetic flat rigid trail."
+          },
+          "points": [
+            [
+              -3,
+              0
+            ],
+            [
+              5,
+              0
+            ]
+          ]
+        },
+        "assembly": {
+          "tyreId": "",
+          "rimId": "",
+          "brand": "unknown",
+          "rimType": "unknown",
+          "construction": "unknown",
+          "tyreBsd": null,
+          "rimBsd": null,
+          "tyreWidth": null,
+          "rimInnerWidth": null,
+          "tyreTubelessApproved": null,
+          "rimTubelessApproved": null,
+          "standardCompliant": null,
+          "widthPairApproved": null,
+          "pairApproved": null,
+          "pressure": null,
+          "tyreMaxPressure": null,
+          "rimMaxPressure": null,
+          "sources": {}
+        },
+        "surface": {
+          "friction": 0.6
+        },
+        "commands": [
+          {
+            "tick": 0,
+            "rearDrive": 0,
+            "frontBrake": 0,
+            "rearBrake": 0
+          }
+        ]
+      },
+      "status": "completed",
+      "termination": null,
+      "summary": {
+        "acceptedTime": 0.3000000000000037,
+        "steps": 9600,
+        "peakForce": 1339.2669217319196,
+        "peakPenetration": 0.00017482655164317504,
+        "maxResidual": 0.44750813794744815,
+        "maxSampledRootWrench": 9.322320693172514e-12,
+        "maxSampledBearingMoment": 3.588240815588506e-13,
+        "maxDiagnosticDifference": 0,
+        "maxPowerResidual": 4.275815812526673e-13,
+        "maxSampledLateralContactForce": 1.4745516648558711e-7,
+        "maxSampledConeExcess": 0,
+        "initialEnergy": 626.7389949311612,
+        "finalEnergy": 609.4376728750035,
+        "initialMomentum": [
+          133.5,
+          -3.0531133177191805e-16,
+          76.76105355742496
+        ]
+      },
+      "endpoint": {
+        "time": 0.3000000000000037,
+        "frame": [
+          -0.051959270031652356,
+          0.594168838261895,
+          -0.018619268768167583
+        ],
+        "comVelocityX": 1.4959738726428693,
+        "momentumResidual": [
+          -0.00017198207928048603,
+          -0.015446993350963112,
+          -0.006967595234769419
+        ],
+        "impulse": [
+          -0.35815335270535753,
+          264.2386618068392,
+          66.06533828094064
+        ],
+        "driveWork": 0,
+        "brakeWork": 0,
+        "normalWork": -1.3129334407138387,
+        "tangentWork": -0.04180912472285892,
+        "constraintWork": -1.3547425654367053,
+        "spin": [
+          4.062393246761198,
+          4.181356376592144
+        ]
+      },
+      "sampled": {
+        "peakPositiveBrakePower": 0,
+        "maxBrakeCapacityExcess": 0
+      }
+    },
+    {
+      "label": "full-drive",
+      "scenario": {
+        "bike": {
+          "pivotX": 0.04,
+          "pivotZ": -0.235,
+          "shockArmX": -0.054607848086069846,
+          "shockArmZ": 0.18996325604011804,
+          "shockFrameX": 0.19332203501088832,
+          "shockFrameZ": -0.015623078508508775,
+          "shockTravel": 0.055,
+          "bike": "full",
+          "mass": 82,
+          "rider": "compliant",
+          "riderMass": 70,
+          "riderStiffness": 12000,
+          "riderDamping": 900,
+          "riderTravel": 0.15,
+          "riderBuffer": "progressive",
+          "riderBufferWidth": 0.015,
+          "riderBufferStiffness": 300000,
+          "riderBufferDamping": 1500,
+          "forkBuffer": "progressive",
+          "forkBufferWidth": 0.02,
+          "forkBufferStiffness": 300000,
+          "forkBufferDamping": 1500,
+          "forkStiffness": 9000,
+          "forkDamping": 700,
+          "shockBuffer": "progressive",
+          "shockBufferWidth": 0.008,
+          "shockBufferStiffness": 1000000,
+          "shockBufferDamping": 3000,
+          "shockStiffness": 70000,
+          "shockDamping": 2400
+        },
+        "wheel": {
+          "nodes": 64,
+          "tyreMass": 1,
+          "hubMass": 1.5,
+          "hubInertia": 0.04,
+          "skin": 0.008,
+          "rimRadius": 0.29,
+          "foundation": 300000,
+          "extension": 500,
+          "edgeViscosity": 0.5,
+          "contactTime": 0.0005,
+          "contactImpedance": 0.99,
+          "collisionTolerance": 1e-10,
+          "collisionIterations": 100,
+          "maxPenetration": 0.0005,
+          "maxStrain": 0.25,
+          "maxDisplacement": 0.06
+        },
+        "motion": {
+          "centerX": -0.5,
+          "clearance": 0.012,
+          "velocityX": 1.5,
+          "velocityZ": 0,
+          "omega": 4.166666666666667,
+          "pitchOffset": 0,
+          "pitchVelocity": 0,
+          "forkCompression": 0.04,
+          "rearAngle": 0.08,
+          "riderOffset": -0.05,
+          "gravity": 9.80665,
+          "duration": 0.3,
+          "dt": 0.00003125,
+          "sampleDt": 0.005
+        },
+        "profile": {
+          "format": "bikelab-profile-1",
+          "units": "m",
+          "axes": "x-forward,z-up",
+          "solid": "below",
+          "interpolation": "linear",
+          "source": {
+            "kind": "illustrative",
+            "description": "Synthetic flat rigid trail."
+          },
+          "points": [
+            [
+              -3,
+              0
+            ],
+            [
+              5,
+              0
+            ]
+          ]
+        },
+        "assembly": {
+          "tyreId": "",
+          "rimId": "",
+          "brand": "unknown",
+          "rimType": "unknown",
+          "construction": "unknown",
+          "tyreBsd": null,
+          "rimBsd": null,
+          "tyreWidth": null,
+          "rimInnerWidth": null,
+          "tyreTubelessApproved": null,
+          "rimTubelessApproved": null,
+          "standardCompliant": null,
+          "widthPairApproved": null,
+          "pairApproved": null,
+          "pressure": null,
+          "tyreMaxPressure": null,
+          "rimMaxPressure": null,
+          "sources": {}
+        },
+        "surface": {
+          "friction": 0.6
+        },
+        "commands": [
+          {
+            "tick": 0,
+            "rearDrive": 0,
+            "frontBrake": 0,
+            "rearBrake": 0
+          },
+          {
+            "tick": 1600,
+            "rearDrive": 20,
+            "frontBrake": 0,
+            "rearBrake": 0
+          },
+          {
+            "tick": 6400,
+            "rearDrive": 0,
+            "frontBrake": 0,
+            "rearBrake": 0
+          }
+        ]
+      },
+      "status": "completed",
+      "termination": null,
+      "summary": {
+        "acceptedTime": 0.3000000000000037,
+        "steps": 9600,
+        "peakForce": 1339.2669217319196,
+        "peakPenetration": 0.00017482655164317504,
+        "maxResidual": 0.4509675326176801,
+        "maxSampledRootWrench": 1.0913936421275139e-11,
+        "maxSampledBearingMoment": 4.916067553040193e-13,
+        "maxDiagnosticDifference": 0,
+        "maxPowerResidual": 4.275815812526673e-13,
+        "maxSampledLateralContactForce": 1.4745516648558711e-7,
+        "maxSampledConeExcess": 1.7763568394002505e-15,
+        "initialEnergy": 626.7389949311612,
+        "finalEnergy": 622.0817103040833,
+        "initialMomentum": [
+          133.5,
+          -3.0531133177191805e-16,
+          76.76105355742496
+        ]
+      },
+      "endpoint": {
+        "time": 0.3000000000000037,
+        "frame": [
+          -0.03611744961593445,
+          0.5950905057455285,
+          -0.01854535556897066
+        ],
+        "comVelocityX": 1.58661040779027,
+        "momentumResidual": [
+          -0.000036563421951463226,
+          -0.01524856878910441,
+          -0.006956864311732147
+        ],
+        "impulse": [
+          7.708362856755991,
+          263.80542962503836,
+          69.17631243695864
+        ],
+        "driveWork": 12.92941500787109,
+        "brakeWork": 0,
+        "normalWork": -1.5514468878153034,
+        "tangentWork": -0.11888390673084098,
+        "constraintWork": -1.6703307945461374,
+        "spin": [
+          4.425192851148728,
+          4.330658406663321
+        ]
+      },
+      "sampled": {
+        "peakPositiveBrakePower": 0,
+        "maxBrakeCapacityExcess": 0
+      }
+    },
+    {
+      "label": "full-brake",
+      "scenario": {
+        "bike": {
+          "pivotX": 0.04,
+          "pivotZ": -0.235,
+          "shockArmX": -0.054607848086069846,
+          "shockArmZ": 0.18996325604011804,
+          "shockFrameX": 0.19332203501088832,
+          "shockFrameZ": -0.015623078508508775,
+          "shockTravel": 0.055,
+          "bike": "full",
+          "mass": 82,
+          "rider": "compliant",
+          "riderMass": 70,
+          "riderStiffness": 12000,
+          "riderDamping": 900,
+          "riderTravel": 0.15,
+          "riderBuffer": "progressive",
+          "riderBufferWidth": 0.015,
+          "riderBufferStiffness": 300000,
+          "riderBufferDamping": 1500,
+          "forkBuffer": "progressive",
+          "forkBufferWidth": 0.02,
+          "forkBufferStiffness": 300000,
+          "forkBufferDamping": 1500,
+          "forkStiffness": 9000,
+          "forkDamping": 700,
+          "shockBuffer": "progressive",
+          "shockBufferWidth": 0.008,
+          "shockBufferStiffness": 1000000,
+          "shockBufferDamping": 3000,
+          "shockStiffness": 70000,
+          "shockDamping": 2400
+        },
+        "wheel": {
+          "nodes": 64,
+          "tyreMass": 1,
+          "hubMass": 1.5,
+          "hubInertia": 0.04,
+          "skin": 0.008,
+          "rimRadius": 0.29,
+          "foundation": 300000,
+          "extension": 500,
+          "edgeViscosity": 0.5,
+          "contactTime": 0.0005,
+          "contactImpedance": 0.99,
+          "collisionTolerance": 1e-10,
+          "collisionIterations": 100,
+          "maxPenetration": 0.0005,
+          "maxStrain": 0.25,
+          "maxDisplacement": 0.06
+        },
+        "motion": {
+          "centerX": -0.5,
+          "clearance": 0.012,
+          "velocityX": 1.5,
+          "velocityZ": 0,
+          "omega": 4.166666666666667,
+          "pitchOffset": 0,
+          "pitchVelocity": 0,
+          "forkCompression": 0.04,
+          "rearAngle": 0.08,
+          "riderOffset": -0.05,
+          "gravity": 9.80665,
+          "duration": 0.3,
+          "dt": 0.00003125,
+          "sampleDt": 0.005
+        },
+        "profile": {
+          "format": "bikelab-profile-1",
+          "units": "m",
+          "axes": "x-forward,z-up",
+          "solid": "below",
+          "interpolation": "linear",
+          "source": {
+            "kind": "illustrative",
+            "description": "Synthetic flat rigid trail."
+          },
+          "points": [
+            [
+              -3,
+              0
+            ],
+            [
+              5,
+              0
+            ]
+          ]
+        },
+        "assembly": {
+          "tyreId": "",
+          "rimId": "",
+          "brand": "unknown",
+          "rimType": "unknown",
+          "construction": "unknown",
+          "tyreBsd": null,
+          "rimBsd": null,
+          "tyreWidth": null,
+          "rimInnerWidth": null,
+          "tyreTubelessApproved": null,
+          "rimTubelessApproved": null,
+          "standardCompliant": null,
+          "widthPairApproved": null,
+          "pairApproved": null,
+          "pressure": null,
+          "tyreMaxPressure": null,
+          "rimMaxPressure": null,
+          "sources": {}
+        },
+        "surface": {
+          "friction": 0.6
+        },
+        "commands": [
+          {
+            "tick": 0,
+            "rearDrive": 0,
+            "frontBrake": 0,
+            "rearBrake": 0
+          },
+          {
+            "tick": 1600,
+            "rearDrive": 0,
+            "frontBrake": 55,
+            "rearBrake": 35
+          },
+          {
+            "tick": 6400,
+            "rearDrive": 0,
+            "frontBrake": 0,
+            "rearBrake": 0
+          }
+        ]
+      },
+      "status": "completed",
+      "termination": null,
+      "summary": {
+        "acceptedTime": 0.3000000000000037,
+        "steps": 9600,
+        "peakForce": 1339.2669217319196,
+        "peakPenetration": 0.00017482655164317504,
+        "maxResidual": 0.42406391992409453,
+        "maxSampledRootWrench": 1.1368683772161603e-11,
+        "maxSampledBearingMoment": 1.4672707493446069e-12,
+        "maxDiagnosticDifference": 0,
+        "maxPowerResidual": 4.275815812526673e-13,
+        "maxSampledLateralContactForce": 1.4745516648558711e-7,
+        "maxSampledConeExcess": 0,
+        "initialEnergy": 626.7389949311612,
+        "finalEnergy": 561.2274787130668,
+        "initialMomentum": [
+          133.5,
+          -3.0531133177191805e-16,
+          76.76105355742496
+        ]
+      },
+      "endpoint": {
+        "time": 0.3000000000000037,
+        "frame": [
+          -0.12282664082961335,
+          0.591540341329602,
+          -0.01670728191678397
+        ],
+        "comVelocityX": 1.0844921447581728,
+        "momentumResidual": [
+          0.0007102262979685747,
+          -0.015718586103048438,
+          -0.0076026473900014935
+        ],
+        "impulse": [
+          -36.980909342820595,
+          263.40952413924776,
+          51.24314501478618
+        ],
+        "driveWork": 0,
+        "brakeWork": -43.67328512077813,
+        "normalWork": -2.1352033930753476,
+        "tangentWork": -1.1636885443955578,
+        "constraintWork": -46.972177058248874,
+        "spin": [
+          3.328275084943589,
+          2.95612135752376
+        ]
+      },
+      "sampled": {
+        "peakPositiveBrakePower": 0,
+        "maxBrakeCapacityExcess": 0
+      }
+    },
+    {
+      "label": "hardtail-coast",
+      "scenario": {
+        "bike": {
+          "pivotX": 0.04,
+          "pivotZ": -0.235,
+          "shockArmX": -0.054607848086069846,
+          "shockArmZ": 0.18996325604011804,
+          "shockFrameX": 0.19332203501088832,
+          "shockFrameZ": -0.015623078508508775,
+          "shockTravel": 0.055,
+          "bike": "hardtail",
+          "mass": 82,
+          "rider": "compliant",
+          "riderMass": 70,
+          "riderStiffness": 12000,
+          "riderDamping": 900,
+          "riderTravel": 0.15,
+          "riderBuffer": "progressive",
+          "riderBufferWidth": 0.015,
+          "riderBufferStiffness": 300000,
+          "riderBufferDamping": 1500,
+          "forkBuffer": "progressive",
+          "forkBufferWidth": 0.02,
+          "forkBufferStiffness": 300000,
+          "forkBufferDamping": 1500,
+          "forkStiffness": 9000,
+          "forkDamping": 700,
+          "shockBuffer": "progressive",
+          "shockBufferWidth": 0.008,
+          "shockBufferStiffness": 1000000,
+          "shockBufferDamping": 3000,
+          "shockStiffness": 70000,
+          "shockDamping": 2400
+        },
+        "wheel": {
+          "nodes": 64,
+          "tyreMass": 1,
+          "hubMass": 1.5,
+          "hubInertia": 0.04,
+          "skin": 0.008,
+          "rimRadius": 0.29,
+          "foundation": 300000,
+          "extension": 500,
+          "edgeViscosity": 0.5,
+          "contactTime": 0.0005,
+          "contactImpedance": 0.99,
+          "collisionTolerance": 1e-10,
+          "collisionIterations": 100,
+          "maxPenetration": 0.0005,
+          "maxStrain": 0.25,
+          "maxDisplacement": 0.06
+        },
+        "motion": {
+          "centerX": -0.5,
+          "clearance": 0.012,
+          "velocityX": 1.5,
+          "velocityZ": 0,
+          "omega": 4.166666666666667,
+          "pitchOffset": 0,
+          "pitchVelocity": 0,
+          "forkCompression": 0.04,
+          "rearAngle": 0.08,
+          "riderOffset": -0.05,
+          "gravity": 9.80665,
+          "duration": 0.3,
+          "dt": 0.00003125,
+          "sampleDt": 0.005
+        },
+        "profile": {
+          "format": "bikelab-profile-1",
+          "units": "m",
+          "axes": "x-forward,z-up",
+          "solid": "below",
+          "interpolation": "linear",
+          "source": {
+            "kind": "illustrative",
+            "description": "Synthetic flat rigid trail."
+          },
+          "points": [
+            [
+              -3,
+              0
+            ],
+            [
+              5,
+              0
+            ]
+          ]
+        },
+        "assembly": {
+          "tyreId": "",
+          "rimId": "",
+          "brand": "unknown",
+          "rimType": "unknown",
+          "construction": "unknown",
+          "tyreBsd": null,
+          "rimBsd": null,
+          "tyreWidth": null,
+          "rimInnerWidth": null,
+          "tyreTubelessApproved": null,
+          "rimTubelessApproved": null,
+          "standardCompliant": null,
+          "widthPairApproved": null,
+          "pairApproved": null,
+          "pressure": null,
+          "tyreMaxPressure": null,
+          "rimMaxPressure": null,
+          "sources": {}
+        },
+        "surface": {
+          "friction": 0.6
+        },
+        "commands": [
+          {
+            "tick": 0,
+            "rearDrive": 0,
+            "frontBrake": 0,
+            "rearBrake": 0
+          }
+        ]
+      },
+      "status": "completed",
+      "termination": null,
+      "summary": {
+        "acceptedTime": 0.3000000000000037,
+        "steps": 9600,
+        "peakForce": 1300.6138126845067,
+        "peakPenetration": 0.0001416186578147849,
+        "maxResidual": 0.4409601838911683,
+        "maxSampledRootWrench": 6.934897101018578e-12,
+        "maxSampledBearingMoment": 3.7569947153315297e-13,
+        "maxDiagnosticDifference": 0,
+        "maxPowerResidual": 2.9043434324194095e-13,
+        "maxSampledLateralContactForce": 1.6360023550745777e-7,
+        "maxSampledConeExcess": 0,
+        "initialEnergy": 637.0552114552958,
+        "finalEnergy": 619.6738955906859,
+        "initialMomentum": [
+          133.5,
+          -5.169475958410885e-16,
+          79.66261077632123
+        ]
+      },
+      "endpoint": {
+        "time": 0.3000000000000037,
+        "frame": [
+          -0.05079708616550944,
+          0.6242202739299723,
+          0.02581115632928983
+        ],
+        "comVelocityX": 1.494975190472867,
+        "momentumResidual": [
+          0.000051582297598662397,
+          -0.01361586015013927,
+          -0.006705268403479181
+        ],
+        "impulse": [
+          -0.44725963021244036,
+          265.952126484841,
+          66.91729395989263
+        ],
+        "driveWork": 0,
+        "brakeWork": 0,
+        "normalWork": -1.1980077968776484,
+        "tangentWork": -0.059831982411266964,
+        "constraintWork": -1.2578397792889153,
+        "spin": [
+          4.368613762545624,
+          4.408996063376714
+        ]
+      },
+      "sampled": {
+        "peakPositiveBrakePower": 0,
+        "maxBrakeCapacityExcess": 0
+      }
+    },
+    {
+      "label": "hardtail-drive",
+      "scenario": {
+        "bike": {
+          "pivotX": 0.04,
+          "pivotZ": -0.235,
+          "shockArmX": -0.054607848086069846,
+          "shockArmZ": 0.18996325604011804,
+          "shockFrameX": 0.19332203501088832,
+          "shockFrameZ": -0.015623078508508775,
+          "shockTravel": 0.055,
+          "bike": "hardtail",
+          "mass": 82,
+          "rider": "compliant",
+          "riderMass": 70,
+          "riderStiffness": 12000,
+          "riderDamping": 900,
+          "riderTravel": 0.15,
+          "riderBuffer": "progressive",
+          "riderBufferWidth": 0.015,
+          "riderBufferStiffness": 300000,
+          "riderBufferDamping": 1500,
+          "forkBuffer": "progressive",
+          "forkBufferWidth": 0.02,
+          "forkBufferStiffness": 300000,
+          "forkBufferDamping": 1500,
+          "forkStiffness": 9000,
+          "forkDamping": 700,
+          "shockBuffer": "progressive",
+          "shockBufferWidth": 0.008,
+          "shockBufferStiffness": 1000000,
+          "shockBufferDamping": 3000,
+          "shockStiffness": 70000,
+          "shockDamping": 2400
+        },
+        "wheel": {
+          "nodes": 64,
+          "tyreMass": 1,
+          "hubMass": 1.5,
+          "hubInertia": 0.04,
+          "skin": 0.008,
+          "rimRadius": 0.29,
+          "foundation": 300000,
+          "extension": 500,
+          "edgeViscosity": 0.5,
+          "contactTime": 0.0005,
+          "contactImpedance": 0.99,
+          "collisionTolerance": 1e-10,
+          "collisionIterations": 100,
+          "maxPenetration": 0.0005,
+          "maxStrain": 0.25,
+          "maxDisplacement": 0.06
+        },
+        "motion": {
+          "centerX": -0.5,
+          "clearance": 0.012,
+          "velocityX": 1.5,
+          "velocityZ": 0,
+          "omega": 4.166666666666667,
+          "pitchOffset": 0,
+          "pitchVelocity": 0,
+          "forkCompression": 0.04,
+          "rearAngle": 0.08,
+          "riderOffset": -0.05,
+          "gravity": 9.80665,
+          "duration": 0.3,
+          "dt": 0.00003125,
+          "sampleDt": 0.005
+        },
+        "profile": {
+          "format": "bikelab-profile-1",
+          "units": "m",
+          "axes": "x-forward,z-up",
+          "solid": "below",
+          "interpolation": "linear",
+          "source": {
+            "kind": "illustrative",
+            "description": "Synthetic flat rigid trail."
+          },
+          "points": [
+            [
+              -3,
+              0
+            ],
+            [
+              5,
+              0
+            ]
+          ]
+        },
+        "assembly": {
+          "tyreId": "",
+          "rimId": "",
+          "brand": "unknown",
+          "rimType": "unknown",
+          "construction": "unknown",
+          "tyreBsd": null,
+          "rimBsd": null,
+          "tyreWidth": null,
+          "rimInnerWidth": null,
+          "tyreTubelessApproved": null,
+          "rimTubelessApproved": null,
+          "standardCompliant": null,
+          "widthPairApproved": null,
+          "pairApproved": null,
+          "pressure": null,
+          "tyreMaxPressure": null,
+          "rimMaxPressure": null,
+          "sources": {}
+        },
+        "surface": {
+          "friction": 0.6
+        },
+        "commands": [
+          {
+            "tick": 0,
+            "rearDrive": 0,
+            "frontBrake": 0,
+            "rearBrake": 0
+          },
+          {
+            "tick": 1600,
+            "rearDrive": 20,
+            "frontBrake": 0,
+            "rearBrake": 0
+          },
+          {
+            "tick": 6400,
+            "rearDrive": 0,
+            "frontBrake": 0,
+            "rearBrake": 0
+          }
+        ]
+      },
+      "status": "completed",
+      "termination": null,
+      "summary": {
+        "acceptedTime": 0.3000000000000037,
+        "steps": 9600,
+        "peakForce": 1297.7201911089653,
+        "peakPenetration": 0.0001416186578147849,
+        "maxResidual": 0.4552885483904756,
+        "maxSampledRootWrench": 7.275957614183426e-12,
+        "maxSampledBearingMoment": 5.506706202140776e-13,
+        "maxDiagnosticDifference": 0,
+        "maxPowerResidual": 2.6212365611399946e-13,
+        "maxSampledLateralContactForce": 1.721974280161868e-7,
+        "maxSampledConeExcess": 1.7763568394002505e-15,
+        "initialEnergy": 637.0552114552958,
+        "finalEnergy": 632.3913566852556,
+        "initialMomentum": [
+          133.5,
+          -5.169475958410885e-16,
+          79.66261077632123
+        ]
+      },
+      "endpoint": {
+        "time": 0.3000000000000037,
+        "frame": [
+          -0.03507025655643794,
+          0.6245352991256965,
+          0.025123972141722333
+        ],
+        "comVelocityX": 1.5867785319645977,
+        "momentumResidual": [
+          -0.0003763583925895375,
+          -0.0146331126604764,
+          -0.007298259901347137
+        ],
+        "impulse": [
+          7.723665703241796,
+          265.4231703499373,
+          70.0124643580682
+        ],
+        "driveWork": 13.286545202396226,
+        "brakeWork": 0,
+        "normalWork": -1.4351155968643678,
+        "tangentWork": -0.16386618360485602,
+        "constraintWork": -1.5989817804692172,
+        "spin": [
+          4.520853756636842,
+          4.40606111464425
+        ]
+      },
+      "sampled": {
+        "peakPositiveBrakePower": 0,
+        "maxBrakeCapacityExcess": 0
+      }
+    },
+    {
+      "label": "hardtail-brake",
+      "scenario": {
+        "bike": {
+          "pivotX": 0.04,
+          "pivotZ": -0.235,
+          "shockArmX": -0.054607848086069846,
+          "shockArmZ": 0.18996325604011804,
+          "shockFrameX": 0.19332203501088832,
+          "shockFrameZ": -0.015623078508508775,
+          "shockTravel": 0.055,
+          "bike": "hardtail",
+          "mass": 82,
+          "rider": "compliant",
+          "riderMass": 70,
+          "riderStiffness": 12000,
+          "riderDamping": 900,
+          "riderTravel": 0.15,
+          "riderBuffer": "progressive",
+          "riderBufferWidth": 0.015,
+          "riderBufferStiffness": 300000,
+          "riderBufferDamping": 1500,
+          "forkBuffer": "progressive",
+          "forkBufferWidth": 0.02,
+          "forkBufferStiffness": 300000,
+          "forkBufferDamping": 1500,
+          "forkStiffness": 9000,
+          "forkDamping": 700,
+          "shockBuffer": "progressive",
+          "shockBufferWidth": 0.008,
+          "shockBufferStiffness": 1000000,
+          "shockBufferDamping": 3000,
+          "shockStiffness": 70000,
+          "shockDamping": 2400
+        },
+        "wheel": {
+          "nodes": 64,
+          "tyreMass": 1,
+          "hubMass": 1.5,
+          "hubInertia": 0.04,
+          "skin": 0.008,
+          "rimRadius": 0.29,
+          "foundation": 300000,
+          "extension": 500,
+          "edgeViscosity": 0.5,
+          "contactTime": 0.0005,
+          "contactImpedance": 0.99,
+          "collisionTolerance": 1e-10,
+          "collisionIterations": 100,
+          "maxPenetration": 0.0005,
+          "maxStrain": 0.25,
+          "maxDisplacement": 0.06
+        },
+        "motion": {
+          "centerX": -0.5,
+          "clearance": 0.012,
+          "velocityX": 1.5,
+          "velocityZ": 0,
+          "omega": 4.166666666666667,
+          "pitchOffset": 0,
+          "pitchVelocity": 0,
+          "forkCompression": 0.04,
+          "rearAngle": 0.08,
+          "riderOffset": -0.05,
+          "gravity": 9.80665,
+          "duration": 0.3,
+          "dt": 0.00003125,
+          "sampleDt": 0.005
+        },
+        "profile": {
+          "format": "bikelab-profile-1",
+          "units": "m",
+          "axes": "x-forward,z-up",
+          "solid": "below",
+          "interpolation": "linear",
+          "source": {
+            "kind": "illustrative",
+            "description": "Synthetic flat rigid trail."
+          },
+          "points": [
+            [
+              -3,
+              0
+            ],
+            [
+              5,
+              0
+            ]
+          ]
+        },
+        "assembly": {
+          "tyreId": "",
+          "rimId": "",
+          "brand": "unknown",
+          "rimType": "unknown",
+          "construction": "unknown",
+          "tyreBsd": null,
+          "rimBsd": null,
+          "tyreWidth": null,
+          "rimInnerWidth": null,
+          "tyreTubelessApproved": null,
+          "rimTubelessApproved": null,
+          "standardCompliant": null,
+          "widthPairApproved": null,
+          "pairApproved": null,
+          "pressure": null,
+          "tyreMaxPressure": null,
+          "rimMaxPressure": null,
+          "sources": {}
+        },
+        "surface": {
+          "friction": 0.6
+        },
+        "commands": [
+          {
+            "tick": 0,
+            "rearDrive": 0,
+            "frontBrake": 0,
+            "rearBrake": 0
+          },
+          {
+            "tick": 1600,
+            "rearDrive": 0,
+            "frontBrake": 55,
+            "rearBrake": 35
+          },
+          {
+            "tick": 6400,
+            "rearDrive": 0,
+            "frontBrake": 0,
+            "rearBrake": 0
+          }
+        ]
+      },
+      "status": "completed",
+      "termination": null,
+      "summary": {
+        "acceptedTime": 0.3000000000000037,
+        "steps": 9600,
+        "peakForce": 1342.4606650271473,
+        "peakPenetration": 0.00014315680913376191,
+        "maxResidual": 0.44805032916853804,
+        "maxSampledRootWrench": 5.229594535194337e-12,
+        "maxSampledBearingMoment": 8.846257060213247e-13,
+        "maxDiagnosticDifference": 0,
+        "maxPowerResidual": 7.389644451905042e-13,
+        "maxSampledLateralContactForce": 9.288726849741361e-8,
+        "maxSampledConeExcess": 7.105427357601002e-15,
+        "initialEnergy": 637.0552114552958,
+        "finalEnergy": 572.3658631873068,
+        "initialMomentum": [
+          133.5,
+          -5.169475958410885e-16,
+          79.66261077632123
+        ]
+      },
+      "endpoint": {
+        "time": 0.3000000000000037,
+        "frame": [
+          -0.12027485141707825,
+          0.6218803594923625,
+          0.03067801294999029
+        ],
+        "comVelocityX": 1.0908451075630898,
+        "momentumResidual": [
+          0.0004703626421331819,
+          -0.01457094003274051,
+          -0.0067310978793528875
+        ],
+        "impulse": [
+          -36.41525578952714,
+          268.934432140854,
+          52.91976608915151
+        ],
+        "driveWork": 0,
+        "brakeWork": -42.76051240624539,
+        "normalWork": -2.079756131613858,
+        "tangentWork": -1.1567689792351288,
+        "constraintWork": -45.99703751709406,
+        "spin": [
+          3.128958672728596,
+          2.861503503411459
+        ]
+      },
+      "sampled": {
+        "peakPositiveBrakePower": 0,
+        "maxBrakeCapacityExcess": 0
+      }
+    },
+    {
+      "label": "brake-step-0.00003125",
+      "scenario": {
+        "bike": {
+          "pivotX": 0.04,
+          "pivotZ": -0.235,
+          "shockArmX": -0.054607848086069846,
+          "shockArmZ": 0.18996325604011804,
+          "shockFrameX": 0.19332203501088832,
+          "shockFrameZ": -0.015623078508508775,
+          "shockTravel": 0.055,
+          "bike": "full",
+          "mass": 82,
+          "rider": "compliant",
+          "riderMass": 70,
+          "riderStiffness": 12000,
+          "riderDamping": 900,
+          "riderTravel": 0.15,
+          "riderBuffer": "progressive",
+          "riderBufferWidth": 0.015,
+          "riderBufferStiffness": 300000,
+          "riderBufferDamping": 1500,
+          "forkBuffer": "progressive",
+          "forkBufferWidth": 0.02,
+          "forkBufferStiffness": 300000,
+          "forkBufferDamping": 1500,
+          "forkStiffness": 9000,
+          "forkDamping": 700,
+          "shockBuffer": "progressive",
+          "shockBufferWidth": 0.008,
+          "shockBufferStiffness": 1000000,
+          "shockBufferDamping": 3000,
+          "shockStiffness": 70000,
+          "shockDamping": 2400
+        },
+        "wheel": {
+          "nodes": 64,
+          "tyreMass": 1,
+          "hubMass": 1.5,
+          "hubInertia": 0.04,
+          "skin": 0.008,
+          "rimRadius": 0.29,
+          "foundation": 300000,
+          "extension": 500,
+          "edgeViscosity": 0.5,
+          "contactTime": 0.0005,
+          "contactImpedance": 0.99,
+          "collisionTolerance": 1e-10,
+          "collisionIterations": 100,
+          "maxPenetration": 0.0005,
+          "maxStrain": 0.25,
+          "maxDisplacement": 0.06
+        },
+        "motion": {
+          "centerX": -0.5,
+          "clearance": 0.012,
+          "velocityX": 1.5,
+          "velocityZ": 0,
+          "omega": 4.166666666666667,
+          "pitchOffset": 0,
+          "pitchVelocity": 0,
+          "forkCompression": 0.04,
+          "rearAngle": 0.08,
+          "riderOffset": -0.05,
+          "gravity": 9.80665,
+          "duration": 0.15,
+          "dt": 0.00003125,
+          "sampleDt": 0.005
+        },
+        "profile": {
+          "format": "bikelab-profile-1",
+          "units": "m",
+          "axes": "x-forward,z-up",
+          "solid": "below",
+          "interpolation": "linear",
+          "source": {
+            "kind": "illustrative",
+            "description": "Synthetic flat rigid trail."
+          },
+          "points": [
+            [
+              -3,
+              0
+            ],
+            [
+              5,
+              0
+            ]
+          ]
+        },
+        "assembly": {
+          "tyreId": "",
+          "rimId": "",
+          "brand": "unknown",
+          "rimType": "unknown",
+          "construction": "unknown",
+          "tyreBsd": null,
+          "rimBsd": null,
+          "tyreWidth": null,
+          "rimInnerWidth": null,
+          "tyreTubelessApproved": null,
+          "rimTubelessApproved": null,
+          "standardCompliant": null,
+          "widthPairApproved": null,
+          "pairApproved": null,
+          "pressure": null,
+          "tyreMaxPressure": null,
+          "rimMaxPressure": null,
+          "sources": {}
+        },
+        "surface": {
+          "friction": 0.6
+        },
+        "commands": [
+          {
+            "tick": 0,
+            "rearDrive": 0,
+            "frontBrake": 0,
+            "rearBrake": 0
+          },
+          {
+            "tick": 1600,
+            "rearDrive": 0,
+            "frontBrake": 55,
+            "rearBrake": 35
+          },
+          {
+            "tick": 3200,
+            "rearDrive": 0,
+            "frontBrake": 0,
+            "rearBrake": 0
+          }
+        ]
+      },
+      "status": "completed",
+      "termination": null,
+      "summary": {
+        "acceptedTime": 0.14999999999999805,
+        "steps": 4800,
+        "peakForce": 1339.2669217319196,
+        "peakPenetration": 0.00017482655164317504,
+        "maxResidual": 0.21194567816957033,
+        "maxSampledRootWrench": 9.322320693172514e-12,
+        "maxSampledBearingMoment": 7.460698725481052e-13,
+        "maxDiagnosticDifference": 0,
+        "maxPowerResidual": 4.275815812526673e-13,
+        "maxSampledLateralContactForce": 1.4745516648558711e-7,
+        "maxSampledConeExcess": 3.552713678800501e-15,
+        "initialEnergy": 626.7389949311612,
+        "finalEnergy": 593.8549036735157,
+        "initialMomentum": [
+          133.5,
+          -3.0531133177191805e-16,
+          76.76105355742496
+        ]
+      },
+      "endpoint": {
+        "time": 0.14999999999999805,
+        "frame": [
+          -0.28541918812983863,
+          0.597873155531535,
+          -0.00954742299094392
+        ],
+        "comVelocityX": 1.364180740251522,
+        "momentumResidual": [
+          0.0019573096901357445,
+          -0.014845499615518065,
+          -0.007274134060637039
+        ],
+        "impulse": [
+          -12.089871427304681,
+          114.43221063365583,
+          33.02826763277079
+        ],
+        "driveWork": 0,
+        "brakeWork": -15.46999325077999,
+        "normalWork": -1.0945459161197983,
+        "tangentWork": -0.6064139982436713,
+        "constraintWork": -17.17095316514345,
+        "spin": [
+          3.5946290431700545,
+          3.4255272039821234
+        ]
+      },
+      "sampled": {
+        "peakPositiveBrakePower": 0,
+        "maxBrakeCapacityExcess": 0
+      }
+    },
+    {
+      "label": "brake-step-0.000015625",
+      "scenario": {
+        "bike": {
+          "pivotX": 0.04,
+          "pivotZ": -0.235,
+          "shockArmX": -0.054607848086069846,
+          "shockArmZ": 0.18996325604011804,
+          "shockFrameX": 0.19332203501088832,
+          "shockFrameZ": -0.015623078508508775,
+          "shockTravel": 0.055,
+          "bike": "full",
+          "mass": 82,
+          "rider": "compliant",
+          "riderMass": 70,
+          "riderStiffness": 12000,
+          "riderDamping": 900,
+          "riderTravel": 0.15,
+          "riderBuffer": "progressive",
+          "riderBufferWidth": 0.015,
+          "riderBufferStiffness": 300000,
+          "riderBufferDamping": 1500,
+          "forkBuffer": "progressive",
+          "forkBufferWidth": 0.02,
+          "forkBufferStiffness": 300000,
+          "forkBufferDamping": 1500,
+          "forkStiffness": 9000,
+          "forkDamping": 700,
+          "shockBuffer": "progressive",
+          "shockBufferWidth": 0.008,
+          "shockBufferStiffness": 1000000,
+          "shockBufferDamping": 3000,
+          "shockStiffness": 70000,
+          "shockDamping": 2400
+        },
+        "wheel": {
+          "nodes": 64,
+          "tyreMass": 1,
+          "hubMass": 1.5,
+          "hubInertia": 0.04,
+          "skin": 0.008,
+          "rimRadius": 0.29,
+          "foundation": 300000,
+          "extension": 500,
+          "edgeViscosity": 0.5,
+          "contactTime": 0.0005,
+          "contactImpedance": 0.99,
+          "collisionTolerance": 1e-10,
+          "collisionIterations": 100,
+          "maxPenetration": 0.0005,
+          "maxStrain": 0.25,
+          "maxDisplacement": 0.06
+        },
+        "motion": {
+          "centerX": -0.5,
+          "clearance": 0.012,
+          "velocityX": 1.5,
+          "velocityZ": 0,
+          "omega": 4.166666666666667,
+          "pitchOffset": 0,
+          "pitchVelocity": 0,
+          "forkCompression": 0.04,
+          "rearAngle": 0.08,
+          "riderOffset": -0.05,
+          "gravity": 9.80665,
+          "duration": 0.15,
+          "dt": 0.000015625,
+          "sampleDt": 0.005
+        },
+        "profile": {
+          "format": "bikelab-profile-1",
+          "units": "m",
+          "axes": "x-forward,z-up",
+          "solid": "below",
+          "interpolation": "linear",
+          "source": {
+            "kind": "illustrative",
+            "description": "Synthetic flat rigid trail."
+          },
+          "points": [
+            [
+              -3,
+              0
+            ],
+            [
+              5,
+              0
+            ]
+          ]
+        },
+        "assembly": {
+          "tyreId": "",
+          "rimId": "",
+          "brand": "unknown",
+          "rimType": "unknown",
+          "construction": "unknown",
+          "tyreBsd": null,
+          "rimBsd": null,
+          "tyreWidth": null,
+          "rimInnerWidth": null,
+          "tyreTubelessApproved": null,
+          "rimTubelessApproved": null,
+          "standardCompliant": null,
+          "widthPairApproved": null,
+          "pairApproved": null,
+          "pressure": null,
+          "tyreMaxPressure": null,
+          "rimMaxPressure": null,
+          "sources": {}
+        },
+        "surface": {
+          "friction": 0.6
+        },
+        "commands": [
+          {
+            "tick": 0,
+            "rearDrive": 0,
+            "frontBrake": 0,
+            "rearBrake": 0
+          },
+          {
+            "tick": 3200,
+            "rearDrive": 0,
+            "frontBrake": 55,
+            "rearBrake": 35
+          },
+          {
+            "tick": 6400,
+            "rearDrive": 0,
+            "frontBrake": 0,
+            "rearBrake": 0
+          }
+        ]
+      },
+      "status": "completed",
+      "termination": null,
+      "summary": {
+        "acceptedTime": 0.15000000000000185,
+        "steps": 9600,
+        "peakForce": 1335.9470356329741,
+        "peakPenetration": 0.00017795442771654894,
+        "maxResidual": 0.0840742078415957,
+        "maxSampledRootWrench": 4.547473508864641e-12,
+        "maxSampledBearingMoment": 6.394884621840902e-13,
+        "maxDiagnosticDifference": 0,
+        "maxPowerResidual": 3.979039320256561e-13,
+        "maxSampledLateralContactForce": 6.61050594696331e-8,
+        "maxSampledConeExcess": 7.105427357601002e-15,
+        "initialEnergy": 626.7389949311612,
+        "finalEnergy": 593.7837457442745,
+        "initialMomentum": [
+          133.5,
+          -3.0531133177191805e-16,
+          76.76105355742496
+        ]
+      },
+      "endpoint": {
+        "time": 0.15000000000000185,
+        "frame": [
+          -0.2854314325627522,
+          0.597895559581345,
+          -0.009445522076076006
+        ],
+        "comVelocityX": 1.3634342367080599,
+        "momentumResidual": [
+          0.0009400124037313162,
+          -0.007124682432447571,
+          -0.003676339365824788
+        ],
+        "impulse": [
+          -12.155292945386407,
+          114.44623180850408,
+          32.98956836880252
+        ],
+        "driveWork": 0,
+        "brakeWork": -15.49352826203435,
+        "normalWork": -1.0335149714781986,
+        "tangentWork": -0.6129600470237921,
+        "constraintWork": -17.140003280536217,
+        "spin": [
+          4.381476013316269,
+          3.9766522839903615
+        ]
+      },
+      "sampled": {
+        "peakPositiveBrakePower": 0,
+        "maxBrakeCapacityExcess": 0
+      }
+    },
+    {
+      "label": "brake-step-0.0000078125",
+      "scenario": {
+        "bike": {
+          "pivotX": 0.04,
+          "pivotZ": -0.235,
+          "shockArmX": -0.054607848086069846,
+          "shockArmZ": 0.18996325604011804,
+          "shockFrameX": 0.19332203501088832,
+          "shockFrameZ": -0.015623078508508775,
+          "shockTravel": 0.055,
+          "bike": "full",
+          "mass": 82,
+          "rider": "compliant",
+          "riderMass": 70,
+          "riderStiffness": 12000,
+          "riderDamping": 900,
+          "riderTravel": 0.15,
+          "riderBuffer": "progressive",
+          "riderBufferWidth": 0.015,
+          "riderBufferStiffness": 300000,
+          "riderBufferDamping": 1500,
+          "forkBuffer": "progressive",
+          "forkBufferWidth": 0.02,
+          "forkBufferStiffness": 300000,
+          "forkBufferDamping": 1500,
+          "forkStiffness": 9000,
+          "forkDamping": 700,
+          "shockBuffer": "progressive",
+          "shockBufferWidth": 0.008,
+          "shockBufferStiffness": 1000000,
+          "shockBufferDamping": 3000,
+          "shockStiffness": 70000,
+          "shockDamping": 2400
+        },
+        "wheel": {
+          "nodes": 64,
+          "tyreMass": 1,
+          "hubMass": 1.5,
+          "hubInertia": 0.04,
+          "skin": 0.008,
+          "rimRadius": 0.29,
+          "foundation": 300000,
+          "extension": 500,
+          "edgeViscosity": 0.5,
+          "contactTime": 0.0005,
+          "contactImpedance": 0.99,
+          "collisionTolerance": 1e-10,
+          "collisionIterations": 100,
+          "maxPenetration": 0.0005,
+          "maxStrain": 0.25,
+          "maxDisplacement": 0.06
+        },
+        "motion": {
+          "centerX": -0.5,
+          "clearance": 0.012,
+          "velocityX": 1.5,
+          "velocityZ": 0,
+          "omega": 4.166666666666667,
+          "pitchOffset": 0,
+          "pitchVelocity": 0,
+          "forkCompression": 0.04,
+          "rearAngle": 0.08,
+          "riderOffset": -0.05,
+          "gravity": 9.80665,
+          "duration": 0.15,
+          "dt": 0.0000078125,
+          "sampleDt": 0.005
+        },
+        "profile": {
+          "format": "bikelab-profile-1",
+          "units": "m",
+          "axes": "x-forward,z-up",
+          "solid": "below",
+          "interpolation": "linear",
+          "source": {
+            "kind": "illustrative",
+            "description": "Synthetic flat rigid trail."
+          },
+          "points": [
+            [
+              -3,
+              0
+            ],
+            [
+              5,
+              0
+            ]
+          ]
+        },
+        "assembly": {
+          "tyreId": "",
+          "rimId": "",
+          "brand": "unknown",
+          "rimType": "unknown",
+          "construction": "unknown",
+          "tyreBsd": null,
+          "rimBsd": null,
+          "tyreWidth": null,
+          "rimInnerWidth": null,
+          "tyreTubelessApproved": null,
+          "rimTubelessApproved": null,
+          "standardCompliant": null,
+          "widthPairApproved": null,
+          "pairApproved": null,
+          "pressure": null,
+          "tyreMaxPressure": null,
+          "rimMaxPressure": null,
+          "sources": {}
+        },
+        "surface": {
+          "friction": 0.6
+        },
+        "commands": [
+          {
+            "tick": 0,
+            "rearDrive": 0,
+            "frontBrake": 0,
+            "rearBrake": 0
+          },
+          {
+            "tick": 6400,
+            "rearDrive": 0,
+            "frontBrake": 55,
+            "rearBrake": 35
+          },
+          {
+            "tick": 12800,
+            "rearDrive": 0,
+            "frontBrake": 0,
+            "rearBrake": 0
+          }
+        ]
+      },
+      "status": "completed",
+      "termination": null,
+      "summary": {
+        "acceptedTime": 0.15000000000000377,
+        "steps": 19200,
+        "peakForce": 1330.732816309411,
+        "peakPenetration": 0.00018414686822073277,
+        "maxResidual": 0.0380581923615253,
+        "maxSampledRootWrench": 1.4779288903810084e-12,
+        "maxSampledBearingMoment": 1.3073986337985843e-12,
+        "maxDiagnosticDifference": 0,
+        "maxPowerResidual": 4.547473508864641e-13,
+        "maxSampledLateralContactForce": 9.522493202825022e-8,
+        "maxSampledConeExcess": 0,
+        "initialEnergy": 626.7389949311612,
+        "finalEnergy": 593.6726014679032,
+        "initialMomentum": [
+          133.5,
+          -3.0531133177191805e-16,
+          76.76105355742496
+        ]
+      },
+      "endpoint": {
+        "time": 0.15000000000000377,
+        "frame": [
+          -0.28548825550721146,
+          0.5978967466041626,
+          -0.009343373771032878
+        ],
+        "comVelocityX": 1.3624513381576755,
+        "momentumResidual": [
+          0.0005181195958758877,
+          -0.0037200235609020638,
+          -0.00181594552500286
+        ],
+        "impulse": [
+          -12.242349023562747,
+          114.45075168776452,
+          32.93177895170171
+        ],
+        "driveWork": 0,
+        "brakeWork": -15.573939751566579,
+        "normalWork": -1.0073852209150083,
+        "tangentWork": -0.6154352618856327,
+        "constraintWork": -17.196760234367208,
+        "spin": [
+          3.7072607713811534,
+          3.6771203788418108
+        ]
+      },
+      "sampled": {
+        "peakPositiveBrakePower": 0,
+        "maxBrakeCapacityExcess": 0
+      }
+    },
+    {
+      "label": "brake-nodes-32",
+      "scenario": {
+        "bike": {
+          "pivotX": 0.04,
+          "pivotZ": -0.235,
+          "shockArmX": -0.054607848086069846,
+          "shockArmZ": 0.18996325604011804,
+          "shockFrameX": 0.19332203501088832,
+          "shockFrameZ": -0.015623078508508775,
+          "shockTravel": 0.055,
+          "bike": "full",
+          "mass": 82,
+          "rider": "compliant",
+          "riderMass": 70,
+          "riderStiffness": 12000,
+          "riderDamping": 900,
+          "riderTravel": 0.15,
+          "riderBuffer": "progressive",
+          "riderBufferWidth": 0.015,
+          "riderBufferStiffness": 300000,
+          "riderBufferDamping": 1500,
+          "forkBuffer": "progressive",
+          "forkBufferWidth": 0.02,
+          "forkBufferStiffness": 300000,
+          "forkBufferDamping": 1500,
+          "forkStiffness": 9000,
+          "forkDamping": 700,
+          "shockBuffer": "progressive",
+          "shockBufferWidth": 0.008,
+          "shockBufferStiffness": 1000000,
+          "shockBufferDamping": 3000,
+          "shockStiffness": 70000,
+          "shockDamping": 2400
+        },
+        "wheel": {
+          "nodes": 32,
+          "tyreMass": 1,
+          "hubMass": 1.5,
+          "hubInertia": 0.04,
+          "skin": 0.008,
+          "rimRadius": 0.29,
+          "foundation": 300000,
+          "extension": 500,
+          "edgeViscosity": 0.5,
+          "contactTime": 0.0005,
+          "contactImpedance": 0.99,
+          "collisionTolerance": 1e-10,
+          "collisionIterations": 100,
+          "maxPenetration": 0.0005,
+          "maxStrain": 0.25,
+          "maxDisplacement": 0.06
+        },
+        "motion": {
+          "centerX": -0.5,
+          "clearance": 0.012,
+          "velocityX": 1.5,
+          "velocityZ": 0,
+          "omega": 4.166666666666667,
+          "pitchOffset": 0,
+          "pitchVelocity": 0,
+          "forkCompression": 0.04,
+          "rearAngle": 0.08,
+          "riderOffset": -0.05,
+          "gravity": 9.80665,
+          "duration": 0.15,
+          "dt": 0.000015625,
+          "sampleDt": 0.005
+        },
+        "profile": {
+          "format": "bikelab-profile-1",
+          "units": "m",
+          "axes": "x-forward,z-up",
+          "solid": "below",
+          "interpolation": "linear",
+          "source": {
+            "kind": "illustrative",
+            "description": "Synthetic flat rigid trail."
+          },
+          "points": [
+            [
+              -3,
+              0
+            ],
+            [
+              5,
+              0
+            ]
+          ]
+        },
+        "assembly": {
+          "tyreId": "",
+          "rimId": "",
+          "brand": "unknown",
+          "rimType": "unknown",
+          "construction": "unknown",
+          "tyreBsd": null,
+          "rimBsd": null,
+          "tyreWidth": null,
+          "rimInnerWidth": null,
+          "tyreTubelessApproved": null,
+          "rimTubelessApproved": null,
+          "standardCompliant": null,
+          "widthPairApproved": null,
+          "pairApproved": null,
+          "pressure": null,
+          "tyreMaxPressure": null,
+          "rimMaxPressure": null,
+          "sources": {}
+        },
+        "surface": {
+          "friction": 0.6
+        },
+        "commands": [
+          {
+            "tick": 0,
+            "rearDrive": 0,
+            "frontBrake": 0,
+            "rearBrake": 0
+          },
+          {
+            "tick": 3200,
+            "rearDrive": 0,
+            "frontBrake": 55,
+            "rearBrake": 35
+          },
+          {
+            "tick": 6400,
+            "rearDrive": 0,
+            "frontBrake": 0,
+            "rearBrake": 0
+          }
+        ]
+      },
+      "status": "completed",
+      "termination": null,
+      "summary": {
+        "acceptedTime": 0.15000000000000185,
+        "steps": 9600,
+        "peakForce": 1344.150956471489,
+        "peakPenetration": 0.00019297200439729288,
+        "maxResidual": 0.05209689025015862,
+        "maxSampledRootWrench": 2.7284841053187847e-12,
+        "maxSampledBearingMoment": 9.78772618509538e-13,
+        "maxDiagnosticDifference": 0,
+        "maxPowerResidual": 4.0023540037736893e-13,
+        "maxSampledLateralContactForce": 1.8184522295179172e-7,
+        "maxSampledConeExcess": 3.552713678800501e-15,
+        "initialEnergy": 626.7389949311612,
+        "finalEnergy": 594.6256415106922,
+        "initialMomentum": [
+          133.5,
+          -1.3877787807814457e-16,
+          76.76105355742494
+        ]
+      },
+      "endpoint": {
+        "time": 0.15000000000000185,
+        "frame": [
+          -0.2849871749954764,
+          0.5981974943091413,
+          -0.009260471837449862
+        ],
+        "comVelocityX": 1.3707039002992996,
+        "momentumResidual": [
+          0.001104971166128621,
+          -0.007317432472831342,
+          -0.0034898575174011626
+        ],
+        "impulse": [
+          -11.508457844528465,
+          114.38553941600968,
+          33.33458617289386
+        ],
+        "driveWork": 0,
+        "brakeWork": -15.57056618309693,
+        "normalWork": -0.5120084580014089,
+        "tangentWork": -0.5760511815866973,
+        "constraintWork": -16.658625822685057,
+        "spin": [
+          3.600353915991993,
+          3.770707655594395
+        ]
+      },
+      "sampled": {
+        "peakPositiveBrakePower": 0,
+        "maxBrakeCapacityExcess": 0
+      }
+    },
+    {
+      "label": "brake-nodes-128",
+      "scenario": {
+        "bike": {
+          "pivotX": 0.04,
+          "pivotZ": -0.235,
+          "shockArmX": -0.054607848086069846,
+          "shockArmZ": 0.18996325604011804,
+          "shockFrameX": 0.19332203501088832,
+          "shockFrameZ": -0.015623078508508775,
+          "shockTravel": 0.055,
+          "bike": "full",
+          "mass": 82,
+          "rider": "compliant",
+          "riderMass": 70,
+          "riderStiffness": 12000,
+          "riderDamping": 900,
+          "riderTravel": 0.15,
+          "riderBuffer": "progressive",
+          "riderBufferWidth": 0.015,
+          "riderBufferStiffness": 300000,
+          "riderBufferDamping": 1500,
+          "forkBuffer": "progressive",
+          "forkBufferWidth": 0.02,
+          "forkBufferStiffness": 300000,
+          "forkBufferDamping": 1500,
+          "forkStiffness": 9000,
+          "forkDamping": 700,
+          "shockBuffer": "progressive",
+          "shockBufferWidth": 0.008,
+          "shockBufferStiffness": 1000000,
+          "shockBufferDamping": 3000,
+          "shockStiffness": 70000,
+          "shockDamping": 2400
+        },
+        "wheel": {
+          "nodes": 128,
+          "tyreMass": 1,
+          "hubMass": 1.5,
+          "hubInertia": 0.04,
+          "skin": 0.008,
+          "rimRadius": 0.29,
+          "foundation": 300000,
+          "extension": 500,
+          "edgeViscosity": 0.5,
+          "contactTime": 0.0005,
+          "contactImpedance": 0.99,
+          "collisionTolerance": 1e-10,
+          "collisionIterations": 100,
+          "maxPenetration": 0.0005,
+          "maxStrain": 0.25,
+          "maxDisplacement": 0.06
+        },
+        "motion": {
+          "centerX": -0.5,
+          "clearance": 0.012,
+          "velocityX": 1.5,
+          "velocityZ": 0,
+          "omega": 4.166666666666667,
+          "pitchOffset": 0,
+          "pitchVelocity": 0,
+          "forkCompression": 0.04,
+          "rearAngle": 0.08,
+          "riderOffset": -0.05,
+          "gravity": 9.80665,
+          "duration": 0.15,
+          "dt": 0.000015625,
+          "sampleDt": 0.005
+        },
+        "profile": {
+          "format": "bikelab-profile-1",
+          "units": "m",
+          "axes": "x-forward,z-up",
+          "solid": "below",
+          "interpolation": "linear",
+          "source": {
+            "kind": "illustrative",
+            "description": "Synthetic flat rigid trail."
+          },
+          "points": [
+            [
+              -3,
+              0
+            ],
+            [
+              5,
+              0
+            ]
+          ]
+        },
+        "assembly": {
+          "tyreId": "",
+          "rimId": "",
+          "brand": "unknown",
+          "rimType": "unknown",
+          "construction": "unknown",
+          "tyreBsd": null,
+          "rimBsd": null,
+          "tyreWidth": null,
+          "rimInnerWidth": null,
+          "tyreTubelessApproved": null,
+          "rimTubelessApproved": null,
+          "standardCompliant": null,
+          "widthPairApproved": null,
+          "pairApproved": null,
+          "pressure": null,
+          "tyreMaxPressure": null,
+          "rimMaxPressure": null,
+          "sources": {}
+        },
+        "surface": {
+          "friction": 0.6
+        },
+        "commands": [
+          {
+            "tick": 0,
+            "rearDrive": 0,
+            "frontBrake": 0,
+            "rearBrake": 0
+          },
+          {
+            "tick": 3200,
+            "rearDrive": 0,
+            "frontBrake": 55,
+            "rearBrake": 35
+          },
+          {
+            "tick": 6400,
+            "rearDrive": 0,
+            "frontBrake": 0,
+            "rearBrake": 0
+          }
+        ]
+      },
+      "status": "completed",
+      "termination": null,
+      "summary": {
+        "acceptedTime": 0.15000000000000185,
+        "steps": 9600,
+        "peakForce": 1336.0206423701939,
+        "peakPenetration": 0.0001448277048091487,
+        "maxResidual": 0.08167623664414592,
+        "maxSampledRootWrench": 4.774847184307873e-12,
+        "maxSampledBearingMoment": 2.9487523534044158e-12,
+        "maxDiagnosticDifference": 0,
+        "maxPowerResidual": 4.864442182395123e-13,
+        "maxSampledLateralContactForce": 1.3993172968538768e-8,
+        "maxSampledConeExcess": 7.105427357601002e-15,
+        "initialEnergy": 626.7389949311612,
+        "finalEnergy": 594.714111367923,
+        "initialMomentum": [
+          133.5,
+          -4.85722573273506e-16,
+          76.76105355742493
+        ]
+      },
+      "endpoint": {
+        "time": 0.15000000000000185,
+        "frame": [
+          -0.28499484373466155,
+          0.5977178744423659,
+          -0.009898928656177015
+        ],
+        "comVelocityX": 1.3714569715292044,
+        "momentumResidual": [
+          0.0008035519515630085,
+          -0.00736820425163387,
+          -0.0036768611361779335
+        ],
+        "impulse": [
+          -11.441133085852371,
+          114.36463779408747,
+          33.34313436422967
+        ],
+        "driveWork": 0,
+        "brakeWork": -15.267931290375335,
+        "normalWork": -0.3490375488762895,
+        "tangentWork": -0.5221954219291479,
+        "constraintWork": -16.13916426118084,
+        "spin": [
+          3.5433181990511096,
+          3.389156326206251
+        ]
+      },
+      "sampled": {
+        "peakPositiveBrakePower": 0,
+        "maxBrakeCapacityExcess": 0
+      }
+    },
+    {
+      "label": "airborne-step-0.00003125",
+      "scenario": {
+        "bike": {
+          "pivotX": 0.04,
+          "pivotZ": -0.235,
+          "shockArmX": -0.054607848086069846,
+          "shockArmZ": 0.18996325604011804,
+          "shockFrameX": 0.19332203501088832,
+          "shockFrameZ": -0.015623078508508775,
+          "shockTravel": 0.055,
+          "bike": "full",
+          "mass": 82,
+          "rider": "compliant",
+          "riderMass": 70,
+          "riderStiffness": 12000,
+          "riderDamping": 900,
+          "riderTravel": 0.15,
+          "riderBuffer": "none",
+          "riderBufferWidth": 0.015,
+          "riderBufferStiffness": 300000,
+          "riderBufferDamping": 1500,
+          "forkBuffer": "none",
+          "forkBufferWidth": 0.02,
+          "forkBufferStiffness": 300000,
+          "forkBufferDamping": 1500,
+          "forkStiffness": 9000,
+          "forkDamping": 700,
+          "shockBuffer": "none",
+          "shockBufferWidth": 0.008,
+          "shockBufferStiffness": 1000000,
+          "shockBufferDamping": 3000,
+          "shockStiffness": 70000,
+          "shockDamping": 2400
+        },
+        "wheel": {
+          "nodes": 64,
+          "tyreMass": 1,
+          "hubMass": 1.5,
+          "hubInertia": 0.04,
+          "skin": 0.008,
+          "rimRadius": 0.29,
+          "foundation": 300000,
+          "extension": 500,
+          "edgeViscosity": 0.5,
+          "contactTime": 0.0005,
+          "contactImpedance": 0.99,
+          "collisionTolerance": 1e-10,
+          "collisionIterations": 100,
+          "maxPenetration": 0.0005,
+          "maxStrain": 0.25,
+          "maxDisplacement": 0.06
+        },
+        "motion": {
+          "centerX": -0.5,
+          "clearance": 0.3,
+          "velocityX": 1,
+          "velocityZ": 0.3,
+          "omega": 2,
+          "pitchOffset": 0,
+          "pitchVelocity": 0,
+          "forkCompression": 0.02,
+          "rearAngle": 0.04,
+          "riderOffset": -0.02,
+          "gravity": 0,
+          "duration": 0.02,
+          "dt": 0.00003125,
+          "sampleDt": 0.005
+        },
+        "profile": {
+          "format": "bikelab-profile-1",
+          "units": "m",
+          "axes": "x-forward,z-up",
+          "solid": "below",
+          "interpolation": "linear",
+          "source": {
+            "kind": "illustrative",
+            "description": "Synthetic flat rigid trail."
+          },
+          "points": [
+            [
+              -3,
+              0
+            ],
+            [
+              5,
+              0
+            ]
+          ]
+        },
+        "assembly": {
+          "tyreId": "",
+          "rimId": "",
+          "brand": "unknown",
+          "rimType": "unknown",
+          "construction": "unknown",
+          "tyreBsd": null,
+          "rimBsd": null,
+          "tyreWidth": null,
+          "rimInnerWidth": null,
+          "tyreTubelessApproved": null,
+          "rimTubelessApproved": null,
+          "standardCompliant": null,
+          "widthPairApproved": null,
+          "pairApproved": null,
+          "pressure": null,
+          "tyreMaxPressure": null,
+          "rimMaxPressure": null,
+          "sources": {}
+        },
+        "surface": {
+          "friction": 0
+        },
+        "commands": [
+          {
+            "tick": 0,
+            "rearDrive": 2,
+            "frontBrake": 1,
+            "rearBrake": 1
+          },
+          {
+            "tick": 500,
+            "rearDrive": -2,
+            "frontBrake": 0,
+            "rearBrake": 0
+          }
+        ]
+      },
+      "status": "completed",
+      "termination": null,
+      "summary": {
+        "acceptedTime": 0.020000000000000014,
+        "steps": 640,
+        "peakForce": 0,
+        "peakPenetration": 0,
+        "maxResidual": 0.0026560436948902394,
+        "maxSampledRootWrench": 1.9895196601282805e-13,
+        "maxSampledBearingMoment": 6.394884621840902e-14,
+        "maxDiagnosticDifference": 0,
+        "maxPowerResidual": 0,
+        "maxSampledLateralContactForce": 0,
+        "maxSampledConeExcess": 0,
+        "initialEnergy": 55.51602527735103,
+        "finalEnergy": 54.28413105268426,
+        "initialMomentum": [
+          89,
+          26.700000000000003,
+          93.48282768135797
+        ]
+      },
+      "endpoint": {
+        "time": 0.020000000000000014,
+        "frame": [
+          -0.48005128365657124,
+          0.9364055310397079,
+          -0.000855429386332111
+        ],
+        "comVelocityX": 1.0000005555847273,
+        "momentumResidual": [
+          0.00004944704073750472,
+          0.0000026368297909584726,
+          0.00004013439919958728
+        ],
+        "impulse": [
+          0,
+          0,
+          0
+        ],
+        "driveWork": 0.05540075992003671,
+        "brakeWork": -0.06994189661759659,
+        "normalWork": 0,
+        "tangentWork": 0,
+        "constraintWork": -0.06994189661759659,
+        "spin": [
+          1.8823183710763178,
+          2.719362854928971
+        ]
+      },
+      "sampled": {
+        "peakPositiveBrakePower": 0,
+        "maxBrakeCapacityExcess": 0
+      }
+    },
+    {
+      "label": "airborne-step-0.000015625",
+      "scenario": {
+        "bike": {
+          "pivotX": 0.04,
+          "pivotZ": -0.235,
+          "shockArmX": -0.054607848086069846,
+          "shockArmZ": 0.18996325604011804,
+          "shockFrameX": 0.19332203501088832,
+          "shockFrameZ": -0.015623078508508775,
+          "shockTravel": 0.055,
+          "bike": "full",
+          "mass": 82,
+          "rider": "compliant",
+          "riderMass": 70,
+          "riderStiffness": 12000,
+          "riderDamping": 900,
+          "riderTravel": 0.15,
+          "riderBuffer": "none",
+          "riderBufferWidth": 0.015,
+          "riderBufferStiffness": 300000,
+          "riderBufferDamping": 1500,
+          "forkBuffer": "none",
+          "forkBufferWidth": 0.02,
+          "forkBufferStiffness": 300000,
+          "forkBufferDamping": 1500,
+          "forkStiffness": 9000,
+          "forkDamping": 700,
+          "shockBuffer": "none",
+          "shockBufferWidth": 0.008,
+          "shockBufferStiffness": 1000000,
+          "shockBufferDamping": 3000,
+          "shockStiffness": 70000,
+          "shockDamping": 2400
+        },
+        "wheel": {
+          "nodes": 64,
+          "tyreMass": 1,
+          "hubMass": 1.5,
+          "hubInertia": 0.04,
+          "skin": 0.008,
+          "rimRadius": 0.29,
+          "foundation": 300000,
+          "extension": 500,
+          "edgeViscosity": 0.5,
+          "contactTime": 0.0005,
+          "contactImpedance": 0.99,
+          "collisionTolerance": 1e-10,
+          "collisionIterations": 100,
+          "maxPenetration": 0.0005,
+          "maxStrain": 0.25,
+          "maxDisplacement": 0.06
+        },
+        "motion": {
+          "centerX": -0.5,
+          "clearance": 0.3,
+          "velocityX": 1,
+          "velocityZ": 0.3,
+          "omega": 2,
+          "pitchOffset": 0,
+          "pitchVelocity": 0,
+          "forkCompression": 0.02,
+          "rearAngle": 0.04,
+          "riderOffset": -0.02,
+          "gravity": 0,
+          "duration": 0.02,
+          "dt": 0.000015625,
+          "sampleDt": 0.005
+        },
+        "profile": {
+          "format": "bikelab-profile-1",
+          "units": "m",
+          "axes": "x-forward,z-up",
+          "solid": "below",
+          "interpolation": "linear",
+          "source": {
+            "kind": "illustrative",
+            "description": "Synthetic flat rigid trail."
+          },
+          "points": [
+            [
+              -3,
+              0
+            ],
+            [
+              5,
+              0
+            ]
+          ]
+        },
+        "assembly": {
+          "tyreId": "",
+          "rimId": "",
+          "brand": "unknown",
+          "rimType": "unknown",
+          "construction": "unknown",
+          "tyreBsd": null,
+          "rimBsd": null,
+          "tyreWidth": null,
+          "rimInnerWidth": null,
+          "tyreTubelessApproved": null,
+          "rimTubelessApproved": null,
+          "standardCompliant": null,
+          "widthPairApproved": null,
+          "pairApproved": null,
+          "pressure": null,
+          "tyreMaxPressure": null,
+          "rimMaxPressure": null,
+          "sources": {}
+        },
+        "surface": {
+          "friction": 0
+        },
+        "commands": [
+          {
+            "tick": 0,
+            "rearDrive": 2,
+            "frontBrake": 1,
+            "rearBrake": 1
+          },
+          {
+            "tick": 1000,
+            "rearDrive": -2,
+            "frontBrake": 0,
+            "rearBrake": 0
+          }
+        ]
+      },
+      "status": "completed",
+      "termination": null,
+      "summary": {
+        "acceptedTime": 0.01999999999999953,
+        "steps": 1280,
+        "peakForce": 0,
+        "peakPenetration": 0,
+        "maxResidual": 0.0013343531367505518,
+        "maxSampledRootWrench": 6.252776074688882e-13,
+        "maxSampledBearingMoment": 5.684341886080802e-14,
+        "maxDiagnosticDifference": 0,
+        "maxPowerResidual": 0,
+        "maxSampledLateralContactForce": 0,
+        "maxSampledConeExcess": 0,
+        "initialEnergy": 55.51602527735103,
+        "finalEnergy": 54.284479512050595,
+        "initialMomentum": [
+          89,
+          26.700000000000003,
+          93.48282768135797
+        ]
+      },
+      "endpoint": {
+        "time": 0.01999999999999953,
+        "frame": [
+          -0.480051287326538,
+          0.9364062976360072,
+          -0.0008555448984948805
+        ],
+        "comVelocityX": 1.0000002880665868,
+        "momentumResidual": [
+          0.000025637926228228025,
+          0.0000014464144229009435,
+          0.000020719920811984593
+        ],
+        "impulse": [
+          0,
+          0,
+          0
+        ],
+        "driveWork": 0.055398731588738495,
+        "brakeWork": -0.06994825443029433,
+        "normalWork": 0,
+        "tangentWork": 0,
+        "constraintWork": -0.06994825443029433,
+        "spin": [
+          1.8781456043579827,
+          2.720294345628801
+        ]
+      },
+      "sampled": {
+        "peakPositiveBrakePower": 0,
+        "maxBrakeCapacityExcess": 0
+      }
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 # Delivery and validation plan
 
-Current status: iteration 17 consolidates merged PRs #17/#18 and extends the connected bike/rider to a bounded sharp-edge/faceted impact MVP. See [current delivery sequence](DYNAMICS_DELIVERY_PLAN.md), [evidence](ITERATION_17_EVIDENCE.md) and [adaptive wheel decision](ADAPTIVE_WHEEL.md). The entries below preserve historical slice decisions. Full 3D simulation, including lateral motion and turning forces, remains a required destination; see THREE_DIMENSIONAL_DYNAMICS.md.
+Current status: iteration 19 receives scheduled hub drive and brakes after merged homogeneous traction PR #21, retaining the connected sharp-edge/faceted impact MVP. See [current delivery sequence](DYNAMICS_DELIVERY_PLAN.md), [evidence](ITERATION_19_EVIDENCE.md) and [adaptive wheel decision](ADAPTIVE_WHEEL.md). Articulated rider contacts/control are next. The entries below preserve historical slice decisions. Full 3D simulation, including lateral motion and turning forces, remains a required destination; see THREE_DIMENSIONAL_DYNAMICS.md.
 
 ## Definition of a received slice
 
@@ -261,3 +261,9 @@ Next: D4 traction/brake/drive controls in this connected consumer, then D5 anato
 The [D4a traction slice](ITERATION_18_EVIDENCE.md) adds a homogeneous interface coefficient to both deforming wheel contacts in the existing connected bike/rider consumer. Full local forces, signed contact slip, normal/tangent work, coast/sliding examples and old frictionless replay share the viewer/headless engine. Both hardtail and full suspension remain supported. Independent native sliding and weighted contact-velocity controls accompany the visible experiment. This does not implement braking, a pressure/tread law, calibrated material grip or 3D contact area.
 
 Next D4b: deterministic tick-based rear drive and front/rear brake capacities. Verify isolated rotor rest/reversal/release and carrier countertorque/work first, then receive acceleration/braking/load transfer on this same bike. Separate solved brake torque from terrain moments and count brake work once. The [review and source conventions](ITERATION_18_REVIEW.md) preserve the detailed contract. D5 articulated rider, D7/D8 layered terrain/mud mass and history, D11 scan/cache detail and D12 measured fidelity tiers remain required; default homogeneous friction is not a substitute.
+
+## Iteration 19 — connected hub drive and brakes
+
+[D4b](ITERATION_19_EVIDENCE.md) adds rear drive and separate front/rear brake capacities, deterministic command schedules and editing, wheel spin/solved-torque histories, and consistent carrier, ground-moment and work ownership. Both connected assemblies retain travel/support limits and legacy replay. Independent rotor/pair controls accompany the browser/headless examples. Regularized brakes, synthetic geometry and unresolved casing/timestep sensitivity do not establish physical stopping accuracy.
+
+Next D5: review guided rider/stop load paths and source a bounded passive articulated rider with segment mass/inertia, posture and explicit hand/foot/saddle force/work ownership. Receive it on the same connected trail consumer with fixed/passive comparison modes before active controls and contact release/recontact. Keep the component failure/pressure-loss, layered terrain/mud, 3D lateral/turning, provenance and measured adaptive/multirate gates open.
