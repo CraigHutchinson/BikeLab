@@ -1,6 +1,6 @@
 # Connected bicycle dynamics delivery plan
 
-Current receiving checkpoint: iteration 19 D4b, after reviewed and merged traction PR #21 at main `24a181d`. The [Trail bike](TRAIL_BIKE.md) consumer couples both deformable spatial wheels to a freely translating/pitching hardtail or full-suspension frame and passive guided rider. It admits sharp square edges and coarse faceted rocks, optional homogeneous traction, and scheduled rear drive/front-rear braking with local forces, slip, wheel spin and separated work. See [iteration 19 evidence](ITERATION_19_EVIDENCE.md). The earlier platen bicycle rig remains a suspension diagnostic. Articulated rider contacts are the next connected work. Homogeneous traction is not layered soil, calibrated grip or combined 3D traction.
+Last received checkpoint: iteration 19 D4b, merged drive/brake PR #22 at main `e73f6cc`. In-flight PR #23 builds the articulated rider prerequisites. The [Trail bike](TRAIL_BIKE.md) consumer couples both deformable spatial wheels to a freely translating/pitching hardtail or full-suspension frame and passive guided rider. It admits sharp square edges and coarse faceted rocks, optional homogeneous traction, and scheduled rear drive/front-rear braking with local forces, slip, wheel spin and separated work. See [iteration 19 evidence](ITERATION_19_EVIDENCE.md). The earlier platen bicycle rig remains a suspension diagnostic. Articulated rider contacts are the next connected work. Homogeneous traction is not layered soil, calibrated grip or combined 3D traction.
 
 ## Tracked follow-ups and receiving sequence
 
@@ -76,7 +76,7 @@ D4b receives deterministic hub-drive/brake schedules, apply/release examples, co
 
 Next D5 starts with a bounded, source-backed planar rider attachment design on this same consumer: define segment mass/COM/inertia and posture, hand/foot/saddle locations, contact/release semantics and observable force/work ownership. Review current guide and stop load paths first; retain fixed/passive guided controls as explicit comparison models. The first implementation should receive a passive articulated posture with independent gravity/equilibrium and equal-and-opposite attachment checks before active actuation, grip release/recontact or controller tuning. Use one small, tested and pushed increment at a time. Do not call illustrative anatomical parameters measured, infer injury from attachment loads, or replace the connected rider objective with another standalone station.
 
-The [iteration 20 review](ITERATION_20_REVIEW.md) records the first D5a topology proposal, source limits and required contact/equality work routing. It is a design checkpoint; articulated rider mechanics remain unimplemented.
+The [iteration 20 review](ITERATION_20_REVIEW.md) records the first D5a topology proposal, source limits and required contact/equality work routing. Its geometric and native construction prerequisites are implemented, including mass/COM/inertia, compatible initial velocities and rank-four closure checks. Passive connected dynamics and their visual receiving cases remain open.
 
 The [iteration 20 handoff](ITERATION_20_HANDOFF.md) records construction completeness, remaining design decisions, verified CI and the next small implementation steps.
 

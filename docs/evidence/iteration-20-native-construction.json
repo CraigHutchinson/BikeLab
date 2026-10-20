@@ -1,0 +1,1374 @@
+{
+  "scope": "Native construction and existing-station regression only. No articulated dynamic/visual rider, anatomy calibration or real-time evidence.",
+  "implementationCommit": "20e411958314e1e538d5c0864f545ab76469e830",
+  "boundaryTestCommit": "f92a799",
+  "node": "v24.22.0",
+  "sourceSha256": {
+    "dist/rider-native.js": "a35eb88cf291026306be6d987c44b194b0721cd6406903c77b10d920172bf41a",
+    "dist/rider-posture.js": "6eaffb5f9062cb7270ddc7d8e304dc45ef8eba4db2044da5cbf2349f4cc6c258",
+    "scripts/rider-posture.mjs": "b37fd61bb470780cbca5bcf998b472519de0edda83297176501c2841baa2532e",
+    "scripts/browser-check.mjs": "f10886e88d9dff2cec5c6ed4cd8c9a1ec5f4255d59e0f23c69940823ed6c74a2",
+    "server.mjs": "47e48473432acaa1f136c97c82f3ecf0d4fde486c2ab5f0d396b5820fe05f29f",
+    "test/rider-native.test.mjs": "ddaad5706ae7eb0b60021a8e435a956ea48e0cd29c7f0bd0282386e8859483c5",
+    "test/rider-posture.test.mjs": "2c9085208ee50b14fc2b1507260ce54f73bca97127bf36d900abe178a5ecdca7"
+  },
+  "localFullSuite": {
+    "tests": 196,
+    "passed": 196,
+    "failed": 0,
+    "skipped": 0,
+    "implementation": "20e4119"
+  },
+  "boundaryTest": "Three native tests additionally pass at f92a799 including the admitted near-straight limb.",
+  "browser": {
+    "version": "156.0.4314.36",
+    "riderPosture": {
+      "cases": 2,
+      "maxAbsolute": 8.881784197001252e-16,
+      "normalizedTolerance": 1e-12
+    },
+    "riderNative": {
+      "cases": 2,
+      "maxAbsolute": 1.7763568394002505e-15,
+      "normalizedTolerance": 1e-12
+    },
+    "errors": [],
+    "checks": [
+      "native rider construction: named attachments, full inertia and sparse-fixture site Jacobians agree across browser/Node; no integrated rider claim",
+      "rider posture construction: complete browser/Node reports for both bend branches and mass scaling; unreachable pose rejection; no dynamic rider claim",
+      "wheel: step, comparison gating, save/load, high lift, mobile width",
+      "suspension: signed curves rendered, step/scrub/play/pause, pin gating, reject/discard, save/load and wrong-station rejection",
+      "suspension: actual worker cancellation, immediate travel limit, shock preset, mobile/narrow width",
+      "reference: explicit compatible setup, unsupported state, worker overlays, dirty gating, save/load and Node metric agreement",
+      "reference: valid coarse integration fails declared limits; half-step refinement passes",
+      "terrain: hidden/small canvas recovery, square/rounded/flat, complete browser/Node report agreement, unavailable/buried states, edit gating, custom profile, load, stale-file guard, co-nearest supports and mobile widths",
+      "solver: real WASM module worker; exact candidate browser/Node channels with tolerance-checked analytical channels; release failure and static pass; refinement, replay, dirty/invalid gating, cancellation, restore, hidden canvas, page lifecycle resize recovery and mobile widths",
+      "manufacturer catalogue: eight sourced configurations selectable, SI JSON export exact, missing mechanism data explicit, reference selection leaves the calculated rig intact",
+      "geometry: annotated/reference/custom physical setups, diagnostics, changed/invalid gating, custom reload and browser/headless channels",
+      "shock buffers: both end presets, worker/headless signals, engagement, save/load, dormant hardtail controls, disabled settings, responsive plots and lifecycle",
+      "fork buffers: supported top/bottom loading; real worker/headless parity; unbuffered control and weak-buffer ultimate termination; setup reconstruction, engagement display and responsive plots",
+      "rider: both compliant assemblies; exact setup restoration and explicit v0.1 fixed migration; browser/Node channels; mass control; invalid mass budget; settling and dynamic rider travel rejection; signed plots; five-canvas lifecycle and mobile recovery",
+      "bicycle: both actual assemblies; WASM worker under Pages path; browser/Node sample agreement; setup save/load; replay; dirty/cancel/rejection and travel-limit handling; mobile and page lifecycle",
+      "rider stops and loads: both assemblies, lower/upper engagement, worker/headless parity, record reconstruction, invalid overlapping zones, weak-stop ultimate termination, fixed-mode dormancy, responsive plots and lifecycle",
+      "terrain R0a: six browser/Node replays with exact discrete identities and 1e-12 geometric tolerance; explicit missing-data stop; cut directions/rows; play/pause/rewind/scrub; export/verified import and invalid rejection; delayed wait/cancel/supersession; mobile 390/320",
+      "static footprint: browser/Node complete report agreement; flat/round/step-top/two-supports; explicit edge/rim rejection; all contact rows; zoom; owned authored profile and recomputed import; edit/invalid/cancel/supersession gating; hidden-canvas recovery; 390/320 px inspection captures",
+      "wheel limits: full browser/Node report agreement; continuous flat/corner/round/domain/separation cases; first-contact clipping; declared pressure and bead-seat rejection; zero-pressure refusal; owned import; edit/cancel/restore/supersession; canvas recovery and 390/320 px captures",
+      "moving wheel: complete browser/Node reports; flat/square/rounded/flight/overload; replay, rejection, dirty/cancel/restore/supersession and delayed imports; time-based playback, rapid pause/resume, lifecycle, canvas recovery and 390/320 px captures",
+      "connected trail bike: full/hardtail smooth, square and coarse-faceted rocks, flight and overload stops; complete browser/headless records, homogeneous coast/sliding traction on both bikes, slip plots and grip input validation, drive/brake apply-release on both bikes, authored schedule add/remove/restore and time validation, legacy traction import, spin/brake histories, horizontal impact plots, inputs/replay, dirty/cancel/restore/supersession, delayed imports, playback/lifecycle and 390/320 px layouts; identical ten-station navigation",
+      "no captured page/console errors; rig has rendered pixels"
+    ],
+    "exports": [
+      {
+        "name": "wheel-browser",
+        "result": {
+          "result": "numerical agreement",
+          "normalizedTolerance": 1e-10,
+          "maxAbsoluteDifferences": {
+            "time": 0,
+            "height": 0,
+            "velocity": 1.1102230246251565e-16,
+            "platen": 8.673617379884035e-18,
+            "compression": 0,
+            "force": 1.1368683772161603e-13,
+            "energy": 0,
+            "work": 1.7763568394002505e-15,
+            "loss": 3.3306690738754696e-16,
+            "residual": 2.842170943040401e-14,
+            "unloaded": 0
+          }
+        }
+      },
+      {
+        "name": "suspension-browser",
+        "result": {
+          "result": "numerical agreement",
+          "normalizedTolerance": 1e-10,
+          "maxAbsoluteDifferences": {
+            "time": 0,
+            "height": 0,
+            "velocity": 0,
+            "base": 0,
+            "compression": 0,
+            "compressionVelocity": 0,
+            "springForce": 0,
+            "damperForce": 0,
+            "force": 0,
+            "energy": 0,
+            "work": 0,
+            "loss": 0,
+            "residual": 0
+          }
+        }
+      },
+      {
+        "name": "suspension-top-out",
+        "result": {
+          "result": "numerical agreement",
+          "normalizedTolerance": 1e-10,
+          "maxAbsoluteDifferences": {
+            "time": 0,
+            "height": 0,
+            "velocity": 0,
+            "base": 0,
+            "compression": 0,
+            "compressionVelocity": 0,
+            "springForce": 0,
+            "damperForce": 0,
+            "force": 0,
+            "energy": 0,
+            "work": 0,
+            "loss": 0,
+            "residual": 0
+          }
+        }
+      },
+      {
+        "name": "suspension-shock",
+        "result": {
+          "result": "numerical agreement",
+          "normalizedTolerance": 1e-10,
+          "maxAbsoluteDifferences": {
+            "time": 0,
+            "height": 0,
+            "velocity": 0,
+            "base": 0,
+            "compression": 0,
+            "compressionVelocity": 0,
+            "springForce": 0,
+            "damperForce": 0,
+            "force": 0,
+            "energy": 0,
+            "work": 0,
+            "loss": 0,
+            "residual": 0
+          }
+        }
+      },
+      {
+        "name": "suspension-reference",
+        "result": {
+          "result": "numerical agreement",
+          "normalizedTolerance": 1e-10,
+          "maxAbsoluteDifferences": {
+            "time": 0,
+            "height": 0,
+            "velocity": 0,
+            "base": 0,
+            "compression": 0,
+            "compressionVelocity": 0,
+            "springForce": 0,
+            "damperForce": 0,
+            "force": 0,
+            "energy": 0,
+            "work": 0,
+            "loss": 0,
+            "residual": 0
+          }
+        }
+      },
+      {
+        "name": "bike-full",
+        "result": {
+          "dofs": 4,
+          "samples": 801,
+          "maxBrowserNodeDifference": 1.517719283583574e-11
+        }
+      },
+      {
+        "name": "bike-hardtail",
+        "result": {
+          "dofs": 3,
+          "samples": 801,
+          "maxBrowserNodeDifference": 1.5290879673557356e-11
+        }
+      },
+      {
+        "name": "rider-full",
+        "result": {
+          "dofs": 5,
+          "samples": 801,
+          "maxBrowserNodeDifference": 1.4949819160392508e-11,
+          "summary": {
+            "riderBufferLoss": 0,
+            "peakRiderLowerForce": 0,
+            "peakRiderUpperForce": 0,
+            "maxResidual": 0.0014197508701272454,
+            "peakForce": 584.6989158373037,
+            "peakRiderForce": 772.3763202453788,
+            "peakTopForce": 0,
+            "peakBottomForce": 0,
+            "work": 4.513520630569764,
+            "loss": 4.514042166864686,
+            "riderLoss": 2.09902359137727,
+            "bufferLoss": 0,
+            "shockBufferLoss": 0,
+            "peakShockTopForce": 0,
+            "peakShockBottomForce": 0
+          }
+        }
+      },
+      {
+        "name": "rider-hardtail",
+        "result": {
+          "dofs": 4,
+          "samples": 801,
+          "maxBrowserNodeDifference": 1.48929757415317e-11,
+          "summary": {
+            "riderBufferLoss": 0,
+            "peakRiderLowerForce": 0,
+            "peakRiderUpperForce": 0,
+            "maxResidual": 0.002146340839885852,
+            "peakForce": 630.5293701907377,
+            "peakRiderForce": 823.3112555212471,
+            "peakTopForce": 0,
+            "peakBottomForce": 0,
+            "work": 5.07553478705345,
+            "loss": 5.076180064909395,
+            "riderLoss": 3.588644770014549,
+            "bufferLoss": 0,
+            "shockBufferLoss": 0,
+            "peakShockTopForce": 0,
+            "peakShockBottomForce": 0
+          }
+        }
+      },
+      {
+        "name": "fork-buffers",
+        "result": {
+          "maxBrowserNodeDifference": 1.5575096767861396e-11,
+          "summary": {
+            "riderBufferLoss": 0,
+            "peakRiderLowerForce": 0,
+            "peakRiderUpperForce": 0,
+            "maxResidual": 0.2252574659810307,
+            "peakForce": 3047.0450153225897,
+            "peakRiderForce": 0,
+            "peakTopForce": 711.870827595388,
+            "peakBottomForce": 0,
+            "work": 206.70789789577444,
+            "loss": 206.89131577371964,
+            "riderLoss": 0,
+            "bufferLoss": 2.713770825660699,
+            "shockBufferLoss": 0,
+            "peakShockTopForce": 0,
+            "peakShockBottomForce": 0
+          }
+        }
+      },
+      {
+        "name": "shockTopExample",
+        "result": {
+          "maxBrowserNodeDifference": 4.615685611497611e-11,
+          "summary": {
+            "riderBufferLoss": 0,
+            "peakRiderLowerForce": 0,
+            "peakRiderUpperForce": 0,
+            "maxResidual": 0.11756678756921701,
+            "peakForce": 1124.8844497711075,
+            "peakRiderForce": 0,
+            "peakTopForce": 47.81896685078885,
+            "peakBottomForce": 0,
+            "work": 73.68132488762089,
+            "loss": 73.73388421330424,
+            "riderLoss": 0,
+            "bufferLoss": 0.005390827659643306,
+            "shockBufferLoss": 3.4050061715228708,
+            "peakShockTopForce": 3523.1032141940814,
+            "peakShockBottomForce": 0
+          }
+        }
+      },
+      {
+        "name": "shockBottomExample",
+        "result": {
+          "maxBrowserNodeDifference": 3.774403012357652e-11,
+          "summary": {
+            "riderBufferLoss": 0,
+            "peakRiderLowerForce": 0,
+            "peakRiderUpperForce": 0,
+            "maxResidual": 0.0599249766023604,
+            "peakForce": 1402.9110088363736,
+            "peakRiderForce": 0,
+            "peakTopForce": 0,
+            "peakBottomForce": 0,
+            "work": 71.4891877201249,
+            "loss": 71.50961162197167,
+            "riderLoss": 0,
+            "bufferLoss": 0,
+            "shockBufferLoss": 0.9900752295853088,
+            "peakShockTopForce": 0,
+            "peakShockBottomForce": 1899.0207053880306
+          }
+        }
+      },
+      {
+        "name": "rider-stops-full",
+        "result": {
+          "maxBrowserNodeDifference": 3.058175934711471e-11,
+          "summary": {
+            "riderBufferLoss": 0.5023618678522775,
+            "peakRiderLowerForce": 522.4685208030928,
+            "peakRiderUpperForce": 82.39722663468244,
+            "maxResidual": 0.15765900025212432,
+            "peakForce": 1480.2922071138244,
+            "peakRiderForce": 267.3513740432267,
+            "peakTopForce": 156.26870632564209,
+            "peakBottomForce": 0,
+            "work": 174.62898466275274,
+            "loss": 174.71188712522454,
+            "riderLoss": 0,
+            "bufferLoss": 0.05332590989305903,
+            "shockBufferLoss": 0.37022670540263647,
+            "peakShockTopForce": 1049.6648027938381,
+            "peakShockBottomForce": 0
+          }
+        }
+      },
+      {
+        "name": "rider-stops-hardtail",
+        "result": {
+          "maxBrowserNodeDifference": 2.9331204132176936e-11,
+          "summary": {
+            "riderBufferLoss": 3.442783612323155,
+            "peakRiderLowerForce": 1712.123882153081,
+            "peakRiderUpperForce": 272.9289009552731,
+            "maxResidual": 0.5074405854988981,
+            "peakForce": 4846.1369130635585,
+            "peakRiderForce": 449.61791811740176,
+            "peakTopForce": 164.72631891922893,
+            "peakBottomForce": 0,
+            "work": 275.2675014703256,
+            "loss": 275.3959169164558,
+            "riderLoss": 0,
+            "bufferLoss": 0.06926605982800678,
+            "shockBufferLoss": 0,
+            "peakShockTopForce": 0,
+            "peakShockBottomForce": 0
+          }
+        }
+      }
+    ],
+    "trailBike": {
+      "agreement": [
+        {
+          "name": "full-bump",
+          "maxAbsolute": 4.440892098500626e-16
+        },
+        {
+          "name": "hardtail-bump",
+          "maxAbsolute": 4.440892098500626e-16
+        },
+        {
+          "name": "fixed-rider",
+          "maxAbsolute": 2.7755575615628914e-17
+        },
+        {
+          "name": "flight",
+          "maxAbsolute": 0
+        },
+        {
+          "name": "limit",
+          "maxAbsolute": 2.7755575615628914e-17
+        },
+        {
+          "name": "invalid-travel",
+          "maxAbsolute": 0
+        },
+        {
+          "name": "superseded-flight",
+          "maxAbsolute": 0
+        },
+        {
+          "name": "full-square",
+          "maxAbsolute": 4.440892098500626e-16
+        },
+        {
+          "name": "full-faceted",
+          "maxAbsolute": 4.440892098500626e-16
+        },
+        {
+          "name": "full-edge-limit",
+          "maxAbsolute": 5.551115123125783e-17
+        },
+        {
+          "name": "hardtail-square",
+          "maxAbsolute": 4.440892098500626e-16
+        },
+        {
+          "name": "hardtail-faceted",
+          "maxAbsolute": 4.440892098500626e-16
+        },
+        {
+          "name": "hardtail-edge-limit",
+          "maxAbsolute": 5.551115123125783e-17
+        },
+        {
+          "name": "full-coast",
+          "maxAbsolute": 2.220446049250313e-16
+        },
+        {
+          "name": "full-sliding",
+          "maxAbsolute": 2.220446049250313e-16
+        },
+        {
+          "name": "hardtail-coast",
+          "maxAbsolute": 2.220446049250313e-16
+        },
+        {
+          "name": "hardtail-sliding",
+          "maxAbsolute": 1.1102230246251565e-16
+        },
+        {
+          "name": "full-drive",
+          "maxAbsolute": 2.220446049250313e-16
+        },
+        {
+          "name": "full-brake",
+          "maxAbsolute": 1.1102230246251565e-16
+        },
+        {
+          "name": "hardtail-drive",
+          "maxAbsolute": 2.220446049250313e-16
+        },
+        {
+          "name": "hardtail-brake",
+          "maxAbsolute": 1.1102230246251565e-16
+        },
+        {
+          "name": "authored-drive-brake",
+          "maxAbsolute": 1.1102230246251565e-16
+        },
+        {
+          "name": "legacy-traction",
+          "maxAbsolute": 2.7755575615628914e-17
+        }
+      ]
+    }
+  },
+  "cases": [
+    {
+      "native": {
+        "format": "bikelab-rider-native-0.1",
+        "spec": {
+          "format": "bikelab-rider-posture-0.1",
+          "riderMass": 70,
+          "hip": [
+            -0.15,
+            0.25
+          ],
+          "trunkPitch": 0.55,
+          "hand": [
+            0.45,
+            0.32
+          ],
+          "foot": [
+            0,
+            -0.3
+          ],
+          "elbowSide": -1,
+          "kneeSide": 1,
+          "minBendSine": 0.05,
+          "segments": {
+            "trunk": {
+              "massFraction": 0.6,
+              "length": 0.55,
+              "comFraction": 0.5,
+              "inertiaPerMass": [
+                0.02880833333333334,
+                0.02880833333333334,
+                0.0072
+              ]
+            },
+            "thighs": {
+              "massFraction": 0.2,
+              "length": 0.43,
+              "comFraction": 0.5,
+              "inertiaPerMass": [
+                0.01700833333333333,
+                0.01700833333333333,
+                0.0032
+              ]
+            },
+            "shanksFeet": {
+              "massFraction": 0.1,
+              "length": 0.43,
+              "comFraction": 0.5,
+              "inertiaPerMass": [
+                0.01663333333333333,
+                0.01663333333333333,
+                0.0024500000000000004
+              ]
+            },
+            "upperArms": {
+              "massFraction": 0.055,
+              "length": 0.3,
+              "comFraction": 0.5,
+              "inertiaPerMass": [
+                0.008125,
+                0.008125,
+                0.0012500000000000002
+              ]
+            },
+            "forearmsHands": {
+              "massFraction": 0.045,
+              "length": 0.3,
+              "comFraction": 0.5,
+              "inertiaPerMass": [
+                0.007899999999999999,
+                0.007899999999999999,
+                0.0008
+              ]
+            }
+          }
+        },
+        "engine": "MuJoCo 3.16.0",
+        "scope": "Native initial construction only; no integration, passive joint law, saddle, connected-bike dynamics or anatomical calibration.",
+        "coordinates": "SI; frame x forward, y left, z up; joint values are zero deviations from the constructed posture. Tensors row-major in world axes.",
+        "dofs": [
+          {
+            "name": "travel",
+            "index": 0
+          },
+          {
+            "name": "heave",
+            "index": 1
+          },
+          {
+            "name": "pitch",
+            "index": 2
+          },
+          {
+            "name": "riderX",
+            "index": 3
+          },
+          {
+            "name": "riderZ",
+            "index": 4
+          },
+          {
+            "name": "riderPitch",
+            "index": 5
+          },
+          {
+            "name": "riderHip",
+            "index": 6
+          },
+          {
+            "name": "riderKnee",
+            "index": 7
+          },
+          {
+            "name": "riderShoulder",
+            "index": 8
+          },
+          {
+            "name": "riderElbow",
+            "index": 9
+          }
+        ],
+        "qpos": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "equalityRows": 6,
+        "closure": {
+          "solref": [
+            0.02,
+            1
+          ],
+          "solimp": [
+            0.9,
+            0.95,
+            0.001,
+            0.5,
+            2
+          ]
+        },
+        "segments": [
+          {
+            "name": "trunk",
+            "mass": 42,
+            "proximal": [
+              -0.15,
+              0,
+              0.25
+            ],
+            "distal": [
+              0.1374779759118626,
+              0,
+              0.7188884871327282
+            ],
+            "com": [
+              -0.006261012044068703,
+              0,
+              0.4844442435663641
+            ],
+            "inertiaCOM": [
+              0.9620055799998917,
+              0,
+              -0.40440761981187795,
+              0,
+              1.2099500000000003,
+              0,
+              -0.404407619811878,
+              0,
+              0.5503444200001089
+            ]
+          },
+          {
+            "name": "thighs",
+            "mass": 14,
+            "proximal": [
+              -0.15,
+              0,
+              0.25
+            ],
+            "distal": [
+              0.23560301152633864,
+              0,
+              0.05970991223445596
+            ],
+            "com": [
+              0.04280150576316932,
+              0,
+              0.154854956117228
+            ],
+            "inertiaCOM": [
+              0.0826586148101309,
+              0,
+              0.07671653344859856,
+              0,
+              0.23811666666666673,
+              0,
+              0.07671653344859856,
+              0,
+              0.20025805185653583
+            ]
+          },
+          {
+            "name": "shanksFeet",
+            "mass": 7,
+            "proximal": [
+              0.23560301152633864,
+              0,
+              0.05970991223445596
+            ],
+            "distal": [
+              0,
+              0,
+              -0.30000000000000004
+            ],
+            "com": [
+              0.11780150576316932,
+              0,
+              -0.12014504388277203
+            ],
+            "inertiaCOM": [
+              0.0866275106595504,
+              0,
+              -0.045506421113227793,
+              0,
+              0.11643333333333336,
+              0,
+              -0.045506421113227793,
+              0,
+              0.046955822673782975
+            ]
+          },
+          {
+            "name": "upperArms",
+            "mass": 3.85,
+            "proximal": [
+              0.1374779759118626,
+              0,
+              0.7188884871327282
+            ],
+            "distal": [
+              0.16728957504953187,
+              0,
+              0.4203733810545686
+            ],
+            "com": [
+              0.15238377548069723,
+              0,
+              0.5696309340936484
+            ],
+            "inertiaCOM": [
+              0.031019876551269483,
+              0,
+              0.0026172337288413055,
+              0,
+              0.031281250000000003,
+              0,
+              0.002617233728841306,
+              0,
+              0.005073873448730517
+            ]
+          },
+          {
+            "name": "forearmsHands",
+            "mass": 3.15,
+            "proximal": [
+              0.16728957504953187,
+              0,
+              0.4203733810545686
+            ],
+            "distal": [
+              0.4500000000000003,
+              0,
+              0.32000000000000023
+            ],
+            "com": [
+              0.3086447875247661,
+              0,
+              0.3701866905272844
+            ],
+            "inertiaCOM": [
+              0.0050235916826449085,
+              0,
+              0.007051585401095601,
+              0,
+              0.024884999999999997,
+              0,
+              0.007051585401095601,
+              0,
+              0.022381408317355092
+            ]
+          }
+        ],
+        "aggregate": {
+          "mass": 70,
+          "com": [
+            0.0388539675925624,
+            0,
+            0.35761113542386536
+          ],
+          "inertiaCOM": [
+            4.189836541011324,
+            0,
+            0.04866862313407999,
+            0,
+            5.051401993938148,
+            0,
+            0.048668623134079936,
+            0,
+            1.2332479529268254
+          ]
+        },
+        "attachments": [
+          {
+            "name": "hand",
+            "rider": [
+              0.4500000000000003,
+              0,
+              0.32000000000000023
+            ],
+            "bike": [
+              0.45,
+              0,
+              0.32
+            ],
+            "gap": [
+              2.7755575615628914e-16,
+              0,
+              2.220446049250313e-16
+            ],
+            "jacobian": [
+              [
+                0,
+                0,
+                2.220446049250313e-16,
+                1,
+                0,
+                0.07000000000000023,
+                0,
+                0,
+                -0.398888487132728,
+                -0.10037338105456839
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                -3.3306690738754696e-16,
+                0,
+                1,
+                -0.6000000000000003,
+                0,
+                0,
+                -0.31252202408813773,
+                -0.28271042495046844
+              ]
+            ],
+            "residual": [
+              2.7755575615628914e-16,
+              0,
+              2.220446049250313e-16
+            ]
+          },
+          {
+            "name": "foot",
+            "rider": [
+              0,
+              0,
+              -0.30000000000000004
+            ],
+            "bike": [
+              0,
+              0,
+              -0.3
+            ],
+            "gap": [
+              0,
+              0,
+              -5.551115123125783e-17
+            ],
+            "jacobian": [
+              [
+                0,
+                0,
+                -1.1102230246251565e-16,
+                1,
+                0,
+                -0.55,
+                -0.55,
+                -0.35970991223445603,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                1,
+                -0.15,
+                -0.15,
+                0.23560301152633864,
+                0,
+                0
+              ]
+            ],
+            "residual": [
+              0,
+              0,
+              -5.551115123125783e-17
+            ]
+          }
+        ]
+      },
+      "comparison": {
+        "massError": 0,
+        "comMaxError": 5.551115123125783e-17,
+        "inertiaMaxError": 1.1102230246251565e-15,
+        "closures": [
+          {
+            "name": "hand",
+            "maxGap": 2.7755575615628914e-16,
+            "maxRedundantY": 0,
+            "normalizedLimbMinor": 0.9044560165933262
+          },
+          {
+            "name": "foot",
+            "maxGap": 5.551115123125783e-17,
+            "maxRedundantY": 0,
+            "normalizedLimbMinor": -0.9926346304740654
+          }
+        ]
+      }
+    },
+    {
+      "native": {
+        "format": "bikelab-rider-native-0.1",
+        "spec": {
+          "format": "bikelab-rider-posture-0.1",
+          "riderMass": 35,
+          "hip": [
+            -0.15,
+            0.25
+          ],
+          "trunkPitch": 0.55,
+          "hand": [
+            0.45,
+            0.32
+          ],
+          "foot": [
+            0,
+            -0.3
+          ],
+          "elbowSide": 1,
+          "kneeSide": -1,
+          "minBendSine": 0.05,
+          "segments": {
+            "trunk": {
+              "massFraction": 0.6,
+              "length": 0.55,
+              "comFraction": 0.5,
+              "inertiaPerMass": [
+                0.02880833333333334,
+                0.02880833333333334,
+                0.0072
+              ]
+            },
+            "thighs": {
+              "massFraction": 0.2,
+              "length": 0.43,
+              "comFraction": 0.5,
+              "inertiaPerMass": [
+                0.01700833333333333,
+                0.01700833333333333,
+                0.0032
+              ]
+            },
+            "shanksFeet": {
+              "massFraction": 0.1,
+              "length": 0.43,
+              "comFraction": 0.5,
+              "inertiaPerMass": [
+                0.01663333333333333,
+                0.01663333333333333,
+                0.0024500000000000004
+              ]
+            },
+            "upperArms": {
+              "massFraction": 0.055,
+              "length": 0.3,
+              "comFraction": 0.5,
+              "inertiaPerMass": [
+                0.008125,
+                0.008125,
+                0.0012500000000000002
+              ]
+            },
+            "forearmsHands": {
+              "massFraction": 0.045,
+              "length": 0.3,
+              "comFraction": 0.5,
+              "inertiaPerMass": [
+                0.007899999999999999,
+                0.007899999999999999,
+                0.0008
+              ]
+            }
+          }
+        },
+        "engine": "MuJoCo 3.16.0",
+        "scope": "Native initial construction only; no integration, passive joint law, saddle, connected-bike dynamics or anatomical calibration.",
+        "coordinates": "SI; frame x forward, y left, z up; joint values are zero deviations from the constructed posture. Tensors row-major in world axes.",
+        "dofs": [
+          {
+            "name": "travel",
+            "index": 0
+          },
+          {
+            "name": "heave",
+            "index": 1
+          },
+          {
+            "name": "pitch",
+            "index": 2
+          },
+          {
+            "name": "riderX",
+            "index": 3
+          },
+          {
+            "name": "riderZ",
+            "index": 4
+          },
+          {
+            "name": "riderPitch",
+            "index": 5
+          },
+          {
+            "name": "riderHip",
+            "index": 6
+          },
+          {
+            "name": "riderKnee",
+            "index": 7
+          },
+          {
+            "name": "riderShoulder",
+            "index": 8
+          },
+          {
+            "name": "riderElbow",
+            "index": 9
+          }
+        ],
+        "qpos": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "equalityRows": 6,
+        "closure": {
+          "solref": [
+            0.02,
+            1
+          ],
+          "solimp": [
+            0.9,
+            0.95,
+            0.001,
+            0.5,
+            2
+          ]
+        },
+        "segments": [
+          {
+            "name": "trunk",
+            "mass": 21,
+            "proximal": [
+              -0.15,
+              0,
+              0.25
+            ],
+            "distal": [
+              0.1374779759118626,
+              0,
+              0.7188884871327282
+            ],
+            "com": [
+              -0.006261012044068703,
+              0,
+              0.4844442435663641
+            ],
+            "inertiaCOM": [
+              0.48100278999994583,
+              0,
+              -0.20220380990593897,
+              0,
+              0.6049750000000002,
+              0,
+              -0.202203809905939,
+              0,
+              0.27517221000005443
+            ]
+          },
+          {
+            "name": "thighs",
+            "mass": 7,
+            "proximal": [
+              -0.15,
+              0,
+              0.25
+            ],
+            "distal": [
+              -0.38560301152633847,
+              0,
+              -0.10970991223445598
+            ],
+            "com": [
+              -0.26780150576316925,
+              0,
+              0.07014504388277201
+            ],
+            "inertiaCOM": [
+              0.09004056120027909,
+              0,
+              -0.04430325486757839,
+              0,
+              0.11905833333333331,
+              0,
+              -0.044303254867578384,
+              0,
+              0.051417772133054235
+            ]
+          },
+          {
+            "name": "shanksFeet",
+            "mass": 3.5,
+            "proximal": [
+              -0.38560301152633847,
+              0,
+              -0.10970991223445598
+            ],
+            "distal": [
+              5.551115123125783e-17,
+              0,
+              -0.2999999999999998
+            ],
+            "com": [
+              -0.1928015057631692,
+              0,
+              -0.20485495611722793
+            ],
+            "inertiaCOM": [
+              0.018296690163977468,
+              0,
+              0.01969999093686099,
+              0,
+              0.05821666666666664,
+              0,
+              0.019699990936860985,
+              0,
+              0.04849497650268916
+            ]
+          },
+          {
+            "name": "upperArms",
+            "mass": 1.925,
+            "proximal": [
+              0.1374779759118626,
+              0,
+              0.7188884871327282
+            ],
+            "distal": [
+              0.4201884008623309,
+              0,
+              0.6185151060781596
+            ],
+            "com": [
+              0.2788331883870967,
+              0,
+              0.6687017966054439
+            ],
+            "inertiaCOM": [
+              0.003887737644757607,
+              0,
+              0.004172739796227356,
+              0,
+              0.015640625000000002,
+              0,
+              0.004172739796227356,
+              0,
+              0.014159137355242395
+            ]
+          },
+          {
+            "name": "forearmsHands",
+            "mass": 1.575,
+            "proximal": [
+              0.4201884008623309,
+              0,
+              0.6185151060781596
+            ],
+            "distal": [
+              0.44999999999999996,
+              0,
+              0.32
+            ],
+            "com": [
+              0.4350942004311654,
+              0,
+              0.4692575530390798
+            ],
+            "inertiaCOM": [
+              0.012332075118189222,
+              0,
+              0.001105727175358402,
+              0,
+              0.012442499999999999,
+              0,
+              0.001105727175358402,
+              0,
+              0.0013704248818107749
+            ]
+          }
+        ],
+        "aggregate": {
+          "mass": 35,
+          "com": [
+            -0.04168199457469922,
+            0,
+            0.34210524800470815
+          ],
+          "inertiaCOM": [
+            2.826638486805853,
+            0,
+            -1.3441608460821017,
+            0,
+            4.051376622473695,
+            0,
+            -1.3441608460821017,
+            0,
+            1.4105793856678417
+          ]
+        },
+        "attachments": [
+          {
+            "name": "hand",
+            "rider": [
+              0.44999999999999996,
+              0,
+              0.32
+            ],
+            "bike": [
+              0.45,
+              0,
+              0.32
+            ],
+            "gap": [
+              -5.551115123125783e-17,
+              0,
+              0
+            ],
+            "jacobian": [
+              [
+                0,
+                0,
+                0,
+                1,
+                0,
+                0.07,
+                0,
+                0,
+                -0.39888848713272823,
+                -0.2985151060781596
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                5.551115123125783e-17,
+                0,
+                1,
+                -0.6,
+                0,
+                0,
+                -0.3125220240881374,
+                -0.029811599137669065
+              ]
+            ],
+            "residual": [
+              -5.551115123125783e-17,
+              0,
+              0
+            ]
+          },
+          {
+            "name": "foot",
+            "rider": [
+              5.551115123125783e-17,
+              0,
+              -0.2999999999999998
+            ],
+            "bike": [
+              0,
+              0,
+              -0.3
+            ],
+            "gap": [
+              5.551115123125783e-17,
+              0,
+              1.6653345369377348e-16
+            ],
+            "jacobian": [
+              [
+                0,
+                0,
+                2.220446049250313e-16,
+                1,
+                0,
+                -0.5499999999999998,
+                -0.5499999999999998,
+                -0.1902900877655438,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                -5.551115123125783e-17,
+                0,
+                1,
+                -0.15000000000000005,
+                -0.15000000000000005,
+                -0.3856030115263385,
+                0,
+                0
+              ]
+            ],
+            "residual": [
+              5.551115123125783e-17,
+              0,
+              1.6653345369377348e-16
+            ]
+          }
+        ]
+      },
+      "comparison": {
+        "massError": 0,
+        "comMaxError": 5.551115123125783e-17,
+        "inertiaMaxError": 4.440892098500626e-16,
+        "closures": [
+          {
+            "name": "hand",
+            "maxGap": 5.551115123125783e-17,
+            "maxRedundantY": 0,
+            "normalizedLimbMinor": -0.9044560165933259
+          },
+          {
+            "name": "foot",
+            "maxGap": 1.6653345369377348e-16,
+            "maxRedundantY": 0,
+            "normalizedLimbMinor": 0.9926346304740646
+          }
+        ]
+      }
+    }
+  ]
+}
