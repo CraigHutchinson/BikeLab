@@ -8,6 +8,8 @@ const near = (actual, expected, budget = 1e-10) => assert.ok(Number.isFinite(act
   `${actual} vs ${expected} (budget ${budget})`);
 const vectorNear = (a, b, budget) => {assert.equal(a.length, b.length); a.forEach((v, i) => near(v, b[i], budget));};
 const variants = [{}, {riderMass: 35, kneeSide: -1, elbowSide: 1},
+  // Admitted near-straight boundary: bend sine about .0012 against a .001 guard.
+  {minBendSine: .001, foot: [DEFAULTS.hip[0] + 2 * DEFAULTS.segments.thighs.length * Math.cos(.0006), DEFAULTS.hip[1]]},
   {segments: {trunk: {...DEFAULTS.segments.trunk, comFraction: .73, inertiaPerMass: [.04, .06, .03]}}}];
 const xz = p => [p[0], 0, p[1]];
 
