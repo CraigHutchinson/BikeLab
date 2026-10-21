@@ -1,0 +1,96 @@
+{
+  "format": "bikelab-pr23-native-view-probe-0.1",
+  "node": "v24.19.0",
+  "sourceSha256": {
+    "scripts/pr23-native-view-probe.mjs": "5fa5c1b70c97ec4a019f1989c41a23eaf9ae76f3de6b46fab3a671a4b700d1ef",
+    "dist/trail-bike.js": "ff7703356970ad462a1ed67db6511bf4b31d2250cda7a4e997d754c2b086c057",
+    "dist/vendor/mujoco-3.16.0/mujoco.js": "5d5d89ddd0857a6518c628fa502d42f99d6dd67ca240182f1068cd30a45465ac",
+    "dist/vendor/mujoco-3.16.0/mujoco.wasm": "e05ac96db7f45bd46e76fed6e3469bf9204329e093344d742a18bca2cc0e230e"
+  },
+  "modelXMLSha256": "2bce602c07e13defa1a2ba6b8de7db8602ed00f21420f65d117e4f069488a2f6",
+  "nv": 264,
+  "scope": "Two consecutive public reads at a fixed state. Distinct views alias native storage; this does not count allocations in an integrated run or prove validity after memory growth, reallocation or owner deletion.",
+  "arrays": [
+    {
+      "property": "data.qpos",
+      "type": "Float64Array",
+      "length": 264,
+      "distinctViewObjects": true,
+      "sameBackingBuffer": true,
+      "sameByteOffset": true,
+      "sameByteLength": true
+    },
+    {
+      "property": "data.qvel",
+      "type": "Float64Array",
+      "length": 264,
+      "distinctViewObjects": true,
+      "sameBackingBuffer": true,
+      "sameByteOffset": true,
+      "sameByteLength": true
+    },
+    {
+      "property": "data.qacc",
+      "type": "Float64Array",
+      "length": 264,
+      "distinctViewObjects": true,
+      "sameBackingBuffer": true,
+      "sameByteOffset": true,
+      "sameByteLength": true
+    },
+    {
+      "property": "data.qfrc_damper",
+      "type": "Float64Array",
+      "length": 264,
+      "distinctViewObjects": true,
+      "sameBackingBuffer": true,
+      "sameByteOffset": true,
+      "sameByteLength": true
+    },
+    {
+      "property": "data.qfrc_constraint",
+      "type": "Float64Array",
+      "length": 264,
+      "distinctViewObjects": true,
+      "sameBackingBuffer": true,
+      "sameByteOffset": true,
+      "sameByteLength": true
+    },
+    {
+      "property": "data.xpos",
+      "type": "Float64Array",
+      "length": 405,
+      "distinctViewObjects": true,
+      "sameBackingBuffer": true,
+      "sameByteOffset": true,
+      "sameByteLength": true
+    },
+    {
+      "property": "data.flexedge_length",
+      "type": "Float64Array",
+      "length": 128,
+      "distinctViewObjects": true,
+      "sameBackingBuffer": true,
+      "sameByteOffset": true,
+      "sameByteLength": true
+    },
+    {
+      "property": "model.body_mass",
+      "type": "Float64Array",
+      "length": 135,
+      "distinctViewObjects": true,
+      "sameBackingBuffer": true,
+      "sameByteOffset": true,
+      "sameByteLength": true
+    },
+    {
+      "property": "model.flexedge_length0",
+      "type": "Float64Array",
+      "length": 128,
+      "distinctViewObjects": true,
+      "sameBackingBuffer": true,
+      "sameByteOffset": true,
+      "sameByteLength": true
+    }
+  ]
+}

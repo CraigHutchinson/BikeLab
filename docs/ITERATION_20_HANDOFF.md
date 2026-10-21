@@ -1,6 +1,6 @@
 # Iteration 20 completeness review and session handoff
 
-The 2026-10-21 [PR gap and performance review](PR23_GAP_REVIEW.md) records the current receiving gaps and the serial measurement protocol. Start there for the latest review; keep its measured performance results separate from construction correctness and physical calibration.
+The 2026-10-21 [PR gap and performance review](PR23_GAP_REVIEW.md) records the current receiving gaps, serial measurements and separate CPU profile. Start there for the latest review; keep measured performance separate from construction correctness and physical calibration. All six unchanged guided-bike cases completed with identical full-output hashes across repetitions, but median throughput was 21–30 wall seconds per simulated second on this worker. Repeated native array getters create fresh views; JavaScript binding glue accounts for 26.11% of sampled time in the separate square-rock profile. Phase-local view reuse is a concrete follow-up with freshness, memory-growth and exact-parity gates. No production physics or fidelity setting changed during the review.
 
 Reviewed 2026-10-20. Continue [draft PR #23](https://github.com/CraigHutchinson/BikeLab/pull/23), branch `codex/articulated-rider-review`. This session synchronized and reviewed remote `92f2b01af1462967a68d99a81fa9a9eeeccb98a2` before adding the passive joint-law prerequisite below. Base main is merged PR #22 at `e73f6cc9d5bd130ec632bcb4d890ad7286ddb4cf`. Refresh both remote heads before resuming; D5a remains incomplete.
 

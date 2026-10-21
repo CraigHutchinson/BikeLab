@@ -1,0 +1,301 @@
+{
+  "format": "bikelab-pr23-performance-0.1",
+  "measuredAt": "2026-10-21T07:00:23.318Z",
+  "sourceRef": "303380ceb2ffc517edf6d8d1b61079eb196fdc75",
+  "sourceSha256": {
+    "scripts/pr23-performance.mjs": "d68ce07ee847813fc7f27a125a30a0d5fcd066fbdd0b396ff231318bb383aca9",
+    "dist/rider-posture.js": "6eaffb5f9062cb7270ddc7d8e304dc45ef8eba4db2044da5cbf2349f4cc6c258",
+    "dist/rider-native.js": "ec849b8aea5040718ae09a30043f8e49822a28975871014dc3bd31c0c93814ff",
+    "dist/rider-passive.js": "75b2df2185dd9b19c00eb2a461fb2eb943c8e65eaf3c6f8c1e48137c9f91f8fe",
+    "dist/trail-bike.js": "ff7703356970ad462a1ed67db6511bf4b31d2250cda7a4e997d754c2b086c057",
+    "dist/moving-wheel.js": "45b1068fabf5413dfc90bfd2ee47f46600deb093b756d7c8d1bdc8ad24411e35",
+    "dist/wheel-limits.js": "b43362eb9b1f0a47540d8b66462c98f33e78504d08221ffd79f9a1a2b55f1c39",
+    "dist/bike-assembly.js": "4747e817928b2d76b1223586961d1e66938db0ee127986bb71614a1b64407d5e",
+    "dist/bike-rig.js": "055258d1d5bd34bff8bebb2997ba651e95126e21366d7cf8fff68a17d586f8e1",
+    "dist/linkage.js": "4788206d4530a82d1f95072f4ab9dd6ad77bc241fe258b67dff64b5fa3c0c08a",
+    "dist/rig-loads.js": "64884a8df150aff725b32ddcba224d87108809e7475c97e3f189fa8f2840a31d",
+    "dist/travel-buffer.js": "cac86e6feafb3abcccdf6b85882371f5d7b952c4703ed3a84022c5ca86068da7",
+    "dist/drive-controls.js": "c55ab225b5b5f8eebade49a9aead4190f4afcb5fdb077559ebe08fc37d035e48",
+    "dist/terrain.js": "b23bdf17d23c93f901ba5d2abd4a26b14677c74e8860f1f569e96adf7119dce3",
+    "dist/vendor/mujoco-3.16.0/mujoco.js": "5d5d89ddd0857a6518c628fa502d42f99d6dd67ca240182f1068cd30a45465ac",
+    "dist/vendor/mujoco-3.16.0/mujoco.wasm": "e05ac96db7f45bd46e76fed6e3469bf9204329e093344d742a18bca2cc0e230e"
+  },
+  "mode": "single-profile-run",
+  "scope": "Unchanged guided connected bike and static rider prerequisites. No articulated integration, physical calibration, target-hardware or real-time acceptance.",
+  "method": {
+    "warmupsPerCase": 0,
+    "measuredRepeats": 1,
+    "timing": "Monotonic wall time. Run includes model build, integration, guards, observations and result materialization; JSON/Node clone measured separately.",
+    "micro": "Batch loop and checksum overhead included; no overhead subtraction. Native forward fixture is static, not a trajectory.",
+    "concurrency": "Serial in one process; operator must avoid concurrent workloads. Shared host contention is uncontrolled.",
+    "memory": "Before/after snapshots and cumulative process RSS high-water, not isolated per-case peaks or leak evidence.",
+    "profile": "Use --profile under node --cpu-prof separately; never combine its timing with the unprofiled samples."
+  },
+  "environment": {
+    "node": "v24.19.0",
+    "v8": "13.6.233.17-node.51",
+    "platform": "linux",
+    "arch": "x64",
+    "kernel": "6.18.55",
+    "cpuModel": "INTEL(R) XEON(R) PLATINUM 8573C",
+    "visibleLogicalCPUs": 3,
+    "availableParallelism": 2,
+    "cpuMax": "200000 100000",
+    "cpuset": "0-2",
+    "memoryMax": "8589934592",
+    "cpuStatBefore": "usage_usec 345428811\nuser_usec 331735972\nsystem_usec 13692839\nnice_usec 0\nnr_periods 29156\nnr_throttled 3\nthrottled_usec 176140\nnr_bursts 0\nburst_usec 0",
+    "cpuStatAfter": "usage_usec 381911725\nuser_usec 368218886\nsystem_usec 13692839\nnice_usec 0\nnr_periods 29497\nnr_throttled 4\nthrottled_usec 228657\nnr_bursts 0\nburst_usec 0"
+  },
+  "micro": [],
+  "connected": [
+    {
+      "name": "full-square",
+      "scenario": {
+        "bike": {
+          "pivotX": 0.04,
+          "pivotZ": -0.235,
+          "shockArmX": -0.054607848086069846,
+          "shockArmZ": 0.18996325604011804,
+          "shockFrameX": 0.19332203501088832,
+          "shockFrameZ": -0.015623078508508775,
+          "shockTravel": 0.055,
+          "bike": "full",
+          "mass": 82,
+          "rider": "compliant",
+          "riderMass": 70,
+          "riderStiffness": 12000,
+          "riderDamping": 900,
+          "riderTravel": 0.15,
+          "riderBuffer": "progressive",
+          "riderBufferWidth": 0.015,
+          "riderBufferStiffness": 300000,
+          "riderBufferDamping": 1500,
+          "forkBuffer": "progressive",
+          "forkBufferWidth": 0.02,
+          "forkBufferStiffness": 300000,
+          "forkBufferDamping": 1500,
+          "forkStiffness": 9000,
+          "forkDamping": 700,
+          "shockBuffer": "progressive",
+          "shockBufferWidth": 0.008,
+          "shockBufferStiffness": 1000000,
+          "shockBufferDamping": 3000,
+          "shockStiffness": 70000,
+          "shockDamping": 2400
+        },
+        "wheel": {
+          "nodes": 64,
+          "tyreMass": 1,
+          "hubMass": 1.5,
+          "hubInertia": 0.04,
+          "skin": 0.008,
+          "rimRadius": 0.29,
+          "foundation": 300000,
+          "extension": 500,
+          "edgeViscosity": 0.5,
+          "contactTime": 0.0005,
+          "contactImpedance": 0.99,
+          "collisionTolerance": 1e-10,
+          "collisionIterations": 100,
+          "maxPenetration": 0.0005,
+          "maxStrain": 0.25,
+          "maxDisplacement": 0.06
+        },
+        "motion": {
+          "centerX": -0.5,
+          "clearance": 0.012,
+          "velocityX": 2,
+          "velocityZ": 0,
+          "omega": 5,
+          "pitchOffset": 0,
+          "pitchVelocity": 0,
+          "forkCompression": 0.04,
+          "rearAngle": 0.08,
+          "riderOffset": -0.05,
+          "gravity": 9.80665,
+          "duration": 1,
+          "dt": 0.00003125,
+          "sampleDt": 0.005
+        },
+        "profile": {
+          "format": "bikelab-profile-1",
+          "units": "m",
+          "axes": "x-forward,z-up",
+          "solid": "below",
+          "interpolation": "linear",
+          "source": {
+            "kind": "illustrative",
+            "description": "Synthetic 40 mm square-edged rock, 300 mm long."
+          },
+          "points": [
+            [
+              -3,
+              0
+            ],
+            [
+              0.6,
+              0
+            ],
+            [
+              0.6,
+              0.04
+            ],
+            [
+              0.9,
+              0.04
+            ],
+            [
+              0.9,
+              0
+            ],
+            [
+              5,
+              0
+            ]
+          ]
+        },
+        "assembly": {
+          "tyreId": "",
+          "rimId": "",
+          "brand": "unknown",
+          "rimType": "unknown",
+          "construction": "unknown",
+          "tyreBsd": null,
+          "rimBsd": null,
+          "tyreWidth": null,
+          "rimInnerWidth": null,
+          "tyreTubelessApproved": null,
+          "rimTubelessApproved": null,
+          "standardCompliant": null,
+          "widthPairApproved": null,
+          "pairApproved": null,
+          "pressure": null,
+          "tyreMaxPressure": null,
+          "rimMaxPressure": null,
+          "sources": {}
+        },
+        "surface": {
+          "friction": 0
+        },
+        "commands": [
+          {
+            "tick": 0,
+            "rearDrive": 0,
+            "frontBrake": 0,
+            "rearBrake": 0
+          }
+        ]
+      },
+      "modelXMLSha256": "2bce602c07e13defa1a2ba6b8de7db8602ed00f21420f65d117e4f069488a2f6",
+      "modelSize": {
+        "nv": 264,
+        "nq": 264,
+        "bodies": 135
+      },
+      "resultSha256": "d6f0eb4d6ea95e44a6650c10228cf906ea7647dbe58b1fd9e9bd030f594cb652",
+      "resultJSONBytes": 2035563,
+      "status": "completed",
+      "acceptedSeconds": 1.0000000000005038,
+      "steps": 32000,
+      "frames": 201,
+      "sampledContacts": 1763,
+      "maxSampledContacts": 12,
+      "peakForce": 1371.5987776228292,
+      "maxEnergyBalanceResidual": 1.451889760270718,
+      "reservedContactSlots": 203,
+      "reservedContactBytes": 9977856,
+      "runMs": {
+        "samples": [
+          33704.654494999995
+        ],
+        "min": 33704.654494999995,
+        "median": 33704.654494999995,
+        "max": 33704.654494999995
+      },
+      "wallSecondsPerSimulatedSecond": {
+        "samples": [
+          33.70465449498301
+        ],
+        "min": 33.70465449498301,
+        "median": 33.70465449498301,
+        "max": 33.70465449498301
+      },
+      "meanWallMicrosecondsPerAcceptedStepIncludingSetup": {
+        "samples": [
+          1053.2704529687499
+        ],
+        "min": 1053.2704529687499,
+        "median": 1053.2704529687499,
+        "max": 1053.2704529687499
+      },
+      "jsonSerializationMs": {
+        "samples": [
+          14.85984499999904
+        ],
+        "min": 14.85984499999904,
+        "median": 14.85984499999904,
+        "max": 14.85984499999904
+      },
+      "nodeStructuredCloneMs": {
+        "samples": [
+          28.928528000004007
+        ],
+        "min": 28.928528000004007,
+        "median": 28.928528000004007,
+        "max": 28.928528000004007
+      },
+      "memorySnapshots": [
+        {
+          "before": {
+            "rss": 77991936,
+            "heapTotal": 29315072,
+            "heapUsed": 12327440,
+            "external": 19999966,
+            "arrayBuffers": 144651,
+            "processHighWaterRssBytes": 93388800,
+            "wasmHeapCapacityBytes": 17629184
+          },
+          "afterRun": {
+            "rss": 127782912,
+            "heapTotal": 32985088,
+            "heapUsed": 18779984,
+            "external": 76674462,
+            "arrayBuffers": 10550731,
+            "processHighWaterRssBytes": 127782912,
+            "wasmHeapCapacityBytes": 63897600
+          },
+          "afterSerializationAndClone": {
+            "rss": 137494528,
+            "heapTotal": 55324672,
+            "heapUsed": 25120656,
+            "external": 76674462,
+            "arrayBuffers": 10550731,
+            "processHighWaterRssBytes": 137613312,
+            "wasmHeapCapacityBytes": 63897600
+          }
+        }
+      ]
+    }
+  ],
+  "lazyRuntimeInitializationMs": 279.17098,
+  "runtimeInitializationScope": "getRuntime after JS imports; excludes process/module startup, includes lazy WASM loading/initialization.",
+  "memoryBefore": {
+    "rss": 77860864,
+    "heapTotal": 29315072,
+    "heapUsed": 12274224,
+    "external": 19999926,
+    "arrayBuffers": 144651,
+    "processHighWaterRssBytes": 93388800,
+    "wasmHeapCapacityBytes": 17629184
+  },
+  "memoryAfter": {
+    "rss": 138543104,
+    "heapTotal": 55324672,
+    "heapUsed": 25902056,
+    "external": 76740837,
+    "arrayBuffers": 10617106,
+    "processHighWaterRssBytes": 138543104,
+    "wasmHeapCapacityBytes": 63897600
+  },
+  "finishedAt": "2026-10-21T07:00:57.391Z"
+}

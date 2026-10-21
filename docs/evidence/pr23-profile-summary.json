@@ -1,0 +1,3399 @@
+{
+  "format": "bikelab-pr23-cpu-profile-summary-0.1",
+  "profileSha256": "4f3794df4e2c2b1b88c3cab53993b9dcb9bccfe0faa9a0fec3361ead361bdfc9",
+  "profileBytes": 852442,
+  "summaryScriptSha256": "f033bf9506e42f4e4773b8bb4d1c384b7e85a0929ad82ef45672efe63a8a8206",
+  "method": "Node --cpu-prof, default sampling interval; timeDeltas attributed to sampled leaf frames, merged by function/URL/location across caller stacks. Zero-based source locations. No inclusive-time or call-count claim.",
+  "scope": "One separate complete full-square process, including imports/runtime initialization, run, result serialization/hash/clone, model recompilation for dimensions, receipt writing and shutdown. No profile warm-up. Profile timing is not an unprofiled throughput sample. Sample shares do not establish optimization speedups or native-versus-binding ownership within WASM.",
+  "nodes": 2633,
+  "samples": 29645,
+  "sampledMicroseconds": 34240735,
+  "processProfileMicroseconds": 34241801,
+  "categories": [
+    {
+      "name": "WASM including native bindings",
+      "selfMicroseconds": 20444410,
+      "percent": 59.70785965897052
+    },
+    {
+      "name": "MuJoCo JavaScript binding glue",
+      "selfMicroseconds": 8940687,
+      "percent": 26.111259001887664
+    },
+    {
+      "name": "Connected bike JavaScript",
+      "selfMicroseconds": 1836229,
+      "percent": 5.362703224682531
+    },
+    {
+      "name": "Other runtime, harness and startup",
+      "selfMicroseconds": 1463500,
+      "percent": 4.274148904805927
+    },
+    {
+      "name": "Moving wheel JavaScript",
+      "selfMicroseconds": 1240968,
+      "percent": 3.624244631430955
+    },
+    {
+      "name": "V8 garbage collection",
+      "selfMicroseconds": 279496,
+      "percent": 0.8162675246311155
+    },
+    {
+      "name": "Other application JavaScript",
+      "selfMicroseconds": 35445,
+      "percent": 0.10351705359128535
+    }
+  ],
+  "functions": [
+    {
+      "functionName": "decodeMemoryView",
+      "url": "dist/vendor/mujoco-3.16.0/mujoco.js",
+      "lineNumber": 5741,
+      "columnNumber": 31,
+      "samples": 2465,
+      "selfMicroseconds": 2835276,
+      "percent": 8.280418045932718
+    },
+    {
+      "functionName": "mjd_passive_vel",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1314921,
+      "samples": 2431,
+      "selfMicroseconds": 2751262,
+      "percent": 8.035055322264549
+    },
+    {
+      "functionName": "get",
+      "url": "dist/vendor/mujoco-3.16.0/mujoco.js",
+      "lineNumber": 5472,
+      "columnNumber": 15,
+      "samples": 1365,
+      "selfMicroseconds": 1579070,
+      "percent": 4.611670865125997
+    },
+    {
+      "functionName": "mj_jacSparse",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1188351,
+      "samples": 963,
+      "selfMicroseconds": 1207104,
+      "percent": 3.5253448852660436
+    },
+    {
+      "functionName": "validateThis",
+      "url": "dist/vendor/mujoco-3.16.0/mujoco.js",
+      "lineNumber": 5419,
+      "columnNumber": 21,
+      "samples": 1033,
+      "selfMicroseconds": 1186322,
+      "percent": 3.4646510946683824
+    },
+    {
+      "functionName": "requireRegisteredType",
+      "url": "dist/vendor/mujoco-3.16.0/mujoco.js",
+      "lineNumber": 5608,
+      "columnNumber": 30,
+      "samples": 1003,
+      "selfMicroseconds": 1155378,
+      "percent": 3.3742792028266915
+    },
+    {
+      "functionName": "geometryLimits",
+      "url": "dist/moving-wheel.js",
+      "lineNumber": 56,
+      "columnNumber": 30,
+      "samples": 960,
+      "selfMicroseconds": 1099350,
+      "percent": 3.210649537750869
+    },
+    {
+      "functionName": "observe",
+      "url": "dist/trail-bike.js",
+      "lineNumber": 103,
+      "columnNumber": 18,
+      "samples": 783,
+      "selfMicroseconds": 888621,
+      "percent": 2.5952159029296538
+    },
+    {
+      "functionName": "__emval_take_value",
+      "url": "dist/vendor/mujoco-3.16.0/mujoco.js",
+      "lineNumber": 6225,
+      "columnNumber": 27,
+      "samples": 742,
+      "selfMicroseconds": 844879,
+      "percent": 2.4674674769685874
+    },
+    {
+      "functionName": "guard",
+      "url": "dist/trail-bike.js",
+      "lineNumber": 120,
+      "columnNumber": 16,
+      "samples": 678,
+      "selfMicroseconds": 800453,
+      "percent": 2.337721430337287
+    },
+    {
+      "functionName": "mju_cholSolveSparse",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1943371,
+      "samples": 710,
+      "selfMicroseconds": 798910,
+      "percent": 2.333215101837037
+    },
+    {
+      "functionName": "mju_cholFactorNumeric",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1942412,
+      "samples": 678,
+      "selfMicroseconds": 760375,
+      "percent": 2.2206737092530284
+    },
+    {
+      "functionName": "wasm-to-js",
+      "url": "",
+      "lineNumber": 0,
+      "columnNumber": 0,
+      "samples": 619,
+      "selfMicroseconds": 722504,
+      "percent": 2.110071527378136
+    },
+    {
+      "functionName": "mj_crb",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1252066,
+      "samples": 566,
+      "selfMicroseconds": 646541,
+      "percent": 1.8882217335579976
+    },
+    {
+      "functionName": "mj_fwdPosition",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1332824,
+      "samples": 573,
+      "selfMicroseconds": 644085,
+      "percent": 1.8810489903327134
+    },
+    {
+      "functionName": "mju_cholFactorSymbolic",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1938279,
+      "samples": 552,
+      "selfMicroseconds": 627930,
+      "percent": 1.83386834423969
+    },
+    {
+      "functionName": "mj_solPrimal",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1854860,
+      "samples": 535,
+      "selfMicroseconds": 599669,
+      "percent": 1.751332148681972
+    },
+    {
+      "functionName": "mj_rne",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1259299,
+      "samples": 524,
+      "selfMicroseconds": 593904,
+      "percent": 1.734495477389723
+    },
+    {
+      "functionName": "mj_flex",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1232415,
+      "samples": 500,
+      "selfMicroseconds": 578933,
+      "percent": 1.6907727009948823
+    },
+    {
+      "functionName": "emscripten::_EM_VAL* emscripten::internal::GetterPolicy<emscripten::val (mujoco::wasm::MjData::*)() const>::get<mujoco::wasm::MjData, emscripten::internal::rvp::default_tag>(emscripten::val (mujoco::wasm::MjData::* const&)() const, mujoco::wasm::MjData const&)",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 565470,
+      "samples": 484,
+      "selfMicroseconds": 552287,
+      "percent": 1.6129531097974386
+    },
+    {
+      "functionName": "mj_springdamper",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1632381,
+      "samples": 464,
+      "selfMicroseconds": 526062,
+      "percent": 1.5363630482815278
+    },
+    {
+      "functionName": "mj_comVel",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1256450,
+      "samples": 453,
+      "selfMicroseconds": 514362,
+      "percent": 1.5021932210275275
+    },
+    {
+      "functionName": "mj_solveLD",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1253566,
+      "samples": 442,
+      "selfMicroseconds": 503114,
+      "percent": 1.469343458894793
+    },
+    {
+      "functionName": "toHandle",
+      "url": "dist/vendor/mujoco-3.16.0/mujoco.js",
+      "lineNumber": 5531,
+      "columnNumber": 11,
+      "samples": 442,
+      "selfMicroseconds": 498518,
+      "percent": 1.4559208498298883
+    },
+    {
+      "functionName": "mj_kinematics1",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1224821,
+      "samples": 414,
+      "selfMicroseconds": 483147,
+      "percent": 1.4110298742126886
+    },
+    {
+      "functionName": "fromWireType",
+      "url": "dist/vendor/mujoco-3.16.0/mujoco.js",
+      "lineNumber": 5550,
+      "columnNumber": 22,
+      "samples": 379,
+      "selfMicroseconds": 436126,
+      "percent": 1.2737051351263342
+    },
+    {
+      "functionName": "gjk",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1074075,
+      "samples": 297,
+      "selfMicroseconds": 336749,
+      "percent": 0.9834747998254126
+    },
+    {
+      "functionName": "mju_blockSparse",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1972924,
+      "samples": 268,
+      "selfMicroseconds": 324118,
+      "percent": 0.9465859888813718
+    },
+    {
+      "functionName": "mju_mulMatVecSparse",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1961565,
+      "samples": 264,
+      "selfMicroseconds": 308177,
+      "percent": 0.9000303293723105
+    },
+    {
+      "functionName": "mj_factorI",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1253243,
+      "samples": 265,
+      "selfMicroseconds": 307381,
+      "percent": 0.8977056129198161
+    },
+    {
+      "functionName": "mjc_meshSupport",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1017760,
+      "samples": 266,
+      "selfMicroseconds": 295437,
+      "percent": 0.8628231841401769
+    },
+    {
+      "functionName": "mju_transposeSparse",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1966256,
+      "samples": 261,
+      "selfMicroseconds": 293070,
+      "percent": 0.8559103652418676
+    },
+    {
+      "functionName": "mj_collideOBB",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1062447,
+      "samples": 260,
+      "selfMicroseconds": 292207,
+      "percent": 0.8533899754196281
+    },
+    {
+      "functionName": "mj_comPos",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1228331,
+      "samples": 258,
+      "selfMicroseconds": 290041,
+      "percent": 0.8470641766305542
+    },
+    {
+      "functionName": "(garbage collector)",
+      "url": "",
+      "lineNumber": -1,
+      "columnNumber": -1,
+      "samples": 206,
+      "selfMicroseconds": 279496,
+      "percent": 0.8162675246311155
+    },
+    {
+      "functionName": "mj_collision",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1035789,
+      "samples": 232,
+      "selfMicroseconds": 265616,
+      "percent": 0.7757310116152588
+    },
+    {
+      "functionName": "mj_fwdAcceleration",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1341608,
+      "samples": 220,
+      "selfMicroseconds": 248199,
+      "percent": 0.7248646969756929
+    },
+    {
+      "functionName": "toValue",
+      "url": "dist/vendor/mujoco-3.16.0/mujoco.js",
+      "lineNumber": 5523,
+      "columnNumber": 10,
+      "samples": 211,
+      "selfMicroseconds": 244733,
+      "percent": 0.7147422507139523
+    },
+    {
+      "functionName": "js-to-wasm:ii:i",
+      "url": "",
+      "lineNumber": -1,
+      "columnNumber": -1,
+      "samples": 189,
+      "selfMicroseconds": 224508,
+      "percent": 0.6556751775334262
+    },
+    {
+      "functionName": "epa",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1089949,
+      "samples": 197,
+      "selfMicroseconds": 221477,
+      "percent": 0.646823147926001
+    },
+    {
+      "functionName": "fwdConstraint",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1342286,
+      "samples": 166,
+      "selfMicroseconds": 191170,
+      "percent": 0.5583116133459168
+    },
+    {
+      "functionName": "mju_addToMatSparse",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1962414,
+      "samples": 165,
+      "selfMicroseconds": 185561,
+      "percent": 0.541930539750388
+    },
+    {
+      "functionName": "mju_mulSymVecSparse",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1963731,
+      "samples": 162,
+      "selfMicroseconds": 185182,
+      "percent": 0.5408236709872029
+    },
+    {
+      "functionName": "mj_jacDifPair",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1189758,
+      "samples": 156,
+      "selfMicroseconds": 180483,
+      "percent": 0.5271002506225406
+    },
+    {
+      "functionName": "mju_addToSparseMat",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1964748,
+      "samples": 160,
+      "selfMicroseconds": 179176,
+      "percent": 0.5232831596634827
+    },
+    {
+      "functionName": "mujoco::wasm::MjData::qvel() const",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 579172,
+      "samples": 150,
+      "selfMicroseconds": 169675,
+      "percent": 0.49553550763440096
+    },
+    {
+      "functionName": "projectOriginPlane",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1107463,
+      "samples": 141,
+      "selfMicroseconds": 157377,
+      "percent": 0.45961922254297405
+    },
+    {
+      "functionName": "mj_collideTree",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1053992,
+      "samples": 132,
+      "selfMicroseconds": 152929,
+      "percent": 0.4466288471903421
+    },
+    {
+      "functionName": "mj_mergeChain",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1185851,
+      "samples": 131,
+      "selfMicroseconds": 147685,
+      "percent": 0.4313137553852159
+    },
+    {
+      "functionName": "mju_dot",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1897894,
+      "samples": 132,
+      "selfMicroseconds": 146949,
+      "percent": 0.42916426881607533
+    },
+    {
+      "functionName": "mj_island",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1384204,
+      "samples": 128,
+      "selfMicroseconds": 143215,
+      "percent": 0.41825912907535423
+    },
+    {
+      "functionName": "mju_sqrMatTDSparseSymbolic",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1967939,
+      "samples": 120,
+      "selfMicroseconds": 134282,
+      "percent": 0.3921703199420223
+    },
+    {
+      "functionName": "mujoco::wasm::MjData::qpos() const",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 579093,
+      "samples": 112,
+      "selfMicroseconds": 130461,
+      "percent": 0.3810110968704381
+    },
+    {
+      "functionName": "int emscripten::internal::GetterPolicy<int (mujoco::wasm::MjModel::*)() const>::get<mujoco::wasm::MjModel, emscripten::internal::rvp::default_tag>(int (mujoco::wasm::MjModel::* const&)() const, mujoco::wasm::MjModel const&)",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 640517,
+      "samples": 108,
+      "selfMicroseconds": 127138,
+      "percent": 0.37130628183069087
+    },
+    {
+      "functionName": "mujoco::wasm::MjData::qfrc_constraint() const",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 578461,
+      "samples": 105,
+      "selfMicroseconds": 117859,
+      "percent": 0.34420698037001835
+    },
+    {
+      "functionName": "mj_updateDynamicBVH",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1231745,
+      "samples": 95,
+      "selfMicroseconds": 111143,
+      "percent": 0.324592915426611
+    },
+    {
+      "functionName": "run",
+      "url": "dist/trail-bike.js",
+      "lineNumber": 76,
+      "columnNumber": 25,
+      "samples": 89,
+      "selfMicroseconds": 109045,
+      "percent": 0.3184657105053382
+    },
+    {
+      "functionName": "(idle)",
+      "url": "",
+      "lineNumber": -1,
+      "columnNumber": -1,
+      "samples": 80,
+      "selfMicroseconds": 105271,
+      "percent": 0.3074437508423812
+    },
+    {
+      "functionName": "pointSegment",
+      "url": "dist/moving-wheel.js",
+      "lineNumber": 46,
+      "columnNumber": 21,
+      "samples": 84,
+      "selfMicroseconds": 97347,
+      "percent": 0.2843017242474497
+    },
+    {
+      "functionName": "mj_contactBodyWeight",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1192658,
+      "samples": 77,
+      "selfMicroseconds": 85401,
+      "percent": 0.2494134544716987
+    },
+    {
+      "functionName": "mujoco::wasm::MjData::qacc() const",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 577908,
+      "samples": 73,
+      "selfMicroseconds": 83093,
+      "percent": 0.24267294495868735
+    },
+    {
+      "functionName": "mju_sqrMatTDSparseNumeric",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1970522,
+      "samples": 73,
+      "selfMicroseconds": 82795,
+      "percent": 0.2418026365380299
+    },
+    {
+      "functionName": "mju_dot3",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1892354,
+      "samples": 74,
+      "selfMicroseconds": 82738,
+      "percent": 0.24163616814884376
+    },
+    {
+      "functionName": "stackalloc",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1576817,
+      "samples": 69,
+      "selfMicroseconds": 80046,
+      "percent": 0.23377418738236783
+    },
+    {
+      "functionName": "mjc_flexSupport",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1016931,
+      "samples": 72,
+      "selfMicroseconds": 79608,
+      "percent": 0.23249500923388472
+    },
+    {
+      "functionName": "mju_gather",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1934023,
+      "samples": 67,
+      "selfMicroseconds": 75256,
+      "percent": 0.219785001694619
+    },
+    {
+      "functionName": "mj_instantiateLimit",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1174141,
+      "samples": 68,
+      "selfMicroseconds": 74892,
+      "percent": 0.21872194040227233
+    },
+    {
+      "functionName": "(program)",
+      "url": "",
+      "lineNumber": -1,
+      "columnNumber": -1,
+      "samples": 38,
+      "selfMicroseconds": 74238,
+      "percent": 0.21681193467371537
+    },
+    {
+      "functionName": "mj_instantiateFriction",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1172951,
+      "samples": 62,
+      "selfMicroseconds": 70873,
+      "percent": 0.20698445871562043
+    },
+    {
+      "functionName": "mj_actuatorDamping",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1203561,
+      "samples": 59,
+      "selfMicroseconds": 68782,
+      "percent": 0.20087769728073887
+    },
+    {
+      "functionName": "mj_local2Global",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1200002,
+      "samples": 60,
+      "selfMicroseconds": 67020,
+      "percent": 0.19573177970624756
+    },
+    {
+      "functionName": "mj_energyPos",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1793690,
+      "samples": 59,
+      "selfMicroseconds": 66205,
+      "percent": 0.19335157379069112
+    },
+    {
+      "functionName": "polytope4",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1088050,
+      "samples": 58,
+      "selfMicroseconds": 64114,
+      "percent": 0.18724481235580953
+    },
+    {
+      "functionName": "mj_jacSum",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1190674,
+      "samples": 56,
+      "selfMicroseconds": 63081,
+      "percent": 0.18422793786406746
+    },
+    {
+      "functionName": "mj_kinematics2",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1227567,
+      "samples": 54,
+      "selfMicroseconds": 62974,
+      "percent": 0.18391544457208645
+    },
+    {
+      "functionName": "horizonRec",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1109850,
+      "samples": 56,
+      "selfMicroseconds": 62174,
+      "percent": 0.18157904612736847
+    },
+    {
+      "functionName": "mju_cholUpdateSparse",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1944310,
+      "samples": 52,
+      "selfMicroseconds": 60606,
+      "percent": 0.17699970517572125
+    },
+    {
+      "functionName": "js-to-wasm",
+      "url": "",
+      "lineNumber": -1,
+      "columnNumber": -1,
+      "samples": 38,
+      "selfMicroseconds": 55448,
+      "percent": 0.1619357762034022
+    },
+    {
+      "functionName": "mj_makeImpedance",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1153407,
+      "samples": 50,
+      "selfMicroseconds": 55182,
+      "percent": 0.16115892372053345
+    },
+    {
+      "functionName": "mujoco::wasm::MjModel::nv() const",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 88903,
+      "samples": 47,
+      "selfMicroseconds": 54706,
+      "percent": 0.15976876664592626
+    },
+    {
+      "functionName": "mj_passive",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1630349,
+      "samples": 44,
+      "selfMicroseconds": 50976,
+      "percent": 0.14887530889742875
+    },
+    {
+      "functionName": "mj_makeConstraint",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1160440,
+      "samples": 43,
+      "selfMicroseconds": 50536,
+      "percent": 0.14759028975283386
+    },
+    {
+      "functionName": "memcmp",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 4172526,
+      "samples": 43,
+      "selfMicroseconds": 48027,
+      "percent": 0.14026276013058714
+    },
+    {
+      "functionName": "mujoco::wasm::MjData::qfrc_damper() const",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 578540,
+      "samples": 41,
+      "selfMicroseconds": 48012,
+      "percent": 0.14021895265974868
+    },
+    {
+      "functionName": "mj_jacSumCount",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1172770,
+      "samples": 41,
+      "selfMicroseconds": 46501,
+      "percent": 0.13580608009728762
+    },
+    {
+      "functionName": "PrimalUpdateConstraint",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1871388,
+      "samples": 42,
+      "selfMicroseconds": 46356,
+      "percent": 0.1353826078791825
+    },
+    {
+      "functionName": "mj_bodyChain",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1186421,
+      "samples": 41,
+      "selfMicroseconds": 45151,
+      "percent": 0.13186340772182606
+    },
+    {
+      "functionName": "emscripten::_EM_VAL* emscripten::internal::GetterPolicy<emscripten::val (mujoco::wasm::MjModel::*)() const>::get<mujoco::wasm::MjModel, emscripten::internal::rvp::default_tag>(emscripten::val (mujoco::wasm::MjModel::* const&)() const, mujoco::wasm::MjModel const&)",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 614403,
+      "samples": 36,
+      "selfMicroseconds": 44844,
+      "percent": 0.13096681481866554
+    },
+    {
+      "functionName": "get",
+      "url": "",
+      "lineNumber": -1,
+      "columnNumber": -1,
+      "samples": 34,
+      "selfMicroseconds": 42999,
+      "percent": 0.12557849590553474
+    },
+    {
+      "functionName": "getWasmBinary",
+      "url": "dist/vendor/mujoco-3.16.0/mujoco.js",
+      "lineNumber": 667,
+      "columnNumber": 28,
+      "samples": 26,
+      "selfMicroseconds": 42018,
+      "percent": 0.12271348731269933
+    },
+    {
+      "functionName": "epaSupport",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1106906,
+      "samples": 38,
+      "selfMicroseconds": 42018,
+      "percent": 0.12271348731269933
+    },
+    {
+      "functionName": "mj_instantiateContact",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1149438,
+      "samples": 35,
+      "selfMicroseconds": 39767,
+      "percent": 0.11613944618887416
+    },
+    {
+      "functionName": "read",
+      "url": "",
+      "lineNumber": -1,
+      "columnNumber": -1,
+      "samples": 3,
+      "selfMicroseconds": 37974,
+      "percent": 0.11090299317465002
+    },
+    {
+      "functionName": "mju_makeFrame",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1980565,
+      "samples": 33,
+      "selfMicroseconds": 36323,
+      "percent": 0.10608125088436332
+    },
+    {
+      "functionName": "PrimalEval",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1872944,
+      "samples": 33,
+      "selfMicroseconds": 36210,
+      "percent": 0.10575123460404691
+    },
+    {
+      "functionName": "mj_step",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1351750,
+      "samples": 28,
+      "selfMicroseconds": 34904,
+      "percent": 0.10193706414304482
+    },
+    {
+      "functionName": "instantiate",
+      "url": "",
+      "lineNumber": -1,
+      "columnNumber": -1,
+      "samples": 23,
+      "selfMicroseconds": 32833,
+      "percent": 0.09588871266928119
+    },
+    {
+      "functionName": "mj_actuatorArmature",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1204337,
+      "samples": 29,
+      "selfMicroseconds": 31166,
+      "percent": 0.09102024241010014
+    },
+    {
+      "functionName": "mj_contactParam",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1061305,
+      "samples": 27,
+      "selfMicroseconds": 30016,
+      "percent": 0.08766166964581806
+    },
+    {
+      "functionName": "mjc_ConvexElem",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1030597,
+      "samples": 26,
+      "selfMicroseconds": 29977,
+      "percent": 0.08754777022163805
+    },
+    {
+      "functionName": "mj_addConstraint",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1145187,
+      "samples": 26,
+      "selfMicroseconds": 29938,
+      "percent": 0.08743387079745805
+    },
+    {
+      "functionName": "mju_addScl",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1897410,
+      "samples": 26,
+      "selfMicroseconds": 28522,
+      "percent": 0.08329844555030726
+    },
+    {
+      "functionName": "mj_tendon",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1238660,
+      "samples": 23,
+      "selfMicroseconds": 27117,
+      "percent": 0.07919514578177134
+    },
+    {
+      "functionName": "mj_markStack",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1576419,
+      "samples": 20,
+      "selfMicroseconds": 25901,
+      "percent": 0.07564382014580003
+    },
+    {
+      "functionName": "mujoco::wasm::MjModel::flexedge_length0() const",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 629709,
+      "samples": 21,
+      "selfMicroseconds": 24124,
+      "percent": 0.07045409510047024
+    },
+    {
+      "functionName": "structuredClone",
+      "url": "node:internal/worker/js_transferable",
+      "lineNumber": 112,
+      "columnNumber": 24,
+      "samples": 15,
+      "selfMicroseconds": 23573,
+      "percent": 0.06884490067167075
+    },
+    {
+      "functionName": "mj_arenaAllocByte",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1576282,
+      "samples": 21,
+      "selfMicroseconds": 23150,
+      "percent": 0.06760952999402613
+    },
+    {
+      "functionName": "mjc_ccd",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1072238,
+      "samples": 20,
+      "selfMicroseconds": 22326,
+      "percent": 0.06520303959596661
+    },
+    {
+      "functionName": "mjd_smooth_vel",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1316359,
+      "samples": 20,
+      "selfMicroseconds": 22082,
+      "percent": 0.06449043807032764
+    },
+    {
+      "functionName": "mujoco::wasm::MjData::flexedge_length() const",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 572278,
+      "samples": 19,
+      "selfMicroseconds": 22015,
+      "percent": 0.06429476470058251
+    },
+    {
+      "functionName": "emscripten::internal::Invoker<emscripten::internal::rvp::default_tag, void, mujoco::wasm::MjModel const&, mujoco::wasm::MjData&>::invoke(void (*)(mujoco::wasm::MjModel const&, mujoco::wasm::MjData&), mujoco::wasm::MjModel*, mujoco::wasm::MjData*)",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 736591,
+      "samples": 17,
+      "selfMicroseconds": 21860,
+      "percent": 0.0638420875019184
+    },
+    {
+      "functionName": "mju_scl",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1895395,
+      "samples": 19,
+      "selfMicroseconds": 21011,
+      "percent": 0.061362584652461465
+    },
+    {
+      "functionName": "S2D",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1093431,
+      "samples": 19,
+      "selfMicroseconds": 20976,
+      "percent": 0.06126036722050505
+    },
+    {
+      "functionName": "",
+      "url": "",
+      "lineNumber": 3,
+      "columnNumber": 16,
+      "samples": 17,
+      "selfMicroseconds": 20702,
+      "percent": 0.06046015075318915
+    },
+    {
+      "functionName": "mjd_freeMhat",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1268768,
+      "samples": 16,
+      "selfMicroseconds": 19991,
+      "percent": 0.05838367663544605
+    },
+    {
+      "functionName": "travelBuffer",
+      "url": "dist/travel-buffer.js",
+      "lineNumber": 3,
+      "columnNumber": 28,
+      "samples": 18,
+      "selfMicroseconds": 19934,
+      "percent": 0.0582172082462599
+    },
+    {
+      "functionName": "mj_implicitSkip",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1350261,
+      "samples": 18,
+      "selfMicroseconds": 19874,
+      "percent": 0.05804197836290605
+    },
+    {
+      "functionName": "",
+      "url": "scripts/pr23-performance.mjs",
+      "lineNumber": 0,
+      "columnNumber": 0,
+      "samples": 17,
+      "selfMicroseconds": 18379,
+      "percent": 0.053675833769339355
+    },
+    {
+      "functionName": "operator_new_impl(unsigned long)",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 4355284,
+      "samples": 1,
+      "selfMicroseconds": 17932,
+      "percent": 0.052370371138353196
+    },
+    {
+      "functionName": "segmentDistance",
+      "url": "dist/moving-wheel.js",
+      "lineNumber": 49,
+      "columnNumber": 24,
+      "samples": 16,
+      "selfMicroseconds": 17621,
+      "percent": 0.05146209624296908
+    },
+    {
+      "functionName": "centerGap",
+      "url": "dist/moving-wheel.js",
+      "lineNumber": 51,
+      "columnNumber": 18,
+      "samples": 15,
+      "selfMicroseconds": 17500,
+      "percent": 0.05110871597820549
+    },
+    {
+      "functionName": "mju_scatter",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1934562,
+      "samples": 15,
+      "selfMicroseconds": 16548,
+      "percent": 0.04832840182899111
+    },
+    {
+      "functionName": "mj_integratePosInd",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1885515,
+      "samples": 15,
+      "selfMicroseconds": 16539,
+      "percent": 0.04830211734648804
+    },
+    {
+      "functionName": "mj_diagApprox",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1150241,
+      "samples": 14,
+      "selfMicroseconds": 15497,
+      "percent": 0.045258958372242884
+    },
+    {
+      "functionName": "mj_constraintUpdate_impl",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1182555,
+      "samples": 14,
+      "selfMicroseconds": 15389,
+      "percent": 0.04494354458220596
+    },
+    {
+      "functionName": "mj_contactJacobian",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1148724,
+      "samples": 14,
+      "selfMicroseconds": 15287,
+      "percent": 0.04464565378050442
+    },
+    {
+      "functionName": "wasm-to-js",
+      "url": "",
+      "lineNumber": -1,
+      "columnNumber": -1,
+      "samples": 11,
+      "selfMicroseconds": 15161,
+      "percent": 0.04427767102546134
+    },
+    {
+      "functionName": "compileForInternalLoader",
+      "url": "node:internal/bootstrap/realm",
+      "lineNumber": 382,
+      "columnNumber": 26,
+      "samples": 10,
+      "selfMicroseconds": 14683,
+      "percent": 0.04288167295474236
+    },
+    {
+      "functionName": "mju_eig3Tol",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1952160,
+      "samples": 11,
+      "selfMicroseconds": 14403,
+      "percent": 0.042063933499091065
+    },
+    {
+      "functionName": "S1D",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1094477,
+      "samples": 13,
+      "selfMicroseconds": 14382,
+      "percent": 0.04200260303991722
+    },
+    {
+      "functionName": "mjc_penetration",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1022064,
+      "samples": 13,
+      "selfMicroseconds": 14376,
+      "percent": 0.04198508005158184
+    },
+    {
+      "functionName": "mjc_center",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1013449,
+      "samples": 12,
+      "selfMicroseconds": 13225,
+      "percent": 0.038623586789243866
+    },
+    {
+      "functionName": "compileSourceTextModule",
+      "url": "node:internal/modules/esm/utils",
+      "lineNumber": 315,
+      "columnNumber": 32,
+      "samples": 10,
+      "selfMicroseconds": 12971,
+      "percent": 0.03788178028304591
+    },
+    {
+      "functionName": "craftInvokerFunction",
+      "url": "dist/vendor/mujoco-3.16.0/mujoco.js",
+      "lineNumber": 5157,
+      "columnNumber": 31,
+      "samples": 11,
+      "selfMicroseconds": 12861,
+      "percent": 0.03756052549689719
+    },
+    {
+      "functionName": "mj_SAP",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1052015,
+      "samples": 11,
+      "selfMicroseconds": 12173,
+      "percent": 0.03555122283443974
+    },
+    {
+      "functionName": "mjCModel::MakeTreeLists(mjCBody*)",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 2445269,
+      "samples": 3,
+      "selfMicroseconds": 12164,
+      "percent": 0.03552493835193666
+    },
+    {
+      "functionName": "mju_zero",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1894160,
+      "samples": 11,
+      "selfMicroseconds": 12137,
+      "percent": 0.03544608490442743
+    },
+    {
+      "functionName": "mj_assignRef",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1135559,
+      "samples": 11,
+      "selfMicroseconds": 12123,
+      "percent": 0.035405197931644865
+    },
+    {
+      "functionName": "",
+      "url": "dist/vendor/mujoco-3.16.0/mujoco.js",
+      "lineNumber": 5448,
+      "columnNumber": 53,
+      "samples": 7,
+      "selfMicroseconds": 11852,
+      "percent": 0.03461374295849665
+    },
+    {
+      "functionName": "mj_fwdVelocity",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1333446,
+      "samples": 9,
+      "selfMicroseconds": 11720,
+      "percent": 0.03422823721511819
+    },
+    {
+      "functionName": "js-to-wasm:ii:",
+      "url": "",
+      "lineNumber": -1,
+      "columnNumber": -1,
+      "samples": 8,
+      "selfMicroseconds": 11227,
+      "percent": 0.03278843167356075
+    },
+    {
+      "functionName": "record",
+      "url": "dist/trail-bike.js",
+      "lineNumber": 143,
+      "columnNumber": 17,
+      "samples": 10,
+      "selfMicroseconds": 11130,
+      "percent": 0.032505143362138694
+    },
+    {
+      "functionName": "testTetra",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1108818,
+      "samples": 10,
+      "selfMicroseconds": 11091,
+      "percent": 0.03239124393795869
+    },
+    {
+      "functionName": "mjc_initCCDObjSupport",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1016362,
+      "samples": 10,
+      "selfMicroseconds": 11055,
+      "percent": 0.03228610600794638
+    },
+    {
+      "functionName": "mju_superSparse",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1967635,
+      "samples": 9,
+      "selfMicroseconds": 10975,
+      "percent": 0.03205246616347459
+    },
+    {
+      "functionName": "__emval_get_property",
+      "url": "dist/vendor/mujoco-3.16.0/mujoco.js",
+      "lineNumber": 6189,
+      "columnNumber": 29,
+      "samples": 8,
+      "selfMicroseconds": 10521,
+      "percent": 0.03072656004609714
+    },
+    {
+      "functionName": "mj_fwdActuation",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1333955,
+      "samples": 8,
+      "selfMicroseconds": 10089,
+      "percent": 0.02946490488594944
+    },
+    {
+      "functionName": "mju_add",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1895616,
+      "samples": 9,
+      "selfMicroseconds": 9967,
+      "percent": 0.02910860412312995
+    },
+    {
+      "functionName": "_GLOBAL__sub_I_bindings.cc",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 869367,
+      "samples": 9,
+      "selfMicroseconds": 9655,
+      "percent": 0.028197408729689944
+    },
+    {
+      "functionName": "mj_sleepState",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1839950,
+      "samples": 7,
+      "selfMicroseconds": 8855,
+      "percent": 0.025861010284971977
+    },
+    {
+      "functionName": "solveIslandTask",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1344267,
+      "samples": 8,
+      "selfMicroseconds": 8838,
+      "percent": 0.02581136181802172
+    },
+    {
+      "functionName": "mju_addToSclSparseInc",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1964586,
+      "samples": 5,
+      "selfMicroseconds": 8763,
+      "percent": 0.025592324463829412
+    },
+    {
+      "functionName": "int emscripten::internal::GetterPolicy<int (mujoco::wasm::MjData::*)() const>::get<mujoco::wasm::MjData, emscripten::internal::rvp::default_tag>(int (mujoco::wasm::MjData::* const&)() const, mujoco::wasm::MjData const&)",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 570585,
+      "samples": 8,
+      "selfMicroseconds": 8751,
+      "percent": 0.025557278487158643
+    },
+    {
+      "functionName": "mj_freeStack",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1576710,
+      "samples": 6,
+      "selfMicroseconds": 8663,
+      "percent": 0.025300274658239665
+    },
+    {
+      "functionName": "mju_addTo",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1896334,
+      "samples": 7,
+      "selfMicroseconds": 8425,
+      "percent": 0.024605196120936073
+    },
+    {
+      "functionName": "pushGeomElem",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1065821,
+      "samples": 7,
+      "selfMicroseconds": 8114,
+      "percent": 0.023696921225551962
+    },
+    {
+      "functionName": "makeClassHandle",
+      "url": "dist/vendor/mujoco-3.16.0/mujoco.js",
+      "lineNumber": 4296,
+      "columnNumber": 24,
+      "samples": 4,
+      "selfMicroseconds": 8071,
+      "percent": 0.023571339809148373
+    },
+    {
+      "functionName": "update",
+      "url": "node:internal/crypto/hash",
+      "lineNumber": 144,
+      "columnNumber": 39,
+      "samples": 6,
+      "selfMicroseconds": 7910,
+      "percent": 0.02310113962214888
+    },
+    {
+      "functionName": "__pthread_self_internal",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 4175385,
+      "samples": 5,
+      "selfMicroseconds": 7874,
+      "percent": 0.022996001692136572
+    },
+    {
+      "functionName": "momentum",
+      "url": "dist/trail-bike.js",
+      "lineNumber": 138,
+      "columnNumber": 19,
+      "samples": 7,
+      "selfMicroseconds": 7868,
+      "percent": 0.022978478703801188
+    },
+    {
+      "functionName": "__emval_new_cstring",
+      "url": "dist/vendor/mujoco-3.16.0/mujoco.js",
+      "lineNumber": 6214,
+      "columnNumber": 28,
+      "samples": 7,
+      "selfMicroseconds": 7819,
+      "percent": 0.022835374299062215
+    },
+    {
+      "functionName": "mju_copyInt",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1932720,
+      "samples": 7,
+      "selfMicroseconds": 7758,
+      "percent": 0.02265722391765247
+    },
+    {
+      "functionName": "collisionTask",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1060337,
+      "samples": 7,
+      "selfMicroseconds": 7716,
+      "percent": 0.022534562999304775
+    },
+    {
+      "functionName": "mj_forwardSkip",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1332392,
+      "samples": 7,
+      "selfMicroseconds": 7665,
+      "percent": 0.022385617598454005
+    },
+    {
+      "functionName": "mju_zeroInt",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1932698,
+      "samples": 5,
+      "selfMicroseconds": 6907,
+      "percent": 0.020171880072083734
+    },
+    {
+      "functionName": "mjCModel::ResetTreeLists()",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 2444807,
+      "samples": 1,
+      "selfMicroseconds": 6865,
+      "percent": 0.02004921915373604
+    },
+    {
+      "functionName": "mju_copy",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1894671,
+      "samples": 6,
+      "selfMicroseconds": 6683,
+      "percent": 0.019517688507562702
+    },
+    {
+      "functionName": "mj_solNewton_island",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1876904,
+      "samples": 6,
+      "selfMicroseconds": 6653,
+      "percent": 0.01943007356588578
+    },
+    {
+      "functionName": "mj_tendonArmature",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1251716,
+      "samples": 6,
+      "selfMicroseconds": 6634,
+      "percent": 0.01937458410282373
+    },
+    {
+      "functionName": "mj_assignImp",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1135587,
+      "samples": 6,
+      "selfMicroseconds": 6618,
+      "percent": 0.01932785613392937
+    },
+    {
+      "functionName": "mju_mulMatVec3",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1892449,
+      "samples": 6,
+      "selfMicroseconds": 6563,
+      "percent": 0.019167228740855007
+    },
+    {
+      "functionName": "",
+      "url": "dist/vendor/mujoco-3.16.0/mujoco.js",
+      "lineNumber": 5469,
+      "columnNumber": 8,
+      "samples": 6,
+      "selfMicroseconds": 6434,
+      "percent": 0.018790484491644235
+    },
+    {
+      "functionName": "joint",
+      "url": "dist/trail-bike.js",
+      "lineNumber": 66,
+      "columnNumber": 14,
+      "samples": 1,
+      "selfMicroseconds": 6351,
+      "percent": 0.018548083153004748
+    },
+    {
+      "functionName": "mj_tendonSpringDamper",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1203229,
+      "samples": 5,
+      "selfMicroseconds": 5851,
+      "percent": 0.017087834125056017
+    },
+    {
+      "functionName": "mujoco::wasm::mj_fwdPosition_wrapper(mujoco::wasm::MjModel const&, mujoco::wasm::MjData&)",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 99079,
+      "samples": 5,
+      "selfMicroseconds": 5723,
+      "percent": 0.016714010373901144
+    },
+    {
+      "functionName": "mj_advance",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1344353,
+      "samples": 5,
+      "selfMicroseconds": 5621,
+      "percent": 0.016416119572199604
+    },
+    {
+      "functionName": "cos",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 4165106,
+      "samples": 5,
+      "selfMicroseconds": 5584,
+      "percent": 0.016308061144131396
+    },
+    {
+      "functionName": "mju_mulQuat",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1974022,
+      "samples": 4,
+      "selfMicroseconds": 5535,
+      "percent": 0.016164956739392423
+    },
+    {
+      "functionName": "shockLength",
+      "url": "dist/linkage.js",
+      "lineNumber": 22,
+      "columnNumber": 27,
+      "samples": 5,
+      "selfMicroseconds": 5535,
+      "percent": 0.016164956739392423
+    },
+    {
+      "functionName": "mjc_GeomElem",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1066365,
+      "samples": 5,
+      "selfMicroseconds": 5524,
+      "percent": 0.01613283126077755
+    },
+    {
+      "functionName": "getWasmTableEntry",
+      "url": "dist/vendor/mujoco-3.16.0/mujoco.js",
+      "lineNumber": 4847,
+      "columnNumber": 26,
+      "samples": 5,
+      "selfMicroseconds": 5514,
+      "percent": 0.016103626280218577
+    },
+    {
+      "functionName": "mju_dispatch",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1890426,
+      "samples": 5,
+      "selfMicroseconds": 5513,
+      "percent": 0.016100705782162678
+    },
+    {
+      "functionName": "fromWireType",
+      "url": "dist/vendor/mujoco-3.16.0/mujoco.js",
+      "lineNumber": 5699,
+      "columnNumber": 25,
+      "samples": 5,
+      "selfMicroseconds": 5508,
+      "percent": 0.016086103291883192
+    },
+    {
+      "functionName": "operator new(unsigned long)",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 4355265,
+      "samples": 1,
+      "selfMicroseconds": 5200,
+      "percent": 0.015186589890666775
+    },
+    {
+      "functionName": "std::__2::vector<double, std::__2::allocator<double>>::push_back[abi:ne200100](double const&)",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 824745,
+      "samples": 1,
+      "selfMicroseconds": 4876,
+      "percent": 0.014240348520556
+    },
+    {
+      "functionName": "emscripten_builtin_malloc",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 4207206,
+      "samples": 4,
+      "selfMicroseconds": 4740,
+      "percent": 0.013843160784953944
+    },
+    {
+      "functionName": "mj_stackAllocByte",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1576800,
+      "samples": 4,
+      "selfMicroseconds": 4659,
+      "percent": 0.01360660044242625
+    },
+    {
+      "functionName": "__embind_register_class_property",
+      "url": "dist/vendor/mujoco-3.16.0/mujoco.js",
+      "lineNumber": 5435,
+      "columnNumber": 41,
+      "samples": 1,
+      "selfMicroseconds": 4601,
+      "percent": 0.013437211555184198
+    },
+    {
+      "functionName": "js-to-wasm:iii:",
+      "url": "",
+      "lineNumber": -1,
+      "columnNumber": -1,
+      "samples": 3,
+      "selfMicroseconds": 4581,
+      "percent": 0.013378801594066249
+    },
+    {
+      "functionName": "mju_polyForce",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1936038,
+      "samples": 4,
+      "selfMicroseconds": 4551,
+      "percent": 0.013291186652389325
+    },
+    {
+      "functionName": "onComplete",
+      "url": "dist/vendor/mujoco-3.16.0/mujoco.js",
+      "lineNumber": 4914,
+      "columnNumber": 25,
+      "samples": 2,
+      "selfMicroseconds": 4482,
+      "percent": 0.0130896722865324
+    },
+    {
+      "functionName": "mj_effFlexContactPossible",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1205432,
+      "samples": 4,
+      "selfMicroseconds": 4468,
+      "percent": 0.013048785313749837
+    },
+    {
+      "functionName": "mujoco::wasm::MjData::efc_vel() const",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 570079,
+      "samples": 1,
+      "selfMicroseconds": 4423,
+      "percent": 0.01291736290123445
+    },
+    {
+      "functionName": "mujoco::wasm::MjData::qfrc_applied() const",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 578303,
+      "samples": 4,
+      "selfMicroseconds": 4421,
+      "percent": 0.012911521905122656
+    },
+    {
+      "functionName": "mj_assignFriction",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1135325,
+      "samples": 4,
+      "selfMicroseconds": 4414,
+      "percent": 0.012891078418731373
+    },
+    {
+      "functionName": "mj_velocityConstraint",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1180617,
+      "samples": 4,
+      "selfMicroseconds": 4378,
+      "percent": 0.012785940488719064
+    },
+    {
+      "functionName": "mju_subFrom",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1896783,
+      "samples": 4,
+      "selfMicroseconds": 4361,
+      "percent": 0.012736292021768809
+    },
+    {
+      "functionName": "mujoco::wasm::mj_step_wrapper(mujoco::wasm::MjModel const&, mujoco::wasm::MjData&)",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 140914,
+      "samples": 3,
+      "selfMicroseconds": 4316,
+      "percent": 0.012604869609253423
+    },
+    {
+      "functionName": "mju_polyPotential",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1936532,
+      "samples": 3,
+      "selfMicroseconds": 4209,
+      "percent": 0.012292376317272395
+    },
+    {
+      "functionName": "assessAssembly",
+      "url": "dist/wheel-limits.js",
+      "lineNumber": 21,
+      "columnNumber": 30,
+      "samples": 1,
+      "selfMicroseconds": 3844,
+      "percent": 0.011226394526869823
+    },
+    {
+      "functionName": "mujoco::wasm::mj_forward_wrapper(mujoco::wasm::MjModel const&, mujoco::wasm::MjData&)",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 98291,
+      "samples": 2,
+      "selfMicroseconds": 3818,
+      "percent": 0.01115046157741649
+    },
+    {
+      "functionName": "RegExp: [^a-zA-Z0-9_]",
+      "url": "",
+      "lineNumber": -1,
+      "columnNumber": -1,
+      "samples": 1,
+      "selfMicroseconds": 3713,
+      "percent": 0.010843809281547257
+    },
+    {
+      "functionName": "",
+      "url": "dist/vendor/mujoco-3.16.0/mujoco.js",
+      "lineNumber": 4927,
+      "columnNumber": 29,
+      "samples": 2,
+      "selfMicroseconds": 3437,
+      "percent": 0.01003775181811956
+    },
+    {
+      "functionName": "",
+      "url": "",
+      "lineNumber": 0,
+      "columnNumber": 19,
+      "samples": 3,
+      "selfMicroseconds": 3388,
+      "percent": 0.009894647413380583
+    },
+    {
+      "functionName": "mj_effBuild",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1619604,
+      "samples": 3,
+      "selfMicroseconds": 3358,
+      "percent": 0.009807032471703659
+    },
+    {
+      "functionName": "js-to-wasm:ii:d",
+      "url": "",
+      "lineNumber": -1,
+      "columnNumber": -1,
+      "samples": 3,
+      "selfMicroseconds": 3356,
+      "percent": 0.009801191475591865
+    },
+    {
+      "functionName": "mujoco::wasm::UnpackedParam<double>::FromValue(emscripten::val const&, char const*, char const*)",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 84833,
+      "samples": 3,
+      "selfMicroseconds": 3345,
+      "percent": 0.009769065996976993
+    },
+    {
+      "functionName": "mj_camlight",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1230052,
+      "samples": 3,
+      "selfMicroseconds": 3338,
+      "percent": 0.009748622510585711
+    },
+    {
+      "functionName": "mj_energyVel",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1803973,
+      "samples": 3,
+      "selfMicroseconds": 3321,
+      "percent": 0.009698974043635454
+    },
+    {
+      "functionName": "mju_copy3",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1891679,
+      "samples": 3,
+      "selfMicroseconds": 3302,
+      "percent": 0.009643484580573403
+    },
+    {
+      "functionName": "FactorizeHessian",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1872096,
+      "samples": 3,
+      "selfMicroseconds": 3286,
+      "percent": 0.009596756611679042
+    },
+    {
+      "functionName": "mj_sleep",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1838405,
+      "samples": 3,
+      "selfMicroseconds": 3285,
+      "percent": 0.009593836113623145
+    },
+    {
+      "functionName": "__extenddftf2",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 4222670,
+      "samples": 1,
+      "selfMicroseconds": 3269,
+      "percent": 0.009547108144728787
+    },
+    {
+      "functionName": "terrainParts",
+      "url": "dist/moving-wheel.js",
+      "lineNumber": 38,
+      "columnNumber": 28,
+      "samples": 1,
+      "selfMicroseconds": 3183,
+      "percent": 0.009295945311921605
+    },
+    {
+      "functionName": "mj_setConst",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1804071,
+      "samples": 2,
+      "selfMicroseconds": 3123,
+      "percent": 0.009120715428567757
+    },
+    {
+      "functionName": "mujoco::wasm::MjData::solver_niter() const",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 579761,
+      "samples": 1,
+      "selfMicroseconds": 3031,
+      "percent": 0.00885202960742519
+    },
+    {
+      "functionName": "",
+      "url": "dist/vendor/mujoco-3.16.0/mujoco.js",
+      "lineNumber": 3,
+      "columnNumber": 14,
+      "samples": 2,
+      "selfMicroseconds": 2983,
+      "percent": 0.008711845700742113
+    },
+    {
+      "functionName": "qh_initialvertices",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 3951109,
+      "samples": 1,
+      "selfMicroseconds": 2965,
+      "percent": 0.008659276735735959
+    },
+    {
+      "functionName": "_ZZN8mjCModel10BackValuesEPK8mjModel_bbENK3$_1clIdddEEDaPT_PT0_PKT1_i",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 2817741,
+      "samples": 1,
+      "selfMicroseconds": 2836,
+      "percent": 0.008282532486525187
+    },
+    {
+      "functionName": "",
+      "url": "dist/trail-bike.js",
+      "lineNumber": 177,
+      "columnNumber": 227,
+      "samples": 2,
+      "selfMicroseconds": 2743,
+      "percent": 0.008010926167326723
+    },
+    {
+      "functionName": "",
+      "url": "dist/trail-bike.js",
+      "lineNumber": 96,
+      "columnNumber": 88,
+      "samples": 2,
+      "selfMicroseconds": 2621,
+      "percent": 0.007654625404507234
+    },
+    {
+      "functionName": "tinyxml2::XMLNode::NextSiblingElement(char const*) const",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 3840523,
+      "samples": 1,
+      "selfMicroseconds": 2553,
+      "percent": 0.0074560315367062065
+    },
+    {
+      "functionName": "sin",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 4177747,
+      "samples": 3,
+      "selfMicroseconds": 2511,
+      "percent": 0.007333370618358513
+    },
+    {
+      "functionName": "mju_addToScl",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1897031,
+      "samples": 2,
+      "selfMicroseconds": 2461,
+      "percent": 0.007187345715563641
+    },
+    {
+      "functionName": "mujoco::wasm::mj_fwdVelocity_wrapper(mujoco::wasm::MjModel const&, mujoco::wasm::MjData&)",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 99095,
+      "samples": 2,
+      "selfMicroseconds": 2444,
+      "percent": 0.007137697248613384
+    },
+    {
+      "functionName": "__vfprintf_internal",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 4195064,
+      "samples": 2,
+      "selfMicroseconds": 2432,
+      "percent": 0.007102651271942615
+    },
+    {
+      "functionName": "validate",
+      "url": "dist/bike-rig.js",
+      "lineNumber": 25,
+      "columnNumber": 24,
+      "samples": 1,
+      "selfMicroseconds": 2408,
+      "percent": 0.007032559318601076
+    },
+    {
+      "functionName": "mj_forward",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1332754,
+      "samples": 2,
+      "selfMicroseconds": 2366,
+      "percent": 0.006909898400253383
+    },
+    {
+      "functionName": "__sin",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 4164947,
+      "samples": 2,
+      "selfMicroseconds": 2352,
+      "percent": 0.006869011427470818
+    },
+    {
+      "functionName": "mjCBoundingVolumeHierarchy::MakeBVH(std::__2::__wrap_iter<mjCBoundingVolumeHierarchy::BVElement*>, std::__2::__wrap_iter<mjCBoundingVolumeHierarchy::BVElement*>, int, mjCModel*, mjCBase const*)",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 2853828,
+      "samples": 1,
+      "selfMicroseconds": 2346,
+      "percent": 0.006851488439135433
+    },
+    {
+      "functionName": "mj_effFlexStiffPossible",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1205528,
+      "samples": 2,
+      "selfMicroseconds": 2283,
+      "percent": 0.006667497061613893
+    },
+    {
+      "functionName": "intersects",
+      "url": "dist/moving-wheel.js",
+      "lineNumber": 48,
+      "columnNumber": 19,
+      "samples": 2,
+      "selfMicroseconds": 2257,
+      "percent": 0.00659156411216056
+    },
+    {
+      "functionName": "js-to-wasm:iiii:",
+      "url": "",
+      "lineNumber": -1,
+      "columnNumber": -1,
+      "samples": 2,
+      "selfMicroseconds": 2253,
+      "percent": 0.00657988211993697
+    },
+    {
+      "functionName": "mju_mulInertVec",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1979522,
+      "samples": 2,
+      "selfMicroseconds": 2234,
+      "percent": 0.0065243926568749186
+    },
+    {
+      "functionName": "RegisteredPointer_fromWireType",
+      "url": "dist/vendor/mujoco-3.16.0/mujoco.js",
+      "lineNumber": 4314,
+      "columnNumber": 41,
+      "samples": 2,
+      "selfMicroseconds": 2232,
+      "percent": 0.006518551660763123
+    },
+    {
+      "functionName": "mju_isBad",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1932569,
+      "samples": 2,
+      "selfMicroseconds": 2231,
+      "percent": 0.006515631162707226
+    },
+    {
+      "functionName": "",
+      "url": "dist/vendor/mujoco-3.16.0/mujoco.js",
+      "lineNumber": 5329,
+      "columnNumber": 55,
+      "samples": 1,
+      "selfMicroseconds": 2223,
+      "percent": 0.006492267178260046
+    },
+    {
+      "functionName": "mj_kinematics",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1228296,
+      "samples": 2,
+      "selfMicroseconds": 2222,
+      "percent": 0.006489346680204149
+    },
+    {
+      "functionName": "invoke_viiiiii",
+      "url": "dist/vendor/mujoco-3.16.0/mujoco.js",
+      "lineNumber": 7931,
+      "columnNumber": 23,
+      "samples": 2,
+      "selfMicroseconds": 2222,
+      "percent": 0.006489346680204149
+    },
+    {
+      "functionName": "mj_isSparse",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1185765,
+      "samples": 2,
+      "selfMicroseconds": 2219,
+      "percent": 0.006480585186036457
+    },
+    {
+      "functionName": "js-to-wasm:i:i",
+      "url": "",
+      "lineNumber": -1,
+      "columnNumber": -1,
+      "samples": 2,
+      "selfMicroseconds": 2218,
+      "percent": 0.006477664687980559
+    },
+    {
+      "functionName": "double emscripten::internal::GetterPolicy<double (mujoco::wasm::MjData::*)() const>::get<mujoco::wasm::MjData, emscripten::internal::rvp::default_tag>(double (mujoco::wasm::MjData::* const&)() const, mujoco::wasm::MjData const&)",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 580697,
+      "samples": 2,
+      "selfMicroseconds": 2215,
+      "percent": 0.006468903193812867
+    },
+    {
+      "functionName": "mju_sub",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1895975,
+      "samples": 2,
+      "selfMicroseconds": 2213,
+      "percent": 0.006463062197701071
+    },
+    {
+      "functionName": "mj_referenceConstraint",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1181799,
+      "samples": 2,
+      "selfMicroseconds": 2213,
+      "percent": 0.006463062197701071
+    },
+    {
+      "functionName": "invoke_vi",
+      "url": "dist/vendor/mujoco-3.16.0/mujoco.js",
+      "lineNumber": 7854,
+      "columnNumber": 18,
+      "samples": 2,
+      "selfMicroseconds": 2213,
+      "percent": 0.006463062197701071
+    },
+    {
+      "functionName": "lengthBytesUTF8",
+      "url": "dist/vendor/mujoco-3.16.0/mujoco.js",
+      "lineNumber": 1296,
+      "columnNumber": 24,
+      "samples": 2,
+      "selfMicroseconds": 2211,
+      "percent": 0.0064572212015892765
+    },
+    {
+      "functionName": "__rem_pio2",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 4163639,
+      "samples": 2,
+      "selfMicroseconds": 2211,
+      "percent": 0.0064572212015892765
+    },
+    {
+      "functionName": "mujoco::wasm::MjData::nefc() const",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 94676,
+      "samples": 2,
+      "selfMicroseconds": 2208,
+      "percent": 0.006448459707421584
+    },
+    {
+      "functionName": "mujoco::wasm::mj_energyVel_wrapper(mujoco::wasm::MjModel const&, mujoco::wasm::MjData&)",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 97741,
+      "samples": 2,
+      "selfMicroseconds": 2207,
+      "percent": 0.006445539209365686
+    },
+    {
+      "functionName": "fwdConstraintStage",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1350017,
+      "samples": 2,
+      "selfMicroseconds": 2207,
+      "percent": 0.006445539209365686
+    },
+    {
+      "functionName": "mujoco::wasm::MjData::ten_length() const",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 580221,
+      "samples": 2,
+      "selfMicroseconds": 2205,
+      "percent": 0.006439698213253892
+    },
+    {
+      "functionName": "mujoco::wasm::MjData::xmat() const",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 581816,
+      "samples": 2,
+      "selfMicroseconds": 2204,
+      "percent": 0.006436777715197994
+    },
+    {
+      "functionName": "set TextDecoder",
+      "url": "",
+      "lineNumber": -1,
+      "columnNumber": -1,
+      "samples": 2,
+      "selfMicroseconds": 2184,
+      "percent": 0.006378367754080045
+    },
+    {
+      "functionName": "",
+      "url": "dist/vendor/mujoco-3.16.0/mujoco.js",
+      "lineNumber": 5315,
+      "columnNumber": 56,
+      "samples": 2,
+      "selfMicroseconds": 2182,
+      "percent": 0.0063725267579682505
+    },
+    {
+      "functionName": "mujoco::wasm::MjData::efc_force() const",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 569439,
+      "samples": 2,
+      "selfMicroseconds": 2181,
+      "percent": 0.006369606259912353
+    },
+    {
+      "functionName": "__embind_register_enum_value",
+      "url": "dist/vendor/mujoco-3.16.0/mujoco.js",
+      "lineNumber": 5615,
+      "columnNumber": 37,
+      "samples": 1,
+      "selfMicroseconds": 2047,
+      "percent": 0.005978259520422094
+    },
+    {
+      "functionName": "value",
+      "url": "node:internal/console/constructor",
+      "lineNumber": 211,
+      "columnNumber": 19,
+      "samples": 1,
+      "selfMicroseconds": 2009,
+      "percent": 0.00586728059429799
+    },
+    {
+      "functionName": "nonConstNoSmartPtrRawPointerToWireType",
+      "url": "dist/vendor/mujoco-3.16.0/mujoco.js",
+      "lineNumber": 4728,
+      "columnNumber": 49,
+      "samples": 2,
+      "selfMicroseconds": 2001,
+      "percent": 0.005843916609850811
+    },
+    {
+      "functionName": "js-to-wasm:iiiiii:",
+      "url": "",
+      "lineNumber": -1,
+      "columnNumber": -1,
+      "samples": 1,
+      "selfMicroseconds": 1881,
+      "percent": 0.005493456843143116
+    },
+    {
+      "functionName": "js-to-wasm:iiiiii:i",
+      "url": "",
+      "lineNumber": -1,
+      "columnNumber": -1,
+      "samples": 1,
+      "selfMicroseconds": 1680,
+      "percent": 0.004906436733907727
+    },
+    {
+      "functionName": "mjXReader::ReadAttrTable(tinyxml2::XMLElement*, void*, mjsElement_*, mjXAttr const*, int)",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 3399360,
+      "samples": 1,
+      "selfMicroseconds": 1661,
+      "percent": 0.004850947270845675
+    },
+    {
+      "functionName": "mj_makeModel",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1402606,
+      "samples": 1,
+      "selfMicroseconds": 1559,
+      "percent": 0.004553056469144135
+    },
+    {
+      "functionName": "",
+      "url": "dist/rider-passive.js",
+      "lineNumber": 0,
+      "columnNumber": 0,
+      "samples": 1,
+      "selfMicroseconds": 1515,
+      "percent": 0.004424554554684647
+    },
+    {
+      "functionName": "exposePublicSymbol",
+      "url": "dist/vendor/mujoco-3.16.0/mujoco.js",
+      "lineNumber": 4563,
+      "columnNumber": 27,
+      "samples": 1,
+      "selfMicroseconds": 1512,
+      "percent": 0.004415793060516955
+    },
+    {
+      "functionName": "symlink",
+      "url": "dist/vendor/mujoco-3.16.0/mujoco.js",
+      "lineNumber": 2740,
+      "columnNumber": 9,
+      "samples": 1,
+      "selfMicroseconds": 1465,
+      "percent": 0.004278529651889774
+    },
+    {
+      "functionName": "std::__2::vector<mujoco::wasm::MjSolverStat, std::__2::allocator<mujoco::wasm::MjSolverStat>>::reserve(unsigned long)",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 59558,
+      "samples": 1,
+      "selfMicroseconds": 1433,
+      "percent": 0.004185073714101055
+    },
+    {
+      "functionName": "groundHeight",
+      "url": "dist/moving-wheel.js",
+      "lineNumber": 50,
+      "columnNumber": 21,
+      "samples": 2,
+      "selfMicroseconds": 1427,
+      "percent": 0.0041675507257656706
+    },
+    {
+      "functionName": "corrected",
+      "url": "dist/trail-bike.js",
+      "lineNumber": 139,
+      "columnNumber": 20,
+      "samples": 1,
+      "selfMicroseconds": 1416,
+      "percent": 0.004135425247150799
+    },
+    {
+      "functionName": "validate",
+      "url": "dist/trail-bike.js",
+      "lineNumber": 40,
+      "columnNumber": 24,
+      "samples": 1,
+      "selfMicroseconds": 1413,
+      "percent": 0.0041266637529831065
+    },
+    {
+      "functionName": "attachFinalizer",
+      "url": "dist/vendor/mujoco-3.16.0/mujoco.js",
+      "lineNumber": 4402,
+      "columnNumber": 24,
+      "samples": 2,
+      "selfMicroseconds": 1406,
+      "percent": 0.004106220266591824
+    },
+    {
+      "functionName": "tinyxml2::XMLNode::Value() const",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 3840673,
+      "samples": 1,
+      "selfMicroseconds": 1365,
+      "percent": 0.0039864798463000286
+    },
+    {
+      "functionName": "std::__2::basic_streambuf<char, std::__2::char_traits<char>>::basic_streambuf()",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 4237331,
+      "samples": 1,
+      "selfMicroseconds": 1266,
+      "percent": 0.00369735053876618
+    },
+    {
+      "functionName": "_mj_init_gmsh_decoder()",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 869674,
+      "samples": 1,
+      "selfMicroseconds": 1260,
+      "percent": 0.0036798275504307952
+    },
+    {
+      "functionName": "finalizeResolution",
+      "url": "node:internal/modules/esm/resolve",
+      "lineNumber": 224,
+      "columnNumber": 27,
+      "samples": 1,
+      "selfMicroseconds": 1208,
+      "percent": 0.0035279616515241276
+    },
+    {
+      "functionName": "validate",
+      "url": "dist/moving-wheel.js",
+      "lineNumber": 14,
+      "columnNumber": 24,
+      "samples": 1,
+      "selfMicroseconds": 1187,
+      "percent": 0.003466631192350281
+    },
+    {
+      "functionName": "",
+      "url": "dist/trail-bike.js",
+      "lineNumber": 96,
+      "columnNumber": 153,
+      "samples": 1,
+      "selfMicroseconds": 1185,
+      "percent": 0.003460790196238486
+    },
+    {
+      "functionName": "normalizeString",
+      "url": "node:path",
+      "lineNumber": 91,
+      "columnNumber": 24,
+      "samples": 1,
+      "selfMicroseconds": 1184,
+      "percent": 0.0034578696981825887
+    },
+    {
+      "functionName": "std::__2::char_traits<char>::length[abi:ne200100](char const*)",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 4252492,
+      "samples": 1,
+      "selfMicroseconds": 1174,
+      "percent": 0.0034286647176236143
+    },
+    {
+      "functionName": "std::__2::DoIOSInit::DoIOSInit()",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 4255095,
+      "samples": 1,
+      "selfMicroseconds": 1165,
+      "percent": 0.003402380235120537
+    },
+    {
+      "functionName": "mjc_ccdSize",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1072140,
+      "samples": 1,
+      "selfMicroseconds": 1161,
+      "percent": 0.003390698242896947
+    },
+    {
+      "functionName": "",
+      "url": "dist/trail-bike.js",
+      "lineNumber": 177,
+      "columnNumber": 506,
+      "samples": 1,
+      "selfMicroseconds": 1161,
+      "percent": 0.003390698242896947
+    },
+    {
+      "functionName": "qh_premerge",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 3962746,
+      "samples": 1,
+      "selfMicroseconds": 1160,
+      "percent": 0.0033877777448410498
+    },
+    {
+      "functionName": "mujoco::wasm::MjData::subtree_com() const",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 579977,
+      "samples": 1,
+      "selfMicroseconds": 1159,
+      "percent": 0.0033848572467851524
+    },
+    {
+      "functionName": "mj_objectVelocity",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1198439,
+      "samples": 1,
+      "selfMicroseconds": 1145,
+      "percent": 0.003343970274002588
+    },
+    {
+      "functionName": "",
+      "url": "dist/trail-bike.js",
+      "lineNumber": 86,
+      "columnNumber": 46,
+      "samples": 1,
+      "selfMicroseconds": 1144,
+      "percent": 0.0033410497759466906
+    },
+    {
+      "functionName": "mujoco::wasm::MjData::efc_type() const",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 569999,
+      "samples": 1,
+      "selfMicroseconds": 1141,
+      "percent": 0.0033322882817789982
+    },
+    {
+      "functionName": "",
+      "url": "dist/linkage.js",
+      "lineNumber": 0,
+      "columnNumber": 0,
+      "samples": 1,
+      "selfMicroseconds": 1140,
+      "percent": 0.0033293677837231005
+    },
+    {
+      "functionName": "emscripten::_EM_VAL* emscripten::internal::GetterPolicy<emscripten::val (mujoco::wasm::MjContact::*)() const>::get<mujoco::wasm::MjContact, emscripten::internal::rvp::default_tag>(emscripten::val (mujoco::wasm::MjContact::* const&)() const, mujoco::wasm::MjContact const&)",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 550949,
+      "samples": 2,
+      "selfMicroseconds": 1140,
+      "percent": 0.0033293677837231005
+    },
+    {
+      "functionName": "invoke_iiiiii",
+      "url": "dist/vendor/mujoco-3.16.0/mujoco.js",
+      "lineNumber": 8536,
+      "columnNumber": 22,
+      "samples": 1,
+      "selfMicroseconds": 1132,
+      "percent": 0.003306003799275921
+    },
+    {
+      "functionName": "mj_instantiateEquality",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1136304,
+      "samples": 1,
+      "selfMicroseconds": 1130,
+      "percent": 0.003300162803164126
+    },
+    {
+      "functionName": "insert",
+      "url": "node:internal/priority_queue",
+      "lineNumber": 21,
+      "columnNumber": 8,
+      "samples": 1,
+      "selfMicroseconds": 1129,
+      "percent": 0.0032972423051082288
+    },
+    {
+      "functionName": "std::__2::ios_base::~ios_base()",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 4252779,
+      "samples": 1,
+      "selfMicroseconds": 1125,
+      "percent": 0.0032855603128846386
+    },
+    {
+      "functionName": "mjCBody::AddGeom(mjCDef*)",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 2950234,
+      "samples": 1,
+      "selfMicroseconds": 1124,
+      "percent": 0.0032826398148287413
+    },
+    {
+      "functionName": "mujoco::wasm::MjContact::frame() const",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 551516,
+      "samples": 1,
+      "selfMicroseconds": 1124,
+      "percent": 0.0032826398148287413
+    },
+    {
+      "functionName": "mujoco::wasm::MjModel::body_inertia() const",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 618691,
+      "samples": 1,
+      "selfMicroseconds": 1124,
+      "percent": 0.0032826398148287413
+    },
+    {
+      "functionName": "mjCMesh_::operator=(mjCMesh_ const&)",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 2279610,
+      "samples": 1,
+      "selfMicroseconds": 1123,
+      "percent": 0.003279719316772844
+    },
+    {
+      "functionName": "mj_resetData",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1557224,
+      "samples": 1,
+      "selfMicroseconds": 1120,
+      "percent": 0.0032709578226051516
+    },
+    {
+      "functionName": "createJsInvoker",
+      "url": "dist/vendor/mujoco-3.16.0/mujoco.js",
+      "lineNumber": 5082,
+      "columnNumber": 26,
+      "samples": 1,
+      "selfMicroseconds": 1117,
+      "percent": 0.0032621963284374593
+    },
+    {
+      "functionName": "mjCMesh::CopyFromSpec()",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 2285261,
+      "samples": 1,
+      "selfMicroseconds": 1117,
+      "percent": 0.0032621963284374593
+    },
+    {
+      "functionName": "operator delete(void*, unsigned long)",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 4355589,
+      "samples": 1,
+      "selfMicroseconds": 1117,
+      "percent": 0.0032621963284374593
+    },
+    {
+      "functionName": "emscripten::internal::Invoker<emscripten::internal::rvp::default_tag, void, mujoco::wasm::MjModel const&, mujoco::wasm::MjData const&, int, emscripten::val const&>::invoke(void (*)(mujoco::wasm::MjModel const&, mujoco::wasm::MjData const&, int, emscripten::val const&), mujoco::wasm::MjModel*, mujoco::wasm::MjData*, int, emscripten::_EM_VAL*)",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 738492,
+      "samples": 1,
+      "selfMicroseconds": 1117,
+      "percent": 0.0032621963284374593
+    },
+    {
+      "functionName": "compute_plugin_sensors",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1802263,
+      "samples": 1,
+      "selfMicroseconds": 1116,
+      "percent": 0.0032592758303815615
+    },
+    {
+      "functionName": "mj_discreteGyro",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1343959,
+      "samples": 1,
+      "selfMicroseconds": 1114,
+      "percent": 0.003253434834269767
+    },
+    {
+      "functionName": "mjCBody::ContentGauge() const",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 2978969,
+      "samples": 1,
+      "selfMicroseconds": 1113,
+      "percent": 0.003250514336213869
+    },
+    {
+      "functionName": "mj_fwdKinematics",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1332768,
+      "samples": 1,
+      "selfMicroseconds": 1112,
+      "percent": 0.003247593838157972
+    },
+    {
+      "functionName": "tinyxml2::XMLDocument::Parse(char const*, unsigned long)",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 3854710,
+      "samples": 1,
+      "selfMicroseconds": 1111,
+      "percent": 0.0032446733401020745
+    },
+    {
+      "functionName": "mujoco::wasm::mj_objectVelocity_wrapper(mujoco::wasm::MjModel const&, mujoco::wasm::MjData const&, int, int, emscripten::val const&, int)",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 128918,
+      "samples": 1,
+      "selfMicroseconds": 1111,
+      "percent": 0.0032446733401020745
+    },
+    {
+      "functionName": "mujoco::wasm::MjData::xipos() const",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 581734,
+      "samples": 1,
+      "selfMicroseconds": 1111,
+      "percent": 0.0032446733401020745
+    },
+    {
+      "functionName": "mju_transformSpatial",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1980006,
+      "samples": 1,
+      "selfMicroseconds": 1111,
+      "percent": 0.0032446733401020745
+    },
+    {
+      "functionName": "qh_initqhull_globals",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 3867348,
+      "samples": 1,
+      "selfMicroseconds": 1110,
+      "percent": 0.003241752842046177
+    },
+    {
+      "functionName": "mj_stackAllocInfo",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1577417,
+      "samples": 1,
+      "selfMicroseconds": 1109,
+      "percent": 0.0032388323439902795
+    },
+    {
+      "functionName": "mju_mulDofVec",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1979950,
+      "samples": 1,
+      "selfMicroseconds": 1108,
+      "percent": 0.003235911845934382
+    },
+    {
+      "functionName": "mju_mulMatTVec",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1898321,
+      "samples": 1,
+      "selfMicroseconds": 1108,
+      "percent": 0.003235911845934382
+    },
+    {
+      "functionName": "basename",
+      "url": "dist/vendor/mujoco-3.16.0/mujoco.js",
+      "lineNumber": 1217,
+      "columnNumber": 11,
+      "samples": 1,
+      "selfMicroseconds": 1107,
+      "percent": 0.0032329913478784844
+    },
+    {
+      "functionName": "mujoco::wasm::MjData::ncon() const",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 576470,
+      "samples": 1,
+      "selfMicroseconds": 1107,
+      "percent": 0.0032329913478784844
+    },
+    {
+      "functionName": "resolveSync",
+      "url": "node:internal/modules/esm/loader",
+      "lineNumber": 736,
+      "columnNumber": 13,
+      "samples": 1,
+      "selfMicroseconds": 1106,
+      "percent": 0.003230070849822587
+    },
+    {
+      "functionName": "js-to-wasm:iii:i",
+      "url": "",
+      "lineNumber": -1,
+      "columnNumber": -1,
+      "samples": 1,
+      "selfMicroseconds": 1105,
+      "percent": 0.0032271503517666894
+    },
+    {
+      "functionName": "mju_normalize3",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1892172,
+      "samples": 1,
+      "selfMicroseconds": 1105,
+      "percent": 0.0032271503517666894
+    },
+    {
+      "functionName": "initEventTarget",
+      "url": "node:internal/event_target",
+      "lineNumber": 552,
+      "columnNumber": 24,
+      "samples": 1,
+      "selfMicroseconds": 1104,
+      "percent": 0.003224229853710792
+    },
+    {
+      "functionName": "tinyxml2::XMLElement::ParseAttributes(char*, int*)",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 3850739,
+      "samples": 1,
+      "selfMicroseconds": 1104,
+      "percent": 0.003224229853710792
+    },
+    {
+      "functionName": "decfloat",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 4188969,
+      "samples": 1,
+      "selfMicroseconds": 1104,
+      "percent": 0.003224229853710792
+    },
+    {
+      "functionName": "",
+      "url": "dist/vendor/mujoco-3.16.0/mujoco.js",
+      "lineNumber": 637,
+      "columnNumber": 9,
+      "samples": 1,
+      "selfMicroseconds": 1104,
+      "percent": 0.003224229853710792
+    },
+    {
+      "functionName": "mujoco::wasm::MjData::flexvert_xpos() const",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 573010,
+      "samples": 1,
+      "selfMicroseconds": 1104,
+      "percent": 0.003224229853710792
+    },
+    {
+      "functionName": "mujoco::wasm::MjData::time() const",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 580669,
+      "samples": 1,
+      "selfMicroseconds": 1104,
+      "percent": 0.003224229853710792
+    },
+    {
+      "functionName": "mujoco::wasm::MjData::ten_velocity() const",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 580301,
+      "samples": 1,
+      "selfMicroseconds": 1104,
+      "percent": 0.003224229853710792
+    },
+    {
+      "functionName": "mj_makeM",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1252876,
+      "samples": 1,
+      "selfMicroseconds": 1103,
+      "percent": 0.0032213093556548947
+    },
+    {
+      "functionName": "mj_sensorVel",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1802901,
+      "samples": 1,
+      "selfMicroseconds": 1103,
+      "percent": 0.0032213093556548947
+    },
+    {
+      "functionName": "mujoco::wasm::mj_energyPos_wrapper(mujoco::wasm::MjModel const&, mujoco::wasm::MjData&)",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 97725,
+      "samples": 1,
+      "selfMicroseconds": 1103,
+      "percent": 0.0032213093556548947
+    },
+    {
+      "functionName": "digest",
+      "url": "scripts/pr23-performance.mjs",
+      "lineNumber": 22,
+      "columnNumber": 15,
+      "samples": 1,
+      "selfMicroseconds": 1102,
+      "percent": 0.003218388857598997
+    },
+    {
+      "functionName": "mjc_initCCDObj",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1016042,
+      "samples": 1,
+      "selfMicroseconds": 1102,
+      "percent": 0.003218388857598997
+    },
+    {
+      "functionName": "mj_sensorAcc",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1803441,
+      "samples": 1,
+      "selfMicroseconds": 1102,
+      "percent": 0.003218388857598997
+    },
+    {
+      "functionName": "mju_quat2Mat",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1974931,
+      "samples": 1,
+      "selfMicroseconds": 1102,
+      "percent": 0.003218388857598997
+    },
+    {
+      "functionName": "mj_assignMargin",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1135615,
+      "samples": 1,
+      "selfMicroseconds": 1102,
+      "percent": 0.003218388857598997
+    },
+    {
+      "functionName": "invoke_vii",
+      "url": "dist/vendor/mujoco-3.16.0/mujoco.js",
+      "lineNumber": 7898,
+      "columnNumber": 19,
+      "samples": 1,
+      "selfMicroseconds": 1102,
+      "percent": 0.003218388857598997
+    },
+    {
+      "functionName": "mjCMesh::~mjCMesh()_6477",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 2291981,
+      "samples": 1,
+      "selfMicroseconds": 1102,
+      "percent": 0.003218388857598997
+    },
+    {
+      "functionName": "qh_partitionvisible",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 4016937,
+      "samples": 1,
+      "selfMicroseconds": 1101,
+      "percent": 0.0032154683595430997
+    },
+    {
+      "functionName": "qh_checkpolygon",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 3930797,
+      "samples": 1,
+      "selfMicroseconds": 1100,
+      "percent": 0.0032125478614872024
+    },
+    {
+      "functionName": "mju_unit4",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1893879,
+      "samples": 1,
+      "selfMicroseconds": 1100,
+      "percent": 0.0032125478614872024
+    },
+    {
+      "functionName": "",
+      "url": "node:internal/crypto/cipher",
+      "lineNumber": 0,
+      "columnNumber": 0,
+      "samples": 1,
+      "selfMicroseconds": 1098,
+      "percent": 0.0032067068653754073
+    },
+    {
+      "functionName": "void mjCModel::ProcessList_<mjCBase>(std::__2::array<std::__2::map<std::__2::basic_string<char, std::__2::char_traits<char>, std::__2::allocator<char>>, int, std::__2::less<void>, std::__2::allocator<std::__2::pair<std::__2::basic_string<char, std::__2::char_traits<char>, std::__2::allocator<char>> const, int>>>, 26ul>&, std::__2::vector<mjCBase*, std::__2::allocator<mjCBase*>>&, mjtObj, bool)",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 2490445,
+      "samples": 1,
+      "selfMicroseconds": 1098,
+      "percent": 0.0032067068653754073
+    },
+    {
+      "functionName": "emscripten::internal::Invoker<emscripten::internal::rvp::default_tag, std::__2::unique_ptr<mujoco::wasm::MjModel, std::__2::default_delete<mujoco::wasm::MjModel>>, std::__2::basic_string<char, std::__2::char_traits<char>, std::__2::allocator<char>> const&>::invoke(std::__2::unique_ptr<mujoco::wasm::MjModel, std::__2::default_delete<mujoco::wasm::MjModel>> (*)(std::__2::basic_string<char, std::__2::char_traits<char>, std::__2::allocator<char>> const&), emscripten::internal::BindingType<std::__2::basic_string<char, std::__2::char_traits<char>, std::__2::allocator<char>>, void>::'unnamed'*)",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 585488,
+      "samples": 1,
+      "selfMicroseconds": 1097,
+      "percent": 0.00320378636731951
+    },
+    {
+      "functionName": "emscripten_builtin_free",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 4212993,
+      "samples": 1,
+      "selfMicroseconds": 1097,
+      "percent": 0.00320378636731951
+    },
+    {
+      "functionName": "Duplex",
+      "url": "node:internal/streams/duplex",
+      "lineNumber": 63,
+      "columnNumber": 15,
+      "samples": 1,
+      "selfMicroseconds": 1096,
+      "percent": 0.0032008658692636123
+    },
+    {
+      "functionName": "_GLOBAL__sub_I_xml_native_reader.cc",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 3424777,
+      "samples": 1,
+      "selfMicroseconds": 1096,
+      "percent": 0.0032008658692636123
+    },
+    {
+      "functionName": "canonicalProfile",
+      "url": "dist/moving-wheel.js",
+      "lineNumber": 30,
+      "columnNumber": 32,
+      "samples": 1,
+      "selfMicroseconds": 1096,
+      "percent": 0.0032008658692636123
+    },
+    {
+      "functionName": "__multf3",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 4223425,
+      "samples": 1,
+      "selfMicroseconds": 1096,
+      "percent": 0.0032008658692636123
+    },
+    {
+      "functionName": "",
+      "url": "node:events",
+      "lineNumber": 331,
+      "columnNumber": 28,
+      "samples": 1,
+      "selfMicroseconds": 1095,
+      "percent": 0.003197945371207715
+    },
+    {
+      "functionName": "std::__2::__hash_const_iterator<std::__2::__hash_node<std::__2::basic_string<char, std::__2::char_traits<char>, std::__2::allocator<char>>, void*>*> std::__2::__hash_table<std::__2::basic_string<char, std::__2::char_traits<char>, std::__2::allocator<char>>, std::__2::hash<std::__2::basic_string<char, std::__2::char_traits<char>, std::__2::allocator<char>>>, std::__2::equal_to<std::__2::basic_string<char, std::__2::char_traits<char>, std::__2::allocator<char>>>, std::__2::allocator<std::__2::basic_string<char, std::__2::char_traits<char>, std::__2::allocator<char>>>>::find<std::__2::basic_string<char, std::__2::char_traits<char>, std::__2::allocator<char>>>(std::__2::basic_string<char, std::__2::char_traits<char>, std::__2::allocator<char>> const&) const",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 2523837,
+      "samples": 1,
+      "selfMicroseconds": 1095,
+      "percent": 0.003197945371207715
+    },
+    {
+      "functionName": "mju_zero3",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 1891655,
+      "samples": 1,
+      "selfMicroseconds": 1094,
+      "percent": 0.0031950248731518176
+    },
+    {
+      "functionName": "embind__requireFunction",
+      "url": "dist/vendor/mujoco-3.16.0/mujoco.js",
+      "lineNumber": 4857,
+      "columnNumber": 32,
+      "samples": 1,
+      "selfMicroseconds": 1092,
+      "percent": 0.0031891838770400226
+    },
+    {
+      "functionName": "mjCDef::mjCDef(mjCModel*)",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 2902458,
+      "samples": 1,
+      "selfMicroseconds": 1090,
+      "percent": 0.0031833428809282275
+    },
+    {
+      "functionName": "unexportedRuntimeSymbol",
+      "url": "dist/vendor/mujoco-3.16.0/mujoco.js",
+      "lineNumber": 412,
+      "columnNumber": 32,
+      "samples": 1,
+      "selfMicroseconds": 1087,
+      "percent": 0.003174581386760535
+    },
+    {
+      "functionName": "resolve",
+      "url": "node:path",
+      "lineNumber": 1244,
+      "columnNumber": 9,
+      "samples": 1,
+      "selfMicroseconds": 1086,
+      "percent": 0.003171660888704638
+    },
+    {
+      "functionName": "emscripten_stack_get_current",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 4445128,
+      "samples": 1,
+      "selfMicroseconds": 1082,
+      "percent": 0.003159978896481048
+    },
+    {
+      "functionName": "createNode",
+      "url": "dist/vendor/mujoco-3.16.0/mujoco.js",
+      "lineNumber": 1566,
+      "columnNumber": 12,
+      "samples": 1,
+      "selfMicroseconds": 1081,
+      "percent": 0.0031570583984251504
+    },
+    {
+      "functionName": "consoleCall",
+      "url": "",
+      "lineNumber": -1,
+      "columnNumber": -1,
+      "samples": 1,
+      "selfMicroseconds": 1080,
+      "percent": 0.003154137900369253
+    },
+    {
+      "functionName": "std::__2::pair<std::__2::__hash_iterator<std::__2::__hash_node<std::__2::basic_string<char, std::__2::char_traits<char>, std::__2::allocator<char>>, void*>*>, bool> std::__2::__hash_table<std::__2::basic_string<char, std::__2::char_traits<char>, std::__2::allocator<char>>, std::__2::hash<std::__2::basic_string<char, std::__2::char_traits<char>, std::__2::allocator<char>>>, std::__2::equal_to<std::__2::basic_string<char, std::__2::char_traits<char>, std::__2::allocator<char>>>, std::__2::allocator<std::__2::basic_string<char, std::__2::char_traits<char>, std::__2::allocator<char>>>>::__emplace_unique_key_args<std::__2::basic_string<char, std::__2::char_traits<char>, std::__2::allocator<char>>, std::__2::basic_string<char, std::__2::char_traits<char>, std::__2::allocator<char>> const&>(std::__2::basic_string<char, std::__2::char_traits<char>, std::__2::allocator<char>> const&, std::__2::basic_string<char, std::__2::char_traits<char>, std::__2::allocator<char>> const&)",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 2520526,
+      "samples": 1,
+      "selfMicroseconds": 1080,
+      "percent": 0.003154137900369253
+    },
+    {
+      "functionName": "mjXUtil::MapValue(tinyxml2::XMLElement*, char const*, int*, _mjMap const*, int, bool)",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 3735977,
+      "samples": 1,
+      "selfMicroseconds": 1079,
+      "percent": 0.003151217402313356
+    },
+    {
+      "functionName": "__cos",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 4161396,
+      "samples": 1,
+      "selfMicroseconds": 1078,
+      "percent": 0.003148296904257458
+    },
+    {
+      "functionName": "",
+      "url": "dist/trail-bike.js",
+      "lineNumber": 177,
+      "columnNumber": 423,
+      "samples": 1,
+      "selfMicroseconds": 1078,
+      "percent": 0.003148296904257458
+    },
+    {
+      "functionName": "getOwn",
+      "url": "node:internal/bootstrap/realm",
+      "lineNumber": 201,
+      "columnNumber": 15,
+      "samples": 1,
+      "selfMicroseconds": 1075,
+      "percent": 0.0031395354100897657
+    },
+    {
+      "functionName": "shockCompressionJacobian",
+      "url": "dist/linkage.js",
+      "lineNumber": 26,
+      "columnNumber": 40,
+      "samples": 1,
+      "selfMicroseconds": 1069,
+      "percent": 0.003122012421754381
+    },
+    {
+      "functionName": "toWireType",
+      "url": "dist/vendor/mujoco-3.16.0/mujoco.js",
+      "lineNumber": 5819,
+      "columnNumber": 20,
+      "samples": 1,
+      "selfMicroseconds": 1054,
+      "percent": 0.003078204950915919
+    },
+    {
+      "functionName": "#translate",
+      "url": "node:internal/modules/esm/loader",
+      "lineNumber": 424,
+      "columnNumber": 12,
+      "samples": 1,
+      "selfMicroseconds": 1041,
+      "percent": 0.0030402384761892523
+    },
+    {
+      "functionName": "std::__2::unique_ptr<std::__2::locale::facet, std::__2::(anonymous namespace)::releaser>::~unique_ptr[abi:ne200100]()",
+      "url": "wasm://wasm/mujoco.wasm-02903992",
+      "lineNumber": 0,
+      "columnNumber": 4336228,
+      "samples": 1,
+      "selfMicroseconds": 1039,
+      "percent": 0.0030343974800774573
+    },
+    {
+      "functionName": "ErrnoError",
+      "url": "dist/vendor/mujoco-3.16.0/mujoco.js",
+      "lineNumber": 2117,
+      "columnNumber": 19,
+      "samples": 1,
+      "selfMicroseconds": 747,
+      "percent": 0.0021816120477554
+    },
+    {
+      "functionName": "delete",
+      "url": "dist/vendor/mujoco-3.16.0/mujoco.js",
+      "lineNumber": 4494,
+      "columnNumber": 16,
+      "samples": 1,
+      "selfMicroseconds": 740,
+      "percent": 0.0021611685613641177
+    },
+    {
+      "functionName": "runDestructors",
+      "url": "dist/vendor/mujoco-3.16.0/mujoco.js",
+      "lineNumber": 5055,
+      "columnNumber": 23,
+      "samples": 1,
+      "selfMicroseconds": 558,
+      "percent": 0.0016296379151907808
+    },
+    {
+      "functionName": "usesDestructorStack",
+      "url": "dist/vendor/mujoco-3.16.0/mujoco.js",
+      "lineNumber": 5064,
+      "columnNumber": 30,
+      "samples": 1,
+      "selfMicroseconds": 438,
+      "percent": 0.001279178148483086
+    },
+    {
+      "functionName": "now",
+      "url": "",
+      "lineNumber": -1,
+      "columnNumber": -1,
+      "samples": 1,
+      "selfMicroseconds": 347,
+      "percent": 0.0010134128253964174
+    },
+    {
+      "functionName": "assertIntegerRange",
+      "url": "dist/vendor/mujoco-3.16.0/mujoco.js",
+      "lineNumber": 4153,
+      "columnNumber": 27,
+      "samples": 1,
+      "selfMicroseconds": 190,
+      "percent": 0.0005548946306205167
+    },
+    {
+      "functionName": "toWireType",
+      "url": "dist/vendor/mujoco-3.16.0/mujoco.js",
+      "lineNumber": 5709,
+      "columnNumber": 22,
+      "samples": 1,
+      "selfMicroseconds": 21,
+      "percent": 0.0000613304591738466
+    }
+  ]
+}
