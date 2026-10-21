@@ -40,3 +40,7 @@ Even the rider-only static split depends on geometry and horizontal interface fo
 4. Compare fixed-COM load paths, COM shifts, braking and impact controls using signed forces, momentum and work. Preserve existing domains and last-accepted rollback; add measured rider data before calling a default representative of normal riding.
 
 The [machine receipt](evidence/iteration-20-rider-load-review.json) retains record hashes, every sampled load/COM value, formula-derived quantities and spring bounds. Reproduce it with `node scripts/rider-load-review.mjs full-articulated-standing.json hardtail-articulated-standing.json output.json`. This review changes no physics, UI, parameter or acceptance budget. The existing numerical gates remain passed; maintained standing and seated support remain open D5a requirements.
+
+## Subsequent support display
+
+The next UI increment implements item 1: signed hand/foot x/z components, explicitly labelled magnitudes, separate rider histories, rider weight, net vertical force including gravity and segment-weighted COM vertical velocity. It displays no percentages and does not classify a momentary force balance as equilibrium. Applied-record provenance is explicit during edits; zero-gravity, no-frame and mode-switch cases have dedicated checks. No simulation force, parameter, record version or balance acceptance criterion changed. Hosted browser verification remains pending at this implementation checkpoint.
