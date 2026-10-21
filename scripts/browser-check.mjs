@@ -55,7 +55,7 @@ try {
   };
   const noOverflow=async()=>assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'horizontal overflow');
   await page.goto(root);await ready();
-  // Construction parity only; the articulated rider is not yet in the simulation.
+  // Isolated construction parity; moving articulated checks follow in Trail bike.
   const postureInputs=[{}, {riderMass:35,kneeSide:-1,elbowSide:1}];
   const browserPostures=await page.evaluate(async({root,inputs})=>{
     const {constructPosture}=await import(root+'rider-posture.js');

@@ -1,6 +1,7 @@
 // Instantaneous named connect diagnostics. The caller owns forward evaluation,
 // native model/data lifetime and copying borrowed results into history.
 export const ATTACHMENTS = Object.freeze(['hand', 'foot']);
+export class RiderInterfaceNumericalError extends Error {}
 const VECTORS = ['rider', 'bike', 'gap', 'nativeResidual', 'forceOnRider', 'riderVelocity', 'bikeVelocity',
   'momentOnRider', 'momentOnBike', 'pairMoment'];
 const SCALARS = ['active', 'rows', 'powerOnRider', 'powerOnBike', 'pairPower', 'rowPower', 'powerResidual'];
@@ -8,6 +9,18 @@ const record = name => ({name, ...Object.fromEntries(VECTORS.map(key => [key, ne
   active: false, rows: 0, powerOnRider: 0, powerOnBike: 0, pairPower: 0, rowPower: 0, powerResidual: 0});
 const result = () => ({attachments: ATTACHMENTS.map(record), pairMoment: new Float64Array(3),
   pairPower: 0, rowPower: 0, powerResidual: 0, otherEqualityRows: 0});
+// Recording storage is allocated before stepping, then filled without retaining
+// the observer's borrowed result. Materialize JSON only after integration.
+export const createClosureStorage = result;
+export function storeClosure(source, target) {
+  for (let i = 0; i < ATTACHMENTS.length; i++) {
+    for (const key of VECTORS) target.attachments[i][key].set(source.attachments[i][key]);
+    for (const key of SCALARS) target.attachments[i][key] = source.attachments[i][key];
+  }
+  target.pairMoment.set(source.pairMoment);
+  for (const key of ['pairPower', 'rowPower', 'powerResidual', 'otherEqualityRows']) target[key] = source[key];
+  return target;
+}
 function cross(a, b, out, sign = 1) {
   out[0] = sign * (a[1] * b[2] - a[2] * b[1]);
   out[1] = sign * (a[2] * b[0] - a[0] * b[2]);
@@ -94,9 +107,9 @@ export function createRiderClosureObserver(mj, model, data) {
         }
         a.powerResidual = a.pairPower - a.rowPower;
         for (const key of VECTORS) for (let axis = 0; axis < 3; axis++) {
-          if (!Number.isFinite(a[key][axis])) throw Error('Nonfinite rider interface state.');
+          if (!Number.isFinite(a[key][axis])) throw new RiderInterfaceNumericalError('Nonfinite rider interface state.');
         }
-        for (const key of SCALARS) if (key !== 'active' && !Number.isFinite(a[key])) throw Error('Nonfinite rider interface load.');
+        for (const key of SCALARS) if (key !== 'active' && !Number.isFinite(a[key])) throw new RiderInterfaceNumericalError('Nonfinite rider interface load.');
       }
       pending.pairMoment.fill(0); pending.pairPower = 0; pending.rowPower = 0;
       for (const a of pending.attachments) {
@@ -105,7 +118,7 @@ export function createRiderClosureObserver(mj, model, data) {
       }
       pending.powerResidual = pending.pairPower - pending.rowPower;
       if (!pending.pairMoment.every(Number.isFinite) || !Number.isFinite(pending.pairPower) ||
-          !Number.isFinite(pending.rowPower) || !Number.isFinite(pending.powerResidual)) throw Error('Nonfinite rider interface total.');
+          !Number.isFinite(pending.rowPower) || !Number.isFinite(pending.powerResidual)) throw new RiderInterfaceNumericalError('Nonfinite rider interface total.');
       // Publish only after the complete read passes; failure preserves the last result.
       for (let i = 0; i < connections.length; i++) {
         for (const key of VECTORS) output.attachments[i][key].set(pending.attachments[i][key]);

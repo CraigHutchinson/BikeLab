@@ -23,12 +23,13 @@ export function riderParts(input = {}) {
 
 // Static passive-law prerequisite. These fragments do not enforce ultimate
 // domains: a future integrator must own candidate guards and rollback.
-export function passiveRiderParts(input = {}) {
+export function passiveRiderParts(input = {}, closureTime = CLOSURE.solref[0]) {
+  if (!Number.isFinite(closureTime) || closureTime < .005 || closureTime > .05) throw Error('Rider closure time must be within [0.005, 0.05] s.');
   const passive = compilePassiveRider(input);
-  return {...partsFromPosture(passive.posture, passive), passive};
+  return {...partsFromPosture(passive.posture, passive, closureTime), passive};
 }
 
-function partsFromPosture(posture, passive) {
+function partsFromPosture(posture, passive, closureTime = CLOSURE.solref[0]) {
   const {spec, joints} = posture, s = spec.segments;
   const joint = name => {
     const law = passive?.laws.find(law => law.nativeName === name);
@@ -48,7 +49,7 @@ function partsFromPosture(posture, passive) {
   const slides = `<joint name="riderX" type="slide" axis="${c} 0 ${sn}" ref="0" stiffness="0" damping="0" frictionloss="0" limited="false"/><joint name="riderZ" type="slide" axis="${-sn} 0 ${c}" ref="0" stiffness="0" damping="0" frictionloss="0" limited="false"/>`;
   const body = `<body name="rider_trunk" pos="${xyz(spec.hip)}" quat="${quat(spec.trunkPitch)}">${slides}${hinge('riderPitch')}${inertial('trunk')}${end('trunk')}${legs}${arms}</body>`;
   const sites = ATTACHMENTS.map(name => `<site name="bike_${name}" pos="${xyz(spec[name])}"/>`).join('');
-  const equality = ATTACHMENTS.map(name => `<connect name="rider_${name}_closure" site1="rider_${name}" site2="bike_${name}" solref="${CLOSURE.solref.join(' ')}" solimp="${CLOSURE.solimp.join(' ')}"/>`).join('');
+  const equality = ATTACHMENTS.map(name => `<connect name="rider_${name}_closure" site1="rider_${name}" site2="bike_${name}" solref="${closureTime} ${CLOSURE.solref[1]}" solimp="${CLOSURE.solimp.join(' ')}"/>`).join('');
   return {posture, body, sites, equality};
 }
 
