@@ -38,3 +38,5 @@ M1–M6 form a progression, not a promise that their outcomes already follow fro
 - Refine solver time, command timing, contact-event time and casing/terrain resolution independently. Fixed commands test mechanics; closed-loop controllers need separately recorded feedback and commands so their adaptation cannot conceal a model error. Browser and offline runs share the same versioned scenario and accepted transitions.
 
 Acceptance budgets must be declared per receiving case before tuning. Keep qualitative behavior, numerical balance/refinement, measured calibration, visual inspection and real-time performance as separate evidence. Offline playback of a successful trick does not establish a real-time game simulation.
+
+Seated support, unseated hovering, chosen absorption/resistance and transitions have a separate [primary-source research follow-up](RIDER_SEATED_UNSEATED.md). Keep intended posture distinct from actual saddle contact; receive passive support first, then identify bounded active strategies from measured motion and loads.

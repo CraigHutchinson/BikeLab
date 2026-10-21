@@ -56,3 +56,7 @@ Five new tests pass, including independent potential gradients, both rate signs,
 Next small increment: independently owned chassis configuration and named equality force/work observation with preallocated storage, then unilateral saddle contact. Integration must include guard/rollback, closure/energy/momentum refinement, actual segment rendering and both hardtail/full-suspension receiving cases. Preserve the PR22 command-rollback coverage follow-up and all failure/3D/terrain/manoeuvre stretch goals above.
 
 The follow-up [load-accounting review](ITERATION_20_REVIEW.md#mass-work-and-state-ownership) also reproduced a nonzero root-pitch constraint load from a softened open hand/foot closure on a fixture with no ground. Future articulated integration must separate this numerical pair moment from tyre-ground impulse; the current guided-mode root-total shortcut is not sufficient once equality rows are added.
+
+## Desktop continuation, 2026-10-21
+
+The desktop checkout fast-forwarded from `92f2b01` to remote `469fb8098e52172d3ed46e3eeb6feecebe431104`; local history now follows the actual remote branch. The earlier cloud ancestry instructions above describe that session, not this checkout. The requested [seated/unseated research follow-up](RIDER_SEATED_UNSEATED.md) now records primary MTB evidence, its limits, rider choice versus physical saddle support, and ordered passive/data/active/LOD gates. Preserve it when connecting the passive rider.

@@ -267,3 +267,7 @@ Next D4b: deterministic tick-based rear drive and front/rear brake capacities. V
 [D4b](ITERATION_19_EVIDENCE.md) adds rear drive and separate front/rear brake capacities, deterministic command schedules and editing, wheel spin/solved-torque histories, and consistent carrier, ground-moment and work ownership. Both connected assemblies retain travel/support limits and legacy replay. Independent rotor/pair controls accompany the browser/headless examples. Regularized brakes, synthetic geometry and unresolved casing/timestep sensitivity do not establish physical stopping accuracy.
 
 Next D5: review guided rider/stop load paths and source a bounded passive articulated rider with segment mass/inertia, posture and explicit hand/foot/saddle force/work ownership. Receive it on the same connected trail consumer with fixed/passive comparison modes before active controls and contact release/recontact. Keep the component failure/pressure-loss, layered terrain/mud, 3D lateral/turning, provenance and measured adaptive/multirate gates open.
+
+## Seated and unseated rider research follow-up
+
+[Primary evidence and receiving plan](RIDER_SEATED_UNSEATED.md) capture seated support, bent-leg hovering and rider-selected absorption/resistance. Relative rider COM stability remains an observable/control objective with bounded effort. D5a supplies passive contacts; later measured identification supplies style/control choices and game-tier validation.
