@@ -1,5 +1,7 @@
 # Iteration 20 completeness review and session handoff
 
+The 2026-10-21 [PR gap and performance review](PR23_GAP_REVIEW.md) records the current receiving gaps and the serial measurement protocol. Start there for the latest review; keep its measured performance results separate from construction correctness and physical calibration.
+
 Reviewed 2026-10-20. Continue [draft PR #23](https://github.com/CraigHutchinson/BikeLab/pull/23), branch `codex/articulated-rider-review`. This session synchronized and reviewed remote `92f2b01af1462967a68d99a81fa9a9eeeccb98a2` before adding the passive joint-law prerequisite below. Base main is merged PR #22 at `e73f6cc9d5bd130ec632bcb4d890ad7286ddb4cf`. Refresh both remote heads before resuming; D5a remains incomplete.
 
 **Assessment:** the native rider construction prerequisite is implemented and independently checked at initialization. It is not a complete articulated-rider design or a received D5a feature. No blocking defect was identified in the current posture constructor; the major risks are the still-unimplemented closed-chain dynamics and interface accounting.
