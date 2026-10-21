@@ -108,3 +108,10 @@ The summarizer checks sample/delta shape and accounting totals; the run harness 
 ## Subsequent observer and research increment
 
 After synchronizing `469fb80`, [seated/unseated rider research](RIDER_SEATED_UNSEATED.md) was captured with primary-source limits and staged measurement/control gates. [Named closure observation](RIDER_INTERFACES.md) now supplies the force/work/moment decomposition needed by G2 and is consumed by the native/passive inspections. Its instantaneous checks do not complete connected routing, saddle support or G1/G3. G7's three-mode CLI replay/error gap is now covered automatically; post-command endpoint rollback remains open. The observer makes no connected performance change, and the measured baseline above remains tied to its original source hashes.
+
+
+## Connected unseated update, 2026-10-21
+
+Implementation `e312974` addresses G1's first moving unseated case and G3's independent chassis configuration, with actual native segment rendering and seven-coordinate/segment-velocity records. G2 now routes hand/foot work separately and derives external terrain wrench from wheel resultants; physical momentum residual and closure angular impulse stay distinct. Natural joint-domain rejection and controlled post-command numerical failures exercise rollback, including activation and complete final-frame equality, addressing G7's retained lifecycle subpath. See [moving contract and evidence](RIDER_CONNECTED.md).
+
+D5a is still incomplete: saddle support/transitions, a matched locked-posture connected control and broader conditioning/motion acceptance remain open. G4–G6/G8 performance/storage work and later physical failure, layered terrain and 3D requirements are unchanged. The performance measurements above remain historical guided-bike measurements, not articulated timing or a claim of real-time readiness.

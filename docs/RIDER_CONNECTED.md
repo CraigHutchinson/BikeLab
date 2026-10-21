@@ -33,4 +33,23 @@ Numerical observation failures become named termination/rollback; malformed topo
 
 Primary source checks use pinned MuJoCo 3.16.0 `a892750516336d8358949f4518fcc4fbbd85beae`: `mj_instantiateEquality` in `engine_core_constraint.c` defines rider-minus-bike connect rows; `mj_rnePostConstraint` in `engine_core_smooth.c` already applies paired forces at actual sites and omits flex contacts; `mj_forward`/`mj_step` in `engine_forward.c` establish force freshness; `mj_objectVelocity` in `engine_core_util.c` returns body velocity at its inertial COM. These support the existing omitted-flex correction and separate internal closure ledger. The source-backed [interface contract](RIDER_INTERFACES.md) retains the detailed force conventions.
 
-Complete validation and browser/visual inspection remain pending at this implementation checkpoint. Initial trials and the predeclared budgets must not be described as receiving saddle transitions, active manoeuvres, anatomy, calibration, 3D or real-time performance.
+## Numerical receiving results
+
+Implementation `e312974` has a [source-hashed receipt](evidence/iteration-20-connected-rider.json), reproducible with `node scripts/rider-connected-evidence.mjs`. All ten 0.1 s runs complete: both-bike separated flight, standing relaxation at three timesteps, and a separate 10 ms closure-time control. The unchanged legacy full-flat case retains its complete-output SHA-256 from `303380c` exactly.
+
+| Standing relaxation | Step / µs | Maximum gap / mm | Maximum energy-balance error / J |
+| --- | ---: | ---: | ---: |
+| Full suspension | 31.25 | 0.7793 | 0.01901 |
+| Full suspension | 15.625 | 0.7774 | 0.00756 |
+| Full suspension | 7.8125 | 0.7766 | 0.00325 |
+| Hardtail | 31.25 | 0.7046 | 0.01306 |
+| Hardtail | 15.625 | 0.7037 | 0.00428 |
+| Hardtail | 7.8125 | 0.7032 | 0.00175 |
+
+Both initial closures/relative velocities pass `1e-10`. Medium/fine final rider-COM position differences are below 2 µm, frame-position differences below 9 µm and energy differences below 0.002 J. Sampled physical linear/angular momentum residuals remain below 0.011 N s / N m s at the coarsest step and reduce with timestep refinement. Full-suspension final pitch error is not monotone across these three steps, so this is bounded sensitivity evidence, not a demonstrated convergence order. The nonzero soft-closure gap persists under timestep refinement; it is not integration error that disappears simply by reducing dt.
+
+At fixed 31.25 µs, the 10 ms closure control reduces maximum gaps to 0.334 / 0.284 mm and changes signed closure work from −0.1626 / −0.1485 J to −0.0611 / −0.0541 J (full/hardtail). The 20 ms setting's closure angular impulses are 0.000647 / 0.000602 N m s. These numerical contributions are reported, never hidden as terrain work or compensated physical conservation. The control demonstrates regularization sensitivity and does not identify a physical attachment stiffness.
+
+All seven connected tests pass locally, covering independent chassis mass/tensor, compatible and rotating launch with independently summed momentum, terrain/closure partition, native moving geometry and COM velocities, recording invariance/replay, timestep controls, natural angle-domain rejection and post-command rollback faults. The required full `node --test` finishes with 30 test files passing and ten failing under process/loopback restrictions; the new connected test file passes. Direct diagnostics confirm `spawnSync EPERM` and `listen EPERM`; no tests were weakened. Hosted [implementation CI](https://github.com/CraigHutchinson/BikeLab/actions/runs/39631713678) is the pending full-suite/browser check.
+
+Browser/visual inspection remains pending. No limb/frame collision, saddle transitions, matched locked-posture connected comparison, active manoeuvres, anatomy, calibration, 3D or real-time performance is received by these short trajectories. Longer passive relaxation may hit an ultimate joint limit and must stop rather than clamp, stretch a limb or invent support.
