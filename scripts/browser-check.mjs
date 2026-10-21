@@ -62,14 +62,14 @@ try {
     return inputs.map(input=>constructPosture(input));
   },{root,inputs:postureInputs});
   let postureMaxDifference=0;
-  const comparePosture=(actual,expected)=>{
+  const comparePosture=(actual,expected,tolerance=1e-12)=>{
     if(typeof expected==='number'){
       assert.ok(Number.isFinite(actual));
       const delta=Math.abs(actual-expected);postureMaxDifference=Math.max(postureMaxDifference,delta);
-      assert.ok(delta<=1e-12*Math.max(1,Math.abs(expected)));
+      assert.ok(delta<=tolerance*Math.max(1,Math.abs(expected)));
     }else if(expected&&typeof expected==='object'){
       assert.deepEqual(Object.keys(actual),Object.keys(expected));
-      for(const key of Object.keys(expected))comparePosture(actual[key],expected[key]);
+      for(const key of Object.keys(expected))comparePosture(actual[key],expected[key],key==='interfaceLoads'?1e-9:tolerance);
     }else assert.equal(actual,expected);
   };
   comparePosture(browserPostures,postureInputs.map(input=>constructPosture(input)));
@@ -81,9 +81,9 @@ try {
   },{root,inputs:postureInputs});
   const nativeExpected=[];for(const input of postureInputs)nativeExpected.push(await inspectNativePosture(input));
   postureMaxDifference=0;comparePosture(browserNative,nativeExpected);
-  report.riderNative={cases:browserNative.length,maxAbsolute:postureMaxDifference,normalizedTolerance:1e-12};
+  report.riderNative={cases:browserNative.length,maxAbsolute:postureMaxDifference,normalizedTolerance:1e-12,interfaceLoadNormalizedTolerance:1e-9};
   await writeFile(join(dir,'rider-native-browser.json'),JSON.stringify(browserNative,null,2));
-  report.checks.push('native rider construction: named attachments, full inertia and sparse-fixture site Jacobians agree across browser/Node; no integrated rider claim');
+  report.checks.push('native rider construction: named attachments, full inertia, sparse-fixture site Jacobians and separate interface force/work/moment reports agree across browser/Node; no integrated rider claim');
   const passiveInputs=[{}, {posture:{riderMass:35},joints:{
     hip:{...PASSIVE_DEFAULTS.joints.hip,restAngle:PASSIVE_DEFAULTS.joints.hip.restAngle+.12},
     shoulder:{...PASSIVE_DEFAULTS.joints.shoulder,restAngle:-1,minAngle:-1.2,maxAngle:3.3}
@@ -94,9 +94,9 @@ try {
   },{root,inputs:passiveInputs});
   const passiveExpected=[];for(const input of passiveInputs)passiveExpected.push(await inspectNativePassive(input));
   postureMaxDifference=0;comparePosture(browserPassive,passiveExpected);
-  report.riderPassive={cases:browserPassive.length,maxAbsolute:postureMaxDifference,normalizedTolerance:1e-12};
+  report.riderPassive={cases:browserPassive.length,maxAbsolute:postureMaxDifference,normalizedTolerance:1e-12,interfaceLoadNormalizedTolerance:1e-9};
   await writeFile(join(dir,'rider-passive-browser.json'),JSON.stringify(browserPassive,null,2));
-  report.checks.push('passive rider initialization: canonical laws, nonzero rest offsets, unwrapped springs and native force/energy decomposition agree across browser/Node; no dynamic or stop-enforcement claim');
+  report.checks.push('passive rider initialization: canonical laws, nonzero rest offsets, unwrapped springs, named closure loads and native force/energy decomposition agree across browser/Node; no dynamic or stop-enforcement claim');
   const invalidPosture=await page.evaluate(async root=>{
     const {constructPosture,DEFAULTS}=await import(root+'rider-posture.js');
     try{constructPosture({foot:[...DEFAULTS.hip]});return null;}catch(error){return error.message;}

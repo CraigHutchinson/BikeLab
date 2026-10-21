@@ -104,3 +104,7 @@ The summarizer checks sample/delta shape and accounting totals; the run harness 
 2. Receive passive connected standing and saddle transitions with guard/rollback, conservation/refinement and actual geometry on both bikes.
 3. Use measured whole-system costs to choose phase-local native view reuse, stage scheduling, storage/streaming and contact-search improvements. A small exact-parity view-reuse investigation can proceed independently of articulated integration. Validate fixed nonuniform meshes before live remeshing or multirate transfer; never drop guards to improve a timing.
 4. Add bounded active rider work and manoeuvre controls, then broader terrain/failure/3D envelopes with their separate physical validation and latency budgets.
+
+## Subsequent observer and research increment
+
+After synchronizing `469fb80`, [seated/unseated rider research](RIDER_SEATED_UNSEATED.md) was captured with primary-source limits and staged measurement/control gates. [Named closure observation](RIDER_INTERFACES.md) now supplies the force/work/moment decomposition needed by G2 and is consumed by the native/passive inspections. Its instantaneous checks do not complete connected routing, saddle support or G1/G3. G7's three-mode CLI replay/error gap is now covered automatically; post-command endpoint rollback remains open. The observer makes no connected performance change, and the measured baseline above remains tied to its original source hashes.

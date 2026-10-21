@@ -39,3 +39,5 @@ Read MuJoCo 3.16.0 at vendored commit `a892750516336d8358949f4518fcc4fbbd85beae`
 - [Native spring potential](https://github.com/google-deepmind/mujoco/blob/a892750516336d8358949f4518fcc4fbbd85beae/src/engine/engine_sensor.c#L1793) and [polynomial potential](https://github.com/google-deepmind/mujoco/blob/a892750516336d8358949f4518fcc4fbbd85beae/src/engine/engine_util_misc.c#L2352).
 
 Next: independent chassis mass/COM/inertia, named hand/foot equality force/work routing and unilateral saddle contact, followed by passive connected integration, rollback, shared records and actual segment visualization on both bikes. Keep suspension/casing bounds and unsupported-overload termination. Physical rim/spoke/frame/bead failure, pressure loss, active pumping/wheelie/hop/endo controls, layered terrain, adaptive real-time tiers and 3D remain separate open work.
+
+Native passive reports now use `bikelab-rider-native-passive-0.2` with [named hand/foot load/work observation](RIDER_INTERFACES.md); the input law format stays `bikelab-rider-passive-0.1`. This does not add time integration or saddle support.

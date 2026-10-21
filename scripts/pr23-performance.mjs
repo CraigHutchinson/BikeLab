@@ -24,7 +24,7 @@ const digest = value => createHash('sha256').update(value).digest('hex');
 const optionalFile = async path => {try {return (await readFile(path, 'utf8')).trim();} catch {return null;}};
 const stats = samples => {const sorted = [...samples].sort((a, b) => a - b); return {samples, min: sorted[0], median: sorted[Math.floor(sorted.length / 2)], max: sorted.at(-1)};};
 const sourceSha256 = {};
-for (const path of ['scripts/pr23-performance.mjs', 'dist/rider-posture.js', 'dist/rider-native.js', 'dist/rider-passive.js',
+for (const path of ['scripts/pr23-performance.mjs', 'dist/rider-posture.js', 'dist/rider-native.js', 'dist/rider-passive.js', 'dist/rider-interfaces.js',
   'dist/trail-bike.js', 'dist/moving-wheel.js', 'dist/wheel-limits.js', 'dist/bike-assembly.js', 'dist/bike-rig.js',
   'dist/linkage.js', 'dist/rig-loads.js', 'dist/travel-buffer.js', 'dist/drive-controls.js', 'dist/terrain.js',
   'dist/vendor/mujoco-3.16.0/mujoco.js', 'dist/vendor/mujoco-3.16.0/mujoco.wasm']) {

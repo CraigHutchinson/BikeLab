@@ -1,11 +1,12 @@
 // Native construction prerequisite for the connected rider. No time integration.
 import {constructPosture, SEGMENTS} from './rider-posture.js';
 import {getRuntime} from './moving-wheel.js';
+import {ATTACHMENTS, createRiderClosureObserver, copyClosureReport} from './rider-interfaces.js';
+export {ATTACHMENTS} from './rider-interfaces.js';
 import {compilePassiveRider, evaluatePassiveRider, LOAD_STRIDE} from './rider-passive.js';
 
-export const FORMAT = 'bikelab-rider-native-0.1';
+export const FORMAT = 'bikelab-rider-native-0.2';
 export const RIDER_JOINTS = Object.freeze(['riderX', 'riderZ', 'riderPitch', 'riderHip', 'riderKnee', 'riderShoulder', 'riderElbow']);
-export const ATTACHMENTS = Object.freeze(['hand', 'foot']);
 // Numerical regularization for this construction fixture, not tissue properties.
 export const CLOSURE = Object.freeze({solref: Object.freeze([.02, 1]), solimp: Object.freeze([.9, .95, .001, .5, 2])});
 const quat = angle => `${Math.cos(angle / 2)} 0 ${Math.sin(angle / 2)} 0`;
@@ -83,7 +84,7 @@ export async function inspectNativePassive(input = {}) {
 
 async function inspectParts(parts) {
   const mj = await getRuntime();
-  let model, data, riderJacobian, bikeJacobian, rotationJacobian;
+  let model, data, riderJacobian, bikeJacobian, rotationJacobian, interfaceObserver;
   try {
     model = mj.MjModel.from_xml_string(fixtureXML(parts)); data = new mj.MjData(model);
     mj.mj_forward(model, data);
@@ -127,15 +128,17 @@ async function inspectParts(parts) {
         jacobian: [0, 1, 2].map(axis => dofs.map(({index}) => jr[axis * model.nv + index] - jb[axis * model.nv + index])),
         residual: rows.map(row => data.efc_pos[row])};
     });
+    interfaceObserver = createRiderClosureObserver(mj, model, data);
+    const interfaceLoads = copyClosureReport(interfaceObserver.read());
     const report = {format: FORMAT, spec: parts.posture.spec, engine: 'MuJoCo 3.16.0',
       scope: 'Native initial construction only; no integration, passive joint law, saddle, connected-bike dynamics or anatomical calibration.',
       coordinates: 'SI; frame x forward, y left, z up; joint values are zero deviations from the constructed posture. Tensors row-major in world axes.',
       dofs, qpos: Array.from(data.qpos), equalityRows: data.nefc, closure: CLOSURE,
-      segments, aggregate: {mass, com, inertiaCOM}, attachments};
+      segments, aggregate: {mass, com, inertiaCOM}, attachments, interfaceLoads};
     if (parts.passive) {
       const values = evaluatePassiveRider(parts.passive, [0, 0, 0, 0], [0, 0, 0, 0], new Float64Array(4 * LOAD_STRIDE));
       mj.mj_energyPos(model, data);
-      report.format = 'bikelab-rider-native-passive-0.1'; report.spec = parts.passive.spec;
+      report.format = 'bikelab-rider-native-passive-0.2'; report.spec = parts.passive.spec;
       report.scope = 'Initial native passive-law evaluation only; no integration, enforced stops, saddle, connected-bike dynamics, strength or anatomical calibration.';
       report.passive = {joints: parts.passive.laws.map((law, i) => {
         const joint = id('mjOBJ_JOINT', law.nativeName), q = model.jnt_qposadr[joint], v = model.jnt_dofadr[joint], at = i * LOAD_STRIDE;
@@ -146,5 +149,5 @@ async function inspectParts(parts) {
       ownership: 'Native qfrc_passive and energy[0] already include these spring loads and potentials; joint entries are a decomposition, not an additional force or energy.'};
     }
     return report;
-  } finally {rotationJacobian?.delete(); bikeJacobian?.delete(); riderJacobian?.delete(); data?.delete(); model?.delete();}
+  } finally {interfaceObserver?.delete(); rotationJacobian?.delete(); bikeJacobian?.delete(); riderJacobian?.delete(); data?.delete(); model?.delete();}
 }

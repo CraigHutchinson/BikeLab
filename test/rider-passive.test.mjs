@@ -143,7 +143,7 @@ test('native scalar springs own forces and energy once with untethered rider roo
 test('initial passive inspection exposes canonical rest offsets and native load decomposition for replay', async () => {
   for (const input of [{}, shifted(), opposite()]) {
     const report = await inspectNativePassive(input);
-    assert.equal(report.format, 'bikelab-rider-native-passive-0.1');
+    assert.equal(report.format, 'bikelab-rider-native-passive-0.2');
     assert.deepEqual(await inspectNativePassive(copy(report.spec)), report);
     assert.ok(report.qpos.every(x => x === 0));
     for (const joint of report.passive.joints) {near(joint.nativeTorque, joint.torque); near(joint.dampingLossPower, 0);}

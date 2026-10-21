@@ -60,3 +60,11 @@ The follow-up [load-accounting review](ITERATION_20_REVIEW.md#mass-work-and-stat
 ## Desktop continuation, 2026-10-21
 
 The desktop checkout fast-forwarded from `92f2b01` to remote `469fb8098e52172d3ed46e3eeb6feecebe431104`; local history now follows the actual remote branch. The earlier cloud ancestry instructions above describe that session, not this checkout. The requested [seated/unseated research follow-up](RIDER_SEATED_UNSEATED.md) now records primary MTB evidence, its limits, rider choice versus physical saddle support, and ordered passive/data/active/LOD gates. Preserve it when connecting the passive rider.
+
+## Named closure observation increment
+
+The [rider interface observer](RIDER_INTERFACES.md) is now consumed by native and passive CLI/browser inspections. It resolves fresh hand/foot rows, returns actual site motion, signed side/pair work, native row work and paired world-origin wrenches, and preserves the previous published result on failure. The numerical closure moment is explicit; it is not external terrain torque. Sleeping/mocap interfaces remain unsupported. Input specifications stay at 0.1; both native report formats advance to 0.2. This still performs no articulated trail integration.
+
+Independent controls cover native RNE point-force ownership, generalized-force/work projection, finite-difference site velocities, dense/sparse storage, disabled/reactivated and unrelated rows, metadata/nonfinite rejection, actual native memory growth and owned report copies. The three CLI modes now have automated canonical replay and error checks; the separate post-command rollback gap remains open. Do not infer zero allocation from reused observer scratch: native getters still construct short-lived views.
+
+Next receive independently owned chassis mass/COM/inertia and these interface partitions in the connected lifecycle, with complete diagnostic-state copying including `eq_active`. Then add unilateral saddle routing, domain rollback, moving closure/work/momentum refinement and actual segment rendering on both bikes. Keep physical external-momentum residual and numerical closure contribution separate. The completed observer is a prerequisite, not evidence that the existing guided-bike root-wrench shortcut is valid with articulated equalities.
