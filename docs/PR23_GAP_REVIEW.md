@@ -30,7 +30,39 @@ Run serially with no other agent simulations, tests or benchmarks. Preserve all 
 4. Time the unchanged geometric guard at fixed 32/64/128-node separated rings as a scaling diagnostic. It is not an approved reduced-fidelity wheel tier or an impact-accuracy comparison. Profile one complete square-rock run separately; profiling instrumentation is excluded from throughput samples.
 5. Record before/after memory snapshots and process lifetime RSS high-water explicitly. They do not establish isolated per-case peaks or a memory leak. Source-derived slot reservations remain separate from those measurements.
 
-Measurements are pending at this first review checkpoint. Commit the harness and raw receipt with the results; do not replace open performance gates with estimated rates.
+The serial harness and [raw performance receipt](evidence/pr23-performance.json) now receive this initial measurement protocol. No production physics, timestep, guard or recording setting was changed. CPU attribution remains a separate follow-up below.
+
+## Measured throughput and storage
+
+Run `node scripts/pr23-performance.mjs --source-ref 303380ceb2ffc517edf6d8d1b61079eb196fdc75 --output artifacts/performance/pr23.json`. The script checks completion, canonical 64-node/31.25 µs settings and complete-output hashes across a warm-up plus three measured repetitions. All six cases passed those checks. The receipt includes full scenarios, model/source hashes and every raw sample.
+
+This shared Linux worker reports Intel Xeon Platinum 8573C, Node 24.19.0, a two-CPU cgroup quota and 8 GiB memory limit. The vendored MuJoCo WASM build is single-threaded. No agent tests/simulations or other benchmark ran concurrently. Host contention, frequency and thermal conditions are uncontrolled. These measurements establish an offline baseline on this worker, not a target-device guarantee or a PR23 slowdown: the measured guided-bike integration path predates the new rider prerequisites.
+
+| Guided bike case | Simulated duration | Median wall seconds per simulated second | Measured range | JSON result bytes |
+| --- | ---: | ---: | ---: | ---: |
+| Full suspension, flat | 0.1 s | 29.45 | 28.70–31.33 | 211,849 |
+| Hardtail, flat | 0.1 s | 27.06 | 26.95–27.26 | 209,231 |
+| Full suspension, flight | 0.2 s | 21.81 | 21.61–24.98 | 322,190 |
+| Hardtail, flight | 0.2 s | 21.05 | 20.73–21.06 | 320,534 |
+| Full suspension, square rock | 1.0 s | 29.93 | 29.50–33.05 | 2,035,563 |
+| Hardtail, square rock | 1.0 s | 28.72 | 28.70–31.68 | 2,022,199 |
+
+**The current connected reference is not real time on this worker:** the measured medians consume roughly 21–30 wall seconds per simulated second. This includes setup/materialization and is not a per-tick latency distribution. Both contact-free flight and impact are slow; turning off detailed contact alone is not an evidenced route to real time. The full/hardtail models have 264/263 velocity coordinates. Three repeats do not establish worst-case cost, stationarity, a stable percentile or broad scenario coverage.
+
+| Isolated prerequisite/guard | Median time per call | Scope |
+| --- | ---: | --- |
+| Construct geometric posture | 25.42 µs | Allocation and complete report |
+| Compile passive configuration | 40.17 µs | Validation, construction and owned specification |
+| Evaluate four passive joints | 0.088 µs | Reused storage; batch/loop/checksum overhead included |
+| Reused native passive forward | 9.04 µs | Ten-DOF static carrier, closed pose with offset hip rest; no integration |
+| Complete native passive inspection | 2,232 µs | Build/forward/report/delete, distinct from a per-tick path |
+| Separated-ring guard, 32 / 64 / 128 nodes | 5.37 / 12.08 / 42.30 µs | Fixed separated geometry, not approved fidelity alternatives |
+
+Lazy WASM initialization took about 200 ms after JS imports. The fast four-joint kernel and small static native fixture do not predict moving articulated overhead in the 264-coordinate bike. The guard's edge-pair counts are 464/1,952/8,000 at 32/64/128 nodes; the measured scaling supports investigating hierarchy/candidate filtering, without receiving any lower-resolution physical model.
+
+The 1 s square cases retain 201 frames and about 2.0 MB of JSON. Median JSON serialization was 13.36 ms full / 21.54 ms hardtail; Node structured clone was 11.99 / 12.49 ms. These are whole-result Node costs, not browser worker-transfer or render latency. Both runs reserve 9.52 MiB of contacts before actual occupancy is known. The process lifetime RSS high-water reached approximately 361 MiB across all cases/warm-ups/clones, and native backing capacity grew from about 16.8 to 73.0 MiB. These are cumulative process observations; neither a per-case peak nor a leak is established. The cgroup reported about 0.14 s additional throttling across the measurement, without establishing the absence of other host interference.
+
+Prioritize measured whole-system CPU attribution, safe native-stage reuse and recording/transfer design. Preserve diagnostic freshness and all guards. Do not optimize the already tiny scalar joint arithmetic while treating the coupled solve, allocation and scheduling costs as solved. Articulated moving dynamics, long runs, 1–2 cm terrain, layered/muddy contact, 3D and active manoeuvres still need their own fidelity/performance receipts.
 
 ## Next work order
 
