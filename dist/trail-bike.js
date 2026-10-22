@@ -1,4 +1,4 @@
-import {STATE_MODEL,RUN_MOTION,validateInitialization,canonicalModelXML,stateIdentity,scalarLayout,applyState,captureState} from './trail-initial-state.js';
+import {STATE_MODEL,RUN_MOTION,validateInitialization,canonicalModelXML,stateIdentity,scalarLayout,applyState,captureState,scalarStateIssue} from './trail-initial-state.js';
 import {DEFAULTS as RIG_DEFAULTS,validate as validateRig} from './bike-rig.js';
 import {bikeAssembly} from './bike-assembly.js';
 import {geometryFor,shockLength,shockCompressionJacobian} from './linkage.js';
@@ -169,7 +169,7 @@ export async function run(input={}){
     if(previous&&Math.abs(data.qpos[wheel.spin.q]-oldQ[wheel.spin.q])>.01)return wheel.name+'-spin-resolution-limit';
     if(previous){wheel.move[0]=wheel.hub[0]-wheel.oldHub[0];wheel.move[1]=wheel.hub[1]-wheel.oldHub[1];const swept=rimSweep(a.profile,wheel.oldHub,wheel.move,wheel.oldRimGap,w.rimRadius,w.radius);if(swept&&swept.status!=='clear')return wheel.name+'-swept-'+swept.status;}
    }
-   return null;
+   return layout?scalarStateIssue(layout,data):null;
   }
   function momentum(bodies,out){out.fill(0);for(const b of bodies){mj.mj_objectVelocity(model,data,bodyType,b,velocityBuffer,0);const v=velocityBuffer.GetView(),mass=model.body_mass[b],x=data.xipos[3*b],z=data.xipos[3*b+2];out[0]+=mass*v[3];out[1]+=mass*v[5];out[2]+=model.body_inertia[3*b+1]*v[1]+mass*(z*v[3]-x*v[5]);}}
   function corrected(bodyId,selected,out){origin[0]=diagnostic.xpos[3*bodyId];origin[1]=0;origin[2]=diagnostic.xpos[3*bodyId+2];at[0]=origin[0];at[1]=origin[2];interfaceWrench(model,diagnostic,bodyId,origin,out);

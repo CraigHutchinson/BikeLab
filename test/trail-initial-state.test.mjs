@@ -1,10 +1,28 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {run,replay,inputFromRecord,validate,modelXML,articulatedPreset} from '../dist/trail-bike.js';
-import {STATE_MODEL,canonicalModelXML,scalarLayout,applyState} from '../dist/trail-initial-state.js';
+import {STATE_MODEL,canonicalModelXML,scalarLayout,applyState,scalarStateIssue} from '../dist/trail-initial-state.js';
 import {getRuntime} from '../dist/moving-wheel.js';
 const fresh=r=>({...r.scenario,motion:Object.fromEntries(['gravity','duration','dt','sampleDt'].map(k=>[k,r.scenario.motion[k]])),initialization:{mode:'state',state:r.initialState}});
 const launch=bike=>{const a=articulatedPreset(bike,'flight');a.motion.duration=.02;a.initialization={mode:'launch'};return a;};
+test('state admission limits stop a run with an exportable accepted state and exact rollback',async()=>{
+ for(const bike of ['full','hardtail']){
+  const a=launch(bike);a.motion.gravity=15;const r=await run(a),b=fresh(r);
+  b.initialization.state=structuredClone(r.initialState);b.initialization.state.joints.find(j=>j.name==='heave').velocity=-10;
+  const stopped=await run(b);assert.equal(stopped.status,'terminated');assert.equal(stopped.termination.reason,'state-heave-velocity-limit');
+  assert.equal(stopped.summary.steps,0);assert.equal(stopped.frames.length,1);assert.equal(stopped.frames[0].time,0);
+  assert.equal(stopped.frames[0].constraintWork,0);assert.equal(stopped.frames[0].residual,0);assert.deepEqual(stopped.finalState,stopped.initialState);
+  assert.deepEqual(await replay(JSON.parse(JSON.stringify(stopped))),stopped);
+  const moving=launch(bike);moving.motion.velocityX=0;const fly=await run(moving),c=fresh(fly);
+  c.initialization.state=structuredClone(fly.initialState);const heave=c.initialization.state.joints.find(j=>j.name==='heave');heave.position=9.9999;heave.velocity=1;
+  const bounded=await run(c);assert.equal(bounded.status,'terminated');assert.equal(bounded.termination.reason,'state-heave-position-limit');
+  assert.ok(bounded.summary.steps>0);assert.ok(bounded.finalState.joints.find(j=>j.name==='heave').position<=10);
+  const restart=await run({...fresh(bounded),initialization:{mode:'state',state:bounded.finalState}});assert.equal(restart.status,'terminated');assert.deepEqual(restart.initialState,bounded.finalState);
+ }
+ const layout=[{name:'hinge',type:'hinge',q:1,v:0},{name:'slide',type:'slide',q:0,v:1}],d={qpos:[-10,100],qvel:[-100,10]};
+ assert.equal(scalarStateIssue(layout,d),null);d.qvel[0]=-100.001;assert.equal(scalarStateIssue(layout,d),'state-hinge-velocity-limit');
+ d.qvel[0]=-100;d.qpos[1]=100.001;assert.equal(scalarStateIssue(layout,d),'state-hinge-position-limit');
+});
 test('complete scalar state is owned, named, canonical and replayable on both bikes',async()=>{
  for(const bike of ['full','hardtail']){
   const r=await run(launch(bike));assert.equal(r.model,STATE_MODEL);assert.equal(r.status,'completed');

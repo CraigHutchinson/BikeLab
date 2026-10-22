@@ -4,6 +4,7 @@ export const STATE_FORMAT = 'bikelab-trail-state-0.1';
 export const STATE_MODEL = 'bikelab-trail-bike-articulated-0.2';
 export const RUN_MOTION = Object.freeze({gravity:9.80665, duration:.1, dt:.00003125, sampleDt:.005});
 const nativeBuild = '5d5d89ddd0857a6518c628fa502d42f99d6dd67ca240182f1068cd30a45465ac:e05ac96db7f45bd46e76fed6e3469bf9204329e093344d742a18bca2cc0e230e';
+const scalarLimit = type => type==='slide'?10:100;
 function object(value, keys, label) {
  if (!value || typeof value !== 'object' || Array.isArray(value) || ![Object.prototype,null].includes(Object.getPrototypeOf(value))) throw Error(label+' must be an object.');
  for (const key of Reflect.ownKeys(value)) if (!keys.includes(key)) throw Error('Unknown '+label+' field: '+String(key));
@@ -20,7 +21,7 @@ export function validateInitialization(value) {
   if(typeof j.name!=='string'||!j.name.length||j.name.length>100||names.has(j.name))throw Error('Invalid or duplicate state joint name.');names.add(j.name);
   if(!['slide','hinge'].includes(j.type))throw Error('Only scalar slide and hinge states are supported.');
   // Engineering admission bounds in metres/radians and m/s/rad/s; no angle wrapping.
-  const qmax=j.type==='slide'?10:100, vmax=j.type==='slide'?10:100;
+  const qmax=scalarLimit(j.type), vmax=scalarLimit(j.type);
   if(!Number.isFinite(j.position)||Math.abs(j.position)>qmax||!Number.isFinite(j.velocity)||Math.abs(j.velocity)>vmax)throw Error('State coordinate or rate outside supported SI range.');
   return Object.freeze({name:j.name,type:j.type,position:j.position,velocity:j.velocity});
  }).sort((a,b)=>a.name<b.name?-1:a.name>b.name?1:0);
@@ -66,4 +67,16 @@ export function applyState(state,identity,layout,data) {
 }
 export function captureState(identity,layout,data) {
  return validateInitialization({mode:'state',state:{format:STATE_FORMAT,identity,joints:layout.map(j=>({name:j.name,type:j.type,position:data.qpos[j.q],velocity:data.qvel[j.v]}))}}).state;
+}
+// Every accepted new-format state must remain exportable. These are numerical
+// admission limits, not component strength or injury thresholds.
+export function scalarStateIssue(layout,data) {
+ const q=data.qpos,v=data.qvel;
+ for(const j of layout){
+  const limit=scalarLimit(j.type);
+  if(!Number.isFinite(q[j.q])||!Number.isFinite(v[j.v]))return 'nonfinite-state';
+  if(Math.abs(q[j.q])>limit)return 'state-'+j.name+'-position-limit';
+  if(Math.abs(v[j.v])>limit)return 'state-'+j.name+'-velocity-limit';
+ }
+ return null;
 }

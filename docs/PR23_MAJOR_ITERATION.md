@@ -13,3 +13,13 @@ Validation: 10 focused tests pass (existing connected rider plus complete-state 
 ## Remaining major-iteration gates
 
 Receive coupled loaded reference states, finite unilateral saddle contacts and separate work/load classification, visible separation/recontact, broader controls and complete review. The initializer alone is not merge readiness. Numerical stationarity, physical calibration and real-time throughput remain separate claims.
+
+## Independent restart review, 2026-10-22
+
+The cloud checkout synchronized published head `c79b202` exactly. The user's later equilibrium/saddle experiments may remain on another machine; they are not in this published checkpoint. Keep their candidates unavailable for equilibrium until every model coordinate, including tyre nodes, meets stationarity gates. A small net rider force is insufficient. This continuation leaves that solver and saddle implementation separate.
+
+The published head's [CI run](https://github.com/CraigHutchinson/BikeLab/actions/runs/39805321197) passed the existing browser checks but failed one of 216 tests on each OS: the asset scanner mistook UI prose containing `from` for an import. Commit `48b44b2` restricts the scanner to module declarations and explicitly requires the new state module; the focused asset test passes. Those browser checks did not exercise the new state experiment/restart controls.
+
+GPT-6.1 Sol identified an exportability failure, reproduced locally: an admitted separated state at −10 m/s heave under gravity 15 m/s² stays physically supported by the domain guards but exceeds the initializer's speed bound before final export, which previously threw. New-format runs now apply the same scalar coordinate/rate limits as runtime domain guards after existing component checks and roll back rejected steps. These engineering bounds are not component strength limits. Legacy formats are unchanged. Four focused state tests pass, including both-bike exact-boundary stops, nonzero accepted prefixes, owned final state and replay.
+
+The UI now retains supplied-state provenance on initial rejection and restores launch controls immediately when leaving supplied-state mode without overwriting unrelated pending edits. A separate browser check exercises canonical launch, fresh restart, stored energy and zeroed ledgers, export/reimport, rejection, mode conversion/restore and narrow layouts on both bikes with the existing articulated 1e-9 normalized comparison budget. Hosted results and actual capture inspection are still pending for this increment.
