@@ -1,5 +1,13 @@
 # Iteration 20 completeness review and session handoff
 
+## Cloud continuation after complete state replay, 2026-10-22
+
+Published `c79b202` added complete fresh state and canonical geometry. The resumed checkout matched its tree exactly; the newer equilibrium/saddle experiment mentioned by the user may remain on the other machine. Preserve that work separately. No equilibrium or saddle-cycle result is received by this cloud continuation. Small net rider forces do not establish stationarity of tyre or other internal coordinates.
+
+Independent increments fix the CI asset scanner (`48b44b2`), make new-format accepted states remain exportable with guarded rollback and correct state UI provenance/lifecycle (`f284837`), and add the [short guided-rider 2D trail](TRAIL_SECTION.md) (`d7d2e22`). All four trail cases complete at the original and halved timesteps; load/energy sensitivity and sampled unloading/recontact are recorded without claiming a completed jump. Read [the current major-iteration review](PR23_MAJOR_ITERATION.md) for test scope and outstanding browser validation. Keep PR #23 draft and all existing physical limits.
+
+This cloud checkout has synthetic local ancestry. Publish exact trees with the actual remote parent and a branch lease; refresh remote heads before writing. Do not overwrite newer work from the other machine. The next dynamics work remains coupled equilibrium and unilateral saddle support; follow [the loaded-state plan](RIDER_EQUILIBRIUM_PLAN.md) and preserve all-coordinate stationarity, stored-energy, closure and replay requirements.
+
 ## Desktop receiving checkpoint, 2026-10-22
 
 The support-display iteration is received on the pinned browser. `c3ae724` fixes the Playwright option/label retargeting assertion and verifies actual native disabled state plus keyboard skipping. Local `node --test` passes 213 tests. [Implementation CI](https://github.com/CraigHutchinson/BikeLab/actions/runs/39744331686) passes both OS suites and all 31 complete Trail bike browser/Node records exactly. Both bikes' 390/320 px support panels and representative desktop, rejected, zero-gravity and stopped-state captures were inspected. [Evidence and limitations](ITERATION_20_EVIDENCE.md#signed-rider-support-display-received-2026-10-22) supersede the pending-browser checkpoint below.

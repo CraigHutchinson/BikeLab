@@ -26,11 +26,11 @@ export function reviewTrailSection(r){
   if(next!==mask){transitions.push({time:f.time,frontSupported:supported[0],rearSupported:supported[1]});current={mask:next,afterFirstBothSupported:loaded,firstTime:f.time,lastTime:f.time,samples:0};phases.push(current);mask=next;}
   current.lastTime=f.time;current.samples++;
  }
- const flight=phases.filter(p=>p.mask===0&&p.afterFirstBothSupported&&p.samples>=2);
+ const zeroSupport=phases.filter(p=>p.mask===0&&p.afterFirstBothSupported&&p.samples>=2);
  return {bike:r.scenario.bike.bike,dt:r.scenario.motion.dt,sampleDt:r.scenario.motion.sampleDt,status:r.status,acceptedTime:r.summary.acceptedTime,
   initialEnergy:r.summary.initialEnergy,maxEnergyResidual:r.summary.maxResidual,peakGroundForce:r.summary.peakForce,maxPenetration:r.summary.peakPenetration,peaks,
-  supportedDistance:r.frames.at(-1).frame[0]-r.frames[0].frame[0],transitions,sampledBothWheelFlight:flight,
-  interpretation:'Contact states use summed recorded normal force > 1e-6 N. Event times are sampled, not exact take-off times. Initial zero-load contact is not a jump. Guided mass, stored suspension energy and launch speed are authored; no active rider or physical calibration.'};
+  frameDisplacementX:r.frames.at(-1).frame[0]-r.frames[0].frame[0],transitions,sampledZeroSupportIntervals:zeroSupport,
+  interpretation:'Contact states use summed recorded normal force > 1e-6 N. Event times are sampled, not exact take-off times. Zero-support samples do not prove geometric separation; initial zero-load contact is not a jump. Guided mass, stored suspension energy and launch speed are authored; no active rider or physical calibration.'};
 }
 
 if(process.argv[1]&&import.meta.url===pathToFileURL(resolve(process.argv[1])).href){

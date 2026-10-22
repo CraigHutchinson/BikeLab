@@ -8,6 +8,17 @@ Do not force a successful jump by relaxing pitch, suspension, casing, rim, penet
 
 `node scripts/trail-section-review.mjs` saves both bikes at 31.25 and 15.625 μs timesteps in `artifacts/trail-section/`. The postprocessor independently sums recorded tyre forces, checks accepted travel/geometry limits and reports sampled support transitions, maximum energy/work and momentum residuals, peak load and timestep differences. Two timesteps are a sensitivity check, not a proven convergence order or physical calibration. It does not benchmark real-time performance.
 
-The first full-suspension candidate completed within existing guards: fork compression reached 49.7 mm, shock compression 29.2 mm, peak total ground force 1.77 kN and maximum energy/work residual 2.83 J against initial energy 799 J. Front and rear lift/recontact occurred separately; there was no sustained sampled both-wheel flight. This candidate result is provisional; both-bike refinement and hosted browser captures are pending. Do not describe it as an active bunny hop or a completed jump.
+All four headless cases complete within the existing guards. The [source-hashed receipt](evidence/iteration-20-trail-section.json) retains complete sampled contact transitions, record hashes and sensitivity results:
 
-The browser receiving check selects the actual preset on both bikes, compares the entire exported record exactly with Node, inspects front/rear unloading and landing frames, and captures desktop/390 px views. This extends the visual track consumer while preserving future active pumping/wheelie/hop controls, 3D lateral/turning, finite failure/blowout, layered soil and adaptive/multirate work as separate gates.
+| Bike | Timestep / μs | Peak ground force / N | Max fork / shock compression / mm | Max energy/work residual / J |
+| --- | ---: | ---: | ---: | ---: |
+| Full | 31.25 | 1765.2 | 49.71 / 29.18 | 2.831 |
+| Full | 15.625 | 1721.7 | 49.69 / 29.28 | 1.127 |
+| Hardtail | 31.25 | 2522.3 | 57.83 / 0 | 2.950 |
+| Hardtail | 15.625 | 2523.8 | 57.78 / 0 | 1.207 |
+
+Initial total energies are 799.3 J and 809.6 J; do not interpret these as zero-preload launches. Halving the timestep reduces the maximum energy/work residual to about 40% of its coarse value and reduces the momentum residuals. Peak load differs by 2.53% for full suspension and 0.057% for hardtail. This is numerical sensitivity evidence, not a calibration pass.
+
+**Event timing remains sensitive:** full suspension has a single saved front-unloaded frame at 0.610 s that disappears at the finer step. The main front-unloaded interval starts at 0.665 versus 0.670 s; rear unloading starts at 1.200 versus 1.195 s. Do not treat the first unloaded sample as a converged take-off time. Both wheels recover positive recorded support after their separate unloaded intervals. No sustained sampled interval with both wheels unloaded occurs after initial support. Force-only zero-support intervals do not by themselves prove geometric separation. Do not describe this fixture as an active bunny hop or a completed jump.
+
+The browser receiving check selects the actual preset on both bikes, compares the entire exported record exactly with Node, inspects the longest sampled front/rear unloading intervals and verifies a later both-supported frame, and captures desktop/390 px views. Hosted results and actual capture inspection are pending. This extends the visual track consumer while preserving future active pumping/wheelie/hop controls, 3D lateral/turning, finite failure/blowout, layered soil and adaptive/multirate work as separate gates.
