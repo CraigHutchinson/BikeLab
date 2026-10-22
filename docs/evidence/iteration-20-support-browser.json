@@ -1,0 +1,1091 @@
+{
+  "format": "bikelab-rider-support-receipt-0.1",
+  "date": "2026-10-22",
+  "upstreamSnapshot": "795cffd191893e56f2e641b0b091770a532eb3eb",
+  "implementationCommit": "c3ae7242fb22ec4bb4ae14c2843727f27aa5b3e3",
+  "scope": "Receive the upstream signed hand/foot load display and histories. Production physics, numerical thresholds and record formats unchanged. Current unseated motion is passive sag, not maintained standing.",
+  "rootCause": {
+    "observed": {
+      "playwrightIsDisabled": false,
+      "optionDisabled": true,
+      "cssDisabled": true,
+      "parentSelectDisabled": false
+    },
+    "reason": "Playwright elementState follows the enclosing label from option to its enabled select.",
+    "source": "https://github.com/microsoft/playwright/blob/v1.56.1/packages/injected/src/injectedScript.ts#L642",
+    "fix": "Assert option.disabled and :disabled; verify keyboard navigation skips disabled rider history channels."
+  },
+  "validation": {
+    "localTests": {
+      "node": "v24.22.0",
+      "tests": 213,
+      "failures": 0,
+      "skipped": 0,
+      "durationMs": 158441.1383,
+      "logSha256": "f5143915f225f01071ec35f78d540b9bbbeaabf2f186decdbbce1fa8e406d88d"
+    },
+    "hosted": {
+      "run": "https://github.com/CraigHutchinson/BikeLab/actions/runs/39744331686",
+      "status": "success",
+      "playwright": "1.56.1",
+      "testsPerOS": 213,
+      "os": [
+        "ubuntu-latest",
+        "windows-latest"
+      ],
+      "failures": 0,
+      "skipped": 0,
+      "browserReport": {
+        "checks": [
+          "native rider construction: named attachments, full inertia, sparse-fixture site Jacobians and separate interface force/work/moment reports agree across browser/Node; no integrated rider claim",
+          "passive rider initialization: canonical laws, nonzero rest offsets, unwrapped springs, named closure loads and native force/energy decomposition agree across browser/Node; no dynamic or stop-enforcement claim",
+          "rider posture construction: complete browser/Node reports for both bend branches and mass scaling; unreachable pose rejection; no dynamic rider claim",
+          "wheel: step, comparison gating, save/load, high lift, mobile width",
+          "suspension: signed curves rendered, step/scrub/play/pause, pin gating, reject/discard, save/load and wrong-station rejection",
+          "suspension: actual worker cancellation, immediate travel limit, shock preset, mobile/narrow width",
+          "reference: explicit compatible setup, unsupported state, worker overlays, dirty gating, save/load and Node metric agreement",
+          "reference: valid coarse integration fails declared limits; half-step refinement passes",
+          "terrain: hidden/small canvas recovery, square/rounded/flat, complete browser/Node report agreement, unavailable/buried states, edit gating, custom profile, load, stale-file guard, co-nearest supports and mobile widths",
+          "solver: real WASM module worker; exact candidate browser/Node channels with tolerance-checked analytical channels; release failure and static pass; refinement, replay, dirty/invalid gating, cancellation, restore, hidden canvas, page lifecycle resize recovery and mobile widths",
+          "manufacturer catalogue: eight sourced configurations selectable, SI JSON export exact, missing mechanism data explicit, reference selection leaves the calculated rig intact",
+          "geometry: annotated/reference/custom physical setups, diagnostics, changed/invalid gating, custom reload and browser/headless channels",
+          "shock buffers: both end presets, worker/headless signals, engagement, save/load, dormant hardtail controls, disabled settings, responsive plots and lifecycle",
+          "fork buffers: supported top/bottom loading; real worker/headless parity; unbuffered control and weak-buffer ultimate termination; setup reconstruction, engagement display and responsive plots",
+          "rider: both compliant assemblies; exact setup restoration and explicit v0.1 fixed migration; browser/Node channels; mass control; invalid mass budget; settling and dynamic rider travel rejection; signed plots; five-canvas lifecycle and mobile recovery",
+          "bicycle: both actual assemblies; WASM worker under Pages path; browser/Node sample agreement; setup save/load; replay; dirty/cancel/rejection and travel-limit handling; mobile and page lifecycle",
+          "rider stops and loads: both assemblies, lower/upper engagement, worker/headless parity, record reconstruction, invalid overlapping zones, weak-stop ultimate termination, fixed-mode dormancy, responsive plots and lifecycle",
+          "terrain R0a: six browser/Node replays with exact discrete identities and 1e-12 geometric tolerance; explicit missing-data stop; cut directions/rows; play/pause/rewind/scrub; export/verified import and invalid rejection; delayed wait/cancel/supersession; mobile 390/320",
+          "static footprint: browser/Node complete report agreement; flat/round/step-top/two-supports; explicit edge/rim rejection; all contact rows; zoom; owned authored profile and recomputed import; edit/invalid/cancel/supersession gating; hidden-canvas recovery; 390/320 px inspection captures",
+          "wheel limits: full browser/Node report agreement; continuous flat/corner/round/domain/separation cases; first-contact clipping; declared pressure and bead-seat rejection; zero-pressure refusal; owned import; edit/cancel/restore/supersession; canvas recovery and 390/320 px captures",
+          "moving wheel: complete browser/Node reports; flat/square/rounded/flight/overload; replay, rejection, dirty/cancel/restore/supersession and delayed imports; time-based playback, rapid pause/resume, lifecycle, canvas recovery and 390/320 px captures",
+          "Rider support presentation: signed world hand/foot x/z forces from accepted records, weight and net vertical force, COM velocity, separate rider histories, negative forces, zero gravity, rejected/no-frame clearing, dirty-state provenance, guide-mode fallback, stopped last-accepted inspection and both-bike 390/320 px support captures; no physics or equilibrium change",
+          "passive articulated full/hardtail unseated motion, actual limb/attachment captures, independent chassis/rider masses, guide-mode switching, domain stop, replay/cancel and 390/320 px viewports; connected trail bike: full/hardtail smooth, square and coarse-faceted rocks, flight and overload stops; complete browser/headless records, homogeneous coast/sliding traction on both bikes, slip plots and grip input validation, drive/brake apply-release on both bikes, authored schedule add/remove/restore and time validation, legacy traction import, spin/brake histories, horizontal impact plots, inputs/replay, dirty/cancel/restore/supersession, delayed imports, playback/lifecycle and 390/320 px layouts; identical ten-station navigation",
+          "no captured page/console errors; rig has rendered pixels"
+        ],
+        "exports": [
+          {
+            "name": "wheel-browser",
+            "result": {
+              "result": "numerical agreement",
+              "normalizedTolerance": 1e-10,
+              "maxAbsoluteDifferences": {
+                "time": 0,
+                "height": 0,
+                "velocity": 1.1102230246251565e-16,
+                "platen": 8.673617379884035e-18,
+                "compression": 0,
+                "force": 1.1368683772161603e-13,
+                "energy": 0,
+                "work": 1.7763568394002505e-15,
+                "loss": 3.3306690738754696e-16,
+                "residual": 2.842170943040401e-14,
+                "unloaded": 0
+              }
+            }
+          },
+          {
+            "name": "suspension-browser",
+            "result": {
+              "result": "numerical agreement",
+              "normalizedTolerance": 1e-10,
+              "maxAbsoluteDifferences": {
+                "time": 0,
+                "height": 0,
+                "velocity": 0,
+                "base": 0,
+                "compression": 0,
+                "compressionVelocity": 0,
+                "springForce": 0,
+                "damperForce": 0,
+                "force": 0,
+                "energy": 0,
+                "work": 0,
+                "loss": 0,
+                "residual": 0
+              }
+            }
+          },
+          {
+            "name": "suspension-top-out",
+            "result": {
+              "result": "numerical agreement",
+              "normalizedTolerance": 1e-10,
+              "maxAbsoluteDifferences": {
+                "time": 0,
+                "height": 0,
+                "velocity": 0,
+                "base": 0,
+                "compression": 0,
+                "compressionVelocity": 0,
+                "springForce": 0,
+                "damperForce": 0,
+                "force": 0,
+                "energy": 0,
+                "work": 0,
+                "loss": 0,
+                "residual": 0
+              }
+            }
+          },
+          {
+            "name": "suspension-shock",
+            "result": {
+              "result": "numerical agreement",
+              "normalizedTolerance": 1e-10,
+              "maxAbsoluteDifferences": {
+                "time": 0,
+                "height": 0,
+                "velocity": 0,
+                "base": 0,
+                "compression": 0,
+                "compressionVelocity": 0,
+                "springForce": 0,
+                "damperForce": 0,
+                "force": 0,
+                "energy": 0,
+                "work": 0,
+                "loss": 0,
+                "residual": 0
+              }
+            }
+          },
+          {
+            "name": "suspension-reference",
+            "result": {
+              "result": "numerical agreement",
+              "normalizedTolerance": 1e-10,
+              "maxAbsoluteDifferences": {
+                "time": 0,
+                "height": 0,
+                "velocity": 0,
+                "base": 0,
+                "compression": 0,
+                "compressionVelocity": 0,
+                "springForce": 0,
+                "damperForce": 0,
+                "force": 0,
+                "energy": 0,
+                "work": 0,
+                "loss": 0,
+                "residual": 0
+              }
+            }
+          },
+          {
+            "name": "bike-full",
+            "result": {
+              "dofs": 4,
+              "samples": 801,
+              "maxBrowserNodeDifference": 1.517719283583574e-11
+            }
+          },
+          {
+            "name": "bike-hardtail",
+            "result": {
+              "dofs": 3,
+              "samples": 801,
+              "maxBrowserNodeDifference": 1.5290879673557356e-11
+            }
+          },
+          {
+            "name": "rider-full",
+            "result": {
+              "dofs": 5,
+              "samples": 801,
+              "maxBrowserNodeDifference": 1.4949819160392508e-11,
+              "summary": {
+                "riderBufferLoss": 0,
+                "peakRiderLowerForce": 0,
+                "peakRiderUpperForce": 0,
+                "maxResidual": 0.0014197508701272454,
+                "peakForce": 584.6989158373037,
+                "peakRiderForce": 772.3763202453788,
+                "peakTopForce": 0,
+                "peakBottomForce": 0,
+                "work": 4.513520630569764,
+                "loss": 4.514042166864686,
+                "riderLoss": 2.09902359137727,
+                "bufferLoss": 0,
+                "shockBufferLoss": 0,
+                "peakShockTopForce": 0,
+                "peakShockBottomForce": 0
+              }
+            }
+          },
+          {
+            "name": "rider-hardtail",
+            "result": {
+              "dofs": 4,
+              "samples": 801,
+              "maxBrowserNodeDifference": 1.48929757415317e-11,
+              "summary": {
+                "riderBufferLoss": 0,
+                "peakRiderLowerForce": 0,
+                "peakRiderUpperForce": 0,
+                "maxResidual": 0.002146340839885852,
+                "peakForce": 630.5293701907377,
+                "peakRiderForce": 823.3112555212471,
+                "peakTopForce": 0,
+                "peakBottomForce": 0,
+                "work": 5.07553478705345,
+                "loss": 5.076180064909395,
+                "riderLoss": 3.588644770014549,
+                "bufferLoss": 0,
+                "shockBufferLoss": 0,
+                "peakShockTopForce": 0,
+                "peakShockBottomForce": 0
+              }
+            }
+          },
+          {
+            "name": "fork-buffers",
+            "result": {
+              "maxBrowserNodeDifference": 1.5575096767861396e-11,
+              "summary": {
+                "riderBufferLoss": 0,
+                "peakRiderLowerForce": 0,
+                "peakRiderUpperForce": 0,
+                "maxResidual": 0.2252574659810307,
+                "peakForce": 3047.0450153225897,
+                "peakRiderForce": 0,
+                "peakTopForce": 711.870827595388,
+                "peakBottomForce": 0,
+                "work": 206.70789789577444,
+                "loss": 206.89131577371964,
+                "riderLoss": 0,
+                "bufferLoss": 2.713770825660699,
+                "shockBufferLoss": 0,
+                "peakShockTopForce": 0,
+                "peakShockBottomForce": 0
+              }
+            }
+          },
+          {
+            "name": "shockTopExample",
+            "result": {
+              "maxBrowserNodeDifference": 4.615685611497611e-11,
+              "summary": {
+                "riderBufferLoss": 0,
+                "peakRiderLowerForce": 0,
+                "peakRiderUpperForce": 0,
+                "maxResidual": 0.11756678756921701,
+                "peakForce": 1124.8844497711075,
+                "peakRiderForce": 0,
+                "peakTopForce": 47.81896685078885,
+                "peakBottomForce": 0,
+                "work": 73.68132488762089,
+                "loss": 73.73388421330424,
+                "riderLoss": 0,
+                "bufferLoss": 0.005390827659643306,
+                "shockBufferLoss": 3.4050061715228708,
+                "peakShockTopForce": 3523.1032141940814,
+                "peakShockBottomForce": 0
+              }
+            }
+          },
+          {
+            "name": "shockBottomExample",
+            "result": {
+              "maxBrowserNodeDifference": 3.774403012357652e-11,
+              "summary": {
+                "riderBufferLoss": 0,
+                "peakRiderLowerForce": 0,
+                "peakRiderUpperForce": 0,
+                "maxResidual": 0.0599249766023604,
+                "peakForce": 1402.9110088363736,
+                "peakRiderForce": 0,
+                "peakTopForce": 0,
+                "peakBottomForce": 0,
+                "work": 71.4891877201249,
+                "loss": 71.50961162197167,
+                "riderLoss": 0,
+                "bufferLoss": 0,
+                "shockBufferLoss": 0.9900752295853088,
+                "peakShockTopForce": 0,
+                "peakShockBottomForce": 1899.0207053880306
+              }
+            }
+          },
+          {
+            "name": "rider-stops-full",
+            "result": {
+              "maxBrowserNodeDifference": 3.058175934711471e-11,
+              "summary": {
+                "riderBufferLoss": 0.5023618678522775,
+                "peakRiderLowerForce": 522.4685208030928,
+                "peakRiderUpperForce": 82.39722663468244,
+                "maxResidual": 0.15765900025212432,
+                "peakForce": 1480.2922071138244,
+                "peakRiderForce": 267.3513740432267,
+                "peakTopForce": 156.26870632564209,
+                "peakBottomForce": 0,
+                "work": 174.62898466275274,
+                "loss": 174.71188712522454,
+                "riderLoss": 0,
+                "bufferLoss": 0.05332590989305903,
+                "shockBufferLoss": 0.37022670540263647,
+                "peakShockTopForce": 1049.6648027938381,
+                "peakShockBottomForce": 0
+              }
+            }
+          },
+          {
+            "name": "rider-stops-hardtail",
+            "result": {
+              "maxBrowserNodeDifference": 2.9331204132176936e-11,
+              "summary": {
+                "riderBufferLoss": 3.442783612323155,
+                "peakRiderLowerForce": 1712.123882153081,
+                "peakRiderUpperForce": 272.9289009552731,
+                "maxResidual": 0.5074405854988981,
+                "peakForce": 4846.1369130635585,
+                "peakRiderForce": 449.61791811740176,
+                "peakTopForce": 164.72631891922893,
+                "peakBottomForce": 0,
+                "work": 275.2675014703256,
+                "loss": 275.3959169164558,
+                "riderLoss": 0,
+                "bufferLoss": 0.06926605982800678,
+                "shockBufferLoss": 0,
+                "peakShockTopForce": 0,
+                "peakShockBottomForce": 0
+              }
+            }
+          }
+        ],
+        "screenshots": [
+          "wheel-desktop.png",
+          "wheel-high-lift.png",
+          "wheel-mobile.png",
+          "suspension-desktop.png",
+          "suspension-comparison.png",
+          "suspension-travel-limit.png",
+          "suspension-mobile.png",
+          "suspension-narrow.png",
+          "reference-desktop.png",
+          "reference-mobile.png",
+          "reference-coarse-failure.png",
+          "terrain-square-desktop.png",
+          "terrain-rounded-desktop.png",
+          "terrain-mobile.png",
+          "terrain-narrow.png",
+          "solver-desktop.png",
+          "solver-equilibrium.png",
+          "solver-mobile.png",
+          "solver-narrow.png",
+          "geometry-reference.png",
+          "geometry-annotated.png",
+          "geometry-annotated-mobile-390.png",
+          "geometry-annotated-mobile-320.png",
+          "bike-full-desktop.png",
+          "bike-hardtail-desktop.png",
+          "bike-limit.png",
+          "bike-mobile-390.png",
+          "bike-mobile-320.png",
+          "rider-full-desktop.png",
+          "rider-hardtail-desktop.png",
+          "rider-limit.png",
+          "rider-mobile-390.png",
+          "rider-mobile-320.png",
+          "fork-buffers-desktop.png",
+          "fork-buffers-ultimate.png",
+          "fork-bottom-buffer-desktop.png",
+          "fork-buffers-mobile-390.png",
+          "fork-buffers-mobile-320.png",
+          "shockTopExample-desktop.png",
+          "shockBottomExample-desktop.png",
+          "shock-buffers-mobile-390.png",
+          "shock-buffers-mobile-320.png",
+          "rider-stops-full-Lower.png",
+          "rider-stops-full-Upper.png",
+          "rider-stops-hardtail-Lower.png",
+          "rider-stops-hardtail-Upper.png",
+          "rider-stops-ultimate.png",
+          "rider-stops-mobile-390.png",
+          "rider-stops-mobile-320.png",
+          "terrain-request-step.png",
+          "terrain-request-off-centre.png",
+          "terrain-request-transverse.png",
+          "terrain-request-missing.png",
+          "terrain-request-mobile-390.png",
+          "terrain-request-mobile-320.png",
+          "footprint/footprint-flat.png",
+          "footprint/footprint-two-supports.png",
+          "footprint/footprint-unsupported-edge.png",
+          "footprint/footprint-mobile-390.png",
+          "footprint/footprint-mobile-320.png",
+          "footprint/limits/limits-flat-contact.png",
+          "footprint/limits/limits-square-corner.png",
+          "footprint/limits/limits-pressure-rejection.png",
+          "footprint/limits/limits-mobile-390.png",
+          "footprint/limits/limits-mobile-320.png",
+          "footprint/moving/flat-impact.png",
+          "footprint/moving/square.png",
+          "footprint/moving/rounded.png",
+          "footprint/moving/flight.png",
+          "footprint/moving/overload.png",
+          "footprint/moving/assembly-rejected.png",
+          "footprint/moving/mobile-390.png",
+          "footprint/moving/mobile-320.png",
+          "trail-bike/full-bump.png",
+          "trail-bike/hardtail-bump.png",
+          "trail-bike/flight.png",
+          "trail-bike/limit.png",
+          "trail-bike/initial-rejection.png",
+          "trail-bike/mobile-390.png",
+          "trail-bike/mobile-320.png",
+          "trail-bike/full-square.png",
+          "trail-bike/square-mobile-390.png",
+          "trail-bike/square-mobile-320.png",
+          "trail-bike/full-faceted.png",
+          "trail-bike/full-edge-limit.png",
+          "trail-bike/hardtail-square.png",
+          "trail-bike/hardtail-faceted.png",
+          "trail-bike/hardtail-edge-limit.png",
+          "trail-bike/full-coast.png",
+          "trail-bike/full-sliding.png",
+          "trail-bike/traction-mobile-320.png",
+          "trail-bike/hardtail-coast.png",
+          "trail-bike/hardtail-sliding.png",
+          "trail-bike/full-drive.png",
+          "trail-bike/full-brake.png",
+          "trail-bike/brake-mobile-320.png",
+          "trail-bike/brake-mobile-viewport.png",
+          "trail-bike/hardtail-drive.png",
+          "trail-bike/hardtail-brake.png",
+          "trail-bike/full-articulated-standing.png",
+          "trail-bike/full-rider-horizontal.png",
+          "trail-bike/full-articulated-390.png",
+          "trail-bike/full-support-390.png",
+          "trail-bike/full-articulated-320.png",
+          "trail-bike/full-support-320.png",
+          "trail-bike/hardtail-articulated-standing.png",
+          "trail-bike/hardtail-rider-horizontal.png",
+          "trail-bike/hardtail-articulated-390.png",
+          "trail-bike/hardtail-support-390.png",
+          "trail-bike/hardtail-articulated-320.png",
+          "trail-bike/hardtail-support-320.png",
+          "trail-bike/articulated-support-flight.png",
+          "trail-bike/articulated-support-rejected.png",
+          "trail-bike/articulated-domain-stop.png"
+        ],
+        "browser": "141.0.7390.37",
+        "riderNative": {
+          "cases": 2,
+          "maxAbsolute": 0,
+          "normalizedTolerance": 1e-12,
+          "interfaceLoadNormalizedTolerance": 1e-9
+        },
+        "riderPassive": {
+          "cases": 2,
+          "maxAbsolute": 0,
+          "normalizedTolerance": 1e-12,
+          "interfaceLoadNormalizedTolerance": 1e-9
+        },
+        "riderPosture": {
+          "cases": 2,
+          "maxAbsolute": 1.1010950736807999e-16,
+          "normalizedTolerance": 1e-12
+        },
+        "referenceComparison": {
+          "comparison": "axial-comparison-1",
+          "candidate": "bikelab-suspension-0.1",
+          "reference": "axial-closed-form-1",
+          "params": {
+            "mass": 45,
+            "stiffness": 9000,
+            "preload": 50,
+            "compressionDamping": 350,
+            "reboundDamping": 350,
+            "travel": 0.16,
+            "initialCompression": 0.075,
+            "initialVelocity": 0,
+            "profile": "flat",
+            "amplitude": 0.005,
+            "frequency": 2,
+            "duration": 4,
+            "dt": 0.0005,
+            "sampleDt": 0.005
+          },
+          "limits": {
+            "compression": 0.000001,
+            "compressionVelocity": 0.0001,
+            "force": 0.1
+          },
+          "scope": "Recorded-time numerical agreement; not hardware calibration or a continuous-time error bound.",
+          "status": "pass",
+          "sampleCount": 801,
+          "startTime": 0,
+          "endTime": 4,
+          "errors": {
+            "compression": {
+              "maxAbsolute": 9.148445889728407e-13,
+              "rms": 2.2059867697546354e-13,
+              "limit": 0.000001
+            },
+            "compressionVelocity": {
+              "maxAbsolute": 1.2184489528443976e-11,
+              "rms": 3.182470290370654e-12,
+              "limit": 0.0001
+            },
+            "force": {
+              "maxAbsolute": 8.166693987732287e-9,
+              "rms": 1.9933912747810237e-9,
+              "limit": 0.1
+            }
+          }
+        },
+        "terrainProbe": {
+          "model": "bikelab-clearance-1",
+          "profile": {
+            "format": "bikelab-profile-1",
+            "units": "m",
+            "axes": "x-forward,z-up",
+            "solid": "below",
+            "interpolation": "linear",
+            "source": {
+              "kind": "illustrative",
+              "description": "Synthetic square rigid reference surface."
+            },
+            "points": [
+              [
+                -1,
+                0
+              ],
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                0.1
+              ],
+              [
+                0.2,
+                0.1
+              ],
+              [
+                0.2,
+                0
+              ],
+              [
+                1,
+                0
+              ]
+            ]
+          },
+          "setup": {
+            "center": [
+              -0.2,
+              0.36
+            ],
+            "radius": 0.36
+          },
+          "tieTolerance": 1e-10,
+          "status": "available",
+          "distance": 0.3280243893371345,
+          "gap": -0.03197561066286547,
+          "witnesses": [
+            {
+              "point": [
+                0,
+                0.1
+              ],
+              "normal": [
+                -0.6097107608496924,
+                0.7926239891046001
+              ],
+              "feature": {
+                "kind": "vertex",
+                "index": 2
+              }
+            }
+          ]
+        },
+        "solver": {
+          "model": "bikelab-prismatic-trial-1",
+          "params": {
+            "mass": 45,
+            "stiffness": 9000,
+            "damping": 350,
+            "preload": 50,
+            "travel": 0.16,
+            "initialCompression": 0.075,
+            "initialVelocity": 0,
+            "tiltDegrees": 20,
+            "transverseForce": 100,
+            "probeTorque": 0,
+            "dt": 0.0005,
+            "duration": 2
+          },
+          "engine": {
+            "package": "@dimforge/rapier3d-compat",
+            "packageVersion": "0.21.0",
+            "bindingVersion": "0.21.0",
+            "coreVersion": "0.36.0",
+            "sourceCommit": "b716d375efc0201003f0cd9ef7168eee0b62c177",
+            "precision": "float32",
+            "joint": "prismatic impulse joint",
+            "motor": "ForceBased",
+            "solverIterations": 4,
+            "internalPgsIterations": 1,
+            "requestedDt": 0.0005,
+            "storedDt": 0.0005000000237487257,
+            "substepsPerTick": 4,
+            "substepDt": 0.0001250000059371814,
+            "additionalBodySubsteps": 0,
+            "lengthUnit": 1,
+            "maxCcdSubsteps": 1,
+            "sleeping": false,
+            "bodyLinearDamping": 0,
+            "bodyAngularDamping": 0,
+            "measuredMass": 45,
+            "principalInertia": [
+              1,
+              1,
+              1
+            ],
+            "torqueAxis": [
+              0.2672612419124244,
+              0.5345224838248488,
+              0.8017837257372732
+            ],
+            "colliders": 0
+          },
+          "checks": {
+            "reference": false,
+            "closure": true,
+            "restart": true,
+            "complete": true
+          },
+          "errors": {
+            "compression": {
+              "maxAbsolute": 0.000041145000363049244,
+              "rms": 0.000014423361915046821,
+              "limit": 0.000001
+            },
+            "compressionVelocity": {
+              "maxAbsolute": 0.0005845418556801596,
+              "rms": 0.00020412209006408322,
+              "limit": 0.0001
+            },
+            "force": {
+              "maxAbsolute": 0.3515487441601408,
+              "rms": 0.1311211393998123,
+              "limit": 0.1
+            }
+          },
+          "closure": {
+            "maxTranslation": 1.4882778789182938e-8,
+            "maxRotation": 0,
+            "limits": {
+              "translation": 0.00001,
+              "rotation": 0.00001
+            }
+          },
+          "restart": {
+            "tick": 2000,
+            "time": 1.0000000474974513,
+            "comparedSteps": 2000,
+            "exactBodyState": true,
+            "exactFinalSnapshot": true,
+            "scope": "Same artifact and runtime; complete engine snapshot plus immutable setup and integer tick. No contact/soil state in this fixture."
+          },
+          "completeReportSha256": "d67465a574321d62ca77bee46257ff7c8e2cee884bc60ded6a5d80b3a5f85c0d",
+          "candidateBrowserNodeExact": true,
+          "oracleNormalizedTolerance": 1e-12,
+          "maxAbsoluteBrowserNodeDifferences": {
+            "time": 0,
+            "compression": 0,
+            "velocity": 0,
+            "constitutiveForce": 0,
+            "referenceCompression": 0,
+            "referenceVelocity": 1.3877787807814457e-17,
+            "referenceForce": 5.684341886080802e-14,
+            "translationError": 0,
+            "rotationError": 0,
+            "x": 0,
+            "z": 0
+          }
+        },
+        "terrainRequest": {
+          "agreement": [
+            {
+              "maxDifference": 0,
+              "numbers": 80547,
+              "geometryTolerance": 1e-12,
+              "discreteFieldsExact": true
+            },
+            {
+              "maxDifference": 6.938893903907228e-18,
+              "numbers": 268792,
+              "geometryTolerance": 1e-12,
+              "discreteFieldsExact": true
+            },
+            {
+              "maxDifference": 6.938893903907228e-18,
+              "numbers": 267916,
+              "geometryTolerance": 1e-12,
+              "discreteFieldsExact": true
+            },
+            {
+              "maxDifference": 0,
+              "numbers": 80813,
+              "geometryTolerance": 1e-12,
+              "discreteFieldsExact": true
+            },
+            {
+              "maxDifference": 2.7755575615628914e-17,
+              "numbers": 239685,
+              "geometryTolerance": 1e-12,
+              "discreteFieldsExact": true
+            },
+            {
+              "maxDifference": 0,
+              "numbers": 42350,
+              "geometryTolerance": 1e-12,
+              "discreteFieldsExact": true
+            },
+            {
+              "maxDifference": 0,
+              "numbers": 80813,
+              "geometryTolerance": 1e-12,
+              "discreteFieldsExact": true
+            }
+          ]
+        },
+        "footprint": {
+          "agreement": [
+            5.551115123125783e-17,
+            1.1102230246251565e-16,
+            1.1102230246251565e-16,
+            5.551115123125783e-17,
+            0,
+            0,
+            0,
+            5.551115123125783e-17
+          ]
+        },
+        "wheelLimits": {
+          "agreement": [
+            5.551115123125783e-17,
+            1.1102230246251565e-16,
+            1.1102230246251565e-16,
+            5.551115123125783e-17,
+            5.551115123125783e-17,
+            5.551115123125783e-17,
+            0,
+            0,
+            5.551115123125783e-17,
+            1.1102230246251565e-16
+          ]
+        },
+        "movingWheel": {
+          "agreement": [
+            {
+              "name": "moving-flat",
+              "maxAbsolute": 0
+            },
+            {
+              "name": "moving-square",
+              "maxAbsolute": 0
+            },
+            {
+              "name": "moving-rounded",
+              "maxAbsolute": 0
+            },
+            {
+              "name": "moving-flight",
+              "maxAbsolute": 0
+            },
+            {
+              "name": "moving-overload",
+              "maxAbsolute": 0
+            },
+            {
+              "name": "moving-replayed",
+              "maxAbsolute": 0
+            },
+            {
+              "name": "moving-overpressure",
+              "maxAbsolute": 0
+            },
+            {
+              "name": "moving-invalid-start",
+              "maxAbsolute": 0
+            },
+            {
+              "name": "moving-superseded",
+              "maxAbsolute": 0
+            }
+          ]
+        },
+        "trailBike": {
+          "agreement": [
+            {
+              "name": "full-bump",
+              "maxAbsolute": 0
+            },
+            {
+              "name": "hardtail-bump",
+              "maxAbsolute": 0
+            },
+            {
+              "name": "fixed-rider",
+              "maxAbsolute": 0
+            },
+            {
+              "name": "flight",
+              "maxAbsolute": 0
+            },
+            {
+              "name": "limit",
+              "maxAbsolute": 0
+            },
+            {
+              "name": "invalid-travel",
+              "maxAbsolute": 0
+            },
+            {
+              "name": "superseded-flight",
+              "maxAbsolute": 0
+            },
+            {
+              "name": "full-square",
+              "maxAbsolute": 0
+            },
+            {
+              "name": "full-faceted",
+              "maxAbsolute": 0
+            },
+            {
+              "name": "full-edge-limit",
+              "maxAbsolute": 0
+            },
+            {
+              "name": "hardtail-square",
+              "maxAbsolute": 0
+            },
+            {
+              "name": "hardtail-faceted",
+              "maxAbsolute": 0
+            },
+            {
+              "name": "hardtail-edge-limit",
+              "maxAbsolute": 0
+            },
+            {
+              "name": "full-coast",
+              "maxAbsolute": 0
+            },
+            {
+              "name": "full-sliding",
+              "maxAbsolute": 0
+            },
+            {
+              "name": "hardtail-coast",
+              "maxAbsolute": 0
+            },
+            {
+              "name": "hardtail-sliding",
+              "maxAbsolute": 0
+            },
+            {
+              "name": "full-drive",
+              "maxAbsolute": 0
+            },
+            {
+              "name": "full-brake",
+              "maxAbsolute": 0
+            },
+            {
+              "name": "hardtail-drive",
+              "maxAbsolute": 0
+            },
+            {
+              "name": "hardtail-brake",
+              "maxAbsolute": 0
+            },
+            {
+              "name": "authored-drive-brake",
+              "maxAbsolute": 0
+            },
+            {
+              "name": "legacy-traction",
+              "maxAbsolute": 0
+            },
+            {
+              "name": "full-articulated-standing",
+              "maxAbsolute": 0
+            },
+            {
+              "name": "hardtail-articulated-standing",
+              "maxAbsolute": 0
+            },
+            {
+              "name": "articulated-support-flight",
+              "maxAbsolute": 0
+            },
+            {
+              "name": "articulated-support-rejected",
+              "maxAbsolute": 0
+            },
+            {
+              "name": "articulated-independent-masses",
+              "maxAbsolute": 0
+            },
+            {
+              "name": "articulated-to-guide",
+              "maxAbsolute": 0
+            },
+            {
+              "name": "guide-to-articulated",
+              "maxAbsolute": 0
+            },
+            {
+              "name": "articulated-domain-stop",
+              "maxAbsolute": 0
+            }
+          ]
+        },
+        "errors": []
+      },
+      "browserReportSha256": "754fff2f3beb6543c73ce910716692de3aa8dad3d26fcc9c92dc4144b6b184a9"
+    },
+    "localBrowser": {
+      "node": "v24.22.0",
+      "playwright": "1.62.1",
+      "browser": "157.0.4341.10",
+      "fullSuite": "failed articulated numerical agreement",
+      "failure": "AssertionError [ERR_ASSERTION]: report.frames.1.wheels.0.ground.0: 3.651187963082947e-9 vs -2.2847596946318216e-8\n    at walk (file:///D:/Craig/GitHub/BikeLab/scripts/trail-bike-browser-check.mjs:9:489)\n    at walk (file:///D:/Craig/GitHub/BikeLab/scripts/trail-bike-browser-check.mjs:9:681)\n    at walk (file:///D:/Craig/GitHub/BikeLab/scripts/trail-bike-browser-check.mjs:9:681)\n    at walk (file:///D:/Craig/GitHub/BikeLab/scripts/trail-bike-browser-check.mjs:9:681)\n    at walk (file:///D:/Craig/GitHub/BikeLab/scripts/trail-bike-browser-check.mjs:9:681)\n    at walk (file:///D:/Craig/GitHub/BikeLab/scripts/trail-bike-browser-check.mjs:9:681)\n    at walk (file:///D:/Craig/GitHub/BikeLab/scripts/trail-bike-browser-check.mjs:9:681)\n    at save (file:///D:/Craig/GitHub/BikeLab/scripts/trail-bike-browser-check.mjs:9:741)\n    at async checkTrailBike (file:///D:/Craig/GitHub/BikeLab/scripts/trail-bike-browser-check.mjs:69:15)\n    at async file:///D:/Craig/GitHub/BikeLab/scripts/browser-check.mjs:329:3",
+      "fullReportSha256": "36d82ebd4aed2f3bee1cd8f789cd7190590b6c75a3d6bd916908b4882f3a38ae",
+      "presentationOnly": {
+        "scope": "Presentation and browser interaction only. No browser/Node numerical agreement claim.",
+        "checks": [
+          "Both bikes: signed hand/foot x/z forces, total support, gravity and mass-weighted COM velocity from applied records; desktop and 390/320px layouts; rider histories.",
+          "Zero-gravity note, rejected-state clearing and disabled histories, dirty-state provenance and last-accepted stopped-state display."
+        ],
+        "screenshots": [
+          "full-standing.png",
+          "full-horizontal.png",
+          "full-support-390.png",
+          "full-support-320.png",
+          "hardtail-standing.png",
+          "hardtail-horizontal.png",
+          "hardtail-support-390.png",
+          "hardtail-support-320.png",
+          "zero-gravity.png",
+          "no-frame.png",
+          "pending-edit.png",
+          "domain-stop.png"
+        ],
+        "errors": [],
+        "browser": "157.0.4341.10"
+      },
+      "presentationScriptSha256": "908a19d721b9d95a8c7bfb14a601c720d6c2833b2699589fd71c90203b9dff27",
+      "portabilityReceipt": "iteration-20-edge-portability.json"
+    }
+  },
+  "sources": [
+    {
+      "path": "dist/trail-bike-app.js",
+      "gitBlob": "580e57255b1f9776baddbcdfb7f79e7d8c3cff10",
+      "localFileSha256": "78d3495e8488833b047fde19439f5b58a1e85a6dd65dde09424d07fa66240205"
+    },
+    {
+      "path": "dist/trail-bike.html",
+      "gitBlob": "93f9ac04397ad571bf7fde943dd52295495c601a",
+      "localFileSha256": "fbf652ccaeaa01c90d7f6ee7cd8b0c4c2f917f19ccbd653d1e0be97ea8c4b5c8"
+    },
+    {
+      "path": "dist/style.css",
+      "gitBlob": "433771b6a665f155c553810c163f19b321e38726",
+      "localFileSha256": "56bb4317a7007a4f818d98b112d47fc21a799dac33eda7a88153c866db0811ad"
+    },
+    {
+      "path": "dist/trail-bike.js",
+      "gitBlob": "476d613399315d6b84817153817a2054f8930fed",
+      "localFileSha256": "8ed3994c0a70ffb0499ed34065434a37518acad6586209090cb6bfc3a58a5ecb"
+    },
+    {
+      "path": "dist/rider-connected.js",
+      "gitBlob": "88482d91506727310e00026f47f76e9f73d50578",
+      "localFileSha256": "2847a26ab2fa1e0b89ff3ec1d1da7b2130c0d02c1d664ef3b40cf40879fe3e4a"
+    },
+    {
+      "path": "dist/rider-interfaces.js",
+      "gitBlob": "19bdb7dc04a55a632f6859e1ab72e5d8408aba69",
+      "localFileSha256": "0de4412d2a33ea088889891bb72fe23dbb38ad07ea175f232051baedfae1a1ee"
+    },
+    {
+      "path": "scripts/browser-check.mjs",
+      "gitBlob": "308e67877ef2a957a4df450dcc06fd46adbd0828",
+      "localFileSha256": "9273ca7237724ae89136bed4cf7c3e399c556a81b7fcd1b5c5c4abf8dbf9f9db"
+    },
+    {
+      "path": "scripts/trail-bike-browser-check.mjs",
+      "gitBlob": "b8e6550c3044c7aeee0a69134057f5905d006d16",
+      "localFileSha256": "fc5607215dea80cae9ea013a33531f7e6296048b0e971b2ef7f017f98b108c2e"
+    },
+    {
+      "path": "test/rider-connected.test.mjs",
+      "gitBlob": "d07427a02c962108bf0ef2632e663b4423f231af",
+      "localFileSha256": "c7d50eae81b8591bdc5b3ce7465de6f511eef4dd0fb6206f24aab767eb977a73"
+    }
+  ],
+  "visualInspection": {
+    "status": "Primary agent inspected these hosted captures: readable signed support tables at both mobile widths, distinct rider/tyre histories, no-frame clearing, gravity note and last-accepted state.",
+    "captures": [
+      {
+        "path": "trail-bike/full-articulated-standing.png",
+        "sha256": "9286ad2876499ddfdd7db17db66450daf676b5b90fda3a32302713872445c51f",
+        "inspected": true
+      },
+      {
+        "path": "trail-bike/hardtail-rider-horizontal.png",
+        "sha256": "820efc36cc99964cc8dfd22d3a4b2ad4c00a7b5d726964823f865471df454708",
+        "inspected": true
+      },
+      {
+        "path": "trail-bike/full-support-320.png",
+        "sha256": "1d88b3517eb07df88b846f7da6e3a73b156fa652d3303ff039e6bd1d708b8d6d",
+        "inspected": true
+      },
+      {
+        "path": "trail-bike/full-support-390.png",
+        "sha256": "82322f6da7e2bfae4bd812d5904f544e9546bdb21723b2c0ec122431daa314dc",
+        "inspected": true
+      },
+      {
+        "path": "trail-bike/hardtail-support-320.png",
+        "sha256": "12e151054b630cc8cdc1e5c52284fbcb9894151244f2c46456db045300abd6bd",
+        "inspected": true
+      },
+      {
+        "path": "trail-bike/hardtail-support-390.png",
+        "sha256": "bb64f9ad424f58a0786ad97e36c8a2896354cd1593f989a3c05e1cd5cee7cfe4",
+        "inspected": true
+      },
+      {
+        "path": "trail-bike/articulated-support-flight.png",
+        "sha256": "d0e616fee4380946b78000e9532baa452690f891daa9f50a0a722e4aa9b3b3e0",
+        "inspected": true
+      },
+      {
+        "path": "trail-bike/articulated-support-rejected.png",
+        "sha256": "f9cf9ba763f16f452375b0448d82391b42e21abbf630f0665c234a55b83a2c8a",
+        "inspected": true
+      },
+      {
+        "path": "trail-bike/articulated-domain-stop.png",
+        "sha256": "c5c7b17669f6a509cd78264ca20b01c5645a85f5c87f1f9d2197f72b46d2b4c5",
+        "inspected": true
+      }
+    ]
+  },
+  "limits": [
+    "Automated interactions and capture inspection are distinct from participant usability evidence.",
+    "Newer Edge fails the unchanged numerical budget; see the matched-native-model control.",
+    "No loaded-state initializer, equilibrium solver, saddle contact or game-time performance is implemented."
+  ]
+}

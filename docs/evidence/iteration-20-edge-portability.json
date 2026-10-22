@@ -1,0 +1,370 @@
+{
+  "format": "bikelab-rider-portability-review-0.1",
+  "node": "v24.22.0",
+  "browser": "157.0.4341.10",
+  "scope": "Diagnostic of this saved scenario; no calibration, production changes, tolerance relaxation or general portability guarantee.",
+  "inputRecordSha256": "7282f776a5800b62936bfdf8b899a06f8fc47999cbdd5ae2d36cbfff8754bf3e",
+  "scriptSha256": "520d66a680826c9c91103c0c4a103b453dee70bba37a696bbaacc4fda7b86237",
+  "scenario": {
+    "bike": {
+      "pivotX": 0.04,
+      "pivotZ": -0.235,
+      "shockArmX": -0.054607848086069846,
+      "shockArmZ": 0.18996325604011804,
+      "shockFrameX": 0.19332203501088832,
+      "shockFrameZ": -0.015623078508508775,
+      "shockTravel": 0.055,
+      "bike": "full",
+      "forkBuffer": "progressive",
+      "forkBufferWidth": 0.02,
+      "forkBufferStiffness": 300000,
+      "forkBufferDamping": 1500,
+      "forkStiffness": 9000,
+      "forkDamping": 700,
+      "shockBuffer": "progressive",
+      "shockBufferWidth": 0.008,
+      "shockBufferStiffness": 1000000,
+      "shockBufferDamping": 3000,
+      "shockStiffness": 70000,
+      "shockDamping": 2400,
+      "rider": "articulated"
+    },
+    "wheel": {
+      "nodes": 64,
+      "tyreMass": 1,
+      "hubMass": 1.5,
+      "hubInertia": 0.04,
+      "skin": 0.008,
+      "rimRadius": 0.29,
+      "foundation": 300000,
+      "extension": 500,
+      "edgeViscosity": 0.5,
+      "contactTime": 0.0005,
+      "contactImpedance": 0.99,
+      "collisionTolerance": 1e-10,
+      "collisionIterations": 100,
+      "maxPenetration": 0.0005,
+      "maxStrain": 0.25,
+      "maxDisplacement": 0.06
+    },
+    "motion": {
+      "centerX": -0.5,
+      "clearance": 0,
+      "velocityX": 0,
+      "velocityZ": 0,
+      "omega": 0,
+      "pitchOffset": 0,
+      "pitchVelocity": 0,
+      "forkCompression": 0.04,
+      "rearAngle": 0.08,
+      "riderOffset": 0,
+      "gravity": 9.80665,
+      "duration": 0.1,
+      "dt": 0.00003125,
+      "sampleDt": 0.005
+    },
+    "profile": {
+      "format": "bikelab-profile-1",
+      "units": "m",
+      "axes": "x-forward,z-up",
+      "solid": "below",
+      "interpolation": "linear",
+      "source": {
+        "kind": "illustrative",
+        "description": "Synthetic flat rigid trail."
+      },
+      "points": [
+        [
+          -3,
+          0
+        ],
+        [
+          5,
+          0
+        ]
+      ]
+    },
+    "assembly": {
+      "tyreId": "",
+      "rimId": "",
+      "brand": "unknown",
+      "rimType": "unknown",
+      "construction": "unknown",
+      "tyreBsd": null,
+      "rimBsd": null,
+      "tyreWidth": null,
+      "rimInnerWidth": null,
+      "tyreTubelessApproved": null,
+      "rimTubelessApproved": null,
+      "standardCompliant": null,
+      "widthPairApproved": null,
+      "pairApproved": null,
+      "pressure": null,
+      "tyreMaxPressure": null,
+      "rimMaxPressure": null,
+      "sources": {}
+    },
+    "surface": {
+      "friction": 0
+    },
+    "commands": [
+      {
+        "tick": 0,
+        "rearDrive": 0,
+        "frontBrake": 0,
+        "rearBrake": 0
+      }
+    ],
+    "articulated": {
+      "format": "bikelab-connected-rider-0.1",
+      "chassis": {
+        "mass": 6,
+        "com": [
+          0,
+          -0.15
+        ],
+        "inertia": [
+          0.35,
+          0.5,
+          0.3
+        ]
+      },
+      "passive": {
+        "format": "bikelab-rider-passive-0.1",
+        "posture": {
+          "format": "bikelab-rider-posture-0.1",
+          "riderMass": 70,
+          "hip": [
+            -0.15,
+            0.25
+          ],
+          "trunkPitch": 0.55,
+          "hand": [
+            0.45,
+            0.32
+          ],
+          "foot": [
+            0,
+            -0.3
+          ],
+          "elbowSide": -1,
+          "kneeSide": 1,
+          "minBendSine": 0.05,
+          "segments": {
+            "trunk": {
+              "massFraction": 0.6,
+              "length": 0.55,
+              "comFraction": 0.5,
+              "inertiaPerMass": [
+                0.02880833333333334,
+                0.02880833333333334,
+                0.0072
+              ]
+            },
+            "thighs": {
+              "massFraction": 0.2,
+              "length": 0.43,
+              "comFraction": 0.5,
+              "inertiaPerMass": [
+                0.01700833333333333,
+                0.01700833333333333,
+                0.0032
+              ]
+            },
+            "shanksFeet": {
+              "massFraction": 0.1,
+              "length": 0.43,
+              "comFraction": 0.5,
+              "inertiaPerMass": [
+                0.01663333333333333,
+                0.01663333333333333,
+                0.0024500000000000004
+              ]
+            },
+            "upperArms": {
+              "massFraction": 0.055,
+              "length": 0.3,
+              "comFraction": 0.5,
+              "inertiaPerMass": [
+                0.008125,
+                0.008125,
+                0.0012500000000000002
+              ]
+            },
+            "forearmsHands": {
+              "massFraction": 0.045,
+              "length": 0.3,
+              "comFraction": 0.5,
+              "inertiaPerMass": [
+                0.007899999999999999,
+                0.007899999999999999,
+                0.0008
+              ]
+            }
+          }
+        },
+        "joints": {
+          "hip": {
+            "restAngle": 1.4792200037917314,
+            "stiffness": 120,
+            "damping": 8,
+            "minAngle": 1.1792200037917313,
+            "maxAngle": 1.7792200037917314
+          },
+          "knee": {
+            "restAngle": 1.6922412012942731,
+            "stiffness": 90,
+            "damping": 6,
+            "minAngle": 1.392241201294273,
+            "maxAngle": 1.9922412012942732
+          },
+          "shoulder": {
+            "restAngle": 2.492056379089391,
+            "stiffness": 25,
+            "damping": 2,
+            "minAngle": 2.192056379089391,
+            "maxAngle": 2.7920563790893906
+          },
+          "elbow": {
+            "restAngle": -1.1301027328714,
+            "stiffness": 15,
+            "damping": 1.5,
+            "minAngle": -1.4301027328714,
+            "maxAngle": -0.8301027328713999
+          }
+        }
+      },
+      "closureTime": 0.02,
+      "maxClosureGap": 0.002
+    }
+  },
+  "budget": 1e-9,
+  "browserReproduction": {
+    "max": {
+      "normalized": 0
+    },
+    "exceedingBudget": 0,
+    "worst": []
+  },
+  "modelXMLExact": false,
+  "xmlSha256": {
+    "browser": "6b8cec6671137386a2f75c1d737ea6484cf910eca10d623202f50a5ef9106dd4",
+    "node": "3953e3bd15a960739b68fd697fa354327241bd53adecdc11afb8e2179c8e8489"
+  },
+  "xmlTokenDifferences": [
+    {
+      "index": 9038,
+      "browser": "quat=\"0.7387314735701102",
+      "node": "quat=\"0.73873147357011"
+    },
+    {
+      "index": 9042,
+      "browser": "0.673999859018482",
+      "node": "0.6739998590184821"
+    },
+    {
+      "index": 9062,
+      "browser": "springref=\"0\"",
+      "node": "springref=\"-4.440892098500626e-16\""
+    },
+    {
+      "index": 9114,
+      "browser": "quat=\"0.6628926890111266",
+      "node": "quat=\"0.662892689011127"
+    },
+    {
+      "index": 9118,
+      "browser": "0.7487144200932674",
+      "node": "0.748714420093267"
+    },
+    {
+      "index": 9138,
+      "browser": "springref=\"0\"",
+      "node": "springref=\"8.881784197001252e-16\""
+    }
+  ],
+  "ordinary": {
+    "max": {
+      "path": "record.frames.20.forkLoad.0",
+      "actual": -0.4116286445214282,
+      "expected": -0.4116285269469208,
+      "error": 1.1757450740779163e-7,
+      "normalized": 1.1757450740779163e-7
+    },
+    "exceedingBudget": 331,
+    "worst": [
+      {
+        "path": "record.frames.20.forkLoad.0",
+        "error": 1.1757450740779163e-7,
+        "normalized": 1.1757450740779163e-7
+      },
+      {
+        "path": "record.frames.20.wheels.0.bearing.0",
+        "error": 1.1420065108153077e-7,
+        "normalized": 1.1420065108153077e-7
+      },
+      {
+        "path": "record.frames.20.wheels.0.carrier.0",
+        "error": 1.1420065108153077e-7,
+        "normalized": 1.1420065108153077e-7
+      },
+      {
+        "path": "record.frames.15.wheels.1.bearing.0",
+        "error": 1.5993539403957868e-7,
+        "normalized": 1.0441185667492974e-7
+      },
+      {
+        "path": "record.frames.15.wheels.1.carrier.0",
+        "error": 1.5993539403957868e-7,
+        "normalized": 1.0441185667492974e-7
+      },
+      {
+        "path": "record.frames.9.forkLoad.0",
+        "error": 9.362109576471767e-8,
+        "normalized": 9.362109576471767e-8
+      },
+      {
+        "path": "record.frames.9.wheels.0.bearing.0",
+        "error": 9.210312823526579e-8,
+        "normalized": 9.210312823526579e-8
+      },
+      {
+        "path": "record.frames.9.wheels.0.carrier.0",
+        "error": 9.210312823526579e-8,
+        "normalized": 9.210312823526579e-8
+      },
+      {
+        "path": "record.frames.17.forkLoad.0",
+        "error": 8.414536323275712e-8,
+        "normalized": 8.414536323275712e-8
+      },
+      {
+        "path": "record.frames.18.forkLoad.0",
+        "error": 6.316275003026561e-8,
+        "normalized": 6.316275003026561e-8
+      },
+      {
+        "path": "record.frames.12.wheels.1.bearing.0",
+        "error": 2.1582509734940913e-7,
+        "normalized": 5.8315849241464045e-8
+      },
+      {
+        "path": "record.frames.12.wheels.1.carrier.0",
+        "error": 2.1582509734940913e-7,
+        "normalized": 5.8315849241464045e-8
+      }
+    ]
+  },
+  "matchedXML": {
+    "max": {
+      "path": "record.frames.0.articulated.passiveLoads.5",
+      "actual": 0,
+      "expected": 7.993605777301127e-14,
+      "error": 7.993605777301127e-14,
+      "normalized": 7.993605777301127e-14
+    },
+    "exceedingBudget": 0,
+    "worst": []
+  },
+  "control": "Node replay uses the exact browser-produced native XML through a temporary model factory substitution. JavaScript observation/configuration remains Node-generated. The factory is restored in finally."
+}
