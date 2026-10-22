@@ -4,6 +4,21 @@ import {join} from 'node:path';
 import {replay} from '../dist/trail-bike.js';
 import {reviewTrailSection} from './trail-section-review.mjs';
 
+// Compare every field, but let a failed assertion print only the differing leaf.
+// Node's full-object assertion formatter can exhaust memory on a large run record.
+export function assertExactTrailRecord(actual,expected,path='record'){
+ if(expected&&typeof expected==='object'){
+  assert.ok(actual&&typeof actual==='object',path);
+  assert.equal(Array.isArray(actual),Array.isArray(expected),path);
+  if(Array.isArray(expected))assert.equal(actual.length,expected.length,path+' length');
+  assert.deepEqual(Object.keys(actual),Object.keys(expected),path+' keys');
+  for(const key of Object.keys(expected))assertExactTrailRecord(actual[key],expected[key],path+'.'+key);
+ }else{
+  if(typeof expected==='number')assert.ok(Number.isFinite(actual)&&Number.isFinite(expected),path);
+  assert.equal(actual,expected,path);
+ }
+}
+
 export async function checkTrailSection({page,root,dir,report}){
  dir=join(dir,'trail-bike');const cases=[];
  const ready=()=>page.waitForFunction(()=>document.getElementById('status').textContent==='COMPLETED',null,{timeout:120000});
@@ -11,7 +26,7 @@ export async function checkTrailSection({page,root,dir,report}){
   await page.setViewportSize({width:1440,height:1100});await page.goto(root+'trail-bike.html');await ready();
   await page.locator('[name=bike]').selectOption(bike);await page.locator('#example').selectOption('trail');await ready();
   const pending=page.waitForEvent('download');await page.locator('#save').click();const path=join(dir,bike+'-trail-section.json');await (await pending).saveAs(path);
-  const r=JSON.parse(await readFile(path,'utf8')),expected=await replay(r);assert.deepEqual(r,expected);const review=reviewTrailSection(r);cases.push(review);
+  const r=JSON.parse(await readFile(path,'utf8')),expected=await replay(r);assertExactTrailRecord(r,expected);const review=reviewTrailSection(r);cases.push(review);
   assert.equal(r.scenario.bike.bike,bike);assert.match(r.scenario.profile.source.description,/Short 2D trail/);assert.ok(await page.locator('#riderSupport').isHidden());
   const supported=(f,k)=>f.contacts.filter(c=>c.wheel===k).reduce((sum,c)=>sum+c.normalForce,0)>1e-6;
   const longestUnloaded=k=>{

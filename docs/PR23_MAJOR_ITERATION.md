@@ -10,9 +10,9 @@ New-version numeric XML attributes use 12 significant decimal digits; spring ref
 
 Validation: 10 focused tests pass (existing connected rider plus complete-state tests), including both bikes, exact replay, cadence independence, fresh ledgers, named mapping and negative admission. Full suite and browser portability still required after the connected iteration.
 
-## Remaining major-iteration gates
+## Broader D5 follow-up
 
-Receive coupled loaded reference states, finite unilateral saddle contacts and separate work/load classification, visible separation/recontact, broader controls and complete review. The initializer alone is not merge readiness. Numerical stationarity, physical calibration and real-time throughput remain separate claims.
+Coupled loaded reference states, finite unilateral saddle contacts, separate work/load classification, visible separation/recontact and active controls remain broader D5 gates. PR23 closes the bounded passive-transient/state/trail scope described below after complete review and receiving checks. Numerical stationarity, physical calibration and real-time throughput remain separate claims.
 
 ## Independent restart review, 2026-10-22
 
@@ -33,10 +33,18 @@ The resumed local full `node --test` run finished with 31 test files passing and
 
 The second session advanced the PR to `d0bf2a2`. The unfinished local finite-saddle work is preserved separately at [`a6ac124`](https://github.com/CraigHutchinson/BikeLab/commit/a6ac124) on `codex/rider-saddle-followup`, including all source, the failed cycle-refinement control and rejected equilibrium probes. Its [checkpoint](https://github.com/CraigHutchinson/BikeLab/blob/codex/rider-saddle-followup/docs/RIDER_SADDLE_CHECKPOINT.md) lists integration and receiving gaps. It is not part of PR23 and must receive the newer exportability/UI fixes before further integration.
 
-Current-head hosted tests passed on both systems. The first browser attempt ended when its runner received a shutdown signal; no assertion failure was reported. It was retried. A separate local Edge 157 check found a real remaining new-format portability problem: initial scalar state and XML identity matched Node exactly, but the progressive shock buffer's host trigonometric mapping produced a maximum normalized wrench difference of 5.67e-8 after it became active. The 1e-9 budget was retained.
+The hosted `d0bf2a2` tests passed on both systems. Its first browser attempt ended when its runner received a shutdown signal; no assertion failure was reported. It was retried. A separate local Edge 157 check found a real remaining new-format portability problem: initial scalar state and XML identity matched Node exactly, but the progressive shock buffer's host trigonometric mapping produced a maximum normalized wrench difference of 5.67e-8 after it became active. The 1e-9 budget was retained.
 
 New-format shock-buffer compression, force projection and reported eye-force normalization now use the compiled native rest length, fresh tendon length and fresh tendon Jacobian. Compression is `L0-L`, velocity is `-ten_velocity`, and generalized force is `-F_buffer * ten_J`. GPT-6.1 Sol's independent source review caught that tendon Jacobian storage is always sparse, even when constraint Jacobians are dense; resolution now always uses tendon row metadata. The new dense/sparse fixture includes active buffers. Historical launch formats retain their existing geometry and force mapping.
 
 The physical identity includes `forceMapping: native-shock-jacobian-0.1`. Pre-fix explicit states exported during this unmerged `.2` development must be regenerated: their identity is intentionally rejected, not silently migrated. This is a premerge contract correction. There is no hidden settling, relaxed guard, relaxed comparison tolerance or equilibrium claim.
 
 The bounded PR23 delivery is passive articulated transients, named complete fresh states, support visualization and the guided short trail. Equilibrium and finite saddle are the next received iteration, with their failed candidates preserved above. The broader D5 milestone remains incomplete; the user's direction to defer perfect system dynamics does not turn numerical stationarity failures into accepted equilibria. Final current-head test/browser results and capture review follow before merge.
+
+## Browser qualification and bounded failures
+
+The `54ac547` hosted test jobs pass on Ubuntu and Windows (218 tests each). Its full pinned-browser job remains pending at this checkpoint. Local Edge 157 receives all eight new-format launch/restart/rejected/reimport comparisons within the unchanged 1e-9 normalized budget, with maximum absolute difference 8.53e-14. Those local captures began during the force-mapping fix and are supporting evidence; the final exact-head hosted check is still required.
+
+A separate longer **legacy guided** trail record does not meet even its established 1e-7 normalized budget on Edge 157: the worst observed difference is 4.188e-7 N in the rear-bearing horizontal force at frame 298. The [failed-case receipt](evidence/iteration-20-guided-edge-portability.json) preserves the full scenario, record hash and extrema. Its source attribution is still open. Do not generalize the canonical articulated pass to the guided path or claim general browser portability. No tolerance is increased. A future versioned canonical guided model must isolate native XML, launch coordinates and force mapping with this named consumer/scenario while retaining historical replay.
+
+The simulation itself completes in the separate replay diagnostic (about 136 MB process RSS observed; not a benchmark). The original full-object exact assertion then failed with an array-buffer allocation error, consistent with excessive record-diff formatting. The trail check now compares the same complete exact structure/values leaf by leaf and reports a bounded failing field. Its focused regression rejects a 1e-15 difference, missing fields, array/object differences, unequal sparse-array lengths and nonfinite values. This changes failure reporting, not acceptance. Pinned Chromium/Node remains the release qualification target, with this newer-Edge failure explicitly retained. Physical calibration and real-time performance are not claimed.

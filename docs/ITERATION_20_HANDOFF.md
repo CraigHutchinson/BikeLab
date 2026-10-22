@@ -1,5 +1,15 @@
 # Iteration 20 completeness review and session handoff
 
+## Reconciled release checkpoint, 2026-10-22
+
+This section supersedes older draft/checkout instructions below. PR23 now targets passive articulated transients, signed support visualization, complete fresh-state replay and the short guided trail. The broader D5 equilibrium/saddle/control milestone remains incomplete. Merge only after the final head's Ubuntu/Windows tests and pinned-browser check pass and captures are inspected; see [major-iteration review](PR23_MAJOR_ITERATION.md) and PR checks for the current receipt.
+
+The two sessions' work is preserved: `codex/articulated-rider-review` includes the remote state/UI/trail increments and the reviewed native shock mapping; unfinished local saddle/equilibrium work is pushed as [`codex/rider-saddle-followup` at a6ac124](https://github.com/CraigHutchinson/BikeLab/blob/codex/rider-saddle-followup/docs/RIDER_SADDLE_CHECKPOINT.md). Do not merge that follow-up unchanged: it has a failed cycle-refinement control and must receive the newer state guards/UI/trail changes. Preserve the rejected equilibrium probes; small net force is not stationarity of every coordinate. Local isolation is `BikeLab-pr23-integration`, while `BikeLab` retains the saddle branch and unrelated `.vscode/`.
+
+New-format state force mapping uses native tendon lengths/Jacobians with always-sparse row resolution, including when constraint Jacobians are dense. Pre-fix `.2` explicit states must be regenerated because physical identity changed. Local Edge157 new-format checks pass the unchanged budget; the longer legacy-guided trail fails its existing replay budget. [The failed case](evidence/iteration-20-guided-edge-portability.json) is a named canonical-guided follow-up, not evidence for widening tolerances. Pinned-browser success must be reported separately from this qualification failure.
+
+Next receive finite saddle compression, separation and recontact on both bikes from the preserved branch, with independent internal work/force ownership and no relaxed ultimate limits. Coupled equilibrium remains a separately gated reference; do not make progress depend on unsupported claims that the current passive sag launch is balanced. Preserve the wider active-control, tyre/terrain, 3D, scanned data and measured physics-LOD roadmap.
+
 ## Cloud continuation after complete state replay, 2026-10-22
 
 Published `c79b202` added complete fresh state and canonical geometry. The resumed checkout matched its tree exactly; the newer equilibrium/saddle experiment mentioned by the user may remain on the other machine. Preserve that work separately. No equilibrium or saddle-cycle result is received by this cloud continuation. Small net rider forces do not establish stationarity of tyre or other internal coordinates.

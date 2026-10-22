@@ -271,3 +271,10 @@ Next D5: review guided rider/stop load paths and source a bounded passive articu
 ## Seated and unseated rider research follow-up
 
 [Primary evidence and receiving plan](RIDER_SEATED_UNSEATED.md) capture seated support, bent-leg hovering and rider-selected absorption/resistance. Relative rider COM stability remains an observable/control objective with bounded effort. D5a supplies passive contacts; later measured identification supplies style/control choices and game-tier validation.
+
+
+## Iteration 20 — bounded passive rider and complete state
+
+PR23 receives passive unseated articulated motion, signed hand/foot support and complete fresh-state replay, plus a separate guided-rider short trail. [The release checkpoint](ITERATION_20_HANDOFF.md) separates this scope from the broader D5 gates and preserves the separate pushed saddle implementation and rejected equilibrium candidates. A newer-Edge legacy-guided portability failure is retained as a named canonical-model follow-up; no tolerance relaxation or universal browser agreement is implied.
+
+Next integrate the finite-saddle branch with current guards/UI, resolve its separation/recontact refinement fixture, and receive internal contact work and visual support on both bikes. Coupled equilibrium must pass every coordinate's stationarity and force/moment/hold gates before it is offered as a reference. Active pumping/wheelie/hop, measured rider strategies and real-time model tiers follow these contracts. Existing terrain layers/mud shedding, finite-width contact, steering/lean, component failure and scanned/generated detail remain open.
