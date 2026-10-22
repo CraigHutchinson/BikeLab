@@ -2,6 +2,8 @@
 
 This is an implementation handoff, not implemented mechanics or calibration. It follows the received [unseated passive rider](RIDER_CONNECTED.md) and the primary [seated/unseated research](RIDER_SEATED_UNSEATED.md). Keep PR #23 draft. Begin with frictionless compression-only support and explicit separation; active rider choice and saddle friction require later independent evidence.
 
+The [explicit-state/equilibrium plan](RIDER_EQUILIBRIUM_PLAN.md) is the prerequisite for reproducibly launching a loaded standing/seated reference. Its loaded soft-constraint state has separate admission from the existing zero-gap construction control. Saddle geometry alone does not make the current launch a balanced seated posture.
+
 ## Geometry and collision ownership
 
 Use a finite named pelvis proxy rigidly attached to `rider_trunk` and a finite named pad on `frame`. Specify their shapes, dimensions and local transforms, contact regularization and maximum admitted penetration independently of the terrain configuration. Preserve explicit body inertias: adding collision geometry must not silently add rider or chassis mass. Treat illustrative values as uncalibrated, and declare receiving budgets before trials.
