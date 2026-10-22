@@ -1,5 +1,13 @@
 # PR #23 gap and performance review
 
+## Current status, 2026-10-22
+
+The historical findings below predate moving rider integration. `e312974` receives the bounded unseated motion, independent chassis mass/inertia, named closure accounting, domain rollback and actual limb drawing. The post-command state/interface fault controls now cover G7's retained rollback subpath; three-mode CLI replay is also tested. `97fac3d` adds signed rider support readouts and histories. Its browser gate found a test-tool retargeting issue, repaired in `c3ae724`; the receiving checks are being rerun. See the [current handoff](ITERATION_20_HANDOFF.md) for the final validation receipt.
+
+Open D5a acceptance remains: reproducible loaded-state initialization and coupled standing equilibrium, finite unilateral saddle separation/recontact, a matched locked-posture connected control and broader conditioning/motion checks. The [explicit-state preflight](RIDER_EQUILIBRIUM_PLAN.md#implementation-preflight-review-2026-10-22) records the remaining schema, identity and admission decisions. G4–G6/G8 remain open; guided-bike throughput is not articulated performance or real-time gameplay evidence. Keep PR #23 draft until those receiving gates are addressed.
+
+## Historical prerequisite review
+
 Reviewed 2026-10-21 at remote `303380ceb2ffc517edf6d8d1b61079eb196fdc75`, tree `2e581b8cc1cfd6e6aa1d52e94ff5c4fcdc208f52`; main remains `e73f6cc`. [Exact-head CI](https://github.com/CraigHutchinson/BikeLab/actions/runs/39502891463) passed. The prior implementation receipt records 201 Linux/Windows tests and complete browser comparisons. GPT-6.1 Sol independently audited the source and coverage without running tests or performance work.
 
 No new actionable correctness defect was identified in the geometric, native-construction or passive-law prerequisites. This is a source review, not a proof over every configuration. PR #23 remains a draft prerequisite for D5a; its passing tests do not receive a connected articulated rider or a real-time game tier.
