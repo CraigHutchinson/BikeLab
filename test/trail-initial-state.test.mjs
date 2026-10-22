@@ -50,3 +50,12 @@ test('scalar mapping uses each named position and velocity address; geometry qua
  assert.equal(canonicalModelXML('<joint springref="-4.44e-16" axis="0.7387314735701102 0 1"/>'),canonicalModelXML('<joint springref="0" axis="0.73873147357011 0 1"/>'));
  const legacy=articulatedPreset();assert.notEqual(modelXML(legacy),modelXML({...legacy,initialization:{mode:'launch'}}));
 });
+
+test('canonical shock buffer uses sparse tendon storage even with dense constraint Jacobians',async()=>{
+ const mj=await getRuntime(),factory=mj.MjModel.from_xml_string,a=articulatedPreset('full');a.initialization={mode:'launch'};
+ const sparse=await run(a),compiled=factory(modelXML(a).replace('<option ','<option jacobian="dense" '));let used=false;
+ mj.MjModel.from_xml_string=()=>{assert.equal(used,false);used=true;return compiled;};
+ let dense;try{dense=await run(a);}finally{mj.MjModel.from_xml_string=factory;if(!used)compiled.delete();}
+ assert.equal(dense.status,'completed');assert.ok(dense.frames.some(f=>f.shockBuffer>100));assert.ok(dense.summary.maxResidual<.5);
+ for(let i=0;i<dense.frames.length;i++){const d=dense.frames[i],s=sparse.frames[i];assert.ok(Math.abs(d.shock-s.shock)<1e-8);assert.ok(Math.abs(d.shockBuffer-s.shockBuffer)<1e-3);}
+});

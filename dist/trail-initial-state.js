@@ -43,7 +43,7 @@ export function canonicalModelXML(xml) {
 export async function stateIdentity(xml,scenario) {
  // dt and command/recording schedule are run controls. Physical geometry,
  // constitutive laws, gravity, admission limits and native build are bound.
- const physical={model:STATE_MODEL,nativeBuild,xml:xml.replace(/timestep="[^"]*"/,'timestep="run-control"'),bike:scenario.bike,wheel:scenario.wheel,articulated:scenario.articulated,assembly:scenario.assembly};
+ const physical={model:STATE_MODEL,nativeBuild,forceMapping:'native-shock-jacobian-0.1',xml:xml.replace(/timestep="[^"]*"/,'timestep="run-control"'),bike:scenario.bike,wheel:scenario.wheel,articulated:scenario.articulated,assembly:scenario.assembly};
  const bytes=new TextEncoder().encode(JSON.stringify(physical));
  return Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',bytes)),v=>v.toString(16).padStart(2,'0')).join('');
 }

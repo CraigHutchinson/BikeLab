@@ -118,6 +118,13 @@ export async function run(input={}){
    const flex=id(mj.mjtObj.mjOBJ_FLEX.value,name+'_casing'),hubBody=body(name);
    return {name,flex,body:hubBody,spin:joint(mj,model,name+'Spin'),vertex:3*model.flex_vertadr[flex],edge:model.flex_edgeadr[flex],nodeJoints:Array.from({length:w.nodes},(_,i)=>[joint(mj,model,name+'_u'+i),joint(mj,model,name+'_v'+i)]),bodies:[hubBody,...Array.from({length:w.nodes},(_,i)=>body(name+'_n'+i))],hub:new Float64Array(2),oldHub:[0,0],move:[0,0],oldRimGap:0,xyz:new Float64Array(3*w.nodes),oldXYZ:new Float64Array(3*w.nodes),ground:new Float64Array(3),brakeTorque:0,driveTorque:0,brakeCapacity:0,limits:{}};
   });
+  const shockRest=j.swing?(a.initialization?model.tendon_lengthspring[0]:shockLength(0,g)):0;
+  let shockJacobianIndex=-1;
+  if(j.swing&&a.initialization){
+   // Native tendon storage is sparse even when constraint Jacobians are dense.
+   for(let k=model.ten_J_rowadr[0];k<model.ten_J_rowadr[0]+model.ten_J_rownnz[0];k++)if(model.ten_J_colind[k]===j.swing.v)shockJacobianIndex=k;
+   if(shockJacobianIndex<0)throw Error('Missing native shock Jacobian.');
+  }
   if(a.initialization?.mode==='state')applyState(a.initialization.state,identity,layout,data);else{
   const rearAngle=j.swing?m.rearAngle:0,rearX=j.swing?g.pivotX+Math.cos(rearAngle)*g.armX+Math.sin(rearAngle)*g.armZ:g.rearX,rearZ=j.swing?g.pivotZ-Math.sin(rearAngle)*g.armX+Math.cos(rearAngle)*g.armZ:g.axleZ;
   const frontX=g.frontX-m.forkCompression*Math.cos(g.headAngle),frontZ=g.axleZ+m.forkCompression*Math.sin(g.headAngle),pitch=Math.atan2(frontZ-rearZ,frontX-rearX)+m.pitchOffset;
@@ -138,7 +145,7 @@ export async function run(input={}){
   function observe(){
    mj.mj_fwdPosition(model,data);mj.mj_fwdVelocity(model,data);data.qfrc_applied.fill(0);for(const b of buffers)b.fill(0);
    if(p.forkBuffer==='progressive')travelBuffer(data.qpos[j.fork.q],data.qvel[j.fork.v],g.forkTravel,p.forkBufferWidth,p.forkBufferStiffness,p.forkBufferDamping,buffers[0]);data.qfrc_applied[j.fork.v]=buffers[0][0];
-   if(j.swing){if(p.shockBuffer==='progressive')travelBuffer(shockLength(0,g)-data.ten_length[0],-data.ten_velocity[0],g.shockTravel,p.shockBufferWidth,p.shockBufferStiffness,p.shockBufferDamping,buffers[1]);data.qfrc_applied[j.swing.v]=buffers[1][0]*shockCompressionJacobian(data.qpos[j.swing.q],g);}
+   if(j.swing){if(p.shockBuffer==='progressive')travelBuffer(shockRest-data.ten_length[0],-data.ten_velocity[0],g.shockTravel,p.shockBufferWidth,p.shockBufferStiffness,p.shockBufferDamping,buffers[1]);data.qfrc_applied[j.swing.v]=buffers[1][0]*(a.initialization?-data.ten_J[shockJacobianIndex]:shockCompressionJacobian(data.qpos[j.swing.q],g));}
    if(j.riderSlide){if(p.riderBuffer==='progressive')travelBuffer(data.qpos[j.riderSlide.q]+p.riderTravel,data.qvel[j.riderSlide.v],2*p.riderTravel,p.riderBufferWidth,p.riderBufferStiffness,p.riderBufferDamping,buffers[2]);data.qfrc_applied[j.riderSlide.v]=buffers[2][0];}
    for(const wheel of wheels)data.qfrc_applied[wheel.spin.v]=wheel.driveTorque;
    mj.mj_forward(model,data);mj.mj_energyPos(model,data);mj.mj_energyVel(model,data);energy=data.energy[0]+data.energy[1];lossPower=0;constraintPower=0;
@@ -162,7 +169,7 @@ export async function run(input={}){
    for(let i=0;i<model.nv;i++)if(!Number.isFinite(data.qpos[i])||!Number.isFinite(data.qvel[i])||!Number.isFinite(data.qacc[i]))return 'nonfinite-state';
    if(data.solver_niter[0]>=100)return 'native-solver-iteration-limit';if(data.ncon>512)return 'contact-capacity-limit';
    if(Math.abs(data.qpos[j.pitch.q])>.35)return 'frame-pitch-limit';if(data.qpos[j.fork.q]<-1e-9||data.qpos[j.fork.q]>g.forkTravel)return 'fork-travel-limit';
-   if(j.swing&&(data.qpos[j.swing.q]<-1e-9||data.qpos[j.swing.q]>g.rearAngleMax||shockLength(0,g)-data.ten_length[0]>g.shockTravel))return 'shock-travel-limit';
+   if(j.swing&&(data.qpos[j.swing.q]<-1e-9||data.qpos[j.swing.q]>g.rearAngleMax||shockRest-data.ten_length[0]>g.shockTravel))return 'shock-travel-limit';
    if(j.riderSlide&&Math.abs(data.qpos[j.riderSlide.q])>p.riderTravel)return 'rider-travel-limit';
    if(Math.hypot(wheels[0].hub[0]-wheels[1].hub[0],wheels[0].hub[1]-wheels[1].hub[1])<2*(w.radius+w.maxDisplacement))return 'wheel-separation-limit';
    for(const wheel of wheels){const limits=geometryLimits(w,a.profile,wheel.hub,wheel.xyz,previous?wheel.oldXYZ:undefined,wheel.limits);wheel.limits=limits;if(limits.reason)return wheel.name+'-'+limits.reason;
@@ -181,7 +188,7 @@ export async function run(input={}){
   function record(){
    const f=slots[count];momentum(allBodies,f.momentum);if(!count)initialMomentum.set(f.momentum);
    if(connectedRider){connectedRider.record(f.articulated);f.articulated.closureWork=closureWork;f.articulated.closureAngularImpulse=closureAngularImpulse;}
-   f.time=data.time;f.frame[0]=data.xpos[3*frameBody];f.frame[1]=data.xpos[3*frameBody+2];f.frame[2]=data.qpos[j.pitch.q];f.rider[0]=data.xipos[3*riderBody];f.rider[1]=data.xipos[3*riderBody+2];if(a.articulated){f.rider[0]=f.articulated.centerOfMass[0];f.rider[1]=f.articulated.centerOfMass[2];}f.fork=data.qpos[j.fork.q];f.rearAngle=j.swing?data.qpos[j.swing.q]:0;f.shock=j.swing?shockLength(0,g)-data.ten_length[0]:0;f.riderOffset=j.riderSlide?data.qpos[j.riderSlide.q]:0;
+   f.time=data.time;f.frame[0]=data.xpos[3*frameBody];f.frame[1]=data.xpos[3*frameBody+2];f.frame[2]=data.qpos[j.pitch.q];f.rider[0]=data.xipos[3*riderBody];f.rider[1]=data.xipos[3*riderBody+2];if(a.articulated){f.rider[0]=f.articulated.centerOfMass[0];f.rider[1]=f.articulated.centerOfMass[2];}f.fork=data.qpos[j.fork.q];f.rearAngle=j.swing?data.qpos[j.swing.q]:0;f.shock=j.swing?shockRest-data.ten_length[0]:0;f.riderOffset=j.riderSlide?data.qpos[j.riderSlide.q]:0;
    Object.assign(f.command,a.commands[commandIndex]);f.driveWork=driveWork;f.drivePower=drivePower;f.brakeWork=brakeWork;f.brakePower=brakePower;
    f.forkBuffer=buffers[0][0];f.shockBuffer=buffers[1][0];f.riderBuffer=buffers[2][0];f.energy=energy;f.dampingLoss=loss;f.constraintWork=constraintWork;f.normalWork=normalWork;f.tangentWork=tangentWork;f.normalPower=normalPower;f.tangentPower=tangentPower;f.constraintPower=constraintPower;f.residual=energy-initialEnergy+loss-constraintWork-driveWork;f.impulse.set(impulse);f.momentumResidual[0]=f.momentum[0]-initialMomentum[0]-impulse[0];f.momentumResidual[1]=f.momentum[1]-initialMomentum[1]-impulse[1]+mass*m.gravity*data.time;f.momentumResidual[2]=f.momentum[2]-initialMomentum[2]-impulse[2]-gravityImpulse;
    if(a.articulated){f.articulated.momentumResidualAfterClosure.set(f.momentumResidual);f.articulated.momentumResidualAfterClosure[2]-=closureAngularImpulse;diagnostic.eq_active.set(data.eq_active);}
@@ -189,7 +196,7 @@ export async function run(input={}){
    if(diagnosticRider){const issue=diagnosticRider.observe();if(issue)throw Error('Diagnostic rider diverged: '+issue);for(let i=0;i<2;i++)for(let k=0;k<3;k++)maxDiagnosticDifference=Math.max(maxDiagnosticDifference,Math.abs(diagnosticRider.interfaces.attachments[i].forceOnRider[k]-connectedRider.interfaces.attachments[i].forceOnRider[k]));}
    for(let i=0;i<model.nv;i++)maxDiagnosticDifference=Math.max(maxDiagnosticDifference,Math.abs(data.qacc[i]-diagnostic.qacc[i]),Math.abs(data.qfrc_constraint[i]-diagnostic.qfrc_constraint[i]));
    corrected(frameBody,wheels,f.root);corrected(frontBody,frontOnly,f.forkLoad);corrected(rearBody,rearOnly,f.pivot);if(!a.articulated)corrected(riderBody,p.rider==='compliant'?none:wheels,f.guide);
-   if(j.swing){const arm=3*armSite,eye=3*frameSite,dx=diagnostic.site_xpos[arm]-diagnostic.site_xpos[eye],dz=diagnostic.site_xpos[arm+2]-diagnostic.site_xpos[eye+2],length=Math.hypot(dx,dz),fx=-buffers[1][0]*dx/length,fz=-buffers[1][0]*dz/length;f.pivot[0]-=fx;f.pivot[1]-=fz;f.pivot[2]-=(diagnostic.site_xpos[arm+2]-diagnostic.xpos[3*rearBody+2])*fx-(diagnostic.site_xpos[arm]-diagnostic.xpos[3*rearBody])*fz;}
+   if(j.swing){const arm=3*armSite,eye=3*frameSite,dx=diagnostic.site_xpos[arm]-diagnostic.site_xpos[eye],dz=diagnostic.site_xpos[arm+2]-diagnostic.site_xpos[eye+2],length=a.initialization?diagnostic.ten_length[0]:Math.hypot(dx,dz),fx=-buffers[1][0]*dx/length,fz=-buffers[1][0]*dz/length;f.pivot[0]-=fx;f.pivot[1]-=fz;f.pivot[2]-=(diagnostic.site_xpos[arm+2]-diagnostic.xpos[3*rearBody+2])*fx-(diagnostic.site_xpos[arm]-diagnostic.xpos[3*rearBody])*fz;}
    for(let k=0;k<2;k++){const wheel=wheels[k],v=f.wheels[k];v.hub[0]=wheel.hub[0];v.hub[1]=wheel.hub[1];v.hub[2]=Math.atan2(data.xmat[9*wheel.body+2],data.xmat[9*wheel.body]);v.ground.set(wheel.ground);corrected(wheel.body,k?rearOnly:frontOnly,v.carrier);v.bearing.set(v.carrier);v.bearing[2]-=wheel.driveTorque+wheel.brakeTorque;v.driveTorque=wheel.driveTorque;v.brakeCapacity=wheel.brakeCapacity;v.brakeTorque=wheel.brakeTorque;v.spinAngle=data.qpos[wheel.spin.q];v.spinVelocity=data.qvel[wheel.spin.v];momentum(wheel.bodies,v.momentum);v.centerOfMass[0]=data.subtree_com[3*wheel.body];v.centerOfMass[1]=data.subtree_com[3*wheel.body+2];Object.assign(v.limits,wheel.limits);for(let i=0;i<w.nodes;i++){v.nodes[2*i]=wheel.xyz[3*i];v.nodes[2*i+1]=wheel.xyz[3*i+2];}maxBearingMoment=Math.max(maxBearingMoment,Math.abs(v.bearing[2]));}
    for(const value of f.root)maxRoot=Math.max(maxRoot,Math.abs(value));
    const list=data.contact;let contacts=0;
