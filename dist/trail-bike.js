@@ -4,6 +4,7 @@ import {bikeAssembly} from './bike-assembly.js';
 import {geometryFor,shockLength,shockCompressionJacobian} from './linkage.js';
 import {wheelParts,terrainParts,canonicalProfile,geometryLimits,validate as validateWheel,getRuntime} from './moving-wheel.js';
 import {fixture} from './terrain.js';
+import {trailSectionProfile} from './trail-section.js';
 import {travelBuffer} from './travel-buffer.js';
 import {validateAssembly,assessAssembly,ASSEMBLY_DEFAULTS,sweepRim} from './wheel-limits.js';
 import {interfaceWrench} from './rig-loads.js';
@@ -74,8 +75,9 @@ export function articulatedPreset(bike='full',kind='standing'){
  a.articulated=validateConnectedRider();return a;
 }
 export function preset(name='bump',bike='full'){
- if(!['flat','bump','flight','limit','square','faceted','edge-limit','coast','sliding','drive','brake'].includes(name))throw Error('Unknown connected bike preset.');
+ if(!['flat','bump','trail','flight','limit','square','faceted','edge-limit','coast','sliding','drive','brake'].includes(name))throw Error('Unknown connected bike preset.');
  const a={bike:{bike},profile:['square','faceted','edge-limit'].includes(name)?impactProfile(name):smoothProfile(name==='bump'?'bump':'flat')};
+ if(name==='trail'){a.profile=trailSectionProfile();a.motion={velocityX:2.5,omega:2.5/.36,clearance:0,duration:1.5};}
  if(name==='flight'){a.bike={bike,rider:'compliant',forkBuffer:'none',shockBuffer:'none',riderBuffer:'none'};a.motion={clearance:.3,gravity:0,forkCompression:0,rearAngle:0,riderOffset:0,velocityX:1,velocityZ:.3,omega:0,duration:.2};}
  if(name==='coast'||name==='sliding'){a.surface={friction:.6};a.motion={velocityX:1.5,omega:name==='coast'?1.5/.36:0,duration:.3};}
  if(name==='drive'||name==='brake'){a.surface={friction:.6};a.motion={velocityX:1.5,omega:1.5/.36,duration:.3};a.commands=[{tick:0,rearDrive:0,frontBrake:0,rearBrake:0},{tick:1600,rearDrive:name==='drive'?20:0,frontBrake:name==='brake'?55:0,rearBrake:name==='brake'?35:0},{tick:6400,rearDrive:0,frontBrake:0,rearBrake:0}];}

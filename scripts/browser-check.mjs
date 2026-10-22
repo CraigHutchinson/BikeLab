@@ -1,5 +1,6 @@
 import {checkTrailBike} from './trail-bike-browser-check.mjs';
 import {checkTrailState} from './trail-state-browser-check.mjs';
+import {checkTrailSection} from './trail-section-browser-check.mjs';
 import {checkMovingWheel} from './moving-wheel-browser-check.mjs';
 import {checkWheelLimits} from './wheel-limits-browser-check.mjs';
 import {checkFootprint} from './footprint-browser-check.mjs';
@@ -329,6 +330,7 @@ try {
   await checkMovingWheel({page,root,dir,report});
   await checkTrailBike({page,root,dir,report});
   await checkTrailState({page,root,dir,report});
+  await checkTrailSection({page,root,dir,report});
 
   // Pixel availability is separate from human inspection of captured images.
   const pixels=await page.locator('#rig').evaluate(canvas=>{

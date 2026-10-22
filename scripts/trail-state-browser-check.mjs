@@ -36,7 +36,7 @@ export async function checkTrailState({page,root,dir,report}){
   await page.locator('#load').setInputFiles(fresh.path);await ready();assert.deepEqual((await save(bike+'-state-reimport')).value,r);
   await page.locator('[name=duration]').fill('.02');assert.ok(await page.locator('#restartState').isDisabled());await page.locator('[name=rider]').selectOption('compliant');
   for(const key of launchFields){assert.ok(await page.locator('[name='+key+']').isEnabled());assert.ok(Number.isFinite(Number(await page.locator('[name='+key+']').inputValue())));assert.notEqual(await page.locator('[name='+key+']').inputValue(),'');}
-  assert.equal(await page.locator('[name=duration]').inputValue(),'0.02');await page.locator('#restore').click();
+  assert.equal(Number(await page.locator('[name=duration]').inputValue()),.02);await page.locator('#restore').click();
   for(const key of launchFields)assert.ok(await page.locator('[name='+key+']').isDisabled());assert.ok(await page.locator('#restartState').isEnabled());
   await page.setViewportSize({width:320,height:844});await page.waitForTimeout(50);assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));await shot(bike+'-state-mobile');
  }

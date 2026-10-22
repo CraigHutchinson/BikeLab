@@ -1,0 +1,13 @@
+# Short 2D trail receiving experiment
+
+Select **Short trail · bump and drop · guided rider** in Trail bike, choose full suspension or hardtail, then calculate and play/scrub the recorded run. The authored profile and launch remain editable through the existing scenario JSON. The headless equivalent is `run(preset('trail', bike))`; export/import uses the existing complete trail record.
+
+The 1.5 s fixture launches at 2.5 m/s from a flat zero-height shelf. A 10 mm bump precedes a rising 90 mm crest, then a faceted descent reaches terrain 80 mm below the shelf. The surface remains continuous and rigid. This is a synthetic receiving case, not a measured trail, disconnected gap, calibrated tyre/soil model or anatomical rider. The guided rider and authored suspension compression carry their existing mass/energy semantics. The other checkout's standing-equilibrium and saddle work remains separate.
+
+Do not force a successful jump by relaxing pitch, suspension, casing, rim, penetration or temporal-resolution guards. A ramp alone is not evidence of a jump. Distinguish front-wheel unloading, rear-wheel unloading, both-wheel flight after prior support and later recontact. Ignore the unloaded time-zero contact when counting flight. Current recorded contact events are sampled every 5 ms; they do not locate exact take-off times.
+
+`node scripts/trail-section-review.mjs` saves both bikes at 31.25 and 15.625 μs timesteps in `artifacts/trail-section/`. The postprocessor independently sums recorded tyre forces, checks accepted travel/geometry limits and reports sampled support transitions, maximum energy/work and momentum residuals, peak load and timestep differences. Two timesteps are a sensitivity check, not a proven convergence order or physical calibration. It does not benchmark real-time performance.
+
+The first full-suspension candidate completed within existing guards: fork compression reached 49.7 mm, shock compression 29.2 mm, peak total ground force 1.77 kN and maximum energy/work residual 2.83 J against initial energy 799 J. Front and rear lift/recontact occurred separately; there was no sustained sampled both-wheel flight. This candidate result is provisional; both-bike refinement and hosted browser captures are pending. Do not describe it as an active bunny hop or a completed jump.
+
+The browser receiving check selects the actual preset on both bikes, compares the entire exported record exactly with Node, inspects front/rear unloading and landing frames, and captures desktop/390 px views. This extends the visual track consumer while preserving future active pumping/wheelie/hop controls, 3D lateral/turning, finite failure/blowout, layered soil and adaptive/multirate work as separate gates.
