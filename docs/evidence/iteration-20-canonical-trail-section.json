@@ -1,0 +1,321 @@
+{
+  "format": "bikelab-trail-section-review-0.1",
+  "sources": {
+    "dist/trail-section.js": "302aa124001dc6bdffbc24d0e5884c4c268d3719f7c33cd89b23026cf14c1835",
+    "dist/trail-bike.js": "cfe29c491b0e3804850bbbc71578491eb20e69091ee0e426b0695f16ec9748bf",
+    "dist/trail-canonical.js": "fef3d44edb561baf806f5a016474d074a6e229c42282136e781463b6302e61a5",
+    "dist/trail-initial-state.js": "959bd95bf8ad07652a728087ddf1042b88edf74b324fc3add1ff79f7cc36ad3e",
+    "dist/moving-wheel.js": "45b1068fabf5413dfc90bfd2ee47f46600deb093b756d7c8d1bdc8ad24411e35",
+    "dist/bike-assembly.js": "857fed2762cff735e23f72043d24caec6cb6c7317aae88f284bd8bd13010bdd2",
+    "dist/bike-rig.js": "055258d1d5bd34bff8bebb2997ba651e95126e21366d7cf8fff68a17d586f8e1",
+    "dist/linkage.js": "4788206d4530a82d1f95072f4ab9dd6ad77bc241fe258b67dff64b5fa3c0c08a",
+    "scripts/trail-section-review.mjs": "7d5aac1dc9ac46738f100de4e8fdc93ee04e1bc5d22c268fec5784f89ee4a61e"
+  },
+  "cases": [
+    {
+      "bike": "full",
+      "dt": 3.125e-05,
+      "sampleDt": 0.005,
+      "status": "completed",
+      "acceptedTime": 1.4999999999993385,
+      "initialEnergy": 799.3252458174192,
+      "maxEnergyResidual": 2.832789676157147,
+      "peakGroundForce": 1750.4715315356696,
+      "maxPenetration": 0.0003267295712702026,
+      "peaks": {
+        "fork": 0.04971214493021712,
+        "shock": 0.029180113867082746,
+        "pitch": 0.14718990500911985,
+        "momentumResidual": [
+          0.00239576856590773,
+          0.024573733876650294,
+          0.03889207105112291
+        ]
+      },
+      "frameDisplacementX": 3.426602184828608,
+      "transitions": [
+        {
+          "time": 0,
+          "frontSupported": false,
+          "rearSupported": false
+        },
+        {
+          "time": 0.005000000000000004,
+          "frontSupported": true,
+          "rearSupported": true
+        },
+        {
+          "time": 0.6100000000000273,
+          "frontSupported": false,
+          "rearSupported": true
+        },
+        {
+          "time": 0.6150000000000334,
+          "frontSupported": true,
+          "rearSupported": true
+        },
+        {
+          "time": 0.6650000000000945,
+          "frontSupported": false,
+          "rearSupported": true
+        },
+        {
+          "time": 0.7450000000001923,
+          "frontSupported": true,
+          "rearSupported": true
+        },
+        {
+          "time": 1.2000000000000377,
+          "frontSupported": true,
+          "rearSupported": false
+        },
+        {
+          "time": 1.304999999999793,
+          "frontSupported": true,
+          "rearSupported": true
+        }
+      ],
+      "sampledZeroSupportIntervals": [],
+      "interpretation": "Contact states use summed recorded normal force > 1e-6 N. Event times are sampled, not exact take-off times. Zero-support samples do not prove geometric separation; initial zero-load contact is not a jump. Guided mass, stored suspension energy and launch speed are authored; no active rider or physical calibration.",
+      "recordSha256": "52cd0a6087d3917ee5eb0d8c425353154ae8dd7eeb3549b2d0250ded72f0ae65",
+      "shockBufferCoverage": {
+        "samplesNonzero": 40,
+        "maximumAbsoluteForceN": 434.6766114250224
+      }
+    },
+    {
+      "bike": "full",
+      "dt": 1.5625e-05,
+      "sampleDt": 0.005,
+      "status": "completed",
+      "acceptedTime": 1.500000000001474,
+      "initialEnergy": 799.3252458174192,
+      "maxEnergyResidual": 1.1349265957471806,
+      "peakGroundForce": 1710.2770262875883,
+      "maxPenetration": 0.00030180837449105685,
+      "peaks": {
+        "fork": 0.04968825974783541,
+        "shock": 0.029280941133678434,
+        "pitch": 0.14825262247758458,
+        "momentumResidual": [
+          0.001167751251815119,
+          0.012782824435589646,
+          0.019675884494972706
+        ]
+      },
+      "frameDisplacementX": 3.4311784130523404,
+      "transitions": [
+        {
+          "time": 0,
+          "frontSupported": false,
+          "rearSupported": false
+        },
+        {
+          "time": 0.005000000000000004,
+          "frontSupported": true,
+          "rearSupported": true
+        },
+        {
+          "time": 0.6699999999998557,
+          "frontSupported": false,
+          "rearSupported": true
+        },
+        {
+          "time": 0.7449999999996809,
+          "frontSupported": true,
+          "rearSupported": true
+        },
+        {
+          "time": 1.1249999999996834,
+          "frontSupported": true,
+          "rearSupported": false
+        },
+        {
+          "time": 1.1299999999997072,
+          "frontSupported": true,
+          "rearSupported": true
+        },
+        {
+          "time": 1.1950000000000176,
+          "frontSupported": true,
+          "rearSupported": false
+        },
+        {
+          "time": 1.3050000000005428,
+          "frontSupported": true,
+          "rearSupported": true
+        }
+      ],
+      "sampledZeroSupportIntervals": [],
+      "interpretation": "Contact states use summed recorded normal force > 1e-6 N. Event times are sampled, not exact take-off times. Zero-support samples do not prove geometric separation; initial zero-load contact is not a jump. Guided mass, stored suspension energy and launch speed are authored; no active rider or physical calibration.",
+      "recordSha256": "a84409fa71a84e6738f9d4e543e314713e67e7e1890e5226a77a0db0071e3a1b",
+      "shockBufferCoverage": {
+        "samplesNonzero": 39,
+        "maximumAbsoluteForceN": 462.49963499753267
+      }
+    },
+    {
+      "bike": "hardtail",
+      "dt": 3.125e-05,
+      "sampleDt": 0.005,
+      "status": "completed",
+      "acceptedTime": 1.4999999999993385,
+      "initialEnergy": 809.6414623417253,
+      "maxEnergyResidual": 2.889983401208381,
+      "peakGroundForce": 2518.435548090227,
+      "maxPenetration": 0.00038535650666610827,
+      "peaks": {
+        "fork": 0.0578326864256992,
+        "shock": 0,
+        "pitch": 0.1793352409459067,
+        "momentumResidual": [
+          0.007183834094881547,
+          0.03787269533950166,
+          0.03865276284113861
+        ]
+      },
+      "frameDisplacementX": 3.430249854066878,
+      "transitions": [
+        {
+          "time": 0,
+          "frontSupported": false,
+          "rearSupported": false
+        },
+        {
+          "time": 0.005000000000000004,
+          "frontSupported": true,
+          "rearSupported": false
+        },
+        {
+          "time": 0.010000000000000007,
+          "frontSupported": true,
+          "rearSupported": true
+        },
+        {
+          "time": 0.6750000000001067,
+          "frontSupported": false,
+          "rearSupported": true
+        },
+        {
+          "time": 0.7550000000002045,
+          "frontSupported": true,
+          "rearSupported": true
+        },
+        {
+          "time": 1.1950000000000494,
+          "frontSupported": true,
+          "rearSupported": false
+        },
+        {
+          "time": 1.2949999999998163,
+          "frontSupported": true,
+          "rearSupported": true
+        }
+      ],
+      "sampledZeroSupportIntervals": [],
+      "interpretation": "Contact states use summed recorded normal force > 1e-6 N. Event times are sampled, not exact take-off times. Zero-support samples do not prove geometric separation; initial zero-load contact is not a jump. Guided mass, stored suspension energy and launch speed are authored; no active rider or physical calibration.",
+      "recordSha256": "b94969edbed4e223276f601d851374407e42696ce85c4e8531278a6010b1f8bb",
+      "shockBufferCoverage": {
+        "samplesNonzero": 0,
+        "maximumAbsoluteForceN": 0
+      }
+    },
+    {
+      "bike": "hardtail",
+      "dt": 1.5625e-05,
+      "sampleDt": 0.005,
+      "status": "completed",
+      "acceptedTime": 1.500000000001474,
+      "initialEnergy": 809.6414623417253,
+      "maxEnergyResidual": 1.210003732241478,
+      "peakGroundForce": 2514.4297729453783,
+      "maxPenetration": 0.0003618376307008078,
+      "peaks": {
+        "fork": 0.057774742800174056,
+        "shock": 0,
+        "pitch": 0.17928349106945868,
+        "momentumResidual": [
+          0.003599625267298734,
+          0.01879103250485059,
+          0.019267926776819877
+        ]
+      },
+      "frameDisplacementX": 3.4246085671578754,
+      "transitions": [
+        {
+          "time": 0,
+          "frontSupported": false,
+          "rearSupported": false
+        },
+        {
+          "time": 0.005000000000000004,
+          "frontSupported": true,
+          "rearSupported": false
+        },
+        {
+          "time": 0.010000000000000007,
+          "frontSupported": true,
+          "rearSupported": true
+        },
+        {
+          "time": 0.6799999999998324,
+          "frontSupported": false,
+          "rearSupported": true
+        },
+        {
+          "time": 0.7549999999996576,
+          "frontSupported": true,
+          "rearSupported": true
+        },
+        {
+          "time": 1.1950000000000176,
+          "frontSupported": true,
+          "rearSupported": false
+        },
+        {
+          "time": 1.295000000000495,
+          "frontSupported": true,
+          "rearSupported": true
+        }
+      ],
+      "sampledZeroSupportIntervals": [],
+      "interpretation": "Contact states use summed recorded normal force > 1e-6 N. Event times are sampled, not exact take-off times. Zero-support samples do not prove geometric separation; initial zero-load contact is not a jump. Guided mass, stored suspension energy and launch speed are authored; no active rider or physical calibration.",
+      "recordSha256": "d2a75a85c590312a48a39c948d07097c2316520f2f25fa6184cb15e6f1c96560",
+      "shockBufferCoverage": {
+        "samplesNonzero": 0,
+        "maximumAbsoluteForceN": 0
+      }
+    }
+  ],
+  "refinement": [
+    {
+      "bike": "full",
+      "peakForceRelativeDifference": 0.023501751254490853,
+      "energyResidualRatio": 0.40063920216158727
+    },
+    {
+      "bike": "hardtail",
+      "peakForceRelativeDifference": 0.0015931147443247777,
+      "energyResidualRatio": 0.41868881729062607
+    }
+  ],
+  "scope": "Numerical receiving experiment, not jump validation or physical calibration. No timing/performance measurement.",
+  "simulationCommit": "1242d09e9b5e7a5f30f8146f10605f0b0e80bbd7",
+  "sourceQualification": "Source hashes match the published implementation. Legacy and canonical receipts are separate; no physical calibration or timing measurement.",
+  "model": "bikelab-trail-bike-0.5",
+  "legacyReplayControl": {
+    "record": "Historical full-dt1.json, legacy .4, 1.5 s full suspension",
+    "recordSha256": "89c0250ec076f4bea0e462deb57a6404babc016e6ce3c694da08ecef55e8849f",
+    "sameRuntimeJSONBytesEqual": true,
+    "qualification": "Compared both sides as serialized JSON; JSON represents signed zeros as 0. The initial un-serialized strict comparison reported only a signed-zero mismatch before the corrected export-to-export check passed."
+  },
+  "localTests": {
+    "focusedTests": 5,
+    "focusedPass": 5,
+    "fullCommand": "node --test",
+    "testFiles": 43,
+    "passedFiles": 33,
+    "failedFiles": 10,
+    "environmentLimitations": "Direct CLI/server diagnostics reproduce spawnSync EPERM and listen EPERM. Hosted suites are authoritative for these unavailable paths; no tests weakened."
+  }
+}

@@ -1,0 +1,1651 @@
+{
+  "format": "bikelab-rider-interface-evidence-0.1",
+  "implementation": "4ad46a59243501b6d1490083c95a5c01da9b1dda",
+  "recordedAt": "2026-10-21T07:44:05.492Z",
+  "node": "v24.22.0",
+  "scope": "Instantaneous native hand/foot load/work observer and existing-station regression. No moving articulated rider, saddle, physical calibration, injury or real-time claim.",
+  "sourceSha256": {
+    "dist/rider-interfaces.js": "701f4311c168e884b39cc7d1f5bd14b77941fe212da53ad247c6a69371d3045d",
+    "dist/rider-native.js": "c0f0f25a7e8b85e58e0e06c864f808915693db0164417f9ee3058d32bf3105d9",
+    "dist/rider-posture.js": "6eaffb5f9062cb7270ddc7d8e304dc45ef8eba4db2044da5cbf2349f4cc6c258",
+    "dist/rider-passive.js": "75b2df2185dd9b19c00eb2a461fb2eb943c8e65eaf3c6f8c1e48137c9f91f8fe",
+    "scripts/rider-posture.mjs": "d4740271a50d869789180c7286a52db27045b1664fbf9ba6f60f716190d0e123",
+    "scripts/browser-check.mjs": "b9ac5a73a9f79634df37ca028a14c86028c95a88d75012e32ac1610d38c69196",
+    "scripts/pr23-performance.mjs": "b84f0a1a1d06e9e7e8c3067893ea65ca210fee87e301b7cec5576880f02f3c4e",
+    "server.mjs": "165032e64ef7ca2335230fc71c7494e7983aff66bda2fe7e72badb733550b54b",
+    "test/rider-interfaces.test.mjs": "68c5e39941a6c10aaf67b46657191bb4f754124c33bf4b500fb1253f59c25b93",
+    "test/rider-cli.test.mjs": "8507f2552e27ca1b0cce7d0a4feaf214009484b32d0704c753639d572287b63d",
+    "test/rider-native.test.mjs": "ddaad5706ae7eb0b60021a8e435a956ea48e0cd29c7f0bd0282386e8859483c5",
+    "test/rider-passive.test.mjs": "83be62de354fb9f77b9cf14568475ec7bf03c263d796298e141fd12791faadc8",
+    "dist/moving-wheel.js": "45b1068fabf5413dfc90bfd2ee47f46600deb093b756d7c8d1bdc8ad24411e35",
+    "dist/vendor/mujoco-3.16.0/mujoco.js": "5d5d89ddd0857a6518c628fa502d42f99d6dd67ca240182f1068cd30a45465ac",
+    "dist/vendor/mujoco-3.16.0/mujoco.wasm": "e05ac96db7f45bd46e76fed6e3469bf9204329e093344d742a18bca2cc0e230e"
+  },
+  "localTests": {
+    "passed": 206,
+    "failed": 0,
+    "skipped": 0,
+    "logSha256": "6a256908e2734cc448e2ef8b77592c9f9ceebb35cd6b5d085bba3237984aa10e",
+    "note": "Full suite on the final production code; a subsequent test-only temporary-file cleanup adjustment passed its focused CLI test."
+  },
+  "budgets": {
+    "constructionNormalized": 1e-12,
+    "interfaceLoadNormalized": 1e-09,
+    "siteFiniteDifference": 1e-08,
+    "siteDifferencePerturbation": 1e-06
+  },
+  "controls": [
+    "Dense and sparse constraint storage",
+    "Independent finite-difference site velocities",
+    "Native body external-load and generalized force/work projection",
+    "Changed active constraints and row indices",
+    "Unrelated equality, brake and contact rows",
+    "Atomic malformed/nonfinite rejection",
+    "Actual WASM backing-memory growth",
+    "Borrowed result reuse and copied report ownership",
+    "All three CLI modes: canonical replay and invalid inputs"
+  ],
+  "browser": {
+    "version": "156.0.4314.36",
+    "errors": [],
+    "checks": [
+      "native rider construction: named attachments, full inertia, sparse-fixture site Jacobians and separate interface force/work/moment reports agree across browser/Node; no integrated rider claim",
+      "passive rider initialization: canonical laws, nonzero rest offsets, unwrapped springs, named closure loads and native force/energy decomposition agree across browser/Node; no dynamic or stop-enforcement claim",
+      "rider posture construction: complete browser/Node reports for both bend branches and mass scaling; unreachable pose rejection; no dynamic rider claim",
+      "wheel: step, comparison gating, save/load, high lift, mobile width",
+      "suspension: signed curves rendered, step/scrub/play/pause, pin gating, reject/discard, save/load and wrong-station rejection",
+      "suspension: actual worker cancellation, immediate travel limit, shock preset, mobile/narrow width",
+      "reference: explicit compatible setup, unsupported state, worker overlays, dirty gating, save/load and Node metric agreement",
+      "reference: valid coarse integration fails declared limits; half-step refinement passes",
+      "terrain: hidden/small canvas recovery, square/rounded/flat, complete browser/Node report agreement, unavailable/buried states, edit gating, custom profile, load, stale-file guard, co-nearest supports and mobile widths",
+      "solver: real WASM module worker; exact candidate browser/Node channels with tolerance-checked analytical channels; release failure and static pass; refinement, replay, dirty/invalid gating, cancellation, restore, hidden canvas, page lifecycle resize recovery and mobile widths",
+      "manufacturer catalogue: eight sourced configurations selectable, SI JSON export exact, missing mechanism data explicit, reference selection leaves the calculated rig intact",
+      "geometry: annotated/reference/custom physical setups, diagnostics, changed/invalid gating, custom reload and browser/headless channels",
+      "shock buffers: both end presets, worker/headless signals, engagement, save/load, dormant hardtail controls, disabled settings, responsive plots and lifecycle",
+      "fork buffers: supported top/bottom loading; real worker/headless parity; unbuffered control and weak-buffer ultimate termination; setup reconstruction, engagement display and responsive plots",
+      "rider: both compliant assemblies; exact setup restoration and explicit v0.1 fixed migration; browser/Node channels; mass control; invalid mass budget; settling and dynamic rider travel rejection; signed plots; five-canvas lifecycle and mobile recovery",
+      "bicycle: both actual assemblies; WASM worker under Pages path; browser/Node sample agreement; setup save/load; replay; dirty/cancel/rejection and travel-limit handling; mobile and page lifecycle",
+      "rider stops and loads: both assemblies, lower/upper engagement, worker/headless parity, record reconstruction, invalid overlapping zones, weak-stop ultimate termination, fixed-mode dormancy, responsive plots and lifecycle",
+      "terrain R0a: six browser/Node replays with exact discrete identities and 1e-12 geometric tolerance; explicit missing-data stop; cut directions/rows; play/pause/rewind/scrub; export/verified import and invalid rejection; delayed wait/cancel/supersession; mobile 390/320",
+      "static footprint: browser/Node complete report agreement; flat/round/step-top/two-supports; explicit edge/rim rejection; all contact rows; zoom; owned authored profile and recomputed import; edit/invalid/cancel/supersession gating; hidden-canvas recovery; 390/320 px inspection captures",
+      "wheel limits: full browser/Node report agreement; continuous flat/corner/round/domain/separation cases; first-contact clipping; declared pressure and bead-seat rejection; zero-pressure refusal; owned import; edit/cancel/restore/supersession; canvas recovery and 390/320 px captures",
+      "moving wheel: complete browser/Node reports; flat/square/rounded/flight/overload; replay, rejection, dirty/cancel/restore/supersession and delayed imports; time-based playback, rapid pause/resume, lifecycle, canvas recovery and 390/320 px captures",
+      "connected trail bike: full/hardtail smooth, square and coarse-faceted rocks, flight and overload stops; complete browser/headless records, homogeneous coast/sliding traction on both bikes, slip plots and grip input validation, drive/brake apply-release on both bikes, authored schedule add/remove/restore and time validation, legacy traction import, spin/brake histories, horizontal impact plots, inputs/replay, dirty/cancel/restore/supersession, delayed imports, playback/lifecycle and 390/320 px layouts; identical ten-station navigation",
+      "no captured page/console errors; rig has rendered pixels"
+    ],
+    "riderPosture": {
+      "cases": 2,
+      "maxAbsolute": 8.881784197001252e-16,
+      "normalizedTolerance": 1e-12
+    },
+    "riderNative": {
+      "cases": 2,
+      "maxAbsolute": 6.11769582989406e-11,
+      "normalizedTolerance": 1e-12,
+      "interfaceLoadNormalizedTolerance": 1e-09
+    },
+    "riderPassive": {
+      "cases": 2,
+      "maxAbsolute": 4.215861764661751e-11,
+      "normalizedTolerance": 1e-12,
+      "interfaceLoadNormalizedTolerance": 1e-09
+    },
+    "trailBike": {
+      "agreement": [
+        {
+          "name": "full-bump",
+          "maxAbsolute": 4.440892098500626e-16
+        },
+        {
+          "name": "hardtail-bump",
+          "maxAbsolute": 4.440892098500626e-16
+        },
+        {
+          "name": "fixed-rider",
+          "maxAbsolute": 2.7755575615628914e-17
+        },
+        {
+          "name": "flight",
+          "maxAbsolute": 0
+        },
+        {
+          "name": "limit",
+          "maxAbsolute": 2.7755575615628914e-17
+        },
+        {
+          "name": "invalid-travel",
+          "maxAbsolute": 0
+        },
+        {
+          "name": "superseded-flight",
+          "maxAbsolute": 0
+        },
+        {
+          "name": "full-square",
+          "maxAbsolute": 4.440892098500626e-16
+        },
+        {
+          "name": "full-faceted",
+          "maxAbsolute": 4.440892098500626e-16
+        },
+        {
+          "name": "full-edge-limit",
+          "maxAbsolute": 5.551115123125783e-17
+        },
+        {
+          "name": "hardtail-square",
+          "maxAbsolute": 4.440892098500626e-16
+        },
+        {
+          "name": "hardtail-faceted",
+          "maxAbsolute": 4.440892098500626e-16
+        },
+        {
+          "name": "hardtail-edge-limit",
+          "maxAbsolute": 5.551115123125783e-17
+        },
+        {
+          "name": "full-coast",
+          "maxAbsolute": 2.220446049250313e-16
+        },
+        {
+          "name": "full-sliding",
+          "maxAbsolute": 2.220446049250313e-16
+        },
+        {
+          "name": "hardtail-coast",
+          "maxAbsolute": 2.220446049250313e-16
+        },
+        {
+          "name": "hardtail-sliding",
+          "maxAbsolute": 1.1102230246251565e-16
+        },
+        {
+          "name": "full-drive",
+          "maxAbsolute": 2.220446049250313e-16
+        },
+        {
+          "name": "full-brake",
+          "maxAbsolute": 1.1102230246251565e-16
+        },
+        {
+          "name": "hardtail-drive",
+          "maxAbsolute": 2.220446049250313e-16
+        },
+        {
+          "name": "hardtail-brake",
+          "maxAbsolute": 1.1102230246251565e-16
+        },
+        {
+          "name": "authored-drive-brake",
+          "maxAbsolute": 1.1102230246251565e-16
+        },
+        {
+          "name": "legacy-traction",
+          "maxAbsolute": 2.7755575615628914e-17
+        }
+      ]
+    }
+  },
+  "cases": [
+    {
+      "format": "bikelab-rider-native-0.2",
+      "spec": {
+        "format": "bikelab-rider-posture-0.1",
+        "riderMass": 70,
+        "hip": [
+          -0.15,
+          0.25
+        ],
+        "trunkPitch": 0.55,
+        "hand": [
+          0.45,
+          0.32
+        ],
+        "foot": [
+          0,
+          -0.3
+        ],
+        "elbowSide": -1,
+        "kneeSide": 1,
+        "minBendSine": 0.05,
+        "segments": {
+          "trunk": {
+            "massFraction": 0.6,
+            "length": 0.55,
+            "comFraction": 0.5,
+            "inertiaPerMass": [
+              0.02880833333333334,
+              0.02880833333333334,
+              0.0072
+            ]
+          },
+          "thighs": {
+            "massFraction": 0.2,
+            "length": 0.43,
+            "comFraction": 0.5,
+            "inertiaPerMass": [
+              0.01700833333333333,
+              0.01700833333333333,
+              0.0032
+            ]
+          },
+          "shanksFeet": {
+            "massFraction": 0.1,
+            "length": 0.43,
+            "comFraction": 0.5,
+            "inertiaPerMass": [
+              0.01663333333333333,
+              0.01663333333333333,
+              0.0024500000000000004
+            ]
+          },
+          "upperArms": {
+            "massFraction": 0.055,
+            "length": 0.3,
+            "comFraction": 0.5,
+            "inertiaPerMass": [
+              0.008125,
+              0.008125,
+              0.0012500000000000002
+            ]
+          },
+          "forearmsHands": {
+            "massFraction": 0.045,
+            "length": 0.3,
+            "comFraction": 0.5,
+            "inertiaPerMass": [
+              0.007899999999999999,
+              0.007899999999999999,
+              0.0008
+            ]
+          }
+        }
+      },
+      "browser": {
+        "attachments": [
+          {
+            "name": "hand",
+            "rider": [
+              0.4500000000000003,
+              0,
+              0.32000000000000023
+            ],
+            "bike": [
+              0.45,
+              0,
+              0.32
+            ],
+            "gap": [
+              2.7755575615628914e-16,
+              0,
+              2.220446049250313e-16
+            ],
+            "nativeResidual": [
+              2.7755575615628914e-16,
+              0,
+              2.220446049250313e-16
+            ],
+            "forceOnRider": [
+              -3.1452072927972324e-11,
+              0,
+              -2.2897667225589347e-11
+            ],
+            "riderVelocity": [
+              0,
+              0,
+              0
+            ],
+            "bikeVelocity": [
+              0,
+              0,
+              0
+            ],
+            "momentOnRider": [
+              0,
+              2.392869145640617e-13,
+              0
+            ],
+            "momentOnBike": [
+              0,
+              -2.392869145640617e-13,
+              0
+            ],
+            "pairMoment": [
+              0,
+              -6.283837663513575e-28,
+              0
+            ],
+            "active": true,
+            "rows": 3,
+            "powerOnRider": 0,
+            "powerOnBike": 0,
+            "pairPower": 0,
+            "rowPower": 0,
+            "powerResidual": 0
+          },
+          {
+            "name": "foot",
+            "rider": [
+              0,
+              0,
+              -0.30000000000000004
+            ],
+            "bike": [
+              0,
+              0,
+              -0.3
+            ],
+            "gap": [
+              0,
+              0,
+              -5.551115123125783e-17
+            ],
+            "nativeResidual": [
+              0,
+              0,
+              -5.551115123125783e-17
+            ],
+            "forceOnRider": [
+              1.4080457069497174e-12,
+              0,
+              1.0246953368950088e-11
+            ],
+            "riderVelocity": [
+              0,
+              0,
+              0
+            ],
+            "bikeVelocity": [
+              0,
+              0,
+              0
+            ],
+            "momentOnRider": [
+              0,
+              -4.224137120849153e-13,
+              0
+            ],
+            "momentOnBike": [
+              0,
+              4.224137120849152e-13,
+              0
+            ],
+            "pairMoment": [
+              0,
+              -7.81622381790091e-29,
+              0
+            ],
+            "active": true,
+            "rows": 3,
+            "powerOnRider": 0,
+            "powerOnBike": 0,
+            "pairPower": 0,
+            "rowPower": 0,
+            "powerResidual": 0
+          }
+        ],
+        "pairMoment": [
+          0,
+          -7.065460045303666e-28,
+          0
+        ],
+        "pairPower": 0,
+        "rowPower": 0,
+        "powerResidual": 0,
+        "otherEqualityRows": 0,
+        "convention": "World xyz; force on rider and its negative on bike, moments about world origin. Signed pair work is native constraint work, not an additional load. Hand/foot only; no saddle or terrain."
+      },
+      "headless": {
+        "attachments": [
+          {
+            "name": "hand",
+            "rider": [
+              0.4500000000000003,
+              0,
+              0.32000000000000023
+            ],
+            "bike": [
+              0.45,
+              0,
+              0.32
+            ],
+            "gap": [
+              2.7755575615628914e-16,
+              0,
+              2.220446049250313e-16
+            ],
+            "nativeResidual": [
+              2.7755575615628914e-16,
+              0,
+              2.220446049250313e-16
+            ],
+            "forceOnRider": [
+              -3.06219888874529e-11,
+              0,
+              -2.3914278901960728e-11
+            ],
+            "riderVelocity": [
+              0,
+              0,
+              0
+            ],
+            "bikeVelocity": [
+              0,
+              0,
+              0
+            ],
+            "momentOnRider": [
+              0,
+              9.623890618973987e-13,
+              0
+            ],
+            "momentOnBike": [
+              0,
+              -9.623890618974003e-13,
+              0
+            ],
+            "pairMoment": [
+              0,
+              -1.619016609670765e-28,
+              0
+            ],
+            "active": true,
+            "rows": 3,
+            "powerOnRider": 0,
+            "powerOnBike": 0,
+            "pairPower": 0,
+            "rowPower": 0,
+            "powerResidual": 0
+          },
+          {
+            "name": "foot",
+            "rider": [
+              8.326672684688674e-17,
+              0,
+              -0.30000000000000027
+            ],
+            "bike": [
+              0,
+              0,
+              -0.3
+            ],
+            "gap": [
+              8.326672684688674e-17,
+              0,
+              -2.7755575615628914e-16
+            ],
+            "nativeResidual": [
+              8.326672684688674e-17,
+              0,
+              -2.7755575615628914e-16
+            ],
+            "forceOnRider": [
+              -1.5261721995502376e-11,
+              0,
+              5.24055710155676e-11
+            ],
+            "riderVelocity": [
+              0,
+              0,
+              0
+            ],
+            "bikeVelocity": [
+              0,
+              0,
+              0
+            ],
+            "momentOnRider": [
+              0,
+              4.578516598650713e-12,
+              0
+            ],
+            "momentOnBike": [
+              0,
+              -4.578516598650713e-12,
+              0
+            ],
+            "pairMoment": [
+              0,
+              -1.2766157829966036e-28,
+              0
+            ],
+            "active": true,
+            "rows": 3,
+            "powerOnRider": 0,
+            "powerOnBike": 0,
+            "pairPower": 0,
+            "rowPower": 0,
+            "powerResidual": 0
+          }
+        ],
+        "pairMoment": [
+          0,
+          -2.8956323926673686e-28,
+          0
+        ],
+        "pairPower": 0,
+        "rowPower": 0,
+        "powerResidual": 0,
+        "otherEqualityRows": 0,
+        "convention": "World xyz; force on rider and its negative on bike, moments about world origin. Signed pair work is native constraint work, not an additional load. Hand/foot only; no saddle or terrain."
+      },
+      "comparison": {
+        "constructionMaxAbsolute": 1.7763568394002505e-15,
+        "interfaceMaxAbsolute": 4.215861764661751e-11,
+        "interfaceMaxNormalized": 4.215861764661751e-11
+      }
+    },
+    {
+      "format": "bikelab-rider-native-0.2",
+      "spec": {
+        "format": "bikelab-rider-posture-0.1",
+        "riderMass": 35,
+        "hip": [
+          -0.15,
+          0.25
+        ],
+        "trunkPitch": 0.55,
+        "hand": [
+          0.45,
+          0.32
+        ],
+        "foot": [
+          0,
+          -0.3
+        ],
+        "elbowSide": 1,
+        "kneeSide": -1,
+        "minBendSine": 0.05,
+        "segments": {
+          "trunk": {
+            "massFraction": 0.6,
+            "length": 0.55,
+            "comFraction": 0.5,
+            "inertiaPerMass": [
+              0.02880833333333334,
+              0.02880833333333334,
+              0.0072
+            ]
+          },
+          "thighs": {
+            "massFraction": 0.2,
+            "length": 0.43,
+            "comFraction": 0.5,
+            "inertiaPerMass": [
+              0.01700833333333333,
+              0.01700833333333333,
+              0.0032
+            ]
+          },
+          "shanksFeet": {
+            "massFraction": 0.1,
+            "length": 0.43,
+            "comFraction": 0.5,
+            "inertiaPerMass": [
+              0.01663333333333333,
+              0.01663333333333333,
+              0.0024500000000000004
+            ]
+          },
+          "upperArms": {
+            "massFraction": 0.055,
+            "length": 0.3,
+            "comFraction": 0.5,
+            "inertiaPerMass": [
+              0.008125,
+              0.008125,
+              0.0012500000000000002
+            ]
+          },
+          "forearmsHands": {
+            "massFraction": 0.045,
+            "length": 0.3,
+            "comFraction": 0.5,
+            "inertiaPerMass": [
+              0.007899999999999999,
+              0.007899999999999999,
+              0.0008
+            ]
+          }
+        }
+      },
+      "browser": {
+        "attachments": [
+          {
+            "name": "hand",
+            "rider": [
+              0.44999999999999996,
+              0,
+              0.32
+            ],
+            "bike": [
+              0.45,
+              0,
+              0.32
+            ],
+            "gap": [
+              -5.551115123125783e-17,
+              0,
+              0
+            ],
+            "nativeResidual": [
+              -5.551115123125783e-17,
+              0,
+              0
+            ],
+            "forceOnRider": [
+              3.714577780001537e-12,
+              0,
+              -4.753976814449671e-13
+            ],
+            "riderVelocity": [
+              0,
+              0,
+              0
+            ],
+            "bikeVelocity": [
+              0,
+              0,
+              0
+            ],
+            "momentOnRider": [
+              0,
+              1.402593846250727e-12,
+              0
+            ],
+            "momentOnBike": [
+              0,
+              -1.402593846250727e-12,
+              0
+            ],
+            "pairMoment": [
+              0,
+              -2.63898725896809e-29,
+              0
+            ],
+            "active": true,
+            "rows": 3,
+            "powerOnRider": 0,
+            "powerOnBike": 0,
+            "pairPower": 0,
+            "rowPower": 0,
+            "powerResidual": 0
+          },
+          {
+            "name": "foot",
+            "rider": [
+              5.551115123125783e-17,
+              0,
+              -0.2999999999999998
+            ],
+            "bike": [
+              0,
+              0,
+              -0.3
+            ],
+            "gap": [
+              5.551115123125783e-17,
+              0,
+              1.6653345369377348e-16
+            ],
+            "nativeResidual": [
+              5.551115123125783e-17,
+              0,
+              1.6653345369377348e-16
+            ],
+            "forceOnRider": [
+              -7.316317589265043e-12,
+              0,
+              -2.0746120551904668e-11
+            ],
+            "riderVelocity": [
+              0,
+              0,
+              0
+            ],
+            "bikeVelocity": [
+              0,
+              0,
+              0
+            ],
+            "momentOnRider": [
+              0,
+              2.1948952767795126e-12,
+              0
+            ],
+            "momentOnBike": [
+              0,
+              -2.1948952767795126e-12,
+              0
+            ],
+            "pairMoment": [
+              0,
+              -6.677060104212424e-29,
+              0
+            ],
+            "active": true,
+            "rows": 3,
+            "powerOnRider": 0,
+            "powerOnBike": 0,
+            "pairPower": 0,
+            "rowPower": 0,
+            "powerResidual": 0
+          }
+        ],
+        "pairMoment": [
+          0,
+          -9.316047363180514e-29,
+          0
+        ],
+        "pairPower": 0,
+        "rowPower": 0,
+        "powerResidual": 0,
+        "otherEqualityRows": 0,
+        "convention": "World xyz; force on rider and its negative on bike, moments about world origin. Signed pair work is native constraint work, not an additional load. Hand/foot only; no saddle or terrain."
+      },
+      "headless": {
+        "attachments": [
+          {
+            "name": "hand",
+            "rider": [
+              0.44999999999999996,
+              0,
+              0.32
+            ],
+            "bike": [
+              0.45,
+              0,
+              0.32
+            ],
+            "gap": [
+              -5.551115123125783e-17,
+              0,
+              0
+            ],
+            "nativeResidual": [
+              -5.551115123125783e-17,
+              0,
+              0
+            ],
+            "forceOnRider": [
+              3.336734856198736e-12,
+              0,
+              1.6432386087576587e-13
+            ],
+            "riderVelocity": [
+              0,
+              0,
+              0
+            ],
+            "bikeVelocity": [
+              0,
+              0,
+              0
+            ],
+            "momentOnRider": [
+              0,
+              9.938094165895008e-13,
+              0
+            ],
+            "momentOnBike": [
+              0,
+              -9.938094165895008e-13,
+              0
+            ],
+            "pairMoment": [
+              0,
+              9.12180669197881e-30,
+              0
+            ],
+            "active": true,
+            "rows": 3,
+            "powerOnRider": 0,
+            "powerOnBike": 0,
+            "pairPower": 0,
+            "rowPower": 0,
+            "powerResidual": 0
+          },
+          {
+            "name": "foot",
+            "rider": [
+              -1.6653345369377348e-16,
+              0,
+              -0.3000000000000003
+            ],
+            "bike": [
+              0,
+              0,
+              -0.3
+            ],
+            "gap": [
+              -1.6653345369377348e-16,
+              0,
+              -3.3306690738754696e-16
+            ],
+            "nativeResidual": [
+              -1.6653345369377348e-16,
+              0,
+              -3.3306690738754696e-16
+            ],
+            "forceOnRider": [
+              2.0475369633442646e-11,
+              0,
+              4.0430837747035924e-11
+            ],
+            "riderVelocity": [
+              0,
+              0,
+              0
+            ],
+            "bikeVelocity": [
+              0,
+              0,
+              0
+            ],
+            "momentOnRider": [
+              0,
+              -6.142610890032794e-12,
+              0
+            ],
+            "momentOnBike": [
+              0,
+              6.1426108900327934e-12,
+              0
+            ],
+            "pairMoment": [
+              0,
+              -8.65809956811576e-29,
+              0
+            ],
+            "active": true,
+            "rows": 3,
+            "powerOnRider": 0,
+            "powerOnBike": 0,
+            "pairPower": 0,
+            "rowPower": 0,
+            "powerResidual": 0
+          }
+        ],
+        "pairMoment": [
+          0,
+          -7.745918898917879e-29,
+          0
+        ],
+        "pairPower": 0,
+        "rowPower": 0,
+        "powerResidual": 0,
+        "otherEqualityRows": 0,
+        "convention": "World xyz; force on rider and its negative on bike, moments about world origin. Signed pair work is native constraint work, not an additional load. Hand/foot only; no saddle or terrain."
+      },
+      "comparison": {
+        "constructionMaxAbsolute": 1.3322676295501878e-15,
+        "interfaceMaxAbsolute": 6.11769582989406e-11,
+        "interfaceMaxNormalized": 6.11769582989406e-11
+      }
+    },
+    {
+      "format": "bikelab-rider-native-passive-0.2",
+      "spec": {
+        "format": "bikelab-rider-passive-0.1",
+        "posture": {
+          "format": "bikelab-rider-posture-0.1",
+          "riderMass": 70,
+          "hip": [
+            -0.15,
+            0.25
+          ],
+          "trunkPitch": 0.55,
+          "hand": [
+            0.45,
+            0.32
+          ],
+          "foot": [
+            0,
+            -0.3
+          ],
+          "elbowSide": -1,
+          "kneeSide": 1,
+          "minBendSine": 0.05,
+          "segments": {
+            "trunk": {
+              "massFraction": 0.6,
+              "length": 0.55,
+              "comFraction": 0.5,
+              "inertiaPerMass": [
+                0.02880833333333334,
+                0.02880833333333334,
+                0.0072
+              ]
+            },
+            "thighs": {
+              "massFraction": 0.2,
+              "length": 0.43,
+              "comFraction": 0.5,
+              "inertiaPerMass": [
+                0.01700833333333333,
+                0.01700833333333333,
+                0.0032
+              ]
+            },
+            "shanksFeet": {
+              "massFraction": 0.1,
+              "length": 0.43,
+              "comFraction": 0.5,
+              "inertiaPerMass": [
+                0.01663333333333333,
+                0.01663333333333333,
+                0.0024500000000000004
+              ]
+            },
+            "upperArms": {
+              "massFraction": 0.055,
+              "length": 0.3,
+              "comFraction": 0.5,
+              "inertiaPerMass": [
+                0.008125,
+                0.008125,
+                0.0012500000000000002
+              ]
+            },
+            "forearmsHands": {
+              "massFraction": 0.045,
+              "length": 0.3,
+              "comFraction": 0.5,
+              "inertiaPerMass": [
+                0.007899999999999999,
+                0.007899999999999999,
+                0.0008
+              ]
+            }
+          }
+        },
+        "joints": {
+          "hip": {
+            "restAngle": 1.4792200037917314,
+            "stiffness": 120,
+            "damping": 8,
+            "minAngle": 1.1792200037917313,
+            "maxAngle": 1.7792200037917314
+          },
+          "knee": {
+            "restAngle": 1.6922412012942731,
+            "stiffness": 90,
+            "damping": 6,
+            "minAngle": 1.392241201294273,
+            "maxAngle": 1.9922412012942732
+          },
+          "shoulder": {
+            "restAngle": 2.492056379089391,
+            "stiffness": 25,
+            "damping": 2,
+            "minAngle": 2.192056379089391,
+            "maxAngle": 2.7920563790893906
+          },
+          "elbow": {
+            "restAngle": -1.1301027328714,
+            "stiffness": 15,
+            "damping": 1.5,
+            "minAngle": -1.4301027328714,
+            "maxAngle": -0.8301027328713999
+          }
+        }
+      },
+      "browser": {
+        "attachments": [
+          {
+            "name": "hand",
+            "rider": [
+              0.4500000000000003,
+              0,
+              0.32000000000000023
+            ],
+            "bike": [
+              0.45,
+              0,
+              0.32
+            ],
+            "gap": [
+              2.7755575615628914e-16,
+              0,
+              2.220446049250313e-16
+            ],
+            "nativeResidual": [
+              2.7755575615628914e-16,
+              0,
+              2.220446049250313e-16
+            ],
+            "forceOnRider": [
+              -3.1452072927972324e-11,
+              0,
+              -2.2897667225589347e-11
+            ],
+            "riderVelocity": [
+              0,
+              0,
+              0
+            ],
+            "bikeVelocity": [
+              0,
+              0,
+              0
+            ],
+            "momentOnRider": [
+              0,
+              2.392869145640617e-13,
+              0
+            ],
+            "momentOnBike": [
+              0,
+              -2.392869145640617e-13,
+              0
+            ],
+            "pairMoment": [
+              0,
+              -6.283837663513575e-28,
+              0
+            ],
+            "active": true,
+            "rows": 3,
+            "powerOnRider": 0,
+            "powerOnBike": 0,
+            "pairPower": 0,
+            "rowPower": 0,
+            "powerResidual": 0
+          },
+          {
+            "name": "foot",
+            "rider": [
+              0,
+              0,
+              -0.30000000000000004
+            ],
+            "bike": [
+              0,
+              0,
+              -0.3
+            ],
+            "gap": [
+              0,
+              0,
+              -5.551115123125783e-17
+            ],
+            "nativeResidual": [
+              0,
+              0,
+              -5.551115123125783e-17
+            ],
+            "forceOnRider": [
+              1.4080457069497174e-12,
+              0,
+              1.0246953368950088e-11
+            ],
+            "riderVelocity": [
+              0,
+              0,
+              0
+            ],
+            "bikeVelocity": [
+              0,
+              0,
+              0
+            ],
+            "momentOnRider": [
+              0,
+              -4.224137120849153e-13,
+              0
+            ],
+            "momentOnBike": [
+              0,
+              4.224137120849152e-13,
+              0
+            ],
+            "pairMoment": [
+              0,
+              -7.81622381790091e-29,
+              0
+            ],
+            "active": true,
+            "rows": 3,
+            "powerOnRider": 0,
+            "powerOnBike": 0,
+            "pairPower": 0,
+            "rowPower": 0,
+            "powerResidual": 0
+          }
+        ],
+        "pairMoment": [
+          0,
+          -7.065460045303666e-28,
+          0
+        ],
+        "pairPower": 0,
+        "rowPower": 0,
+        "powerResidual": 0,
+        "otherEqualityRows": 0,
+        "convention": "World xyz; force on rider and its negative on bike, moments about world origin. Signed pair work is native constraint work, not an additional load. Hand/foot only; no saddle or terrain."
+      },
+      "headless": {
+        "attachments": [
+          {
+            "name": "hand",
+            "rider": [
+              0.4500000000000003,
+              0,
+              0.32000000000000023
+            ],
+            "bike": [
+              0.45,
+              0,
+              0.32
+            ],
+            "gap": [
+              2.7755575615628914e-16,
+              0,
+              2.220446049250313e-16
+            ],
+            "nativeResidual": [
+              2.7755575615628914e-16,
+              0,
+              2.220446049250313e-16
+            ],
+            "forceOnRider": [
+              -3.119897618627827e-11,
+              0,
+              -2.3507845823761114e-11
+            ],
+            "riderVelocity": [
+              0,
+              0,
+              0
+            ],
+            "bikeVelocity": [
+              0,
+              0,
+              0
+            ],
+            "momentOnRider": [
+              0,
+              5.948582410834546e-13,
+              0
+            ],
+            "momentOnBike": [
+              0,
+              -5.948582410834546e-13,
+              0
+            ],
+            "pairMoment": [
+              0,
+              -4.0282641812813896e-28,
+              0
+            ],
+            "active": true,
+            "rows": 3,
+            "powerOnRider": 0,
+            "powerOnBike": 0,
+            "pairPower": 0,
+            "rowPower": 0,
+            "powerResidual": 0
+          },
+          {
+            "name": "foot",
+            "rider": [
+              8.326672684688674e-17,
+              0,
+              -0.30000000000000027
+            ],
+            "bike": [
+              0,
+              0,
+              -0.3
+            ],
+            "gap": [
+              8.326672684688674e-17,
+              0,
+              -2.7755575615628914e-16
+            ],
+            "nativeResidual": [
+              8.326672684688674e-17,
+              0,
+              -2.7755575615628914e-16
+            ],
+            "forceOnRider": [
+              -1.0607262704610143e-11,
+              0,
+              4.740859837881806e-11
+            ],
+            "riderVelocity": [
+              0,
+              0,
+              0
+            ],
+            "bikeVelocity": [
+              0,
+              0,
+              0
+            ],
+            "momentOnRider": [
+              0,
+              3.182178811383042e-12,
+              0
+            ],
+            "momentOnBike": [
+              0,
+              -3.182178811383043e-12,
+              0
+            ],
+            "pairMoment": [
+              0,
+              -1.0034519906763281e-27,
+              0
+            ],
+            "active": true,
+            "rows": 3,
+            "powerOnRider": 0,
+            "powerOnBike": 0,
+            "pairPower": 0,
+            "rowPower": 0,
+            "powerResidual": 0
+          }
+        ],
+        "pairMoment": [
+          0,
+          -1.406278408804467e-27,
+          0
+        ],
+        "pairPower": 0,
+        "rowPower": 0,
+        "powerResidual": 0,
+        "otherEqualityRows": 0,
+        "convention": "World xyz; force on rider and its negative on bike, moments about world origin. Signed pair work is native constraint work, not an additional load. Hand/foot only; no saddle or terrain."
+      },
+      "comparison": {
+        "constructionMaxAbsolute": 7.993605777301127e-14,
+        "interfaceMaxAbsolute": 3.716164500986797e-11,
+        "interfaceMaxNormalized": 3.716164500986797e-11
+      }
+    },
+    {
+      "format": "bikelab-rider-native-passive-0.2",
+      "spec": {
+        "format": "bikelab-rider-passive-0.1",
+        "posture": {
+          "format": "bikelab-rider-posture-0.1",
+          "riderMass": 35,
+          "hip": [
+            -0.15,
+            0.25
+          ],
+          "trunkPitch": 0.55,
+          "hand": [
+            0.45,
+            0.32
+          ],
+          "foot": [
+            0,
+            -0.3
+          ],
+          "elbowSide": -1,
+          "kneeSide": 1,
+          "minBendSine": 0.05,
+          "segments": {
+            "trunk": {
+              "massFraction": 0.6,
+              "length": 0.55,
+              "comFraction": 0.5,
+              "inertiaPerMass": [
+                0.02880833333333334,
+                0.02880833333333334,
+                0.0072
+              ]
+            },
+            "thighs": {
+              "massFraction": 0.2,
+              "length": 0.43,
+              "comFraction": 0.5,
+              "inertiaPerMass": [
+                0.01700833333333333,
+                0.01700833333333333,
+                0.0032
+              ]
+            },
+            "shanksFeet": {
+              "massFraction": 0.1,
+              "length": 0.43,
+              "comFraction": 0.5,
+              "inertiaPerMass": [
+                0.01663333333333333,
+                0.01663333333333333,
+                0.0024500000000000004
+              ]
+            },
+            "upperArms": {
+              "massFraction": 0.055,
+              "length": 0.3,
+              "comFraction": 0.5,
+              "inertiaPerMass": [
+                0.008125,
+                0.008125,
+                0.0012500000000000002
+              ]
+            },
+            "forearmsHands": {
+              "massFraction": 0.045,
+              "length": 0.3,
+              "comFraction": 0.5,
+              "inertiaPerMass": [
+                0.007899999999999999,
+                0.007899999999999999,
+                0.0008
+              ]
+            }
+          }
+        },
+        "joints": {
+          "hip": {
+            "restAngle": 1.5992200037917317,
+            "stiffness": 120,
+            "damping": 8,
+            "minAngle": 1.1792200037917318,
+            "maxAngle": 1.7792200037917318
+          },
+          "knee": {
+            "restAngle": 1.6922412012942731,
+            "stiffness": 90,
+            "damping": 6,
+            "minAngle": 1.392241201294273,
+            "maxAngle": 1.9922412012942732
+          },
+          "shoulder": {
+            "restAngle": -1,
+            "stiffness": 25,
+            "damping": 2,
+            "minAngle": -1.2,
+            "maxAngle": 3.3
+          },
+          "elbow": {
+            "restAngle": -1.1301027328714,
+            "stiffness": 15,
+            "damping": 1.5,
+            "minAngle": -1.4301027328714,
+            "maxAngle": -0.8301027328713999
+          }
+        }
+      },
+      "browser": {
+        "attachments": [
+          {
+            "name": "hand",
+            "rider": [
+              0.4500000000000003,
+              0,
+              0.32000000000000023
+            ],
+            "bike": [
+              0.45,
+              0,
+              0.32
+            ],
+            "gap": [
+              2.7755575615628914e-16,
+              0,
+              2.220446049250313e-16
+            ],
+            "nativeResidual": [
+              2.7755575615628914e-16,
+              0,
+              2.220446049250313e-16
+            ],
+            "forceOnRider": [
+              -142.8024489546323,
+              0,
+              44.47475977728032
+            ],
+            "riderVelocity": [
+              0,
+              0,
+              0
+            ],
+            "bikeVelocity": [
+              0,
+              0,
+              0
+            ],
+            "momentOnRider": [
+              0,
+              -65.71042556525852,
+              0
+            ],
+            "momentOnBike": [
+              0,
+              65.71042556525848,
+              0
+            ],
+            "pairMoment": [
+              0,
+              -4.405273894031063e-14,
+              0
+            ],
+            "active": true,
+            "rows": 3,
+            "powerOnRider": 0,
+            "powerOnBike": 0,
+            "pairPower": 0,
+            "rowPower": 0,
+            "powerResidual": 0
+          },
+          {
+            "name": "foot",
+            "rider": [
+              0,
+              0,
+              -0.30000000000000004
+            ],
+            "bike": [
+              0,
+              0,
+              -0.3
+            ],
+            "gap": [
+              0,
+              0,
+              -5.551115123125783e-17
+            ],
+            "nativeResidual": [
+              0,
+              0,
+              -5.551115123125783e-17
+            ],
+            "forceOnRider": [
+              -33.87617611914793,
+              0,
+              -18.233186171102954
+            ],
+            "riderVelocity": [
+              0,
+              0,
+              0
+            ],
+            "bikeVelocity": [
+              0,
+              0,
+              0
+            ],
+            "momentOnRider": [
+              0,
+              10.16285283574438,
+              0
+            ],
+            "momentOnBike": [
+              0,
+              -10.162852835744378,
+              0
+            ],
+            "pairMoment": [
+              0,
+              1.8805055356867455e-15,
+              0
+            ],
+            "active": true,
+            "rows": 3,
+            "powerOnRider": 0,
+            "powerOnBike": 0,
+            "pairPower": 0,
+            "rowPower": 0,
+            "powerResidual": 0
+          }
+        ],
+        "pairMoment": [
+          0,
+          -4.2172233404623886e-14,
+          0
+        ],
+        "pairPower": 0,
+        "rowPower": 0,
+        "powerResidual": 0,
+        "otherEqualityRows": 0,
+        "convention": "World xyz; force on rider and its negative on bike, moments about world origin. Signed pair work is native constraint work, not an additional load. Hand/foot only; no saddle or terrain."
+      },
+      "headless": {
+        "attachments": [
+          {
+            "name": "hand",
+            "rider": [
+              0.4500000000000003,
+              0,
+              0.32000000000000023
+            ],
+            "bike": [
+              0.45,
+              0,
+              0.32
+            ],
+            "gap": [
+              2.7755575615628914e-16,
+              0,
+              2.220446049250313e-16
+            ],
+            "nativeResidual": [
+              2.7755575615628914e-16,
+              0,
+              2.220446049250313e-16
+            ],
+            "forceOnRider": [
+              -142.8024489546309,
+              0,
+              44.474759777279495
+            ],
+            "riderVelocity": [
+              0,
+              0,
+              0
+            ],
+            "bikeVelocity": [
+              0,
+              0,
+              0
+            ],
+            "momentOnRider": [
+              0,
+              -65.71042556525771,
+              0
+            ],
+            "momentOnBike": [
+              0,
+              65.71042556525767,
+              0
+            ],
+            "pairMoment": [
+              0,
+              -4.405273894031009e-14,
+              0
+            ],
+            "active": true,
+            "rows": 3,
+            "powerOnRider": 0,
+            "powerOnBike": 0,
+            "pairPower": 0,
+            "rowPower": 0,
+            "powerResidual": 0
+          },
+          {
+            "name": "foot",
+            "rider": [
+              8.326672684688674e-17,
+              0,
+              -0.30000000000000027
+            ],
+            "bike": [
+              0,
+              0,
+              -0.3
+            ],
+            "gap": [
+              8.326672684688674e-17,
+              0,
+              -2.7755575615628914e-16
+            ],
+            "nativeResidual": [
+              8.326672684688674e-17,
+              0,
+              -2.7755575615628914e-16
+            ],
+            "forceOnRider": [
+              -33.8761761191488,
+              0,
+              -18.233186171103117
+            ],
+            "riderVelocity": [
+              0,
+              0,
+              0
+            ],
+            "bikeVelocity": [
+              0,
+              0,
+              0
+            ],
+            "momentOnRider": [
+              0,
+              10.162852835744651,
+              0
+            ],
+            "momentOnBike": [
+              0,
+              -10.16285283574464,
+              0
+            ],
+            "pairMoment": [
+              0,
+              1.0920745410891645e-14,
+              0
+            ],
+            "active": true,
+            "rows": 3,
+            "powerOnRider": 0,
+            "powerOnBike": 0,
+            "pairPower": 0,
+            "rowPower": 0,
+            "powerResidual": 0
+          }
+        ],
+        "pairMoment": [
+          0,
+          -3.3131993529418445e-14,
+          0
+        ],
+        "pairPower": 0,
+        "rowPower": 0,
+        "powerResidual": 0,
+        "otherEqualityRows": 0,
+        "convention": "World xyz; force on rider and its negative on bike, moments about world origin. Signed pair work is native constraint work, not an additional load. Hand/foot only; no saddle or terrain."
+      },
+      "comparison": {
+        "constructionMaxAbsolute": 7.993605777301127e-14,
+        "interfaceMaxAbsolute": 1.3926637620897964e-12,
+        "interfaceMaxNormalized": 2.6742746433592757e-14
+      }
+    }
+  ],
+  "sourceHashScope": "SHA-256 of raw local file bytes; checkout line endings can differ across platforms. The implementation SHA identifies the Git revision."
+}

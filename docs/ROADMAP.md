@@ -1,6 +1,6 @@
 # Delivery and validation plan
 
-Current status: iteration 19 receives scheduled hub drive and brakes after merged homogeneous traction PR #21, retaining the connected sharp-edge/faceted impact MVP. See [current delivery sequence](DYNAMICS_DELIVERY_PLAN.md), [evidence](ITERATION_19_EVIDENCE.md) and [adaptive wheel decision](ADAPTIVE_WHEEL.md). Articulated rider contacts/control are next. The entries below preserve historical slice decisions. Full 3D simulation, including lateral motion and turning forces, remains a required destination; see THREE_DIMENSIONAL_DYNAMICS.md.
+Current status: iteration 19 receives scheduled hub drive and brakes after merged homogeneous traction PR #21, retaining the connected sharp-edge/faceted impact MVP. See [current delivery sequence](DYNAMICS_DELIVERY_PLAN.md), [evidence](ITERATION_19_EVIDENCE.md) and [adaptive wheel decision](ADAPTIVE_WHEEL.md). Draft PR #23 now connects the passive five-group rider on both bikes, with independent chassis properties, guarded domains/rollback, separate hand/foot work and moving native segment visualization. The first receiving envelope is 0.1 s unseated relaxation/free flight; saddle contact, matched locked-posture comparison, broader dynamic conditioning and active control remain open. See [current rider handoff](ITERATION_20_HANDOFF.md). The entries below preserve historical slice decisions. Full 3D simulation, including lateral motion and turning forces, remains a required destination; see THREE_DIMENSIONAL_DYNAMICS.md.
 
 ## Definition of a received slice
 
@@ -267,3 +267,14 @@ Next D4b: deterministic tick-based rear drive and front/rear brake capacities. V
 [D4b](ITERATION_19_EVIDENCE.md) adds rear drive and separate front/rear brake capacities, deterministic command schedules and editing, wheel spin/solved-torque histories, and consistent carrier, ground-moment and work ownership. Both connected assemblies retain travel/support limits and legacy replay. Independent rotor/pair controls accompany the browser/headless examples. Regularized brakes, synthetic geometry and unresolved casing/timestep sensitivity do not establish physical stopping accuracy.
 
 Next D5: review guided rider/stop load paths and source a bounded passive articulated rider with segment mass/inertia, posture and explicit hand/foot/saddle force/work ownership. Receive it on the same connected trail consumer with fixed/passive comparison modes before active controls and contact release/recontact. Keep the component failure/pressure-loss, layered terrain/mud, 3D lateral/turning, provenance and measured adaptive/multirate gates open.
+
+## Seated and unseated rider research follow-up
+
+[Primary evidence and receiving plan](RIDER_SEATED_UNSEATED.md) capture seated support, bent-leg hovering and rider-selected absorption/resistance. Relative rider COM stability remains an observable/control objective with bounded effort. D5a supplies passive contacts; later measured identification supplies style/control choices and game-tier validation.
+
+
+## Iteration 20 — bounded passive rider and complete state
+
+PR23 receives passive unseated articulated motion, signed hand/foot support and complete fresh-state replay, plus a separate guided-rider short trail. [The release checkpoint](ITERATION_20_HANDOFF.md) separates this scope from the broader D5 gates and preserves the separate pushed saddle implementation and rejected equilibrium candidates. A newer-Edge legacy-guided portability failure is retained as a named canonical-model follow-up; no tolerance relaxation or universal browser agreement is implied.
+
+Next integrate the finite-saddle branch with current guards/UI, resolve its separation/recontact refinement fixture, and receive internal contact work and visual support on both bikes. Coupled equilibrium must pass every coordinate's stationarity and force/moment/hold gates before it is offered as a reference. Active pumping/wheelie/hop, measured rider strategies and real-time model tiers follow these contracts. Existing terrain layers/mud shedding, finite-width contact, steering/lean, component failure and scanned/generated detail remain open.
