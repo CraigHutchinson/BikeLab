@@ -1,5 +1,9 @@
 # Iteration 20 completeness review and session handoff
 
+## Canonical guided receiving increment, 2026-10-23
+
+Remote `71716d0` was synchronized before this increment. Its hosted OS suites pass, but its pinned-browser trail fails as well as newer Edge; [the complete pinned failure receipt](evidence/iteration-20-guided-pinned-portability.json) retains the 4.188e-7 normalized discrepancy. The short trail now selects a separate `.5` [canonical numerical policy](TRAIL_CANONICAL.md). Legacy replay stays unchanged. GPT-6.1 Sol review caught and corrected dropped policy on rider-mode conversion and a native-view lifetime hazard across the asynchronous hash. Focused tests pass; full-suite and both-bike timestep trials are running, with exact-head hosted browser checks and inspected captures still required. Keep PR23 draft. Saddle/equilibrium work remains separate.
+
 ## Reconciled release checkpoint, 2026-10-22
 
 This section supersedes older draft/checkout instructions below. PR23 now targets passive articulated transients, signed support visualization, complete fresh-state replay and the short guided trail. The broader D5 equilibrium/saddle/control milestone remains incomplete. Merge only after the final head's Ubuntu/Windows tests and pinned-browser check pass and captures are inspected; see [major-iteration review](PR23_MAJOR_ITERATION.md) and PR checks for the current receipt.

@@ -3,7 +3,8 @@
 export const STATE_FORMAT = 'bikelab-trail-state-0.1';
 export const STATE_MODEL = 'bikelab-trail-bike-articulated-0.2';
 export const RUN_MOTION = Object.freeze({gravity:9.80665, duration:.1, dt:.00003125, sampleDt:.005});
-const nativeBuild = '5d5d89ddd0857a6518c628fa502d42f99d6dd67ca240182f1068cd30a45465ac:e05ac96db7f45bd46e76fed6e3469bf9204329e093344d742a18bca2cc0e230e';
+export const NATIVE_BUILD = '5d5d89ddd0857a6518c628fa502d42f99d6dd67ca240182f1068cd30a45465ac:e05ac96db7f45bd46e76fed6e3469bf9204329e093344d742a18bca2cc0e230e';
+const nativeBuild=NATIVE_BUILD;
 const scalarLimit = type => type==='slide'?10:100;
 function object(value, keys, label) {
  if (!value || typeof value !== 'object' || Array.isArray(value) || ![Object.prototype,null].includes(Object.getPrototypeOf(value))) throw Error(label+' must be an object.');

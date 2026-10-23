@@ -1,3 +1,4 @@
+import {CANONICAL_MODEL,CANONICAL_NUMERICS,canonicalLaunch} from './trail-canonical.js';
 import {STATE_MODEL,RUN_MOTION,validateInitialization,canonicalModelXML,stateIdentity,scalarLayout,applyState,captureState,scalarStateIssue} from './trail-initial-state.js';
 import {DEFAULTS as RIG_DEFAULTS,validate as validateRig} from './bike-rig.js';
 import {bikeAssembly} from './bike-assembly.js';
@@ -51,11 +52,12 @@ export function profileSupport(profile){
  return {geometry:'authored-faceted-polyline',regime:verticalFaces||maxSlope>.25||maxTurn>.08?'experimental-sharp-impact':'smooth-reference',segments:profile.points.length-1,verticalFaces,maxFiniteSlope:maxSlope,maxTangentChange:maxTurn,temporalCollision:'Discrete native contact with motion and near-rim sweep guards; not complete swept-casing CCD.',accuracy:'Uncalibrated; sharp-corner loads remain sensitive to casing mesh. No fracture or pressure-loss prediction.'};
 }
 export function validate(input={}){
- fields(input,{bike:0,wheel:0,motion:0,profile:0,assembly:0,surface:0,commands:0,articulated:0,initialization:0},'scenario');
+ fields(input,{bike:0,wheel:0,motion:0,profile:0,assembly:0,surface:0,commands:0,articulated:0,initialization:0,numerics:0},'scenario');
  const surface=fields(input.surface??{},SURFACE_DEFAULTS,'surface'),mu=surface.friction;
  if(!Number.isFinite(mu)||mu<0||mu>2||(mu>0&&mu<1e-4))throw Error('Friction must be zero or within [0.0001, 2].');
  const hasRider=input.bike?.rider==='articulated',initialization=Object.hasOwn(input,'initialization')?validateInitialization(input.initialization):null;
  if(initialization&&!hasRider)throw Error('Explicit initialization requires articulated rider mode.');
+ const canonical=Object.hasOwn(input,'numerics');if(canonical&&(input.numerics!==CANONICAL_NUMERICS||hasRider||initialization))throw Error('Canonical guided numerics require a fixed or guided launch without explicit initialization.');
  if(!hasRider&&Object.hasOwn(input,'articulated'))throw Error('Articulated configuration requires articulated rider mode.');
  const bike=fields(input.bike??{},hasRider?ARTICULATED_BIKE_DEFAULTS:BIKE_DEFAULTS,'bike'),wheel=fields(input.wheel??{},WHEEL_DEFAULTS,'wheel'),motion=fields(input.motion??{},initialization?.mode==='state'?RUN_MOTION:hasRider?{...MOTION_DEFAULTS,riderOffset:0}:MOTION_DEFAULTS,'motion');validateRig(hasRider?{...bike,rider:'fixed'}:bike);
  const articulated=hasRider?validateConnectedRider(Object.hasOwn(input,'articulated')?input.articulated:{}):null;
@@ -65,7 +67,7 @@ export function validate(input={}){
  for(const x of [motion.duration/motion.sampleDt,motion.sampleDt/motion.dt])if(Math.abs(x-Math.round(x))>1e-7)throw Error('Observation and duration must align to fixed steps.');
  const wp=validateWheel({...wheel,dt:motion.dt}),profile=canonicalProfile(input.profile??smoothProfile()),assembly=validateAssembly(input.assembly??{});
  const commands=validateCommands(input.commands,Math.round(motion.duration/motion.dt));
- return {commands,surface:Object.freeze(surface),bike:Object.freeze(bike),wheel:Object.freeze(wheel),motion:Object.freeze(motion),profile,assembly,wheelParams:wp,...(hasRider?{articulated}:{}),...(initialization?{initialization}:{})};
+ return {commands,surface:Object.freeze(surface),bike:Object.freeze(bike),wheel:Object.freeze(wheel),motion:Object.freeze(motion),profile,assembly,wheelParams:wp,...(hasRider?{articulated}:{}),...(initialization?{initialization}:{}),...(canonical?{numerics:CANONICAL_NUMERICS}:{})};
 }
 export function articulatedPreset(bike='full',kind='standing'){
  if(!['standing','flight'].includes(kind))throw Error('Unknown articulated experiment.');
@@ -77,7 +79,7 @@ export function articulatedPreset(bike='full',kind='standing'){
 export function preset(name='bump',bike='full'){
  if(!['flat','bump','trail','flight','limit','square','faceted','edge-limit','coast','sliding','drive','brake'].includes(name))throw Error('Unknown connected bike preset.');
  const a={bike:{bike},profile:['square','faceted','edge-limit'].includes(name)?impactProfile(name):smoothProfile(name==='bump'?'bump':'flat')};
- if(name==='trail'){a.profile=trailSectionProfile();a.motion={velocityX:2.5,omega:2.5/.36,clearance:0,duration:1.5};}
+ if(name==='trail'){a.numerics=CANONICAL_NUMERICS;a.profile=trailSectionProfile();a.motion={velocityX:2.5,omega:2.5/.36,clearance:0,duration:1.5};}
  if(name==='flight'){a.bike={bike,rider:'compliant',forkBuffer:'none',shockBuffer:'none',riderBuffer:'none'};a.motion={clearance:.3,gravity:0,forkCompression:0,rearAngle:0,riderOffset:0,velocityX:1,velocityZ:.3,omega:0,duration:.2};}
  if(name==='coast'||name==='sliding'){a.surface={friction:.6};a.motion={velocityX:1.5,omega:name==='coast'?1.5/.36:0,duration:.3};}
  if(name==='drive'||name==='brake'){a.surface={friction:.6};a.motion={velocityX:1.5,omega:1.5/.36,duration:.3};a.commands=[{tick:0,rearDrive:0,frontBrake:0,rearBrake:0},{tick:1600,rearDrive:name==='drive'?20:0,frontBrake:name==='brake'?55:0,rearBrake:name==='brake'?35:0},{tick:6400,rearDrive:0,frontBrake:0,rearBrake:0}];}
@@ -89,7 +91,7 @@ export function modelXML(input={}){
  const rider=a.articulated?{chassis:a.articulated.chassis,parts:passiveRiderParts(a.articulated.passive,a.articulated.closureTime)}:null;
  const tree=bikeAssembly(p,{frontMass:.5,rearMass:1.5,frontInertia:.01,rearInertia:.02,front:hub('frontwheel','0 0 0',front),rear:hub('rearwheel',p.bike==='full'?`${g.armX} 0 ${g.armZ}`:'0 0 0',rear)},rider);
  const xml=`<mujoco model="BikeLab connected bike"><compiler angle="radian" fusestatic="false"/><option timestep="${a.motion.dt}" gravity="0 0 -${a.motion.gravity}" integrator="implicitfast" ${a.surface.friction?'cone="elliptic" ':''}solver="Newton" iterations="100" tolerance="1e-10" ccd_tolerance="${w.collisionTolerance}" ccd_iterations="${w.collisionIterations}"><flag autoreset="disable"/></option><asset>${ground.assets}</asset><worldbody>${ground.geoms}${tree.body}</worldbody>${tree.tendon}${rider?`<equality>${rider.parts.equality}</equality>`:''}<deformable>${front.flex}${rear.flex}</deformable></mujoco>`;
- return a.initialization?canonicalModelXML(xml):xml;
+ return a.initialization||a.numerics?canonicalModelXML(xml):xml;
 }
 function joint(mj,model,name){const id=mj.mj_name2id(model,mj.mjtObj.mjOBJ_JOINT.value,name);return id<0?null:{q:model.jnt_qposadr[id],v:model.jnt_dofadr[id]};}
 function translateWrench(w,from,to,out){out[0]=w[0];out[1]=w[1];out[2]=w[2]+(from[1]-to[1])*w[0]-(from[0]-to[0])*w[1];return out;}
@@ -103,8 +105,9 @@ export function rimSweep(profile,start,delta,initialGap,rimRadius,tyreRadius){
 // Native RNE omits flex contacts; node-level interface loads are not reported.
 export async function run(input={}){
  const a=validate(input),p=a.bike,w=a.wheelParams,m=a.motion,g=geometryFor(p);
- const assessment=assessAssembly(a.assembly,w.rimRadius),scenario={bike:p,wheel:a.wheel,motion:m,profile:a.profile,assembly:a.assembly,surface:a.surface,commands:a.commands,...(a.articulated?{articulated:a.articulated}:{}),...(a.initialization?{initialization:a.initialization}:{})};
- const report={model:a.initialization?STATE_MODEL:a.articulated?ARTICULATED_MODEL:MODEL,engine:'MuJoCo 3.16.0',units:'SI; x forward, y left, z up; moments about +y. Ground and bearing wrenches at their wheel hub; momentum and impulse about world origin.',parameterProvenance:'Mass, inertia, stiffness, damping and launch are illustrative; no physical calibration. Assembly evidence retains its own provenance.',scenario,assessment,contactSupport:profileSupport(a.profile),scope:'Illustrative planar bike and guided rider; deformable rings and homogeneous Coulomb interface friction on rigid faceted ground. Abstract hub drive and dry-friction brakes; no calibrated grip/inflation, drivetrain/thermal model, frame collision, layered soil or anatomical rider.',surfaceProvenance:'Friction is an illustrative homogeneous tyre-ground interface coefficient; no named material calibration. Zero retains exact frictionless contact.'};
+ const nativeGeometry=!!(a.initialization||a.numerics);
+ const assessment=assessAssembly(a.assembly,w.rimRadius),scenario={bike:p,wheel:a.wheel,motion:m,profile:a.profile,assembly:a.assembly,surface:a.surface,commands:a.commands,...(a.articulated?{articulated:a.articulated}:{}),...(a.initialization?{initialization:a.initialization}:{}),...(a.numerics?{numerics:a.numerics}:{})};
+ const report={model:a.numerics?CANONICAL_MODEL:a.initialization?STATE_MODEL:a.articulated?ARTICULATED_MODEL:MODEL,engine:'MuJoCo 3.16.0',units:'SI; x forward, y left, z up; moments about +y. Ground and bearing wrenches at their wheel hub; momentum and impulse about world origin.',parameterProvenance:'Mass, inertia, stiffness, damping and launch are illustrative; no physical calibration. Assembly evidence retains its own provenance.',scenario,assessment,contactSupport:profileSupport(a.profile),scope:'Illustrative planar bike and guided rider; deformable rings and homogeneous Coulomb interface friction on rigid faceted ground. Abstract hub drive and dry-friction brakes; no calibrated grip/inflation, drivetrain/thermal model, frame collision, layered soil or anatomical rider.',surfaceProvenance:'Friction is an illustrative homogeneous tyre-ground interface coefficient; no named material calibration. Zero retains exact frictionless contact.'};
  if(a.articulated){report.scope='Illustrative planar bike with five-group passive unseated rider; fixed frame-local retained hand/foot attachments. Initial pose is not an equilibrium. No saddle contact, active control, anatomical calibration, strength, layered terrain or 3D dynamics.';report.riderSupport={mode:'passive-unseated',saddle:'not-modelled',coordinates:'Four joint displacements/velocities in hip, knee, shoulder, elbow order. Passive load stride: torque, spring energy, positive damping power, spring torque, damping torque. Native coordinates/velocities order: riderX, riderZ, riderPitch, hip, knee, shoulder, elbow. Segment points and rider COM use world xyz; segment velocity is angular xyz then linear xyz at its COM in world axes.',closure:'Soft hand/foot pair work and angular impulse are numerical internal contributions, distinct from external terrain loads; no counterforce.'};}
  if(assessment.status==='incompatible')return {...report,status:'assembly-rejected',termination:{reason:'assembly-service-limit',time:0},frames:[]};
  const mj=await getRuntime();let model,data,diagnostic,velocityBuffer,forceBuffer,connectedRider,diagnosticRider;
@@ -118,9 +121,9 @@ export async function run(input={}){
    const flex=id(mj.mjtObj.mjOBJ_FLEX.value,name+'_casing'),hubBody=body(name);
    return {name,flex,body:hubBody,spin:joint(mj,model,name+'Spin'),vertex:3*model.flex_vertadr[flex],edge:model.flex_edgeadr[flex],nodeJoints:Array.from({length:w.nodes},(_,i)=>[joint(mj,model,name+'_u'+i),joint(mj,model,name+'_v'+i)]),bodies:[hubBody,...Array.from({length:w.nodes},(_,i)=>body(name+'_n'+i))],hub:new Float64Array(2),oldHub:[0,0],move:[0,0],oldRimGap:0,xyz:new Float64Array(3*w.nodes),oldXYZ:new Float64Array(3*w.nodes),ground:new Float64Array(3),brakeTorque:0,driveTorque:0,brakeCapacity:0,limits:{}};
   });
-  const shockRest=j.swing?(a.initialization?model.tendon_lengthspring[0]:shockLength(0,g)):0;
+  const shockRest=j.swing?(nativeGeometry?model.tendon_lengthspring[0]:shockLength(0,g)):0;
   let shockJacobianIndex=-1;
-  if(j.swing&&a.initialization){
+  if(j.swing&&nativeGeometry){
    // Native tendon storage is sparse even when constraint Jacobians are dense.
    for(let k=model.ten_J_rowadr[0];k<model.ten_J_rowadr[0]+model.ten_J_rownnz[0];k++)if(model.ten_J_colind[k]===j.swing.v)shockJacobianIndex=k;
    if(shockJacobianIndex<0)throw Error('Missing native shock Jacobian.');
@@ -132,6 +135,7 @@ export async function run(input={}){
   if(j.swing)data.qpos[j.swing.q]=rearAngle;if(j.riderSlide)data.qpos[j.riderSlide.q]=m.riderOffset;
   data.qvel[j.travel.v]=m.velocityX;data.qvel[j.heave.v]=m.velocityZ;data.qvel[j.pitch.v]=m.pitchVelocity;for(const wheel of wheels)data.qvel[wheel.spin.v]=m.omega;
   }
+  if(a.numerics)report.numericalPolicy=await canonicalLaunch(mj,model,data,xml);
   const vector=()=>new Float64Array(3),steps=Math.round(m.duration/m.dt),stride=Math.round(m.sampleDt/m.dt);
   const slots=Array.from({length:Math.round(m.duration/m.sampleDt)+a.commands.length+2},()=>({frame:vector(),rider:new Float64Array(2),wheels:wheels.map(()=>({hub:vector(),nodes:new Float64Array(2*w.nodes),ground:vector(),bearing:vector(),carrier:vector(),momentum:vector(),centerOfMass:new Float64Array(2),limits:{}})),command:{tick:0,rearDrive:0,frontBrake:0,rearBrake:0},contactData:new Float64Array(512*CONTACT_STRIDE),momentum:vector(),momentumResidual:vector(),impulse:vector(),root:vector(),forkLoad:vector(),pivot:vector(),guide:vector(),...(a.articulated?{articulated:createRiderFrame()}:{})}));
   const oldQ=new Float64Array(model.nq),oldV=new Float64Array(model.nv),oldWarm=new Float64Array(model.nv),buffers=Array.from({length:3},()=>new Float64Array(5)),ground=vector(),impulse=vector(),initialMomentum=vector(),origin=new Float64Array(3),scratch=vector(),at=new Float64Array(2),allBodies=Array.from({length:model.nbody-1},(_,i)=>i+1);
@@ -145,7 +149,7 @@ export async function run(input={}){
   function observe(){
    mj.mj_fwdPosition(model,data);mj.mj_fwdVelocity(model,data);data.qfrc_applied.fill(0);for(const b of buffers)b.fill(0);
    if(p.forkBuffer==='progressive')travelBuffer(data.qpos[j.fork.q],data.qvel[j.fork.v],g.forkTravel,p.forkBufferWidth,p.forkBufferStiffness,p.forkBufferDamping,buffers[0]);data.qfrc_applied[j.fork.v]=buffers[0][0];
-   if(j.swing){if(p.shockBuffer==='progressive')travelBuffer(shockRest-data.ten_length[0],-data.ten_velocity[0],g.shockTravel,p.shockBufferWidth,p.shockBufferStiffness,p.shockBufferDamping,buffers[1]);data.qfrc_applied[j.swing.v]=buffers[1][0]*(a.initialization?-data.ten_J[shockJacobianIndex]:shockCompressionJacobian(data.qpos[j.swing.q],g));}
+   if(j.swing){if(p.shockBuffer==='progressive')travelBuffer(shockRest-data.ten_length[0],-data.ten_velocity[0],g.shockTravel,p.shockBufferWidth,p.shockBufferStiffness,p.shockBufferDamping,buffers[1]);data.qfrc_applied[j.swing.v]=buffers[1][0]*(nativeGeometry?-data.ten_J[shockJacobianIndex]:shockCompressionJacobian(data.qpos[j.swing.q],g));}
    if(j.riderSlide){if(p.riderBuffer==='progressive')travelBuffer(data.qpos[j.riderSlide.q]+p.riderTravel,data.qvel[j.riderSlide.v],2*p.riderTravel,p.riderBufferWidth,p.riderBufferStiffness,p.riderBufferDamping,buffers[2]);data.qfrc_applied[j.riderSlide.v]=buffers[2][0];}
    for(const wheel of wheels)data.qfrc_applied[wheel.spin.v]=wheel.driveTorque;
    mj.mj_forward(model,data);mj.mj_energyPos(model,data);mj.mj_energyVel(model,data);energy=data.energy[0]+data.energy[1];lossPower=0;constraintPower=0;
@@ -196,7 +200,7 @@ export async function run(input={}){
    if(diagnosticRider){const issue=diagnosticRider.observe();if(issue)throw Error('Diagnostic rider diverged: '+issue);for(let i=0;i<2;i++)for(let k=0;k<3;k++)maxDiagnosticDifference=Math.max(maxDiagnosticDifference,Math.abs(diagnosticRider.interfaces.attachments[i].forceOnRider[k]-connectedRider.interfaces.attachments[i].forceOnRider[k]));}
    for(let i=0;i<model.nv;i++)maxDiagnosticDifference=Math.max(maxDiagnosticDifference,Math.abs(data.qacc[i]-diagnostic.qacc[i]),Math.abs(data.qfrc_constraint[i]-diagnostic.qfrc_constraint[i]));
    corrected(frameBody,wheels,f.root);corrected(frontBody,frontOnly,f.forkLoad);corrected(rearBody,rearOnly,f.pivot);if(!a.articulated)corrected(riderBody,p.rider==='compliant'?none:wheels,f.guide);
-   if(j.swing){const arm=3*armSite,eye=3*frameSite,dx=diagnostic.site_xpos[arm]-diagnostic.site_xpos[eye],dz=diagnostic.site_xpos[arm+2]-diagnostic.site_xpos[eye+2],length=a.initialization?diagnostic.ten_length[0]:Math.hypot(dx,dz),fx=-buffers[1][0]*dx/length,fz=-buffers[1][0]*dz/length;f.pivot[0]-=fx;f.pivot[1]-=fz;f.pivot[2]-=(diagnostic.site_xpos[arm+2]-diagnostic.xpos[3*rearBody+2])*fx-(diagnostic.site_xpos[arm]-diagnostic.xpos[3*rearBody])*fz;}
+   if(j.swing){const arm=3*armSite,eye=3*frameSite,dx=diagnostic.site_xpos[arm]-diagnostic.site_xpos[eye],dz=diagnostic.site_xpos[arm+2]-diagnostic.site_xpos[eye+2],length=nativeGeometry?diagnostic.ten_length[0]:Math.hypot(dx,dz),fx=-buffers[1][0]*dx/length,fz=-buffers[1][0]*dz/length;f.pivot[0]-=fx;f.pivot[1]-=fz;f.pivot[2]-=(diagnostic.site_xpos[arm+2]-diagnostic.xpos[3*rearBody+2])*fx-(diagnostic.site_xpos[arm]-diagnostic.xpos[3*rearBody])*fz;}
    for(let k=0;k<2;k++){const wheel=wheels[k],v=f.wheels[k];v.hub[0]=wheel.hub[0];v.hub[1]=wheel.hub[1];v.hub[2]=Math.atan2(data.xmat[9*wheel.body+2],data.xmat[9*wheel.body]);v.ground.set(wheel.ground);corrected(wheel.body,k?rearOnly:frontOnly,v.carrier);v.bearing.set(v.carrier);v.bearing[2]-=wheel.driveTorque+wheel.brakeTorque;v.driveTorque=wheel.driveTorque;v.brakeCapacity=wheel.brakeCapacity;v.brakeTorque=wheel.brakeTorque;v.spinAngle=data.qpos[wheel.spin.q];v.spinVelocity=data.qvel[wheel.spin.v];momentum(wheel.bodies,v.momentum);v.centerOfMass[0]=data.subtree_com[3*wheel.body];v.centerOfMass[1]=data.subtree_com[3*wheel.body+2];Object.assign(v.limits,wheel.limits);for(let i=0;i<w.nodes;i++){v.nodes[2*i]=wheel.xyz[3*i];v.nodes[2*i+1]=wheel.xyz[3*i+2];}maxBearingMoment=Math.max(maxBearingMoment,Math.abs(v.bearing[2]));}
    for(const value of f.root)maxRoot=Math.max(maxRoot,Math.abs(value));
    const list=data.contact;let contacts=0;
@@ -229,6 +233,8 @@ export async function run(input={}){
  }finally{diagnosticRider?.delete();connectedRider?.delete();forceBuffer?.delete();velocityBuffer?.delete();diagnostic?.delete();data?.delete();model?.delete();}
 }
 export function inputFromRecord(r){
+ if(r?.model===CANONICAL_MODEL){if(r.scenario?.numerics!==CANONICAL_NUMERICS)throw Error('Incomplete canonical guided record.');const a=validate(r.scenario);const {wheelParams,...scenario}=a;requireFields(r.scenario,scenario);return scenario;}
+ if(r?.scenario&&Object.hasOwn(r.scenario,'numerics'))throw Error('Legacy record cannot contain canonical guided numerics.');
  if(r?.model===STATE_MODEL){if(!r.scenario?.initialization||!r.scenario.articulated)throw Error('Incomplete explicit-state record.');const a=validate(r.scenario);const {wheelParams,...scenario}=a;requireFields(r.scenario,scenario);return scenario;}
  if(r?.scenario?.initialization)throw Error('Legacy record cannot contain explicit initialization.');
  if(![ARTICULATED_MODEL,MODEL,LEGACY_MODEL,'bikelab-trail-bike-0.2','bikelab-trail-bike-0.3'].includes(r?.model)||!r.scenario)throw Error('Unsupported connected-bike record.');

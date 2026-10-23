@@ -1,5 +1,9 @@
 # PR23 major iteration: received increments
 
+## Canonical guided receiving increment, 2026-10-23
+
+Remote `71716d0` was synchronized before this increment. Its hosted OS suites pass, but its pinned-browser trail fails as well as newer Edge; [the complete pinned failure receipt](evidence/iteration-20-guided-pinned-portability.json) retains the 4.188e-7 normalized discrepancy. The short trail now selects a separate `.5` [canonical numerical policy](TRAIL_CANONICAL.md). Legacy replay stays unchanged. GPT-6.1 Sol review caught and corrected dropped policy on rider-mode conversion and a native-view lifetime hazard across the asynchronous hash. Focused tests pass; full-suite and both-bike timestep trials are running, with exact-head hosted browser checks and inspected captures still required. Keep PR23 draft. Saddle/equilibrium work remains separate.
+
 The major iteration starts from c83b41c. Existing rider tests and geometry portability evidence remain controls.
 
 ## Complete fresh state

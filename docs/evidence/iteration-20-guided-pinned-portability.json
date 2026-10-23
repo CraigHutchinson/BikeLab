@@ -1,0 +1,175 @@
+{
+  "format": "bikelab-guided-portability-checkpoint-0.1",
+  "scope": "Failed legacy guided qualification on pinned Chromium; no attribution to a single arithmetic operation is established.",
+  "browser": "Chromium 141.0.7390.37 / Playwright 1.56.1",
+  "node": "24.19.0",
+  "simulationCommit": "71716d044ff918328bb7d3164521e108534e87f3",
+  "workflowRun": 39840351835,
+  "artifactId": 12453646178,
+  "artifactSha256": "f195f5c094ad2631e3b980dbafede8a0eef2074a43f3af8b755828ec635619e0",
+  "browserRecordSha256": "4f22aecfb85eb6d21a5cb4cc660c0b75497f929c7361c7503e514b6ae47e3851",
+  "model": "bikelab-trail-bike-0.4",
+  "normalizedBudget": 1e-07,
+  "passed": false,
+  "different": 23805,
+  "maxAbsolute": {
+    "path": "record.frames.297.contacts.7.force.1",
+    "delta": 1.31062026298423e-06,
+    "actual": 211.68069386639303,
+    "expected": 211.6806951770133
+  },
+  "maxNormalized": {
+    "path": "record.frames.298.wheels.1.bearing.0",
+    "delta": 4.1880191425924806e-07,
+    "actual": 0.9922039525586281,
+    "expected": 0.9922035337567139
+  },
+  "scenario": {
+    "bike": {
+      "pivotX": 0.04,
+      "pivotZ": -0.235,
+      "shockArmX": -0.054607848086069846,
+      "shockArmZ": 0.18996325604011804,
+      "shockFrameX": 0.19332203501088832,
+      "shockFrameZ": -0.015623078508508775,
+      "shockTravel": 0.055,
+      "bike": "full",
+      "mass": 82,
+      "rider": "compliant",
+      "riderMass": 70,
+      "riderStiffness": 12000,
+      "riderDamping": 900,
+      "riderTravel": 0.15,
+      "riderBuffer": "progressive",
+      "riderBufferWidth": 0.015,
+      "riderBufferStiffness": 300000,
+      "riderBufferDamping": 1500,
+      "forkBuffer": "progressive",
+      "forkBufferWidth": 0.02,
+      "forkBufferStiffness": 300000,
+      "forkBufferDamping": 1500,
+      "forkStiffness": 9000,
+      "forkDamping": 700,
+      "shockBuffer": "progressive",
+      "shockBufferWidth": 0.008,
+      "shockBufferStiffness": 1000000,
+      "shockBufferDamping": 3000,
+      "shockStiffness": 70000,
+      "shockDamping": 2400
+    },
+    "wheel": {
+      "nodes": 64,
+      "tyreMass": 1,
+      "hubMass": 1.5,
+      "hubInertia": 0.04,
+      "skin": 0.008,
+      "rimRadius": 0.29,
+      "foundation": 300000,
+      "extension": 500,
+      "edgeViscosity": 0.5,
+      "contactTime": 0.0005,
+      "contactImpedance": 0.99,
+      "collisionTolerance": 1e-10,
+      "collisionIterations": 100,
+      "maxPenetration": 0.0005,
+      "maxStrain": 0.25,
+      "maxDisplacement": 0.06
+    },
+    "motion": {
+      "centerX": -0.5,
+      "clearance": 0,
+      "velocityX": 2.5,
+      "velocityZ": 0,
+      "omega": 6.944444444444445,
+      "pitchOffset": 0,
+      "pitchVelocity": 0,
+      "forkCompression": 0.04,
+      "rearAngle": 0.08,
+      "riderOffset": -0.05,
+      "gravity": 9.80665,
+      "duration": 1.5,
+      "dt": 3.125e-05,
+      "sampleDt": 0.005
+    },
+    "profile": {
+      "format": "bikelab-profile-1",
+      "units": "m",
+      "axes": "x-forward,z-up",
+      "solid": "below",
+      "interpolation": "linear",
+      "source": {
+        "kind": "synthetic",
+        "description": "Short 2D trail: flat launch shelf, 10 mm bump, 90 mm crest and descent to an 80 mm lower landing. Authored facets remain sharp. Guided rider; no active jump or calibrated terrain."
+      },
+      "points": [
+        [
+          -3,
+          0
+        ],
+        [
+          0.5,
+          0
+        ],
+        [
+          0.65,
+          0.01
+        ],
+        [
+          0.8,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1.3,
+          0.04
+        ],
+        [
+          1.65,
+          0.09
+        ],
+        [
+          1.8,
+          -0.08
+        ],
+        [
+          5,
+          -0.08
+        ]
+      ]
+    },
+    "assembly": {
+      "tyreId": "",
+      "rimId": "",
+      "brand": "unknown",
+      "rimType": "unknown",
+      "construction": "unknown",
+      "tyreBsd": null,
+      "rimBsd": null,
+      "tyreWidth": null,
+      "rimInnerWidth": null,
+      "tyreTubelessApproved": null,
+      "rimTubelessApproved": null,
+      "standardCompliant": null,
+      "widthPairApproved": null,
+      "pairApproved": null,
+      "pressure": null,
+      "tyreMaxPressure": null,
+      "rimMaxPressure": null,
+      "sources": {}
+    },
+    "surface": {
+      "friction": 0
+    },
+    "commands": [
+      {
+        "tick": 0,
+        "rearDrive": 0,
+        "frontBrake": 0,
+        "rearBrake": 0
+      }
+    ]
+  }
+}

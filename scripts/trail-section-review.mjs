@@ -41,7 +41,7 @@ if(process.argv[1]&&import.meta.url===pathToFileURL(resolve(process.argv[1])).hr
   await writeFile(join(dir,name+'.json'),text);const result=reviewTrailSection(r);cases.push({...result,recordSha256:createHash('sha256').update(text).digest('hex')});
   console.log(JSON.stringify({case:name,...result}));
  }
- const sources={};for(const name of ['dist/trail-section.js','dist/trail-bike.js','dist/moving-wheel.js','dist/bike-assembly.js','dist/bike-rig.js','dist/linkage.js','scripts/trail-section-review.mjs'])sources[name]=createHash('sha256').update(await readFile(name)).digest('hex');
+ const sources={};for(const name of ['dist/trail-section.js','dist/trail-bike.js','dist/trail-canonical.js','dist/trail-initial-state.js','dist/moving-wheel.js','dist/bike-assembly.js','dist/bike-rig.js','dist/linkage.js','scripts/trail-section-review.mjs'])sources[name]=createHash('sha256').update(await readFile(name)).digest('hex');
  const refinement=cases.filter(c=>c.dt===.00003125).map(coarse=>{const fine=cases.find(c=>c.bike===coarse.bike&&c.dt<coarse.dt);return {bike:coarse.bike,peakForceRelativeDifference:Math.abs(coarse.peakGroundForce-fine.peakGroundForce)/fine.peakGroundForce,energyResidualRatio:fine.maxEnergyResidual/coarse.maxEnergyResidual};});
  await writeFile(join(dir,'review.json'),JSON.stringify({format:'bikelab-trail-section-review-0.1',sources,cases,refinement,scope:'Numerical receiving experiment, not jump validation or physical calibration. No timing/performance measurement.'},null,2)+'\n');
 }
