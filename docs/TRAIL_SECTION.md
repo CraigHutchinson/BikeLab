@@ -22,3 +22,16 @@ Initial total energies are 799.3 J and 809.6 J; do not interpret these as zero-p
 **Event timing remains sensitive:** full suspension has a single saved front-unloaded frame at 0.610 s that disappears at the finer step. The main front-unloaded interval starts at 0.665 versus 0.670 s; rear unloading starts at 1.200 versus 1.195 s. Do not treat the first unloaded sample as a converged take-off time. Both wheels recover positive recorded support after their separate unloaded intervals. No sustained sampled interval with both wheels unloaded occurs after initial support. Force-only zero-support intervals do not by themselves prove geometric separation. Do not describe this fixture as an active bunny hop or a completed jump.
 
 The pinned-browser receiving check selects the actual preset on both bikes, compares exact model/launch receipts and the complete exported record with Node within the new 1e-9 normalized budget, inspects the longest sampled front/rear unloading intervals and verifies a later both-supported frame, and captures desktop/390 px views. Hosted results and actual capture inspection are pending at this implementation checkpoint. Both pinned Chromium and newer Edge 157 fail the legacy-guided 1e-7 replay budget on this full-suspension scenario; [the preserved failed case](evidence/iteration-20-guided-edge-portability.json) requires separate canonical-guided qualification. It does not invalidate the unchanged headless sensitivity results, and no tolerance is relaxed. This extends the visual track consumer while preserving future active pumping/wheelie/hop controls, 3D lateral/turning, finite failure/blowout, layered soil and adaptive/multirate work as separate gates.
+
+## Canonical trial, 2026-10-23
+
+The separately versioned `.5` policy at `1242d09` completes all four cases. [Its source-hashed receipt](evidence/iteration-20-canonical-trail-section.json) preserves the new results independently of the legacy table above.
+
+| Bike | Timestep / μs | Peak ground force / N | Max fork / shock compression / mm | Max energy/work residual / J |
+| --- | ---: | ---: | ---: | ---: |
+| Full | 31.25 | 1750.5 | 49.71 / 29.18 | 2.833 |
+| Full | 15.625 | 1710.3 | 49.69 / 29.28 | 1.135 |
+| Hardtail | 31.25 | 2518.4 | 57.83 / 0 | 2.890 |
+| Hardtail | 15.625 | 2514.4 | 57.77 / 0 | 1.210 |
+
+Peak-load sensitivity is 2.35% for full suspension and 0.159% for hardtail. The fine-step maximum energy residual is 40.1% / 41.9% of the coarse value. Full-suspension shock buffers are active in 40 / 39 saved frames, with peak absolute buffer forces 434.7 / 462.5 N; the receiving run exercises the new force mapping. Both bikes retain individual unloading and support return without sustained sampled both-wheel zero support. The brief coarse-only front event and 5 ms event-time sampling remain limitations. These values describe numerical trials within existing limits, not component strength, a solved standing launch, a complete jump or real-time performance.
