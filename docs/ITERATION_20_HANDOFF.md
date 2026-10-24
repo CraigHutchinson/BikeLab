@@ -1,5 +1,15 @@
 # Iteration 20 completeness review and session handoff
 
+## Calculation progress and optimization continuation, 2026-10-24
+
+PR25 is merged at `6123f1faffc28486ec248f945347db01b3b075c0`; both tested heads and all pose captures are received. [The receipt](TRAIL_CALCULATION_PROGRESS.md#reviewed-baseline-and-first-optimization-2026-10-24) records source/artifact hashes, exact scope and mobile findings, superseding the pending PR25 notes below.
+
+[PR26](https://github.com/CraigHutchinson/BikeLab/pull/26), branch `codex/trail-progress-optimization`, implements native-view reuse and accepted-step progress at `84bfb5f4ed92173810f7c573cc9fb08c72e9ea54`. [Implementation CI](https://github.com/CraigHutchinson/BikeLab/actions/runs/40074167350) passes 229 tests on each OS and the complete browser suite. All ten progress captures are downloaded and visually received, including active 390/320 px displays and truthful completed/rejected/stopped/cancelled/error states. [The final receipt](TRAIL_CALCULATION_PROGRESS.md#implementation-received-2026-10-24) records hashes, actual browser results, local environment restrictions and remaining performance scope. Subsequent documentation commits preserve this tested implementation; inspect remote checks before merging.
+
+The final 20-case parity matrix exactly preserves the unchanged baseline records. Final serial warmed medians improve by 2.78–19.97% across four guided/articulated cases, with the observer disabled. Preserve both the initial optimizer-only and final series and their raw samples; do not claim a uniform speedup, isolated progress overhead or real-time suitability. The unchanged baseline was staged under `/tmp/bikelab-before-progress`; recreate it from main `6123f1f` if absent. No further timing runs are needed merely to obtain a preferred result.
+
+The requested optimization and progress slice is complete. Next dynamics work remains the separately preserved finite-saddle branch, updated with current guards/state/UI and a passing separation/recontact refinement control, before active sit/stand motion. For a further performance slice, measure target-device cold/warm latency and recording/transfer costs first. Preserve source/data provenance, physical limits, layered terrain and eventual 3D/game acceptance gates. This cloud checkout retains synthetic ancestry: publish exact trees with the actual remote parent and an expected-head lease, never push the synthetic local history over remote work.
+
 ## PR25 resume checkpoint, 2026-10-24
 
 Rider pose implementation `67059ad4b77ddf694d1ff6fe8e389a318ac131ad` is pushed to [draft PR25](https://github.com/CraigHutchinson/BikeLab/pull/25), branch `codex/rider-pose-study`, based on merged PR24. [Implementation run 40047997172](https://github.com/CraigHutchinson/BikeLab/actions/runs/40047997172) passes 225 tests on both OSes; browser execution and actual pose screenshot inspection are pending at this checkpoint. The separate `rider-pose-evidence` archive avoids the earlier combined-download size problem. Follow the [receiving instructions](RIDER_POSE_STUDY.md#pushed-receiving-checkpoint) before marking this UI received.

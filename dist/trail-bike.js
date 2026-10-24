@@ -103,15 +103,22 @@ export function rimSweep(profile,start,delta,initialGap,rimRadius,tyreRadius){
 }
 // Complete wheel subtrees are the smallest supported load-observation boundary.
 // Native RNE omits flex contacts; node-level interface loads are not reported.
-export async function run(input={}){
+// onProgress(phase, acceptedSteps, totalSteps, dt) observes coarse checkpoints.
+// Scalars only, outside native-view scopes; never part of scenario or replay.
+export async function run(input={},onProgress){
+ if(onProgress!==undefined&&typeof onProgress!=='function')throw Error('Progress observer must be a function.');
  const a=validate(input),p=a.bike,w=a.wheelParams,m=a.motion,g=geometryFor(p);
+ const steps=Math.round(m.duration/m.dt),progressStride=Math.max(1,Math.ceil(steps/100));let lastProgressStep=-1;
+ const progress=(phase,acceptedSteps=0)=>{if(onProgress){onProgress(phase,acceptedSteps,steps,m.dt);if(phase==='integrating')lastProgressStep=acceptedSteps;}};
+ progress('preparing');
  const nativeGeometry=!!(a.initialization||a.numerics);
  const assessment=assessAssembly(a.assembly,w.rimRadius),scenario={bike:p,wheel:a.wheel,motion:m,profile:a.profile,assembly:a.assembly,surface:a.surface,commands:a.commands,...(a.articulated?{articulated:a.articulated}:{}),...(a.initialization?{initialization:a.initialization}:{}),...(a.numerics?{numerics:a.numerics}:{})};
  const report={model:a.numerics?CANONICAL_MODEL:a.initialization?STATE_MODEL:a.articulated?ARTICULATED_MODEL:MODEL,engine:'MuJoCo 3.16.0',units:'SI; x forward, y left, z up; moments about +y. Ground and bearing wrenches at their wheel hub; momentum and impulse about world origin.',parameterProvenance:'Mass, inertia, stiffness, damping and launch are illustrative; no physical calibration. Assembly evidence retains its own provenance.',scenario,assessment,contactSupport:profileSupport(a.profile),scope:'Illustrative planar bike and guided rider; deformable rings and homogeneous Coulomb interface friction on rigid faceted ground. Abstract hub drive and dry-friction brakes; no calibrated grip/inflation, drivetrain/thermal model, frame collision, layered soil or anatomical rider.',surfaceProvenance:'Friction is an illustrative homogeneous tyre-ground interface coefficient; no named material calibration. Zero retains exact frictionless contact.'};
  if(a.articulated){report.scope='Illustrative planar bike with five-group passive unseated rider; fixed frame-local retained hand/foot attachments. Initial pose is not an equilibrium. No saddle contact, active control, anatomical calibration, strength, layered terrain or 3D dynamics.';report.riderSupport={mode:'passive-unseated',saddle:'not-modelled',coordinates:'Four joint displacements/velocities in hip, knee, shoulder, elbow order. Passive load stride: torque, spring energy, positive damping power, spring torque, damping torque. Native coordinates/velocities order: riderX, riderZ, riderPitch, hip, knee, shoulder, elbow. Segment points and rider COM use world xyz; segment velocity is angular xyz then linear xyz at its COM in world axes.',closure:'Soft hand/foot pair work and angular impulse are numerical internal contributions, distinct from external terrain loads; no counterforce.'};}
- if(assessment.status==='incompatible')return {...report,status:'assembly-rejected',termination:{reason:'assembly-service-limit',time:0},frames:[]};
+ if(assessment.status==='incompatible'){progress('finalizing');return {...report,status:'assembly-rejected',termination:{reason:'assembly-service-limit',time:0},frames:[]};}
  const mj=await getRuntime();let model,data,diagnostic,velocityBuffer,forceBuffer,connectedRider,diagnosticRider;
  try{
+  progress('initializing');
   const xml=modelXML(scenario),identity=a.initialization?await stateIdentity(xml,a):null;
   model=mj.MjModel.from_xml_string(xml);const layout=a.initialization?scalarLayout(mj,model):null;data=new mj.MjData(model);diagnostic=new mj.MjData(model);velocityBuffer=new mj.DoubleBuffer(6);forceBuffer=new mj.DoubleBuffer(6);
   if(a.articulated){connectedRider=createConnectedRider(mj,model,data,a.articulated);diagnosticRider=createConnectedRider(mj,model,diagnostic,a.articulated);}
@@ -136,7 +143,7 @@ export async function run(input={}){
   data.qvel[j.travel.v]=m.velocityX;data.qvel[j.heave.v]=m.velocityZ;data.qvel[j.pitch.v]=m.pitchVelocity;for(const wheel of wheels)data.qvel[wheel.spin.v]=m.omega;
   }
   if(a.numerics)report.numericalPolicy=await canonicalLaunch(mj,model,data,xml);
-  const vector=()=>new Float64Array(3),steps=Math.round(m.duration/m.dt),stride=Math.round(m.sampleDt/m.dt);
+  const vector=()=>new Float64Array(3),stride=Math.round(m.sampleDt/m.dt);
   const slots=Array.from({length:Math.round(m.duration/m.sampleDt)+a.commands.length+2},()=>({frame:vector(),rider:new Float64Array(2),wheels:wheels.map(()=>({hub:vector(),nodes:new Float64Array(2*w.nodes),ground:vector(),bearing:vector(),carrier:vector(),momentum:vector(),centerOfMass:new Float64Array(2),limits:{}})),command:{tick:0,rearDrive:0,frontBrake:0,rearBrake:0},contactData:new Float64Array(512*CONTACT_STRIDE),momentum:vector(),momentumResidual:vector(),impulse:vector(),root:vector(),forkLoad:vector(),pivot:vector(),guide:vector(),...(a.articulated?{articulated:createRiderFrame()}:{})}));
   const oldQ=new Float64Array(model.nq),oldV=new Float64Array(model.nv),oldWarm=new Float64Array(model.nv),buffers=Array.from({length:3},()=>new Float64Array(5)),ground=vector(),impulse=vector(),initialMomentum=vector(),origin=new Float64Array(3),scratch=vector(),at=new Float64Array(2),allBodies=Array.from({length:model.nbody-1},(_,i)=>i+1);
   const oldActive=a.articulated?new Uint8Array(model.neq):null;
@@ -153,7 +160,13 @@ export async function run(input={}){
    if(j.riderSlide){if(p.riderBuffer==='progressive')travelBuffer(data.qpos[j.riderSlide.q]+p.riderTravel,data.qvel[j.riderSlide.v],2*p.riderTravel,p.riderBufferWidth,p.riderBufferStiffness,p.riderBufferDamping,buffers[2]);data.qfrc_applied[j.riderSlide.v]=buffers[2][0];}
    for(const wheel of wheels)data.qfrc_applied[wheel.spin.v]=wheel.driveTorque;
    mj.mj_forward(model,data);mj.mj_energyPos(model,data);mj.mj_energyVel(model,data);energy=data.energy[0]+data.energy[1];lossPower=0;constraintPower=0;
-   for(const b of buffers){energy+=b[1];lossPower+=b[2];}for(let i=0;i<model.nv;i++){lossPower-=data.qfrc_damper[i]*data.qvel[i];constraintPower+=data.qfrc_constraint[i]*data.qvel[i];}
+   for(const b of buffers){energy+=b[1];lossPower+=b[2];}
+   {
+    // Native getters allocate views. Keep aliases within this phase; no native
+    // call, observer callback or async boundary may occur before they expire.
+    const qvel=data.qvel,damper=data.qfrc_damper,constraint=data.qfrc_constraint;
+    for(let i=0;i<model.nv;i++){lossPower-=damper[i]*qvel[i];constraintPower+=constraint[i]*qvel[i];}
+   }
    closurePower=0;closureMoment=0;if(connectedRider&&!connectedRider.observe()){closurePower=connectedRider.interfaces.rowPower;closureMoment=connectedRider.interfaces.pairMoment[1];}
    normalPower=0;tangentPower=0;brakePower=0;drivePower=0;for(const wheel of wheels){wheel.brakeTorque=0;drivePower+=wheel.driveTorque*data.qvel[wheel.spin.v];}
    const types=data.efc_type,forces=data.efc_force,velocities=data.efc_vel,kind=mj.mjtConstraint;
@@ -208,8 +221,9 @@ export async function run(input={}){
     let fx=0,fy=0,fz=0,vx=0,vz=0;for(let axis=0;axis<3;axis++){fx+=sign*c.frame[3*axis]*localForce[axis];fy+=sign*c.frame[3*axis+1]*localForce[axis];fz+=sign*c.frame[3*axis+2]*localForce[axis];if(c.dim===3){vx+=sign*c.frame[3*axis]*data.efc_vel[c.efc_address+axis];vz+=sign*c.frame[3*axis+2]*data.efc_vel[c.efc_address+axis];}}
     maxLateralContactForce=Math.max(maxLateralContactForce,Math.abs(fy));f.contactData[b+8]=fx;f.contactData[b+9]=fz;f.contactData[b+10]=c.dim===3?vx*sign*c.frame[2]-vz*sign*c.frame[0]:NaN;f.contactData[b+11]=c.dim===3?data.efc_vel[c.efc_address]:NaN;}finally{c.delete();}}}finally{list.delete();}f.contactCount=contacts;count++;
   }
-  observe();initialEnergy=energy;const initialReason=guard();if(initialReason)return {...report,massBudget,status:'initial-state-rejected',termination:{reason:initialReason,time:0},frames:[]};if(a.initialization){report.initialState=captureState(identity,layout,data);report.initialization={mode:a.initialization.mode,time:0,warmStart:'fresh-zero',claim:'Supplied or authored state; not a solved equilibrium.'};}
+  observe();initialEnergy=energy;const initialReason=guard();if(initialReason){progress('finalizing');return {...report,massBudget,status:'initial-state-rejected',termination:{reason:initialReason,time:0},frames:[]};}if(a.initialization){report.initialState=captureState(identity,layout,data);report.initialization={mode:a.initialization.mode,time:0,warmStart:'fresh-zero',claim:'Supplied or authored state; not a solved equilibrium.'};}
   maxPowerResidual=powerResidual;peakForce=Math.hypot(ground[0],ground[1]);for(const wheel of wheels)peakPenetration=Math.max(peakPenetration,wheel.limits.penetration);record();
+  progress('integrating');
   for(let step=1;step<=steps;step++){
    if(oldActive)oldActive.set(data.eq_active);
    oldQ.set(data.qpos);oldV.set(data.qvel);oldWarm.set(data.qacc_warmstart);for(const wheel of wheels){wheel.oldXYZ.set(wheel.xyz);wheel.oldHub[0]=wheel.hub[0];wheel.oldHub[1]=wheel.hub[1];wheel.oldRimGap=wheel.limits.rimGap;}
@@ -225,8 +239,12 @@ export async function run(input={}){
    loss+=.5*m.dt*(oldLoss+endLoss);constraintWork+=.5*m.dt*(oldConstraint+endConstraint);normalWork+=.5*m.dt*(oldNormal+endNormal);tangentWork+=.5*m.dt*(oldTangent+endTangent);brakeWork+=.5*m.dt*(oldBrake+endBrake);
    impulse[0]+=.5*m.dt*(oldX+endX);impulse[1]+=.5*m.dt*(oldZ+endZ);impulse[2]+=.5*m.dt*(oldY+endY);gravityImpulse+=.5*m.dt*(oldGravity+endGravity);
    maxPowerResidual=Math.max(maxPowerResidual,endPowerResidual,powerResidual);peakForce=Math.max(peakForce,Math.hypot(endX,endZ),Math.hypot(ground[0],ground[1]));for(const wheel of wheels)peakPenetration=Math.max(peakPenetration,wheel.limits.penetration);maxResidual=Math.max(maxResidual,Math.abs(energy-initialEnergy+loss-constraintWork-driveWork));if(step%stride===0||changed)record();
+   if(onProgress&&step%progressStride===0)progress('integrating',step);
   }
   if(Math.abs(slots[count-1].time-data.time)>1e-10)record();
+  const acceptedSteps=Math.round(data.time/m.dt);
+  if(lastProgressStep!==acceptedSteps)progress('integrating',acceptedSteps);
+  progress('finalizing',acceptedSteps);
   const array=Array.from;
   return {...report,...(a.initialization?{finalState:captureState(identity,layout,data)}:{}),massBudget,status:termination?'terminated':'completed',termination,summary:{acceptedTime:data.time,steps:Math.round(data.time/m.dt),peakForce,peakPenetration,maxResidual,maxSampledRootWrench:maxRoot,maxSampledBearingMoment:maxBearingMoment,maxDiagnosticDifference,maxPowerResidual,maxSampledLateralContactForce:maxLateralContactForce,maxSampledConeExcess:maxConeExcess,initialEnergy,finalEnergy:energy,initialMomentum:array(initialMomentum),...(a.articulated?{maxClosureGap,closureWork,closureAngularImpulse}:{})},frames:slots.slice(0,count).map(f=>{
    const {contactData,contactCount,...rest}=f;return {...rest,...(a.articulated?{articulated:materializeRiderFrame(f.articulated)}:{}),...Object.fromEntries(['frame','rider','momentum','momentumResidual','impulse','root','forkLoad','pivot','guide'].map(key=>[key,array(f[key])])),...(a.articulated?{guide:null}:{}),wheels:f.wheels.map(v=>({...v,hub:array(v.hub),ground:array(v.ground),bearing:array(v.bearing),carrier:array(v.carrier),momentum:array(v.momentum),centerOfMass:array(v.centerOfMass),nodes:Array.from({length:w.nodes},(_,i)=>[v.nodes[2*i],v.nodes[2*i+1]])})),contacts:Array.from({length:contactCount},(_,i)=>{const k=CONTACT_STRIDE*i,nx=contactData[k+3],nz=contactData[k+4],force=contactData[k+5];return {wheel:contactData[k],point:[contactData[k+1],contactData[k+2]],normal:[nx,nz],force:[contactData[k+8],contactData[k+9]],normalForce:force,tangentForce:contactData[k+8]*nz-contactData[k+9]*nx,slip:Number.isFinite(contactData[k+10])?contactData[k+10]:null,normalVelocity:Number.isFinite(contactData[k+11])?contactData[k+11]:null,edge:contactData[k+6],vertex:contactData[k+7]};})};})};

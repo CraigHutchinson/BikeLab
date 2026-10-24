@@ -1,0 +1,1334 @@
+{
+  "reviewDate": "2026-10-24",
+  "baselineCommit": "6123f1faffc28486ec248f945347db01b3b075c0",
+  "implementationCommit": "84bfb5f4ed92173810f7c573cc9fb08c72e9ea54",
+  "implementationTree": "42e966b88ee128adf86a2ca5b8e3b86d5936b82d",
+  "sourceSHA256": {
+    "dist/trail-bike.js": "f260b742372538303adbd9fa8fae961765f47c937eff29ea591d1a54ab534ab4",
+    "dist/trail-bike-worker.js": "fc69de91ec1d888fda9a10db12cffdc5c7ce8bbdbf8307db4614149ac6b8f395",
+    "dist/trail-bike-app.js": "148bce0ca77328990691e5d904087e00f542d6b96d4ccd7b1970cc1f5c7ac24b",
+    "dist/trail-bike.html": "929e2a12e8b561180e17dbd7cf07b6450af3d5aada04db2c98cc9490666e9b96",
+    "dist/style.css": "94f1d7e72d8d3d0bdf5d27f34f2dd86421766d2058a28ba1d97cc8a148a9ce0a",
+    "scripts/trail-optimization-review.mjs": "6b47b74a456934749ac6569704f09de4e066dfdb791881b6bf20dc9bbbae4467",
+    "scripts/trail-progress-browser-check.mjs": "4f394c931ff970721893a00276d3f07ad008f9bf7249fbf2dfca85fbc45d8068"
+  },
+  "parity": {
+    "mode": "parity",
+    "baselineSourceSHA256": "cfe29c491b0e3804850bbbc71578491eb20e69091ee0e426b0695f16ec9748bf",
+    "candidateSourceSHA256": "f260b742372538303adbd9fa8fae961765f47c937eff29ea591d1a54ab534ab4",
+    "scriptSHA256": "6b47b74a456934749ac6569704f09de4e066dfdb791881b6bf20dc9bbbae4467",
+    "node": "v24.19.0",
+    "cpu": "INTEL(R) XEON(R) PLATINUM 8573C",
+    "availableParallelism": 2,
+    "scope": "Complete record parity and serial shared-worker observations; no physical calibration, target-device or real-time qualification.",
+    "cases": [
+      {
+        "name": "full-legacy-guided",
+        "status": "completed",
+        "steps": 3200,
+        "acceptedTime": 0.09999999999999246,
+        "termination": null,
+        "frames": 21,
+        "recordSHA256": "aedd40e290daf38e516e818f23c535f19adaeb2d57525219d8416fefebe325f6"
+      },
+      {
+        "name": "full-legacy-fixed-commands",
+        "status": "completed",
+        "steps": 3200,
+        "acceptedTime": 0.09999999999999246,
+        "termination": null,
+        "frames": 21,
+        "recordSHA256": "72ce6170ce8a1788b0a42c0cf95120cc50feb6682de4951f986c0a4bd60648b0"
+      },
+      {
+        "name": "full-canonical-trail",
+        "status": "completed",
+        "steps": 48000,
+        "acceptedTime": 1.4999999999993385,
+        "termination": null,
+        "frames": 301,
+        "recordSHA256": "52cd0a6087d3917ee5eb0d8c425353154ae8dd7eeb3549b2d0250ded72f0ae65"
+      },
+      {
+        "name": "full-canonical-fixed-commands",
+        "status": "completed",
+        "steps": 3200,
+        "acceptedTime": 0.09999999999999246,
+        "termination": null,
+        "frames": 21,
+        "recordSHA256": "472f0bc53c25a42b339d7fae626b5a01f29948497261e9bf18fd8b6e6a6a169f"
+      },
+      {
+        "name": "full-articulated",
+        "status": "completed",
+        "steps": 3200,
+        "acceptedTime": 0.09999999999999246,
+        "termination": null,
+        "frames": 21,
+        "recordSHA256": "e8c657decf94ba21c4edb0319597c3c8462c7d65ffde8935a3ce5af54f8e6905"
+      },
+      {
+        "name": "full-state-launch",
+        "status": "completed",
+        "steps": 3200,
+        "acceptedTime": 0.09999999999999246,
+        "termination": null,
+        "frames": 21,
+        "recordSHA256": "19a0c0638f252c8fe59f542ec7c74288dd07fb21116e8cc9eb456e6583f9715e"
+      },
+      {
+        "name": "full-state-launch-restart",
+        "status": "completed",
+        "steps": 640,
+        "acceptedTime": 0.020000000000000014,
+        "termination": null,
+        "frames": 5,
+        "recordSHA256": "273cae485a867c83c56061953b781601b7fe057b75220d87a4c2e2e759b87478"
+      },
+      {
+        "name": "full-guided-limit",
+        "status": "terminated",
+        "steps": 842,
+        "acceptedTime": 0.02631250000000002,
+        "termination": {
+          "reason": "rearwheel-contact-penetration-limit",
+          "time": 0.02631250000000002,
+          "attemptedTime": 0.02634375000000002,
+          "attemptedCommandTick": 0,
+          "attemptedLimits": [
+            {
+              "reason": null,
+              "rimGap": 0.07459150903472012,
+              "penetration": 0,
+              "inner": 0.05354773484753467,
+              "movement": 0.00019495297105287065,
+              "strain": 0.00015960106598655877,
+              "deformation": 7.623523764799871e-05
+            },
+            {
+              "reason": "contact-penetration-limit",
+              "rimGap": 0.06922992563939484,
+              "penetration": 0.0005023457337260092,
+              "inner": 0.05348171491551601,
+              "movement": 0.0002028281341944461,
+              "strain": null,
+              "deformation": null
+            }
+          ]
+        },
+        "frames": 7,
+        "recordSHA256": "0f06b3bf2dc3317e43cf63cfe7038eb8fa2d31a427359f3eb38b7a7ee4abcc0b"
+      },
+      {
+        "name": "full-articulated-limit",
+        "status": "terminated",
+        "steps": 4033,
+        "acceptedTime": 0.12603124999999005,
+        "termination": {
+          "reason": "rider-elbow-angle-limit",
+          "time": 0.12603124999999005,
+          "attemptedTime": 0.12606249999999006,
+          "attemptedCommandTick": 0,
+          "attemptedLimits": [
+            {
+              "reason": "not-evaluated",
+              "rimGap": null,
+              "penetration": null,
+              "inner": null,
+              "movement": null,
+              "strain": null,
+              "deformation": null
+            },
+            {
+              "reason": "not-evaluated",
+              "rimGap": null,
+              "penetration": null,
+              "inner": null,
+              "movement": null,
+              "strain": null,
+              "deformation": null
+            }
+          ]
+        },
+        "frames": 27,
+        "recordSHA256": "8a5c82009731f7cef63dea84c58db62de2d95e1e0a3120334c28bbd1e64ff9b8"
+      },
+      {
+        "name": "full-initial-rejection",
+        "status": "initial-state-rejected",
+        "steps": 0,
+        "acceptedTime": 0,
+        "termination": {
+          "reason": "rider-travel-limit",
+          "time": 0
+        },
+        "frames": 0,
+        "recordSHA256": "8df7f8f972bb641f84a7b608343d0b60fd7807f705a1eaba33ce26e5b70d9dca"
+      },
+      {
+        "name": "hardtail-legacy-guided",
+        "status": "completed",
+        "steps": 3200,
+        "acceptedTime": 0.09999999999999246,
+        "termination": null,
+        "frames": 21,
+        "recordSHA256": "d033b959479a87b351e4a22efe4606852658cd12f201eb4ba7096d0749070f16"
+      },
+      {
+        "name": "hardtail-legacy-fixed-commands",
+        "status": "completed",
+        "steps": 3200,
+        "acceptedTime": 0.09999999999999246,
+        "termination": null,
+        "frames": 21,
+        "recordSHA256": "0b629c91232b3dedffcaf30b4886a031c81ffb16a91a79af8632361a514f9ed5"
+      },
+      {
+        "name": "hardtail-canonical-trail",
+        "status": "completed",
+        "steps": 48000,
+        "acceptedTime": 1.4999999999993385,
+        "termination": null,
+        "frames": 301,
+        "recordSHA256": "b94969edbed4e223276f601d851374407e42696ce85c4e8531278a6010b1f8bb"
+      },
+      {
+        "name": "hardtail-canonical-fixed-commands",
+        "status": "completed",
+        "steps": 3200,
+        "acceptedTime": 0.09999999999999246,
+        "termination": null,
+        "frames": 21,
+        "recordSHA256": "b20245f3803d620e893b34540025106eb68ae60313454fbb4294fa04cc2ea60b"
+      },
+      {
+        "name": "hardtail-articulated",
+        "status": "completed",
+        "steps": 3200,
+        "acceptedTime": 0.09999999999999246,
+        "termination": null,
+        "frames": 21,
+        "recordSHA256": "b1ce6408d57f124689c8d55e21c2d22d7a1e3727bfd6d75fecd40b569ed07b64"
+      },
+      {
+        "name": "hardtail-state-launch",
+        "status": "completed",
+        "steps": 3200,
+        "acceptedTime": 0.09999999999999246,
+        "termination": null,
+        "frames": 21,
+        "recordSHA256": "da2b77845a1e82336ea0cc76c16683721b146d63caa58fbb494272cbdbb84433"
+      },
+      {
+        "name": "hardtail-state-launch-restart",
+        "status": "terminated",
+        "steps": 621,
+        "acceptedTime": 0.019406250000000014,
+        "termination": {
+          "reason": "rider-elbow-angle-limit",
+          "time": 0.019406250000000014,
+          "attemptedTime": 0.019437500000000014,
+          "attemptedCommandTick": 0,
+          "attemptedLimits": [
+            {
+              "reason": "not-evaluated",
+              "rimGap": null,
+              "penetration": null,
+              "inner": null,
+              "movement": null,
+              "strain": null,
+              "deformation": null
+            },
+            {
+              "reason": "not-evaluated",
+              "rimGap": null,
+              "penetration": null,
+              "inner": null,
+              "movement": null,
+              "strain": null,
+              "deformation": null
+            }
+          ]
+        },
+        "frames": 5,
+        "recordSHA256": "edb964c2a75bbb77bc4157411dd6c14375d04810f1cc63ffd4b208f01e09aeec"
+      },
+      {
+        "name": "hardtail-guided-limit",
+        "status": "terminated",
+        "steps": 886,
+        "acceptedTime": 0.02768750000000002,
+        "termination": {
+          "reason": "frontwheel-contact-penetration-limit",
+          "time": 0.02768750000000002,
+          "attemptedTime": 0.02771875000000002,
+          "attemptedCommandTick": 0,
+          "attemptedLimits": [
+            {
+              "reason": "contact-penetration-limit",
+              "rimGap": 0.06887454633604423,
+              "penetration": 0.0005015476947629639,
+              "inner": 0.05326747345712601,
+              "movement": 0.0001948954536552721,
+              "strain": null,
+              "deformation": null
+            },
+            {
+              "reason": "not-evaluated",
+              "rimGap": null,
+              "penetration": null,
+              "inner": null,
+              "movement": null,
+              "strain": null,
+              "deformation": null
+            }
+          ]
+        },
+        "frames": 7,
+        "recordSHA256": "c61de387eb62664fd778089e48a9276726fb6aa51bdebda7c68382720169c684"
+      },
+      {
+        "name": "hardtail-articulated-limit",
+        "status": "terminated",
+        "steps": 3821,
+        "acceptedTime": 0.11940624999999032,
+        "termination": {
+          "reason": "rider-elbow-angle-limit",
+          "time": 0.11940624999999032,
+          "attemptedTime": 0.11943749999999032,
+          "attemptedCommandTick": 0,
+          "attemptedLimits": [
+            {
+              "reason": "not-evaluated",
+              "rimGap": null,
+              "penetration": null,
+              "inner": null,
+              "movement": null,
+              "strain": null,
+              "deformation": null
+            },
+            {
+              "reason": "not-evaluated",
+              "rimGap": null,
+              "penetration": null,
+              "inner": null,
+              "movement": null,
+              "strain": null,
+              "deformation": null
+            }
+          ]
+        },
+        "frames": 25,
+        "recordSHA256": "5a6b2d981561752333defa0225b10574d8735c5c6539c050de13f0faf9e5c411"
+      },
+      {
+        "name": "hardtail-initial-rejection",
+        "status": "initial-state-rejected",
+        "steps": 0,
+        "acceptedTime": 0,
+        "termination": {
+          "reason": "rider-travel-limit",
+          "time": 0
+        },
+        "frames": 0,
+        "recordSHA256": "6ccbc6127f13e2bed23eb0791ac7c9752f4dc20c8be2534bc4fa43ec4e711557"
+      }
+    ]
+  },
+  "timing": {
+    "mode": "timing",
+    "baselineSourceSHA256": "cfe29c491b0e3804850bbbc71578491eb20e69091ee0e426b0695f16ec9748bf",
+    "candidateSourceSHA256": "f260b742372538303adbd9fa8fae961765f47c937eff29ea591d1a54ab534ab4",
+    "scriptSHA256": "6b47b74a456934749ac6569704f09de4e066dfdb791881b6bf20dc9bbbae4467",
+    "node": "v24.19.0",
+    "cpu": "INTEL(R) XEON(R) PLATINUM 8573C",
+    "availableParallelism": 2,
+    "scope": "Complete record parity and serial shared-worker observations; no physical calibration, target-device or real-time qualification.",
+    "cases": [
+      {
+        "name": "full-legacy-guided",
+        "input": {
+          "bike": {
+            "bike": "full"
+          },
+          "profile": {
+            "format": "bikelab-profile-1",
+            "units": "m",
+            "axes": "x-forward,z-up",
+            "solid": "below",
+            "interpolation": "linear",
+            "source": {
+              "kind": "illustrative",
+              "description": "Synthetic flat rigid trail."
+            },
+            "points": [
+              [
+                -3,
+                0
+              ],
+              [
+                5,
+                0
+              ]
+            ]
+          },
+          "motion": {
+            "duration": 0.1
+          }
+        },
+        "samplesMs": {
+          "baseline": [
+            3128.425052999999,
+            3155.3800379999993,
+            2824.2427700000007
+          ],
+          "candidate": [
+            2503.724703,
+            2604.428809000001,
+            2433.035520999998
+          ]
+        },
+        "baselineMedianMs": 3128.425052999999,
+        "candidateMedianMs": 2503.724703,
+        "medianReductionPercent": 19.96852535754192,
+        "recordSHA256": "aedd40e290daf38e516e818f23c535f19adaeb2d57525219d8416fefebe325f6"
+      },
+      {
+        "name": "full-articulated",
+        "input": {
+          "bike": {
+            "pivotX": 0.04,
+            "pivotZ": -0.235,
+            "shockArmX": -0.054607848086069846,
+            "shockArmZ": 0.18996325604011804,
+            "shockFrameX": 0.19332203501088832,
+            "shockFrameZ": -0.015623078508508775,
+            "shockTravel": 0.055,
+            "bike": "full",
+            "forkBuffer": "progressive",
+            "forkBufferWidth": 0.02,
+            "forkBufferStiffness": 300000,
+            "forkBufferDamping": 1500,
+            "forkStiffness": 9000,
+            "forkDamping": 700,
+            "shockBuffer": "progressive",
+            "shockBufferWidth": 0.008,
+            "shockBufferStiffness": 1000000,
+            "shockBufferDamping": 3000,
+            "shockStiffness": 70000,
+            "shockDamping": 2400,
+            "rider": "articulated"
+          },
+          "profile": {
+            "format": "bikelab-profile-1",
+            "units": "m",
+            "axes": "x-forward,z-up",
+            "solid": "below",
+            "interpolation": "linear",
+            "source": {
+              "kind": "illustrative",
+              "description": "Synthetic flat rigid trail."
+            },
+            "points": [
+              [
+                -3,
+                0
+              ],
+              [
+                5,
+                0
+              ]
+            ]
+          },
+          "motion": {
+            "riderOffset": 0,
+            "duration": 0.1,
+            "velocityX": 0,
+            "omega": 0,
+            "clearance": 0
+          },
+          "articulated": {
+            "format": "bikelab-connected-rider-0.1",
+            "chassis": {
+              "mass": 6,
+              "com": [
+                0,
+                -0.15
+              ],
+              "inertia": [
+                0.35,
+                0.5,
+                0.3
+              ]
+            },
+            "passive": {
+              "format": "bikelab-rider-passive-0.1",
+              "posture": {
+                "format": "bikelab-rider-posture-0.1",
+                "riderMass": 70,
+                "hip": [
+                  -0.15,
+                  0.25
+                ],
+                "trunkPitch": 0.55,
+                "hand": [
+                  0.45,
+                  0.32
+                ],
+                "foot": [
+                  0,
+                  -0.3
+                ],
+                "elbowSide": -1,
+                "kneeSide": 1,
+                "minBendSine": 0.05,
+                "segments": {
+                  "trunk": {
+                    "massFraction": 0.6,
+                    "length": 0.55,
+                    "comFraction": 0.5,
+                    "inertiaPerMass": [
+                      0.02880833333333334,
+                      0.02880833333333334,
+                      0.0072
+                    ]
+                  },
+                  "thighs": {
+                    "massFraction": 0.2,
+                    "length": 0.43,
+                    "comFraction": 0.5,
+                    "inertiaPerMass": [
+                      0.01700833333333333,
+                      0.01700833333333333,
+                      0.0032
+                    ]
+                  },
+                  "shanksFeet": {
+                    "massFraction": 0.1,
+                    "length": 0.43,
+                    "comFraction": 0.5,
+                    "inertiaPerMass": [
+                      0.01663333333333333,
+                      0.01663333333333333,
+                      0.0024500000000000004
+                    ]
+                  },
+                  "upperArms": {
+                    "massFraction": 0.055,
+                    "length": 0.3,
+                    "comFraction": 0.5,
+                    "inertiaPerMass": [
+                      0.008125,
+                      0.008125,
+                      0.0012500000000000002
+                    ]
+                  },
+                  "forearmsHands": {
+                    "massFraction": 0.045,
+                    "length": 0.3,
+                    "comFraction": 0.5,
+                    "inertiaPerMass": [
+                      0.007899999999999999,
+                      0.007899999999999999,
+                      0.0008
+                    ]
+                  }
+                }
+              },
+              "joints": {
+                "hip": {
+                  "restAngle": 1.4792200037917318,
+                  "stiffness": 120,
+                  "damping": 8,
+                  "minAngle": 1.1792200037917318,
+                  "maxAngle": 1.7792200037917318
+                },
+                "knee": {
+                  "restAngle": 1.6922412012942722,
+                  "stiffness": 90,
+                  "damping": 6,
+                  "minAngle": 1.3922412012942722,
+                  "maxAngle": 1.9922412012942723
+                },
+                "shoulder": {
+                  "restAngle": 2.492056379089391,
+                  "stiffness": 25,
+                  "damping": 2,
+                  "minAngle": 2.192056379089391,
+                  "maxAngle": 2.7920563790893906
+                },
+                "elbow": {
+                  "restAngle": -1.1301027328714,
+                  "stiffness": 15,
+                  "damping": 1.5,
+                  "minAngle": -1.4301027328714,
+                  "maxAngle": -0.8301027328713999
+                }
+              }
+            },
+            "closureTime": 0.02,
+            "maxClosureGap": 0.002
+          }
+        },
+        "samplesMs": {
+          "baseline": [
+            4101.113150000005,
+            3545.9563770000022,
+            3207.557793
+          ],
+          "candidate": [
+            3685.1961699999993,
+            3447.545318999997,
+            3132.005695
+          ]
+        },
+        "baselineMedianMs": 3545.9563770000022,
+        "candidateMedianMs": 3447.545318999997,
+        "medianReductionPercent": 2.775303685017816,
+        "recordSHA256": "e8c657decf94ba21c4edb0319597c3c8462c7d65ffde8935a3ce5af54f8e6905"
+      },
+      {
+        "name": "hardtail-legacy-guided",
+        "input": {
+          "bike": {
+            "bike": "hardtail"
+          },
+          "profile": {
+            "format": "bikelab-profile-1",
+            "units": "m",
+            "axes": "x-forward,z-up",
+            "solid": "below",
+            "interpolation": "linear",
+            "source": {
+              "kind": "illustrative",
+              "description": "Synthetic flat rigid trail."
+            },
+            "points": [
+              [
+                -3,
+                0
+              ],
+              [
+                5,
+                0
+              ]
+            ]
+          },
+          "motion": {
+            "duration": 0.1
+          }
+        },
+        "samplesMs": {
+          "baseline": [
+            2700.354330000002,
+            2769.7717979999943,
+            2690.6336080000037
+          ],
+          "candidate": [
+            2309.1563870000027,
+            2359.0184759999975,
+            2359.286187999998
+          ]
+        },
+        "baselineMedianMs": 2700.354330000002,
+        "candidateMedianMs": 2359.0184759999975,
+        "medianReductionPercent": 12.64040982355098,
+        "recordSHA256": "d033b959479a87b351e4a22efe4606852658cd12f201eb4ba7096d0749070f16"
+      },
+      {
+        "name": "hardtail-articulated",
+        "input": {
+          "bike": {
+            "pivotX": 0.04,
+            "pivotZ": -0.235,
+            "shockArmX": -0.054607848086069846,
+            "shockArmZ": 0.18996325604011804,
+            "shockFrameX": 0.19332203501088832,
+            "shockFrameZ": -0.015623078508508775,
+            "shockTravel": 0.055,
+            "bike": "hardtail",
+            "forkBuffer": "progressive",
+            "forkBufferWidth": 0.02,
+            "forkBufferStiffness": 300000,
+            "forkBufferDamping": 1500,
+            "forkStiffness": 9000,
+            "forkDamping": 700,
+            "shockBuffer": "progressive",
+            "shockBufferWidth": 0.008,
+            "shockBufferStiffness": 1000000,
+            "shockBufferDamping": 3000,
+            "shockStiffness": 70000,
+            "shockDamping": 2400,
+            "rider": "articulated"
+          },
+          "profile": {
+            "format": "bikelab-profile-1",
+            "units": "m",
+            "axes": "x-forward,z-up",
+            "solid": "below",
+            "interpolation": "linear",
+            "source": {
+              "kind": "illustrative",
+              "description": "Synthetic flat rigid trail."
+            },
+            "points": [
+              [
+                -3,
+                0
+              ],
+              [
+                5,
+                0
+              ]
+            ]
+          },
+          "motion": {
+            "riderOffset": 0,
+            "duration": 0.1,
+            "velocityX": 0,
+            "omega": 0,
+            "clearance": 0
+          },
+          "articulated": {
+            "format": "bikelab-connected-rider-0.1",
+            "chassis": {
+              "mass": 6,
+              "com": [
+                0,
+                -0.15
+              ],
+              "inertia": [
+                0.35,
+                0.5,
+                0.3
+              ]
+            },
+            "passive": {
+              "format": "bikelab-rider-passive-0.1",
+              "posture": {
+                "format": "bikelab-rider-posture-0.1",
+                "riderMass": 70,
+                "hip": [
+                  -0.15,
+                  0.25
+                ],
+                "trunkPitch": 0.55,
+                "hand": [
+                  0.45,
+                  0.32
+                ],
+                "foot": [
+                  0,
+                  -0.3
+                ],
+                "elbowSide": -1,
+                "kneeSide": 1,
+                "minBendSine": 0.05,
+                "segments": {
+                  "trunk": {
+                    "massFraction": 0.6,
+                    "length": 0.55,
+                    "comFraction": 0.5,
+                    "inertiaPerMass": [
+                      0.02880833333333334,
+                      0.02880833333333334,
+                      0.0072
+                    ]
+                  },
+                  "thighs": {
+                    "massFraction": 0.2,
+                    "length": 0.43,
+                    "comFraction": 0.5,
+                    "inertiaPerMass": [
+                      0.01700833333333333,
+                      0.01700833333333333,
+                      0.0032
+                    ]
+                  },
+                  "shanksFeet": {
+                    "massFraction": 0.1,
+                    "length": 0.43,
+                    "comFraction": 0.5,
+                    "inertiaPerMass": [
+                      0.01663333333333333,
+                      0.01663333333333333,
+                      0.0024500000000000004
+                    ]
+                  },
+                  "upperArms": {
+                    "massFraction": 0.055,
+                    "length": 0.3,
+                    "comFraction": 0.5,
+                    "inertiaPerMass": [
+                      0.008125,
+                      0.008125,
+                      0.0012500000000000002
+                    ]
+                  },
+                  "forearmsHands": {
+                    "massFraction": 0.045,
+                    "length": 0.3,
+                    "comFraction": 0.5,
+                    "inertiaPerMass": [
+                      0.007899999999999999,
+                      0.007899999999999999,
+                      0.0008
+                    ]
+                  }
+                }
+              },
+              "joints": {
+                "hip": {
+                  "restAngle": 1.4792200037917318,
+                  "stiffness": 120,
+                  "damping": 8,
+                  "minAngle": 1.1792200037917318,
+                  "maxAngle": 1.7792200037917318
+                },
+                "knee": {
+                  "restAngle": 1.6922412012942722,
+                  "stiffness": 90,
+                  "damping": 6,
+                  "minAngle": 1.3922412012942722,
+                  "maxAngle": 1.9922412012942723
+                },
+                "shoulder": {
+                  "restAngle": 2.492056379089391,
+                  "stiffness": 25,
+                  "damping": 2,
+                  "minAngle": 2.192056379089391,
+                  "maxAngle": 2.7920563790893906
+                },
+                "elbow": {
+                  "restAngle": -1.1301027328714,
+                  "stiffness": 15,
+                  "damping": 1.5,
+                  "minAngle": -1.4301027328714,
+                  "maxAngle": -0.8301027328713999
+                }
+              }
+            },
+            "closureTime": 0.02,
+            "maxClosureGap": 0.002
+          }
+        },
+        "samplesMs": {
+          "baseline": [
+            3017.0215339999995,
+            3078.53540600001,
+            3262.07650499999
+          ],
+          "candidate": [
+            2631.310897999996,
+            2670.881502000004,
+            2639.0711020000017
+          ]
+        },
+        "baselineMedianMs": 3078.53540600001,
+        "candidateMedianMs": 2639.0711020000017,
+        "medianReductionPercent": 14.275109623345571,
+        "recordSHA256": "b1ce6408d57f124689c8d55e21c2d22d7a1e3727bfd6d75fecd40b569ed07b64"
+      }
+    ],
+    "method": {
+      "warmupsPerEngine": 1,
+      "measuredRepeatsPerEngine": 3,
+      "order": "Alternating baseline/candidate then candidate/baseline; same process, warmed separate native runtimes.",
+      "timing": "Whole run including build, guards, integration and record materialization; no JSON hashing within timer. Progress observer disabled.",
+      "limits": "Shared worker, uncontrolled host load; three repeats are not tail latency or a per-tick deadline."
+    }
+  },
+  "timingInterpretation": "Final implementation, progress observer disabled. All four median whole-run times decreased, by 2.78 to 19.97 percent. Initial optimizer-only observations remain in trail-observer-optimization.json; the two series are not a controlled isolation of progress overhead. Preserve every sample. Shared host load is uncontrolled; neither a stable speedup, browser latency nor real-time qualification is established.",
+  "localFullSuite": {
+    "command": "node --test",
+    "passedTestFiles": 36,
+    "failedTestFiles": 10,
+    "exitCode": 1,
+    "durationMs": 579844,
+    "limitation": "Direct spawnSync(process.execPath, [--version]) and loopback listen controls both returned EPERM. Ten CLI/server-related files failed; changed engine/progress/native-growth checks passed. Hosted suites below cover these paths without weakening the tests.",
+    "logSHA256": "9831ae25869993e5fbd9a87fbec80e5198bb56295a9741d803cbb1bd162706cf"
+  },
+  "hosted": {
+    "runId": 40074167350,
+    "url": "https://github.com/CraigHutchinson/BikeLab/actions/runs/40074167350",
+    "head": "84bfb5f4ed92173810f7c573cc9fb08c72e9ea54",
+    "jobs": [
+      {
+        "name": "Test (windows-latest)",
+        "id": 120813870198,
+        "conclusion": "success",
+        "tests": 229,
+        "pass": 229,
+        "fail": 0
+      },
+      {
+        "name": "Test (ubuntu-latest)",
+        "id": 120813870224,
+        "conclusion": "success",
+        "tests": 229,
+        "pass": 229,
+        "fail": 0
+      },
+      {
+        "name": "Browser and headless agreement",
+        "id": 120813870027,
+        "conclusion": "success"
+      }
+    ]
+  },
+  "browser": {
+    "version": "141.0.7390.37",
+    "errors": [],
+    "calculationProgress": {
+      "cases": [
+        {
+          "name": "full-completed",
+          "status": "completed",
+          "steps": 640,
+          "total": 640,
+          "messages": 12,
+          "agreement": {
+            "tolerance": 1e-09,
+            "maxAbsolute": 0,
+            "maxNormalized": 0,
+            "exact": true
+          }
+        },
+        {
+          "name": "hardtail-completed",
+          "status": "completed",
+          "steps": 640,
+          "total": 640,
+          "messages": 12,
+          "agreement": {
+            "tolerance": 1e-09,
+            "maxAbsolute": 0,
+            "maxNormalized": 0,
+            "exact": true
+          }
+        },
+        {
+          "name": "initial-rejection",
+          "status": "initial-state-rejected",
+          "steps": 0,
+          "total": 640,
+          "messages": 3,
+          "agreement": {
+            "tolerance": 1e-09,
+            "maxAbsolute": 0,
+            "maxNormalized": 0,
+            "exact": true
+          }
+        },
+        {
+          "name": "model-limit",
+          "status": "terminated",
+          "steps": 4033,
+          "total": 9600,
+          "messages": 46,
+          "agreement": {
+            "tolerance": 1e-09,
+            "maxAbsolute": 0,
+            "maxNormalized": 0,
+            "exact": true
+          }
+        }
+      ],
+      "scope": "Real worker progress and complete-record replay; deterministic injected stale/error callbacks test cleanup only."
+    },
+    "checks": [
+      "native rider construction: named attachments, full inertia, sparse-fixture site Jacobians and separate interface force/work/moment reports agree across browser/Node; no integrated rider claim",
+      "passive rider initialization: canonical laws, nonzero rest offsets, unwrapped springs, named closure loads and native force/energy decomposition agree across browser/Node; no dynamic or stop-enforcement claim",
+      "rider posture construction: complete browser/Node reports for both bend branches and mass scaling; unreachable pose rejection; no dynamic rider claim",
+      "wheel: step, comparison gating, save/load, high lift, mobile width",
+      "suspension: signed curves rendered, step/scrub/play/pause, pin gating, reject/discard, save/load and wrong-station rejection",
+      "suspension: actual worker cancellation, immediate travel limit, shock preset, mobile/narrow width",
+      "reference: explicit compatible setup, unsupported state, worker overlays, dirty gating, save/load and Node metric agreement",
+      "reference: valid coarse integration fails declared limits; half-step refinement passes",
+      "terrain: hidden/small canvas recovery, square/rounded/flat, complete browser/Node report agreement, unavailable/buried states, edit gating, custom profile, load, stale-file guard, co-nearest supports and mobile widths",
+      "solver: real WASM module worker; exact candidate browser/Node channels with tolerance-checked analytical channels; release failure and static pass; refinement, replay, dirty/invalid gating, cancellation, restore, hidden canvas, page lifecycle resize recovery and mobile widths",
+      "manufacturer catalogue: eight sourced configurations selectable, SI JSON export exact, missing mechanism data explicit, reference selection leaves the calculated rig intact",
+      "geometry: annotated/reference/custom physical setups, diagnostics, changed/invalid gating, custom reload and browser/headless channels",
+      "shock buffers: both end presets, worker/headless signals, engagement, save/load, dormant hardtail controls, disabled settings, responsive plots and lifecycle",
+      "fork buffers: supported top/bottom loading; real worker/headless parity; unbuffered control and weak-buffer ultimate termination; setup reconstruction, engagement display and responsive plots",
+      "rider: both compliant assemblies; exact setup restoration and explicit v0.1 fixed migration; browser/Node channels; mass control; invalid mass budget; settling and dynamic rider travel rejection; signed plots; five-canvas lifecycle and mobile recovery",
+      "bicycle: both actual assemblies; WASM worker under Pages path; browser/Node sample agreement; setup save/load; replay; dirty/cancel/rejection and travel-limit handling; mobile and page lifecycle",
+      "rider stops and loads: both assemblies, lower/upper engagement, worker/headless parity, record reconstruction, invalid overlapping zones, weak-stop ultimate termination, fixed-mode dormancy, responsive plots and lifecycle",
+      "terrain R0a: six browser/Node replays with exact discrete identities and 1e-12 geometric tolerance; explicit missing-data stop; cut directions/rows; play/pause/rewind/scrub; export/verified import and invalid rejection; delayed wait/cancel/supersession; mobile 390/320",
+      "static footprint: browser/Node complete report agreement; flat/round/step-top/two-supports; explicit edge/rim rejection; all contact rows; zoom; owned authored profile and recomputed import; edit/invalid/cancel/supersession gating; hidden-canvas recovery; 390/320 px inspection captures",
+      "wheel limits: full browser/Node report agreement; continuous flat/corner/round/domain/separation cases; first-contact clipping; declared pressure and bead-seat rejection; zero-pressure refusal; owned import; edit/cancel/restore/supersession; canvas recovery and 390/320 px captures",
+      "moving wheel: complete browser/Node reports; flat/square/rounded/flight/overload; replay, rejection, dirty/cancel/restore/supersession and delayed imports; time-based playback, rapid pause/resume, lifecycle, canvas recovery and 390/320 px captures",
+      "Rider support presentation: signed world hand/foot x/z forces from accepted records, weight and net vertical force, COM velocity, separate rider histories, negative forces, zero gravity, rejected/no-frame clearing, dirty-state provenance, guide-mode fallback, stopped last-accepted inspection and both-bike 390/320 px support captures; no physics or equilibrium change",
+      "passive articulated full/hardtail unseated motion, actual limb/attachment captures, independent chassis/rider masses, guide-mode switching, domain stop, replay/cancel and 390/320 px viewports; connected trail bike: full/hardtail smooth, square and coarse-faceted rocks, flight and overload stops; complete browser/headless records, homogeneous coast/sliding traction on both bikes, slip plots and grip input validation, drive/brake apply-release on both bikes, authored schedule add/remove/restore and time validation, legacy traction import, spin/brake histories, horizontal impact plots, inputs/replay, dirty/cancel/restore/supersession, delayed imports, playback/lifecycle and 390/320 px layouts; identical ten-station navigation",
+      "Complete state on both bikes: canonical launch, fresh final-state restart and ledgers, supplied-state export/import parity, rejected-state provenance, disabled launch controls, pending mode conversion and restore, 320 px layout. No equilibrium claim.",
+      "Both guided-rider bikes traverse the 1.5 s canonical synthetic bump/crest/drop; complete browser/Node replay, accepted contact transitions and component guards, desktop unloading/recontact and 390 px captures. No active or completed both-wheel jump claim.",
+      "Rider pose study: four preserved-body geometries, default-domain diagnosis, export parity, invalid/blank rejection, unchanged applied records and worker completion, both bikes and 390/320 px captures.",
+      "Trail calculation: actual intermediate accepted-step progress, 390/320 px display, deterministic cancel/active-replacement/stale-message/error/startup controls, complete/initial-rejected/guarded-stop terminal counts, complete browser/Node records within the existing canonical budget.",
+      "no captured page/console errors; rig has rendered pixels"
+    ],
+    "trailBike": {
+      "agreement": [
+        {
+          "name": "full-bump",
+          "maxAbsolute": 0
+        },
+        {
+          "name": "hardtail-bump",
+          "maxAbsolute": 0
+        },
+        {
+          "name": "fixed-rider",
+          "maxAbsolute": 0
+        },
+        {
+          "name": "flight",
+          "maxAbsolute": 0
+        },
+        {
+          "name": "limit",
+          "maxAbsolute": 0
+        },
+        {
+          "name": "invalid-travel",
+          "maxAbsolute": 0
+        },
+        {
+          "name": "superseded-flight",
+          "maxAbsolute": 0
+        },
+        {
+          "name": "full-square",
+          "maxAbsolute": 0
+        },
+        {
+          "name": "full-faceted",
+          "maxAbsolute": 0
+        },
+        {
+          "name": "full-edge-limit",
+          "maxAbsolute": 0
+        },
+        {
+          "name": "hardtail-square",
+          "maxAbsolute": 0
+        },
+        {
+          "name": "hardtail-faceted",
+          "maxAbsolute": 0
+        },
+        {
+          "name": "hardtail-edge-limit",
+          "maxAbsolute": 0
+        },
+        {
+          "name": "full-coast",
+          "maxAbsolute": 0
+        },
+        {
+          "name": "full-sliding",
+          "maxAbsolute": 0
+        },
+        {
+          "name": "hardtail-coast",
+          "maxAbsolute": 0
+        },
+        {
+          "name": "hardtail-sliding",
+          "maxAbsolute": 0
+        },
+        {
+          "name": "full-drive",
+          "maxAbsolute": 0
+        },
+        {
+          "name": "full-brake",
+          "maxAbsolute": 0
+        },
+        {
+          "name": "hardtail-drive",
+          "maxAbsolute": 0
+        },
+        {
+          "name": "hardtail-brake",
+          "maxAbsolute": 0
+        },
+        {
+          "name": "authored-drive-brake",
+          "maxAbsolute": 0
+        },
+        {
+          "name": "legacy-traction",
+          "maxAbsolute": 0
+        },
+        {
+          "name": "full-articulated-standing",
+          "maxAbsolute": 0
+        },
+        {
+          "name": "hardtail-articulated-standing",
+          "maxAbsolute": 0
+        },
+        {
+          "name": "articulated-support-flight",
+          "maxAbsolute": 0
+        },
+        {
+          "name": "articulated-support-rejected",
+          "maxAbsolute": 0
+        },
+        {
+          "name": "articulated-independent-masses",
+          "maxAbsolute": 0
+        },
+        {
+          "name": "articulated-to-guide",
+          "maxAbsolute": 0
+        },
+        {
+          "name": "guide-to-articulated",
+          "maxAbsolute": 0
+        },
+        {
+          "name": "articulated-domain-stop",
+          "maxAbsolute": 0
+        }
+      ]
+    },
+    "trailState": {
+      "normalizedTolerance": 1e-09,
+      "agreement": [
+        {
+          "name": "full-state-launch",
+          "maxAbsolute": 0
+        },
+        {
+          "name": "full-state-restart",
+          "maxAbsolute": 0
+        },
+        {
+          "name": "full-state-rejected",
+          "maxAbsolute": 0
+        },
+        {
+          "name": "full-state-reimport",
+          "maxAbsolute": 0
+        },
+        {
+          "name": "hardtail-state-launch",
+          "maxAbsolute": 0
+        },
+        {
+          "name": "hardtail-state-restart",
+          "maxAbsolute": 0
+        },
+        {
+          "name": "hardtail-state-rejected",
+          "maxAbsolute": 0
+        },
+        {
+          "name": "hardtail-state-reimport",
+          "maxAbsolute": 0
+        }
+      ]
+    },
+    "trailSection": {
+      "agreement": "Canonical complete records: 1e-9 normalized; exact model/launch receipt",
+      "cases": [
+        {
+          "bike": "full",
+          "dt": 3.125e-05,
+          "sampleDt": 0.005,
+          "status": "completed",
+          "acceptedTime": 1.4999999999993385,
+          "initialEnergy": 799.3252458174192,
+          "maxEnergyResidual": 2.832789676157147,
+          "peakGroundForce": 1750.4715315356696,
+          "maxPenetration": 0.0003267295712702026,
+          "peaks": {
+            "fork": 0.04971214493021712,
+            "shock": 0.029180113867082746,
+            "pitch": 0.14718990500911985,
+            "momentumResidual": [
+              0.00239576856590773,
+              0.024573733876650294,
+              0.03889207105112291
+            ]
+          },
+          "frameDisplacementX": 3.426602184828608,
+          "transitions": [
+            {
+              "time": 0,
+              "frontSupported": false,
+              "rearSupported": false
+            },
+            {
+              "time": 0.005000000000000004,
+              "frontSupported": true,
+              "rearSupported": true
+            },
+            {
+              "time": 0.6100000000000273,
+              "frontSupported": false,
+              "rearSupported": true
+            },
+            {
+              "time": 0.6150000000000334,
+              "frontSupported": true,
+              "rearSupported": true
+            },
+            {
+              "time": 0.6650000000000945,
+              "frontSupported": false,
+              "rearSupported": true
+            },
+            {
+              "time": 0.7450000000001923,
+              "frontSupported": true,
+              "rearSupported": true
+            },
+            {
+              "time": 1.2000000000000377,
+              "frontSupported": true,
+              "rearSupported": false
+            },
+            {
+              "time": 1.304999999999793,
+              "frontSupported": true,
+              "rearSupported": true
+            }
+          ],
+          "sampledZeroSupportIntervals": [],
+          "interpretation": "Contact states use summed recorded normal force > 1e-6 N. Event times are sampled, not exact take-off times. Zero-support samples do not prove geometric separation; initial zero-load contact is not a jump. Guided mass, stored suspension energy and launch speed are authored; no active rider or physical calibration.",
+          "agreement": {
+            "tolerance": 1e-09,
+            "maxAbsolute": 0,
+            "maxNormalized": 0,
+            "exact": true
+          }
+        },
+        {
+          "bike": "hardtail",
+          "dt": 3.125e-05,
+          "sampleDt": 0.005,
+          "status": "completed",
+          "acceptedTime": 1.4999999999993385,
+          "initialEnergy": 809.6414623417253,
+          "maxEnergyResidual": 2.889983401208381,
+          "peakGroundForce": 2518.435548090227,
+          "maxPenetration": 0.00038535650666610827,
+          "peaks": {
+            "fork": 0.0578326864256992,
+            "shock": 0,
+            "pitch": 0.1793352409459067,
+            "momentumResidual": [
+              0.007183834094881547,
+              0.03787269533950166,
+              0.03865276284113861
+            ]
+          },
+          "frameDisplacementX": 3.430249854066878,
+          "transitions": [
+            {
+              "time": 0,
+              "frontSupported": false,
+              "rearSupported": false
+            },
+            {
+              "time": 0.005000000000000004,
+              "frontSupported": true,
+              "rearSupported": false
+            },
+            {
+              "time": 0.010000000000000007,
+              "frontSupported": true,
+              "rearSupported": true
+            },
+            {
+              "time": 0.6750000000001067,
+              "frontSupported": false,
+              "rearSupported": true
+            },
+            {
+              "time": 0.7550000000002045,
+              "frontSupported": true,
+              "rearSupported": true
+            },
+            {
+              "time": 1.1950000000000494,
+              "frontSupported": true,
+              "rearSupported": false
+            },
+            {
+              "time": 1.2949999999998163,
+              "frontSupported": true,
+              "rearSupported": true
+            }
+          ],
+          "sampledZeroSupportIntervals": [],
+          "interpretation": "Contact states use summed recorded normal force > 1e-6 N. Event times are sampled, not exact take-off times. Zero-support samples do not prove geometric separation; initial zero-load contact is not a jump. Guided mass, stored suspension energy and launch speed are authored; no active rider or physical calibration.",
+          "agreement": {
+            "tolerance": 1e-09,
+            "maxAbsolute": 0,
+            "maxNormalized": 0,
+            "exact": true
+          }
+        }
+      ]
+    }
+  },
+  "artifacts": [
+    {
+      "id": 12552649732,
+      "name": "calculation-evidence",
+      "bytes": 267427,
+      "sha256": "43f9bdffb5d72610ea0cf4a5ec98eb0b5c59619d2eec80a5f6097a9437532eac",
+      "downloadedAndVerified": true
+    },
+    {
+      "id": 12552679496,
+      "name": "browser-evidence",
+      "bytes": 30675914,
+      "sha256": "94cc7378b8c227f0bc0b93a945f3be2f1b4ab40b6595313541914d03d4594565",
+      "downloadedAndVerified": true
+    }
+  ],
+  "calculationFilesSHA256": {
+    "cancelled.png": "8303acd368c3f79ab2078848500f8db7d926112e2b48e479a05ae79cd1f0788e",
+    "full-completed.json": "afdc86bf906d7655a7d616b95f434f8014bde847a2242880e3470170ba4b39fe",
+    "full-completed.png": "e4ef660175541dcfc94a004b0c4e0029bc0d4efe8bc7c8f7a768741291568d11",
+    "hardtail-completed.json": "6505b10c9808c5e07d92f77c063fb2d0e2af2562edf4c868122660fbfebfa65e",
+    "hardtail-completed.png": "e4ef660175541dcfc94a004b0c4e0029bc0d4efe8bc7c8f7a768741291568d11",
+    "initial-rejection.json": "37fa2f07c02543e71300d8538d7deacb39ab02c8457c4b17150e2ef6b24c314c",
+    "initial-rejection.png": "0ba2b65e03f2be14b211b81d769aaba812533dc17ee59281945ab2a9b2a8c5e9",
+    "model-limit.json": "e01e875b5b055d99ad31c308fd2babf1dfc9ae202cb3e6691aea949b37e6637d",
+    "model-limit.png": "2909af438baa8ac4f6711b95e7fdc89b048e43c68f618bf325229c690a5d6786",
+    "progress-320.png": "98e744a8219c6196a6d40f60162fb9d83a7b9a95dcf8457ddda2d18748745d4f",
+    "progress-390.png": "ec02731866a581cb5941f56ccf3c9a9700b82120de68a00add5ac91761f2e480",
+    "progress-desktop.png": "8c8ff53912d1c2ca305961bd9eb1d0f2aac4a072c60a4e6aeddce93c10a7b062",
+    "report.json": "e9b8fed0220995bf3e42aa046b62cb6d94c73668708f4e870626890acb69d865",
+    "worker-failure.png": "b52d1b3474aecb0b432426c53c6059426bf454b9c4e1217ae4e56f16dcb18e2a",
+    "worker-startup-failure.png": "b52d1b3474aecb0b432426c53c6059426bf454b9c4e1217ae4e56f16dcb18e2a"
+  },
+  "visualReview": {
+    "inspected": [
+      "cancelled.png",
+      "full-completed.png",
+      "hardtail-completed.png",
+      "initial-rejection.png",
+      "model-limit.png",
+      "progress-320.png",
+      "progress-390.png",
+      "progress-desktop.png",
+      "worker-failure.png",
+      "worker-startup-failure.png"
+    ],
+    "findings": [
+      "Desktop and 390/320 px active progress show 1 percent, 0.010 / 1.000 simulated seconds and 320 / 32000 accepted steps; narrow text wraps inside the panel without clipping.",
+      "Both bikes show 100 percent only on completed results (640 / 640 steps).",
+      "Rejected initial state shows 0 / 640, zero percent and Setup rejected.",
+      "Natural model limit retains 4033 / 9600 steps (42 percent), 0.126 / 0.300 simulated seconds and Stopped at a model limit.",
+      "Cancelled, runtime-failure and startup-failure captures say no new run was kept. Browser assertions separately verify busy state cleanup, stale callback rejection and replacement."
+    ],
+    "scope": "Actual progress-panel screenshots inspected. Document width and active-calculation assertions pass at both mobile widths; no claim of screen-reader user testing or target-device latency."
+  }
+}

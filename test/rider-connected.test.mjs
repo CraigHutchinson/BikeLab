@@ -108,9 +108,10 @@ test('failure after new-command endpoint evaluation restores activation, state, 
   mj.mj_forward=(m,d)=>{forward(m,d);if(!injected&&d.time>.05&&d.time<.05004&&Array.from(d.qfrc_applied).includes(20)){
    injected=true;if(fault==='state'){d.qacc[0]=NaN;d.eq_active[0]=0;}else d.efc_force[0]=NaN;
   }};
-  let r;try{r=await run(a);}finally{mj.mj_forward=forward;}
+  const progress=[];let r;try{r=await run(a,(phase,acceptedSteps,totalSteps,dt)=>progress.push({phase,acceptedSteps,totalSteps,dt}));}finally{mj.mj_forward=forward;}
   assert.ok(injected);assert.equal(r.status,'terminated');assert.equal(r.termination.reason,fault==='state'?'nonfinite-state':'nonfinite-rider-interface');assert.equal(r.termination.attemptedCommandTick,1601);
   const reference=await standing('full'),accepted=reference.frames.find(f=>Math.abs(f.time-.05)<1e-10);
   assert.deepEqual(last(r),accepted);assert.deepEqual(last(r).command,command(0));assert.ok(last(r).articulated.interfaces.attachments.every(c=>c.active));
+  assert.ok(progress.every(p=>p.acceptedSteps<=1600));assert.equal(progress.at(-1).phase,'finalizing');assert.equal(progress.at(-1).acceptedSteps,r.summary.steps);
  }
 });
