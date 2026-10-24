@@ -1,8 +1,10 @@
 # Delivery and validation plan
 
-Current status: iteration 19 receives scheduled hub drive and brakes after merged homogeneous traction PR #21, retaining the connected sharp-edge/faceted impact MVP. See [current delivery sequence](DYNAMICS_DELIVERY_PLAN.md), [evidence](ITERATION_19_EVIDENCE.md) and [adaptive wheel decision](ADAPTIVE_WHEEL.md). Draft PR #23 now connects the passive five-group rider on both bikes, with independent chassis properties, guarded domains/rollback, separate hand/foot work and moving native segment visualization. The first receiving envelope is 0.1 s unseated relaxation/free flight; saddle contact, matched locked-posture comparison, broader dynamic conditioning and active control remain open. See [current rider handoff](ITERATION_20_HANDOFF.md). The entries below preserve historical slice decisions. Full 3D simulation, including lateral motion and turning forces, remains a required destination; see THREE_DIMENSIONAL_DYNAMICS.md.
+Current status, 2026-10-24: PR26 is merged at `3130c89`, after PR23–25 received passive articulated transients, complete fresh-state replay, a guided short trail and the independent pose study. Calculation progress and exact-output native-view optimization are now received. Read the [current whole-system review](MTB_SYSTEM_REVIEW.md) for what is connected, the gaps to synthetic-data/game use and concrete next gates. Next physics work is finite saddle support; the separate execution prerequisite is persistent stepping/continuation with bounded recording. Balanced standing/seating, active control, calibrated tyre/material/failure behavior, 3D handling and real-time qualification remain open. The [D1–D12 plan](DYNAMICS_DELIVERY_PLAN.md) retains all requirements; entries below preserve historical slice decisions.
 
 ## Definition of a received slice
+
+The rider must be an [independent reusable actor](RIDER_OWNERSHIP.md), with its own body/state/controller and external bike contact/retention interfaces. Same-rider/different-bike setup, physical detachment and later reattachment/runtime transfer have separate gates. They remain part of D5 and the shared session design, not a visualization-only feature.
 
 Each slice must deliver its user-visible experiment, the physical mechanism it consumes, independent tests, repeatable scenarios and a short account of what the evidence does and does not establish. A headless physics component without the promised viewer is incomplete. An animation without verified dynamics is also incomplete.
 
@@ -159,7 +161,7 @@ The [iteration 3 architecture review](ITERATION_3_ARCHITECTURE.md) reviews the e
 
 Review continuous simulation versus recorded playback, model/state ownership, worker/snapshot/record boundaries, coupling rates and resource budgets before choosing abstractions. Mud deformation/spin release and carried mass are a cross-system example. Produce a concrete model/coupling matrix and receiving comparison experiment; preserve the existing validated stations during any refactor. This architectural gate precedes the next major physics implementation, including whole-bike assembly and layered contact.
 
-## Next actionable work package
+## Historical next work package after Slice 2
 
 Current delivery: Slice 1 has been reviewed again, its screenshot gap is closed for the inspected states, and Slice 2 has a working visual/headless consumer with independent evidence (47 passing tests on Linux and Windows plus Chromium checks). Physical calibration remains open.
 

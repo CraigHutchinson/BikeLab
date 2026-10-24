@@ -1,8 +1,10 @@
 # Unilateral saddle: next connected increment
 
-This is an implementation handoff, not implemented mechanics or calibration. It follows the received [unseated passive rider](RIDER_CONNECTED.md) and the primary [seated/unseated research](RIDER_SEATED_UNSEATED.md). Keep PR #23 draft. Begin with frictionless compression-only support and explicit separation; active rider choice and saddle friction require later independent evidence.
+This is the receiving contract for the next connected increment; saddle mechanics are not received on main. The separate [a6ac124 checkpoint](https://github.com/CraigHutchinson/BikeLab/blob/a6ac1249e8dbc7f3737fa8dde4cc8a8c717f5f29/docs/RIDER_SADDLE_CHECKPOINT.md) preserves an implementation with a failed cycle-refinement control. Reconcile it with current main rather than merging its old base wholesale. PR23 is already merged. The [current review](MTB_SYSTEM_REVIEW.md#1-supported-rider-posture-and-motion--d5) records the remaining gates. Begin with frictionless compression-only support and explicit separation; active rider choice and saddle friction require later independent evidence.
 
 The [explicit-state/equilibrium plan](RIDER_EQUILIBRIUM_PLAN.md) is the prerequisite for reproducibly launching a loaded standing/seated reference. Its loaded soft-constraint state has separate admission from the existing zero-gap construction control. Saddle geometry alone does not make the current launch a balanced seated posture.
+
+The [independent rider contract](RIDER_OWNERSHIP.md) requires rider-owned pelvis/contact geometry, bike-owned pad geometry and an external paired interface. Receive the current passive cycle without expanding this into an actor rewrite, but keep new ownership/recording decisions compatible with independent rider lifetime, detachment and reuse across bikes.
 
 ## Geometry and collision ownership
 

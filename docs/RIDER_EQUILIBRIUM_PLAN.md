@@ -2,6 +2,8 @@
 
 This plan follows the [load-distribution review](RIDER_LOAD_REVIEW.md). The received unseated example is a short passive sag transient. Its UI now exposes signed interface forces; it still does not receive balanced standing or seated equilibrium. No equilibrium solver, new record format, preload coefficients or acceptance pass is implemented by this note.
 
+Current status, 2026-10-24: the explicit-state prerequisite below was implemented and received in merged PR23; [its contract](PR23_MAJOR_ITERATION.md#complete-fresh-state) preserves fresh-run semantics. The equilibrium algorithm/acceptance remains open, and the separate saddle branch's probes are rejected. The original prerequisite design below is retained as rationale, not a new request to reimplement state import. See [the system review](MTB_SYSTEM_REVIEW.md) for current priorities.
+
 ## First increment: explicit state, without a solver
 
 The current `run()` launch writes chassis travel/heave/pitch, fork/rear compression, wheel spin and launch velocities. The tyre-node displacements and seven rider coordinates remain at their construction defaults. That path cannot generally encode a loaded equilibrium: tyres deform, soft hand/foot connects may need finite gaps, and the initial authored joint pose is not a gravity-supported solution.

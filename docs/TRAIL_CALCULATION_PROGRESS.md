@@ -42,6 +42,8 @@ The browser gate also covers actual intermediate progress, asserted active 390/3
 
 ## Implementation received, 2026-10-24
 
+PR26 is merged at `3130c89c7607da7729f9aa9b706aac88d4cbb7be`, with the same tree as final PR head `1eb45c6`. [Final-head CI 40092919457](https://github.com/CraigHutchinson/BikeLab/actions/runs/40092919457) also passes both 229-test OS suites and the browser gate. Its downloaded calculation artifact has identical extracted records/reports/captures to the inspected implementation artifact. The receipt's `release` section preserves this final-head evidence; the broader [MTB system review](MTB_SYSTEM_REVIEW.md) records subsequent priorities.
+
 Implementation `84bfb5f4ed92173810f7c573cc9fb08c72e9ea54` passes [run 40074167350](https://github.com/CraigHutchinson/BikeLab/actions/runs/40074167350): **229 tests on each of Ubuntu and Windows**, plus the complete browser/headless suite. [The final evidence receipt](evidence/trail-calculation-progress.json) binds the source hashes, final parity and timing, hosted jobs, browser reports and inspected artifact files. It supersedes the earlier pending receiving status; subsequent documentation-only commits do not change the tested implementation.
 
 All **20 complete final records match the unchanged main baseline exactly**, including natural termination and fresh-state restart. Local `node --test` finished with 36 test files passing and ten CLI/server files failing under confirmed `spawnSync`/loopback `EPERM` restrictions; the hosted suites pass those paths without changes to the tests. Native-memory growth, progress observer recovery and rejected post-command endpoint controls pass.

@@ -1,6 +1,8 @@
 # Passive articulated Trail bike: first moving increment
 
-This increment receives unseated passive motion in the existing Trail bike consumer, for both hardtail and full suspension. It does not receive saddle support, active control, anatomical calibration or real-time execution. The initial posture is a closed geometric pose, not a solved static equilibrium; gravity cases are relaxation transients. Keep PR #23 in draft.
+This increment receives unseated passive motion in the existing Trail bike consumer, for both hardtail and full suspension. PR23 is merged; the numerical evidence below retains its original scope. It does not receive saddle support, active control, anatomical calibration or real-time execution. The initial posture is a closed geometric pose, not a solved static equilibrium; gravity cases are relaxation transients. See [the current system review](MTB_SYSTEM_REVIEW.md) for subsequent work and remaining gaps.
+
+The required next architecture keeps [rider definition/state independent of a bike](RIDER_OWNERSHIP.md), with explicit site bindings and supported release/recontact. This legacy unseated contract still requires both hand/foot closures active; it must not silently acquire detachable-state semantics.
 
 ## Contract declared before moving trials
 
