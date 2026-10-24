@@ -153,7 +153,13 @@ export async function run(input={}){
    if(j.riderSlide){if(p.riderBuffer==='progressive')travelBuffer(data.qpos[j.riderSlide.q]+p.riderTravel,data.qvel[j.riderSlide.v],2*p.riderTravel,p.riderBufferWidth,p.riderBufferStiffness,p.riderBufferDamping,buffers[2]);data.qfrc_applied[j.riderSlide.v]=buffers[2][0];}
    for(const wheel of wheels)data.qfrc_applied[wheel.spin.v]=wheel.driveTorque;
    mj.mj_forward(model,data);mj.mj_energyPos(model,data);mj.mj_energyVel(model,data);energy=data.energy[0]+data.energy[1];lossPower=0;constraintPower=0;
-   for(const b of buffers){energy+=b[1];lossPower+=b[2];}for(let i=0;i<model.nv;i++){lossPower-=data.qfrc_damper[i]*data.qvel[i];constraintPower+=data.qfrc_constraint[i]*data.qvel[i];}
+   for(const b of buffers){energy+=b[1];lossPower+=b[2];}
+   {
+    // Native getters allocate views. Keep aliases within this phase; no native
+    // call, observer callback or async boundary may occur before they expire.
+    const qvel=data.qvel,damper=data.qfrc_damper,constraint=data.qfrc_constraint;
+    for(let i=0;i<model.nv;i++){lossPower-=damper[i]*qvel[i];constraintPower+=constraint[i]*qvel[i];}
+   }
    closurePower=0;closureMoment=0;if(connectedRider&&!connectedRider.observe()){closurePower=connectedRider.interfaces.rowPower;closureMoment=connectedRider.interfaces.pairMoment[1];}
    normalPower=0;tangentPower=0;brakePower=0;drivePower=0;for(const wheel of wheels){wheel.brakeTorque=0;drivePower+=wheel.driveTorque*data.qvel[wheel.spin.v];}
    const types=data.efc_type,forces=data.efc_force,velocities=data.efc_vel,kind=mj.mjtConstraint;

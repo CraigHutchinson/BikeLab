@@ -1,0 +1,870 @@
+{
+  "parity": {
+    "mode": "parity",
+    "baselineSourceSHA256": "cfe29c491b0e3804850bbbc71578491eb20e69091ee0e426b0695f16ec9748bf",
+    "candidateSourceSHA256": "5175be0a271c2d265c58ec3adf255d0281d23ca065eeb7dc8ffb85ac83e77322",
+    "scriptSHA256": "6b47b74a456934749ac6569704f09de4e066dfdb791881b6bf20dc9bbbae4467",
+    "node": "v24.19.0",
+    "cpu": "INTEL(R) XEON(R) PLATINUM 8573C",
+    "availableParallelism": 2,
+    "scope": "Complete record parity and serial shared-worker observations; no physical calibration, target-device or real-time qualification.",
+    "cases": [
+      {
+        "name": "full-legacy-guided",
+        "status": "completed",
+        "steps": 3200,
+        "acceptedTime": 0.09999999999999246,
+        "termination": null,
+        "frames": 21,
+        "recordSHA256": "aedd40e290daf38e516e818f23c535f19adaeb2d57525219d8416fefebe325f6"
+      },
+      {
+        "name": "full-legacy-fixed-commands",
+        "status": "completed",
+        "steps": 3200,
+        "acceptedTime": 0.09999999999999246,
+        "termination": null,
+        "frames": 21,
+        "recordSHA256": "72ce6170ce8a1788b0a42c0cf95120cc50feb6682de4951f986c0a4bd60648b0"
+      },
+      {
+        "name": "full-canonical-trail",
+        "status": "completed",
+        "steps": 48000,
+        "acceptedTime": 1.4999999999993385,
+        "termination": null,
+        "frames": 301,
+        "recordSHA256": "52cd0a6087d3917ee5eb0d8c425353154ae8dd7eeb3549b2d0250ded72f0ae65"
+      },
+      {
+        "name": "full-canonical-fixed-commands",
+        "status": "completed",
+        "steps": 3200,
+        "acceptedTime": 0.09999999999999246,
+        "termination": null,
+        "frames": 21,
+        "recordSHA256": "472f0bc53c25a42b339d7fae626b5a01f29948497261e9bf18fd8b6e6a6a169f"
+      },
+      {
+        "name": "full-articulated",
+        "status": "completed",
+        "steps": 3200,
+        "acceptedTime": 0.09999999999999246,
+        "termination": null,
+        "frames": 21,
+        "recordSHA256": "e8c657decf94ba21c4edb0319597c3c8462c7d65ffde8935a3ce5af54f8e6905"
+      },
+      {
+        "name": "full-state-launch",
+        "status": "completed",
+        "steps": 3200,
+        "acceptedTime": 0.09999999999999246,
+        "termination": null,
+        "frames": 21,
+        "recordSHA256": "19a0c0638f252c8fe59f542ec7c74288dd07fb21116e8cc9eb456e6583f9715e"
+      },
+      {
+        "name": "full-state-launch-restart",
+        "status": "completed",
+        "steps": 640,
+        "acceptedTime": 0.020000000000000014,
+        "termination": null,
+        "frames": 5,
+        "recordSHA256": "273cae485a867c83c56061953b781601b7fe057b75220d87a4c2e2e759b87478"
+      },
+      {
+        "name": "full-guided-limit",
+        "status": "terminated",
+        "steps": 842,
+        "acceptedTime": 0.02631250000000002,
+        "termination": {
+          "reason": "rearwheel-contact-penetration-limit",
+          "time": 0.02631250000000002,
+          "attemptedTime": 0.02634375000000002,
+          "attemptedCommandTick": 0,
+          "attemptedLimits": [
+            {
+              "reason": null,
+              "rimGap": 0.07459150903472012,
+              "penetration": 0,
+              "inner": 0.05354773484753467,
+              "movement": 0.00019495297105287065,
+              "strain": 0.00015960106598655877,
+              "deformation": 7.623523764799871e-05
+            },
+            {
+              "reason": "contact-penetration-limit",
+              "rimGap": 0.06922992563939484,
+              "penetration": 0.0005023457337260092,
+              "inner": 0.05348171491551601,
+              "movement": 0.0002028281341944461,
+              "strain": null,
+              "deformation": null
+            }
+          ]
+        },
+        "frames": 7,
+        "recordSHA256": "0f06b3bf2dc3317e43cf63cfe7038eb8fa2d31a427359f3eb38b7a7ee4abcc0b"
+      },
+      {
+        "name": "full-articulated-limit",
+        "status": "terminated",
+        "steps": 4033,
+        "acceptedTime": 0.12603124999999005,
+        "termination": {
+          "reason": "rider-elbow-angle-limit",
+          "time": 0.12603124999999005,
+          "attemptedTime": 0.12606249999999006,
+          "attemptedCommandTick": 0,
+          "attemptedLimits": [
+            {
+              "reason": "not-evaluated",
+              "rimGap": null,
+              "penetration": null,
+              "inner": null,
+              "movement": null,
+              "strain": null,
+              "deformation": null
+            },
+            {
+              "reason": "not-evaluated",
+              "rimGap": null,
+              "penetration": null,
+              "inner": null,
+              "movement": null,
+              "strain": null,
+              "deformation": null
+            }
+          ]
+        },
+        "frames": 27,
+        "recordSHA256": "8a5c82009731f7cef63dea84c58db62de2d95e1e0a3120334c28bbd1e64ff9b8"
+      },
+      {
+        "name": "full-initial-rejection",
+        "status": "initial-state-rejected",
+        "steps": 0,
+        "acceptedTime": 0,
+        "termination": {
+          "reason": "rider-travel-limit",
+          "time": 0
+        },
+        "frames": 0,
+        "recordSHA256": "8df7f8f972bb641f84a7b608343d0b60fd7807f705a1eaba33ce26e5b70d9dca"
+      },
+      {
+        "name": "hardtail-legacy-guided",
+        "status": "completed",
+        "steps": 3200,
+        "acceptedTime": 0.09999999999999246,
+        "termination": null,
+        "frames": 21,
+        "recordSHA256": "d033b959479a87b351e4a22efe4606852658cd12f201eb4ba7096d0749070f16"
+      },
+      {
+        "name": "hardtail-legacy-fixed-commands",
+        "status": "completed",
+        "steps": 3200,
+        "acceptedTime": 0.09999999999999246,
+        "termination": null,
+        "frames": 21,
+        "recordSHA256": "0b629c91232b3dedffcaf30b4886a031c81ffb16a91a79af8632361a514f9ed5"
+      },
+      {
+        "name": "hardtail-canonical-trail",
+        "status": "completed",
+        "steps": 48000,
+        "acceptedTime": 1.4999999999993385,
+        "termination": null,
+        "frames": 301,
+        "recordSHA256": "b94969edbed4e223276f601d851374407e42696ce85c4e8531278a6010b1f8bb"
+      },
+      {
+        "name": "hardtail-canonical-fixed-commands",
+        "status": "completed",
+        "steps": 3200,
+        "acceptedTime": 0.09999999999999246,
+        "termination": null,
+        "frames": 21,
+        "recordSHA256": "b20245f3803d620e893b34540025106eb68ae60313454fbb4294fa04cc2ea60b"
+      },
+      {
+        "name": "hardtail-articulated",
+        "status": "completed",
+        "steps": 3200,
+        "acceptedTime": 0.09999999999999246,
+        "termination": null,
+        "frames": 21,
+        "recordSHA256": "b1ce6408d57f124689c8d55e21c2d22d7a1e3727bfd6d75fecd40b569ed07b64"
+      },
+      {
+        "name": "hardtail-state-launch",
+        "status": "completed",
+        "steps": 3200,
+        "acceptedTime": 0.09999999999999246,
+        "termination": null,
+        "frames": 21,
+        "recordSHA256": "da2b77845a1e82336ea0cc76c16683721b146d63caa58fbb494272cbdbb84433"
+      },
+      {
+        "name": "hardtail-state-launch-restart",
+        "status": "terminated",
+        "steps": 621,
+        "acceptedTime": 0.019406250000000014,
+        "termination": {
+          "reason": "rider-elbow-angle-limit",
+          "time": 0.019406250000000014,
+          "attemptedTime": 0.019437500000000014,
+          "attemptedCommandTick": 0,
+          "attemptedLimits": [
+            {
+              "reason": "not-evaluated",
+              "rimGap": null,
+              "penetration": null,
+              "inner": null,
+              "movement": null,
+              "strain": null,
+              "deformation": null
+            },
+            {
+              "reason": "not-evaluated",
+              "rimGap": null,
+              "penetration": null,
+              "inner": null,
+              "movement": null,
+              "strain": null,
+              "deformation": null
+            }
+          ]
+        },
+        "frames": 5,
+        "recordSHA256": "edb964c2a75bbb77bc4157411dd6c14375d04810f1cc63ffd4b208f01e09aeec"
+      },
+      {
+        "name": "hardtail-guided-limit",
+        "status": "terminated",
+        "steps": 886,
+        "acceptedTime": 0.02768750000000002,
+        "termination": {
+          "reason": "frontwheel-contact-penetration-limit",
+          "time": 0.02768750000000002,
+          "attemptedTime": 0.02771875000000002,
+          "attemptedCommandTick": 0,
+          "attemptedLimits": [
+            {
+              "reason": "contact-penetration-limit",
+              "rimGap": 0.06887454633604423,
+              "penetration": 0.0005015476947629639,
+              "inner": 0.05326747345712601,
+              "movement": 0.0001948954536552721,
+              "strain": null,
+              "deformation": null
+            },
+            {
+              "reason": "not-evaluated",
+              "rimGap": null,
+              "penetration": null,
+              "inner": null,
+              "movement": null,
+              "strain": null,
+              "deformation": null
+            }
+          ]
+        },
+        "frames": 7,
+        "recordSHA256": "c61de387eb62664fd778089e48a9276726fb6aa51bdebda7c68382720169c684"
+      },
+      {
+        "name": "hardtail-articulated-limit",
+        "status": "terminated",
+        "steps": 3821,
+        "acceptedTime": 0.11940624999999032,
+        "termination": {
+          "reason": "rider-elbow-angle-limit",
+          "time": 0.11940624999999032,
+          "attemptedTime": 0.11943749999999032,
+          "attemptedCommandTick": 0,
+          "attemptedLimits": [
+            {
+              "reason": "not-evaluated",
+              "rimGap": null,
+              "penetration": null,
+              "inner": null,
+              "movement": null,
+              "strain": null,
+              "deformation": null
+            },
+            {
+              "reason": "not-evaluated",
+              "rimGap": null,
+              "penetration": null,
+              "inner": null,
+              "movement": null,
+              "strain": null,
+              "deformation": null
+            }
+          ]
+        },
+        "frames": 25,
+        "recordSHA256": "5a6b2d981561752333defa0225b10574d8735c5c6539c050de13f0faf9e5c411"
+      },
+      {
+        "name": "hardtail-initial-rejection",
+        "status": "initial-state-rejected",
+        "steps": 0,
+        "acceptedTime": 0,
+        "termination": {
+          "reason": "rider-travel-limit",
+          "time": 0
+        },
+        "frames": 0,
+        "recordSHA256": "6ccbc6127f13e2bed23eb0791ac7c9752f4dc20c8be2534bc4fa43ec4e711557"
+      }
+    ]
+  },
+  "getters": {
+    "mode": "getters",
+    "baselineSourceSHA256": "cfe29c491b0e3804850bbbc71578491eb20e69091ee0e426b0695f16ec9748bf",
+    "candidateSourceSHA256": "5175be0a271c2d265c58ec3adf255d0281d23ca065eeb7dc8ffb85ac83e77322",
+    "scriptSHA256": "6b47b74a456934749ac6569704f09de4e066dfdb791881b6bf20dc9bbbae4467",
+    "node": "v24.19.0",
+    "cpu": "INTEL(R) XEON(R) PLATINUM 8573C",
+    "availableParallelism": 2,
+    "scope": "Instrumented public getter counts over one identical complete full-suspension guided run; no timing or native-allocation byte claim.",
+    "cases": [
+      {
+        "engine": "baseline",
+        "counts": {
+          "qvel": 2551285,
+          "qfrc_damper": 845064,
+          "qfrc_constraint": 1691613
+        },
+        "status": "completed",
+        "steps": 3200,
+        "acceptedTime": 0.09999999999999246,
+        "termination": null,
+        "frames": 21,
+        "recordSHA256": "aedd40e290daf38e516e818f23c535f19adaeb2d57525219d8416fefebe325f6"
+      },
+      {
+        "engine": "candidate",
+        "counts": {
+          "qvel": 864358,
+          "qfrc_damper": 3201,
+          "qfrc_constraint": 849750
+        },
+        "status": "completed",
+        "steps": 3200,
+        "acceptedTime": 0.09999999999999246,
+        "termination": null,
+        "frames": 21,
+        "recordSHA256": "aedd40e290daf38e516e818f23c535f19adaeb2d57525219d8416fefebe325f6"
+      }
+    ]
+  },
+  "timing": {
+    "mode": "timing",
+    "baselineSourceSHA256": "cfe29c491b0e3804850bbbc71578491eb20e69091ee0e426b0695f16ec9748bf",
+    "candidateSourceSHA256": "5175be0a271c2d265c58ec3adf255d0281d23ca065eeb7dc8ffb85ac83e77322",
+    "scriptSHA256": "6b47b74a456934749ac6569704f09de4e066dfdb791881b6bf20dc9bbbae4467",
+    "node": "v24.19.0",
+    "cpu": "INTEL(R) XEON(R) PLATINUM 8573C",
+    "availableParallelism": 2,
+    "scope": "Complete record parity and serial shared-worker observations; no physical calibration, target-device or real-time qualification.",
+    "cases": [
+      {
+        "name": "full-legacy-guided",
+        "input": {
+          "bike": {
+            "bike": "full"
+          },
+          "profile": {
+            "format": "bikelab-profile-1",
+            "units": "m",
+            "axes": "x-forward,z-up",
+            "solid": "below",
+            "interpolation": "linear",
+            "source": {
+              "kind": "illustrative",
+              "description": "Synthetic flat rigid trail."
+            },
+            "points": [
+              [
+                -3,
+                0
+              ],
+              [
+                5,
+                0
+              ]
+            ]
+          },
+          "motion": {
+            "duration": 0.1
+          }
+        },
+        "samplesMs": {
+          "baseline": [
+            2912.7082139999984,
+            3007.922246,
+            2867.803269
+          ],
+          "candidate": [
+            2469.181398999999,
+            2460.2120220000015,
+            2574.4951790000014
+          ]
+        },
+        "baselineMedianMs": 2912.7082139999984,
+        "candidateMedianMs": 2469.181398999999,
+        "medianReductionPercent": 15.227299901451763,
+        "recordSHA256": "aedd40e290daf38e516e818f23c535f19adaeb2d57525219d8416fefebe325f6"
+      },
+      {
+        "name": "full-articulated",
+        "input": {
+          "bike": {
+            "pivotX": 0.04,
+            "pivotZ": -0.235,
+            "shockArmX": -0.054607848086069846,
+            "shockArmZ": 0.18996325604011804,
+            "shockFrameX": 0.19332203501088832,
+            "shockFrameZ": -0.015623078508508775,
+            "shockTravel": 0.055,
+            "bike": "full",
+            "forkBuffer": "progressive",
+            "forkBufferWidth": 0.02,
+            "forkBufferStiffness": 300000,
+            "forkBufferDamping": 1500,
+            "forkStiffness": 9000,
+            "forkDamping": 700,
+            "shockBuffer": "progressive",
+            "shockBufferWidth": 0.008,
+            "shockBufferStiffness": 1000000,
+            "shockBufferDamping": 3000,
+            "shockStiffness": 70000,
+            "shockDamping": 2400,
+            "rider": "articulated"
+          },
+          "profile": {
+            "format": "bikelab-profile-1",
+            "units": "m",
+            "axes": "x-forward,z-up",
+            "solid": "below",
+            "interpolation": "linear",
+            "source": {
+              "kind": "illustrative",
+              "description": "Synthetic flat rigid trail."
+            },
+            "points": [
+              [
+                -3,
+                0
+              ],
+              [
+                5,
+                0
+              ]
+            ]
+          },
+          "motion": {
+            "riderOffset": 0,
+            "duration": 0.1,
+            "velocityX": 0,
+            "omega": 0,
+            "clearance": 0
+          },
+          "articulated": {
+            "format": "bikelab-connected-rider-0.1",
+            "chassis": {
+              "mass": 6,
+              "com": [
+                0,
+                -0.15
+              ],
+              "inertia": [
+                0.35,
+                0.5,
+                0.3
+              ]
+            },
+            "passive": {
+              "format": "bikelab-rider-passive-0.1",
+              "posture": {
+                "format": "bikelab-rider-posture-0.1",
+                "riderMass": 70,
+                "hip": [
+                  -0.15,
+                  0.25
+                ],
+                "trunkPitch": 0.55,
+                "hand": [
+                  0.45,
+                  0.32
+                ],
+                "foot": [
+                  0,
+                  -0.3
+                ],
+                "elbowSide": -1,
+                "kneeSide": 1,
+                "minBendSine": 0.05,
+                "segments": {
+                  "trunk": {
+                    "massFraction": 0.6,
+                    "length": 0.55,
+                    "comFraction": 0.5,
+                    "inertiaPerMass": [
+                      0.02880833333333334,
+                      0.02880833333333334,
+                      0.0072
+                    ]
+                  },
+                  "thighs": {
+                    "massFraction": 0.2,
+                    "length": 0.43,
+                    "comFraction": 0.5,
+                    "inertiaPerMass": [
+                      0.01700833333333333,
+                      0.01700833333333333,
+                      0.0032
+                    ]
+                  },
+                  "shanksFeet": {
+                    "massFraction": 0.1,
+                    "length": 0.43,
+                    "comFraction": 0.5,
+                    "inertiaPerMass": [
+                      0.01663333333333333,
+                      0.01663333333333333,
+                      0.0024500000000000004
+                    ]
+                  },
+                  "upperArms": {
+                    "massFraction": 0.055,
+                    "length": 0.3,
+                    "comFraction": 0.5,
+                    "inertiaPerMass": [
+                      0.008125,
+                      0.008125,
+                      0.0012500000000000002
+                    ]
+                  },
+                  "forearmsHands": {
+                    "massFraction": 0.045,
+                    "length": 0.3,
+                    "comFraction": 0.5,
+                    "inertiaPerMass": [
+                      0.007899999999999999,
+                      0.007899999999999999,
+                      0.0008
+                    ]
+                  }
+                }
+              },
+              "joints": {
+                "hip": {
+                  "restAngle": 1.4792200037917318,
+                  "stiffness": 120,
+                  "damping": 8,
+                  "minAngle": 1.1792200037917318,
+                  "maxAngle": 1.7792200037917318
+                },
+                "knee": {
+                  "restAngle": 1.6922412012942722,
+                  "stiffness": 90,
+                  "damping": 6,
+                  "minAngle": 1.3922412012942722,
+                  "maxAngle": 1.9922412012942723
+                },
+                "shoulder": {
+                  "restAngle": 2.492056379089391,
+                  "stiffness": 25,
+                  "damping": 2,
+                  "minAngle": 2.192056379089391,
+                  "maxAngle": 2.7920563790893906
+                },
+                "elbow": {
+                  "restAngle": -1.1301027328714,
+                  "stiffness": 15,
+                  "damping": 1.5,
+                  "minAngle": -1.4301027328714,
+                  "maxAngle": -0.8301027328713999
+                }
+              }
+            },
+            "closureTime": 0.02,
+            "maxClosureGap": 0.002
+          }
+        },
+        "samplesMs": {
+          "baseline": [
+            3204.7691289999966,
+            3304.180708000007,
+            3377.5624610000013
+          ],
+          "candidate": [
+            2760.2431340000003,
+            2901.637788,
+            2849.0793420000045
+          ]
+        },
+        "baselineMedianMs": 3304.180708000007,
+        "candidateMedianMs": 2849.0793420000045,
+        "medianReductionPercent": 13.773501095086038,
+        "recordSHA256": "e8c657decf94ba21c4edb0319597c3c8462c7d65ffde8935a3ce5af54f8e6905"
+      },
+      {
+        "name": "hardtail-legacy-guided",
+        "input": {
+          "bike": {
+            "bike": "hardtail"
+          },
+          "profile": {
+            "format": "bikelab-profile-1",
+            "units": "m",
+            "axes": "x-forward,z-up",
+            "solid": "below",
+            "interpolation": "linear",
+            "source": {
+              "kind": "illustrative",
+              "description": "Synthetic flat rigid trail."
+            },
+            "points": [
+              [
+                -3,
+                0
+              ],
+              [
+                5,
+                0
+              ]
+            ]
+          },
+          "motion": {
+            "duration": 0.1
+          }
+        },
+        "samplesMs": {
+          "baseline": [
+            2773.054725999995,
+            2762.108755000001,
+            2691.7675200000012
+          ],
+          "candidate": [
+            2272.903962000004,
+            2337.330941,
+            2411.5392069999943
+          ]
+        },
+        "baselineMedianMs": 2762.108755000001,
+        "candidateMedianMs": 2337.330941,
+        "medianReductionPercent": 15.378750501082305,
+        "recordSHA256": "d033b959479a87b351e4a22efe4606852658cd12f201eb4ba7096d0749070f16"
+      },
+      {
+        "name": "hardtail-articulated",
+        "input": {
+          "bike": {
+            "pivotX": 0.04,
+            "pivotZ": -0.235,
+            "shockArmX": -0.054607848086069846,
+            "shockArmZ": 0.18996325604011804,
+            "shockFrameX": 0.19332203501088832,
+            "shockFrameZ": -0.015623078508508775,
+            "shockTravel": 0.055,
+            "bike": "hardtail",
+            "forkBuffer": "progressive",
+            "forkBufferWidth": 0.02,
+            "forkBufferStiffness": 300000,
+            "forkBufferDamping": 1500,
+            "forkStiffness": 9000,
+            "forkDamping": 700,
+            "shockBuffer": "progressive",
+            "shockBufferWidth": 0.008,
+            "shockBufferStiffness": 1000000,
+            "shockBufferDamping": 3000,
+            "shockStiffness": 70000,
+            "shockDamping": 2400,
+            "rider": "articulated"
+          },
+          "profile": {
+            "format": "bikelab-profile-1",
+            "units": "m",
+            "axes": "x-forward,z-up",
+            "solid": "below",
+            "interpolation": "linear",
+            "source": {
+              "kind": "illustrative",
+              "description": "Synthetic flat rigid trail."
+            },
+            "points": [
+              [
+                -3,
+                0
+              ],
+              [
+                5,
+                0
+              ]
+            ]
+          },
+          "motion": {
+            "riderOffset": 0,
+            "duration": 0.1,
+            "velocityX": 0,
+            "omega": 0,
+            "clearance": 0
+          },
+          "articulated": {
+            "format": "bikelab-connected-rider-0.1",
+            "chassis": {
+              "mass": 6,
+              "com": [
+                0,
+                -0.15
+              ],
+              "inertia": [
+                0.35,
+                0.5,
+                0.3
+              ]
+            },
+            "passive": {
+              "format": "bikelab-rider-passive-0.1",
+              "posture": {
+                "format": "bikelab-rider-posture-0.1",
+                "riderMass": 70,
+                "hip": [
+                  -0.15,
+                  0.25
+                ],
+                "trunkPitch": 0.55,
+                "hand": [
+                  0.45,
+                  0.32
+                ],
+                "foot": [
+                  0,
+                  -0.3
+                ],
+                "elbowSide": -1,
+                "kneeSide": 1,
+                "minBendSine": 0.05,
+                "segments": {
+                  "trunk": {
+                    "massFraction": 0.6,
+                    "length": 0.55,
+                    "comFraction": 0.5,
+                    "inertiaPerMass": [
+                      0.02880833333333334,
+                      0.02880833333333334,
+                      0.0072
+                    ]
+                  },
+                  "thighs": {
+                    "massFraction": 0.2,
+                    "length": 0.43,
+                    "comFraction": 0.5,
+                    "inertiaPerMass": [
+                      0.01700833333333333,
+                      0.01700833333333333,
+                      0.0032
+                    ]
+                  },
+                  "shanksFeet": {
+                    "massFraction": 0.1,
+                    "length": 0.43,
+                    "comFraction": 0.5,
+                    "inertiaPerMass": [
+                      0.01663333333333333,
+                      0.01663333333333333,
+                      0.0024500000000000004
+                    ]
+                  },
+                  "upperArms": {
+                    "massFraction": 0.055,
+                    "length": 0.3,
+                    "comFraction": 0.5,
+                    "inertiaPerMass": [
+                      0.008125,
+                      0.008125,
+                      0.0012500000000000002
+                    ]
+                  },
+                  "forearmsHands": {
+                    "massFraction": 0.045,
+                    "length": 0.3,
+                    "comFraction": 0.5,
+                    "inertiaPerMass": [
+                      0.007899999999999999,
+                      0.007899999999999999,
+                      0.0008
+                    ]
+                  }
+                }
+              },
+              "joints": {
+                "hip": {
+                  "restAngle": 1.4792200037917318,
+                  "stiffness": 120,
+                  "damping": 8,
+                  "minAngle": 1.1792200037917318,
+                  "maxAngle": 1.7792200037917318
+                },
+                "knee": {
+                  "restAngle": 1.6922412012942722,
+                  "stiffness": 90,
+                  "damping": 6,
+                  "minAngle": 1.3922412012942722,
+                  "maxAngle": 1.9922412012942723
+                },
+                "shoulder": {
+                  "restAngle": 2.492056379089391,
+                  "stiffness": 25,
+                  "damping": 2,
+                  "minAngle": 2.192056379089391,
+                  "maxAngle": 2.7920563790893906
+                },
+                "elbow": {
+                  "restAngle": -1.1301027328714,
+                  "stiffness": 15,
+                  "damping": 1.5,
+                  "minAngle": -1.4301027328714,
+                  "maxAngle": -0.8301027328713999
+                }
+              }
+            },
+            "closureTime": 0.02,
+            "maxClosureGap": 0.002
+          }
+        },
+        "samplesMs": {
+          "baseline": [
+            3026.89774700001,
+            3031.873992000008,
+            3066.8294289999903
+          ],
+          "candidate": [
+            2625.1864209999912,
+            2577.1534729999985,
+            2595.003456999999
+          ]
+        },
+        "baselineMedianMs": 3031.873992000008,
+        "candidateMedianMs": 2595.003456999999,
+        "medianReductionPercent": 14.40925764569202,
+        "recordSHA256": "b1ce6408d57f124689c8d55e21c2d22d7a1e3727bfd6d75fecd40b569ed07b64"
+      }
+    ],
+    "method": {
+      "warmupsPerEngine": 1,
+      "measuredRepeatsPerEngine": 3,
+      "order": "Alternating baseline/candidate then candidate/baseline; same process, warmed separate native runtimes.",
+      "timing": "Whole run including build, guards, integration and record materialization; no JSON hashing within timer. Progress observer disabled.",
+      "limits": "Shared worker, uncontrolled host load; three repeats are not tail latency or a per-tick deadline."
+    }
+  },
+  "baselineCommit": "6123f1faffc28486ec248f945347db01b3b075c0",
+  "scope": "Initial optimization alone, before progress instrumentation. Baseline tree staged separately; physics/model configuration unchanged. Three repeated warmed timing observations per engine, not target-device or real-time qualification."
+}
