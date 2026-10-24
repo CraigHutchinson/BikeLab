@@ -30,7 +30,7 @@ export async function checkTrailState({page,root,dir,report}){
   assert.equal(r.summary.initialEnergy,r.frames[0].energy);assert.match(await page.locator('#initializationStatus').textContent(),/Supplied complete/);
   for(const key of launchFields){assert.ok(await page.locator('[name='+key+']').isDisabled());assert.equal(await page.locator('[name='+key+']').inputValue(),'');}
   await shot(bike+'-state-restart');
-  await page.locator('details summary').click();const invalid=structuredClone(r.scenario);invalid.initialization.state.joints.find(j=>j.name==='pitch').position=.4;
+  await page.locator('#scenarioEditor summary').click();const invalid=structuredClone(r.scenario);invalid.initialization.state.joints.find(j=>j.name==='pitch').position=.4;
   await apply(invalid);const rejected=(await save(bike+'-state-rejected')).value;assert.equal(rejected.status,'initial-state-rejected');assert.equal(rejected.frames.length,0);
   assert.match(await page.locator('#initializationStatus').textContent(),/Supplied complete.*not admitted/);assert.ok(await page.locator('#restartState').isDisabled());await shot(bike+'-state-rejected');
   await page.locator('#load').setInputFiles(fresh.path);await ready();assert.deepEqual((await save(bike+'-state-reimport')).value,r);
