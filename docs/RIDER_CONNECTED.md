@@ -2,6 +2,8 @@
 
 This increment receives unseated passive motion in the existing Trail bike consumer, for both hardtail and full suspension. PR23 is merged; the numerical evidence below retains its original scope. It does not receive saddle support, active control, anatomical calibration or real-time execution. The initial posture is a closed geometric pose, not a solved static equilibrium; gravity cases are relaxation transients. See [the current system review](MTB_SYSTEM_REVIEW.md) for subsequent work and remaining gaps.
 
+The required next architecture keeps [rider definition/state independent of a bike](RIDER_OWNERSHIP.md), with explicit site bindings and supported release/recontact. This legacy unseated contract still requires both hand/foot closures active; it must not silently acquire detachable-state semantics.
+
 ## Contract declared before moving trials
 
 Use a separate `bikelab-trail-bike-articulated-0.1` record and an `articulated` configuration with independent chassis mass, frame-local COM and principal inertias, the complete passive specification, closure time constant and maximum admitted attachment gap. The chassis inertias are diagonal in frame axes and must satisfy the rigid-body triangle inequalities. Initial chassis values are illustrative, not inherited from the 12 kg construction carrier or a proportional split of combined rider mass. Existing fixed/guided scenarios and exports retain their 0.4 contract and numerical path.

@@ -4,6 +4,8 @@ Current status, 2026-10-24: PR26 is merged at `3130c89`, after PR23–25 receive
 
 ## Definition of a received slice
 
+The rider must be an [independent reusable actor](RIDER_OWNERSHIP.md), with its own body/state/controller and external bike contact/retention interfaces. Same-rider/different-bike setup, physical detachment and later reattachment/runtime transfer have separate gates. They remain part of D5 and the shared session design, not a visualization-only feature.
+
 Each slice must deliver its user-visible experiment, the physical mechanism it consumes, independent tests, repeatable scenarios and a short account of what the evidence does and does not establish. A headless physics component without the promised viewer is incomplete. An animation without verified dynamics is also incomplete.
 
 ## Slice 0 - Planning baseline

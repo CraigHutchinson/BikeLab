@@ -1361,6 +1361,33 @@
       "downloadedAndVerified": true,
       "allExtractedFilesEqualInspectedImplementationArtifact": true
     },
-    "mainRun": 40095513298
+    "mainRun": 40095513298,
+    "mainJobs": [
+      {
+        "name": "Browser and headless agreement",
+        "id": 120876814361,
+        "conclusion": "success"
+      },
+      {
+        "name": "Test (windows-latest)",
+        "id": 120876814518,
+        "conclusion": "success"
+      },
+      {
+        "name": "Test (ubuntu-latest)",
+        "id": 120876814602,
+        "conclusion": "success"
+      },
+      {
+        "name": "Package static site",
+        "id": 120881983371,
+        "conclusion": "success"
+      },
+      {
+        "name": "Deploy GitHub Pages",
+        "id": 120882013002,
+        "conclusion": "success"
+      }
+    ]
   }
 }

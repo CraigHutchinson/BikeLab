@@ -4,6 +4,8 @@ This is the receiving contract for the next connected increment; saddle mechanic
 
 The [explicit-state/equilibrium plan](RIDER_EQUILIBRIUM_PLAN.md) is the prerequisite for reproducibly launching a loaded standing/seated reference. Its loaded soft-constraint state has separate admission from the existing zero-gap construction control. Saddle geometry alone does not make the current launch a balanced seated posture.
 
+The [independent rider contract](RIDER_OWNERSHIP.md) requires rider-owned pelvis/contact geometry, bike-owned pad geometry and an external paired interface. Receive the current passive cycle without expanding this into an actor rewrite, but keep new ownership/recording decisions compatible with independent rider lifetime, detachment and reuse across bikes.
+
 ## Geometry and collision ownership
 
 Use a finite named pelvis proxy rigidly attached to `rider_trunk` and a finite named pad on `frame`. Specify their shapes, dimensions and local transforms, contact regularization and maximum admitted penetration independently of the terrain configuration. Preserve explicit body inertias: adding collision geometry must not silently add rider or chassis mass. Treat illustrative values as uncalibrated, and declare receiving budgets before trials.
