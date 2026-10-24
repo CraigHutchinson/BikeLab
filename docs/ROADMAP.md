@@ -282,3 +282,5 @@ Next integrate the finite-saddle branch with current guards/UI, resolve its sepa
 ## Rider pose study, 2026-10-24
 
 The [human-model review and visible pose study](RIDER_POSE_STUDY.md) exposes different starting geometries with preserved body properties and explicit passive-domain rejection. It does not implement a live sit/stand command. Receive finite saddle support and its failed cycle-refinement follow-up first, then bounded internal actuation with signed work and whole-path validation on both bikes. Keep active manoeuvres, individual limb/crank detail, physical limits, 3D and measured game execution as distinct gates.
+
+The [calculation progress and optimization pass](TRAIL_CALCULATION_PROGRESS.md) reduces native getter overhead with exact whole-record controls and adds accepted-step feedback to the offline Trail bike consumer. It preserves solver fidelity and all limits. Offline throughput, display responsiveness and a future bounded-latency game runner remain separate requirements.

@@ -1,5 +1,13 @@
 # Iteration 20 completeness review and session handoff
 
+## Calculation progress and optimization continuation, 2026-10-24
+
+PR25 is merged at `6123f1faffc28486ec248f945347db01b3b075c0`; both tested heads and all pose captures are received. [The receipt](TRAIL_CALCULATION_PROGRESS.md#reviewed-baseline-and-first-optimization-2026-10-24) records source/artifact hashes, exact scope and mobile findings, superseding the pending PR25 notes below.
+
+[Draft PR26](https://github.com/CraigHutchinson/BikeLab/pull/26), branch `codex/trail-progress-optimization`, first pushes optimizer `c872521`: three phase-local native views replace per-coordinate getters, preserving all 20 complete baseline records exactly, real native-memory growth and post-command rollback. Separate serial warmed observations show 13.8–15.4% median reductions across four guided/articulated cases, with source hashes and raw samples committed. The unchanged baseline was staged under `/tmp/bikelab-before-progress`; recreate it from main `6123f1f` if that temporary directory is absent.
+
+The next increment adds accepted-step calculation progress, worker throttling and clear prepare/simulate/finalize/complete/stop/cancel/error presentation, with revision-safe lifecycle handling. Read [its implementation and receiving checkpoint](TRAIL_CALCULATION_PROGRESS.md#progress-implementation-checkpoint). Focused checks pass; full local tests/final parity are running and hosted browser receiving remains required. Keep the PR draft until actual progress captures and final-head CI are reviewed. Do not confuse the earlier optimizer-only timing with measured browser latency or real-time suitability.
+
 ## PR25 resume checkpoint, 2026-10-24
 
 Rider pose implementation `67059ad4b77ddf694d1ff6fe8e389a318ac131ad` is pushed to [draft PR25](https://github.com/CraigHutchinson/BikeLab/pull/25), branch `codex/rider-pose-study`, based on merged PR24. [Implementation run 40047997172](https://github.com/CraigHutchinson/BikeLab/actions/runs/40047997172) passes 225 tests on both OSes; browser execution and actual pose screenshot inspection are pending at this checkpoint. The separate `rider-pose-evidence` archive avoids the earlier combined-download size problem. Follow the [receiving instructions](RIDER_POSE_STUDY.md#pushed-receiving-checkpoint) before marking this UI received.
