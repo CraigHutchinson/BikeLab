@@ -2,7 +2,9 @@
 
 The Trail bike station receives the spatial wheel model into a single moving hardtail or full-suspension bike, including the existing passive guided rider. It is the connected consumer for controlled traction and subsequent articulated rider work, with the earlier stations retained as diagnostic controls. `dist/trail-bike.js` runs identically in the module worker and `node scripts/trail-bike.mjs [scenario-or-record.json]`. Exit 0 means completion within declared numerical/model limits, 2 means an explicit support stop or rejected launch/assembly, and 1 means invalid input or execution failure.
 
-## Articulated extension in draft PR #23
+## Received articulated extension
+
+PR23 is merged; PR24–26 receive trail captures, the independent pose study and calculation progress. The newer canonical guided and explicit articulated fresh-state contracts supplement the historical formats described below. See [the current system review](MTB_SYSTEM_REVIEW.md) for integration status and [the canonical policy](TRAIL_CANONICAL.md) for version-specific numerical semantics.
 
 The [unseated articulated mode](RIDER_CONNECTED.md) uses `bike.rider: "articulated"`, a separate `articulated` configuration and `bikelab-trail-bike-articulated-0.1` records. It omits legacy combined mass/guide properties: default chassis mass is explicitly 6 kg, COM `[0, -0.15]` m in frame x/z and principal inertia `[0.35, 0.5, 0.3]` kg m²; the independent rider is 70 kg. Carriers/wheels add 7 kg, giving 83 kg total. These are illustrative values. Native hand/foot closure work and angular impulse stay separate from external terrain loads. Seven relative coordinates, joint loads, actual segment endpoints/COM velocities and whole-rider COM share CLI/worker replay and the visible Trail bike.
 

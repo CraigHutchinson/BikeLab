@@ -1330,5 +1330,37 @@
       "Cancelled, runtime-failure and startup-failure captures say no new run was kept. Browser assertions separately verify busy state cleanup, stale callback rejection and replacement."
     ],
     "scope": "Actual progress-panel screenshots inspected. Document width and active-calculation assertions pass at both mobile widths; no claim of screen-reader user testing or target-device latency."
+  },
+  "release": {
+    "finalHead": "1eb45c69936a0f4f755029444deb7d7d8c756994",
+    "mergedMain": "3130c89c7607da7729f9aa9b706aac88d4cbb7be",
+    "tree": "f699f2f0e956b5389ba6d6ce91e34fe9fb810350",
+    "finalRun": 40092919457,
+    "testResults": {
+      "ubuntu": {
+        "job": 120869122427,
+        "tests": 229,
+        "pass": 229,
+        "fail": 0
+      },
+      "windows": {
+        "job": 120869122540,
+        "tests": 229,
+        "pass": 229,
+        "fail": 0
+      },
+      "browser": {
+        "job": 120869122614,
+        "conclusion": "success"
+      }
+    },
+    "finalCalculationArtifact": {
+      "id": 12560386398,
+      "bytes": 267427,
+      "sha256": "c2b1e68f488b70cb54a86cd5c850f108c56f7b63c9194aec2421f039067085e7",
+      "downloadedAndVerified": true,
+      "allExtractedFilesEqualInspectedImplementationArtifact": true
+    },
+    "mainRun": 40095513298
   }
 }

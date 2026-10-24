@@ -1,5 +1,13 @@
 # Iteration 20 completeness review and session handoff
 
+## Whole-system continuation, 2026-10-24
+
+PR26 is merged at `3130c89c7607da7729f9aa9b706aac88d4cbb7be`; its tree `f699f2f0e956b5389ba6d6ce91e34fe9fb810350` matches final PR head `1eb45c6`. [Final CI 40092919457](https://github.com/CraigHutchinson/BikeLab/actions/runs/40092919457) passes 229 tests on each OS and the complete browser suite. Final calculation artifact `12560386398` (267,427 bytes; SHA-256 `c2b1e68f488b70cb54a86cd5c850f108c56f7b63c9194aec2421f039067085e7`) was downloaded and verified; every extracted report, record and capture matches the inspected implementation artifact byte-for-byte. Main CI/Pages run is `40095513298`; check its latest status before describing deployment as complete.
+
+The [current MTB system review](MTB_SYSTEM_REVIEW.md) audits main's connected mechanics, separate studies, supported claims and gaps to synthetic-data/game use. No dynamics or new measurements were added in this review. It corrects stale draft/next-D4 status in the entry documents. Next physics increment: reconcile finite saddle contact from `a6ac124` while preserving its failed refinement/equilibrium controls. Next independent execution increment: persistent stepping/continuation and bounded owned recording, retaining complete legacy records. Then receive qualified loaded references and bounded active sit/stand motion on the same bike. The review specifies exit gates, physical-reference limitations, 3D/material/failure requirements and game performance qualification.
+
+The review branch is `codex/joined-mtb-gap-review`, based on the exact merged tree. Publish using actual remote parent `3130c89` and a branch lease; this checkout retains synthetic local ancestry. Preserve `codex/rider-saddle-followup` unchanged until its selected work is reconciled. Read this section before historical checkpoints below.
+
 ## Calculation progress and optimization continuation, 2026-10-24
 
 PR25 is merged at `6123f1faffc28486ec248f945347db01b3b075c0`; both tested heads and all pose captures are received. [The receipt](TRAIL_CALCULATION_PROGRESS.md#reviewed-baseline-and-first-optimization-2026-10-24) records source/artifact hashes, exact scope and mobile findings, superseding the pending PR25 notes below.

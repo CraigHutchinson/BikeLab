@@ -8,6 +8,10 @@ A mountain-bike simulation sandbox aimed at the Gran Turismo of MTB: convincing 
 
 GitHub Pages serves the static files in dist/. Simulation and saved-file processing run in your browser; there is no application backend.
 
+The current connected experiment is **[Trail bike](https://craighutchinson.github.io/BikeLab/trail-bike.html)**: moving hardtail/full suspension, deformable wheel contact on smooth or faceted rigid ground, scheduled hub drive/brakes, and guided or passive articulated riders. It provides recorded playback, complete fresh-state replay and calculation progress through the same browser/headless mechanics. Run `node scripts/trail-bike.mjs [scenario-or-record.json]` for the headless path.
+
+The [current system review](docs/MTB_SYSTEM_REVIEW.md) separates these capabilities from the remaining work: finite saddle support, balanced/active rider motion, continuous execution, physical calibration, material terrain/damage, 3D handling and measured game performance. The independent pose preview is not a sit/stand controller, and layered-terrain data does not yet drive Trail bike forces. Generated trajectories remain uncalibrated experimental data.
+
 The Pages workflow runs the complete test suite on Windows and Linux with Node 24, plus Chromium interaction and browser/headless agreement checks. Successful main pushes publish the tested revision automatically. Pull requests run the tests without deploying; workflow_dispatch can redeploy main. Official actions are pinned to commit revisions. See [deployment notes](docs/DEPLOYMENT.md).
 
 ## Run the laboratory
