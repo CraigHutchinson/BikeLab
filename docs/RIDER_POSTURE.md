@@ -56,3 +56,5 @@ The pinned source conventions are [MuJoCo reference-pose kinematics](https://git
 The separate [passive joint-law prerequisite](RIDER_PASSIVE.md) now adds configurable springs/damping through `passiveRiderParts` and `--passive` inspection. The `riderParts`/`--native` construction path above retains its original zero-coefficient contract. Neither path integrates the rider or receives connected dynamics.
 
 The [named interface observer](RIDER_INTERFACES.md) now adds owned force/work/moment snapshots to native and passive inspection reports. It verifies instantaneous load routing; saddle and connected dynamics remain open.
+
+The Trail bike [pose study](RIDER_POSE_STUDY.md) compares illustrative standing/hovering/seating-intent geometries with unchanged default passive domains. It exports this construction specification and never modifies an applied trajectory. Geometric reachability, passive-domain admission and physical saddle support remain separate.
