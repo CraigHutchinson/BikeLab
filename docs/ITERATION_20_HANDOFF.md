@@ -1,5 +1,13 @@
 # Iteration 20 completeness review and session handoff
 
+## Separate rider/control rates, 2026-10-24
+
+PR27 is merged at `c5ded411422203185e3bf17ca623e840e10035e6`, tree `bcfda267d2bf8aac6b4a3596f4ef19b7f61ead1b`, identical to tested head `67f294d`. [Final CI 40115555006](https://github.com/CraigHutchinson/BikeLab/actions/runs/40115555006) passes 229 tests on each OS and the pinned-browser suite. Its rider ownership and whole-system review are now on main; no detachment or new physics was implemented by that documentation PR.
+
+The user's separate/lower-rate rider proposal is captured in [MULTIRATE_EXECUTION.md](MULTIRATE_EXECUTION.md). It distinguishes slow intent/targets, sampled feedback, actuator dynamics, fast coupled bodies/contact and observation. Initial experiments hold slow targets with fast feedback on the unchanged physics step; sampled effort is a separate control policy. Controller state must advance transactionally once per scheduled simulation tick, never once per native forward/diagnostic call. True rider-body subcycling remains a separate algorithm/coupling gate. The pinned native pipeline was read and GPT-6.1 Sol reviewed the design; no new rates, controllers, measurements or runtime changes are claimed.
+
+Continuation branch: `codex/rider-multirate-contract`, based on main `c5ded41`. Publish the exact local tree with that actual remote ancestry and a branch lease. Next implementation remains portable rider definition/bindings and persistent stepping, with finite saddle receiving in small increments; add bounded actuation/work before implementing the slower controller experiment. Preserve all mechanical/rollback guards and legacy records.
+
 ## Whole-system continuation, 2026-10-24
 
 PR26 is merged at `3130c89c7607da7729f9aa9b706aac88d4cbb7be`; its tree `f699f2f0e956b5389ba6d6ce91e34fe9fb810350` matches final PR head `1eb45c6`. [Final CI 40092919457](https://github.com/CraigHutchinson/BikeLab/actions/runs/40092919457) passes 229 tests on each OS and the complete browser suite. Final calculation artifact `12560386398` (267,427 bytes; SHA-256 `c2b1e68f488b70cb54a86cd5c850f108c56f7b63c9194aec2421f039067085e7`) was downloaded and verified; every extracted report, record and capture matches the inspected implementation artifact byte-for-byte. [Main CI/Pages run 40095513298](https://github.com/CraigHutchinson/BikeLab/actions/runs/40095513298) also passes both OS suites, browser, packaging and deployment.

@@ -26,6 +26,8 @@ These are candidates, not promises or selected algorithms. Their numerical formu
 
 Some tiers must change together. A finite soil model with a rigid tyre may not reproduce the patch of a deformable tyre; an impact model against a frozen coarse-rate frame can get impulse/work wrong. Define compatible model combinations and coupling groups, including stiffness, integration constraints and shared contact state. Frame/rider/controller changes alter loads feeding the tyre and soil; a collection of independently fitted components is not sufficient whole-system evidence.
 
+The [rider/control multirate contract](MULTIRATE_EXECUTION.md) applies this to the independent rider: slow intent/targets first, separately qualified sampled feedback/actuator dynamics, and initially fast coupled body/contact mechanics. True body subcycling needs supported response trajectories and impulse/work transfer; it is not implemented by decimating joint diagnostics or collision queries.
+
 ## Common physical contracts
 
 At each interface, declare frames, units, attachment/contact locations and velocities, applied forces/moments, constraints and reaction ownership. Record time intervals, force impulses, work, stored/dissipated energy and material transfers where applicable. Internal interactions need equal/opposite exchange, without duplicated normal support, grip, lever effects or damage loads.

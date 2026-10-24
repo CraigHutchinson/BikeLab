@@ -112,6 +112,8 @@ Declare target hardware, bike/contact/scenario envelopes, input/render deadlines
 
 Retain the [adaptive wheel design](ADAPTIVE_WHEEL.md): persistent rotating material coordinates own state; a hierarchy selects contact work, while flat/circular storage can hold it. A contact tree does not by itself improve the mechanics or conserve state. Profile first, verify fixed nonuniform models between runs, then consider live refinement/subcycling with conservative mass/momentum/energy/history transfer, predictive activation and hysteresis. Couple stiff tyre/frame/rider responses at compatible intervals; do not refine an impact against an arbitrarily frozen bike. Rendering, integration, contact resolution and model fidelity are separate rates/choices. Log decisions so offline and game execution can reproduce the same accepted transitions.
 
+The user's separate-rate rider proposal is captured in [MULTIRATE_EXECUTION.md](MULTIRATE_EXECUTION.md). Slower intent/target updates can feed fast coupled joint/contact dynamics; sampled feedback/held effort needs its own stability, delay and work checks. There is no active rider controller or qualified slower body integrator today. The receiving plan keeps one simulation clock, stages controller state once per scheduled tick, preserves it through rollback/continuation, and refines controller period independently from physics timestep and collision coverage.
+
 ## Recommended small increments and completion gates
 
 Two prerequisites can be designed independently, then integrated through one Trail bike consumer. Keep code changes small and avoid overlapping edits to the runner.
