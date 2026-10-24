@@ -26,7 +26,7 @@ The next small increment adds transient observation to Trail bike calculation, i
 
 Use bounded step cadence and worker publication throttling; do not allocate telemetry or read wall time on every native step. Keep native views out of callback scope. Cancellation, edits, restore, replacement calculations, page lifecycle and errors must clear busy state, and the existing revision guard must reject stale progress as well as stale results. Provide an accessible progress bar and readable mobile status. Verify exact observed/unobserved results, natural and post-command rollback counts, and actual browser intermediate progress/cancellation/error behavior before receiving the UI.
 
-At this first checkpoint only the native-view optimization and its local evidence are implemented. Progress UI, the full suite and browser receiving remain pending. Preserve all physical limits, component-failure, layered terrain, active-rider and 3D goals; no solver fidelity reduction is part of this pass.
+The first checkpoint implemented only the native-view optimization. The implementation and receiving results below supersede its pending progress/full-suite/browser status. Preserve all physical limits, component-failure, layered terrain, active-rider and 3D goals; no solver fidelity reduction is part of this pass.
 
 ## Progress implementation checkpoint
 
@@ -38,4 +38,27 @@ The page shows an accessible progress bar, percentage, simulated seconds and acc
 
 Five focused checks pass locally: unchanged complete observed/unobserved results for both rider modes on both bikes, bounded/monotonic counts through completion/termination/rejection, observer-failure recovery, actual native-memory growth, and progress on the existing injected post-command rollback control. GPT-6.1 Sol reviewed source and receiving tests without workloads. Its startup-failure and active-replacement/mobile-capture findings were addressed.
 
-Full `node --test` and the 20-case final parity matrix are in progress at this checkpoint. The browser gate now also covers actual intermediate progress, asserted active 390/320 px captures, deterministic cancellation and direct active replacement, stale callbacks, runtime/startup errors, completed/rejected/terminated counts and complete canonical records within the existing 1e-9 budget. Actual browser receiving and capture inspection remain pending; local loopback is unavailable in this environment. A separate `calculation-evidence` artifact preserves those captures and records without increasing the prior large archives. The initial optimizer-only timing receipt above must not be described as a measured UI/worker-transfer speedup.
+The browser gate also covers actual intermediate progress, asserted active 390/320 px captures, deterministic cancellation and direct active replacement, stale callbacks, runtime/startup errors, completed/rejected/terminated counts and complete canonical records within the existing 1e-9 budget. A separate `calculation-evidence` artifact preserves those captures and records without increasing the prior large archives. The initial optimizer-only timing receipt above must not be described as a measured UI/worker-transfer speedup.
+
+## Implementation received, 2026-10-24
+
+Implementation `84bfb5f4ed92173810f7c573cc9fb08c72e9ea54` passes [run 40074167350](https://github.com/CraigHutchinson/BikeLab/actions/runs/40074167350): **229 tests on each of Ubuntu and Windows**, plus the complete browser/headless suite. [The final evidence receipt](evidence/trail-calculation-progress.json) binds the source hashes, final parity and timing, hosted jobs, browser reports and inspected artifact files. It supersedes the earlier pending receiving status; subsequent documentation-only commits do not change the tested implementation.
+
+All **20 complete final records match the unchanged main baseline exactly**, including natural termination and fresh-state restart. Local `node --test` finished with 36 test files passing and ten CLI/server files failing under confirmed `spawnSync`/loopback `EPERM` restrictions; the hosted suites pass those paths without changes to the tests. Native-memory growth, progress observer recovery and rejected post-command endpoint controls pass.
+
+Pinned Chromium `141.0.7390.37` passes the actual-worker progress and lifecycle checks, with no captured page/console errors. All four additional progress cases have exact complete browser/Node records (the declared 1e-9 budget is unchanged): both bikes complete at 640/640 accepted steps, initial rejection stays at zero, and the natural model limit stops at 4,033/9,600 steps. Injected error/stale callbacks verify cleanup only, separately from those numerical comparisons.
+
+The downloaded `calculation-evidence` archive (`12552649732`, 267,427 bytes, SHA-256 `43f9bdffb5d72610ea0cf4a5ec98eb0b5c59619d2eec80a5f6097a9437532eac`) and full browser-report archive have verified hashes. All **ten progress-panel captures** were inspected. Desktop and 390/320 px active displays show percentage, simulated seconds and accepted steps; the 320 px text wraps inside the panel. Completed results show 100%, rejected setup shows zero, and the model-limit result retains 42%. Cancelled and failed calculations explicitly say no new run was kept. Browser assertions verify active state at capture, page width, busy cleanup and replacement; this is not screen-reader participant testing.
+
+Final serial timing uses the same protocol as the initial series, with **the progress observer disabled**:
+
+| 0.1 s case | Baseline median (ms) | Final median (ms) | Reduction |
+| --- | ---: | ---: | ---: |
+| Full guided | 3,128.43 | 2,503.72 | 19.97% |
+| Full articulated | 3,545.96 | 3,447.55 | 2.78% |
+| Hardtail guided | 2,700.35 | 2,359.02 | 12.64% |
+| Hardtail articulated | 3,078.54 | 2,639.07 | 14.28% |
+
+Every timed result retains its exact complete-record hash. Keep both series and every raw sample: the final full-articulated result is materially smaller than the earlier optimizer-only observation. These separate shared-host series do not isolate progress overhead or establish a stable percentage speedup. Getter conversion reduction is independently measured; browser transfer time, preparation/finalization latency, cold-start and tail latency remain unmeasured. A one-percent callback cadence bounds callback count, not wall-clock time between updates. This offline engine still requires seconds of computation for 0.1 simulated seconds and is not a qualified real-time game runner.
+
+The requested optimization/progress increment is received. Next physics work remains finite saddle support with separation/recontact and internal work ownership, followed by bounded active sit/stand control. A separate performance increment should measure target-device cold/warm calculation, recording/transfer costs and callback latency before choosing further native-view reuse, recording tiers or multirate/adaptive models. Keep all travel/ultimate guards and the existing component-failure, layered-terrain, sharp-impact and 3D acceptance gates.
