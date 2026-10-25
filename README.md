@@ -12,6 +12,8 @@ The current connected experiment is **[Trail bike](https://craighutchinson.githu
 
 The [current system review](docs/MTB_SYSTEM_REVIEW.md) separates these capabilities from the remaining work: an [independent rider reusable across bikes](docs/RIDER_OWNERSHIP.md), finite saddle support, balanced/active rider motion, continuous execution, physical calibration, material terrain/damage, 3D handling and measured game performance. Physical detachment and recontact have explicit planned gates. The independent pose preview is not a sit/stand controller, and layered-terrain data does not yet drive Trail bike forces. Generated trajectories remain uncalibrated experimental data.
 
+[Portable rider setups](docs/RIDER_SETUP.md) separate rider body properties and passive laws from bike fit. Compile the same definition for either bike with `scripts/rider-setup.mjs`, then use the expanded scenario in the existing Trail JSON editor or headless runner. This is reuse between runs; runtime detachment remains planned.
+
 The Pages workflow runs the complete test suite on Windows and Linux with Node 24, plus Chromium interaction and browser/headless agreement checks. Successful main pushes publish the tested revision automatically. Pull requests run the tests without deploying; workflow_dispatch can redeploy main. Official actions are pinned to commit revisions. See [deployment notes](docs/DEPLOYMENT.md).
 
 ## Run the laboratory
