@@ -35,6 +35,8 @@ Build the shared execution/data contract alongside the first connected trail run
 
 D12 must establish representative hardware budgets, worst-case physics cost, latency and fidelity error on the connected bike/rider scenarios before a real-time claim. More detailed impact/contact work may run on demand or at a separate rate only after activation, synchronization, state transfer and force/work consistency are verified. Offline high-detail runs serve as references for game tiers. D7/D8/D11 then add layered soil over roots/rock, shared ruts and mud history, and scanned/generated trail detail with provenance; D10 adds failure and pressure loss only with supported local loading and component criteria. These remain required capabilities, with order adjusted when they block the connected consumer.
 
+The [rider multirate follow-up](MULTIRATE_EXECUTION.md) separates slower intent/targets from feedback, actuator state, coupled body/contact integration and observation. First receive a deterministic slower control schedule on unchanged mechanics; partitioned rider-body integration requires additional coupling and conservation evidence. Collision/guard resolution cannot wait for the next posture update.
+
 ## Common acceptance rules
 
 - Shared headless/browser mechanics, deterministic records and explicit units/provenance.
