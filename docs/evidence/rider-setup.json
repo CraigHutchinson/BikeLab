@@ -13,7 +13,8 @@
     "scripts/rider-setup-browser-check.mjs": "1516eb3feadb6ab9a33a03c99825734e7e00ae285ceb9d22a51f7b5d9c770497",
     "test/rider-setup.test.mjs": "7079c7c9c2e3073786bd3ad150843e818f82bf20c0286c324b8174512bc74e75",
     "test/rider-setup-cli.test.mjs": "857adada477020040c1aa1b0333ccd0537974c5d5c71ac7d46ed9905848c3d73",
-    ".github/workflows/pages.yml": "968fdffb2f1a21d08b0361bc21725a131cc101d129e06b6686102b81dfd74068"
+    ".github/workflows/pages.yml": "968fdffb2f1a21d08b0361bc21725a131cc101d129e06b6686102b81dfd74068",
+    "server.mjs": "314e62361cb01233e29aed233ad17d1b7a2395a31c05fddef43b38e8f73a5159"
   },
   "local": {
     "focusedTests": {
@@ -63,5 +64,102 @@
       "serverSHA256": "314e62361cb01233e29aed233ad17d1b7a2395a31c05fddef43b38e8f73a5159"
     }
   },
-  "referenceRiderIdentity": "fa73050c2a1ab8de8a4c2d5b6a9c8e33d142764a7da23a73d74ef672855aeb40"
+  "referenceRiderIdentity": "fa73050c2a1ab8de8a4c2d5b6a9c8e33d142764a7da23a73d74ef672855aeb40",
+  "release": {
+    "head": "d480a06752d1b7a00ba0e93ad8c03be495408558",
+    "tree": "aa06b906979db42197253f40a473cd43d5aa8d0d",
+    "mergedMain": "a6e5cd8c2873af49f5000ed252f6a7ddc410cbba",
+    "runId": 40178152370,
+    "conclusion": "success",
+    "ubuntu": {
+      "job": 121123229935,
+      "pass": 234,
+      "fail": 0
+    },
+    "windows": {
+      "job": 121123229706,
+      "pass": 234,
+      "fail": 0
+    },
+    "browser": {
+      "job": 121123229863,
+      "conclusion": "success"
+    },
+    "artifact": {
+      "id": 12594216241,
+      "name": "rider-setup-evidence",
+      "bytes": 922531,
+      "sha256": "39de57a50efd8171a16cb61a3a53baac8ebe2e380b5bb0d4e13426569fea5d38"
+    },
+    "report": {
+      "cases": [
+        {
+          "bike": "full",
+          "fit": "reference",
+          "riderIdentity": "fa73050c2a1ab8de8a4c2d5b6a9c8e33d142764a7da23a73d74ef672855aeb40",
+          "worldIdentity": "69f5c0d91a1e3152a5b12cfd57759096abe81a9fa1ecfa5326f1bd10c20dda89",
+          "status": "completed",
+          "steps": 640,
+          "agreement": {
+            "tolerance": 1e-09,
+            "maxAbsolute": 0,
+            "maxNormalized": 0,
+            "exact": true
+          }
+        },
+        {
+          "bike": "full",
+          "fit": "changed",
+          "riderIdentity": "fa73050c2a1ab8de8a4c2d5b6a9c8e33d142764a7da23a73d74ef672855aeb40",
+          "worldIdentity": "6b6cab14cecda158db39f47d760018d98cd2579e0ecb06c9ae239ace0455dcdd",
+          "status": "completed",
+          "steps": 640,
+          "agreement": {
+            "tolerance": 1e-09,
+            "maxAbsolute": 0,
+            "maxNormalized": 0,
+            "exact": true
+          }
+        },
+        {
+          "bike": "hardtail",
+          "fit": "reference",
+          "riderIdentity": "fa73050c2a1ab8de8a4c2d5b6a9c8e33d142764a7da23a73d74ef672855aeb40",
+          "worldIdentity": "ffc4a3f7445c83438e03b77c0ff48780ee86ccb7c2dc1ef98d78f96cc8cda473",
+          "status": "completed",
+          "steps": 640,
+          "agreement": {
+            "tolerance": 1e-09,
+            "maxAbsolute": 0,
+            "maxNormalized": 0,
+            "exact": true
+          }
+        },
+        {
+          "bike": "hardtail",
+          "fit": "changed",
+          "riderIdentity": "fa73050c2a1ab8de8a4c2d5b6a9c8e33d142764a7da23a73d74ef672855aeb40",
+          "worldIdentity": "700f8fab7cdc67e4b5431cd3db174f2fdf61f2be93b1d3ee9d07297fd2550c5a",
+          "status": "completed",
+          "steps": 640,
+          "agreement": {
+            "tolerance": 1e-09,
+            "maxAbsolute": 0,
+            "maxNormalized": 0,
+            "exact": true
+          }
+        }
+      ],
+      "scope": "Setup-time reuse; unchanged Trail editor and runner. No detached actor or live transfer."
+    },
+    "visualInspection": {
+      "captures": [
+        "full-reference.png",
+        "full-changed.png",
+        "hardtail-reference.png",
+        "hardtail-changed.png"
+      ],
+      "finding": "All four actual canvas captures inspected. Both frame types, native rider segment chains, COM markers and authored hand/foot fit are visible without clipping. Changed fit alters pose while records retain identical rider definition/body/laws. Frame/site proxies remain illustrative; no manufacturer/anatomical accuracy or detachment claim."
+    }
+  }
 }
