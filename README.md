@@ -14,6 +14,8 @@ The [current system review](docs/MTB_SYSTEM_REVIEW.md) separates these capabilit
 
 [Portable rider setups](docs/RIDER_SETUP.md) separate rider body properties and passive laws from bike fit. Compile the same definition for either bike with `scripts/rider-setup.mjs`, then use the expanded scenario in the existing Trail JSON editor or headless runner. This is reuse between runs; runtime detachment remains planned.
 
+The [unbound rider probe](docs/RIDER_UNBOUND.md) adds a separate 0.02 s authored free-flight panel in Trail bike and `node scripts/rider-posture.mjs --unbound`. It displays the rider's own native skeleton/COM, signed conservation diagnostics and guarded accepted prefix. It has no bike, ground, live release or continuation; hosted browser receiving is pending for this increment.
+
 The Pages workflow runs the complete test suite on Windows and Linux with Node 24, plus Chromium interaction and browser/headless agreement checks. Successful main pushes publish the tested revision automatically. Pull requests run the tests without deploying; workflow_dispatch can redeploy main. Official actions are pinned to commit revisions. See [deployment notes](docs/DEPLOYMENT.md).
 
 ## Run the laboratory
