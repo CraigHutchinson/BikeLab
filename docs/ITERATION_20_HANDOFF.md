@@ -1,5 +1,13 @@
 # Iteration 20 completeness review and session handoff
 
+## Portable rider setup continuation, 2026-10-25
+
+PR28 is merged at `6813c81ef10c9f91eddceadfdc9b49a0ac134d62`, tree `e01bfba4c0f8448c2b237c2c83044f8c8fe31535`, matching tested head `ddc69b2`. [CI 40120534195](https://github.com/CraigHutchinson/BikeLab/actions/runs/40120534195) passed both OS jobs and browser checks. No runtime rate change was introduced.
+
+Continuation branch `codex/portable-rider-setup` implements the [portable rider setup compiler](RIDER_SETUP.md): complete body/law definition, explicit placement and frame-local bike mount, retained-interface policy, separate definition identity/authoring receipt, and a CLI feeding the existing visible JSON editor/headless runner. Four bike/fit combinations reuse the same definition without recentering absolute joint laws. Invalid reach, bend/domain, unsupported body/retention modes and cross-fit whole-state import remain rejected. Runtime detachment and independently owned actors are not implemented.
+
+Focused local checks pass (9 tests including the existing passive-law suite). Full-suite and hosted CLI/browser execution and actual artifact/capture inspection are pending at this checkpoint. Preserve the legacy scenario/record formats and the separately pushed saddle work. Publish using the actual main parent above and exact-tree verification; local history is synthetic.
+
 ## Separate rider/control rates, 2026-10-24
 
 PR27 is merged at `c5ded411422203185e3bf17ca623e840e10035e6`, tree `bcfda267d2bf8aac6b4a3596f4ef19b7f61ead1b`, identical to tested head `67f294d`. [Final CI 40115555006](https://github.com/CraigHutchinson/BikeLab/actions/runs/40115555006) passes 229 tests on each OS and the pinned-browser suite. Its rider ownership and whole-system review are now on main; no detachment or new physics was implemented by that documentation PR.

@@ -2,6 +2,8 @@
 
 User requirement, 2026-10-24: the rider model must be separate from the bike, able to detach and be reused between bikes. This is a required D5/shared-execution contract. It is a design for the next increments, not a claim that release or independent rider sessions are implemented.
 
+The first [portable setup compiler](RIDER_SETUP.md) separates reusable body/law definitions from chassis/sites, placement and retained-interface settings, then feeds the existing Trail runner. This receives setup-time reuse only; the runtime ownership and release gates below remain open.
+
 ## Current boundary and reusable work
 
 The posture/passive modules already separate much of the rider's segment geometry, mass/inertia and joint laws. Articulated mode also assigns chassis mass independently of rider mass. Preserve that work.

@@ -34,6 +34,24 @@ export const DEFAULTS = freeze({format: FORMAT, posture: initial.spec,
     minAngle: initial.joints[name] - .3, maxAngle: initial.joints[name] + .3
   }]))});
 
+// Absolute constitutive properties can be validated without choosing a bike or
+// posture. Geometry/domain compatibility is still checked by the compiler below.
+export function validatePassiveJoint(name, p) {
+  if (!JOINTS.includes(name)) throw Error('Unknown passive joint: ' + name);
+  object(p, FIELDS, name);
+  for (const field of FIELDS) if (!Object.hasOwn(p, field)) throw Error(`Incomplete ${name}: ${field}.`);
+  const law = {
+    restAngle: number(p.restAngle, -TAU, TAU, `${name}.restAngle`),
+    stiffness: number(p.stiffness, 0, 5000, `${name}.stiffness`),
+    damping: number(p.damping, 0, 500, `${name}.damping`),
+    minAngle: number(p.minAngle, -TAU, TAU, `${name}.minAngle`),
+    maxAngle: number(p.maxAngle, -TAU, TAU, `${name}.maxAngle`)
+  };
+  if (!(law.minAngle < law.maxAngle) || law.maxAngle - law.minAngle >= TAU) throw Error(`${name} needs an ordered domain narrower than 2π.`);
+  if (law.restAngle < law.minAngle || law.restAngle > law.maxAngle) throw Error(`${name} restAngle is outside its domain.`);
+  return Object.freeze(law);
+}
+
 export function compilePassiveRider(input = {}) {
   object(input, ['format', 'posture', 'joints'], 'passive rider');
   if (Object.hasOwn(input, 'format') && input.format !== FORMAT) throw Error('Unsupported passive rider format.');
@@ -44,18 +62,8 @@ export function compilePassiveRider(input = {}) {
   const joints = {}, laws = [];
   for (let i = 0; i < JOINTS.length; i++) {
     const name = JOINTS[i], p = Object.hasOwn(supplied, name) ? supplied[name] : DEFAULTS.joints[name];
-    object(p, FIELDS, name);
-    for (const field of FIELDS) if (!Object.hasOwn(p, field)) throw Error(`Incomplete ${name}: ${field}.`);
-    const law = {
-      restAngle: number(p.restAngle, -TAU, TAU, `${name}.restAngle`),
-      stiffness: number(p.stiffness, 0, 5000, `${name}.stiffness`),
-      damping: number(p.damping, 0, 500, `${name}.damping`),
-      minAngle: number(p.minAngle, -TAU, TAU, `${name}.minAngle`),
-      maxAngle: number(p.maxAngle, -TAU, TAU, `${name}.maxAngle`)
-    };
+    const law = validatePassiveJoint(name, p);
     const angle0 = posture.joints[name];
-    if (!(law.minAngle < law.maxAngle) || law.maxAngle - law.minAngle >= TAU) throw Error(`${name} needs an ordered domain narrower than 2π.`);
-    if (law.restAngle < law.minAngle || law.restAngle > law.maxAngle) throw Error(`${name} restAngle is outside its domain.`);
     if (angle0 < law.minAngle || angle0 > law.maxAngle) throw Error(`${name} initial angle is outside its domain; supply an explicit law for this posture.`);
     // Keep the entire domain on the initialized nonsingular bend branch. An
     // endpoint-only sine check could admit a jump across a forbidden band.

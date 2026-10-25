@@ -1,4 +1,5 @@
 import {checkRiderPoses} from './rider-pose-browser-check.mjs';
+import {checkRiderSetup} from './rider-setup-browser-check.mjs';
 import {checkTrailProgress} from './trail-progress-browser-check.mjs';
 import {checkTrailBike} from './trail-bike-browser-check.mjs';
 import {checkTrailState} from './trail-state-browser-check.mjs';
@@ -334,6 +335,7 @@ try {
   await checkTrailState({page,root,dir,report});
   await checkTrailSection({page,root,dir,report});
   await checkRiderPoses({page,root,dir,report});
+  await checkRiderSetup({page,root,dir,report});
   await checkTrailProgress({page,root,dir,report});
 
   // Pixel availability is separate from human inspection of captured images.

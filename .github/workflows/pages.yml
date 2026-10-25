@@ -55,6 +55,7 @@ jobs:
             !artifacts/browser/footprint/**
             !artifacts/browser/trail-bike/**
             !artifacts/browser/rider-poses/**
+            !artifacts/browser/rider-setup/**
             !artifacts/browser/calculation/**
           if-no-files-found: error
           retention-days: 14
@@ -83,6 +84,15 @@ jobs:
         with:
           name: calculation-evidence
           path: artifacts/browser/calculation
+          if-no-files-found: warn
+          retention-days: 14
+
+      - name: Preserve portable rider setup evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: rider-setup-evidence
+          path: artifacts/browser/rider-setup
           if-no-files-found: warn
           retention-days: 14
 
