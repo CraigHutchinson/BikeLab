@@ -49,12 +49,19 @@
   },
   "hosted": {
     "runId": 40177597008,
-    "statusAtCheckpoint": "in_progress",
+    "statusAtCheckpoint": "OS jobs completed: 233 pass, 1 fail each; browser still running",
     "ubuntuJob": 121121555833,
     "windowsJob": 121121556093,
     "browserJob": 121121556062,
     "artifactName": "rider-setup-evidence",
-    "visualInspection": "pending"
+    "visualInspection": "pending",
+    "failure": {
+      "test": "loopback server serves only assets and survives malformed requests",
+      "cause": "The new dist/rider-setup.js was omitted from server.mjs allowlist; actual HTTP GET returned 404. All other 233 tests pass on each OS, including portable CLI and physics checks.",
+      "fix": "Add rider-setup.js to the explicit asset list; do not broaden private-file access.",
+      "localCheck": "Actual server request handler serves all top-level dist assets without opening a socket; new module bytes/MIME/HEAD and AGENTS.md rejection checked. Hosted socket/browser receiving still required.",
+      "serverSHA256": "314e62361cb01233e29aed233ad17d1b7a2395a31c05fddef43b38e8f73a5159"
+    }
   },
   "referenceRiderIdentity": "fa73050c2a1ab8de8a4c2d5b6a9c8e33d142764a7da23a73d74ef672855aeb40"
 }
