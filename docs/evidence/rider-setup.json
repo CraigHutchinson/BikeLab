@@ -1,0 +1,60 @@
+{
+  "date": "2026-10-25",
+  "baselineMain": "6813c81ef10c9f91eddceadfdc9b49a0ac134d62",
+  "implementationHead": "81ca7a325c48667f8a8d7eae68132b8bb954e6fd",
+  "implementationTree": "af18ed097a12519b66712f18f081eb5853c69c54",
+  "scope": "Between-run rider definition reuse, compiling to existing retained-pair Trail scenarios; no detached actor, live transfer or rate change.",
+  "sourceSHA256": {
+    "dist/rider-setup.js": "c082e3feea19448352aa3b0bb70e9ee98a6d5c33f87f1be8c25f4309080ff43e",
+    "dist/rider-passive.js": "cfb4e41a6f8463787db3ab3efc4af877bcbcc7b37be4e36683b340138a9e9fda",
+    "dist/trail-bike.js": "f260b742372538303adbd9fa8fae961765f47c937eff29ea591d1a54ab534ab4",
+    "dist/rider-native.js": "2b532e4db120253c5ecd07b2e4e687d597ab493375dbd89d1d7c3b804972855f",
+    "scripts/rider-setup.mjs": "c6d4c3718809518bae4f9a3abffdb65282333d4d55db685395e3c58e69c18007",
+    "scripts/rider-setup-browser-check.mjs": "1516eb3feadb6ab9a33a03c99825734e7e00ae285ceb9d22a51f7b5d9c770497",
+    "test/rider-setup.test.mjs": "7079c7c9c2e3073786bd3ad150843e818f82bf20c0286c324b8174512bc74e75",
+    "test/rider-setup-cli.test.mjs": "857adada477020040c1aa1b0333ccd0537974c5d5c71ac7d46ed9905848c3d73",
+    ".github/workflows/pages.yml": "968fdffb2f1a21d08b0361bc21725a131cc101d129e06b6686102b81dfd74068"
+  },
+  "local": {
+    "focusedTests": {
+      "pass": 9,
+      "fail": 0
+    },
+    "fullSuiteTestFiles": {
+      "pass": 37,
+      "fail": 11,
+      "limitation": "This workspace blocks spawnSync and local server listening (EPERM). Ten failing CLI/server files were already blocked on the baseline; the added rider-setup CLI subprocess test is blocked the same way. Hosted results are required.",
+      "blockedFiles": [
+        "cli",
+        "footprint-cli",
+        "moving-wheel-cli",
+        "rider-cli",
+        "rider-setup-cli",
+        "server",
+        "solver-cli",
+        "suspension-records",
+        "suspension-reference",
+        "terrain-cli",
+        "wheel-limits-cli"
+      ]
+    },
+    "directCLI": "Example, scenario compilation and receipt commands ran successfully; receipt scenario matches standalone scenario. This does not replace hosted subprocess/error controls.",
+    "legacyLawParity": {
+      "cases": 8,
+      "result": "Compiled posture/spec/law values exactly match the pre-refactor source for both bikes, two fits and 35/70 kg riders."
+    },
+    "markdownTargets": 111,
+    "definitionIndependentOfFit": "Short-arm definition passes definition validation; unreachable bike fit is rejected.",
+    "review": "GPT-6.1 Sol found no ordinary-JSON blocker. Non-enumerable/accessor placement fields are now explicitly rejected and tested."
+  },
+  "hosted": {
+    "runId": 40177597008,
+    "statusAtCheckpoint": "in_progress",
+    "ubuntuJob": 121121555833,
+    "windowsJob": 121121556093,
+    "browserJob": 121121556062,
+    "artifactName": "rider-setup-evidence",
+    "visualInspection": "pending"
+  },
+  "referenceRiderIdentity": "fa73050c2a1ab8de8a4c2d5b6a9c8e33d142764a7da23a73d74ef672855aeb40"
+}
