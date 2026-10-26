@@ -39,6 +39,8 @@ Names here describe responsibilities, not an accepted new JSON schema or plugin 
 
 Rider intent/targets may use a separate lower update rate while coupled bodies and contact still advance at the admitted physics step. [The multirate contract](MULTIRATE_EXECUTION.md) distinguishes planning, feedback, actuator dynamics, mechanical integration and observation; it defines deterministic clocks, work and rollback requirements. Independent ownership is compatible with shared fast dynamics and does not authorize freezing the attached rider during impacts.
 
+The [active stability contract](RIDER_ACTIVE_STABILITY.md) requires sustained posture holding, physical COM transfer and recovery across consecutive bumps. Its passive baseline fails within 0.13 s; the next active hold can use the attached model while retaining reusable controller ownership. Posture holding, all-coordinate stationarity, perturbation stability and dynamic absorption are separate receiving claims.
+
 The first native representation should admit rider motion without relying on a bike's transform or lifetime. Separate world-level actor roots are a suitable construction to evaluate; any backend representation must satisfy the same independent world-state, disposal and conservation tests. Keep full world frames/inertia semantics so planar actors can later extend to 3D. No silent conversion of frame-relative scalar coordinates into world coordinates or quaternion state is allowed.
 
 ## Reuse and attachment behavior

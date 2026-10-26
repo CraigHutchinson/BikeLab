@@ -2491,8 +2491,31 @@
   },
   "review": "GPT-6.1 Sol found no blocking source issue. Added explicit absence checks for every rider joint and fit/attachment sites. Construction-only sibling test does not claim reciprocal dynamic independence.",
   "hosted": {
-    "status": "pending",
-    "capturesInspectedForThisExtraction": false
+    "status": "in_progress",
+    "capturesInspectedForThisExtraction": false,
+    "runId": 40340889347,
+    "head": "4f709c5c3fc8953f561940ef90f7b53687a3868e",
+    "jobs": [
+      {
+        "id": 121634962555,
+        "name": "Test (windows-latest)",
+        "passed": 249,
+        "failed": 0
+      },
+      {
+        "id": 121634962581,
+        "name": "Test (ubuntu-latest)",
+        "passed": 249,
+        "failed": 0
+      },
+      {
+        "id": 121634961956,
+        "name": "Browser and headless agreement",
+        "status": "in_progress"
+      }
+    ]
   },
-  "scope": "Internal explicit chassis extraction consumed by unchanged rig/Trail browser and headless paths. Preserves legacy XML and complete records. No shared riding mode, actor lifecycle, release/recontact, physical calibration or new performance qualification."
+  "scope": "Internal explicit chassis extraction consumed by unchanged rig/Trail browser and headless paths. Preserves legacy XML and complete records. No shared riding mode, actor lifecycle, release/recontact, physical calibration or new performance qualification.",
+  "implementationHead": "4f709c5c3fc8953f561940ef90f7b53687a3868e",
+  "implementationTree": "9957997735625146f8ab441fb7a2e988d415b668"
 }
