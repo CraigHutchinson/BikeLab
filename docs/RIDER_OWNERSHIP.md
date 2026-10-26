@@ -43,6 +43,8 @@ The [active stability contract](RIDER_ACTIVE_STABILITY.md) requires sustained po
 
 The first native representation should admit rider motion without relying on a bike's transform or lifetime. Separate world-level actor roots are a suitable construction to evaluate; any backend representation must satisfy the same independent world-state, disposal and conservation tests. Keep full world frames/inertia semantics so planar actors can later extend to 3D. No silent conversion of frame-relative scalar coordinates into world coordinates or quaternion state is allowed.
 
+The [active drive](RIDER_DRIVE.md) owns reusable joint targets/gains/effort limits separately from bike configuration. Its four internal hinges share the coupled mechanics, with explicit work and rollback. The [control architecture](RIDER_CONTROL_ARCHITECTURE.md) places runtime IK and inverse dynamics above that force boundary; targets never teleport an actor or create a missing support.
+
 ## Reuse and attachment behavior
 
 **Reuse between scenarios:** select the same immutable rider definition for a hardtail and a full-suspension bike, including bikes with different fit geometry. Bike-specific setup solves or authors a reachable initial posture from the bike's sites. It must preserve body lengths/mass/inertia and law identity, and report incompatible reach/bend/domain/collision conditions instead of stretching the rider. Repeated instantiation creates independent mutable state; one rider's motion cannot alter another instance or the shared definition.
