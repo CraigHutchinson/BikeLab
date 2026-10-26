@@ -62,4 +62,6 @@ The browser receiver exercises seven actual worker launches, whole-record browse
 
 ## Next integration gate
 
+The [observer extraction](RIDER_UNBOUND_OBSERVER.md) is the first implementation prerequisite: reusable rider-only observations with explicit native bindings, while this finite runner retains all world admission, accounting and lifetime responsibilities. Its separate receipt preserves before/after parity and does not claim a shared bike mode.
+
 The [ownership contract](RIDER_OWNERSHIP.md) remains open: stable actor identity/lifetime, an unbound rider alongside a bike in one shared world, moving-bike independence with interfaces disabled, and a supported physical state conversion. Then receive explicit release/recontact with equal/opposite loads, work and persistence. This finite probe cannot be resumed, attached to a bike or used as an anatomical fall controller. Finite saddle receiving, continuous sessions, bounded active posture and the [multirate contract](MULTIRATE_EXECUTION.md) remain part of the joined MTB goal. Lateral/turning dynamics, independent limbs, collisions, material terrain, strength and pressure loss retain their separate gates.

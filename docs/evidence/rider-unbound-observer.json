@@ -1,0 +1,150 @@
+{
+  "format": "bikelab-rider-unbound-observer-review-0.1",
+  "date": "2026-10-26",
+  "baselineHead": "c869793d3c6a185ec17ce1608c608fd5389e098d",
+  "mergedMain": "70f7f1ad100b7d1ad3ec370a8ddbf404187805d9",
+  "baselineTree": "7b0bf1ab176b5a5c8e6bbdfa58d829cff0e35df8",
+  "sourcesSha256": {
+    "dist/rider-unbound.js": "109c560dd30baf86c716a00f851e04d1cdd83092e31686f177c1c0ed176d1533",
+    "dist/rider-unbound-observer.js": "de6d1b92c6f6ae0a17704424c90473e7229beea7b7503d8451ac91ea3751495d",
+    "server.mjs": "d65b1e981f3bd6f46023608eca0f72f9d95f54cd1da0e93a12de4052d66ff228",
+    "test/rider-unbound.test.mjs": "6067f4e3d7d9b7d632cdc8f35d060b344e09e5623cda91a788ea3990c4ddeb59",
+    "test/rider-unbound-observer.test.mjs": "85f0bbbbe7c3979126ce50d0360eb3fb1bbcefc37c491b7886342355c9282379"
+  },
+  "local": {
+    "focusedCommand": "node --test --test-isolation=none test/rider-unbound.test.mjs test/rider-unbound-observer.test.mjs",
+    "passed": 8,
+    "failed": 0,
+    "focusedLogSha256": "db609b112c0e7ca2873a692a10e88e33148300ae62a8ddb272dd3dd66e2dbc8c",
+    "recordParity": [
+      {
+        "name": "translation",
+        "dt": 3.125e-05,
+        "status": "completed",
+        "steps": 640,
+        "sha256": "360f60fb3224046c7278b1fb3dd42b9596a7e4e9027ff23315de75a4c88d7e65",
+        "byteIdentical": true
+      },
+      {
+        "name": "translation",
+        "dt": 1.5625e-05,
+        "status": "completed",
+        "steps": 1280,
+        "sha256": "10a9aaadfa50109be2b05c1e5a5b5f747a87e83ee950c8b71814ec0d5adc150c",
+        "byteIdentical": true
+      },
+      {
+        "name": "translation",
+        "dt": 7.8125e-06,
+        "status": "completed",
+        "steps": 2560,
+        "sha256": "ede473de5ae507cfca7ca8d96842e85d84f6b46e5c8d1bc40d11c960a1dd149e",
+        "byteIdentical": true
+      },
+      {
+        "name": "spin",
+        "dt": 3.125e-05,
+        "status": "completed",
+        "steps": 640,
+        "sha256": "70f393499d587a403ef1602a1544a88fb8dd13d6d8aec40b36c329ee0795d376",
+        "byteIdentical": true
+      },
+      {
+        "name": "spin",
+        "dt": 1.5625e-05,
+        "status": "completed",
+        "steps": 1280,
+        "sha256": "348ffefd44b6675c92db886915233ed3a02d2637f20412b35b59ad38fcb55360",
+        "byteIdentical": true
+      },
+      {
+        "name": "spin",
+        "dt": 7.8125e-06,
+        "status": "completed",
+        "steps": 2560,
+        "sha256": "8fb2122eb6e3ef7f895cd4d71f2f69403b12d3026b3be2c03d626972ca66a1d1",
+        "byteIdentical": true
+      },
+      {
+        "name": "zero-gravity",
+        "dt": 3.125e-05,
+        "status": "completed",
+        "steps": 640,
+        "sha256": "66d7e47b4a049dbd9dadb2f8ad476e198a35f6218fe8b899f9a68460e431d36e",
+        "byteIdentical": true
+      },
+      {
+        "name": "zero-gravity",
+        "dt": 1.5625e-05,
+        "status": "completed",
+        "steps": 1280,
+        "sha256": "c02abd89e8b44f7ea6fb9f8a96e234c5999ec4f3367f551019d0d451260cc97a",
+        "byteIdentical": true
+      },
+      {
+        "name": "zero-gravity",
+        "dt": 7.8125e-06,
+        "status": "completed",
+        "steps": 2560,
+        "sha256": "2b4fc5b889fadea1be1f102dcc5628a595180569d25a1f1a3f29676bc90be2f7",
+        "byteIdentical": true
+      },
+      {
+        "name": "joint-limit",
+        "dt": 3.125e-05,
+        "status": "terminated",
+        "steps": 33,
+        "sha256": "7f7d7416f6b4e38c7106ac6e7f3c540762cfaa62055500f74f3e8a10515ea461",
+        "byteIdentical": true
+      },
+      {
+        "name": "joint-limit",
+        "dt": 1.5625e-05,
+        "status": "terminated",
+        "steps": 67,
+        "sha256": "de2275d2854d65e5c23b9099d01b2dd9a46f39bcbe212e702027d15083fe0bc6",
+        "byteIdentical": true
+      },
+      {
+        "name": "joint-limit",
+        "dt": 7.8125e-06,
+        "status": "terminated",
+        "steps": 135,
+        "sha256": "c3ff4b5338d5d512882aeffefe9d61b6689976042d8229ed247b0099ae4eb165",
+        "byteIdentical": true
+      },
+      {
+        "name": "initial-rejection",
+        "dt": 3.125e-05,
+        "status": "initial-state-rejected",
+        "steps": 0,
+        "sha256": "8fe34d97fb9f28d4e9f88d7c4edc05568aa4b0ae0f442e9039ad532ac16924b7",
+        "byteIdentical": true
+      },
+      {
+        "name": "initial-rejection",
+        "dt": 1.5625e-05,
+        "status": "initial-state-rejected",
+        "steps": 0,
+        "sha256": "5ea4cf27749591ed90f0c8a0376e901d5387d9e51c0924dc5db84e85f22172e9",
+        "byteIdentical": true
+      },
+      {
+        "name": "initial-rejection",
+        "dt": 7.8125e-06,
+        "status": "initial-state-rejected",
+        "steps": 0,
+        "sha256": "37d8e7ee26e2d9289f5f60ef93fb37d8759a1e95b4d57491e119b46366bb5f55",
+        "byteIdentical": true
+      }
+    ],
+    "directPreviewHandlerAssets": 66,
+    "fullSuiteStatus": "running; subprocess/listen EPERM remains an environment limitation"
+  },
+  "review": "GPT-6.1 Sol source review found no blocking resource/view/compatibility issue. Added root-joint order validation after review; arbitrary native-tree semantic qualification remains out of scope.",
+  "hosted": {
+    "status": "pending",
+    "capturesInspectedForThisRefactor": false
+  },
+  "scope": "Observer extraction consumed by unchanged finite unbound CLI/panel. Actor-scoped kinematic/damping observations only; no world forward/step/energy/reset/disposal, shared bike mode, runtime actor lifetime, release/recontact or new performance claim."
+}

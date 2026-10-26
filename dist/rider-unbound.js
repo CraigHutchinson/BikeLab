@@ -1,7 +1,7 @@
 // A finite planar free-flight probe. No bike, terrain, release or continuation.
 import {passiveRiderParts, RIDER_JOINTS} from './rider-native.js';
-import {DEFAULTS as PASSIVE, compilePassiveRider, passiveStateIssue} from './rider-passive.js';
-import {SEGMENTS} from './rider-posture.js';
+import {DEFAULTS as PASSIVE, compilePassiveRider} from './rider-passive.js';
+import {createUnboundRiderObservation, createUnboundRiderObserver} from './rider-unbound-observer.js';
 import {getRuntime} from './moving-wheel.js';
 import {NATIVE_BUILD} from './trail-initial-state.js';
 
@@ -46,10 +46,10 @@ export function unboundExample(name = 'spin') {
 }
 
 function storage() {
-  const v = () => new Float64Array(3);
-  return {time: 0, q: new Float64Array(7), v: new Float64Array(7), com: v(), momentum: v(), angularMomentumCOM: v(),
-    segments: SEGMENTS.map(name => ({name, proximal: v(), distal: v(), com: v(), velocity: new Float64Array(6)})),
-    energy: 0, lossPower: 0, dampingLoss: 0, energyResidual: 0, comResidual: v(), momentumResidual: v(), angularMomentumResidual: v()};
+  const f = createUnboundRiderObservation(), v = () => new Float64Array(3);
+  // Preserve the existing record property order as well as its values.
+  return {time: f.time, q: f.q, v: f.v, com: f.com, momentum: f.momentum, angularMomentumCOM: f.angularMomentumCOM,
+    segments: f.segments, energy: 0, lossPower: f.lossPower, dampingLoss: 0, energyResidual: 0, comResidual: v(), momentumResidual: v(), angularMomentumResidual: v()};
 }
 function copyFrame(a, b) {
   for (const k of ['time', 'energy', 'lossPower', 'dampingLoss', 'energyResidual']) b[k] = a[k];
@@ -73,19 +73,10 @@ export async function runUnbound(input = {}, onProgress) {
   try {
     model = mj.MjModel.from_xml_string(xml);data = new mj.MjData(model);velocityBuffer = new mj.DoubleBuffer(6);
     if (model.nq !== 7 || model.nv !== 7 || model.njnt !== 7 || model.nbody !== 6 || model.neq || model.ngeom || model.nflex || model.na || model.nu || model.nmocap || model.nplugin) throw Error('Unsupported unbound native topology.');
-    const id = (kind, name) => {const n = mj.mj_name2id(model, mj.mjtObj[kind].value, name);if (n < 0) throw Error('Missing unbound native object: ' + name);return n;};
-    const joints = RIDER_JOINTS.map((name, i) => {
-      const j = id('mjOBJ_JOINT', name), expected = i < 2 ? mj.mjtJoint.mjJNT_SLIDE.value : mj.mjtJoint.mjJNT_HINGE.value;
-      if (model.jnt_type[j] !== expected) throw Error('Unsupported unbound joint type.');
-      return {q: model.jnt_qposadr[j], v: model.jnt_dofadr[j]};
-    });
-    const bodies = SEGMENTS.map(name => ({name, id: id('mjOBJ_BODY', 'rider_' + name), end: id('mjOBJ_SITE', 'rider_' + name + '_end')}));
-    if (model.body_parentid[bodies[0].id] !== 0) throw Error('Unbound rider must be world-rooted.');
-    const mass = bodies.reduce((sum, b) => sum + model.body_mass[b.id], 0);
-    if (Math.abs(mass - spec.passive.posture.riderMass) > 1e-10) throw Error('Unbound rider mass mismatch.');
+    const observer = createUnboundRiderObserver(mj, model, data, {passive: parts.passive, velocityBuffer});
+    const {joints, bodies, mass} = observer;
     for (let i = 0; i < 7; i++) {data.qpos[joints[i].q] = spec.q[i];data.qvel[joints[i].v] = spec.v[i];}
     const current = storage(), initial = storage(), frames = Array.from({length: 6}, storage);
-    const limbQ = current.q.subarray(3), limbV = current.v.subarray(3);
     const oldQ = new Float64Array(7), oldV = new Float64Array(7), oldWarm = new Float64Array(7);
     let count = 0, acceptedSteps = 0, loss = 0, termination = null;
     const summary = {steps: 0, maxCOMResidual: 0, maxMomentumResidual: 0, maxAngularMomentumResidual: 0, maxEnergyResidual: 0};
@@ -93,47 +84,11 @@ export async function runUnbound(input = {}, onProgress) {
       mj.mj_forward(model, data);mj.mj_energyPos(model, data);mj.mj_energyVel(model, data);
       if (data.ncon || data.nefc) return 'unsupported-unbound-contact-or-constraint';
       if (!data.qfrc_applied.every(x => x === 0) || !data.xfrc_applied.every(x => x === 0)) return 'unsupported-unbound-applied-force';
-      if (!Number.isFinite(data.time)) return 'nonfinite-state';
-      const q = data.qpos, v = data.qvel, a = data.qacc;
-      for (let i = 0; i < 7; i++) {
-        current.q[i] = q[joints[i].q];current.v[i] = v[joints[i].v];
-        if (!Number.isFinite(current.q[i]) || !Number.isFinite(current.v[i]) || !Number.isFinite(a[joints[i].v])) return 'nonfinite-state';
-        if (Math.abs(current.q[i]) > 10 || Math.abs(current.v[i]) > 10) return 'unbound-coordinate-or-rate-limit';
-      }
-      if (Math.abs(current.q[2]) > Math.PI) return 'unbound-pitch-deviation-limit';
-      const issue = passiveStateIssue(parts.passive, limbQ, limbV);if (issue) return issue;
-      const root = 3 * bodies[0].id;
-      if (Math.abs(data.xpos[root]) > 10 || Math.abs(data.xpos[root + 2]) > 10) return 'unbound-world-hip-limit';
-      current.time = data.time;current.energy = data.energy[0] + data.energy[1];current.lossPower = 0;
-      for (let i = 0; i < 4; i++) current.lossPower += parts.passive.laws[i].damping * limbV[i] ** 2;
-      if (!Number.isFinite(current.energy) || !Number.isFinite(current.lossPower)) return 'nonfinite-energy';
-      current.com.fill(0);current.momentum.fill(0);current.angularMomentumCOM.fill(0);
-      for (let i = 0; i < bodies.length; i++) {
-        const b = bodies[i], f = current.segments[i];
-        mj.mj_objectVelocity(model, data, mj.mjtObj.mjOBJ_BODY.value, b.id, velocityBuffer, 0);
-        f.velocity.set(velocityBuffer.GetView());
-        // These views expire before the next native call.
-        const positions = data.xpos, sites = data.site_xpos, centers = data.xipos, R = data.ximat, I = model.body_inertia, m = model.body_mass[b.id];
-        for (let k = 0; k < 3; k++) {
-          f.proximal[k] = positions[3 * b.id + k];f.distal[k] = sites[3 * b.end + k];f.com[k] = centers[3 * b.id + k];
-          if (!Number.isFinite(f.proximal[k]) || !Number.isFinite(f.distal[k]) || !Number.isFinite(f.com[k]) || !Number.isFinite(f.velocity[k]) || !Number.isFinite(f.velocity[k + 3])) return 'nonfinite-observation';
-          current.com[k] += m * f.com[k] / mass;current.momentum[k] += m * f.velocity[k + 3];
-        }
-        if (Math.abs(f.com[1]) > 1e-10 || Math.abs(f.velocity[0]) > 1e-10 || Math.abs(f.velocity[2]) > 1e-10 || Math.abs(f.velocity[4]) > 1e-10) return 'unbound-planarity-limit';
-        // World I*omega, independent of native principal-axis permutation.
-        for (let k = 0; k < 3; k++) {
-          let w = 0;for (let axis = 0; axis < 3; axis++) w += R[9 * b.id + 3 * axis + k] * f.velocity[axis];
-          for (let axis = 0; axis < 3; axis++) current.angularMomentumCOM[axis] += R[9 * b.id + 3 * axis + k] * I[3 * b.id + k] * w;
-        }
-      }
-      for (let i = 0; i < bodies.length; i++) {
-        const f = current.segments[i], m = model.body_mass[bodies[i].id];
-        for (let axis = 0; axis < 3; axis++) {
-          const j = (axis + 1) % 3, k = (axis + 2) % 3;
-          current.angularMomentumCOM[axis] += m * ((f.com[j] - current.com[j]) * (f.velocity[k + 3] - current.momentum[k] / mass) - (f.com[k] - current.com[k]) * (f.velocity[j + 3] - current.momentum[j] / mass));
-        }
-      }
-      return null;
+      const issue = observer.observe(current);if (issue) return issue;
+      // This probe admits only rider bodies. In a shared world this native
+      // energy would include the bike and must not be labelled rider energy.
+      current.energy = data.energy[0] + data.energy[1];
+      return Number.isFinite(current.energy) ? null : 'nonfinite-energy';
     }
     function residuals(candidateLoss) {
       current.dampingLoss = candidateLoss;current.energyResidual = current.energy - initial.energy + candidateLoss;
