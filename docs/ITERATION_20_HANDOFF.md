@@ -1,5 +1,15 @@
 # Iteration 20 completeness review and session handoff
 
+## Rider-scoped observer continuation, 2026-10-26
+
+PR31's final [CI 40289193120](https://github.com/CraigHutchinson/BikeLab/actions/runs/40289193120) passes both OS jobs and the browser suite. PR31 is merged as `70f7f1ad100b7d1ad3ec370a8ddbf404187805d9`, tree `7b0bf1ab176b5a5c8e6bbdfa58d829cff0e35df8`, exactly matching the received final PR tree. Main deployment is not inferred from PR checks.
+
+Branch `codex/unbound-rider-observer` makes the next bounded extraction: the [rider observer](RIDER_UNBOUND_OBSERVER.md) borrows native resources, resolves explicit body/joint/site bindings and reads only that rider's geometry/state/momentum/damping. It never advances, resets or disposes the world or claims world energy as rider energy. Existing finite probe/CLI/panel formats, admission, rollback and accounting stay unchanged. Fifteen complete records remain byte-identical locally and eight focused tests pass; GPT-6.1 Sol reviewed ownership/view/compatibility details. A swapped-root-slide binding is now rejected. [The receipt](evidence/rider-unbound-observer.json) binds the controls and source hashes. Full local suite: 39 passing files and the same eleven subprocess/loopback paths blocked by established EPERM restrictions. Direct CLI preserves the baseline record and all 66 preview assets pass direct handler checks.
+
+[PR32](https://github.com/CraigHutchinson/BikeLab/pull/32) is pushed as draft at implementation `5265eadf71b54d660cff6305567b5cefe7314dcd`, exact tree `84a12a7b713f62ca6c74dcbd4286f792625c72c7`. Hosted [run 40293390186](https://github.com/CraigHutchinson/BikeLab/actions/runs/40293390186) is in progress. Receive its OS/browser results and verify the unchanged unbound consumer before merging; existing PR31 captures alone do not receive this refactor. Later receipt-only commits keep source hashes unchanged.
+
+This is a prerequisite, not a shared bike/rider mode or persistent actor. Next separate chassis inertial construction from rider insertion, then receive the finite shared-world Trail mode with both bike types, reciprocal independence, correct gravity/energy ownership and coupled rollback. Preserve the separate saddle branch, failed equilibrium/refinement controls and all legacy attached record meanings. Publish exact trees with actual main parent `70f7f1a` and a branch lease; local ancestry remains synthetic.
+
 ## Bounded unbound probe received, 2026-10-26
 
 PR30 is merged as `48c411d4546fc1f556061eb62a4baeff588d6abc`, tree `4c385471c3fae04446cefda6dac8ae2607f05982`; CI `40206405344` passed. The remote main was checked again before this implementation and is unchanged. Branch `codex/rider-unbound-probe` adds the [0.02 s authored rider-only probe](RIDER_UNBOUND.md), strict canonical input, owned native snapshots, signed momentum/energy accounting, per-step mechanical/time guards and transactional rollback, plus existing rider CLI `--unbound` and an independent Trail worker/panel with progress/cancel/save. It leaves attached mechanics and historical records unchanged. GPT-6.1 Sol found no blocking numerical/lifetime issue in this bounded planar scope.

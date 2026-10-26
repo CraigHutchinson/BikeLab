@@ -8,6 +8,8 @@ The first [portable setup compiler](RIDER_SETUP.md), received in merged PR29, se
 
 The posture/passive modules already separate much of the rider's segment geometry, mass/inertia and joint laws. Articulated mode also assigns chassis mass independently of rider mass. Preserve that work.
 
+The [unbound observer extraction](RIDER_UNBOUND_OBSERVER.md) separates rider kinematics/momentum/damping observations from world stepping, energy and disposal, with explicit native-name bindings. The finite probe consumes it unchanged. It does not yet provide stable actor identity, independent lifetime or the shared bike/rider mode.
+
 The runtime assembly is still coupled in ways that prevent the requested ownership:
 
 - `validateConnectedRider()` puts chassis properties inside the `articulated` rider wrapper.
