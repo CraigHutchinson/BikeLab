@@ -41,7 +41,7 @@
       "servedTopLevelAssets": 65,
       "socketOpened": false
     },
-    "markdownTargetsChecked": 123,
+    "markdownTargetsChecked": 124,
     "directCLI": [
       {
         "name": "spin",
@@ -496,8 +496,220 @@
   "hosted": {
     "runId": 40240901395,
     "head": "e3d7da8fea296c56ef4894d32ef0b4599ee56575",
-    "status": "in_progress",
-    "capturesInspected": false
+    "status": "completed",
+    "conclusion": "success",
+    "jobs": [
+      {
+        "id": 121312245624,
+        "name": "Test (ubuntu-latest)",
+        "passed": 240,
+        "failed": 0
+      },
+      {
+        "id": 121312245775,
+        "name": "Test (windows-latest)",
+        "passed": 240,
+        "failed": 0
+      },
+      {
+        "id": 121312245790,
+        "name": "Browser and headless agreement",
+        "conclusion": "success"
+      }
+    ],
+    "artifact": {
+      "id": 12617940764,
+      "name": "rider-unbound-evidence",
+      "sizeBytes": 779122,
+      "sha256": "78bbaf5bdff5557f938beee2784747f3b8de583d48ec12bf83a9bf3da4898c82"
+    },
+    "receivingDate": "2026-10-26",
+    "cases": [
+      {
+        "name": "spin",
+        "dt": 3.125e-05,
+        "status": "completed",
+        "steps": 640,
+        "frames": 5,
+        "progressMessages": 7,
+        "agreement": {
+          "tolerance": 1e-09,
+          "maxAbsolute": 0,
+          "maxNormalized": 0,
+          "exact": true
+        }
+      },
+      {
+        "name": "translation",
+        "dt": 3.125e-05,
+        "status": "completed",
+        "steps": 640,
+        "frames": 5,
+        "progressMessages": 7,
+        "agreement": {
+          "tolerance": 1e-09,
+          "maxAbsolute": 0,
+          "maxNormalized": 0,
+          "exact": true
+        }
+      },
+      {
+        "name": "zero-gravity",
+        "dt": 3.125e-05,
+        "status": "completed",
+        "steps": 640,
+        "frames": 5,
+        "progressMessages": 7,
+        "agreement": {
+          "tolerance": 1e-09,
+          "maxAbsolute": 0,
+          "maxNormalized": 0,
+          "exact": true
+        }
+      },
+      {
+        "name": "spin",
+        "dt": 1.5625e-05,
+        "status": "completed",
+        "steps": 1280,
+        "frames": 5,
+        "progressMessages": 7,
+        "agreement": {
+          "tolerance": 1e-09,
+          "maxAbsolute": 0,
+          "maxNormalized": 0,
+          "exact": true
+        }
+      },
+      {
+        "name": "spin",
+        "dt": 7.8125e-06,
+        "status": "completed",
+        "steps": 2560,
+        "frames": 5,
+        "progressMessages": 7,
+        "agreement": {
+          "tolerance": 1e-09,
+          "maxAbsolute": 0,
+          "maxNormalized": 0,
+          "exact": true
+        }
+      },
+      {
+        "name": "joint-limit",
+        "dt": 3.125e-05,
+        "status": "terminated",
+        "steps": 33,
+        "frames": 2,
+        "progressMessages": 3,
+        "agreement": {
+          "tolerance": 1e-09,
+          "maxAbsolute": 0,
+          "maxNormalized": 0,
+          "exact": true
+        }
+      },
+      {
+        "name": "initial-rejection",
+        "dt": 3.125e-05,
+        "status": "initial-state-rejected",
+        "steps": 0,
+        "frames": 0,
+        "progressMessages": 2,
+        "agreement": {
+          "tolerance": 1e-09,
+          "maxAbsolute": 0,
+          "maxNormalized": 0,
+          "exact": true
+        }
+      }
+    ],
+    "downloadedRecordsReproducedExactly": 8,
+    "trailBeforeAfterByteIdentical": true,
+    "capturesInspected": true,
+    "captures": [
+      {
+        "name": "cancelled.png",
+        "sha256": "25dcc8827744c7f4e7c398334faa5365a4e78ced1be30eb4aa0fe8c8483d2ef1",
+        "width": 1026,
+        "height": 308,
+        "inspected": true
+      },
+      {
+        "name": "initial-rejection-desktop.png",
+        "sha256": "b71477f3df0c55d0bddd97696affd2793f5894c33020d93accfc644c661e136a",
+        "width": 1026,
+        "height": 338,
+        "inspected": true
+      },
+      {
+        "name": "joint-limit-desktop.png",
+        "sha256": "6224ea84bdceedbc18a25edb82e227d222400278c7a0b96650b8b07c44e7cc77",
+        "width": 1026,
+        "height": 1152,
+        "inspected": true
+      },
+      {
+        "name": "spin-320.png",
+        "sha256": "404323dad6ad56582523d402bcea18e4a0bd117be1ebb88becb6cf835c352816",
+        "width": 288,
+        "height": 1523,
+        "inspected": true
+      },
+      {
+        "name": "spin-390.png",
+        "sha256": "9fd8a69acd029b4f487dfa09301784fa829cd9c567a2dfe4445425dc400ee4bc",
+        "width": 358,
+        "height": 1436,
+        "inspected": true
+      },
+      {
+        "name": "spin-desktop.png",
+        "sha256": "c698ff0f47fa9dfde4e5a8f6d16ce72d92d33b603c54c1d3c75852de8a3315df",
+        "width": 1026,
+        "height": 1152,
+        "inspected": true
+      },
+      {
+        "name": "translation-desktop.png",
+        "sha256": "198b8a1cdfb662660d464ab1d03fe4524404f449e94aa07a6c8a3b1626951577",
+        "width": 1026,
+        "height": 1152,
+        "inspected": true
+      },
+      {
+        "name": "zero-gravity-desktop.png",
+        "sha256": "2c076186df4caa4d86bcfc146dfba8e3703afafc7bfca5b6d97687bd138ca890",
+        "width": 1026,
+        "height": 1152,
+        "inspected": true
+      }
+    ],
+    "visualFindings": "All eight captures inspected. Native initial/accepted skeleton and COM visible with equal x/z scale; close poses overlap honestly over the short horizon. Desktop, 390 px and 320 px controls/readouts remain readable without horizontal clipping. Joint-limit view retains its accepted pose and partial progress; initial rejection and cancellation show no stale skeleton. No anatomy, collision or 3D qualification.",
+    "isolation": "Trail scenario/playback/record and pose study unchanged; probe cancellation leaves a concurrent Trail run active.",
+    "lifecycle": "Actual worker completion/exports/progress plus deterministic cancellation, replacement, stale messages/errors, startup/post failures, edits, pagehide and successful retry passed.",
+    "deployment": "PR workflow does not deploy Pages; no deployment claim."
   },
-  "scope": "Finite authored 0.02 s planar rider-only flight. Default-control numerical budgets; no arbitrary custom-input accuracy, collision, live release/recontact, alongside-bike independence, persistent actor or real-time qualification."
+  "scope": "Finite authored 0.02 s planar rider-only flight. Default-control numerical budgets; no arbitrary custom-input accuracy, collision, live release/recontact, alongside-bike independence, persistent actor or real-time qualification.",
+  "downloadedArtifactFilesSha256": {
+    "cancelled.png": "25dcc8827744c7f4e7c398334faa5365a4e78ced1be30eb4aa0fe8c8483d2ef1",
+    "initial-rejection-0.00003125.json": "e97565df0f55120b77e512c008ed0de2bed4319004c8dbecf65adb7163211d79",
+    "initial-rejection-desktop.png": "b71477f3df0c55d0bddd97696affd2793f5894c33020d93accfc644c661e136a",
+    "joint-limit-0.00003125.json": "080ff8cf307fc389c07e7e4d9d396dae6ee589e143cb41f28c51dc0b57c9acfd",
+    "joint-limit-desktop.png": "6224ea84bdceedbc18a25edb82e227d222400278c7a0b96650b8b07c44e7cc77",
+    "report.json": "eb253af9afa77f70df40b71e2ca5c7c869154445aa3a8590a18ebb2532e7b332",
+    "retry.json": "1663c14adf0d1aa67afdbe178b384b15093595bd7f669490bc787d262e252fc0",
+    "spin-0.0000078125.json": "71db0671acea00626416560e94f1a2d68128508333f73d4f96473a67594cc91a",
+    "spin-0.000015625.json": "1663c14adf0d1aa67afdbe178b384b15093595bd7f669490bc787d262e252fc0",
+    "spin-0.00003125.json": "cdb4659789d7b12a6178c9c549eed2a1227829baff24c39a2b7a7dd657d1d31c",
+    "spin-320.png": "404323dad6ad56582523d402bcea18e4a0bd117be1ebb88becb6cf835c352816",
+    "spin-390.png": "9fd8a69acd029b4f487dfa09301784fa829cd9c567a2dfe4445425dc400ee4bc",
+    "spin-desktop.png": "c698ff0f47fa9dfde4e5a8f6d16ce72d92d33b603c54c1d3c75852de8a3315df",
+    "trail-after.json": "c75cac7416172ebcde35038a2e4f8d1dea542916093c888031c95d904585d844",
+    "trail-before.json": "c75cac7416172ebcde35038a2e4f8d1dea542916093c888031c95d904585d844",
+    "translation-0.00003125.json": "0c390d92f7268a6073f52415fba93d5042d80fa9180faf3312b7e8520c7f1412",
+    "translation-desktop.png": "198b8a1cdfb662660d464ab1d03fe4524404f449e94aa07a6c8a3b1626951577",
+    "zero-gravity-0.00003125.json": "3c09bab975cf0a7d08cb84f6ea4706415936498ffa8e7ddf556827bf92e24930",
+    "zero-gravity-desktop.png": "2c076186df4caa4d86bcfc146dfba8e3703afafc7bfca5b6d97687bd138ca890"
+  }
 }
