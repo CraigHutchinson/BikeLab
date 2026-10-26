@@ -10,6 +10,8 @@ The posture/passive modules already separate much of the rider's segment geometr
 
 The [unbound observer extraction](RIDER_UNBOUND_OBSERVER.md) separates rider kinematics/momentum/damping observations from world stepping, energy and disposal, with explicit native-name bindings. The finite probe consumes it unchanged. It does not yet provide stable actor identity, independent lifetime or the shared bike/rider mode.
 
+The [explicit chassis builder](BIKE_CHASSIS.md) now constructs either bike without implying a rider or reading historical combined-mass fields. The compatibility wrapper retains current consumers and exact historical models. Native construction tests check independent mass/COM/inertia and a separate rider root; shared-world dynamics and actor lifetime remain the next integration gates.
+
 The runtime assembly is still coupled in ways that prevent the requested ownership:
 
 - `validateConnectedRider()` puts chassis properties inside the `articulated` rider wrapper.

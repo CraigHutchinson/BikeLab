@@ -151,12 +151,245 @@
   },
   "review": "GPT-6.1 Sol source review found no blocking resource/view/compatibility issue. Added root-joint order validation after review; arbitrary native-tree semantic qualification remains out of scope.",
   "hosted": {
-    "status": "in_progress",
-    "capturesInspectedForThisRefactor": false,
-    "runId": 40293390186,
-    "head": "5265eadf71b54d660cff6305567b5cefe7314dcd"
+    "status": "completed",
+    "conclusion": "success",
+    "runId": 40293681213,
+    "head": "59bc407cd67642761262d8bada070750fe44e4ed",
+    "receivingDate": "2026-10-26",
+    "jobs": [
+      {
+        "id": 121474457904,
+        "name": "Test (ubuntu-latest)",
+        "passed": 243,
+        "failed": 0
+      },
+      {
+        "id": 121474458030,
+        "name": "Test (windows-latest)",
+        "passed": 243,
+        "failed": 0
+      },
+      {
+        "id": 121474458159,
+        "name": "Browser and headless agreement",
+        "conclusion": "success"
+      }
+    ],
+    "artifact": {
+      "id": 12638845827,
+      "name": "rider-unbound-evidence",
+      "sizeBytes": 779014,
+      "sha256": "a75b8f7bde72b8f95e4c3da346433a92f2c3116381be3f8a2cd5f7ff0b9759f3"
+    },
+    "cases": [
+      {
+        "name": "spin",
+        "dt": 3.125e-05,
+        "status": "completed",
+        "steps": 640,
+        "frames": 5,
+        "progressMessages": 7,
+        "agreement": {
+          "tolerance": 1e-09,
+          "maxAbsolute": 0,
+          "maxNormalized": 0,
+          "exact": true
+        }
+      },
+      {
+        "name": "translation",
+        "dt": 3.125e-05,
+        "status": "completed",
+        "steps": 640,
+        "frames": 5,
+        "progressMessages": 7,
+        "agreement": {
+          "tolerance": 1e-09,
+          "maxAbsolute": 0,
+          "maxNormalized": 0,
+          "exact": true
+        }
+      },
+      {
+        "name": "zero-gravity",
+        "dt": 3.125e-05,
+        "status": "completed",
+        "steps": 640,
+        "frames": 5,
+        "progressMessages": 7,
+        "agreement": {
+          "tolerance": 1e-09,
+          "maxAbsolute": 0,
+          "maxNormalized": 0,
+          "exact": true
+        }
+      },
+      {
+        "name": "spin",
+        "dt": 1.5625e-05,
+        "status": "completed",
+        "steps": 1280,
+        "frames": 5,
+        "progressMessages": 7,
+        "agreement": {
+          "tolerance": 1e-09,
+          "maxAbsolute": 0,
+          "maxNormalized": 0,
+          "exact": true
+        }
+      },
+      {
+        "name": "spin",
+        "dt": 7.8125e-06,
+        "status": "completed",
+        "steps": 2560,
+        "frames": 5,
+        "progressMessages": 7,
+        "agreement": {
+          "tolerance": 1e-09,
+          "maxAbsolute": 0,
+          "maxNormalized": 0,
+          "exact": true
+        }
+      },
+      {
+        "name": "joint-limit",
+        "dt": 3.125e-05,
+        "status": "terminated",
+        "steps": 33,
+        "frames": 2,
+        "progressMessages": 3,
+        "agreement": {
+          "tolerance": 1e-09,
+          "maxAbsolute": 0,
+          "maxNormalized": 0,
+          "exact": true
+        }
+      },
+      {
+        "name": "initial-rejection",
+        "dt": 3.125e-05,
+        "status": "initial-state-rejected",
+        "steps": 0,
+        "frames": 0,
+        "progressMessages": 2,
+        "agreement": {
+          "tolerance": 1e-09,
+          "maxAbsolute": 0,
+          "maxNormalized": 0,
+          "exact": true
+        }
+      }
+    ],
+    "downloadedRecords": [
+      {
+        "name": "initial-rejection-0.00003125.json",
+        "sha256": "e97565df0f55120b77e512c008ed0de2bed4319004c8dbecf65adb7163211d79",
+        "exact": true
+      },
+      {
+        "name": "joint-limit-0.00003125.json",
+        "sha256": "080ff8cf307fc389c07e7e4d9d396dae6ee589e143cb41f28c51dc0b57c9acfd",
+        "exact": true
+      },
+      {
+        "name": "retry.json",
+        "sha256": "1663c14adf0d1aa67afdbe178b384b15093595bd7f669490bc787d262e252fc0",
+        "exact": true
+      },
+      {
+        "name": "spin-0.0000078125.json",
+        "sha256": "71db0671acea00626416560e94f1a2d68128508333f73d4f96473a67594cc91a",
+        "exact": true
+      },
+      {
+        "name": "spin-0.000015625.json",
+        "sha256": "1663c14adf0d1aa67afdbe178b384b15093595bd7f669490bc787d262e252fc0",
+        "exact": true
+      },
+      {
+        "name": "spin-0.00003125.json",
+        "sha256": "cdb4659789d7b12a6178c9c549eed2a1227829baff24c39a2b7a7dd657d1d31c",
+        "exact": true
+      },
+      {
+        "name": "translation-0.00003125.json",
+        "sha256": "0c390d92f7268a6073f52415fba93d5042d80fa9180faf3312b7e8520c7f1412",
+        "exact": true
+      },
+      {
+        "name": "zero-gravity-0.00003125.json",
+        "sha256": "3c09bab975cf0a7d08cb84f6ea4706415936498ffa8e7ddf556827bf92e24930",
+        "exact": true
+      }
+    ],
+    "downloadedRecordsReproducedExactly": 8,
+    "trailBeforeAfterByteIdentical": true,
+    "captures": [
+      {
+        "name": "cancelled.png",
+        "sha256": "25dcc8827744c7f4e7c398334faa5365a4e78ced1be30eb4aa0fe8c8483d2ef1",
+        "width": 1026,
+        "height": 308,
+        "receiving": "byte-identical to inspected PR31 capture"
+      },
+      {
+        "name": "initial-rejection-desktop.png",
+        "sha256": "b71477f3df0c55d0bddd97696affd2793f5894c33020d93accfc644c661e136a",
+        "width": 1026,
+        "height": 338,
+        "receiving": "byte-identical to inspected PR31 capture"
+      },
+      {
+        "name": "joint-limit-desktop.png",
+        "sha256": "6224ea84bdceedbc18a25edb82e227d222400278c7a0b96650b8b07c44e7cc77",
+        "width": 1026,
+        "height": 1152,
+        "receiving": "byte-identical to inspected PR31 capture"
+      },
+      {
+        "name": "spin-320.png",
+        "sha256": "404323dad6ad56582523d402bcea18e4a0bd117be1ebb88becb6cf835c352816",
+        "width": 288,
+        "height": 1523,
+        "receiving": "byte-identical to inspected PR31 capture"
+      },
+      {
+        "name": "spin-390.png",
+        "sha256": "9fd8a69acd029b4f487dfa09301784fa829cd9c567a2dfe4445425dc400ee4bc",
+        "width": 358,
+        "height": 1436,
+        "receiving": "byte-identical to inspected PR31 capture"
+      },
+      {
+        "name": "spin-desktop.png",
+        "sha256": "89bd59e3071531365fd737778b53c2c73323b1bd139a2ed2ede983e48af2a44c",
+        "width": 1026,
+        "height": 1152,
+        "receiving": "inspected directly"
+      },
+      {
+        "name": "translation-desktop.png",
+        "sha256": "05d598595e6719514e9643bda74b35c524a28e9ccd41eb99543a6afc471371f6",
+        "width": 1026,
+        "height": 1152,
+        "receiving": "inspected directly"
+      },
+      {
+        "name": "zero-gravity-desktop.png",
+        "sha256": "f994cc56f465b4ab8fb11b867bcb1e8afe154ef5332909e7b590d3172cf68a64",
+        "width": 1026,
+        "height": 1152,
+        "receiving": "inspected directly"
+      }
+    ],
+    "visualFindings": "Three desktop captures inspected directly: initial/accepted native skeleton, COM and numerical readouts remain clear with equal scale. Five other captures, including both mobile sizes, limit, rejection and cancellation, are byte-identical to inspected PR31 images. No stale pose or clipping regression.",
+    "isolation": "Trail scenario/playback/record and pose study unchanged; probe cancellation leaves a concurrent Trail run active.",
+    "deployment": "PR workflow skips deployment; no Pages receiving claim."
   },
   "scope": "Observer extraction consumed by unchanged finite unbound CLI/panel. Actor-scoped kinematic/damping observations only; no world forward/step/energy/reset/disposal, shared bike mode, runtime actor lifetime, release/recontact or new performance claim.",
   "implementationHead": "5265eadf71b54d660cff6305567b5cefe7314dcd",
-  "implementationTree": "84a12a7b713f62ca6c74dcbd4286f792625c72c7"
+  "implementationTree": "84a12a7b713f62ca6c74dcbd4286f792625c72c7",
+  "mergedCommit": "000155a06de65f7932e86a9b8b1c0720a3c8089c",
+  "mergedTree": "1d0a3e772eae9a4f806209ea84403a7fd64e7eef"
 }

@@ -1,6 +1,7 @@
 // Unseated passive rider ownership/observation for the connected Trail bike.
 import {compilePassiveRider, passiveStateIssue, evaluatePassiveRider, LOAD_STRIDE} from './rider-passive.js';
 import {SEGMENTS} from './rider-posture.js';
+import {validateChassis} from './bike-chassis.js';
 import {createRiderClosureObserver, createClosureStorage, storeClosure, copyClosureReport, RiderInterfaceNumericalError} from './rider-interfaces.js';
 
 export const FORMAT = 'bikelab-connected-rider-0.1';
@@ -12,18 +13,10 @@ function number(value, lo, hi, label) {
   if (!Number.isFinite(value) || value < lo || value > hi) throw Error(label + ' outside supported SI range.');
   return value;
 }
-function vector(value, count, lo, hi, label) {
-  if (!Array.isArray(value) || value.length !== count) throw Error(label + ' needs ' + count + ' entries.');
-  return Object.freeze(Array.from({length: count}, (_, i) => number(value[i], lo, hi, label)));
-}
 export function validateConnectedRider(input = {}) {
   object(input, ['format', 'chassis', 'passive', 'closureTime', 'maxClosureGap'], 'articulated');
   if (Object.hasOwn(input, 'format') && input.format !== FORMAT) throw Error('Unsupported connected rider format.');
-  const raw = Object.hasOwn(input, 'chassis') ? input.chassis : {};
-  object(raw, ['mass', 'com', 'inertia'], 'chassis');
-  const c = {mass: 6, com: [0, -.15], inertia: [.35, .5, .3], ...raw};
-  const chassis = Object.freeze({mass: number(c.mass, 2, 30, 'chassis mass'), com: vector(c.com, 2, -.5, .5, 'chassis COM'), inertia: vector(c.inertia, 3, .001, 20, 'chassis inertia')});
-  for (let i = 0; i < 3; i++) if (chassis.inertia[i] > chassis.inertia[(i + 1) % 3] + chassis.inertia[(i + 2) % 3]) throw Error('Chassis inertia violates rigid-body triangle inequalities.');
+  const chassis = validateChassis(Object.hasOwn(input, 'chassis') ? input.chassis : {});
   if (Object.hasOwn(input, 'passive') && input.passive === undefined) throw Error('Passive rider must be an object.');
   const passive = compilePassiveRider(Object.hasOwn(input, 'passive') ? input.passive : {});
   const closureTime = number(Object.hasOwn(input, 'closureTime') ? input.closureTime : .02, .005, .05, 'closure time');
