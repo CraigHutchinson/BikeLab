@@ -139,12 +139,24 @@
       }
     ],
     "directPreviewHandlerAssets": 66,
-    "fullSuiteStatus": "running; subprocess/listen EPERM remains an environment limitation"
+    "fullSuite": {
+      "command": "node --test",
+      "passedFiles": 39,
+      "failedFiles": 11,
+      "logSha256": "d351bea3dec634c916c58c5518e1d43eb70e92e2e7454e19f2a4d28cff482ae7",
+      "limitation": "The same eleven subprocess/loopback files remain blocked on this workspace; prior explicit diagnostic reruns confirmed spawnSync/listen EPERM. No full local pass is claimed."
+    },
+    "directCLIExactlyMatchesBaseline": true,
+    "markdownTargetsChecked": 65
   },
   "review": "GPT-6.1 Sol source review found no blocking resource/view/compatibility issue. Added root-joint order validation after review; arbitrary native-tree semantic qualification remains out of scope.",
   "hosted": {
-    "status": "pending",
-    "capturesInspectedForThisRefactor": false
+    "status": "in_progress",
+    "capturesInspectedForThisRefactor": false,
+    "runId": 40293390186,
+    "head": "5265eadf71b54d660cff6305567b5cefe7314dcd"
   },
-  "scope": "Observer extraction consumed by unchanged finite unbound CLI/panel. Actor-scoped kinematic/damping observations only; no world forward/step/energy/reset/disposal, shared bike mode, runtime actor lifetime, release/recontact or new performance claim."
+  "scope": "Observer extraction consumed by unchanged finite unbound CLI/panel. Actor-scoped kinematic/damping observations only; no world forward/step/energy/reset/disposal, shared bike mode, runtime actor lifetime, release/recontact or new performance claim.",
+  "implementationHead": "5265eadf71b54d660cff6305567b5cefe7314dcd",
+  "implementationTree": "84a12a7b713f62ca6c74dcbd4286f792625c72c7"
 }
