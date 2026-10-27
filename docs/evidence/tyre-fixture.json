@@ -5,11 +5,30 @@
   "baseTree": "48de624ac0f8ab8518b1444ced453add4412cc72",
   "hashConvention": "Input hashes use UTF-8 JSON.stringify(input) without newline. Record hashes use Node JSON.stringify(record) plus newline.",
   "hosted": {
-    "status": "pending",
+    "status": "Ubuntu received; Windows/browser receiving pending",
     "expectedTestsPerOS": 270,
     "artifactName": "tyre-fixture-evidence",
     "actualScreenshotsInspected": false,
-    "scope": "New browser receiver exercises all four seeds, both rate controls, complete replay, source-window import, initial rejection, cancellation including pending file reads, same-file retry, stale startup failure and 320 px aspect/layout."
+    "scope": "New browser receiver exercises all four seeds, both rate controls, complete replay, source-window import, initial rejection, cancellation including pending file reads, same-file retry, stale startup failure and 320 px aspect/layout.",
+    "runId": 40564995337,
+    "head": "243f7a3e148104de101290e9f259018db9b59767",
+    "jobs": {
+      "ubuntu": {
+        "id": 122403795185,
+        "conclusion": "success",
+        "passed": 270,
+        "failed": 0,
+        "skipped": 0
+      },
+      "windows": {
+        "id": 122403795198,
+        "status": "pending receiving"
+      },
+      "browser": {
+        "id": 122403794806,
+        "status": "pending receiving"
+      }
+    }
   },
   "local": {
     "focused": {
@@ -20,11 +39,23 @@
     },
     "fullSuite": {
       "command": "node --test",
-      "previousObservedPassedFiles": 44,
-      "previousObservedFailedFiles": 11,
-      "status": "rerun pending; previous temporary log did not persist across environment resume",
-      "logPath": "artifacts/tyre-fixture/full-suite.log",
-      "limitation": "Previous invocation had the same eleven subprocess/loopback-restricted file failures; no complete local test pass claimed."
+      "passedFiles": 44,
+      "failedFiles": 11,
+      "failedFileNames": [
+        "test/cli.test.mjs",
+        "test/footprint-cli.test.mjs",
+        "test/moving-wheel-cli.test.mjs",
+        "test/rider-cli.test.mjs",
+        "test/rider-setup-cli.test.mjs",
+        "test/server.test.mjs",
+        "test/solver-cli.test.mjs",
+        "test/suspension-records.test.mjs",
+        "test/suspension-reference.test.mjs",
+        "test/terrain-cli.test.mjs",
+        "test/wheel-limits-cli.test.mjs"
+      ],
+      "logSha256": "6ac8910a9c7d272235a3ec3052416662f1860ecf72e55a54accf1a56c2fbb8bd",
+      "limitation": "Same eleven subprocess/loopback-restricted files; this is not a full local test pass."
     },
     "cli": {
       "command": "node scripts/tyre-fixture.mjs",
@@ -32,7 +63,165 @@
       "progressOnStderr": true,
       "logSha256": "5da83928b6aef49b65d22527e578411a875c0293819b9d106f52f004501d260a"
     },
-    "review": "GPT-6.1 Sol reviewed mapping/guards, force and energy accounting, pinned native contact weights and browser lifecycle; fixes are included."
+    "review": "GPT-6.1 Sol reviewed mapping/guards, force and energy accounting, pinned native contact weights and browser lifecycle; fixes are included.",
+    "staticAssets": {
+      "topLevelFiles": 75,
+      "status": "all bytes identical",
+      "method": "Real preview request handler; no loopback listener or browser execution."
+    },
+    "momentMappingReview": {
+      "format": "bikelab-fixed-hub-contact-moment-review-0.1",
+      "budget": 1e-08,
+      "units": "N m",
+      "scope": "Recorded contact/node geometry, inverse-distance prediction; projected planar coordinates and active contacts above1e-8 N. Does not modify forces or work.",
+      "cases": [
+        {
+          "name": "full-front-imported-coarse",
+          "maxPredictionError": 4.0885689720437067e-10,
+          "maxMomentDifference": 0.000233876956491853,
+          "passed": true
+        },
+        {
+          "name": "full-front-imported-fine",
+          "maxPredictionError": 2.455978348853648e-10,
+          "maxMomentDifference": 1.1710712619773573,
+          "passed": true
+        },
+        {
+          "name": "full-front-imported-finest",
+          "maxPredictionError": 2.455978348853648e-10,
+          "maxMomentDifference": 0.0002629083801189267,
+          "passed": true
+        },
+        {
+          "name": "full-front-zero-coarse",
+          "maxPredictionError": 4.134628922737712e-10,
+          "maxMomentDifference": 0.0005542747798540648,
+          "passed": true
+        },
+        {
+          "name": "full-front-zero-fine",
+          "maxPredictionError": 2.485064341806176e-10,
+          "maxMomentDifference": 0.0005542747798540648,
+          "passed": true
+        },
+        {
+          "name": "full-front-zero-finest",
+          "maxPredictionError": 2.485064341806176e-10,
+          "maxMomentDifference": 0.0005542747798540648,
+          "passed": true
+        },
+        {
+          "name": "full-rear-imported-coarse",
+          "maxPredictionError": 6.411382535986831e-11,
+          "maxMomentDifference": 0.9051317222090085,
+          "passed": true
+        },
+        {
+          "name": "full-rear-imported-fine",
+          "maxPredictionError": 5.407951864100369e-11,
+          "maxMomentDifference": 0.9117264542991679,
+          "passed": true
+        },
+        {
+          "name": "full-rear-imported-finest",
+          "maxPredictionError": 5.830202987056055e-11,
+          "maxMomentDifference": 0.9089774848817962,
+          "passed": true
+        },
+        {
+          "name": "full-rear-zero-coarse",
+          "maxPredictionError": 5.322353668901769e-11,
+          "maxMomentDifference": 0.9131004393505728,
+          "passed": true
+        },
+        {
+          "name": "full-rear-zero-fine",
+          "maxPredictionError": 5.322353668901769e-11,
+          "maxMomentDifference": 0.9157768510068784,
+          "passed": true
+        },
+        {
+          "name": "full-rear-zero-finest",
+          "maxPredictionError": 5.7749915960414455e-11,
+          "maxMomentDifference": 0.9076046228485293,
+          "passed": true
+        },
+        {
+          "name": "hardtail-front-imported-coarse",
+          "maxPredictionError": 4.380939849172455e-10,
+          "maxMomentDifference": 1.2036129172139671,
+          "passed": true
+        },
+        {
+          "name": "hardtail-front-imported-fine",
+          "maxPredictionError": 1.2130431300281033e-10,
+          "maxMomentDifference": 1.212014378583169,
+          "passed": true
+        },
+        {
+          "name": "hardtail-front-imported-finest",
+          "maxPredictionError": 9.655868362908396e-11,
+          "maxMomentDifference": 1.1993992009223955,
+          "passed": true
+        },
+        {
+          "name": "hardtail-front-zero-coarse",
+          "maxPredictionError": 4.439229760698493e-10,
+          "maxMomentDifference": 0.0013908215767508474,
+          "passed": true
+        },
+        {
+          "name": "hardtail-front-zero-fine",
+          "maxPredictionError": 1.2109449321106094e-10,
+          "maxMomentDifference": 0.0005521022178964642,
+          "passed": true
+        },
+        {
+          "name": "hardtail-front-zero-finest",
+          "maxPredictionError": 9.864644967853484e-11,
+          "maxMomentDifference": 1.2000243924577483,
+          "passed": true
+        },
+        {
+          "name": "hardtail-rear-imported-coarse",
+          "maxPredictionError": 5.103062417077808e-11,
+          "maxMomentDifference": 0.8571034220216895,
+          "passed": true
+        },
+        {
+          "name": "hardtail-rear-imported-fine",
+          "maxPredictionError": 4.4135917143250936e-11,
+          "maxMomentDifference": 0.8565336869203206,
+          "passed": true
+        },
+        {
+          "name": "hardtail-rear-imported-finest",
+          "maxPredictionError": 4.9541259983243435e-11,
+          "maxMomentDifference": 0.8587348032447215,
+          "passed": true
+        },
+        {
+          "name": "hardtail-rear-zero-coarse",
+          "maxPredictionError": 3.8640424193658873e-11,
+          "maxMomentDifference": 0.8517054249040963,
+          "passed": true
+        },
+        {
+          "name": "hardtail-rear-zero-fine",
+          "maxPredictionError": 4.13125089693267e-11,
+          "maxMomentDifference": 0.8556044458570051,
+          "passed": true
+        },
+        {
+          "name": "hardtail-rear-zero-finest",
+          "maxPredictionError": 4.1285752594433234e-11,
+          "maxMomentDifference": 0.8556325321392808,
+          "passed": true
+        }
+      ]
+    },
+    "momentMappingScriptSha256": "731ee09d45a641d9888b43b356a1e32c6468317337f34c18818e5bfa3f4e35e5"
   },
   "comparison": {
     "format": "bikelab-fixed-hub-review-0.1",
@@ -82,7 +271,7 @@
             "max": 3696.99022348771
           },
           "edgeDampingPower": {
-            "min": 0.0000018995502624060002,
+            "min": 1.8995502624060002e-06,
             "max": 0.00011252614889545942
           },
           "contactMomentDifference": {
@@ -92,7 +281,7 @@
         },
         "final": {
           "rmsSpeed": 0.0012651134951896202,
-          "dampingLoss": 4.3626492024171183e-7,
+          "dampingLoss": 4.3626492024171183e-07,
           "contactWork": -0.0029528773527828086
         },
         "inputSource": {
@@ -102,7 +291,7 @@
           "overrides": {
             "rates": "imported",
             "motion": {
-              "dt": 0.00003125,
+              "dt": 3.125e-05,
               "duration": 0.02,
               "sampleDt": 0.000125
             }
@@ -146,8 +335,8 @@
             "max": 3697.1239497826705
           },
           "edgeDampingPower": {
-            "min": 3.776370915465187e-7,
-            "max": 0.000031582072405231276
+            "min": 3.776370915465187e-07,
+            "max": 3.1582072405231276e-05
           },
           "contactMomentDifference": {
             "min": -1.170697945491907,
@@ -156,7 +345,7 @@
         },
         "final": {
           "rmsSpeed": 0.001322387379536081,
-          "dampingLoss": 1.2022493154528174e-7,
+          "dampingLoss": 1.2022493154528174e-07,
           "contactWork": -0.0008137553616779309
         },
         "inputSource": {
@@ -166,7 +355,7 @@
           "overrides": {
             "rates": "imported",
             "motion": {
-              "dt": 0.000015625,
+              "dt": 1.5625e-05,
               "duration": 0.02,
               "sampleDt": 0.000125
             }
@@ -210,8 +399,8 @@
             "max": 3697.099512795508
           },
           "edgeDampingPower": {
-            "min": 2.6545372560848597e-7,
-            "max": 0.000013633898343138557
+            "min": 2.6545372560848597e-07,
+            "max": 1.3633898343138557e-05
           },
           "contactMomentDifference": {
             "min": -0.0001688241350618973,
@@ -220,7 +409,7 @@
         },
         "final": {
           "rmsSpeed": 0.001141306993490086,
-          "dampingLoss": 5.1728829215976125e-8,
+          "dampingLoss": 5.1728829215976125e-08,
           "contactWork": -0.0005980953234337105
         },
         "inputSource": {
@@ -230,7 +419,7 @@
           "overrides": {
             "rates": "imported",
             "motion": {
-              "dt": 0.0000078125,
+              "dt": 7.8125e-06,
               "duration": 0.02,
               "sampleDt": 0.000125
             }
@@ -284,7 +473,7 @@
         },
         "final": {
           "rmsSpeed": 0.0032337870543289646,
-          "dampingLoss": 4.361936752907704e-7,
+          "dampingLoss": 4.361936752907704e-07,
           "contactWork": -0.00289519298250005
         },
         "inputSource": {
@@ -294,7 +483,7 @@
           "overrides": {
             "rates": "zero",
             "motion": {
-              "dt": 0.00003125,
+              "dt": 3.125e-05,
               "duration": 0.02,
               "sampleDt": 0.000125
             }
@@ -339,7 +528,7 @@
           },
           "edgeDampingPower": {
             "min": 0,
-            "max": 0.000051224381884602746
+            "max": 5.1224381884602746e-05
           },
           "contactMomentDifference": {
             "min": -0.0005542747798540648,
@@ -348,7 +537,7 @@
         },
         "final": {
           "rmsSpeed": 0.0013616155627094613,
-          "dampingLoss": 1.1693330431606907e-7,
+          "dampingLoss": 1.1693330431606907e-07,
           "contactWork": -0.0009449318482664686
         },
         "inputSource": {
@@ -358,7 +547,7 @@
           "overrides": {
             "rates": "zero",
             "motion": {
-              "dt": 0.000015625,
+              "dt": 1.5625e-05,
               "duration": 0.02,
               "sampleDt": 0.000125
             }
@@ -403,7 +592,7 @@
           },
           "edgeDampingPower": {
             "min": 0,
-            "max": 0.00001508443442996088
+            "max": 1.508443442996088e-05
           },
           "contactMomentDifference": {
             "min": -0.0005542747798540648,
@@ -412,7 +601,7 @@
         },
         "final": {
           "rmsSpeed": 0.0008810425688010753,
-          "dampingLoss": 4.655686802862422e-8,
+          "dampingLoss": 4.655686802862422e-08,
           "contactWork": -0.0006813061545375918
         },
         "inputSource": {
@@ -422,7 +611,7 @@
           "overrides": {
             "rates": "zero",
             "motion": {
-              "dt": 0.0000078125,
+              "dt": 7.8125e-06,
               "duration": 0.02,
               "sampleDt": 0.000125
             }
@@ -447,7 +636,7 @@
           "acceptedTime": 0.020000000000000014,
           "initialEnergy": 5.72681483508276,
           "finalEnergy": 5.724691049859395,
-          "maxResidual": 0.00004081118997742786,
+          "maxResidual": 4.081118997742786e-05,
           "maxForceResidual": 1.3855583347321954e-13,
           "peakForce": 474.13187762771685
         },
@@ -466,7 +655,7 @@
             "max": 387.1791700025211
           },
           "edgeDampingPower": {
-            "min": 0.000008833975807824592,
+            "min": 8.833975807824592e-06,
             "max": 0.0001309817294601273
           },
           "contactMomentDifference": {
@@ -476,7 +665,7 @@
         },
         "final": {
           "rmsSpeed": 0.007943119527466081,
-          "dampingLoss": 6.423218473409855e-7,
+          "dampingLoss": 6.423218473409855e-07,
           "contactWork": -0.002163950103761564
         },
         "inputSource": {
@@ -486,7 +675,7 @@
           "overrides": {
             "rates": "imported",
             "motion": {
-              "dt": 0.00003125,
+              "dt": 3.125e-05,
               "duration": 0.02,
               "sampleDt": 0.000125
             }
@@ -511,7 +700,7 @@
           "acceptedTime": 0.01999999999999953,
           "initialEnergy": 5.72681483508276,
           "finalEnergy": 5.724704467371704,
-          "maxResidual": 0.000019360665740765417,
+          "maxResidual": 1.9360665740765417e-05,
           "maxForceResidual": 1.6342482922482304e-13,
           "peakForce": 473.86560426810456
         },
@@ -530,8 +719,8 @@
             "max": 366.1839271338599
           },
           "edgeDampingPower": {
-            "min": 0.000005819928493264382,
-            "max": 0.0000945442893121715
+            "min": 5.819928493264382e-06,
+            "max": 9.45442893121715e-05
           },
           "contactMomentDifference": {
             "min": -0.8270057679081249,
@@ -540,7 +729,7 @@
         },
         "final": {
           "rmsSpeed": 0.00811186925480108,
-          "dampingLoss": 5.406746144466719e-7,
+          "dampingLoss": 5.406746144466719e-07,
           "contactWork": -0.0021291877021826456
         },
         "inputSource": {
@@ -550,7 +739,7 @@
           "overrides": {
             "rates": "imported",
             "motion": {
-              "dt": 0.000015625,
+              "dt": 1.5625e-05,
               "duration": 0.02,
               "sampleDt": 0.000125
             }
@@ -575,7 +764,7 @@
           "acceptedTime": 0.019999999999998665,
           "initialEnergy": 5.72681483508276,
           "finalEnergy": 5.724706791524194,
-          "maxResidual": 0.0000092468141147657,
+          "maxResidual": 9.2468141147657e-06,
           "maxForceResidual": 2.3447910280083306e-13,
           "peakForce": 473.7787507698047
         },
@@ -594,8 +783,8 @@
             "max": 385.90915329930726
           },
           "edgeDampingPower": {
-            "min": 0.0000055350685989052,
-            "max": 0.00007424794779044316
+            "min": 5.5350685989052e-06,
+            "max": 7.424794779044316e-05
           },
           "contactMomentDifference": {
             "min": -0.907778469562339,
@@ -604,7 +793,7 @@
         },
         "final": {
           "rmsSpeed": 0.007905918870098564,
-          "dampingLoss": 5.064522246403287e-7,
+          "dampingLoss": 5.064522246403287e-07,
           "contactWork": -0.002116770672976874
         },
         "inputSource": {
@@ -614,7 +803,7 @@
           "overrides": {
             "rates": "imported",
             "motion": {
-              "dt": 0.0000078125,
+              "dt": 7.8125e-06,
               "duration": 0.02,
               "sampleDt": 0.000125
             }
@@ -639,7 +828,7 @@
           "acceptedTime": 0.020000000000000014,
           "initialEnergy": 5.726787764029721,
           "finalEnergy": 5.7246521346616035,
-          "maxResidual": 0.000027661374391043238,
+          "maxResidual": 2.7661374391043238e-05,
           "maxForceResidual": 1.3500311979441904e-13,
           "peakForce": 473.71557623130883
         },
@@ -659,7 +848,7 @@
           },
           "edgeDampingPower": {
             "min": 0,
-            "max": 0.00008498184059144634
+            "max": 8.498184059144634e-05
           },
           "contactMomentDifference": {
             "min": -0.9067205862460019,
@@ -668,7 +857,7 @@
         },
         "final": {
           "rmsSpeed": 0.002010776190464924,
-          "dampingLoss": 4.290035023639545e-7,
+          "dampingLoss": 4.290035023639545e-07,
           "contactWork": -0.002161497637052535
         },
         "inputSource": {
@@ -678,7 +867,7 @@
           "overrides": {
             "rates": "zero",
             "motion": {
-              "dt": 0.00003125,
+              "dt": 3.125e-05,
               "duration": 0.02,
               "sampleDt": 0.000125
             }
@@ -703,7 +892,7 @@
           "acceptedTime": 0.01999999999999953,
           "initialEnergy": 5.726787764029721,
           "finalEnergy": 5.724654549991001,
-          "maxResidual": 0.000013748049652527157,
+          "maxResidual": 1.3748049652527157e-05,
           "maxForceResidual": 1.9539925233402755e-13,
           "peakForce": 473.47210900207546
         },
@@ -732,7 +921,7 @@
         },
         "final": {
           "rmsSpeed": 0.0022317526507909945,
-          "dampingLoss": 3.9439333949302264e-7,
+          "dampingLoss": 3.9439333949302264e-07,
           "contactWork": -0.002145303600425772
         },
         "inputSource": {
@@ -742,7 +931,7 @@
           "overrides": {
             "rates": "zero",
             "motion": {
-              "dt": 0.000015625,
+              "dt": 1.5625e-05,
               "duration": 0.02,
               "sampleDt": 0.000125
             }
@@ -767,7 +956,7 @@
           "acceptedTime": 0.019999999999998665,
           "initialEnergy": 5.726787764029721,
           "finalEnergy": 5.72465630087831,
-          "maxResidual": 0.000006864994424951544,
+          "maxResidual": 6.864994424951544e-06,
           "maxForceResidual": 1.7408297026122455e-13,
           "peakForce": 473.313376699445
         },
@@ -787,7 +976,7 @@
           },
           "edgeDampingPower": {
             "min": 0,
-            "max": 0.00006891320654058912
+            "max": 6.891320654058912e-05
           },
           "contactMomentDifference": {
             "min": -0.8282654707309665,
@@ -796,7 +985,7 @@
         },
         "final": {
           "rmsSpeed": 0.0024139581686312846,
-          "dampingLoss": 3.71394946720846e-7,
+          "dampingLoss": 3.71394946720846e-07,
           "contactWork": -0.0021370012334821008
         },
         "inputSource": {
@@ -806,7 +995,7 @@
           "overrides": {
             "rates": "zero",
             "motion": {
-              "dt": 0.0000078125,
+              "dt": 7.8125e-06,
               "duration": 0.02,
               "sampleDt": 0.000125
             }
@@ -850,7 +1039,7 @@
             "max": 475.8056179275416
           },
           "edgeDampingPower": {
-            "min": 0.0000021620212045832915,
+            "min": 2.1620212045832915e-06,
             "max": 0.00017371882515071464
           },
           "contactMomentDifference": {
@@ -860,7 +1049,7 @@
         },
         "final": {
           "rmsSpeed": 0.002710301292868401,
-          "dampingLoss": 4.904289284338704e-7,
+          "dampingLoss": 4.904289284338704e-07,
           "contactWork": -0.003125435141345601
         },
         "inputSource": {
@@ -870,7 +1059,7 @@
           "overrides": {
             "rates": "imported",
             "motion": {
-              "dt": 0.00003125,
+              "dt": 3.125e-05,
               "duration": 0.02,
               "sampleDt": 0.000125
             }
@@ -914,17 +1103,17 @@
             "max": 3775.23732278258
           },
           "edgeDampingPower": {
-            "min": 9.702491526653387e-7,
-            "max": 0.00004884822555270823
+            "min": 9.702491526653387e-07,
+            "max": 4.884822555270823e-05
           },
           "contactMomentDifference": {
             "min": -1.212014378583169,
-            "max": 0.0000878133092337861
+            "max": 8.78133092337861e-05
           }
         },
         "final": {
           "rmsSpeed": 0.0009777314044332778,
-          "dampingLoss": 1.4190466497179457e-7,
+          "dampingLoss": 1.4190466497179457e-07,
           "contactWork": -0.0019472688226021548
         },
         "inputSource": {
@@ -934,7 +1123,7 @@
           "overrides": {
             "rates": "imported",
             "motion": {
-              "dt": 0.000015625,
+              "dt": 1.5625e-05,
               "duration": 0.02,
               "sampleDt": 0.000125
             }
@@ -978,8 +1167,8 @@
             "max": 3775.2621483306452
           },
           "edgeDampingPower": {
-            "min": 6.103976256294584e-7,
-            "max": 0.00001336307879651011
+            "min": 6.103976256294584e-07,
+            "max": 1.336307879651011e-05
           },
           "contactMomentDifference": {
             "min": -0.0006593538994592568,
@@ -988,7 +1177,7 @@
         },
         "final": {
           "rmsSpeed": 0.0007919024994010837,
-          "dampingLoss": 6.710591062870823e-8,
+          "dampingLoss": 6.710591062870823e-08,
           "contactWork": -0.0013533491289342506
         },
         "inputSource": {
@@ -998,7 +1187,7 @@
           "overrides": {
             "rates": "imported",
             "motion": {
-              "dt": 0.0000078125,
+              "dt": 7.8125e-06,
               "duration": 0.02,
               "sampleDt": 0.000125
             }
@@ -1052,7 +1241,7 @@
         },
         "final": {
           "rmsSpeed": 0.0021207539298706557,
-          "dampingLoss": 4.790457370801268e-7,
+          "dampingLoss": 4.790457370801268e-07,
           "contactWork": -0.003596879704695191
         },
         "inputSource": {
@@ -1062,7 +1251,7 @@
           "overrides": {
             "rates": "zero",
             "motion": {
-              "dt": 0.00003125,
+              "dt": 3.125e-05,
               "duration": 0.02,
               "sampleDt": 0.000125
             }
@@ -1107,7 +1296,7 @@
           },
           "edgeDampingPower": {
             "min": 0,
-            "max": 0.000029697558709445096
+            "max": 2.9697558709445096e-05
           },
           "contactMomentDifference": {
             "min": -0.0005521022178964642,
@@ -1116,7 +1305,7 @@
         },
         "final": {
           "rmsSpeed": 0.0030140076715779933,
-          "dampingLoss": 1.2415588897815524e-7,
+          "dampingLoss": 1.2415588897815524e-07,
           "contactWork": -0.0018333449707430495
         },
         "inputSource": {
@@ -1126,7 +1315,7 @@
           "overrides": {
             "rates": "zero",
             "motion": {
-              "dt": 0.000015625,
+              "dt": 1.5625e-05,
               "duration": 0.02,
               "sampleDt": 0.000125
             }
@@ -1171,7 +1360,7 @@
           },
           "edgeDampingPower": {
             "min": 0,
-            "max": 0.000013226640691469435
+            "max": 1.3226640691469435e-05
           },
           "contactMomentDifference": {
             "min": -0.0006821641561650964,
@@ -1180,7 +1369,7 @@
         },
         "final": {
           "rmsSpeed": 0.0024964693799883857,
-          "dampingLoss": 6.541439533964034e-8,
+          "dampingLoss": 6.541439533964034e-08,
           "contactWork": -0.001212158211510309
         },
         "inputSource": {
@@ -1190,7 +1379,7 @@
           "overrides": {
             "rates": "zero",
             "motion": {
-              "dt": 0.0000078125,
+              "dt": 7.8125e-06,
               "duration": 0.02,
               "sampleDt": 0.000125
             }
@@ -1215,7 +1404,7 @@
           "acceptedTime": 0.020000000000000014,
           "initialEnergy": 5.63682039931296,
           "finalEnergy": 5.634590337342931,
-          "maxResidual": 0.00003392408466879569,
+          "maxResidual": 3.392408466879569e-05,
           "maxForceResidual": 1.4566126083082054e-13,
           "peakForce": 460.9324842896199
         },
@@ -1234,8 +1423,8 @@
             "max": 272.9887474718812
           },
           "edgeDampingPower": {
-            "min": 0.000006032248133969877,
-            "max": 0.00009519052516552247
+            "min": 6.032248133969877e-06,
+            "max": 9.519052516552247e-05
           },
           "contactMomentDifference": {
             "min": -0.8557767428818273,
@@ -1244,7 +1433,7 @@
         },
         "final": {
           "rmsSpeed": 0.008424882897433287,
-          "dampingLoss": 5.357324043697328e-7,
+          "dampingLoss": 5.357324043697328e-07,
           "contactWork": -0.0022634503222934885
         },
         "inputSource": {
@@ -1254,7 +1443,7 @@
           "overrides": {
             "rates": "imported",
             "motion": {
-              "dt": 0.00003125,
+              "dt": 3.125e-05,
               "duration": 0.02,
               "sampleDt": 0.000125
             }
@@ -1279,7 +1468,7 @@
           "acceptedTime": 0.01999999999999953,
           "initialEnergy": 5.63682039931296,
           "finalEnergy": 5.634587987108323,
-          "maxResidual": 0.000015495780607605383,
+          "maxResidual": 1.5495780607605383e-05,
           "maxForceResidual": 9.947598300641403e-14,
           "peakForce": 460.8557889088918
         },
@@ -1298,8 +1487,8 @@
             "max": 272.8721251321199
           },
           "edgeDampingPower": {
-            "min": 0.000004145694544865267,
-            "max": 0.00006244225783848146
+            "min": 4.145694544865267e-06,
+            "max": 6.244225783848146e-05
           },
           "contactMomentDifference": {
             "min": -0.8565336869203206,
@@ -1308,7 +1497,7 @@
         },
         "final": {
           "rmsSpeed": 0.008137098355829047,
-          "dampingLoss": 4.591789431821181e-7,
+          "dampingLoss": 4.591789431821181e-07,
           "contactWork": -0.002247448806301303
         },
         "inputSource": {
@@ -1318,7 +1507,7 @@
           "overrides": {
             "rates": "imported",
             "motion": {
-              "dt": 0.000015625,
+              "dt": 1.5625e-05,
               "duration": 0.02,
               "sampleDt": 0.000125
             }
@@ -1343,7 +1532,7 @@
           "acceptedTime": 0.019999999999998665,
           "initialEnergy": 5.63682039931296,
           "finalEnergy": 5.634589009622083,
-          "maxResidual": 0.000007725271709646628,
+          "maxResidual": 7.725271709646628e-06,
           "maxForceResidual": 1.2079226507921703e-13,
           "peakForce": 460.8325720951706
         },
@@ -1362,8 +1551,8 @@
             "max": 273.1437178518154
           },
           "edgeDampingPower": {
-            "min": 0.000004787261577284862,
-            "max": 0.00006697133914594319
+            "min": 4.787261577284862e-06,
+            "max": 6.697133914594319e-05
           },
           "contactMomentDifference": {
             "min": -0.8546133108064811,
@@ -1372,7 +1561,7 @@
         },
         "final": {
           "rmsSpeed": 0.0080350261355166,
-          "dampingLoss": 4.0906669307987035e-7,
+          "dampingLoss": 4.0906669307987035e-07,
           "contactWork": -0.0022387058958935617
         },
         "inputSource": {
@@ -1382,7 +1571,7 @@
           "overrides": {
             "rates": "imported",
             "motion": {
-              "dt": 0.0000078125,
+              "dt": 7.8125e-06,
               "duration": 0.02,
               "sampleDt": 0.000125
             }
@@ -1407,7 +1596,7 @@
           "acceptedTime": 0.020000000000000014,
           "initialEnergy": 5.636780494681716,
           "finalEnergy": 5.634655969141098,
-          "maxResidual": 0.00002622304854979073,
+          "maxResidual": 2.622304854979073e-05,
           "maxForceResidual": 8.526512829121202e-14,
           "peakForce": 460.6940957859371
         },
@@ -1436,7 +1625,7 @@
         },
         "final": {
           "rmsSpeed": 0.001992510287208852,
-          "dampingLoss": 1.8804888357401032e-7,
+          "dampingLoss": 1.8804888357401032e-07,
           "contactWork": -0.0021443616972282864
         },
         "inputSource": {
@@ -1446,7 +1635,7 @@
           "overrides": {
             "rates": "zero",
             "motion": {
-              "dt": 0.00003125,
+              "dt": 3.125e-05,
               "duration": 0.02,
               "sampleDt": 0.000125
             }
@@ -1471,7 +1660,7 @@
           "acceptedTime": 0.01999999999999953,
           "initialEnergy": 5.636780494681716,
           "finalEnergy": 5.6346567720500405,
-          "maxResidual": 0.00001306662298556705,
+          "maxResidual": 1.306662298556705e-05,
           "maxForceResidual": 1.1013412404281553e-13,
           "peakForce": 460.0929430553598
         },
@@ -1491,7 +1680,7 @@
           },
           "edgeDampingPower": {
             "min": 0,
-            "max": 0.000027864480312005703
+            "max": 2.7864480312005703e-05
           },
           "contactMomentDifference": {
             "min": -0.8542461601345677,
@@ -1500,7 +1689,7 @@
         },
         "final": {
           "rmsSpeed": 0.002330214927656643,
-          "dampingLoss": 1.2720056544442846e-7,
+          "dampingLoss": 1.2720056544442846e-07,
           "contactWork": -0.002132456922029692
         },
         "inputSource": {
@@ -1510,7 +1699,7 @@
           "overrides": {
             "rates": "zero",
             "motion": {
-              "dt": 0.000015625,
+              "dt": 1.5625e-05,
               "duration": 0.02,
               "sampleDt": 0.000125
             }
@@ -1535,7 +1724,7 @@
           "acceptedTime": 0.019999999999998665,
           "initialEnergy": 5.636780494681716,
           "finalEnergy": 5.634657931778889,
-          "maxResidual": 0.000006509508160239068,
+          "maxResidual": 6.509508160239068e-06,
           "maxForceResidual": 1.0302869668521453e-13,
           "peakForce": 460.007209815612
         },
@@ -1555,7 +1744,7 @@
           },
           "edgeDampingPower": {
             "min": 0,
-            "max": 0.00004151050782763718
+            "max": 4.151050782763718e-05
           },
           "contactMomentDifference": {
             "min": -0.8556325321392808,
@@ -1564,7 +1753,7 @@
         },
         "final": {
           "rmsSpeed": 0.0025779458667538526,
-          "dampingLoss": 1.1856479223990708e-7,
+          "dampingLoss": 1.1856479223990708e-07,
           "contactWork": -0.0021269520651230165
         },
         "inputSource": {
@@ -1574,7 +1763,7 @@
           "overrides": {
             "rates": "zero",
             "motion": {
-              "dt": 0.0000078125,
+              "dt": 7.8125e-06,
               "duration": 0.02,
               "sampleDt": 0.000125
             }
@@ -1702,7 +1891,7 @@
           },
           "rmsSpeed": {
             "maxAbsolute": 0.0002504671337453645,
-            "rms": 0.00006613269832256905
+            "rms": 6.613269832256905e-05
           },
           "verticalForce": {
             "maxAbsolute": 6.413242613778436,
@@ -1744,7 +1933,7 @@
           },
           "rmsSpeed": {
             "maxAbsolute": 0.00025290500335547507,
-            "rms": 0.00008319875695210196
+            "rms": 8.319875695210196e-05
           },
           "verticalForce": {
             "maxAbsolute": 6.637893409558387,
@@ -1870,7 +2059,7 @@
           },
           "rmsSpeed": {
             "maxAbsolute": 0.000262345418576412,
-            "rms": 0.0000793167492021998
+            "rms": 7.93167492021998e-05
           },
           "verticalForce": {
             "maxAbsolute": 5.257022431287851,
@@ -1912,7 +2101,7 @@
           },
           "rmsSpeed": {
             "maxAbsolute": 0.00024773093909720954,
-            "rms": 0.00009043144692687547
+            "rms": 9.043144692687547e-05
           },
           "verticalForce": {
             "maxAbsolute": 4.964261885542214,
@@ -1926,7 +2115,11 @@
     "All 24 short controls complete. Retained-rate and zero-rate loaded casings move with a stationary hub; rider/suspension feedback is unnecessary for this short-window activity.",
     "Energy residuals decrease across the three steps. Contact switching and local trajectories do not uniformly converge; neither damping calibration nor long-term stability is established.",
     "Zero local rates do not create equilibrium: loaded deformation and stored energy remain.",
-    "Native nodal-force moments and physical contact-point moments differ under blocked rotation. Preserve the difference and infer the clamp moment by angular balance; do not change dynamics or add work. Independent inverse-distance weighting predicts the difference within 1e-8 N m."
+    "Native nodal-force moments and physical contact-point moments differ under blocked rotation. Preserve the difference and infer the clamp moment by angular balance; do not change dynamics or add work. Independent inverse-distance weighting predicts the difference within 1e-8 N m.",
+    "The sampled nodal/contact-point moment difference reaches 1.212014378583169 N m. Independent contact-weight reconstruction matches all 24 records within 4.439229760698493e-10 N m.",
+    "Full-front retained-rate fine/finest differences reach 0.04108349167369893 m/s in node-0 velocity and 28.619473552715192 N in vertical load; reduced energy residuals do not qualify full trajectory/load convergence."
   ],
-  "next": "Receive hosted worker records and actual captures; quantify longer isolated decay/refinement before constitutive damping. Whole-bike perturbation recovery, 60 s idle and support-aware rider/IK remain open."
+  "next": "Receive hosted worker records and actual captures; quantify longer isolated decay/refinement before constitutive damping. Whole-bike perturbation recovery, 60 s idle and support-aware rider/IK remain open.",
+  "implementationHead": "243f7a3e148104de101290e9f259018db9b59767",
+  "implementationTree": "d89a583caaa6360bdec4795e5875f0d418e0802b"
 }
