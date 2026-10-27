@@ -2,6 +2,8 @@
 
 Reviewed 2026-10-27 against merged main `bc44e90` (PR36). PR34 already supplies bounded joint effort; setup IK already exists. Runtime IK remains the next rider capability, but it is not the next acceptance claim. Terra independently checked the roadmap and evidence; the primary agent checked the implementation and the pinned native source.
 
+The [issue consolidation](ISSUE_WORK_PLAN.md) maps GitHub #37–45 into this slice and the next packages. In particular #43 does not justify adding damping before the numerical control is understood, and #44 does not establish a replacement integrator.
+
 ## Decision
 
 Top-down, the intended experience is a rider who can hold, shift weight and recover on both bikes, with visible intended and actual posture. Bottom-up, the 10 s drive holds rider posture but tyre motion persists; the uninterrupted/fresh comparison rules out restart as its explanation in the inspected windows. A reachable joint target cannot establish usable support or reliable recovery.

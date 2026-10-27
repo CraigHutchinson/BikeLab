@@ -1,5 +1,7 @@
 # Delivery and validation plan
 
+Current issue-driven priorities: [consolidated review and work packages for GitHub #37–45](ISSUE_WORK_PLAN.md). This is the current sequence; historical iteration notes below retain their original evidence and scope.
+
 Current checkpoint, 2026-10-27: PR36 is merged at `bc44e90`. The [next-step review and fixed-hub fixture](FIXED_HUB.md) implement the bounded prerequisite before dynamic IK acceptance. All 24 loaded casing controls complete, with motion present without bike/rider feedback and energy residuals improving under timestep refinement. A contact-free uniform-translation control exposes timestep-dependent nonuniform motion with native edge viscosity under both implicit integrators. Next inspect the actual sparse damping derivative against independent finite differences; do not conceal that control with extra damping. Then receive compatible perturbation recovery and slow support-retaining [IK/task targets](RIDER_CONTROL_ARCHITECTURE.md) on both bikes. The new fixture's browser receiving remains pending. Saddle support, independent-root integration, persistent execution, calibrated materials/failure, 3D handling and real-time qualification retain their gates. The [whole-system review](MTB_SYSTEM_REVIEW.md) and [D1–D12 plan](DYNAMICS_DELIVERY_PLAN.md) preserve the wider synthetic-data/game goal.
 
 ## Definition of a received slice
@@ -146,12 +148,12 @@ Record the chosen stack and limitations in a short decision note before code. Us
 
 ## Layered-terrain workstream
 
-Integrate the [layered-terrain data and acceptance contracts](LAYERED_TERRAIN.md) in the spatial-contact and multibody design decision now. Implement their T0â€“T4 gates alongside the receiving slices:
+Integrate the [layered-terrain data and acceptance contracts](LAYERED_TERRAIN.md) in the spatial-contact and multibody design decision now. Implement their T0–T4 gates alongside the receiving slices:
 
 - Before whole-bike spatial contact: rigid geometry controls, then a finite soil cover over a supported buried root with a cutaway/force viewer. Establish distinct tyre/soil/root deformation and load paths.
 - With rolling and 3D slip: bulk/interface shear, mixed patches, root reinforcement/support and shared front/rear soil history; validate combined traction, reversal and repeated passes.
 - Before mud-surface fidelity claims: carried tyre coating, tread packing and pickup/shedding; clean/dirty transition controls and material/work budgets.
-- Before detailed trail fidelity claims: ingest scanned or generated tiles with provenance/uncertainty, 1â€“2 cm target detail where justified, persistent deformation and seam/active-region convergence. ML detail remains labelled synthetic until independently measured.
+- Before detailed trail fidelity claims: ingest scanned or generated tiles with provenance/uncertainty, 1–2 cm target detail where justified, persistent deformation and seam/active-region convergence. ML detail remains labelled synthetic until independently measured.
 
 The immediate PR adds the design and source-backed research boundaries only. No soil constitutive law, executable terrain schema or universal friction preset is selected. Initial fixture values may be illustrative; real trail and tyre claims require controlled measurements and held-out validation. This work does not replace the hardtail/full-suspension assembly, overload or production-bike catalogue gates.
 
@@ -181,13 +183,13 @@ Reviewed merged main 672e5e7 before implementation; see [ITERATION_4_REVIEW.md](
 
 [The prismatic solver trial](SOLVER_TRIAL.md) is the first executable Rapier arm, after [review of 0abfde7](ITERATION_5_REVIEW.md). It adds a visible/headless constrained carriage with tilted gravity/transverse load, fixed numerical gates and exact same-runtime snapshot/restart comparison. This is deliberately smaller than the full candidate matrix: the moving default fails the strict reference limit and joint reactions are unavailable. No whole-bike solver is selected. Next receive a matched second solver arm and reaction/energy/stop/contact/assembly tests before the hardtail/full-suspension rig. See [iteration 5 evidence](ITERATION_5_EVIDENCE.md).
 
-## Iteration 6 continuation â€” received coupled rig
+## Iteration 6 continuation — received coupled rig
 
 User direction parks solver perfection unless it becomes a concrete blocker. [Review and scope](ITERATION_6_REVIEW.md) supersede the earlier matched-carriage prerequisite. The [coupled bicycle rig](BIKE_RIG.md) receives a 3/4-coordinate hardtail/full-suspension assembly, geometry-derived shock leverage, two vertical platen contacts, mass/spring/damper controls, replay and shared headless output. MuJoCo is selected for this bounded fixture; it is not a blanket certification for free riding, spatial contact or real-time performance. Existing Rapier diagnostics and failed precision gates remain available.
 
 Next balanced dynamics slice: passive articulated rider compliance on the existing visible assembly, with explicit hand/foot/saddle attachment, posture/mass distribution, load/work accounting and fixed-rider comparison. Retain measured parameter provenance and later production-bike catalogue. Reopen precision research only for a demonstrated receiving-feature blocker. End-stop impacts, fixture wrench telemetry and a calibrated whole-bike transient reference remain follow-ups; unsupported overload still terminates.
 
-## Iteration 7 continuation â€” passive rider prerequisite
+## Iteration 7 continuation — passive rider prerequisite
 
 [Review of merged PR #6](ITERATION_7_REVIEW.md) precedes the [guided-rider extension](RIDER_MODEL.md). The same visible hardtail/full-suspension fixture now receives one passive rider coordinate, configurable mass partition/spring/damping/travel, signed histories and energy/loss evidence. Fixed mode remains the exact original baseline. This is a bounded prerequisite to the anatomical hand/foot/saddle, posture and control contracts above, not completion of them.
 
@@ -200,71 +202,71 @@ User-prioritized spatial follow-up (2026-10-16): receive the [deformed tyre and 
 [Terrain sampling contract](TERRAIN_SAMPLING_CONTRACT.md): R0 is a prescribed-motion request/cache viewer and headless replay with straight, cornering, reversal, seam and soil-over-rock cutaway fixtures. It shows mandatory versus prefetched coverage, off-patch acquisition and explicit missing data. R1 adds loaded distributed tyre contact; R2 adds layered response/shared soil history; R3 adds 3D rolling traction and measured fidelity-tier conformance. These are named receiving stages, not implemented terrain physics. Retain the scoped checkpoints in [terrain request scope](TERRAIN_REQUEST_SCOPE.md).
 
 
-## Iteration 8 â€” fork travel buffers
+## Iteration 8 — fork travel buffers
 
 The [fork-buffer model](FORK_BUFFERS.md) receives finite top/bottom travel forces in the coupled viewer and headless runner, with independent impulse/work checks, engagement/energy plots and retained ultimate-bound termination. The review of merged PR #7 precedes implementation; see ITERATION_8_REVIEW.md. Precision polishing remains parked unless a receiving feature fails its declared budget.
 
 Next dynamics extension: shock buffers through the existing changing linkage leverage, then explicit rider attachment-limit/load paths. The spatial follow-up above is a separate priority: deformed tyre envelope, all load-bearing contact regions and distributed material-dependent grip. Neither fork buffer loads nor nearest rigid-circle witnesses substitute for contact pressure, traction, component damage or real-bike calibration.
 
 
-## Iteration 9 â€” terrain request receiving subset
+## Iteration 9 — terrain request receiving subset
 
 [R0a](ITERATION_9_EVIDENCE.md) receives the request-first design in a separate viewer/headless replay: finite-width swept bounds, static layered samples, explicit stepped-rock geometry, async source reuse, owned outputs and missing-data admission. See [scope](ITERATION_9_SCOPE.md) for the implemented subset and remaining R0 gates. This does not complete the full R0 contract or change bicycle forces. The [image review](GEOMETRY_VISUAL_REVIEW.md) closes the BB/frame drawing comparison while retaining sourced physical linkage calibration as a follow-up.
 
 Next terrain work: asymmetric/multimodal optional route ribbons, resolved root/reinforcement and known-void controls, source transforms/import, and bounded leased outputs/shared state identities as required by the first loaded-tyre consumer. R1 must add physically supported distributed deformable contact; geometry arrays and normals are not springs or forces. Shock/rider end-stop loads, damage/leakage, 3D turning traction, contamination and measured multirate operation remain open.
 
 
-## Iteration 10 â€” rear shock dynamics
+## Iteration 10 — rear shock dynamics
 
 [Rear shock buffers](SHOCK_BUFFERS.md) now map axial top/bottom forces through the changing single-pivot derivative, with visible swing moment, total shock force and stored/lost energy. [Review](ITERATION_10_REVIEW.md) captures model/configuration gaps; [evidence](ITERATION_10_EVIDENCE.md) records bounded receiving checks. Hardtail and disabled-buffer baselines remain unchanged. Next focus on sag/load/leverage configuration diagnostics and sourced geometry/mass inputs, followed by rider attachment load paths. Terrain follow-ups remain separate.
 
 
-## Iteration 11 â€” annotated linkage and configuration diagnostics
+## Iteration 11 — annotated linkage and configuration diagnostics
 
 The [manufacturer catalogue](GEOMETRY_CATALOGUE.md) receives eight source-linked reference configurations and a selectable/exportable viewer table. Continue searching for dimensioned suspension drawings/CAD and verified mass data before promoting any reference into a production simulation preset; fit charts and exploded parts schematics alone do not determine linkage kinematics.
 
 The [geometry/configuration slice](GEOMETRY_CONFIGURATION.md) corrects the high swingarm shock-eye mechanism identified by the user's image annotations, changes the actual native geometry and shared drawing, and receives the next sag/load/leverage view from iteration 10. Versioned geometry controls/presets preserve old recorded physics. See [review](ITERATION_11_REVIEW.md) and [evidence](ITERATION_11_EVIDENCE.md). Source measurements, uncertainty and mass distribution remain prerequisites for production presets. Next bike dynamics work: explicit rider attachment/limit load paths and observable fixture/pivot wrenches, then component failure criteria. Separate terrain R0/R1 and eventual 3D lateral/turning, shared layered soil/mud and multirate gates remain required.
 
-## Iteration 12 â€” rider stops and attachment reactions
+## Iteration 12 — rider stops and attachment reactions
 
 The [rider stop/load slice](RIDER_STOPS_LOADS.md) receives finite lower/upper guide stops and observable guide, fixture and rear-attachment wrenches, with current-state diagnostic solves and explicit load origins. [Review](ITERATION_12_REVIEW.md) precedes the implementation. The native spatial shock and generalized buffer contributions are separated before reporting the pivot-bearing load. Fixed recording rate is not a guarantee of converged force impulses; headless evidence separately refines observation and integration.
 
 Next dynamics work: measured anatomical attachment locations, hand/foot/saddle contact and independently articulated rider, then component stress/failure criteria using appropriate load paths. Existing lumped guide reactions do not resolve those loads. The manufacturer catalogue still requires dimensioned suspension coordinates and mass/inertia before calibrated presets. Terrain R1 distributed tyre contact, layered deformation/mud, pressure loss, 3D lateral/turning and measured multirate operation remain open.
 
-## Iteration 13 â€” static distributed tyre footprint
+## Iteration 13 — static distributed tyre footprint
 
 The [D1a footprint station](STATIC_FOOTPRINT.md) receives PR #14's static radial-ring checkpoint with a worker-based viewer, headless replay, all active local loads and independent energy/contact verification. See [review](ITERATION_13_REVIEW.md), [evidence](ITERATION_13_EVIDENCE.md) and the [connected delivery plan](DYNAMICS_DELIVERY_PLAN.md). Supported fixtures include flat, rounded, square-step-top and two separated supports. Exposed corners, rim strikes and unresolved contour intersections are visibly unsupported; no calibrated pressure/stress or impact response is claimed.
 
 Next spatial slice: explicit sharp-feature/normal-cone constraints with compatible energy weights and receiving evidence, then free moving-wheel impacts before whole-bike spatial contact. Keep layered soil over roots/rock, shared material history/mud, sourced rim/spoke/bead failure and pressure loss, finite-width 3D lateral/turning and measured fidelity/multirate gates open. The existing bicycle rig remains a separate moving-platen experiment.
 
-## Iteration 14 â€” wheel physical-limit assessment
+## Iteration 14 — wheel physical-limit assessment
 
 The [wheel-limit station](WHEEL_LIMITS.md) receives continuous first rim-contact/domain events and sourced, declared tubeless compatibility/maximum-pressure assessment. Incompatible declarations block approach/static loads; unknown evidence permits geometry inspection only. [Review](ITERATION_14_REVIEW.md) and [evidence](ITERATION_14_EVIDENCE.md) keep blowout, bead release, rim/spoke fracture and pressure-loss criteria explicitly unknown. Manufacturer service recommendations are not breaking thresholds.
 
 Next: a richer sharp-feature casing/contact formulation with independent energy/normal-cone verification, then dynamic impact/momentum and supported local stress before fracture or seal-loss continuation. Obtain exact component construction, local load/strength and leak/pressure data. Preserve rigid travel limits, layered materials/mud, 3D lateral/turning and measured multirate gates.
 
-Product priority reaffirmed 2026-10-18: deliver a connected moving MTB **including the rider** for synthetic data and game simulation. The [integration milestones and shared execution/data contract](DYNAMICS_DELIVERY_PLAN.md#product-destination-and-next-integration-milestones) order the next work: dynamic spatial wheel contact â†’ moving hardtail/full bike and rider trail runs â†’ articulated contacts/control â†’ 3D riding, supported terrain/damage and measured real-time fidelity. Stations remain verification tools; scenario/label provenance and offline/game parity accompany the first connected run.
+Product priority reaffirmed 2026-10-18: deliver a connected moving MTB **including the rider** for synthetic data and game simulation. The [integration milestones and shared execution/data contract](DYNAMICS_DELIVERY_PLAN.md#product-destination-and-next-integration-milestones) order the next work: dynamic spatial wheel contact → moving hardtail/full bike and rider trail runs → articulated contacts/control → 3D riding, supported terrain/damage and measured real-time fidelity. Stations remain verification tools; scenario/label provenance and offline/game parity accompany the first connected run.
 
 
-## Iteration 15 â€” moving spatial wheel checkpoint
+## Iteration 15 — moving spatial wheel checkpoint
 
 The [moving-wheel station](MOVING_WHEEL.md) connects deforming edge contacts to free hub translation/spin, with distributed mass, local normal arrows, work/momentum diagnostics and owned replay. [Review](ITERATION_15_REVIEW.md) precedes implementation; [evidence](ITERATION_15_EVIDENCE.md) distinguishes fixed collision-tolerance asymmetry, timestep error and unresolved tyre-mesh sensitivity. It remains an experimental D1b/D2 subset, not a calibrated tyre, damage model or proof against tunnelling.
 
 Next: bounded smooth-ground two-wheel integration with the moving hardtail/full-suspension frame and existing rider; verify attachment loads, finite travel and whole-system work before extending corner/high-speed support. Then rolling/braking, articulated hand/foot/saddle contacts and shared scenario/data/game execution. Preserve sourced component failure/pressure-loss criteria, layered soil/mud over roots, 3D lateral/turning and measured real-time/multirate gates.
 
-## Iteration 17 â€” connected faceted impact MVP
+## Iteration 17 — connected faceted impact MVP
 
 After consolidating merged PRs #17/#18, the same moving hardtail/full-suspension bike and passive rider now receive square edges and coarse faceted rocks. Authored terrain is retained, horizontal forces are inspectable, and severe impacts stop at existing component/contact limits. The near-rim sweep now accepts native typed state and activates using a displacement bound. [Evidence](ITERATION_17_EVIDENCE.md) separates timestep, casing mesh and native normal accuracy; no stress, fracture or complete swept-casing claim follows.
 
 Next: D4 traction/brake/drive controls in this connected consumer, then D5 anatomical rider contacts/control. [Contact-aware wheel resolution](ADAPTIVE_WHEEL.md) defines persistent rotating material coordinates, hierarchy versus circular storage, nonuniform mass/stiffness and conservation gates. Instrument first, validate fixed nonuniform meshes between runs next, and only then attempt live remeshing or multirate optimisation. Preserve layered terrain/mud, 3D lateral/turning, sourced failure/pressure loss and shared offline/game execution.
 
-## Iteration 18 â€” connected homogeneous traction
+## Iteration 18 — connected homogeneous traction
 
 The [D4a traction slice](ITERATION_18_EVIDENCE.md) adds a homogeneous interface coefficient to both deforming wheel contacts in the existing connected bike/rider consumer. Full local forces, signed contact slip, normal/tangent work, coast/sliding examples and old frictionless replay share the viewer/headless engine. Both hardtail and full suspension remain supported. Independent native sliding and weighted contact-velocity controls accompany the visible experiment. This does not implement braking, a pressure/tread law, calibrated material grip or 3D contact area.
 
 Next D4b: deterministic tick-based rear drive and front/rear brake capacities. Verify isolated rotor rest/reversal/release and carrier countertorque/work first, then receive acceleration/braking/load transfer on this same bike. Separate solved brake torque from terrain moments and count brake work once. The [review and source conventions](ITERATION_18_REVIEW.md) preserve the detailed contract. D5 articulated rider, D7/D8 layered terrain/mud mass and history, D11 scan/cache detail and D12 measured fidelity tiers remain required; default homogeneous friction is not a substitute.
 
-## Iteration 19 â€” connected hub drive and brakes
+## Iteration 19 — connected hub drive and brakes
 
 [D4b](ITERATION_19_EVIDENCE.md) adds rear drive and separate front/rear brake capacities, deterministic command schedules and editing, wheel spin/solved-torque histories, and consistent carrier, ground-moment and work ownership. Both connected assemblies retain travel/support limits and legacy replay. Independent rotor/pair controls accompany the browser/headless examples. Regularized brakes, synthetic geometry and unresolved casing/timestep sensitivity do not establish physical stopping accuracy.
 
@@ -275,7 +277,7 @@ Next D5: review guided rider/stop load paths and source a bounded passive articu
 [Primary evidence and receiving plan](RIDER_SEATED_UNSEATED.md) capture seated support, bent-leg hovering and rider-selected absorption/resistance. Relative rider COM stability remains an observable/control objective with bounded effort. D5a supplies passive contacts; later measured identification supplies style/control choices and game-tier validation.
 
 
-## Iteration 20 â€” bounded passive rider and complete state
+## Iteration 20 — bounded passive rider and complete state
 
 PR23 receives passive unseated articulated motion, signed hand/foot support and complete fresh-state replay, plus a separate guided-rider short trail. [The release checkpoint](ITERATION_20_HANDOFF.md) separates this scope from the broader D5 gates and preserves the separate pushed saddle implementation and rejected equilibrium candidates. A newer-Edge legacy-guided portability failure is retained as a named canonical-model follow-up; no tolerance relaxation or universal browser agreement is implied.
 
