@@ -1,5 +1,7 @@
 # Connected bicycle dynamics delivery plan
 
+Current issue-driven priorities: [consolidated review and work packages for GitHub #37–45](ISSUE_WORK_PLAN.md). This is the current sequence; historical iteration notes below retain their original evidence and scope.
+
 Current checkpoint, 2026-10-24: main `3130c89` includes merged PR26. The [whole-system review](MTB_SYSTEM_REVIEW.md) consolidates received capabilities and the gaps to synthetic-data and game use. [Trail bike](TRAIL_BIKE.md) connects both deformable wheels, a moving hardtail/full frame, passive guided or articulated rider, sharp/faceted rigid ground, homogeneous traction and scheduled hub drive/brakes. PR23–25 add complete fresh-state replay, a guided short trail and a separate pose study; PR26 adds calculation progress and exact-output native-view optimization. Finite saddle support and qualified loaded references remain open. Persistent stepping/continuation and bounded recording are the next independent execution prerequisite. The earlier stations remain diagnostics; their terrain layers, reference catalogues and pose previews are not all consumed by the connected dynamics.
 
 ## Tracked follow-ups and receiving sequence

@@ -1,3 +1,4 @@
+import {checkFixedHub} from './fixed-hub-browser-check.mjs';
 import {checkRiderDrive} from './rider-drive-browser-check.mjs';
 import {checkRiderPoses} from './rider-pose-browser-check.mjs';
 import {checkRiderSetup} from './rider-setup-browser-check.mjs';
@@ -341,6 +342,7 @@ try {
   await checkRiderUnbound({page,root,dir,report});
   await checkRiderDrive({page,root,dir,report});
   await checkTrailProgress({page,root,dir,report});
+  await checkFixedHub({page,root,dir,report});
 
   // Pixel availability is separate from human inspection of captured images.
   const pixels=await page.locator('#rig').evaluate(canvas=>{

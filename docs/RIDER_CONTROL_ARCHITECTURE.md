@@ -12,6 +12,10 @@ User question, 2026-10-26: whether inverse kinematics or another model is needed
 
 More IK alone cannot fix slumping: reachable posture is not proof of support force, equilibrium or tracking ability. A freely evolving articulated body plus explicit actuation/contact is the physical representation; IK and inverse dynamics are control tools above it. A general optimization or model-predictive controller is premature until the simpler drive's receiving failures are understood.
 
+## Acceptance ordering, 2026-10-27
+
+The [fixed-hub receiving review](FIXED_HUB.md) confirms that runtime IK remains the next rider capability, while casing integration and compatible perturbation recovery precede dynamic acceptance. The fixture exposes motion without whole-bike feedback and a contact-free uniform-translation numerical control that fails with native edge viscosity. Resolve the bounded derivative check before adding damping or judging IK tracking against those disturbances. This does not require a complete calibrated tyre or general solver redesign.
+
 ## Minimum next task adapter
 
 Author a modest hip shift or crouch/extension trajectory and trunk preference on both bikes, using explicit current hand/foot bindings and the existing segment geometry. Generate compatible joint goals without rebuilding the native rest pose, changing passive laws or writing q/v. Preserve immutable rider definitions and branch/domain checks. Reject or explicitly report infeasible reach instead of stretching limbs.
