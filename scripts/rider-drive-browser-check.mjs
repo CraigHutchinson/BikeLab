@@ -3,6 +3,7 @@ import {mkdir,readFile,writeFile} from 'node:fs/promises';
 import {join} from 'node:path';
 import {replay,activePreset} from '../dist/trail-bike.js';
 import {TYRE_MOTION_MODEL} from '../dist/tyre-motion.js';
+import {TYRE_WINDOW_MODEL} from '../dist/tyre-window.js';
 import {ACTIVE_MODEL} from '../dist/rider-drive.js';
 import {compareCanonicalTrailRecord} from './trail-section-browser-check.mjs';
 
@@ -41,12 +42,27 @@ export async function checkRiderDrive({page,root,dir,report}){
    await page.locator('#tyreMotion').screenshot({path:join(dir,'full-tyre-'+width+'.png')});report.screenshots.push(prefix+'/full-tyre-'+width+'.png');
   }
   await page.setViewportSize({width:1440,height:1100});
+  // Rerun the original launch and add a late window without resetting native history.
+  await page.locator('#scenarioEditor').evaluate(el=>{el.open=true;});await page.locator('#setupText').fill(JSON.stringify(actual.scenario));await page.locator('#applyJson').click();await ready();
+  await page.locator('#observeTyreWindow').click();await ready();
+  assert.match(await page.locator('#tyreMotionStatus').innerText(),/Uninterrupted run.*0.4800 to 0.5000/);
+  const windowPending=page.waitForEvent('download');await page.locator('#save').click();const windowPath=join(dir,bike+'-window.json');await (await windowPending).saveAs(windowPath);
+  const windowRecord=JSON.parse(await readFile(windowPath,'utf8'));assert.equal(windowRecord.model,TYRE_WINDOW_MODEL);assert.deepEqual(windowRecord.finalState,actual.finalState);
+  const windowAgreement=compareCanonicalTrailRecord(windowRecord,await replay(windowRecord));
+  await page.locator('#scrub').fill(String(windowRecord.frames.length-1));
+  for(const [selector,suffix] of [['#tyreMotion','window-panel'],['#history','window-history']]){await page.locator(selector).screenshot({path:join(dir,bike+'-'+suffix+'.png')});report.screenshots.push(prefix+'/'+bike+'-'+suffix+'.png');}
+  if(bike==='full'){await page.setViewportSize({width:320,height:1100});assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true);await page.locator('#tyreMotion').screenshot({path:join(dir,'full-window-320.png')});report.screenshots.push(prefix+'/full-window-320.png');await page.setViewportSize({width:1440,height:1100});}
+  await page.locator('#restartTyreWindow').click();await ready();assert.match(await page.locator('#tyreMotionStatus').innerText(),/fresh-state probes reset/);
+  assert.ok(await page.locator('#restartTyreWindow').isDisabled());
+  const freshPending=page.waitForEvent('download');await page.locator('#save').click();const freshPath=join(dir,bike+'-window-fresh.json');await (await freshPending).saveAs(freshPath);
+  const freshRecord=JSON.parse(await readFile(freshPath,'utf8'));assert.deepEqual(freshRecord.initialState,windowRecord.windowObservation.start.state);
+  const freshAgreement=compareCanonicalTrailRecord(freshRecord,await replay(freshRecord));
   // Mode edits remove active drive before the legacy consumer executes.
   await page.locator('[name=rider]').selectOption('compliant');await page.locator('[name=duration]').fill('.02');await page.locator('#setup button[type=submit]').click();await ready();
   assert.ok(await page.locator('#riderDrive').isHidden());assert.equal(Object.hasOwn(JSON.parse(await page.locator('#setupText').inputValue()),'active'),false);
   assert.ok(await page.locator('#tyreMotion').isHidden());assert.ok(await page.locator('#inspectTyres').isDisabled());
   assert.equal(Object.hasOwn(JSON.parse(await page.locator('#setupText').inputValue()),'diagnostics'),false);
-  cases.push({bike,status:actual.status,steps:actual.summary.steps,riderWork:actual.summary.riderWork,agreement,tyreProbe:{status:tyreRecord.status,steps:tyreRecord.summary.steps,agreement:tyreAgreement}});
+  cases.push({bike,status:actual.status,steps:actual.summary.steps,riderWork:actual.summary.riderWork,agreement,tyreProbe:{status:tyreRecord.status,steps:tyreRecord.summary.steps,agreement:tyreAgreement},window:{agreement:windowAgreement,freshAgreement,startTick:windowRecord.windowObservation.start.tick}});
  }
  // Authored drive settings survive JSON normalization; invalid controls fail visibly.
  const authored=activePreset('full');authored.motion.duration=.02;
@@ -57,7 +73,7 @@ export async function checkRiderDrive({page,root,dir,report}){
  await page.locator('#example').selectOption('rider-hold-long');await page.waitForFunction(()=>!document.getElementById('calculationPanel').hidden);
  assert.equal(await page.locator('[name=duration]').getAttribute('max'),'10');
  await page.locator('#cancel').click();assert.ok(await page.locator('#save').isDisabled());
- report.riderDrive={cases,scope:'Actual worker, full-record replay, active readouts, mobile layout, JSON admission, legacy mode transition and long-probe cancellation. Also receives short fresh-state tyre diagnostics, dense observations, unchanged native identity, plots and mode cleanup. No equilibrium or calibrated active rider claim.'};
+ report.riderDrive={cases,scope:'Actual worker, full-record replay, active readouts, mobile layout, JSON admission, legacy mode transition and long-probe cancellation. Also receives short fresh-state tyre diagnostics, dense observations, unchanged native identity, plots and mode cleanup. Also receives uninterrupted late windows, unchanged final state, window plots and fresh-start comparison controls. No equilibrium or calibrated active rider claim.'};
  report.checks.push('Active rider hold on both bikes: full browser/headless records, target/torque/work readouts, mobile panels and lifecycle controls.');
  await writeFile(join(dir,'report.json'),JSON.stringify(report.riderDrive,null,2)+'\n');
 }

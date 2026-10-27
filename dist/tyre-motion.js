@@ -48,5 +48,5 @@ export function tyreMotionProbe(record){
  const a=structuredClone(record.scenario),last=record.frames.at(-1);
  a.initialization={mode:'state',state:structuredClone(record.finalState)};
  a.motion={gravity:a.motion.gravity,duration:.02,dt:a.motion.dt,sampleDt:.000125};
- a.commands=[{...last.command,tick:0}];a.diagnostics=TYRE_MOTION;return a;
+ a.commands=[{...last.command,tick:0}];a.diagnostics=TYRE_MOTION;delete a.observationWindow;return a;
 }
