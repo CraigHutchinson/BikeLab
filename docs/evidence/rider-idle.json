@@ -2833,9 +2833,16 @@
   "sourceTree": "9957997735625146f8ab441fb7a2e988d415b668",
   "review": "GPT-6.1 Sol independently reviewed source/control gaps and diagnostic calculations. No blocking issue. Native rates are relative coordinates; attempted tyre checks not evaluated after rider rejection are not tyre results.",
   "hosted": {
-    "status": "pending",
+    "status": "received",
+    "runId": 40343626343,
+    "head": "78fe49326d0c00aabd6ec23698c077951853457d",
     "artifactName": "rider-idle-evidence",
-    "purpose": "Preserve all six complete records and reproduce the passive baseline. Job success means evidence generation, not active stability."
+    "artifactId": 12660568603,
+    "artifactSha256": "05092bb5841ccb00b88cbd8108022cfd207006b552b377a7c56d0f89a6779e2b",
+    "sizeBytes": 846259,
+    "allSixRecordHashesMatch": true,
+    "allDiagnosticCasesExactlyMatch": true,
+    "purpose": "Evidence generation passed; all six passive idle attempts fail the requested horizon. No active or long-idle stability qualification."
   },
   "sourcesSha256": {
     "scripts/rider-idle-review.mjs": "c3fbea5226b2326daecc173869a9e1489efb1a7a92b129f9128d68bb64cee1dd",

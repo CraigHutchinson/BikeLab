@@ -1,3 +1,4 @@
+import {ACTIVE_MODEL} from './rider-drive.js';
 // Fresh-run scalar state, not a continuation checkpoint. All derived native state
 // and application ledgers are rebuilt by the receiving production run.
 export const STATE_FORMAT = 'bikelab-trail-state-0.1';
@@ -44,7 +45,7 @@ export function canonicalModelXML(xml) {
 export async function stateIdentity(xml,scenario) {
  // dt and command/recording schedule are run controls. Physical geometry,
  // constitutive laws, gravity, admission limits and native build are bound.
- const physical={model:STATE_MODEL,nativeBuild,forceMapping:'native-shock-jacobian-0.1',xml:xml.replace(/timestep="[^"]*"/,'timestep="run-control"'),bike:scenario.bike,wheel:scenario.wheel,articulated:scenario.articulated,assembly:scenario.assembly};
+ const physical={model:scenario.active?ACTIVE_MODEL:STATE_MODEL,nativeBuild,forceMapping:'native-shock-jacobian-0.1',xml:xml.replace(/timestep="[^"]*"/,'timestep="run-control"'),bike:scenario.bike,wheel:scenario.wheel,articulated:scenario.articulated,assembly:scenario.assembly,...(scenario.active?{active:scenario.active,driveSemantics:'explicit-held-pd-torque-displacement-work-0.1'}:{})};
  const bytes=new TextEncoder().encode(JSON.stringify(physical));
  return Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',bytes)),v=>v.toString(16).padStart(2,'0')).join('');
 }

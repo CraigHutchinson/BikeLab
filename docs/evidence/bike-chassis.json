@@ -2491,31 +2491,87 @@
   },
   "review": "GPT-6.1 Sol found no blocking source issue. Added explicit absence checks for every rider joint and fit/attachment sites. Construction-only sibling test does not claim reciprocal dynamic independence.",
   "hosted": {
-    "status": "in_progress",
-    "capturesInspectedForThisExtraction": false,
-    "runId": 40340889347,
-    "head": "4f709c5c3fc8953f561940ef90f7b53687a3868e",
+    "status": "completed",
+    "conclusion": "success",
+    "runId": 40343626343,
+    "head": "78fe49326d0c00aabd6ec23698c077951853457d",
     "jobs": [
       {
-        "id": 121634962555,
+        "id": 121644607886,
         "name": "Test (windows-latest)",
         "passed": 249,
         "failed": 0
       },
       {
-        "id": 121634962581,
+        "id": 121644608429,
         "name": "Test (ubuntu-latest)",
         "passed": 249,
         "failed": 0
       },
       {
-        "id": 121634961956,
+        "id": 121644607786,
         "name": "Browser and headless agreement",
-        "status": "in_progress"
+        "conclusion": "success"
       }
-    ]
+    ],
+    "trailRecordsArtifact": {
+      "id": 12661584230,
+      "sha256": "586b5231e58a0edf9fbdd003915d36b5b1920515a9974c8743e07cfb87df245d",
+      "files": 41
+    },
+    "trailCapturesArtifact": {
+      "id": 12661442758,
+      "sha256": "c03e39942475d332757a075d274a87268e844a8fd00d6268925d74881f794f60"
+    },
+    "standingReplay": [
+      {
+        "bike": "full",
+        "agreement": {
+          "tolerance": 1e-09,
+          "maxAbsolute": 0,
+          "maxNormalized": 0,
+          "exact": true
+        }
+      },
+      {
+        "bike": "hardtail",
+        "agreement": {
+          "tolerance": 1e-09,
+          "maxAbsolute": 0,
+          "maxNormalized": 0,
+          "exact": true
+        }
+      }
+    ],
+    "captures": [
+      {
+        "name": "full-articulated-standing.png",
+        "width": 1440,
+        "height": 3429,
+        "sha256": "9656ccd79d786c5e934eed075757fc6d6fcf96ef6cadd189965be9ad129055d3",
+        "inspected": true
+      },
+      {
+        "name": "hardtail-articulated-standing.png",
+        "width": 1440,
+        "height": 3429,
+        "sha256": "ef4115943a3f0de7feb66a5857016351faed47162ef5a52367fb18bf1f0b6bf0",
+        "inspected": true
+      },
+      {
+        "name": "full-articulated-320.png",
+        "width": 320,
+        "height": 844,
+        "sha256": "ed84212599fb2bd4adfe41d1a9b5785b3e18d3564ec0a2eb81414fd7ae0fc2d8",
+        "inspected": true
+      }
+    ],
+    "visualFindings": "Inspected both-bike articulated standing desktop views and full-bike320px view. Native segments, COM, contacts, travel and signed support readouts remain clear; passive nonequilibrium limitation is visible. No new active view is included in this PR33 receiving.",
+    "deployment": "PR workflow skipped Pages; no deployed-site receiving claim."
   },
   "scope": "Internal explicit chassis extraction consumed by unchanged rig/Trail browser and headless paths. Preserves legacy XML and complete records. No shared riding mode, actor lifecycle, release/recontact, physical calibration or new performance qualification.",
   "implementationHead": "4f709c5c3fc8953f561940ef90f7b53687a3868e",
-  "implementationTree": "9957997735625146f8ab441fb7a2e988d415b668"
+  "implementationTree": "9957997735625146f8ab441fb7a2e988d415b668",
+  "mergedCommit": "c8b91f951258e030f11253afe3ee7a724fc43828",
+  "mergedTree": "4d53e97ddb4bf0fcb5632d4b08dc8f1cab5b426c"
 }
