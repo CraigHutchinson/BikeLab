@@ -35,3 +35,5 @@
 #unboundPanel .pose-controls{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:16px 0}#unboundPanel label{display:block;font-size:12px;min-width:0}#unboundPanel select{width:100%;min-width:0;display:block;margin-top:6px}#unboundView{display:block;width:100%;max-width:550px;margin:auto;background:#10191f;border-radius:6px}#unboundStatus{color:var(--orange)}#unboundProgress{width:100%;margin:8px 0}@media(max-width:480px){#unboundPanel .pose-controls{grid-template-columns:1fr}}
 
 #riderDrive{margin:18px 0;padding:16px 0;border-top:1px solid var(--line)}#riderDrive .trial-table{table-layout:fixed}#riderDrive th,#riderDrive td{overflow-wrap:anywhere}@media(max-width:480px){#riderDrive th,#riderDrive td{padding:8px 4px}}
+
+#riderDrive th{white-space:normal}#tyreMotion{margin:18px 0;padding:16px 0;border-top:1px solid var(--line)}#tyreMotion .trial-table{table-layout:fixed}#tyreMotion th,#tyreMotion td{overflow-wrap:anywhere;white-space:normal}@media(max-width:480px){#tyreMotion th,#tyreMotion td{padding:8px 4px}}
