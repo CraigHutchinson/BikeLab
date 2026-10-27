@@ -1,0 +1,2706 @@
+{
+  "format": "bikelab-tyre-motion-receiving-0.1",
+  "date": "2026-10-27",
+  "baseHead": "f14ca3d4e82e1d9436b5b7d91f4fcaeb660af3c7",
+  "implementationHead": "70c960f1b18c675f9bed91656adab53b3260e396",
+  "implementationTree": "846ebd30b01ccd871ff0fc6a19a29bbcebc24f7b",
+  "hosted": {
+    "status": "in_progress",
+    "runId": 40467149012,
+    "capturesInspected": false,
+    "jobs": {
+      "ubuntu": {
+        "id": 122065202047,
+        "passed": 261,
+        "failed": 0
+      },
+      "windows": {
+        "id": 122065202437,
+        "passed": 261,
+        "failed": 0
+      },
+      "browser": {
+        "id": 122065202508,
+        "status": "in_progress"
+      }
+    }
+  },
+  "local": {
+    "focused": {
+      "command": "node --test --test-isolation=none test/tyre-motion.test.mjs test/pages.test.mjs",
+      "passed": 5,
+      "failed": 0,
+      "logSha256": "209cdff672699f111ad22eaa64e625e0a623269a93c2c381842da38e8c459aa6"
+    },
+    "fullSuite": {
+      "command": "node --test",
+      "passedFiles": 42,
+      "failedFiles": 11,
+      "limitation": "Same subprocess/loopback EPERM files; final signed-contact/stopped-state test additionally covered by focused run.",
+      "logSha256": "ec903c5d2a9f5272c279906b1e525fc360fed28f04a0b5bd8d0fd6e4d882594f"
+    },
+    "legacyPR34CompleteRecordsReplayedExactly": [
+      "full",
+      "hardtail"
+    ],
+    "finestInputsReplayedExactly": [
+      "full-same-seed-finest",
+      "hardtail-same-seed-finest"
+    ],
+    "emptyProbeReview": {
+      "status": "initial-state-rejected",
+      "reason": "fork-travel-limit",
+      "emptyRangesExplicitNull": true
+    }
+  },
+  "cases": [
+    {
+      "name": "full-coarse",
+      "format": "bikelab-tyre-motion-review-0.1",
+      "scope": "20 ms fresh-state probe; zero warm start and reset work. Statistics use recorded samples, not every physics tick. No long-term decay, equilibrium, calibration or causal proof from this window alone.",
+      "source": {
+        "sha256": "7af1c3f1c178a9633bcecd0d52910890457aab70a1fdb72b2275c648e4e3c541",
+        "model": "bikelab-trail-bike-active-0.1",
+        "bike": "full",
+        "endTime": 9.999999999979527,
+        "dt": 3.125e-05,
+        "identity": "eb016f86713f7c50175471efab39fcdbb31005ff8729cb7a67d9ec4420983c2a"
+      },
+      "sourcesSha256": {
+        "dist/tyre-motion.js": "27b6edacf1ca6a95115083b86211ff729f157ce5aae4edbe5269d5bd5b299452",
+        "dist/trail-bike.js": "b9c0fd3e1d6be528d57e3dadb3da8b7a915ff1cc662093ada830a4eeb0476a73"
+      },
+      "scriptSha256": "b1b0ae2913f1a15bcdbd0673dd502bc0d184bc5cfff265f4d0fd24fac584a069",
+      "recordSha256": "ff2d18401ce1390a9c80c7328ff5af3312ecd3d16a48e77b545a98bff1af25c8",
+      "status": "completed",
+      "termination": null,
+      "summary": {
+        "acceptedTime": 0.020000000000000014,
+        "steps": 640,
+        "peakForce": 818.9809400785532,
+        "peakPenetration": 2.7762373493080833e-05,
+        "maxResidual": 0.0013810996226475893,
+        "maxSampledRootWrench": 2.4442670110147446e-12,
+        "maxSampledBearingMoment": 1.0480505352461478e-13,
+        "maxDiagnosticDifference": 0,
+        "maxPowerResidual": 6.843077536913822e-15,
+        "maxSampledLateralContactForce": 2.8259805806291718e-08,
+        "maxSampledConeExcess": 0,
+        "initialEnergy": 717.5303185212622,
+        "finalEnergy": 717.5306339304582,
+        "initialMomentum": [
+          -5.0299221089036e-07,
+          -0.00025284679317841546,
+          -0.000655951674838983
+        ],
+        "maxClosureGap": 0.0006384945584180665,
+        "closureWork": -2.195004516348199e-06,
+        "closureAngularImpulse": -1.6682165979956368e-08,
+        "riderWork": 1.4713530070396011e-05
+      },
+      "wheels": [
+        {
+          "wheel": "front",
+          "ranges": {
+            "rmsSpeed": {
+              "min": 0.0011823521323492867,
+              "max": 0.009240542027832815
+            },
+            "residualRmsSpeed": {
+              "min": 0.0011752385325019142,
+              "max": 0.009226499294159706
+            },
+            "maxNodeSpeed": {
+              "min": 0.005437437819857697,
+              "max": 0.069874693756701
+            },
+            "maxNodeAcceleration": {
+              "min": 4.625008799753856,
+              "max": 3694.0015372740295
+            },
+            "edgeRmsSpeed": {
+              "min": 5.051621658344184e-05,
+              "max": 0.00030377710867632367
+            },
+            "foundationEnergy": {
+              "min": 1.2710603953705366,
+              "max": 1.2723113722124244
+            },
+            "edgeEnergy": {
+              "min": 0.003517352091840515,
+              "max": 0.0035203618007515515
+            },
+            "foundationDampingPower": {
+              "min": 0,
+              "max": 0
+            },
+            "edgeDampingPower": {
+              "min": 2.363978259601577e-06,
+              "max": 8.548539711232532e-05
+            },
+            "normalPower": {
+              "min": -4.951006214107065,
+              "max": 1.2705453252548544
+            },
+            "tangentPower": {
+              "min": 0,
+              "max": 0
+            }
+          },
+          "contactSets": 2,
+          "contactSetChanges": 20,
+          "node0VelocityRange": [
+            {
+              "min": -0.0004563303848803843,
+              "max": 0.00047908696260847127
+            },
+            {
+              "min": -0.0698732243761855,
+              "max": 0.019475562492424704
+            }
+          ],
+          "initial": {
+            "meanVelocity": [
+              -0.00011905926196781177,
+              -0.0005724737506093121
+            ],
+            "rmsSpeed": 0.009203660671734906,
+            "residualRmsSpeed": 0.009185067689322859,
+            "relativeSpeedEnergy": 4.2353684880219905e-05,
+            "maxNodeSpeed": 0.06985749563891319,
+            "maxNodeSpeedIndex": 0,
+            "maxNodeAcceleration": 349.42285637576924,
+            "maxNodeAccelerationIndex": 0,
+            "node0Position": [
+              -9.355983015139052e-08,
+              0.009775037062136768
+            ],
+            "node0Velocity": [
+              -5.4385735432866124e-05,
+              -0.06985747446861042
+            ],
+            "node0Acceleration": [
+              0.026493466712964844,
+              349.4228553713934
+            ],
+            "edgeRmsSpeed": 0.00030371817974306214,
+            "maxEdgeSpeed": 0.0014082695780640669,
+            "maxEdgeSpeedIndex": 60,
+            "foundationEnergy": 1.2715535886585,
+            "edgeEnergy": 0.0035176240237627123,
+            "foundationDampingPower": 0,
+            "edgeDampingPower": 8.545223414839233e-05,
+            "contactCount": 6,
+            "normalPower": -4.951006214107065,
+            "tangentPower": 0
+          },
+          "final": {
+            "meanVelocity": [
+              3.971943671448411e-05,
+              8.812270750954774e-05
+            ],
+            "rmsSpeed": 0.0019500636435067992,
+            "residualRmsSpeed": 0.001947666544482213,
+            "relativeSpeedEnergy": 1.9013741068635065e-06,
+            "maxNodeSpeed": 0.012769335343523478,
+            "maxNodeSpeedIndex": 0,
+            "maxNodeAcceleration": 17.642894517903937,
+            "maxNodeAccelerationIndex": 0,
+            "node0Position": [
+              -6.253199772414082e-08,
+              0.009782025102587298
+            ],
+            "node0Velocity": [
+              0.0001746953997146508,
+              0.012768140296561453
+            ],
+            "node0Acceleration": [
+              0.27760141032467345,
+              -17.6407104286327
+            ],
+            "edgeRmsSpeed": 0.00011796508734036052,
+            "maxEdgeSpeed": 0.0005888721827011466,
+            "maxEdgeSpeedIndex": 60,
+            "foundationEnergy": 1.2720465409654278,
+            "edgeEnergy": 0.0035198534992264448,
+            "foundationDampingPower": 0,
+            "edgeDampingPower": 1.2891066009577926e-05,
+            "contactCount": 6,
+            "normalPower": 0.8126425522841062,
+            "tangentPower": 0
+          }
+        },
+        {
+          "wheel": "rear",
+          "ranges": {
+            "rmsSpeed": {
+              "min": 0.0052316123820899665,
+              "max": 0.008821059054597919
+            },
+            "residualRmsSpeed": {
+              "min": 0.005225648886485687,
+              "max": 0.008818214649452682
+            },
+            "maxNodeSpeed": {
+              "min": 0.022198488317628485,
+              "max": 0.04923767533613534
+            },
+            "maxNodeAcceleration": {
+              "min": 17.04663368512095,
+              "max": 378.0512168500202
+            },
+            "edgeRmsSpeed": {
+              "min": 0.0001283303154248577,
+              "max": 0.00041293943870500643
+            },
+            "foundationEnergy": {
+              "min": 2.3063494703892804,
+              "max": 2.3065623746107664
+            },
+            "edgeEnergy": {
+              "min": 0.005328219541954317,
+              "max": 0.0053499814589355
+            },
+            "foundationDampingPower": {
+              "min": 0,
+              "max": 0
+            },
+            "edgeDampingPower": {
+              "min": 1.5255989057014368e-05,
+              "max": 0.00015796270834589972
+            },
+            "normalPower": {
+              "min": -0.13448238851692967,
+              "max": 0.0873907088370216
+            },
+            "tangentPower": {
+              "min": 0,
+              "max": 0
+            }
+          },
+          "contactSets": 3,
+          "contactSetChanges": 16,
+          "node0VelocityRange": [
+            {
+              "min": -0.005566911914285182,
+              "max": 0.00459233816423111
+            },
+            {
+              "min": -0.001642516612362893,
+              "max": 0.0013736670150192917
+            }
+          ],
+          "initial": {
+            "meanVelocity": [
+              0.00017798194884854638,
+              -0.00018533687454513214
+            ],
+            "rmsSpeed": 0.007322934351065351,
+            "residualRmsSpeed": 0.0073184247060983565,
+            "relativeSpeedEnergy": 2.6812683755006455e-05,
+            "maxNodeSpeed": 0.03344270280673027,
+            "maxNodeSpeedIndex": 61,
+            "maxNodeAcceleration": 21.412821139903617,
+            "maxNodeAccelerationIndex": 0,
+            "node0Position": [
+              -0.0004952824923996617,
+              0.012000436738174483
+            ],
+            "node0Velocity": [
+              0.0003809784634036972,
+              -0.0008279108374336915
+            ],
+            "node0Acceleration": [
+              -0.9068278367661405,
+              21.393610551843963
+            ],
+            "edgeRmsSpeed": 0.0002116946236573246,
+            "maxEdgeSpeed": 0.0009215810809379511,
+            "maxEdgeSpeedIndex": 4,
+            "foundationEnergy": 2.3065623746107664,
+            "edgeEnergy": 0.005339711436705421,
+            "foundationDampingPower": 0,
+            "edgeDampingPower": 4.151466159160575e-05,
+            "contactCount": 7,
+            "normalPower": 0.03153220213253853,
+            "tangentPower": 0
+          },
+          "final": {
+            "meanVelocity": [
+              -0.00010210858885038659,
+              -4.5151589196318906e-05
+            ],
+            "rmsSpeed": 0.008113807762473103,
+            "residualRmsSpeed": 0.008113039601557778,
+            "relativeSpeedEnergy": 3.2916938203184394e-05,
+            "maxNodeSpeed": 0.03727772965955279,
+            "maxNodeSpeedIndex": 4,
+            "maxNodeAcceleration": 37.539077512066704,
+            "maxNodeAccelerationIndex": 4,
+            "node0Position": [
+              -0.000494241303776961,
+              0.012002379083934608
+            ],
+            "node0Velocity": [
+              0.0019692744425482537,
+              -3.879829053025246e-05
+            ],
+            "node0Acceleration": [
+              5.274253096994346,
+              17.827727232843436
+            ],
+            "edgeRmsSpeed": 0.00016144992091846205,
+            "maxEdgeSpeed": 0.00040211104855674036,
+            "maxEdgeSpeedIndex": 60,
+            "foundationEnergy": 2.3063494703892804,
+            "edgeEnergy": 0.0053464776193907215,
+            "foundationDampingPower": 0,
+            "edgeDampingPower": 2.4146685092531298e-05,
+            "contactCount": 7,
+            "normalPower": -0.012992511435029871,
+            "tangentPower": 0
+          }
+        }
+      ],
+      "inputFile": "docs/evidence/tyre-motion-inputs/full-coarse.json",
+      "inputSha256": "3c8e2d0ca543878552e05451aba0abee7b53cec22b28d4f778ea80cc731edd8b"
+    },
+    {
+      "name": "full-fine-seed",
+      "format": "bikelab-tyre-motion-review-0.1",
+      "scope": "20 ms fresh-state probe; zero warm start and reset work. Statistics use recorded samples, not every physics tick. No long-term decay, equilibrium, calibration or causal proof from this window alone.",
+      "source": {
+        "sha256": "722d1c4b61794e36920d61ca9b7a2ea35025611f6e9add13591a9a1b66cdfaf9",
+        "model": "bikelab-trail-bike-active-0.1",
+        "bike": "full",
+        "endTime": 9.99999999987153,
+        "dt": 1.5625e-05,
+        "identity": "eb016f86713f7c50175471efab39fcdbb31005ff8729cb7a67d9ec4420983c2a"
+      },
+      "sourcesSha256": {
+        "dist/tyre-motion.js": "27b6edacf1ca6a95115083b86211ff729f157ce5aae4edbe5269d5bd5b299452",
+        "dist/trail-bike.js": "b9c0fd3e1d6be528d57e3dadb3da8b7a915ff1cc662093ada830a4eeb0476a73"
+      },
+      "scriptSha256": "b1b0ae2913f1a15bcdbd0673dd502bc0d184bc5cfff265f4d0fd24fac584a069",
+      "recordSha256": "ea8e256275ebb4fb2064ddf709c71727ac7ad97f7e001f991924f5d9f9027061",
+      "status": "completed",
+      "termination": null,
+      "summary": {
+        "acceptedTime": 0.01999999999999953,
+        "steps": 1280,
+        "peakForce": 822.8973408702959,
+        "peakPenetration": 3.374774226909752e-05,
+        "maxResidual": 0.0010085604100215375,
+        "maxSampledRootWrench": 1.014655026665423e-11,
+        "maxSampledBearingMoment": 2.857714065385153e-13,
+        "maxDiagnosticDifference": 0,
+        "maxPowerResidual": 7.998159426425566e-15,
+        "maxSampledLateralContactForce": 8.76554583072723e-09,
+        "maxSampledConeExcess": 0,
+        "initialEnergy": 717.5283518379732,
+        "finalEnergy": 717.531959326584,
+        "initialMomentum": [
+          -4.1486587656563794e-07,
+          -0.0002449301720710809,
+          0.003158790026447631
+        ],
+        "maxClosureGap": 0.0006384855690245749,
+        "closureWork": -9.847552558374353e-07,
+        "closureAngularImpulse": -1.249197910835548e-07,
+        "riderWork": 7.352044572103103e-05
+      },
+      "wheels": [
+        {
+          "wheel": "front",
+          "ranges": {
+            "rmsSpeed": {
+              "min": 0.00672588253518017,
+              "max": 0.03975266980193214
+            },
+            "residualRmsSpeed": {
+              "min": 0.006669892904354926,
+              "max": 0.03970871524840449
+            },
+            "maxNodeSpeed": {
+              "min": 0.022021872459114477,
+              "max": 0.14572673007486867
+            },
+            "maxNodeAcceleration": {
+              "min": 25.237772260478447,
+              "max": 3694.688075757454
+            },
+            "edgeRmsSpeed": {
+              "min": 0.0002642877136512096,
+              "max": 0.0013713315425756256
+            },
+            "foundationEnergy": {
+              "min": 1.2665571030868976,
+              "max": 1.2719042034605144
+            },
+            "edgeEnergy": {
+              "min": 0.0034469454822325762,
+              "max": 0.003591627321471597
+            },
+            "foundationDampingPower": {
+              "min": 0,
+              "max": 0
+            },
+            "edgeDampingPower": {
+              "min": 6.470469476766316e-05,
+              "max": 0.001742074710117059
+            },
+            "normalPower": {
+              "min": -10.058006683972451,
+              "max": 3.5237830466688336
+            },
+            "tangentPower": {
+              "min": 0,
+              "max": 0
+            }
+          },
+          "contactSets": 6,
+          "contactSetChanges": 25,
+          "node0VelocityRange": [
+            {
+              "min": -0.03757151174313628,
+              "max": 0.03600739580400277
+            },
+            {
+              "min": -0.08769357056012272,
+              "max": 0.017009331710570112
+            }
+          ],
+          "initial": {
+            "meanVelocity": [
+              0.0006381165579102396,
+              -0.00015775185880293757
+            ],
+            "rmsSpeed": 0.019587256057398972,
+            "residualRmsSpeed": 0.019576223370907826,
+            "relativeSpeedEnergy": 0.00019183029992905637,
+            "maxNodeSpeed": 0.0983549861645067,
+            "maxNodeSpeedIndex": 61,
+            "maxNodeAcceleration": 135.96553939839217,
+            "maxNodeAccelerationIndex": 63,
+            "node0Position": [
+              3.674776536917453e-05,
+              0.009768477257587466
+            ],
+            "node0Velocity": [
+              -0.009592501938399452,
+              0.0002825834474345873
+            ],
+            "node0Acceleration": [
+              -63.23886305015834,
+              62.797393521665654
+            ],
+            "edgeRmsSpeed": 0.0008971383544019308,
+            "maxEdgeSpeed": 0.0036429117631651617,
+            "maxEdgeSpeedIndex": 60,
+            "foundationEnergy": 1.267850921756428,
+            "edgeEnergy": 0.0035359894688881837,
+            "foundationDampingPower": 0,
+            "edgeDampingPower": 0.0007455910618906988,
+            "contactCount": 6,
+            "normalPower": -0.6462216810589843,
+            "tangentPower": 0
+          },
+          "final": {
+            "meanVelocity": [
+              0.0003883006968898871,
+              -0.0013068093350160155
+            ],
+            "rmsSpeed": 0.020437823603662596,
+            "residualRmsSpeed": 0.02039230505816196,
+            "relativeSpeedEnergy": 0.00020885231682721394,
+            "maxNodeSpeed": 0.13259330613011477,
+            "maxNodeSpeedIndex": 61,
+            "maxNodeAcceleration": 107.42659793597534,
+            "maxNodeAccelerationIndex": 62,
+            "node0Position": [
+              2.1208131406002928e-05,
+              0.009782824275445435
+            ],
+            "node0Velocity": [
+              0.007582862123778332,
+              0.0021215969804299446
+            ],
+            "node0Acceleration": [
+              -60.70012379604119,
+              -19.56164891040226
+            ],
+            "edgeRmsSpeed": 0.0010211821848873442,
+            "maxEdgeSpeed": 0.00506164697817213,
+            "maxEdgeSpeedIndex": 60,
+            "foundationEnergy": 1.2717840028468708,
+            "edgeEnergy": 0.0035396932630095117,
+            "foundationDampingPower": 0,
+            "edgeDampingPower": 0.0009660248635495068,
+            "contactCount": 6,
+            "normalPower": -0.5534591760160371,
+            "tangentPower": 0
+          }
+        },
+        {
+          "wheel": "rear",
+          "ranges": {
+            "rmsSpeed": {
+              "min": 0.004890209514745001,
+              "max": 0.013641637850394104
+            },
+            "residualRmsSpeed": {
+              "min": 0.004836478579465524,
+              "max": 0.013613123081846132
+            },
+            "maxNodeSpeed": {
+              "min": 0.018067968261328685,
+              "max": 0.06526333803268919
+            },
+            "maxNodeAcceleration": {
+              "min": 23.55326710066284,
+              "max": 389.26119688785224
+            },
+            "edgeRmsSpeed": {
+              "min": 6.094094857540389e-05,
+              "max": 0.0004789594504924037
+            },
+            "foundationEnergy": {
+              "min": 2.304521383024481,
+              "max": 2.3069133821362167
+            },
+            "edgeEnergy": {
+              "min": 0.005333676808243672,
+              "max": 0.005349203319736142
+            },
+            "foundationDampingPower": {
+              "min": 0,
+              "max": 0
+            },
+            "edgeDampingPower": {
+              "min": 3.4403312865831827e-06,
+              "max": 0.00021250998410984458
+            },
+            "normalPower": {
+              "min": -8.329289426610112,
+              "max": 2.057082729436018
+            },
+            "tangentPower": {
+              "min": 0,
+              "max": 0
+            }
+          },
+          "contactSets": 3,
+          "contactSetChanges": 11,
+          "node0VelocityRange": [
+            {
+              "min": -0.007595140508745871,
+              "max": 0.009588115179392826
+            },
+            {
+              "min": -0.0406175705470883,
+              "max": 0.011790358524214527
+            }
+          ],
+          "initial": {
+            "meanVelocity": [
+              -0.00038553726835752043,
+              -3.79461742078155e-05
+            ],
+            "rmsSpeed": 0.008138950050551338,
+            "residualRmsSpeed": 0.008129725027818592,
+            "relativeSpeedEnergy": 3.312125396268481e-05,
+            "maxNodeSpeed": 0.04025570800801377,
+            "maxNodeSpeedIndex": 61,
+            "maxNodeAcceleration": 51.26726250209105,
+            "maxNodeAccelerationIndex": 61,
+            "node0Position": [
+              -0.0004890392871815585,
+              0.012007119472908561
+            ],
+            "node0Velocity": [
+              0.003948108791016222,
+              0.0007152783763893539
+            ],
+            "node0Acceleration": [
+              -15.713219245297848,
+              -18.385138745141806
+            ],
+            "edgeRmsSpeed": 0.0002114987558999234,
+            "maxEdgeSpeed": 0.0008411634476161254,
+            "maxEdgeSpeedIndex": 61,
+            "foundationEnergy": 2.3068961547180837,
+            "edgeEnergy": 0.005337807212724558,
+            "foundationDampingPower": 0,
+            "edgeDampingPower": 4.143787530582147e-05,
+            "contactCount": 7,
+            "normalPower": -0.034072472320712435,
+            "tangentPower": 0
+          },
+          "final": {
+            "meanVelocity": [
+              0.0006976524201214823,
+              -9.92209749781701e-06
+            ],
+            "rmsSpeed": 0.006017251743969196,
+            "residualRmsSpeed": 0.005976663049142072,
+            "relativeSpeedEnergy": 1.810365927515016e-05,
+            "maxNodeSpeed": 0.02823461056426404,
+            "maxNodeSpeedIndex": 61,
+            "maxNodeAcceleration": 50.33065195902621,
+            "maxNodeAccelerationIndex": 61,
+            "node0Position": [
+              -0.0004896583758451297,
+              0.012007143188560426
+            ],
+            "node0Velocity": [
+              0.004092765771579745,
+              6.9568483609211e-05
+            ],
+            "node0Acceleration": [
+              -1.7754195275832545,
+              16.828305909251654
+            ],
+            "edgeRmsSpeed": 0.0001718682223083096,
+            "maxEdgeSpeed": 0.00038741129302050266,
+            "maxEdgeSpeedIndex": 60,
+            "foundationEnergy": 2.3063852764113326,
+            "edgeEnergy": 0.005344608785415808,
+            "foundationDampingPower": 0,
+            "edgeDampingPower": 2.7363586242031562e-05,
+            "contactCount": 7,
+            "normalPower": 0.08093787946123787,
+            "tangentPower": 0
+          }
+        }
+      ],
+      "inputFile": "docs/evidence/tyre-motion-inputs/full-fine-seed.json",
+      "inputSha256": "44f915c59d0d5f017b89a8a22d3d02c98b72902f667a70c3ba8294c571faa1cd"
+    },
+    {
+      "name": "full-same-seed-fine",
+      "format": "bikelab-tyre-motion-review-0.1",
+      "scope": "20 ms fresh-state probe; zero warm start and reset work. Statistics use recorded samples, not every physics tick. No long-term decay, equilibrium, calibration or causal proof from this window alone.",
+      "source": {
+        "sha256": "7af1c3f1c178a9633bcecd0d52910890457aab70a1fdb72b2275c648e4e3c541",
+        "model": "bikelab-trail-bike-active-0.1",
+        "bike": "full",
+        "endTime": 9.999999999979527,
+        "dt": 3.125e-05,
+        "identity": "eb016f86713f7c50175471efab39fcdbb31005ff8729cb7a67d9ec4420983c2a"
+      },
+      "sourcesSha256": {
+        "dist/tyre-motion.js": "27b6edacf1ca6a95115083b86211ff729f157ce5aae4edbe5269d5bd5b299452",
+        "dist/trail-bike.js": "b9c0fd3e1d6be528d57e3dadb3da8b7a915ff1cc662093ada830a4eeb0476a73"
+      },
+      "scriptSha256": "b1b0ae2913f1a15bcdbd0673dd502bc0d184bc5cfff265f4d0fd24fac584a069",
+      "recordSha256": "ad217f7fa8c5957a34061bea8f16ba909e06e6b5c4cbe837fd1082e8cad2bb88",
+      "status": "completed",
+      "termination": null,
+      "summary": {
+        "acceptedTime": 0.01999999999999953,
+        "steps": 1280,
+        "peakForce": 817.7106739447152,
+        "peakPenetration": 2.847765663911185e-05,
+        "maxResidual": 0.00041919954927367985,
+        "maxSampledRootWrench": 6.565414878423326e-12,
+        "maxSampledBearingMoment": 8.970602038971265e-14,
+        "maxDiagnosticDifference": 0,
+        "maxPowerResidual": 2.445187607079402e-15,
+        "maxSampledLateralContactForce": 5.619524377595092e-06,
+        "maxSampledConeExcess": 0,
+        "initialEnergy": 717.5303185212622,
+        "finalEnergy": 717.5306877480255,
+        "initialMomentum": [
+          -5.0299221089036e-07,
+          -0.00025284679317841546,
+          -0.000655951674838983
+        ],
+        "maxClosureGap": 0.000638491656409499,
+        "closureWork": 2.809224866376205e-07,
+        "closureAngularImpulse": 1.3628106770731761e-08,
+        "riderWork": 2.3238625269322037e-05
+      },
+      "wheels": [
+        {
+          "wheel": "front",
+          "ranges": {
+            "rmsSpeed": {
+              "min": 0.0007391568936112204,
+              "max": 0.009203660671734906
+            },
+            "residualRmsSpeed": {
+              "min": 0.0007312005584704348,
+              "max": 0.009185067689322859
+            },
+            "maxNodeSpeed": {
+              "min": 0.002790194304414124,
+              "max": 0.06985749563891319
+            },
+            "maxNodeAcceleration": {
+              "min": 2.2502004270882456,
+              "max": 3693.9432607162507
+            },
+            "edgeRmsSpeed": {
+              "min": 2.2478566119487545e-05,
+              "max": 0.00030371817974306214
+            },
+            "foundationEnergy": {
+              "min": 1.2710202839575995,
+              "max": 1.2724819006562105
+            },
+            "edgeEnergy": {
+              "min": 0.003515970135235526,
+              "max": 0.003519858600444521
+            },
+            "foundationDampingPower": {
+              "min": 0,
+              "max": 0
+            },
+            "edgeDampingPower": {
+              "min": 4.680788891092351e-07,
+              "max": 8.545223414839233e-05
+            },
+            "normalPower": {
+              "min": -4.951006214107065,
+              "max": 1.2983761256923247
+            },
+            "tangentPower": {
+              "min": 0,
+              "max": 0
+            }
+          },
+          "contactSets": 2,
+          "contactSetChanges": 2,
+          "node0VelocityRange": [
+            {
+              "min": -0.00037649991905580116,
+              "max": 0.0004821396187412303
+            },
+            {
+              "min": -0.06985747446861042,
+              "max": 0.019988003284562468
+            }
+          ],
+          "initial": {
+            "meanVelocity": [
+              -0.00011905926196781177,
+              -0.0005724737506093121
+            ],
+            "rmsSpeed": 0.009203660671734906,
+            "residualRmsSpeed": 0.009185067689322859,
+            "relativeSpeedEnergy": 4.2353684880219905e-05,
+            "maxNodeSpeed": 0.06985749563891319,
+            "maxNodeSpeedIndex": 0,
+            "maxNodeAcceleration": 349.42285637576924,
+            "maxNodeAccelerationIndex": 0,
+            "node0Position": [
+              -9.355983015139052e-08,
+              0.009775037062136768
+            ],
+            "node0Velocity": [
+              -5.4385735432866124e-05,
+              -0.06985747446861042
+            ],
+            "node0Acceleration": [
+              0.026493466712964844,
+              349.4228553713934
+            ],
+            "edgeRmsSpeed": 0.00030371817974306214,
+            "maxEdgeSpeed": 0.0014082695780640669,
+            "maxEdgeSpeedIndex": 60,
+            "foundationEnergy": 1.2715535886585,
+            "edgeEnergy": 0.0035176240237627123,
+            "foundationDampingPower": 0,
+            "edgeDampingPower": 8.545223414839233e-05,
+            "contactCount": 6,
+            "normalPower": -4.951006214107065,
+            "tangentPower": 0
+          },
+          "final": {
+            "meanVelocity": [
+              3.0831340432652375e-05,
+              9.713156921337383e-05
+            ],
+            "rmsSpeed": 0.00149827122211986,
+            "residualRmsSpeed": 0.0014948015057999542,
+            "relativeSpeedEnergy": 1.1224083275162694e-06,
+            "maxNodeSpeed": 0.008941090584880693,
+            "maxNodeSpeedIndex": 0,
+            "maxNodeAcceleration": 7.91585150888562,
+            "maxNodeAccelerationIndex": 0,
+            "node0Position": [
+              6.426803918393908e-08,
+              0.009783726701787563
+            ],
+            "node0Velocity": [
+              0.00039194115287229065,
+              0.008932495898668373
+            ],
+            "node0Acceleration": [
+              -0.030926911811325557,
+              -7.915791093558025
+            ],
+            "edgeRmsSpeed": 6.326608212466121e-05,
+            "maxEdgeSpeed": 0.00030996859225150325,
+            "maxEdgeSpeedIndex": 60,
+            "foundationEnergy": 1.2722939200505203,
+            "edgeEnergy": 0.0035172183555292973,
+            "foundationDampingPower": 0,
+            "edgeDampingPower": 3.707863404300493e-06,
+            "contactCount": 6,
+            "normalPower": 0.5621717290401242,
+            "tangentPower": 0
+          }
+        },
+        {
+          "wheel": "rear",
+          "ranges": {
+            "rmsSpeed": {
+              "min": 0.005286817385030702,
+              "max": 0.008645473658893484
+            },
+            "residualRmsSpeed": {
+              "min": 0.005278304705634229,
+              "max": 0.00864028437695076
+            },
+            "maxNodeSpeed": {
+              "min": 0.02112936524959547,
+              "max": 0.048168812043855876
+            },
+            "maxNodeAcceleration": {
+              "min": 18.97861611572199,
+              "max": 373.4105122609049
+            },
+            "edgeRmsSpeed": {
+              "min": 0.00010738483540293,
+              "max": 0.000278979812307114
+            },
+            "foundationEnergy": {
+              "min": 2.306305242979885,
+              "max": 2.3065623746107664
+            },
+            "edgeEnergy": {
+              "min": 0.0053298225318664265,
+              "max": 0.00534921168313044
+            },
+            "foundationDampingPower": {
+              "min": 0,
+              "max": 0
+            },
+            "edgeDampingPower": {
+              "min": 1.0682373451628825e-05,
+              "max": 7.209869443456974e-05
+            },
+            "normalPower": {
+              "min": -0.0935149619718885,
+              "max": 0.09257452403658972
+            },
+            "tangentPower": {
+              "min": 0,
+              "max": 0
+            }
+          },
+          "contactSets": 3,
+          "contactSetChanges": 18,
+          "node0VelocityRange": [
+            {
+              "min": -0.005318679575268756,
+              "max": 0.004798915131686647
+            },
+            {
+              "min": -0.0008279108374336915,
+              "max": 0.0008373383335020187
+            }
+          ],
+          "initial": {
+            "meanVelocity": [
+              0.00017798194884854638,
+              -0.00018533687454513214
+            ],
+            "rmsSpeed": 0.007322934351065351,
+            "residualRmsSpeed": 0.0073184247060983565,
+            "relativeSpeedEnergy": 2.6812683755006455e-05,
+            "maxNodeSpeed": 0.03344270280673027,
+            "maxNodeSpeedIndex": 61,
+            "maxNodeAcceleration": 21.412821139903617,
+            "maxNodeAccelerationIndex": 0,
+            "node0Position": [
+              -0.0004952824923996617,
+              0.012000436738174483
+            ],
+            "node0Velocity": [
+              0.0003809784634036972,
+              -0.0008279108374336915
+            ],
+            "node0Acceleration": [
+              -0.9068278367661405,
+              21.393610551843963
+            ],
+            "edgeRmsSpeed": 0.0002116946236573246,
+            "maxEdgeSpeed": 0.0009215810809379511,
+            "maxEdgeSpeedIndex": 4,
+            "foundationEnergy": 2.3065623746107664,
+            "edgeEnergy": 0.005339711436705421,
+            "foundationDampingPower": 0,
+            "edgeDampingPower": 4.151466159160575e-05,
+            "contactCount": 7,
+            "normalPower": 0.03153220213253853,
+            "tangentPower": 0
+          },
+          "final": {
+            "meanVelocity": [
+              -2.9651390638857983e-05,
+              -4.769258632607341e-05
+            ],
+            "rmsSpeed": 0.007676887772850202,
+            "residualRmsSpeed": 0.007676682362139237,
+            "relativeSpeedEnergy": 2.9467302938468467e-05,
+            "maxNodeSpeed": 0.03795702161569505,
+            "maxNodeSpeedIndex": 4,
+            "maxNodeAcceleration": 23.810600773050272,
+            "maxNodeAccelerationIndex": 0,
+            "node0Position": [
+              -0.0004921769591780624,
+              0.012002278151235616
+            ],
+            "node0Velocity": [
+              -0.0006664420634982461,
+              0.0008066566360531201
+            ],
+            "node0Acceleration": [
+              -12.887369553220518,
+              -20.021498824321494
+            ],
+            "edgeRmsSpeed": 0.00017664652476941553,
+            "maxEdgeSpeed": 0.000501514100340854,
+            "maxEdgeSpeedIndex": 61,
+            "foundationEnergy": 2.306305242979885,
+            "edgeEnergy": 0.005341922061690348,
+            "foundationDampingPower": 0,
+            "edgeDampingPower": 2.890626905577118e-05,
+            "contactCount": 7,
+            "normalPower": -0.019446215009530338,
+            "tangentPower": 0
+          }
+        }
+      ],
+      "inputFile": "docs/evidence/tyre-motion-inputs/full-same-seed-fine.json",
+      "inputSha256": "0ef509158f9a238b0820c4af6e9481356656d1c1fab16b6323e1f88f18bf55d6"
+    },
+    {
+      "name": "hardtail-coarse",
+      "format": "bikelab-tyre-motion-review-0.1",
+      "scope": "20 ms fresh-state probe; zero warm start and reset work. Statistics use recorded samples, not every physics tick. No long-term decay, equilibrium, calibration or causal proof from this window alone.",
+      "source": {
+        "sha256": "9ea5e2ce2b44fc53134a8c8d39126fbe0a3dce2dd9150a4911fcea6e8a651849",
+        "model": "bikelab-trail-bike-active-0.1",
+        "bike": "hardtail",
+        "endTime": 9.999999999979527,
+        "dt": 3.125e-05,
+        "identity": "977cf0558c7132935838f90cccc54400746684b341016b5430d166e83c6f9824"
+      },
+      "sourcesSha256": {
+        "dist/tyre-motion.js": "27b6edacf1ca6a95115083b86211ff729f157ce5aae4edbe5269d5bd5b299452",
+        "dist/trail-bike.js": "b9c0fd3e1d6be528d57e3dadb3da8b7a915ff1cc662093ada830a4eeb0476a73"
+      },
+      "scriptSha256": "b1b0ae2913f1a15bcdbd0673dd502bc0d184bc5cfff265f4d0fd24fac584a069",
+      "recordSha256": "617fb1a4e7d5ccbc9e063336b67d3afd89281f774fc945028685ed3aff51ec88",
+      "status": "completed",
+      "termination": null,
+      "summary": {
+        "acceptedTime": 0.020000000000000014,
+        "steps": 640,
+        "peakForce": 820.2126308322154,
+        "peakPenetration": 2.844733912160148e-05,
+        "maxResidual": 0.0014457512878852511,
+        "maxSampledRootWrench": 1.3301360013429075e-11,
+        "maxSampledBearingMoment": 1.1952884428761967e-13,
+        "maxDiagnosticDifference": 0,
+        "maxPowerResidual": 6.797730781049616e-15,
+        "maxSampledLateralContactForce": 1.6381743307158504e-08,
+        "maxSampledConeExcess": 0,
+        "initialEnergy": 725.8203712347529,
+        "finalEnergy": 725.8198296386461,
+        "initialMomentum": [
+          4.078456624619366e-07,
+          -5.153125682545323e-05,
+          -0.0005655678960538859
+        ],
+        "maxClosureGap": 0.0005989347272698098,
+        "closureWork": -3.4105012721459135e-06,
+        "closureAngularImpulse": -6.305847474002896e-08,
+        "riderWork": -0.00016096655649044017
+      },
+      "wheels": [
+        {
+          "wheel": "front",
+          "ranges": {
+            "rmsSpeed": {
+              "min": 0.0007014570533602536,
+              "max": 0.01468619342162623
+            },
+            "residualRmsSpeed": {
+              "min": 0.0006065229963722163,
+              "max": 0.014658604222458037
+            },
+            "maxNodeSpeed": {
+              "min": 0.0017457098668632496,
+              "max": 0.11197218656933425
+            },
+            "maxNodeAcceleration": {
+              "min": 3.297740461645049,
+              "max": 3772.164402247494
+            },
+            "edgeRmsSpeed": {
+              "min": 5.243774959744914e-05,
+              "max": 0.0003734768849301619
+            },
+            "foundationEnergy": {
+              "min": 1.3516903755141212,
+              "max": 1.353008451914329
+            },
+            "edgeEnergy": {
+              "min": 0.003799746222885464,
+              "max": 0.003804725788077331
+            },
+            "foundationDampingPower": {
+              "min": 0,
+              "max": 0
+            },
+            "edgeDampingPower": {
+              "min": 2.5472404096933506e-06,
+              "max": 0.00012921391961479651
+            },
+            "normalPower": {
+              "min": -8.352650858940514,
+              "max": 1.3468116422868848
+            },
+            "tangentPower": {
+              "min": 0,
+              "max": 0
+            }
+          },
+          "contactSets": 2,
+          "contactSetChanges": 8,
+          "node0VelocityRange": [
+            {
+              "min": -0.0006656691696832279,
+              "max": 0.0006806593875024251
+            },
+            {
+              "min": -0.11197071629849435,
+              "max": 0.019936154572893626
+            }
+          ],
+          "initial": {
+            "meanVelocity": [
+              0.0002120513469174636,
+              0.0002808079659307553
+            ],
+            "rmsSpeed": 0.0027256503352607315,
+            "residualRmsSpeed": 0.0027028412573895755,
+            "relativeSpeedEnergy": 3.7145848750534692e-06,
+            "maxNodeSpeed": 0.01986850207363538,
+            "maxNodeSpeedIndex": 0,
+            "maxNodeAcceleration": 7.9043137238840355,
+            "maxNodeAccelerationIndex": 3,
+            "node0Position": [
+              -1.5467755862481286e-07,
+              0.010010394731055673
+            ],
+            "node0Velocity": [
+              0.00025089702945693145,
+              0.019866917861879406
+            ],
+            "node0Acceleration": [
+              -0.17723195947662926,
+              1.6069328979089943
+            ],
+            "edgeRmsSpeed": 7.819533868328573e-05,
+            "maxEdgeSpeed": 0.0002620152160830288,
+            "maxEdgeSpeedIndex": 2,
+            "foundationEnergy": 1.352143002412627,
+            "edgeEnergy": 0.0037998552924847105,
+            "foundationDampingPower": 0,
+            "edgeDampingPower": 5.664265152531652e-06,
+            "contactCount": 6,
+            "normalPower": 1.3358543167640096,
+            "tangentPower": 0
+          },
+          "final": {
+            "meanVelocity": [
+              -2.886540801899507e-05,
+              5.61860957582898e-05
+            ],
+            "rmsSpeed": 0.0014255717851021758,
+            "residualRmsSpeed": 0.0014241716277691885,
+            "relativeSpeedEnergy": 1.0161274572397021e-06,
+            "maxNodeSpeed": 0.006261481448118634,
+            "maxNodeSpeedIndex": 3,
+            "maxNodeAcceleration": 111.08518617990154,
+            "maxNodeAccelerationIndex": 0,
+            "node0Position": [
+              -3.3759793743204174e-07,
+              0.010004517551060459
+            ],
+            "node0Velocity": [
+              -0.00029498744184535417,
+              0.00015874867472038482
+            ],
+            "node0Acceleration": [
+              -0.16222383248153407,
+              111.08506772762739
+            ],
+            "edgeRmsSpeed": 0.000122955006676715,
+            "maxEdgeSpeed": 0.0005717296443927423,
+            "maxEdgeSpeedIndex": 60,
+            "foundationEnergy": 1.3516941864407195,
+            "edgeEnergy": 0.0038032724799890705,
+            "foundationDampingPower": 0,
+            "edgeDampingPower": 1.4004715170594785e-05,
+            "contactCount": 6,
+            "normalPower": 0.03140844963490519,
+            "tangentPower": 0
+          }
+        },
+        {
+          "wheel": "rear",
+          "ranges": {
+            "rmsSpeed": {
+              "min": 0.004917586228885346,
+              "max": 0.010583390720688408
+            },
+            "residualRmsSpeed": {
+              "min": 0.00491250935561085,
+              "max": 0.010572666828002328
+            },
+            "maxNodeSpeed": {
+              "min": 0.019775353555779307,
+              "max": 0.05372207668016293
+            },
+            "maxNodeAcceleration": {
+              "min": 19.179173191336808,
+              "max": 273.76117353730956
+            },
+            "edgeRmsSpeed": {
+              "min": 7.168042568322576e-05,
+              "max": 0.0004891382948668545
+            },
+            "foundationEnergy": {
+              "min": 2.214493828934974,
+              "max": 2.2147098692553557
+            },
+            "edgeEnergy": {
+              "min": 0.004975689151844301,
+              "max": 0.004989206925233447
+            },
+            "foundationDampingPower": {
+              "min": 0,
+              "max": 0
+            },
+            "edgeDampingPower": {
+              "min": 4.7597374410610034e-06,
+              "max": 0.00022163848638602168
+            },
+            "normalPower": {
+              "min": -0.10236104131584182,
+              "max": 0.09841114543899612
+            },
+            "tangentPower": {
+              "min": 0,
+              "max": 0
+            }
+          },
+          "contactSets": 4,
+          "contactSetChanges": 31,
+          "node0VelocityRange": [
+            {
+              "min": -0.006929910270441176,
+              "max": 0.006888517351565719
+            },
+            {
+              "min": -0.0019682440944362063,
+              "max": 0.0015941401306551989
+            }
+          ],
+          "initial": {
+            "meanVelocity": [
+              1.1395429411731284e-05,
+              0.00031842910173615147
+            ],
+            "rmsSpeed": 0.008284659940347204,
+            "residualRmsSpeed": 0.008278530266813657,
+            "relativeSpeedEnergy": 3.431779516359688e-05,
+            "maxNodeSpeed": 0.04377104107510511,
+            "maxNodeSpeedIndex": 4,
+            "maxNodeAcceleration": 48.27332580400143,
+            "maxNodeAccelerationIndex": 61,
+            "node0Position": [
+              -0.0004887176536031862,
+              0.011805051846730896
+            ],
+            "node0Velocity": [
+              -0.0008696591169496605,
+              -0.00019386718455278507
+            ],
+            "node0Acceleration": [
+              13.375776493400819,
+              17.517558637090904
+            ],
+            "edgeRmsSpeed": 0.00021095931577116143,
+            "maxEdgeSpeed": 0.00042122963234512804,
+            "maxEdgeSpeedIndex": 60,
+            "foundationEnergy": 2.2146062606565806,
+            "edgeEnergy": 0.004984998404081363,
+            "foundationDampingPower": 0,
+            "edgeDampingPower": 4.12267653534562e-05,
+            "contactCount": 7,
+            "normalPower": 0.016341855965323726,
+            "tangentPower": 0
+          },
+          "final": {
+            "meanVelocity": [
+              3.208144820756278e-05,
+              0.00018935409606604014
+            ],
+            "rmsSpeed": 0.007440343432711811,
+            "residualRmsSpeed": 0.0074378643577092535,
+            "relativeSpeedEnergy": 2.7679355198348887e-05,
+            "maxNodeSpeed": 0.03127417111563984,
+            "maxNodeSpeedIndex": 4,
+            "maxNodeAcceleration": 45.82187860052753,
+            "maxNodeAccelerationIndex": 61,
+            "node0Position": [
+              -0.0004866415851818636,
+              0.01180511107601106
+            ],
+            "node0Velocity": [
+              -0.0010914079599946436,
+              0.00030370676760217816
+            ],
+            "node0Acceleration": [
+              -3.745046975383028,
+              -18.11025741678281
+            ],
+            "edgeRmsSpeed": 0.00023211749953867646,
+            "maxEdgeSpeed": 0.0007699095374636266,
+            "maxEdgeSpeedIndex": 3,
+            "foundationEnergy": 2.2145091501265837,
+            "edgeEnergy": 0.004976943347894769,
+            "foundationDampingPower": 0,
+            "edgeDampingPower": 4.991115408979554e-05,
+            "contactCount": 7,
+            "normalPower": 0.006612547773786396,
+            "tangentPower": 0
+          }
+        }
+      ],
+      "inputFile": "docs/evidence/tyre-motion-inputs/hardtail-coarse.json",
+      "inputSha256": "277a80cd8c4193b7ef0f578fece5ea5aed5aedaa1e58fad9bdc133fb798807b4"
+    },
+    {
+      "name": "hardtail-fine-seed",
+      "format": "bikelab-tyre-motion-review-0.1",
+      "scope": "20 ms fresh-state probe; zero warm start and reset work. Statistics use recorded samples, not every physics tick. No long-term decay, equilibrium, calibration or causal proof from this window alone.",
+      "source": {
+        "sha256": "f58140ca658e763485040878a35bd140fdd8c146fff4f40f0150d994c2c71290",
+        "model": "bikelab-trail-bike-active-0.1",
+        "bike": "hardtail",
+        "endTime": 9.99999999987153,
+        "dt": 1.5625e-05,
+        "identity": "977cf0558c7132935838f90cccc54400746684b341016b5430d166e83c6f9824"
+      },
+      "sourcesSha256": {
+        "dist/tyre-motion.js": "27b6edacf1ca6a95115083b86211ff729f157ce5aae4edbe5269d5bd5b299452",
+        "dist/trail-bike.js": "b9c0fd3e1d6be528d57e3dadb3da8b7a915ff1cc662093ada830a4eeb0476a73"
+      },
+      "scriptSha256": "b1b0ae2913f1a15bcdbd0673dd502bc0d184bc5cfff265f4d0fd24fac584a069",
+      "recordSha256": "c1b7b540c60291c0bbee4d38efdba8314d3b13abd253d5c095047b7209087ad3",
+      "status": "completed",
+      "termination": null,
+      "summary": {
+        "acceptedTime": 0.01999999999999953,
+        "steps": 1280,
+        "peakForce": 818.7368491419879,
+        "peakPenetration": 1.8560660152447395e-05,
+        "maxResidual": 0.0004232770553839237,
+        "maxSampledRootWrench": 6.252776074688882e-12,
+        "maxSampledBearingMoment": 1.746103261979215e-13,
+        "maxDiagnosticDifference": 0,
+        "maxPowerResidual": 5.375040690314137e-15,
+        "maxSampledLateralContactForce": 8.08533595512734e-09,
+        "maxSampledConeExcess": 0,
+        "initialEnergy": 725.8208845120092,
+        "finalEnergy": 725.8201396041994,
+        "initialMomentum": [
+          6.390817056462972e-06,
+          0.002787379363304308,
+          -0.005233608045030769
+        ],
+        "maxClosureGap": 0.0005989655317410457,
+        "closureWork": -1.60219574987118e-05,
+        "closureAngularImpulse": 4.3736714718667756e-08,
+        "riderWork": -0.00019936281160513644
+      },
+      "wheels": [
+        {
+          "wheel": "front",
+          "ranges": {
+            "rmsSpeed": {
+              "min": 0.005316938489829303,
+              "max": 0.028263371706068
+            },
+            "residualRmsSpeed": {
+              "min": 0.005314464927329327,
+              "max": 0.028230620384909286
+            },
+            "maxNodeSpeed": {
+              "min": 0.014368973807953676,
+              "max": 0.11572485301524674
+            },
+            "maxNodeAcceleration": {
+              "min": 20.245593708218305,
+              "max": 3735.6401976543707
+            },
+            "edgeRmsSpeed": {
+              "min": 0.00023239401039765726,
+              "max": 0.0016837264574805044
+            },
+            "foundationEnergy": {
+              "min": 1.35248103625833,
+              "max": 1.3554519047959408
+            },
+            "edgeEnergy": {
+              "min": 0.0037348405736523545,
+              "max": 0.0038340996676992974
+            },
+            "foundationDampingPower": {
+              "min": 0,
+              "max": 0
+            },
+            "edgeDampingPower": {
+              "min": 5.0030138624355085e-05,
+              "max": 0.0026261825886172833
+            },
+            "normalPower": {
+              "min": -4.0797398582730064,
+              "max": 1.2380026976728777
+            },
+            "tangentPower": {
+              "min": 0,
+              "max": 0
+            }
+          },
+          "contactSets": 3,
+          "contactSetChanges": 12,
+          "node0VelocityRange": [
+            {
+              "min": -0.02493014680672975,
+              "max": 0.02423028518697517
+            },
+            {
+              "min": -0.056891521048031635,
+              "max": 0.018254379348532225
+            }
+          ],
+          "initial": {
+            "meanVelocity": [
+              -8.904047607451255e-05,
+              0.00120013466767556
+            ],
+            "rmsSpeed": 0.011070532212659821,
+            "residualRmsSpeed": 0.011004927625595838,
+            "relativeSpeedEnergy": 6.127834173576938e-05,
+            "maxNodeSpeed": 0.04359128950835331,
+            "maxNodeSpeedIndex": 3,
+            "maxNodeAcceleration": 58.82300553149985,
+            "maxNodeAccelerationIndex": 6,
+            "node0Position": [
+              7.538700862318261e-05,
+              0.010018696527365308
+            ],
+            "node0Velocity": [
+              0.00884150746130264,
+              -0.002540718261969047
+            ],
+            "node0Acceleration": [
+              -54.56200242437965,
+              0.8759383326835819
+            ],
+            "edgeRmsSpeed": 0.0013253427080150973,
+            "maxEdgeSpeed": 0.009137740597450258,
+            "maxEdgeSpeedIndex": 3,
+            "foundationEnergy": 1.354994393961324,
+            "edgeEnergy": 0.003825560588382316,
+            "foundationDampingPower": 0,
+            "edgeDampingPower": 0.0016271898665414408,
+            "contactCount": 6,
+            "normalPower": 0.7746524042205232,
+            "tangentPower": 0
+          },
+          "final": {
+            "meanVelocity": [
+              -2.757623075109836e-05,
+              0.000274282002993996
+            ],
+            "rmsSpeed": 0.006857740667563467,
+            "residualRmsSpeed": 0.0068521978954117334,
+            "relativeSpeedEnergy": 2.3514303531776914e-05,
+            "maxNodeSpeed": 0.030969916417388863,
+            "maxNodeSpeedIndex": 0,
+            "maxNodeAcceleration": 167.63058172943812,
+            "maxNodeAccelerationIndex": 0,
+            "node0Position": [
+              6.998610353745379e-05,
+              0.010011401211630563
+            ],
+            "node0Velocity": [
+              -0.0036463214194008505,
+              -0.0307545128884603
+            ],
+            "node0Acceleration": [
+              -13.3304256019498,
+              167.0997058172776
+            ],
+            "edgeRmsSpeed": 0.00039675355245815086,
+            "maxEdgeSpeed": 0.0015766822164339166,
+            "maxEdgeSpeedIndex": 60,
+            "foundationEnergy": 1.3539342854620162,
+            "edgeEnergy": 0.003760344376942222,
+            "foundationDampingPower": 0,
+            "edgeDampingPower": 0.00014582214864537743,
+            "contactCount": 6,
+            "normalPower": -2.201234567764957,
+            "tangentPower": 0
+          }
+        },
+        {
+          "wheel": "rear",
+          "ranges": {
+            "rmsSpeed": {
+              "min": 0.006955347175405432,
+              "max": 0.012710038920275283
+            },
+            "residualRmsSpeed": {
+              "min": 0.0069507078390383835,
+              "max": 0.012685697838596199
+            },
+            "maxNodeSpeed": {
+              "min": 0.03708379699622609,
+              "max": 0.05240525076585225
+            },
+            "maxNodeAcceleration": {
+              "min": 27.48100319016645,
+              "max": 292.5683302536999
+            },
+            "edgeRmsSpeed": {
+              "min": 0.00010319247540139116,
+              "max": 0.0004254320690084862
+            },
+            "foundationEnergy": {
+              "min": 2.21459249294252,
+              "max": 2.2149347006045073
+            },
+            "edgeEnergy": {
+              "min": 0.004969511988420489,
+              "max": 0.00500124465696463
+            },
+            "foundationDampingPower": {
+              "min": 0,
+              "max": 0
+            },
+            "edgeDampingPower": {
+              "min": 9.86456425689018e-06,
+              "max": 0.00016766495348385444
+            },
+            "normalPower": {
+              "min": -0.10499404649937663,
+              "max": 0.12628271564717578
+            },
+            "tangentPower": {
+              "min": 0,
+              "max": 0
+            }
+          },
+          "contactSets": 4,
+          "contactSetChanges": 29,
+          "node0VelocityRange": [
+            {
+              "min": -0.008550079484793869,
+              "max": 0.009028626750816525
+            },
+            {
+              "min": -0.000673388323850134,
+              "max": 0.0009666435495621314
+            }
+          ],
+          "initial": {
+            "meanVelocity": [
+              0.00010066061030504855,
+              0.0003027650499223909
+            ],
+            "rmsSpeed": 0.00850469321285735,
+            "residualRmsSpeed": 0.008498706219825488,
+            "relativeSpeedEnergy": 3.6164903322410946e-05,
+            "maxNodeSpeed": 0.04404032192898538,
+            "maxNodeSpeedIndex": 60,
+            "maxNodeAcceleration": 60.34542030976928,
+            "maxNodeAccelerationIndex": 61,
+            "node0Position": [
+              -0.000497075374301994,
+              0.011795967053789982
+            ],
+            "node0Velocity": [
+              0.004341629346280432,
+              -0.0001882718952515195
+            ],
+            "node0Acceleration": [
+              19.21666893853282,
+              17.753029739760844
+            ],
+            "edgeRmsSpeed": 0.00021625681359013158,
+            "maxEdgeSpeed": 0.0008691307958473855,
+            "maxEdgeSpeedIndex": 60,
+            "foundationEnergy": 2.2148671620699716,
+            "edgeEnergy": 0.00499577155575919,
+            "foundationDampingPower": 0,
+            "edgeDampingPower": 4.332329144961758e-05,
+            "contactCount": 7,
+            "normalPower": 0.06769337833277624,
+            "tangentPower": 0
+          },
+          "final": {
+            "meanVelocity": [
+              0.0002115565905963786,
+              0.0002694869299129791
+            ],
+            "rmsSpeed": 0.007530928824020667,
+            "residualRmsSpeed": 0.007523131632242427,
+            "relativeSpeedEnergy": 2.835744447623265e-05,
+            "maxNodeSpeed": 0.04594125040255819,
+            "maxNodeSpeedIndex": 60,
+            "maxNodeAcceleration": 61.91932875706006,
+            "maxNodeAccelerationIndex": 4,
+            "node0Position": [
+              -0.0004964205026992268,
+              0.011796442738763456
+            ],
+            "node0Velocity": [
+              0.0022141827543432162,
+              -0.0004617741398512658
+            ],
+            "node0Acceleration": [
+              18.69875528663146,
+              19.05607672185978
+            ],
+            "edgeRmsSpeed": 0.00012006752310475499,
+            "maxEdgeSpeed": 0.0003330373385871995,
+            "maxEdgeSpeedIndex": 4,
+            "foundationEnergy": 2.2145985771550882,
+            "edgeEnergy": 0.004969650425812861,
+            "foundationDampingPower": 0,
+            "edgeDampingPower": 1.3354663461419428e-05,
+            "contactCount": 7,
+            "normalPower": -0.014357347672120165,
+            "tangentPower": 0
+          }
+        }
+      ],
+      "inputFile": "docs/evidence/tyre-motion-inputs/hardtail-fine-seed.json",
+      "inputSha256": "8b1d5e086d1d788bbc4a726d6d8ded833f1452128a43c0b24cad813c21cde269"
+    },
+    {
+      "name": "hardtail-same-seed-fine",
+      "format": "bikelab-tyre-motion-review-0.1",
+      "scope": "20 ms fresh-state probe; zero warm start and reset work. Statistics use recorded samples, not every physics tick. No long-term decay, equilibrium, calibration or causal proof from this window alone.",
+      "source": {
+        "sha256": "9ea5e2ce2b44fc53134a8c8d39126fbe0a3dce2dd9150a4911fcea6e8a651849",
+        "model": "bikelab-trail-bike-active-0.1",
+        "bike": "hardtail",
+        "endTime": 9.999999999979527,
+        "dt": 3.125e-05,
+        "identity": "977cf0558c7132935838f90cccc54400746684b341016b5430d166e83c6f9824"
+      },
+      "sourcesSha256": {
+        "dist/tyre-motion.js": "27b6edacf1ca6a95115083b86211ff729f157ce5aae4edbe5269d5bd5b299452",
+        "dist/trail-bike.js": "b9c0fd3e1d6be528d57e3dadb3da8b7a915ff1cc662093ada830a4eeb0476a73"
+      },
+      "scriptSha256": "b1b0ae2913f1a15bcdbd0673dd502bc0d184bc5cfff265f4d0fd24fac584a069",
+      "recordSha256": "ad6ae4def5e54b67b6761dd4b6a34b5d5912d5d361e5f0bcf34945243d0fe2dd",
+      "status": "completed",
+      "termination": null,
+      "summary": {
+        "acceptedTime": 0.01999999999999953,
+        "steps": 1280,
+        "peakForce": 817.4518066375891,
+        "peakPenetration": 2.2476575566081347e-05,
+        "maxResidual": 0.0004134765263083314,
+        "maxSampledRootWrench": 1.745092959026806e-11,
+        "maxSampledBearingMoment": 1.0939589078357015e-13,
+        "maxDiagnosticDifference": 0,
+        "maxPowerResidual": 3.1238032993652354e-15,
+        "maxSampledLateralContactForce": 1.9194984390746134e-08,
+        "maxSampledConeExcess": 0,
+        "initialEnergy": 725.8203712347529,
+        "finalEnergy": 725.8204994758563,
+        "initialMomentum": [
+          4.078456624619366e-07,
+          -5.153125682545323e-05,
+          -0.0005655678960538859
+        ],
+        "maxClosureGap": 0.0005989334518247,
+        "closureWork": -1.8552731758986698e-06,
+        "closureAngularImpulse": 1.0715271081181531e-08,
+        "riderWork": -0.00013589064339503696
+      },
+      "wheels": [
+        {
+          "wheel": "front",
+          "ranges": {
+            "rmsSpeed": {
+              "min": 0.0006816438987174765,
+              "max": 0.00717984015543099
+            },
+            "residualRmsSpeed": {
+              "min": 0.0005991851492168186,
+              "max": 0.007165442580671915
+            },
+            "maxNodeSpeed": {
+              "min": 0.002372941872713988,
+              "max": 0.05400726926238156
+            },
+            "maxNodeAcceleration": {
+              "min": 2.0687581921771594,
+              "max": 232.85617696140739
+            },
+            "edgeRmsSpeed": {
+              "min": 2.4087018923060233e-05,
+              "max": 0.00018797177634045069
+            },
+            "foundationEnergy": {
+              "min": 1.352143002412627,
+              "max": 1.3531763751726769
+            },
+            "edgeEnergy": {
+              "min": 0.0037998104888660386,
+              "max": 0.00380188305964367
+            },
+            "foundationDampingPower": {
+              "min": 0,
+              "max": 0
+            },
+            "edgeDampingPower": {
+              "min": 5.374622336785422e-07,
+              "max": 3.273159253555668e-05
+            },
+            "normalPower": {
+              "min": -3.8364914846581106,
+              "max": 1.3358543167640096
+            },
+            "tangentPower": {
+              "min": 0,
+              "max": 0
+            }
+          },
+          "contactSets": 1,
+          "contactSetChanges": 0,
+          "node0VelocityRange": [
+            {
+              "min": -0.0006854453301978966,
+              "max": 0.0006217845848488973
+            },
+            {
+              "min": -0.05400550414407714,
+              "max": 0.019866917861879406
+            }
+          ],
+          "initial": {
+            "meanVelocity": [
+              0.0002120513469174636,
+              0.0002808079659307553
+            ],
+            "rmsSpeed": 0.0027256503352607315,
+            "residualRmsSpeed": 0.0027028412573895755,
+            "relativeSpeedEnergy": 3.7145848750534692e-06,
+            "maxNodeSpeed": 0.01986850207363538,
+            "maxNodeSpeedIndex": 0,
+            "maxNodeAcceleration": 7.9043137238840355,
+            "maxNodeAccelerationIndex": 3,
+            "node0Position": [
+              -1.5467755862481286e-07,
+              0.010010394731055673
+            ],
+            "node0Velocity": [
+              0.00025089702945693145,
+              0.019866917861879406
+            ],
+            "node0Acceleration": [
+              -0.17723195947662926,
+              1.6069328979089943
+            ],
+            "edgeRmsSpeed": 7.819533868328573e-05,
+            "maxEdgeSpeed": 0.0002620152160830288,
+            "maxEdgeSpeedIndex": 2,
+            "foundationEnergy": 1.352143002412627,
+            "edgeEnergy": 0.0037998552924847105,
+            "foundationDampingPower": 0,
+            "edgeDampingPower": 5.664265152531652e-06,
+            "contactCount": 6,
+            "normalPower": 1.3358543167640096,
+            "tangentPower": 0
+          },
+          "final": {
+            "meanVelocity": [
+              7.05993285313456e-05,
+              4.1982312485952525e-05
+            ],
+            "rmsSpeed": 0.0014102482646631575,
+            "residualRmsSpeed": 0.0014078541786117988,
+            "relativeSpeedEnergy": 9.944000839927236e-07,
+            "maxNodeSpeed": 0.006008344269228527,
+            "maxNodeSpeedIndex": 3,
+            "maxNodeAcceleration": 65.0169755753821,
+            "maxNodeAccelerationIndex": 0,
+            "node0Position": [
+              -4.759947426821491e-07,
+              0.010015573952964162
+            ],
+            "node0Velocity": [
+              -0.0004692907390175607,
+              -0.0017719940764750182
+            ],
+            "node0Acceleration": [
+              -0.0009058679729697702,
+              65.01697556907148
+            ],
+            "edgeRmsSpeed": 6.801685623767375e-05,
+            "maxEdgeSpeed": 0.0002920707617186976,
+            "maxEdgeSpeedIndex": 60,
+            "foundationEnergy": 1.3525664310501984,
+            "edgeEnergy": 0.003800857260083699,
+            "foundationDampingPower": 0,
+            "edgeDampingPower": 4.285632775054622e-06,
+            "contactCount": 6,
+            "normalPower": -0.126882803834712,
+            "tangentPower": 0
+          }
+        },
+        {
+          "wheel": "rear",
+          "ranges": {
+            "rmsSpeed": {
+              "min": 0.0054699689813670765,
+              "max": 0.010502091654138117
+            },
+            "residualRmsSpeed": {
+              "min": 0.005454229244460905,
+              "max": 0.010490726653354316
+            },
+            "maxNodeSpeed": {
+              "min": 0.020404761848010773,
+              "max": 0.05197932431904426
+            },
+            "maxNodeAcceleration": {
+              "min": 18.44957174520674,
+              "max": 276.4970314203862
+            },
+            "edgeRmsSpeed": {
+              "min": 6.567678180335182e-05,
+              "max": 0.0003012136690416739
+            },
+            "foundationEnergy": {
+              "min": 2.2144603564084946,
+              "max": 2.214710703143843
+            },
+            "edgeEnergy": {
+              "min": 0.004979314867115872,
+              "max": 0.004989329452361155
+            },
+            "foundationDampingPower": {
+              "min": 0,
+              "max": 0
+            },
+            "edgeDampingPower": {
+              "min": 3.995816841615968e-06,
+              "max": 8.40487381237156e-05
+            },
+            "normalPower": {
+              "min": -0.06085307571277476,
+              "max": 0.10282626193646047
+            },
+            "tangentPower": {
+              "min": 0,
+              "max": 0
+            }
+          },
+          "contactSets": 4,
+          "contactSetChanges": 33,
+          "node0VelocityRange": [
+            {
+              "min": -0.006537592539807889,
+              "max": 0.007281500018514831
+            },
+            {
+              "min": -0.0010748480505536938,
+              "max": 0.0007925032954100804
+            }
+          ],
+          "initial": {
+            "meanVelocity": [
+              1.1395429411731284e-05,
+              0.00031842910173615147
+            ],
+            "rmsSpeed": 0.008284659940347204,
+            "residualRmsSpeed": 0.008278530266813657,
+            "relativeSpeedEnergy": 3.431779516359688e-05,
+            "maxNodeSpeed": 0.04377104107510511,
+            "maxNodeSpeedIndex": 4,
+            "maxNodeAcceleration": 48.27332580400143,
+            "maxNodeAccelerationIndex": 61,
+            "node0Position": [
+              -0.0004887176536031862,
+              0.011805051846730896
+            ],
+            "node0Velocity": [
+              -0.0008696591169496605,
+              -0.00019386718455278507
+            ],
+            "node0Acceleration": [
+              13.375776493400819,
+              17.517558637090904
+            ],
+            "edgeRmsSpeed": 0.00021095931577116143,
+            "maxEdgeSpeed": 0.00042122963234512804,
+            "maxEdgeSpeedIndex": 60,
+            "foundationEnergy": 2.2146062606565806,
+            "edgeEnergy": 0.004984998404081363,
+            "foundationDampingPower": 0,
+            "edgeDampingPower": 4.12267653534562e-05,
+            "contactCount": 7,
+            "normalPower": 0.016341855965323726,
+            "tangentPower": 0
+          },
+          "final": {
+            "meanVelocity": [
+              4.905713124278698e-05,
+              0.0002260902980152114
+            ],
+            "rmsSpeed": 0.006408610324517017,
+            "residualRmsSpeed": 0.006404433063630511,
+            "relativeSpeedEnergy": 2.0535143145753052e-05,
+            "maxNodeSpeed": 0.03126755119904584,
+            "maxNodeSpeedIndex": 4,
+            "maxNodeAcceleration": 55.77236937261383,
+            "maxNodeAccelerationIndex": 4,
+            "node0Position": [
+              -0.0004884216564799331,
+              0.011804948297819081
+            ],
+            "node0Velocity": [
+              0.0032203099433292448,
+              -9.787923428756259e-05
+            ],
+            "node0Acceleration": [
+              13.576693951488922,
+              17.886790512312388
+            ],
+            "edgeRmsSpeed": 0.00016957718482498907,
+            "maxEdgeSpeed": 0.0003747086099208964,
+            "maxEdgeSpeedIndex": 3,
+            "foundationEnergy": 2.214468178448296,
+            "edgeEnergy": 0.004979314867115872,
+            "foundationDampingPower": 0,
+            "edgeDampingPower": 2.6638924531100482e-05,
+            "contactCount": 7,
+            "normalPower": -0.024758027181254603,
+            "tangentPower": 0
+          }
+        }
+      ],
+      "inputFile": "docs/evidence/tyre-motion-inputs/hardtail-same-seed-fine.json",
+      "inputSha256": "f35db18cef9c91747a6b79f9913501a69867d40e7eb96768b1b408b26e5f37ac"
+    },
+    {
+      "name": "full-same-seed-finest",
+      "format": "bikelab-tyre-motion-review-0.1",
+      "scope": "20 ms fresh-state probe; zero warm start and reset work. Statistics use recorded samples, not every physics tick. No long-term decay, equilibrium, calibration or causal proof from this window alone.",
+      "source": {
+        "sha256": "7af1c3f1c178a9633bcecd0d52910890457aab70a1fdb72b2275c648e4e3c541",
+        "model": "bikelab-trail-bike-active-0.1",
+        "bike": "full",
+        "endTime": 9.999999999979527,
+        "dt": 3.125e-05,
+        "identity": "eb016f86713f7c50175471efab39fcdbb31005ff8729cb7a67d9ec4420983c2a"
+      },
+      "sourcesSha256": {
+        "dist/tyre-motion.js": "27b6edacf1ca6a95115083b86211ff729f157ce5aae4edbe5269d5bd5b299452",
+        "dist/trail-bike.js": "b9c0fd3e1d6be528d57e3dadb3da8b7a915ff1cc662093ada830a4eeb0476a73"
+      },
+      "scriptSha256": "b1b0ae2913f1a15bcdbd0673dd502bc0d184bc5cfff265f4d0fd24fac584a069",
+      "recordSha256": "91f14e8e4781bae65766572bb647e78bc897987a95a8b2934e6b081f9e28eb78",
+      "status": "completed",
+      "termination": null,
+      "summary": {
+        "acceptedTime": 0.019999999999998665,
+        "steps": 2560,
+        "peakForce": 817.6967811148716,
+        "peakPenetration": 2.8832174209002595e-05,
+        "maxResidual": 0.00013873806443681684,
+        "maxSampledRootWrench": 1.5916157281026244e-12,
+        "maxSampledBearingMoment": 6.794564910705958e-14,
+        "maxDiagnosticDifference": 0,
+        "maxPowerResidual": 3.636685137059503e-15,
+        "maxSampledLateralContactForce": 2.8259805806291718e-08,
+        "maxSampledConeExcess": 0,
+        "initialEnergy": 717.5303185212622,
+        "finalEnergy": 717.5308319606055,
+        "initialMomentum": [
+          -5.0299221089036e-07,
+          -0.00025284679317841546,
+          -0.000655951674838983
+        ],
+        "maxClosureGap": 0.0006384910279701416,
+        "closureWork": 1.2103202362298443e-06,
+        "closureAngularImpulse": 2.6900854877853826e-08,
+        "riderWork": 2.6353849483308772e-05
+      },
+      "wheels": [
+        {
+          "wheel": "front",
+          "ranges": {
+            "rmsSpeed": {
+              "min": 0.0008705528482705605,
+              "max": 0.009203660671734906
+            },
+            "residualRmsSpeed": {
+              "min": 0.000863196821255535,
+              "max": 0.009185067689322859
+            },
+            "maxNodeSpeed": {
+              "min": 0.0026488126420950546,
+              "max": 0.06985749563891319
+            },
+            "maxNodeAcceleration": {
+              "min": 1.802891979079154,
+              "max": 349.42285637576924
+            },
+            "edgeRmsSpeed": {
+              "min": 1.7252894006490785e-05,
+              "max": 0.00030371817974306214
+            },
+            "foundationEnergy": {
+              "min": 1.2709991912605,
+              "max": 1.27254672638674
+            },
+            "edgeEnergy": {
+              "min": 0.003514516338538168,
+              "max": 0.0035208957933670878
+            },
+            "foundationDampingPower": {
+              "min": 0,
+              "max": 0
+            },
+            "edgeDampingPower": {
+              "min": 2.757437982606989e-07,
+              "max": 8.545223414839233e-05
+            },
+            "normalPower": {
+              "min": -4.951006214107065,
+              "max": 1.315518933051004
+            },
+            "tangentPower": {
+              "min": 0,
+              "max": 0
+            }
+          },
+          "contactSets": 1,
+          "contactSetChanges": 0,
+          "node0VelocityRange": [
+            {
+              "min": -0.00037360483564021933,
+              "max": 0.00048333813278456247
+            },
+            {
+              "min": -0.06985747446861042,
+              "max": 0.020237036208300162
+            }
+          ],
+          "initial": {
+            "meanVelocity": [
+              -0.00011905926196781177,
+              -0.0005724737506093121
+            ],
+            "rmsSpeed": 0.009203660671734906,
+            "residualRmsSpeed": 0.009185067689322859,
+            "relativeSpeedEnergy": 4.2353684880219905e-05,
+            "maxNodeSpeed": 0.06985749563891319,
+            "maxNodeSpeedIndex": 0,
+            "maxNodeAcceleration": 349.42285637576924,
+            "maxNodeAccelerationIndex": 0,
+            "node0Position": [
+              -9.355983015139052e-08,
+              0.009775037062136768
+            ],
+            "node0Velocity": [
+              -5.4385735432866124e-05,
+              -0.06985747446861042
+            ],
+            "node0Acceleration": [
+              0.026493466712964844,
+              349.4228553713934
+            ],
+            "edgeRmsSpeed": 0.00030371817974306214,
+            "maxEdgeSpeed": 0.0014082695780640669,
+            "maxEdgeSpeedIndex": 60,
+            "foundationEnergy": 1.2715535886585,
+            "edgeEnergy": 0.0035176240237627123,
+            "foundationDampingPower": 0,
+            "edgeDampingPower": 8.545223414839233e-05,
+            "contactCount": 6,
+            "normalPower": -4.951006214107065,
+            "tangentPower": 0
+          },
+          "final": {
+            "meanVelocity": [
+              2.6825132475954805e-05,
+              7.680044919575589e-05
+            ],
+            "rmsSpeed": 0.001121638227824387,
+            "residualRmsSpeed": 0.0011186842348884733,
+            "relativeSpeedEnergy": 6.290361570585157e-07,
+            "maxNodeSpeed": 0.004915547085652276,
+            "maxNodeSpeedIndex": 0,
+            "maxNodeAcceleration": 4.394546654116225,
+            "maxNodeAccelerationIndex": 0,
+            "node0Position": [
+              1.8372922848570976e-07,
+              0.009786403341062684
+            ],
+            "node0Velocity": [
+              0.000327285897515869,
+              0.004904639343779706
+            ],
+            "node0Acceleration": [
+              -0.3924111770421733,
+              -4.376991405444667
+            ],
+            "edgeRmsSpeed": 4.500319378115243e-05,
+            "maxEdgeSpeed": 0.0002219327884333069,
+            "maxEdgeSpeedIndex": 3,
+            "foundationEnergy": 1.2725172305401855,
+            "edgeEnergy": 0.0035152947051884658,
+            "foundationDampingPower": 0,
+            "edgeDampingPower": 1.8761541430124829e-06,
+            "contactCount": 6,
+            "normalPower": 0.29067625513387896,
+            "tangentPower": 0
+          }
+        },
+        {
+          "wheel": "rear",
+          "ranges": {
+            "rmsSpeed": {
+              "min": 0.005456546032220428,
+              "max": 0.008760131023427636
+            },
+            "residualRmsSpeed": {
+              "min": 0.005452266926677677,
+              "max": 0.008757957704009852
+            },
+            "maxNodeSpeed": {
+              "min": 0.021526966933183813,
+              "max": 0.04696045657552753
+            },
+            "maxNodeAcceleration": {
+              "min": 18.635453632832746,
+              "max": 378.82796058035046
+            },
+            "edgeRmsSpeed": {
+              "min": 9.332947631388628e-05,
+              "max": 0.00031197135609586365
+            },
+            "foundationEnergy": {
+              "min": 2.3062774256599328,
+              "max": 2.3065623746107664
+            },
+            "edgeEnergy": {
+              "min": 0.00533073925647503,
+              "max": 0.005349042439878774
+            },
+            "foundationDampingPower": {
+              "min": 0,
+              "max": 0
+            },
+            "edgeDampingPower": {
+              "min": 8.068996051614655e-06,
+              "max": 9.015945681910411e-05
+            },
+            "normalPower": {
+              "min": -0.07094823242844765,
+              "max": 0.08980196839404231
+            },
+            "tangentPower": {
+              "min": 0,
+              "max": 0
+            }
+          },
+          "contactSets": 3,
+          "contactSetChanges": 16,
+          "node0VelocityRange": [
+            {
+              "min": -0.005600982333192959,
+              "max": 0.004894050594042921
+            },
+            {
+              "min": -0.0008279108374336915,
+              "max": 0.0005708637838301076
+            }
+          ],
+          "initial": {
+            "meanVelocity": [
+              0.00017798194884854638,
+              -0.00018533687454513214
+            ],
+            "rmsSpeed": 0.007322934351065351,
+            "residualRmsSpeed": 0.0073184247060983565,
+            "relativeSpeedEnergy": 2.6812683755006455e-05,
+            "maxNodeSpeed": 0.03344270280673027,
+            "maxNodeSpeedIndex": 61,
+            "maxNodeAcceleration": 21.412821139903617,
+            "maxNodeAccelerationIndex": 0,
+            "node0Position": [
+              -0.0004952824923996617,
+              0.012000436738174483
+            ],
+            "node0Velocity": [
+              0.0003809784634036972,
+              -0.0008279108374336915
+            ],
+            "node0Acceleration": [
+              -0.9068278367661405,
+              21.393610551843963
+            ],
+            "edgeRmsSpeed": 0.0002116946236573246,
+            "maxEdgeSpeed": 0.0009215810809379511,
+            "maxEdgeSpeedIndex": 4,
+            "foundationEnergy": 2.3065623746107664,
+            "edgeEnergy": 0.005339711436705421,
+            "foundationDampingPower": 0,
+            "edgeDampingPower": 4.151466159160575e-05,
+            "contactCount": 7,
+            "normalPower": 0.03153220213253853,
+            "tangentPower": 0
+          },
+          "final": {
+            "meanVelocity": [
+              1.6831518479162695e-05,
+              -5.9779455605887996e-05
+            ],
+            "rmsSpeed": 0.008314838762635161,
+            "residualRmsSpeed": 0.008314606831672402,
+            "relativeSpeedEnergy": 3.4568271824310116e-05,
+            "maxNodeSpeed": 0.036909607728268214,
+            "maxNodeSpeedIndex": 4,
+            "maxNodeAcceleration": 36.43230879996537,
+            "maxNodeAccelerationIndex": 4,
+            "node0Position": [
+              -0.0004929125360189624,
+              0.01200216319893697
+            ],
+            "node0Velocity": [
+              -0.004009640528232725,
+              -0.0001664898210335327
+            ],
+            "node0Acceleration": [
+              0.789048175146156,
+              18.012087647572994
+            ],
+            "edgeRmsSpeed": 0.00017053152459096685,
+            "maxEdgeSpeed": 0.0003547085480062051,
+            "maxEdgeSpeedIndex": 60,
+            "foundationEnergy": 2.3062774256599328,
+            "edgeEnergy": 0.005339757659927696,
+            "foundationDampingPower": 0,
+            "edgeDampingPower": 2.6939603200083335e-05,
+            "contactCount": 7,
+            "normalPower": -0.02696531306877429,
+            "tangentPower": 0
+          }
+        }
+      ],
+      "inputFile": "docs/evidence/tyre-motion-inputs/full-same-seed-finest.json",
+      "inputSha256": "61ee04f5d5be1f7ecc97d9406aa86c991e3bc8980af41b81d4d607f0d13314fe"
+    },
+    {
+      "name": "hardtail-same-seed-finest",
+      "format": "bikelab-tyre-motion-review-0.1",
+      "scope": "20 ms fresh-state probe; zero warm start and reset work. Statistics use recorded samples, not every physics tick. No long-term decay, equilibrium, calibration or causal proof from this window alone.",
+      "source": {
+        "sha256": "9ea5e2ce2b44fc53134a8c8d39126fbe0a3dce2dd9150a4911fcea6e8a651849",
+        "model": "bikelab-trail-bike-active-0.1",
+        "bike": "hardtail",
+        "endTime": 9.999999999979527,
+        "dt": 3.125e-05,
+        "identity": "977cf0558c7132935838f90cccc54400746684b341016b5430d166e83c6f9824"
+      },
+      "sourcesSha256": {
+        "dist/tyre-motion.js": "27b6edacf1ca6a95115083b86211ff729f157ce5aae4edbe5269d5bd5b299452",
+        "dist/trail-bike.js": "b9c0fd3e1d6be528d57e3dadb3da8b7a915ff1cc662093ada830a4eeb0476a73"
+      },
+      "scriptSha256": "b1b0ae2913f1a15bcdbd0673dd502bc0d184bc5cfff265f4d0fd24fac584a069",
+      "recordSha256": "4a05fe761b4467acea1028f41a59c87bdeb52dbf0a605fbf1d1fd9564909e43c",
+      "status": "completed",
+      "termination": null,
+      "summary": {
+        "acceptedTime": 0.019999999999998665,
+        "steps": 2560,
+        "peakForce": 816.3091025470603,
+        "peakPenetration": 2.2476575566081347e-05,
+        "maxResidual": 0.00012767424733784176,
+        "maxSampledRootWrench": 1.48929757415317e-11,
+        "maxSampledBearingMoment": 9.015010959956271e-14,
+        "maxDiagnosticDifference": 0,
+        "maxPowerResidual": 1.5595164049031496e-15,
+        "maxSampledLateralContactForce": 2.350099401464499e-08,
+        "maxSampledConeExcess": 0,
+        "initialEnergy": 725.8203712347529,
+        "finalEnergy": 725.8209346422291,
+        "initialMomentum": [
+          4.078456624619366e-07,
+          -5.153125682545323e-05,
+          -0.0005655678960538859
+        ],
+        "maxClosureGap": 0.0005989353517668083,
+        "closureWork": -1.2383243673136193e-06,
+        "closureAngularImpulse": 4.8523560734610986e-08,
+        "riderWork": -0.0001257188634563736
+      },
+      "wheels": [
+        {
+          "wheel": "front",
+          "ranges": {
+            "rmsSpeed": {
+              "min": 0.0006764660162739758,
+              "max": 0.0036893638430677152
+            },
+            "residualRmsSpeed": {
+              "min": 0.0005826962506498008,
+              "max": 0.0036703472005688506
+            },
+            "maxNodeSpeed": {
+              "min": 0.0018973137158632995,
+              "max": 0.025082183304204086
+            },
+            "maxNodeAcceleration": {
+              "min": 1.745124130342735,
+              "max": 3771.967856249689
+            },
+            "edgeRmsSpeed": {
+              "min": 2.2296478857306334e-05,
+              "max": 0.00012647364673676738
+            },
+            "foundationEnergy": {
+              "min": 1.352143002412627,
+              "max": 1.3532514388314736
+            },
+            "edgeEnergy": {
+              "min": 0.003798298004095047,
+              "max": 0.003802837419189824
+            },
+            "foundationDampingPower": {
+              "min": 0,
+              "max": 0
+            },
+            "edgeDampingPower": {
+              "min": 4.605262724558876e-07,
+              "max": 1.481773854184589e-05
+            },
+            "normalPower": {
+              "min": -1.694038129235751,
+              "max": 1.3358543167640096
+            },
+            "tangentPower": {
+              "min": 0,
+              "max": 0
+            }
+          },
+          "contactSets": 2,
+          "contactSetChanges": 2,
+          "node0VelocityRange": [
+            {
+              "min": -0.000697798414189192,
+              "max": 0.0004659892993466951
+            },
+            {
+              "min": -0.02508074212345721,
+              "max": 0.019866917861879406
+            }
+          ],
+          "initial": {
+            "meanVelocity": [
+              0.0002120513469174636,
+              0.0002808079659307553
+            ],
+            "rmsSpeed": 0.0027256503352607315,
+            "residualRmsSpeed": 0.0027028412573895755,
+            "relativeSpeedEnergy": 3.7145848750534692e-06,
+            "maxNodeSpeed": 0.01986850207363538,
+            "maxNodeSpeedIndex": 0,
+            "maxNodeAcceleration": 7.9043137238840355,
+            "maxNodeAccelerationIndex": 3,
+            "node0Position": [
+              -1.5467755862481286e-07,
+              0.010010394731055673
+            ],
+            "node0Velocity": [
+              0.00025089702945693145,
+              0.019866917861879406
+            ],
+            "node0Acceleration": [
+              -0.17723195947662926,
+              1.6069328979089943
+            ],
+            "edgeRmsSpeed": 7.819533868328573e-05,
+            "maxEdgeSpeed": 0.0002620152160830288,
+            "maxEdgeSpeedIndex": 2,
+            "foundationEnergy": 1.352143002412627,
+            "edgeEnergy": 0.0037998552924847105,
+            "foundationDampingPower": 0,
+            "edgeDampingPower": 5.664265152531652e-06,
+            "contactCount": 6,
+            "normalPower": 1.3358543167640096,
+            "tangentPower": 0
+          },
+          "final": {
+            "meanVelocity": [
+              0.0001277866868886184,
+              9.576131805623279e-05
+            ],
+            "rmsSpeed": 0.0015347454334046363,
+            "residualRmsSpeed": 0.0015264153687560103,
+            "relativeSpeedEnergy": 1.1777217726781923e-06,
+            "maxNodeSpeed": 0.0056125085111377124,
+            "maxNodeSpeedIndex": 0,
+            "maxNodeAcceleration": 2.527024396313695,
+            "maxNodeAccelerationIndex": 3,
+            "node0Position": [
+              -7.021402635141086e-07,
+              0.010022503859090641
+            ],
+            "node0Velocity": [
+              -0.0001942666641638605,
+              0.005609145411806321
+            ],
+            "node0Acceleration": [
+              0.4600501536842925,
+              1.0991976707151498
+            ],
+            "edgeRmsSpeed": 5.1649612545001626e-05,
+            "maxEdgeSpeed": 0.0001421078813941734,
+            "maxEdgeSpeedIndex": 3,
+            "foundationEnergy": 1.35308546979093,
+            "edgeEnergy": 0.003799442553922307,
+            "foundationDampingPower": 0,
+            "edgeDampingPower": 2.4712460092691207e-06,
+            "contactCount": 6,
+            "normalPower": 0.34938876591919366,
+            "tangentPower": 0
+          }
+        },
+        {
+          "wheel": "rear",
+          "ranges": {
+            "rmsSpeed": {
+              "min": 0.0053505243505131955,
+              "max": 0.010665077896246284
+            },
+            "residualRmsSpeed": {
+              "min": 0.005329292369880973,
+              "max": 0.010655170425707336
+            },
+            "maxNodeSpeed": {
+              "min": 0.020446397743846333,
+              "max": 0.052303236422141464
+            },
+            "maxNodeAcceleration": {
+              "min": 16.63077779175318,
+              "max": 274.78191210197775
+            },
+            "edgeRmsSpeed": {
+              "min": 5.7761660257935495e-05,
+              "max": 0.00024390395277475665
+            },
+            "foundationEnergy": {
+              "min": 2.2144420092757215,
+              "max": 2.2147059181015147
+            },
+            "edgeEnergy": {
+              "min": 0.004977769366000742,
+              "max": 0.004991421856160775
+            },
+            "foundationDampingPower": {
+              "min": 0,
+              "max": 0
+            },
+            "edgeDampingPower": {
+              "min": 3.0907308041979324e-06,
+              "max": 5.5108618300717444e-05
+            },
+            "normalPower": {
+              "min": -0.057646081286237195,
+              "max": 0.09227935953189513
+            },
+            "tangentPower": {
+              "min": 0,
+              "max": 0
+            }
+          },
+          "contactSets": 4,
+          "contactSetChanges": 36,
+          "node0VelocityRange": [
+            {
+              "min": -0.0066307215314931845,
+              "max": 0.007249304685238093
+            },
+            {
+              "min": -0.0007651852039834352,
+              "max": 0.0005589712627093342
+            }
+          ],
+          "initial": {
+            "meanVelocity": [
+              1.1395429411731284e-05,
+              0.00031842910173615147
+            ],
+            "rmsSpeed": 0.008284659940347204,
+            "residualRmsSpeed": 0.008278530266813657,
+            "relativeSpeedEnergy": 3.431779516359688e-05,
+            "maxNodeSpeed": 0.04377104107510511,
+            "maxNodeSpeedIndex": 4,
+            "maxNodeAcceleration": 48.27332580400143,
+            "maxNodeAccelerationIndex": 61,
+            "node0Position": [
+              -0.0004887176536031862,
+              0.011805051846730896
+            ],
+            "node0Velocity": [
+              -0.0008696591169496605,
+              -0.00019386718455278507
+            ],
+            "node0Acceleration": [
+              13.375776493400819,
+              17.517558637090904
+            ],
+            "edgeRmsSpeed": 0.00021095931577116143,
+            "maxEdgeSpeed": 0.00042122963234512804,
+            "maxEdgeSpeedIndex": 60,
+            "foundationEnergy": 2.2146062606565806,
+            "edgeEnergy": 0.004984998404081363,
+            "foundationDampingPower": 0,
+            "edgeDampingPower": 4.12267653534562e-05,
+            "contactCount": 7,
+            "normalPower": 0.016341855965323726,
+            "tangentPower": 0
+          },
+          "final": {
+            "meanVelocity": [
+              5.3981703032812e-05,
+              0.0002624979682297663
+            ],
+            "rmsSpeed": 0.0076798301413397,
+            "residualRmsSpeed": 0.007675152883965417,
+            "relativeSpeedEnergy": 2.9489895499914875e-05,
+            "maxNodeSpeed": 0.03156520393836757,
+            "maxNodeSpeedIndex": 4,
+            "maxNodeAcceleration": 44.90033679046518,
+            "maxNodeAccelerationIndex": 61,
+            "node0Position": [
+              -0.00048714248448215847,
+              0.01180494719121093
+            ],
+            "node0Velocity": [
+              0.006516730402128197,
+              0.00021444445556893237
+            ],
+            "node0Acceleration": [
+              -1.4601322597911868,
+              -17.08827694591027
+            ],
+            "edgeRmsSpeed": 0.00015570678598357765,
+            "maxEdgeSpeed": 0.0003201950743266374,
+            "maxEdgeSpeedIndex": 3,
+            "foundationEnergy": 2.214454431760286,
+            "edgeEnergy": 0.004980174292107147,
+            "foundationDampingPower": 0,
+            "edgeDampingPower": 2.2459336688508606e-05,
+            "contactCount": 7,
+            "normalPower": -0.011029377543527855,
+            "tangentPower": 0
+          }
+        }
+      ],
+      "inputFile": "docs/evidence/tyre-motion-inputs/hardtail-same-seed-finest.json",
+      "inputSha256": "d84d228e44d324ca869da6d2ed7c71f7d612ccaaa2cdc45c563cc61dd8cc0098"
+    }
+  ],
+  "review": "GPT-6.1 Sol reviewed read-only observation, formulas, owned bindings, fresh-state/command semantics and legacy replay. A stray unbound dropdown insertion was corrected before publication.",
+  "scope": "Illustrative 20 ms fresh-state probes of stored 10 s endpoints. Retains complete imported states for independent reruns. Sampled ranges/contact changes, not continuous maxima, causal isolation, long-term decay or equilibrium. No mechanics or damping law changed.",
+  "matchedTimeComparisons": [
+    {
+      "coarser": "full-coarse",
+      "finer": "full-same-seed-fine",
+      "samples": 161,
+      "fields": {
+        "front-node0Velocity": {
+          "maxAbsolute": 0.07971477974377951,
+          "rms": 0.02735298101197805
+        },
+        "front-rmsSpeed": {
+          "maxAbsolute": 0.00840386782320787,
+          "rms": 0.002344024037413408
+        },
+        "front-verticalForce": {
+          "maxAbsolute": 29.119234841790274,
+          "rms": 6.588752089061063
+        },
+        "front-hubHeight": {
+          "maxAbsolute": 6.145151035252816e-07,
+          "rms": 3.3792461125608283e-07
+        },
+        "rear-node0Velocity": {
+          "maxAbsolute": 0.001892280074978312,
+          "rms": 0.000744177495341722
+        },
+        "rear-rmsSpeed": {
+          "maxAbsolute": 0.0013325897528500344,
+          "rms": 0.0005402477003475021
+        },
+        "rear-verticalForce": {
+          "maxAbsolute": 7.203100580112846,
+          "rms": 1.571003335383694
+        },
+        "rear-hubHeight": {
+          "maxAbsolute": 1.2440014418579892e-07,
+          "rms": 6.941764288493791e-08
+        }
+      }
+    },
+    {
+      "coarser": "full-same-seed-fine",
+      "finer": "full-same-seed-finest",
+      "samples": 161,
+      "fields": {
+        "front-node0Velocity": {
+          "maxAbsolute": 0.05797961509116147,
+          "rms": 0.01607788627631455
+        },
+        "front-rmsSpeed": {
+          "maxAbsolute": 0.00579855876688018,
+          "rms": 0.0013301791838920812
+        },
+        "front-verticalForce": {
+          "maxAbsolute": 26.9831820299259,
+          "rms": 2.217600318621767
+        },
+        "front-hubHeight": {
+          "maxAbsolute": 2.4515856961171423e-07,
+          "rms": 1.3904417366809814e-07
+        },
+        "rear-node0Velocity": {
+          "maxAbsolute": 0.001141813301190701,
+          "rms": 0.00037648093485626955
+        },
+        "rear-rmsSpeed": {
+          "maxAbsolute": 0.0011516900528764544,
+          "rms": 0.000410718113662725
+        },
+        "rear-verticalForce": {
+          "maxAbsolute": 6.743979059498429,
+          "rms": 1.3580884497844017
+        },
+        "rear-hubHeight": {
+          "maxAbsolute": 6.820516873506932e-08,
+          "rms": 2.8745209853392313e-08
+        }
+      }
+    },
+    {
+      "coarser": "hardtail-coarse",
+      "finer": "hardtail-same-seed-fine",
+      "samples": 161,
+      "fields": {
+        "front-node0Velocity": {
+          "maxAbsolute": 0.12221715904404559,
+          "rms": 0.032882499814274754
+        },
+        "front-rmsSpeed": {
+          "maxAbsolute": 0.013115087516372005,
+          "rms": 0.003005791705397119
+        },
+        "front-verticalForce": {
+          "maxAbsolute": 29.74320664625543,
+          "rms": 4.661421664315333
+        },
+        "front-hubHeight": {
+          "maxAbsolute": 6.514724288919638e-07,
+          "rms": 3.6546975359592215e-07
+        },
+        "rear-node0Velocity": {
+          "maxAbsolute": 0.002024882306843768,
+          "rms": 0.0007062284561341387
+        },
+        "rear-rmsSpeed": {
+          "maxAbsolute": 0.0018041834911473893,
+          "rms": 0.0007160340151453343
+        },
+        "rear-verticalForce": {
+          "maxAbsolute": 5.51187002473273,
+          "rms": 1.4293608728845144
+        },
+        "rear-hubHeight": {
+          "maxAbsolute": 9.523651300913372e-08,
+          "rms": 5.758807629799396e-08
+        }
+      }
+    },
+    {
+      "coarser": "hardtail-same-seed-fine",
+      "finer": "hardtail-same-seed-finest",
+      "samples": 161,
+      "fields": {
+        "front-node0Velocity": {
+          "maxAbsolute": 0.05949222564921793,
+          "rms": 0.018180265625915286
+        },
+        "front-rmsSpeed": {
+          "maxAbsolute": 0.0060395104582604405,
+          "rms": 0.0015309264099228107
+        },
+        "front-verticalForce": {
+          "maxAbsolute": 27.514897823804915,
+          "rms": 2.2803757218020992
+        },
+        "front-hubHeight": {
+          "maxAbsolute": 2.9729925815624725e-07,
+          "rms": 1.6417851098442606e-07
+        },
+        "rear-node0Velocity": {
+          "maxAbsolute": 0.0013239568619465006,
+          "rms": 0.0004330975969639993
+        },
+        "rear-rmsSpeed": {
+          "maxAbsolute": 0.0012886325043872321,
+          "rms": 0.0005280301651044763
+        },
+        "rear-verticalForce": {
+          "maxAbsolute": 7.28022284893035,
+          "rms": 1.7127651062315252
+        },
+        "rear-hubHeight": {
+          "maxAbsolute": 4.7924284152234264e-08,
+          "rms": 2.8986497592572886e-08
+        }
+      }
+    }
+  ]
+}

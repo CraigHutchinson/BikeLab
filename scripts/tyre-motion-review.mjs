@@ -12,10 +12,10 @@ let previous='';const record=await run(input,(phase,steps,total)=>{const label=p
 await mkdir(directory,{recursive:true});const bytes=JSON.stringify(record)+'\n';await writeFile(join(directory,'record.json'),bytes);
 const quantities=['rmsSpeed','residualRmsSpeed','maxNodeSpeed','maxNodeAcceleration','edgeRmsSpeed','foundationEnergy','edgeEnergy','foundationDampingPower','edgeDampingPower','normalPower','tangentPower'];
 const wheels=[0,1].map(k=>{
- const rows=record.frames.map(f=>f.wheels[k].tyreMotion),ranges=Object.fromEntries(quantities.map(key=>[key,{min:Math.min(...rows.map(r=>r[key])),max:Math.max(...rows.map(r=>r[key]))}]));
+ const rows=record.frames.map(f=>f.wheels[k].tyreMotion),ranges=Object.fromEntries(quantities.map(key=>[key,rows.length?{min:Math.min(...rows.map(r=>r[key])),max:Math.max(...rows.map(r=>r[key]))}:null]));
  const signatures=record.frames.map(f=>f.contacts.filter(c=>c.wheel===k).map(c=>c.edge+':'+c.vertex).sort().join(','));
  return {wheel:k?'rear':'front',ranges,contactSets:new Set(signatures).size,contactSetChanges:signatures.slice(1).filter((s,i)=>s!==signatures[i]).length,
-  node0VelocityRange:[0,1].map(i=>({min:Math.min(...rows.map(r=>r.node0Velocity[i])),max:Math.max(...rows.map(r=>r.node0Velocity[i]))})),initial:rows[0],final:rows.at(-1)};
+  node0VelocityRange:[0,1].map(i=>rows.length?{min:Math.min(...rows.map(r=>r.node0Velocity[i])),max:Math.max(...rows.map(r=>r.node0Velocity[i]))}:null),initial:rows[0]??null,final:rows.at(-1)??null};
 });
 const sourcesSha256={};for(const path of ['dist/tyre-motion.js','dist/trail-bike.js'])sourcesSha256[path]=hash(await readFile(new URL('../'+path,import.meta.url)));
 const report={format:'bikelab-tyre-motion-review-0.1',scope:'20 ms fresh-state probe; zero warm start and reset work. Statistics use recorded samples, not every physics tick. No long-term decay, equilibrium, calibration or causal proof from this window alone.',
