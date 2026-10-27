@@ -96,7 +96,7 @@
             "riderOffset": 0,
             "gravity": 9.80665,
             "duration": 0.5,
-            "dt": 0.00003125,
+            "dt": 3.125e-05,
             "sampleDt": 0.005
           },
           "profile": {
@@ -350,13 +350,13 @@
           "acceptedTime": 0.1932500000000125,
           "steps": 6184,
           "peakForce": 926.8750788736907,
-          "peakPenetration": 0.00007057514176429802,
+          "peakPenetration": 7.057514176429802e-05,
           "maxResidual": 0.06899760418400547,
           "maxSampledRootWrench": 3.5491609651217004e-12,
           "maxSampledBearingMoment": 1.2523315717771766e-13,
           "maxDiagnosticDifference": 0,
           "maxPowerResidual": 1.7763568394002505e-13,
-          "maxSampledLateralContactForce": 2.60564213033699e-8,
+          "maxSampledLateralContactForce": 2.60564213033699e-08,
           "maxSampledConeExcess": 0,
           "initialEnergy": 733.3469901001203,
           "finalEnergy": 700.1266191118084,
@@ -507,7 +507,7 @@
             "riderOffset": 0,
             "gravity": 9.80665,
             "duration": 0.5,
-            "dt": 0.00003125,
+            "dt": 3.125e-05,
             "sampleDt": 0.005
           },
           "profile": {
@@ -761,13 +761,13 @@
           "acceptedTime": 0.2964062500000057,
           "steps": 9485,
           "peakForce": 1012.2855657871753,
-          "peakPenetration": 0.00007167983868949443,
+          "peakPenetration": 7.167983868949443e-05,
           "maxResidual": 0.10260094168086908,
           "maxSampledRootWrench": 7.389644451905042e-12,
           "maxSampledBearingMoment": 1.0880185641326534e-13,
           "maxDiagnosticDifference": 0,
           "maxPowerResidual": 1.8396395518038844e-13,
-          "maxSampledLateralContactForce": 6.161499628697882e-8,
+          "maxSampledLateralContactForce": 6.161499628697882e-08,
           "maxSampledConeExcess": 0,
           "initialEnergy": 733.3469901001203,
           "finalEnergy": 682.5282068880886,
@@ -918,7 +918,7 @@
             "riderOffset": 0,
             "gravity": 9.80665,
             "duration": 0.5,
-            "dt": 0.00003125,
+            "dt": 3.125e-05,
             "sampleDt": 0.005
           },
           "profile": {
@@ -1147,13 +1147,13 @@
           "acceptedTime": 0.49999999999989286,
           "steps": 16000,
           "peakForce": 985.4527330979722,
-          "peakPenetration": 0.00007617875974530973,
+          "peakPenetration": 7.617875974530973e-05,
           "maxResidual": 0.1372914519490971,
           "maxSampledRootWrench": 1.1027623258996755e-11,
           "maxSampledBearingMoment": 1.4876988529977098e-13,
           "maxDiagnosticDifference": 0,
           "maxPowerResidual": 9.880984919163893e-14,
-          "maxSampledLateralContactForce": 2.025330594507904e-8,
+          "maxSampledLateralContactForce": 2.025330594507904e-08,
           "maxSampledConeExcess": 0,
           "initialEnergy": 733.3469901001203,
           "finalEnergy": 718.705383040297,
@@ -1304,7 +1304,7 @@
             "riderOffset": 0,
             "gravity": 9.80665,
             "duration": 10,
-            "dt": 0.00003125,
+            "dt": 3.125e-05,
             "sampleDt": 0.05
           },
           "profile": {
@@ -1533,13 +1533,13 @@
           "acceptedTime": 9.999999999979527,
           "steps": 320000,
           "peakForce": 985.4527330979722,
-          "peakPenetration": 0.00007617875974530973,
+          "peakPenetration": 7.617875974530973e-05,
           "maxResidual": 1.3570204194118984,
           "maxSampledRootWrench": 1.0913936421275139e-11,
           "maxSampledBearingMoment": 1.7363888105137448e-13,
           "maxDiagnosticDifference": 0,
           "maxPowerResidual": 9.880984919163893e-14,
-          "maxSampledLateralContactForce": 3.03606355230279e-8,
+          "maxSampledLateralContactForce": 3.03606355230279e-08,
           "maxSampledConeExcess": 0,
           "initialEnergy": 733.3469901001203,
           "finalEnergy": 717.5303185212622,
@@ -1575,10 +1575,10 @@
             -1.1435527173639615
           ],
           "velocities": [
-            0.000009651809118666593,
-            -0.000012098043364389177,
-            0.000013603753797214154,
-            -0.000008746041856725135
+            9.651809118666593e-06,
+            -1.2098043364389177e-05,
+            1.3603753797214154e-05,
+            -8.746041856725135e-06
           ],
           "error": [
             0.021863678102313166,
@@ -1602,7 +1602,7 @@
             0.0005064483986792673,
             0.0016864573921014283,
             0.000115035481161718,
-            -0.00007058238873775201
+            -7.058238873775201e-05
           ],
           "saturation": [
             0,
@@ -1627,8 +1627,8 @@
           "start": 9.000000000003174,
           "end": 9.999999999979527,
           "comRange": [
-            1.9508940740653458e-7,
-            0.0000016094447662373668
+            1.9508940740653458e-07,
+            1.6094447662373668e-06
           ]
         },
         "finalHandFootLoads": [
@@ -1656,7 +1656,7 @@
             -0.00040884083252206387
           ],
           [
-            -7.610218375475597e-7,
+            -7.610218375475597e-07,
             473.2043316837164,
             0.7305197692195537
           ]
@@ -1720,7 +1720,7 @@
             "riderOffset": 0,
             "gravity": 9.80665,
             "duration": 0.5,
-            "dt": 0.00003125,
+            "dt": 3.125e-05,
             "sampleDt": 0.005
           },
           "profile": {
@@ -1974,13 +1974,13 @@
           "acceptedTime": 0.1884687500000109,
           "steps": 6031,
           "peakForce": 967.4582059846464,
-          "peakPenetration": 0.00005530446516227236,
+          "peakPenetration": 5.530446516227236e-05,
           "maxResidual": 0.0558658481666896,
           "maxSampledRootWrench": 1.7195134205394424e-12,
           "maxSampledBearingMoment": 1.80855330711438e-13,
           "maxDiagnosticDifference": 0,
           "maxPowerResidual": 2.469136006766348e-13,
-          "maxSampledLateralContactForce": 3.1948727085513746e-8,
+          "maxSampledLateralContactForce": 3.1948727085513746e-08,
           "maxSampledConeExcess": 0,
           "initialEnergy": 741.2135980745903,
           "finalEnergy": 704.0812216066182,
@@ -2131,7 +2131,7 @@
             "riderOffset": 0,
             "gravity": 9.80665,
             "duration": 0.5,
-            "dt": 0.00003125,
+            "dt": 3.125e-05,
             "sampleDt": 0.005
           },
           "profile": {
@@ -2385,13 +2385,13 @@
           "acceptedTime": 0.24306250000002913,
           "steps": 7778,
           "peakForce": 1031.8459921518756,
-          "peakPenetration": 0.00009434035472717997,
+          "peakPenetration": 9.434035472717997e-05,
           "maxResidual": 0.0754086706156869,
           "maxSampledRootWrench": 1.000444171950221e-11,
           "maxSampledBearingMoment": 2.899902540320909e-13,
           "maxDiagnosticDifference": 0,
           "maxPowerResidual": 2.786659791809143e-13,
-          "maxSampledLateralContactForce": 2.9214008913276478e-8,
+          "maxSampledLateralContactForce": 2.9214008913276478e-08,
           "maxSampledConeExcess": 0,
           "initialEnergy": 741.2135980745903,
           "finalEnergy": 691.9447186385294,
@@ -2542,7 +2542,7 @@
             "riderOffset": 0,
             "gravity": 9.80665,
             "duration": 0.5,
-            "dt": 0.00003125,
+            "dt": 3.125e-05,
             "sampleDt": 0.005
           },
           "profile": {
@@ -2771,13 +2771,13 @@
           "acceptedTime": 0.49999999999989286,
           "steps": 16000,
           "peakForce": 1112.4588810699613,
-          "peakPenetration": 0.00006828665496604915,
+          "peakPenetration": 6.828665496604915e-05,
           "maxResidual": 0.12074897203337542,
           "maxSampledRootWrench": 1.6484591469634324e-11,
           "maxSampledBearingMoment": 3.326228181776969e-13,
           "maxDiagnosticDifference": 0,
           "maxPowerResidual": 1.270095140171179e-13,
-          "maxSampledLateralContactForce": 4.923196233652373e-8,
+          "maxSampledLateralContactForce": 4.923196233652373e-08,
           "maxSampledConeExcess": 0,
           "initialEnergy": 741.2135980745903,
           "finalEnergy": 725.619316445333,
@@ -2928,7 +2928,7 @@
             "riderOffset": 0,
             "gravity": 9.80665,
             "duration": 10,
-            "dt": 0.00003125,
+            "dt": 3.125e-05,
             "sampleDt": 0.05
           },
           "profile": {
@@ -3157,13 +3157,13 @@
           "acceptedTime": 9.999999999979527,
           "steps": 320000,
           "peakForce": 1112.4588810699613,
-          "peakPenetration": 0.00006828665496604915,
+          "peakPenetration": 6.828665496604915e-05,
           "maxResidual": 1.2623560496698367,
           "maxSampledRootWrench": 2.0747847884194925e-11,
           "maxSampledBearingMoment": 1.1368683772161603e-13,
           "maxDiagnosticDifference": 0,
           "maxPowerResidual": 1.270095140171179e-13,
-          "maxSampledLateralContactForce": 2.342300998456295e-8,
+          "maxSampledLateralContactForce": 2.342300998456295e-08,
           "maxSampledConeExcess": 0,
           "initialEnergy": 741.2135980745903,
           "finalEnergy": 725.8203712347529,
@@ -3199,10 +3199,10 @@
             -1.1463970927379081
           ],
           "velocities": [
-            0.00002608889196199321,
-            -0.00003368492340564667,
-            0.00002651447631437969,
-            -0.000002518744816653804
+            2.608889196199321e-05,
+            -3.368492340564667e-05,
+            2.651447631437969e-05,
+            -2.518744816653804e-06
           ],
           "error": [
             0.020099645219054798,
@@ -3226,7 +3226,7 @@
             0.0012584378711979732,
             0.004677663433097865,
             0.00015511339934654096,
-            -0.00002462495927456172
+            -2.462495927456172e-05
           ],
           "saturation": [
             0,
@@ -3251,8 +3251,8 @@
           "start": 9.000000000003174,
           "end": 9.999999999979527,
           "comRange": [
-            2.101627932238337e-7,
-            0.0000014439137873134555
+            2.101627932238337e-07,
+            1.4439137873134555e-06
           ]
         },
         "finalHandFootLoads": [
@@ -3275,12 +3275,12 @@
         ],
         "finalGroundLoads": [
           [
-            2.9298390050863654e-9,
+            2.9298390050863654e-09,
             354.43336343852144,
-            0.00003040294633445016
+            3.040294633445016e-05
           ],
           [
-            -4.826176791539183e-9,
+            -4.826176791539183e-09,
             459.4859811144817,
             0.7581097543984636
           ]
@@ -3344,7 +3344,7 @@
             "riderOffset": 0,
             "gravity": 9.80665,
             "duration": 10,
-            "dt": 0.000015625,
+            "dt": 1.5625e-05,
             "sampleDt": 0.05
           },
           "profile": {
@@ -3573,13 +3573,13 @@
           "acceptedTime": 9.99999999987153,
           "steps": 640000,
           "peakForce": 988.4816889901164,
-          "peakPenetration": 0.00007053743776916019,
+          "peakPenetration": 7.053743776916019e-05,
           "maxResidual": 0.4685620452255268,
           "maxSampledRootWrench": 2.7625901566352695e-11,
           "maxSampledBearingMoment": 3.341771304121721e-13,
           "maxDiagnosticDifference": 0,
           "maxPowerResidual": 1.1290968160437842e-13,
-          "maxSampledLateralContactForce": 1.4490945369366317e-8,
+          "maxSampledLateralContactForce": 1.4490945369366317e-08,
           "maxSampledConeExcess": 0,
           "initialEnergy": 733.3469901001203,
           "finalEnergy": 717.5283518379732,
@@ -3615,8 +3615,8 @@
             -1.1435507493714998
           ],
           "velocities": [
-            0.00004429406926850395,
-            -0.00007099105211641313,
+            4.429406926850395e-05,
+            -7.099105211641313e-05,
             -0.0001320530655444275,
             0.00029786852834576635
           ],
@@ -3683,12 +3683,12 @@
         ],
         "finalGroundLoads": [
           [
-            -2.620218930715623e-9,
+            -2.620218930715623e-09,
             343.30876268701684,
             0.04669505881901194
           ],
           [
-            -1.1076385320052395e-7,
+            -1.1076385320052395e-07,
             472.79959464169514,
             -0.7400467280738683
           ]
@@ -3697,8 +3697,8 @@
           "start": 9.049999999893995,
           "end": 9.99999999987153,
           "comRange": [
-            8.400920366025133e-7,
-            0.000004190592968078555
+            8.400920366025133e-07,
+            4.190592968078555e-06
           ]
         }
       },
@@ -3760,7 +3760,7 @@
             "riderOffset": 0,
             "gravity": 9.80665,
             "duration": 10,
-            "dt": 0.000015625,
+            "dt": 1.5625e-05,
             "sampleDt": 0.05
           },
           "profile": {
@@ -3989,13 +3989,13 @@
           "acceptedTime": 9.99999999987153,
           "steps": 640000,
           "peakForce": 1099.6352416598017,
-          "peakPenetration": 0.00006186006354040423,
+          "peakPenetration": 6.186006354040423e-05,
           "maxResidual": 0.4893772065655462,
           "maxSampledRootWrench": 1.8189894035458565e-12,
           "maxSampledBearingMoment": 2.1486284973448733e-13,
           "maxDiagnosticDifference": 0,
           "maxPowerResidual": 1.7630341631047486e-13,
-          "maxSampledLateralContactForce": 2.595468544108406e-8,
+          "maxSampledLateralContactForce": 2.595468544108406e-08,
           "maxSampledConeExcess": 0,
           "initialEnergy": 741.2135980745903,
           "finalEnergy": 725.8208845120092,
@@ -4031,8 +4031,8 @@
             -1.1463977986474367
           ],
           "velocities": [
-            -0.000027427446332413147,
-            -0.000015274223589949083,
+            -2.7427446332413147e-05,
+            -1.5274223589949083e-05,
             -0.000181457704634896,
             0.0002654100973438286
           ],
@@ -4099,12 +4099,12 @@
         ],
         "finalGroundLoads": [
           [
-            -3.670049153470245e-9,
+            -3.670049153470245e-09,
             355.953688240803,
             -1.1923409952031754
           ],
           [
-            -4.178122736675505e-9,
+            -4.178122736675505e-09,
             459.5368925075743,
             0.7168243432008736
           ]
@@ -4113,8 +4113,8 @@
           "start": 9.049999999893995,
           "end": 9.99999999987153,
           "comRange": [
-            0.0000015025638435695043,
-            0.000008136697418947847
+            1.5025638435695043e-06,
+            8.136697418947847e-06
           ]
         }
       }
@@ -4321,13 +4321,13 @@
             "acceptedTime": 0.49999999999989286,
             "steps": 16000,
             "peakForce": 985.4527330979722,
-            "peakPenetration": 0.00007617875974530973,
+            "peakPenetration": 7.617875974530973e-05,
             "maxResidual": 0.1372914519490971,
             "maxSampledRootWrench": 1.1027623258996755e-11,
             "maxSampledBearingMoment": 1.4876988529977098e-13,
             "maxDiagnosticDifference": 0,
             "maxPowerResidual": 9.880984919163893e-14,
-            "maxSampledLateralContactForce": 2.025330594507904e-8,
+            "maxSampledLateralContactForce": 2.025330594507904e-08,
             "maxSampledConeExcess": 0,
             "initialEnergy": 733.3469901001203,
             "finalEnergy": 718.705383040297,
@@ -4632,13 +4632,13 @@
             "acceptedTime": 0.12581249999998997,
             "steps": 4026,
             "peakForce": 667.2728648936825,
-            "peakPenetration": 0.00006965910195065941,
+            "peakPenetration": 6.965910195065941e-05,
             "maxResidual": 0.025621894548553792,
             "maxSampledRootWrench": 1.5731416169728618e-11,
             "maxSampledBearingMoment": 8.913703108959226e-14,
             "maxDiagnosticDifference": 0,
             "maxPowerResidual": 1.2723155862204294e-13,
-            "maxSampledLateralContactForce": 1.2841583531407179e-8,
+            "maxSampledLateralContactForce": 1.2841583531407179e-08,
             "maxSampledConeExcess": 0,
             "initialEnergy": 733.3469901001203,
             "finalEnergy": 719.367489294508,
@@ -4863,13 +4863,13 @@
             "acceptedTime": 0.49999999999989286,
             "steps": 16000,
             "peakForce": 1112.4588810699613,
-            "peakPenetration": 0.00006828665496604915,
+            "peakPenetration": 6.828665496604915e-05,
             "maxResidual": 0.12074897203337542,
             "maxSampledRootWrench": 1.6484591469634324e-11,
             "maxSampledBearingMoment": 3.326228181776969e-13,
             "maxDiagnosticDifference": 0,
             "maxPowerResidual": 1.270095140171179e-13,
-            "maxSampledLateralContactForce": 4.923196233652373e-8,
+            "maxSampledLateralContactForce": 4.923196233652373e-08,
             "maxSampledConeExcess": 0,
             "initialEnergy": 741.2135980745903,
             "finalEnergy": 725.619316445333,
@@ -5174,13 +5174,13 @@
             "acceptedTime": 0.11915624999999035,
             "steps": 3813,
             "peakForce": 530.7853055187285,
-            "peakPenetration": 0.00005146327725507466,
+            "peakPenetration": 5.146327725507466e-05,
             "maxResidual": 0.014261148912883381,
             "maxSampledRootWrench": 4.5421444383464404e-12,
             "maxSampledBearingMoment": 1.1368683772161603e-13,
             "maxDiagnosticDifference": 0,
             "maxPowerResidual": 1.0719203302755886e-13,
-            "maxSampledLateralContactForce": 7.629777096595526e-9,
+            "maxSampledLateralContactForce": 7.629777096595526e-09,
             "maxSampledConeExcess": 0,
             "initialEnergy": 741.2135980745903,
             "finalEnergy": 732.3373489101609,
@@ -5223,10 +5223,86 @@
   },
   "review": "GPT-6.1 Sol reviewed mechanics, identity, ownership, internal work/rollback and UI normalization. Follow-ups added strict data properties, explicit command-row horizon and genuine held-power rejection.",
   "hosted": {
-    "status": "in_progress",
-    "runId": 40389782148,
-    "head": "037654499355f831f343816293287a42d09b4521",
-    "capturesInspected": false
+    "status": "received",
+    "runId": 40390242203,
+    "head": "82f86c2642be6787d9609ab1758354ceca284dda",
+    "mergedMain": "f14ca3d4e82e1d9436b5b7d91f4fcaeb660af3c7",
+    "jobs": {
+      "ubuntu": {
+        "id": 121809042054,
+        "passed": 257,
+        "failed": 0
+      },
+      "windows": {
+        "id": 121809041638,
+        "passed": 257,
+        "failed": 0
+      },
+      "browser": {
+        "id": 121809041525,
+        "conclusion": "success"
+      }
+    },
+    "artifact": {
+      "id": 12684749979,
+      "bytes": 1647040,
+      "sha256": "036dd083726e49f31e2829a27d8a8523cf8d86dff6f2457c3b972721cc8bfba4"
+    },
+    "records": [
+      {
+        "bike": "full",
+        "status": "completed",
+        "steps": 16000,
+        "riderWork": -7.515636092244099,
+        "agreement": {
+          "tolerance": 1e-09,
+          "maxAbsolute": 0,
+          "maxNormalized": 0,
+          "exact": true
+        },
+        "sha256": "218535d1411f5aaad2f63a8cc6dd3de55fe21007ddf580ca6debf9be1433b613"
+      },
+      {
+        "bike": "hardtail",
+        "status": "completed",
+        "steps": 16000,
+        "riderWork": -12.0674742116769,
+        "agreement": {
+          "tolerance": 1e-09,
+          "maxAbsolute": 0,
+          "maxNormalized": 0,
+          "exact": true
+        },
+        "sha256": "12b3f69e26c94b47414269c8fecb4c966a88fa9188b4e14e6e745245d8623764"
+      }
+    ],
+    "localReplay": [
+      {
+        "bike": "full",
+        "agreement": {
+          "tolerance": 1e-09,
+          "maxAbsolute": 0,
+          "maxNormalized": 0,
+          "exact": true
+        }
+      },
+      {
+        "bike": "hardtail",
+        "agreement": {
+          "tolerance": 1e-09,
+          "maxAbsolute": 0,
+          "maxNormalized": 0,
+          "exact": true
+        }
+      }
+    ],
+    "capturesInspected": [
+      "full-desktop.png",
+      "full-320.png",
+      "full-rig.png",
+      "hardtail-rig.png"
+    ],
+    "visualFinding": "Actual active readouts and both physical rig views received. Saturation heading clips at 320px; corrected in the following diagnostic slice, receiving pending."
   },
   "scope": "Sampled/held bounded joint-drive probe. Both coarse10s holds complete, but all-coordinate stationarity and long-duration numerical accuracy are not received. No torque slew, IK target trajectory, inverse-dynamics balance, saddle,60s hold, calibration or real-time claim.",
   "implementationHead": "037654499355f831f343816293287a42d09b4521",

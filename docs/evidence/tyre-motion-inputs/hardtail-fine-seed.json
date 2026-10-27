@@ -1,0 +1,1888 @@
+{
+  "bike": {
+    "pivotX": 0.04,
+    "pivotZ": -0.235,
+    "shockArmX": -0.054607848086069846,
+    "shockArmZ": 0.18996325604011804,
+    "shockFrameX": 0.19332203501088832,
+    "shockFrameZ": -0.015623078508508775,
+    "shockTravel": 0.055,
+    "bike": "hardtail",
+    "forkBuffer": "progressive",
+    "forkBufferWidth": 0.02,
+    "forkBufferStiffness": 300000,
+    "forkBufferDamping": 1500,
+    "forkStiffness": 9000,
+    "forkDamping": 700,
+    "shockBuffer": "progressive",
+    "shockBufferWidth": 0.008,
+    "shockBufferStiffness": 1000000,
+    "shockBufferDamping": 3000,
+    "shockStiffness": 70000,
+    "shockDamping": 2400,
+    "rider": "articulated"
+  },
+  "wheel": {
+    "nodes": 64,
+    "tyreMass": 1,
+    "hubMass": 1.5,
+    "hubInertia": 0.04,
+    "skin": 0.008,
+    "rimRadius": 0.29,
+    "foundation": 300000,
+    "extension": 500,
+    "edgeViscosity": 0.5,
+    "contactTime": 0.0005,
+    "contactImpedance": 0.99,
+    "collisionTolerance": 1e-10,
+    "collisionIterations": 100,
+    "maxPenetration": 0.0005,
+    "maxStrain": 0.25,
+    "maxDisplacement": 0.06
+  },
+  "motion": {
+    "gravity": 9.80665,
+    "duration": 0.02,
+    "dt": 1.5625e-05,
+    "sampleDt": 0.000125
+  },
+  "profile": {
+    "format": "bikelab-profile-1",
+    "units": "m",
+    "axes": "x-forward,z-up",
+    "solid": "below",
+    "interpolation": "linear",
+    "source": {
+      "kind": "illustrative",
+      "description": "Synthetic flat rigid trail."
+    },
+    "points": [
+      [
+        -3,
+        0
+      ],
+      [
+        5,
+        0
+      ]
+    ]
+  },
+  "assembly": {
+    "tyreId": "",
+    "rimId": "",
+    "brand": "unknown",
+    "rimType": "unknown",
+    "construction": "unknown",
+    "tyreBsd": null,
+    "rimBsd": null,
+    "tyreWidth": null,
+    "rimInnerWidth": null,
+    "tyreTubelessApproved": null,
+    "rimTubelessApproved": null,
+    "standardCompliant": null,
+    "widthPairApproved": null,
+    "pairApproved": null,
+    "pressure": null,
+    "tyreMaxPressure": null,
+    "rimMaxPressure": null,
+    "sources": {}
+  },
+  "surface": {
+    "friction": 0
+  },
+  "commands": [
+    {
+      "tick": 0,
+      "rearDrive": 0,
+      "frontBrake": 0,
+      "rearBrake": 0
+    }
+  ],
+  "articulated": {
+    "format": "bikelab-connected-rider-0.1",
+    "chassis": {
+      "mass": 6,
+      "com": [
+        0,
+        -0.15
+      ],
+      "inertia": [
+        0.35,
+        0.5,
+        0.3
+      ]
+    },
+    "passive": {
+      "format": "bikelab-rider-passive-0.1",
+      "posture": {
+        "format": "bikelab-rider-posture-0.1",
+        "riderMass": 70,
+        "hip": [
+          -0.15,
+          0.25
+        ],
+        "trunkPitch": 0.55,
+        "hand": [
+          0.45,
+          0.32
+        ],
+        "foot": [
+          0,
+          -0.3
+        ],
+        "elbowSide": -1,
+        "kneeSide": 1,
+        "minBendSine": 0.05,
+        "segments": {
+          "trunk": {
+            "massFraction": 0.6,
+            "length": 0.55,
+            "comFraction": 0.5,
+            "inertiaPerMass": [
+              0.02880833333333334,
+              0.02880833333333334,
+              0.0072
+            ]
+          },
+          "thighs": {
+            "massFraction": 0.2,
+            "length": 0.43,
+            "comFraction": 0.5,
+            "inertiaPerMass": [
+              0.01700833333333333,
+              0.01700833333333333,
+              0.0032
+            ]
+          },
+          "shanksFeet": {
+            "massFraction": 0.1,
+            "length": 0.43,
+            "comFraction": 0.5,
+            "inertiaPerMass": [
+              0.01663333333333333,
+              0.01663333333333333,
+              0.0024500000000000004
+            ]
+          },
+          "upperArms": {
+            "massFraction": 0.055,
+            "length": 0.3,
+            "comFraction": 0.5,
+            "inertiaPerMass": [
+              0.008125,
+              0.008125,
+              0.0012500000000000002
+            ]
+          },
+          "forearmsHands": {
+            "massFraction": 0.045,
+            "length": 0.3,
+            "comFraction": 0.5,
+            "inertiaPerMass": [
+              0.007899999999999999,
+              0.007899999999999999,
+              0.0008
+            ]
+          }
+        }
+      },
+      "joints": {
+        "hip": {
+          "restAngle": 1.4792200037917318,
+          "stiffness": 120,
+          "damping": 8,
+          "minAngle": 1.1792200037917318,
+          "maxAngle": 1.7792200037917318
+        },
+        "knee": {
+          "restAngle": 1.6922412012942722,
+          "stiffness": 90,
+          "damping": 6,
+          "minAngle": 1.3922412012942722,
+          "maxAngle": 1.9922412012942723
+        },
+        "shoulder": {
+          "restAngle": 2.492056379089391,
+          "stiffness": 25,
+          "damping": 2,
+          "minAngle": 2.192056379089391,
+          "maxAngle": 2.7920563790893906
+        },
+        "elbow": {
+          "restAngle": -1.1301027328714,
+          "stiffness": 15,
+          "damping": 1.5,
+          "minAngle": -1.4301027328714,
+          "maxAngle": -0.8301027328713999
+        }
+      }
+    },
+    "closureTime": 0.01,
+    "maxClosureGap": 0.002
+  },
+  "initialization": {
+    "mode": "state",
+    "state": {
+      "format": "bikelab-trail-state-0.1",
+      "identity": "977cf0558c7132935838f90cccc54400746684b341016b5430d166e83c6f9824",
+      "joints": [
+        {
+          "name": "fork",
+          "type": "slide",
+          "position": 0.033107564246836946,
+          "velocity": -0.00010960944318630307
+        },
+        {
+          "name": "frontwheelSpin",
+          "type": "hinge",
+          "position": -0.03127918080092638,
+          "velocity": -0.01570811632847884
+        },
+        {
+          "name": "frontwheel_u0",
+          "type": "slide",
+          "position": 7.538700862318261e-05,
+          "velocity": 0.00884150746130264
+        },
+        {
+          "name": "frontwheel_u1",
+          "type": "slide",
+          "position": -7.176373044356301e-05,
+          "velocity": 0.009538944490376136
+        },
+        {
+          "name": "frontwheel_u10",
+          "type": "slide",
+          "position": 1.358243498921301e-05,
+          "velocity": 0.00269131775071565
+        },
+        {
+          "name": "frontwheel_u11",
+          "type": "slide",
+          "position": 1.1489894104650475e-05,
+          "velocity": 0.0025328998480711037
+        },
+        {
+          "name": "frontwheel_u12",
+          "type": "slide",
+          "position": 9.465091190665752e-06,
+          "velocity": 0.00228277019636307
+        },
+        {
+          "name": "frontwheel_u13",
+          "type": "slide",
+          "position": 7.4096717084774376e-06,
+          "velocity": 0.001918577104271734
+        },
+        {
+          "name": "frontwheel_u14",
+          "type": "slide",
+          "position": 5.298004622764329e-06,
+          "velocity": 0.001468470353151515
+        },
+        {
+          "name": "frontwheel_u15",
+          "type": "slide",
+          "position": 3.1026091560615644e-06,
+          "velocity": 0.0009719055860592754
+        },
+        {
+          "name": "frontwheel_u16",
+          "type": "slide",
+          "position": 7.986223344298788e-07,
+          "velocity": 0.00044798322115633174
+        },
+        {
+          "name": "frontwheel_u17",
+          "type": "slide",
+          "position": -1.612689893477608e-06,
+          "velocity": -0.00011172794232090136
+        },
+        {
+          "name": "frontwheel_u18",
+          "type": "slide",
+          "position": -4.0870431317909796e-06,
+          "velocity": -0.0007320453215025566
+        },
+        {
+          "name": "frontwheel_u19",
+          "type": "slide",
+          "position": -6.537202569777044e-06,
+          "velocity": -0.001435933962060297
+        },
+        {
+          "name": "frontwheel_u2",
+          "type": "slide",
+          "position": 1.1099518106099405e-05,
+          "velocity": 0.011487532216639165
+        },
+        {
+          "name": "frontwheel_u20",
+          "type": "slide",
+          "position": -8.849283418501463e-06,
+          "velocity": -0.002229135243467328
+        },
+        {
+          "name": "frontwheel_u21",
+          "type": "slide",
+          "position": -1.090831474522189e-05,
+          "velocity": -0.003093354680832657
+        },
+        {
+          "name": "frontwheel_u22",
+          "type": "slide",
+          "position": -1.2624199281894878e-05,
+          "velocity": -0.00398905311687402
+        },
+        {
+          "name": "frontwheel_u23",
+          "type": "slide",
+          "position": -1.395049784381891e-05,
+          "velocity": -0.004865355847229934
+        },
+        {
+          "name": "frontwheel_u24",
+          "type": "slide",
+          "position": -1.489160022090274e-05,
+          "velocity": -0.005672745690139212
+        },
+        {
+          "name": "frontwheel_u25",
+          "type": "slide",
+          "position": -1.5497533702738908e-05,
+          "velocity": -0.006374055425454769
+        },
+        {
+          "name": "frontwheel_u26",
+          "type": "slide",
+          "position": -1.5848867051635e-05,
+          "velocity": -0.006950496892867579
+        },
+        {
+          "name": "frontwheel_u27",
+          "type": "slide",
+          "position": -1.6036206149997308e-05,
+          "velocity": -0.00740148369828645
+        },
+        {
+          "name": "frontwheel_u28",
+          "type": "slide",
+          "position": -1.613940107174723e-05,
+          "velocity": -0.0077391243082247235
+        },
+        {
+          "name": "frontwheel_u29",
+          "type": "slide",
+          "position": -1.621094490173759e-05,
+          "velocity": -0.007979850361365165
+        },
+        {
+          "name": "frontwheel_u3",
+          "type": "slide",
+          "position": 0.0002050707313121986,
+          "velocity": 0.00653517024706938
+        },
+        {
+          "name": "frontwheel_u30",
+          "type": "slide",
+          "position": -1.6266568810857454e-05,
+          "velocity": -0.008136304932485117
+        },
+        {
+          "name": "frontwheel_u31",
+          "type": "slide",
+          "position": -1.6284234125905415e-05,
+          "velocity": -0.00821226540764516
+        },
+        {
+          "name": "frontwheel_u32",
+          "type": "slide",
+          "position": -1.621103211955488e-05,
+          "velocity": -0.008202220805727094
+        },
+        {
+          "name": "frontwheel_u33",
+          "type": "slide",
+          "position": -1.597620298969719e-05,
+          "velocity": -0.008095655687440185
+        },
+        {
+          "name": "frontwheel_u34",
+          "type": "slide",
+          "position": -1.550768307711657e-05,
+          "velocity": -0.00788456707080366
+        },
+        {
+          "name": "frontwheel_u35",
+          "type": "slide",
+          "position": -1.4749256956757727e-05,
+          "velocity": -0.0075716621899236496
+        },
+        {
+          "name": "frontwheel_u36",
+          "type": "slide",
+          "position": -1.367543944634219e-05,
+          "velocity": -0.007176326933228851
+        },
+        {
+          "name": "frontwheel_u37",
+          "type": "slide",
+          "position": -1.2301552564221976e-05,
+          "velocity": -0.00673591217237951
+        },
+        {
+          "name": "frontwheel_u38",
+          "type": "slide",
+          "position": -1.0687044475030085e-05,
+          "velocity": -0.006301062688889183
+        },
+        {
+          "name": "frontwheel_u39",
+          "type": "slide",
+          "position": -8.930918220254538e-06,
+          "velocity": -0.00592544754225425
+        },
+        {
+          "name": "frontwheel_u4",
+          "type": "slide",
+          "position": 0.00016311433398793872,
+          "velocity": 0.016860184555488524
+        },
+        {
+          "name": "frontwheel_u40",
+          "type": "slide",
+          "position": -7.159211404166002e-06,
+          "velocity": -0.005651958172501194
+        },
+        {
+          "name": "frontwheel_u41",
+          "type": "slide",
+          "position": -5.505777044283441e-06,
+          "velocity": -0.005498788305473318
+        },
+        {
+          "name": "frontwheel_u42",
+          "type": "slide",
+          "position": -4.089052987949291e-06,
+          "velocity": -0.005449395067065287
+        },
+        {
+          "name": "frontwheel_u43",
+          "type": "slide",
+          "position": -2.9888350370249735e-06,
+          "velocity": -0.005449883552216757
+        },
+        {
+          "name": "frontwheel_u44",
+          "type": "slide",
+          "position": -2.227916707727238e-06,
+          "velocity": -0.005415793310740098
+        },
+        {
+          "name": "frontwheel_u45",
+          "type": "slide",
+          "position": -1.7633919924750496e-06,
+          "velocity": -0.005247838515927365
+        },
+        {
+          "name": "frontwheel_u46",
+          "type": "slide",
+          "position": -1.4910952088746134e-06,
+          "velocity": -0.00485344657982061
+        },
+        {
+          "name": "frontwheel_u47",
+          "type": "slide",
+          "position": -1.2640352853096018e-06,
+          "velocity": -0.004168784570854869
+        },
+        {
+          "name": "frontwheel_u48",
+          "type": "slide",
+          "position": -9.22215342147945e-07,
+          "velocity": -0.0031751564605605083
+        },
+        {
+          "name": "frontwheel_u49",
+          "type": "slide",
+          "position": -3.2782286748402e-07,
+          "velocity": -0.00190459869206198
+        },
+        {
+          "name": "frontwheel_u5",
+          "type": "slide",
+          "position": 7.312917223283242e-05,
+          "velocity": 0.002127307141977491
+        },
+        {
+          "name": "frontwheel_u50",
+          "type": "slide",
+          "position": 6.024319811161206e-07,
+          "velocity": -0.0004320420253535746
+        },
+        {
+          "name": "frontwheel_u51",
+          "type": "slide",
+          "position": 1.8759474471490966e-06,
+          "velocity": 0.0011447766927140087
+        },
+        {
+          "name": "frontwheel_u52",
+          "type": "slide",
+          "position": 3.418074314427954e-06,
+          "velocity": 0.002731182570140027
+        },
+        {
+          "name": "frontwheel_u53",
+          "type": "slide",
+          "position": 5.0745647911165114e-06,
+          "velocity": 0.004253679187633506
+        },
+        {
+          "name": "frontwheel_u54",
+          "type": "slide",
+          "position": 6.583308350351663e-06,
+          "velocity": 0.005653860764452642
+        },
+        {
+          "name": "frontwheel_u55",
+          "type": "slide",
+          "position": 7.508666364280565e-06,
+          "velocity": 0.006717879633345377
+        },
+        {
+          "name": "frontwheel_u56",
+          "type": "slide",
+          "position": 6.478884858532867e-06,
+          "velocity": 0.008338273259827013
+        },
+        {
+          "name": "frontwheel_u57",
+          "type": "slide",
+          "position": 4.686833309959967e-06,
+          "velocity": 0.0037113197522915605
+        },
+        {
+          "name": "frontwheel_u58",
+          "type": "slide",
+          "position": -1.8646256056067182e-05,
+          "velocity": 0.01603007755568223
+        },
+        {
+          "name": "frontwheel_u59",
+          "type": "slide",
+          "position": -4.304582150320214e-05,
+          "velocity": 0.00941259261620997
+        },
+        {
+          "name": "frontwheel_u6",
+          "type": "slide",
+          "position": 4.101472310026617e-05,
+          "velocity": -0.003923391535619298
+        },
+        {
+          "name": "frontwheel_u60",
+          "type": "slide",
+          "position": -0.00013697915314666724,
+          "velocity": 0.010915851625697881
+        },
+        {
+          "name": "frontwheel_u61",
+          "type": "slide",
+          "position": -0.00018073981271061608,
+          "velocity": 0.009896477777694031
+        },
+        {
+          "name": "frontwheel_u62",
+          "type": "slide",
+          "position": 0.00012231703485652187,
+          "velocity": 0.00944903073510261
+        },
+        {
+          "name": "frontwheel_u63",
+          "type": "slide",
+          "position": 0.0002151782852186178,
+          "velocity": 0.008954864131042562
+        },
+        {
+          "name": "frontwheel_u7",
+          "type": "slide",
+          "position": 2.8261360767231504e-05,
+          "velocity": 0.008084526720665626
+        },
+        {
+          "name": "frontwheel_u8",
+          "type": "slide",
+          "position": 1.8759091744691957e-05,
+          "velocity": 0.002129102248005376
+        },
+        {
+          "name": "frontwheel_u9",
+          "type": "slide",
+          "position": 1.6082780111187027e-05,
+          "velocity": 0.0031602087976818505
+        },
+        {
+          "name": "frontwheel_v0",
+          "type": "slide",
+          "position": 0.010018696527365308,
+          "velocity": -0.002540718261969047
+        },
+        {
+          "name": "frontwheel_v1",
+          "type": "slide",
+          "position": 0.008088729682552412,
+          "velocity": 0.009447480008087917
+        },
+        {
+          "name": "frontwheel_v10",
+          "type": "slide",
+          "position": -3.089585177839495e-06,
+          "velocity": 0.007306081940568062
+        },
+        {
+          "name": "frontwheel_v11",
+          "type": "slide",
+          "position": -2.860970686196708e-06,
+          "velocity": 0.00745288956025404
+        },
+        {
+          "name": "frontwheel_v12",
+          "type": "slide",
+          "position": -2.393025947004545e-06,
+          "velocity": 0.007670708944130063
+        },
+        {
+          "name": "frontwheel_v13",
+          "type": "slide",
+          "position": -1.875783357211913e-06,
+          "velocity": 0.00793296893413979
+        },
+        {
+          "name": "frontwheel_v14",
+          "type": "slide",
+          "position": -1.4163469926266507e-06,
+          "velocity": 0.008196004438401985
+        },
+        {
+          "name": "frontwheel_v15",
+          "type": "slide",
+          "position": -1.072348852349084e-06,
+          "velocity": 0.008429669596919558
+        },
+        {
+          "name": "frontwheel_v16",
+          "type": "slide",
+          "position": -8.860111478923426e-07,
+          "velocity": 0.008620323412163284
+        },
+        {
+          "name": "frontwheel_v17",
+          "type": "slide",
+          "position": -8.962085881744841e-07,
+          "velocity": 0.00875919895771883
+        },
+        {
+          "name": "frontwheel_v18",
+          "type": "slide",
+          "position": -1.1324259474119805e-06,
+          "velocity": 0.008831719674087106
+        },
+        {
+          "name": "frontwheel_v19",
+          "type": "slide",
+          "position": -1.601327050804727e-06,
+          "velocity": 0.008814895201968556
+        },
+        {
+          "name": "frontwheel_v2",
+          "type": "slide",
+          "position": 0.0027890689559170977,
+          "velocity": -0.0028741689249050122
+        },
+        {
+          "name": "frontwheel_v20",
+          "type": "slide",
+          "position": -2.276312204133093e-06,
+          "velocity": 0.008682631350590173
+        },
+        {
+          "name": "frontwheel_v21",
+          "type": "slide",
+          "position": -3.096449229021889e-06,
+          "velocity": 0.008414881191102208
+        },
+        {
+          "name": "frontwheel_v22",
+          "type": "slide",
+          "position": -3.976277231849215e-06,
+          "velocity": 0.008005787803767449
+        },
+        {
+          "name": "frontwheel_v23",
+          "type": "slide",
+          "position": -4.823896452184052e-06,
+          "velocity": 0.007467210402426117
+        },
+        {
+          "name": "frontwheel_v24",
+          "type": "slide",
+          "position": -5.562298657822003e-06,
+          "velocity": 0.006826213665634212
+        },
+        {
+          "name": "frontwheel_v25",
+          "type": "slide",
+          "position": -6.1482794616627135e-06,
+          "velocity": 0.006117399622763365
+        },
+        {
+          "name": "frontwheel_v26",
+          "type": "slide",
+          "position": -6.584279471199656e-06,
+          "velocity": 0.005372721094154567
+        },
+        {
+          "name": "frontwheel_v27",
+          "type": "slide",
+          "position": -6.920566599197453e-06,
+          "velocity": 0.004612189839098285
+        },
+        {
+          "name": "frontwheel_v28",
+          "type": "slide",
+          "position": -7.247588880123496e-06,
+          "velocity": 0.0038385365048188252
+        },
+        {
+          "name": "frontwheel_v29",
+          "type": "slide",
+          "position": -7.680438893137632e-06,
+          "velocity": 0.00303758771564687
+        },
+        {
+          "name": "frontwheel_v3",
+          "type": "slide",
+          "position": 0.00040168159272736505,
+          "velocity": 0.043098631890616815
+        },
+        {
+          "name": "frontwheel_v30",
+          "type": "slide",
+          "position": -8.33874991126461e-06,
+          "velocity": 0.0021843514081261164
+        },
+        {
+          "name": "frontwheel_v31",
+          "type": "slide",
+          "position": -9.325842350432004e-06,
+          "velocity": 0.0012530930933203652
+        },
+        {
+          "name": "frontwheel_v32",
+          "type": "slide",
+          "position": -1.0710662900393904e-05,
+          "velocity": 0.0002285168057491465
+        },
+        {
+          "name": "frontwheel_v33",
+          "type": "slide",
+          "position": -1.2515248179352436e-05,
+          "velocity": -0.0008851799790607789
+        },
+        {
+          "name": "frontwheel_v34",
+          "type": "slide",
+          "position": -1.4709376758763858e-05,
+          "velocity": -0.0020600767735086804
+        },
+        {
+          "name": "frontwheel_v35",
+          "type": "slide",
+          "position": -1.721296341030362e-05,
+          "velocity": -0.003246580507456813
+        },
+        {
+          "name": "frontwheel_v36",
+          "type": "slide",
+          "position": -1.990572946255493e-05,
+          "velocity": -0.004381574053475704
+        },
+        {
+          "name": "frontwheel_v37",
+          "type": "slide",
+          "position": -2.2642794841955543e-05,
+          "velocity": -0.005400851570535984
+        },
+        {
+          "name": "frontwheel_v38",
+          "type": "slide",
+          "position": -2.527408604351027e-05,
+          "velocity": -0.006252803209338329
+        },
+        {
+          "name": "frontwheel_v39",
+          "type": "slide",
+          "position": -2.7664845976243452e-05,
+          "velocity": -0.006909800465599927
+        },
+        {
+          "name": "frontwheel_v4",
+          "type": "slide",
+          "position": 2.7613190174946465e-06,
+          "velocity": -0.014690353515455822
+        },
+        {
+          "name": "frontwheel_v40",
+          "type": "slide",
+          "position": -2.9714126646594755e-05,
+          "velocity": -0.007374105216609516
+        },
+        {
+          "name": "frontwheel_v41",
+          "type": "slide",
+          "position": -3.1368065318058805e-05,
+          "velocity": -0.007676360399804159
+        },
+        {
+          "name": "frontwheel_v42",
+          "type": "slide",
+          "position": -3.262515837032424e-05,
+          "velocity": -0.007866597450153183
+        },
+        {
+          "name": "frontwheel_v43",
+          "type": "slide",
+          "position": -3.353180348974008e-05,
+          "velocity": -0.007999798785541065
+        },
+        {
+          "name": "frontwheel_v44",
+          "type": "slide",
+          "position": -3.4168113313117375e-05,
+          "velocity": -0.008119823390206228
+        },
+        {
+          "name": "frontwheel_v45",
+          "type": "slide",
+          "position": -3.46262168293038e-05,
+          "velocity": -0.008246343474388755
+        },
+        {
+          "name": "frontwheel_v46",
+          "type": "slide",
+          "position": -3.498546576074536e-05,
+          "velocity": -0.0083689148958716
+        },
+        {
+          "name": "frontwheel_v47",
+          "type": "slide",
+          "position": -3.52904205647975e-05,
+          "velocity": -0.008450380825597714
+        },
+        {
+          "name": "frontwheel_v48",
+          "type": "slide",
+          "position": -3.553747089280662e-05,
+          "velocity": -0.008439019726564048
+        },
+        {
+          "name": "frontwheel_v49",
+          "type": "slide",
+          "position": -3.567407709870132e-05,
+          "velocity": -0.008286143490529597
+        },
+        {
+          "name": "frontwheel_v5",
+          "type": "slide",
+          "position": 1.8380149879516496e-05,
+          "velocity": 0.008429043858745499
+        },
+        {
+          "name": "frontwheel_v50",
+          "type": "slide",
+          "position": -3.5611124119518864e-05,
+          "velocity": -0.007964058123072621
+        },
+        {
+          "name": "frontwheel_v51",
+          "type": "slide",
+          "position": -3.524436817315476e-05,
+          "velocity": -0.007478568419909991
+        },
+        {
+          "name": "frontwheel_v52",
+          "type": "slide",
+          "position": -3.447585415254484e-05,
+          "velocity": -0.006870350719078378
+        },
+        {
+          "name": "frontwheel_v53",
+          "type": "slide",
+          "position": -3.322077011624244e-05,
+          "velocity": -0.006201802613546419
+        },
+        {
+          "name": "frontwheel_v54",
+          "type": "slide",
+          "position": -3.138686090094704e-05,
+          "velocity": -0.0055327868219171945
+        },
+        {
+          "name": "frontwheel_v55",
+          "type": "slide",
+          "position": -2.877007306775104e-05,
+          "velocity": -0.005000004521776968
+        },
+        {
+          "name": "frontwheel_v56",
+          "type": "slide",
+          "position": -2.528590251942465e-05,
+          "velocity": -0.0037322320638047725
+        },
+        {
+          "name": "frontwheel_v57",
+          "type": "slide",
+          "position": -1.6344720312211287e-05,
+          "velocity": -0.008734379950652163
+        },
+        {
+          "name": "frontwheel_v58",
+          "type": "slide",
+          "position": -1.9620542626842366e-05,
+          "velocity": 0.008492123002845802
+        },
+        {
+          "name": "frontwheel_v59",
+          "type": "slide",
+          "position": 1.4387585627772968e-05,
+          "velocity": -0.0014070266071540727
+        },
+        {
+          "name": "frontwheel_v6",
+          "type": "slide",
+          "position": 7.654758070324131e-06,
+          "velocity": 0.017378378120142268
+        },
+        {
+          "name": "frontwheel_v60",
+          "type": "slide",
+          "position": 2.048579898888532e-05,
+          "velocity": 0.0032012944088828836
+        },
+        {
+          "name": "frontwheel_v61",
+          "type": "slide",
+          "position": 0.0004986497652229478,
+          "velocity": 0.002627734162634714
+        },
+        {
+          "name": "frontwheel_v62",
+          "type": "slide",
+          "position": 0.003729368181629013,
+          "velocity": 0.0026847697731819213
+        },
+        {
+          "name": "frontwheel_v63",
+          "type": "slide",
+          "position": 0.008559674535296479,
+          "velocity": 0.0002841298349563498
+        },
+        {
+          "name": "frontwheel_v7",
+          "type": "slide",
+          "position": -4.529387945276118e-07,
+          "velocity": 0.0012555336109705548
+        },
+        {
+          "name": "frontwheel_v8",
+          "type": "slide",
+          "position": -5.466229311807791e-07,
+          "velocity": 0.00789068140436751
+        },
+        {
+          "name": "frontwheel_v9",
+          "type": "slide",
+          "position": -2.789316293419627e-06,
+          "velocity": 0.006954042255739178
+        },
+        {
+          "name": "heave",
+          "type": "slide",
+          "position": -0.023342161408877484,
+          "velocity": 1.742612069689715e-05
+        },
+        {
+          "name": "pitch",
+          "type": "hinge",
+          "position": 0.024461591945842274,
+          "velocity": 5.3710523587426534e-05
+        },
+        {
+          "name": "rearwheelSpin",
+          "type": "hinge",
+          "position": 0.025075240484465498,
+          "velocity": 0.007181970196380717
+        },
+        {
+          "name": "rearwheel_u0",
+          "type": "slide",
+          "position": -0.000497075374301994,
+          "velocity": 0.004341629346280432
+        },
+        {
+          "name": "rearwheel_u1",
+          "type": "slide",
+          "position": -0.0006828160354512825,
+          "velocity": 0.004223160788535003
+        },
+        {
+          "name": "rearwheel_u10",
+          "type": "slide",
+          "position": -7.670024273422204e-07,
+          "velocity": 0.004670819240998984
+        },
+        {
+          "name": "rearwheel_u11",
+          "type": "slide",
+          "position": -1.4991625847025448e-06,
+          "velocity": 0.0033231940358198746
+        },
+        {
+          "name": "rearwheel_u12",
+          "type": "slide",
+          "position": -1.5090978902608117e-06,
+          "velocity": 0.0016860095813523452
+        },
+        {
+          "name": "rearwheel_u13",
+          "type": "slide",
+          "position": -6.018073586657499e-07,
+          "velocity": 0.00030448049897045755
+        },
+        {
+          "name": "rearwheel_u14",
+          "type": "slide",
+          "position": 7.53228917431909e-07,
+          "velocity": -0.0005571957044990988
+        },
+        {
+          "name": "rearwheel_u15",
+          "type": "slide",
+          "position": 2.0981290148194085e-06,
+          "velocity": -0.0008583148913289779
+        },
+        {
+          "name": "rearwheel_u16",
+          "type": "slide",
+          "position": 3.1152851131192145e-06,
+          "velocity": -0.0007388942082926558
+        },
+        {
+          "name": "rearwheel_u17",
+          "type": "slide",
+          "position": 3.6766747432321894e-06,
+          "velocity": -0.0004164474062762339
+        },
+        {
+          "name": "rearwheel_u18",
+          "type": "slide",
+          "position": 3.8188560434708214e-06,
+          "velocity": -9.551997500060921e-05
+        },
+        {
+          "name": "rearwheel_u19",
+          "type": "slide",
+          "position": 3.6772755239860406e-06,
+          "velocity": 8.558389544133394e-05
+        },
+        {
+          "name": "rearwheel_u2",
+          "type": "slide",
+          "position": -0.0006019289941069814,
+          "velocity": 0.004254286235124191
+        },
+        {
+          "name": "rearwheel_u20",
+          "type": "slide",
+          "position": 3.414250782554415e-06,
+          "velocity": 6.852237956267019e-05
+        },
+        {
+          "name": "rearwheel_u21",
+          "type": "slide",
+          "position": 3.1645038709607007e-06,
+          "velocity": -0.00013982232257653274
+        },
+        {
+          "name": "rearwheel_u22",
+          "type": "slide",
+          "position": 3.0082564115065257e-06,
+          "velocity": -0.0004948318057122808
+        },
+        {
+          "name": "rearwheel_u23",
+          "type": "slide",
+          "position": 2.970061242444627e-06,
+          "velocity": -0.0009407817545406576
+        },
+        {
+          "name": "rearwheel_u24",
+          "type": "slide",
+          "position": 3.0344719305245226e-06,
+          "velocity": -0.0014285878706337745
+        },
+        {
+          "name": "rearwheel_u25",
+          "type": "slide",
+          "position": 3.1676688060512484e-06,
+          "velocity": -0.0019226852168996054
+        },
+        {
+          "name": "rearwheel_u26",
+          "type": "slide",
+          "position": 3.3360537595673725e-06,
+          "velocity": -0.002399542454468
+        },
+        {
+          "name": "rearwheel_u27",
+          "type": "slide",
+          "position": 3.51674026168229e-06,
+          "velocity": -0.002842376932864485
+        },
+        {
+          "name": "rearwheel_u28",
+          "type": "slide",
+          "position": 3.699042642737233e-06,
+          "velocity": -0.0032364141386848357
+        },
+        {
+          "name": "rearwheel_u29",
+          "type": "slide",
+          "position": 3.879263445748579e-06,
+          "velocity": -0.003567293202437422
+        },
+        {
+          "name": "rearwheel_u3",
+          "type": "slide",
+          "position": 1.3229450976802966e-05,
+          "velocity": 0.004002674284438908
+        },
+        {
+          "name": "rearwheel_u30",
+          "type": "slide",
+          "position": 4.05271184138707e-06,
+          "velocity": -0.0038229664029468635
+        },
+        {
+          "name": "rearwheel_u31",
+          "type": "slide",
+          "position": 4.206963822956271e-06,
+          "velocity": -0.003997580577940428
+        },
+        {
+          "name": "rearwheel_u32",
+          "type": "slide",
+          "position": 4.319292869792126e-06,
+          "velocity": -0.0040949396520776
+        },
+        {
+          "name": "rearwheel_u33",
+          "type": "slide",
+          "position": 4.359510122590068e-06,
+          "velocity": -0.004129388434643982
+        },
+        {
+          "name": "rearwheel_u34",
+          "type": "slide",
+          "position": 4.297681256412529e-06,
+          "velocity": -0.004123099336908012
+        },
+        {
+          "name": "rearwheel_u35",
+          "type": "slide",
+          "position": 4.114721084013707e-06,
+          "velocity": -0.004100291803883516
+        },
+        {
+          "name": "rearwheel_u36",
+          "type": "slide",
+          "position": 3.812933986693615e-06,
+          "velocity": -0.004080280647392518
+        },
+        {
+          "name": "rearwheel_u37",
+          "type": "slide",
+          "position": 3.4232688540335474e-06,
+          "velocity": -0.00407192744604841
+        },
+        {
+          "name": "rearwheel_u38",
+          "type": "slide",
+          "position": 3.006418916752993e-06,
+          "velocity": -0.0040717786914416755
+        },
+        {
+          "name": "rearwheel_u39",
+          "type": "slide",
+          "position": 2.6459102151429807e-06,
+          "velocity": -0.004066947058170361
+        },
+        {
+          "name": "rearwheel_u4",
+          "type": "slide",
+          "position": 0.00021058800544997041,
+          "velocity": -0.003389603256368662
+        },
+        {
+          "name": "rearwheel_u40",
+          "type": "slide",
+          "position": 2.4329368383265067e-06,
+          "velocity": -0.00404197930217503
+        },
+        {
+          "name": "rearwheel_u41",
+          "type": "slide",
+          "position": 2.4447740846688933e-06,
+          "velocity": -0.003987150834639709
+        },
+        {
+          "name": "rearwheel_u42",
+          "type": "slide",
+          "position": 2.7208352223142195e-06,
+          "velocity": -0.003904521066477592
+        },
+        {
+          "name": "rearwheel_u43",
+          "type": "slide",
+          "position": 3.2423298631429714e-06,
+          "velocity": -0.0038082534460029626
+        },
+        {
+          "name": "rearwheel_u44",
+          "type": "slide",
+          "position": 3.922357810176233e-06,
+          "velocity": -0.00371740282264819
+        },
+        {
+          "name": "rearwheel_u45",
+          "type": "slide",
+          "position": 4.612411453487987e-06,
+          "velocity": -0.0036423558619643613
+        },
+        {
+          "name": "rearwheel_u46",
+          "type": "slide",
+          "position": 5.1281592631978995e-06,
+          "velocity": -0.0035695693339753867
+        },
+        {
+          "name": "rearwheel_u47",
+          "type": "slide",
+          "position": 5.292059114712962e-06,
+          "velocity": -0.0034519159774563856
+        },
+        {
+          "name": "rearwheel_u48",
+          "type": "slide",
+          "position": 4.983644695269728e-06,
+          "velocity": -0.0032123766600351163
+        },
+        {
+          "name": "rearwheel_u49",
+          "type": "slide",
+          "position": 4.182011288087258e-06,
+          "velocity": -0.002765848204734041
+        },
+        {
+          "name": "rearwheel_u5",
+          "type": "slide",
+          "position": 0.00012222972953826602,
+          "velocity": 0.01030468859397975
+        },
+        {
+          "name": "rearwheel_u50",
+          "type": "slide",
+          "position": 2.9816367694973856e-06,
+          "velocity": -0.0020570913697476084
+        },
+        {
+          "name": "rearwheel_u51",
+          "type": "slide",
+          "position": 1.56495103721895e-06,
+          "velocity": -0.0011031985739777962
+        },
+        {
+          "name": "rearwheel_u52",
+          "type": "slide",
+          "position": 1.2509658477004723e-07,
+          "velocity": -1.8923637060625842e-05
+        },
+        {
+          "name": "rearwheel_u53",
+          "type": "slide",
+          "position": -1.249272046410289e-06,
+          "velocity": 0.0010025211958479933
+        },
+        {
+          "name": "rearwheel_u54",
+          "type": "slide",
+          "position": -2.686125375622459e-06,
+          "velocity": 0.0017773314178307319
+        },
+        {
+          "name": "rearwheel_u55",
+          "type": "slide",
+          "position": -4.711002033457601e-06,
+          "velocity": 0.002261856213294724
+        },
+        {
+          "name": "rearwheel_u56",
+          "type": "slide",
+          "position": -7.4222363107871355e-06,
+          "velocity": 0.0022724197186075904
+        },
+        {
+          "name": "rearwheel_u57",
+          "type": "slide",
+          "position": -1.5006900390763727e-05,
+          "velocity": 0.003764331172550912
+        },
+        {
+          "name": "rearwheel_u58",
+          "type": "slide",
+          "position": -2.528903867961134e-05,
+          "velocity": 0.0014831137821391342
+        },
+        {
+          "name": "rearwheel_u59",
+          "type": "slide",
+          "position": -5.3489447899983476e-05,
+          "velocity": -0.0029410321514809147
+        },
+        {
+          "name": "rearwheel_u6",
+          "type": "slide",
+          "position": 4.4595201444836895e-05,
+          "velocity": 0.013196747372110162
+        },
+        {
+          "name": "rearwheel_u60",
+          "type": "slide",
+          "position": -0.0001256283790759543,
+          "velocity": 0.0192357476832366
+        },
+        {
+          "name": "rearwheel_u61",
+          "type": "slide",
+          "position": -0.00022906932897994006,
+          "velocity": 0.004400729188938402
+        },
+        {
+          "name": "rearwheel_u62",
+          "type": "slide",
+          "position": -0.00019822644831925772,
+          "velocity": 0.004731661624082249
+        },
+        {
+          "name": "rearwheel_u63",
+          "type": "slide",
+          "position": -0.0002446807307131762,
+          "velocity": 0.0045923597623489
+        },
+        {
+          "name": "rearwheel_u7",
+          "type": "slide",
+          "position": 2.0194979056547213e-05,
+          "velocity": 0.0031083760997341527
+        },
+        {
+          "name": "rearwheel_u8",
+          "type": "slide",
+          "position": 7.47400511408831e-06,
+          "velocity": 0.009581415150270157
+        },
+        {
+          "name": "rearwheel_u9",
+          "type": "slide",
+          "position": 4.457674158090328e-06,
+          "velocity": 0.0035777502324403567
+        },
+        {
+          "name": "rearwheel_v0",
+          "type": "slide",
+          "position": 0.011795967053789982,
+          "velocity": -0.0001882718952515195
+        },
+        {
+          "name": "rearwheel_v1",
+          "type": "slide",
+          "position": 0.011802308451879384,
+          "velocity": 0.0005733843511637985
+        },
+        {
+          "name": "rearwheel_v10",
+          "type": "slide",
+          "position": -1.5351255822478306e-05,
+          "velocity": 0.00331738959844613
+        },
+        {
+          "name": "rearwheel_v11",
+          "type": "slide",
+          "position": -1.6390190226133098e-05,
+          "velocity": 0.00412922176755319
+        },
+        {
+          "name": "rearwheel_v12",
+          "type": "slide",
+          "position": -1.7232620146755807e-05,
+          "velocity": 0.004850450400209018
+        },
+        {
+          "name": "rearwheel_v13",
+          "type": "slide",
+          "position": -1.8129637946971744e-05,
+          "velocity": 0.005224754744226729
+        },
+        {
+          "name": "rearwheel_v14",
+          "type": "slide",
+          "position": -1.8894814100757987e-05,
+          "velocity": 0.005263437709244849
+        },
+        {
+          "name": "rearwheel_v15",
+          "type": "slide",
+          "position": -1.942012700975395e-05,
+          "velocity": 0.00509399581290874
+        },
+        {
+          "name": "rearwheel_v16",
+          "type": "slide",
+          "position": -1.9716414016380358e-05,
+          "velocity": 0.004858010956543029
+        },
+        {
+          "name": "rearwheel_v17",
+          "type": "slide",
+          "position": -1.986829130820237e-05,
+          "velocity": 0.004643791902435939
+        },
+        {
+          "name": "rearwheel_v18",
+          "type": "slide",
+          "position": -1.996951915473759e-05,
+          "velocity": 0.004471431193015395
+        },
+        {
+          "name": "rearwheel_v19",
+          "type": "slide",
+          "position": -2.0077910009401907e-05,
+          "velocity": 0.00431240820193254
+        },
+        {
+          "name": "rearwheel_v2",
+          "type": "slide",
+          "position": 0.008433593740085335,
+          "velocity": -0.0004837751241913977
+        },
+        {
+          "name": "rearwheel_v20",
+          "type": "slide",
+          "position": -2.0201699727779755e-05,
+          "velocity": 0.004120569453557372
+        },
+        {
+          "name": "rearwheel_v21",
+          "type": "slide",
+          "position": -2.0311362705880544e-05,
+          "velocity": 0.0038572871127317103
+        },
+        {
+          "name": "rearwheel_v22",
+          "type": "slide",
+          "position": -2.0363188853997732e-05,
+          "velocity": 0.0035032684746411284
+        },
+        {
+          "name": "rearwheel_v23",
+          "type": "slide",
+          "position": -2.0321364592505357e-05,
+          "velocity": 0.003057820278908357
+        },
+        {
+          "name": "rearwheel_v24",
+          "type": "slide",
+          "position": -2.0170279430359905e-05,
+          "velocity": 0.002531048843214085
+        },
+        {
+          "name": "rearwheel_v25",
+          "type": "slide",
+          "position": -1.9914931269014757e-05,
+          "velocity": 0.0019353355858853687
+        },
+        {
+          "name": "rearwheel_v26",
+          "type": "slide",
+          "position": -1.9572236136431492e-05,
+          "velocity": 0.0012805638821581468
+        },
+        {
+          "name": "rearwheel_v27",
+          "type": "slide",
+          "position": -1.9158620932841398e-05,
+          "velocity": 0.0005745381883094723
+        },
+        {
+          "name": "rearwheel_v28",
+          "type": "slide",
+          "position": -1.8679427335501128e-05,
+          "velocity": -0.00017275672425084515
+        },
+        {
+          "name": "rearwheel_v29",
+          "type": "slide",
+          "position": -1.8124034054572704e-05,
+          "velocity": -0.0009440322409079293
+        },
+        {
+          "name": "rearwheel_v3",
+          "type": "slide",
+          "position": 0.0017337865279848017,
+          "velocity": 0.003783739136937438
+        },
+        {
+          "name": "rearwheel_v30",
+          "type": "slide",
+          "position": -1.7468149649083388e-05,
+          "velocity": -0.0017118183839291792
+        },
+        {
+          "name": "rearwheel_v31",
+          "type": "slide",
+          "position": -1.6682325034140272e-05,
+          "velocity": -0.0024398115534361364
+        },
+        {
+          "name": "rearwheel_v32",
+          "type": "slide",
+          "position": -1.5743992413406863e-05,
+          "velocity": -0.0030886123729862275
+        },
+        {
+          "name": "rearwheel_v33",
+          "type": "slide",
+          "position": -1.4649532857245153e-05,
+          "velocity": -0.0036242277976881003
+        },
+        {
+          "name": "rearwheel_v34",
+          "type": "slide",
+          "position": -1.3422990838937648e-05,
+          "velocity": -0.004026557223455445
+        },
+        {
+          "name": "rearwheel_v35",
+          "type": "slide",
+          "position": -1.2118895280654963e-05,
+          "velocity": -0.0042949236789525174
+        },
+        {
+          "name": "rearwheel_v36",
+          "type": "slide",
+          "position": -1.0817948504688588e-05,
+          "velocity": -0.0044485781075382
+        },
+        {
+          "name": "rearwheel_v37",
+          "type": "slide",
+          "position": -9.615855754063e-06,
+          "velocity": -0.004521710946186292
+        },
+        {
+          "name": "rearwheel_v38",
+          "type": "slide",
+          "position": -8.607074792022242e-06,
+          "velocity": -0.004554335893115144
+        },
+        {
+          "name": "rearwheel_v39",
+          "type": "slide",
+          "position": -7.866571226829871e-06,
+          "velocity": -0.004581867831434769
+        },
+        {
+          "name": "rearwheel_v4",
+          "type": "slide",
+          "position": 0.00014912462731259135,
+          "velocity": 0.02693841698066534
+        },
+        {
+          "name": "rearwheel_v40",
+          "type": "slide",
+          "position": -7.43355749887129e-06,
+          "velocity": -0.004626785832032286
+        },
+        {
+          "name": "rearwheel_v41",
+          "type": "slide",
+          "position": -7.301418713302944e-06,
+          "velocity": -0.004695180760016047
+        },
+        {
+          "name": "rearwheel_v42",
+          "type": "slide",
+          "position": -7.4173345930043475e-06,
+          "velocity": -0.00477931510322241
+        },
+        {
+          "name": "rearwheel_v43",
+          "type": "slide",
+          "position": -7.69332702305523e-06,
+          "velocity": -0.00486503228586537
+        },
+        {
+          "name": "rearwheel_v44",
+          "type": "slide",
+          "position": -8.027670739656927e-06,
+          "velocity": -0.004940711608723413
+        },
+        {
+          "name": "rearwheel_v45",
+          "type": "slide",
+          "position": -8.332241194525348e-06,
+          "velocity": -0.005003354998537492
+        },
+        {
+          "name": "rearwheel_v46",
+          "type": "slide",
+          "position": -8.558319798854116e-06,
+          "velocity": -0.005058024078534522
+        },
+        {
+          "name": "rearwheel_v47",
+          "type": "slide",
+          "position": -8.711845878884029e-06,
+          "velocity": -0.0051094408642283
+        },
+        {
+          "name": "rearwheel_v48",
+          "type": "slide",
+          "position": -8.850348826473698e-06,
+          "velocity": -0.005148600914031887
+        },
+        {
+          "name": "rearwheel_v49",
+          "type": "slide",
+          "position": -9.058595991460374e-06,
+          "velocity": -0.005141384884810192
+        },
+        {
+          "name": "rearwheel_v5",
+          "type": "slide",
+          "position": -2.124678349306127e-06,
+          "velocity": -0.0024797754383914226
+        },
+        {
+          "name": "rearwheel_v50",
+          "type": "slide",
+          "position": -9.408077140286267e-06,
+          "velocity": -0.00502839850433675
+        },
+        {
+          "name": "rearwheel_v51",
+          "type": "slide",
+          "position": -9.91491564735879e-06,
+          "velocity": -0.0047433262223248295
+        },
+        {
+          "name": "rearwheel_v52",
+          "type": "slide",
+          "position": -1.0517639912532176e-05,
+          "velocity": -0.004248841305327499
+        },
+        {
+          "name": "rearwheel_v53",
+          "type": "slide",
+          "position": -1.1093530014497689e-05,
+          "velocity": -0.0035735715984724506
+        },
+        {
+          "name": "rearwheel_v54",
+          "type": "slide",
+          "position": -1.1505456273623179e-05,
+          "velocity": -0.002811699810359495
+        },
+        {
+          "name": "rearwheel_v55",
+          "type": "slide",
+          "position": -1.1701749291402462e-05,
+          "velocity": -0.0020473014469041795
+        },
+        {
+          "name": "rearwheel_v56",
+          "type": "slide",
+          "position": -1.0862021252227471e-05,
+          "velocity": -0.001545955109775658
+        },
+        {
+          "name": "rearwheel_v57",
+          "type": "slide",
+          "position": -1.1106780780009272e-05,
+          "velocity": 0.0006489732249473731
+        },
+        {
+          "name": "rearwheel_v58",
+          "type": "slide",
+          "position": -4.581925110910154e-06,
+          "velocity": -0.0018096754498378676
+        },
+        {
+          "name": "rearwheel_v59",
+          "type": "slide",
+          "position": 1.4785220125785944e-06,
+          "velocity": -0.00838598135340356
+        },
+        {
+          "name": "rearwheel_v6",
+          "type": "slide",
+          "position": 5.056488457469956e-06,
+          "velocity": -0.007600526185824921
+        },
+        {
+          "name": "rearwheel_v60",
+          "type": "slide",
+          "position": -6.106536960688153e-06,
+          "velocity": 0.03961736950726952
+        },
+        {
+          "name": "rearwheel_v61",
+          "type": "slide",
+          "position": 0.00012475383460498844,
+          "velocity": 0.000416637587157492
+        },
+        {
+          "name": "rearwheel_v62",
+          "type": "slide",
+          "position": 0.0016495861266284577,
+          "velocity": 0.005206898695669841
+        },
+        {
+          "name": "rearwheel_v63",
+          "type": "slide",
+          "position": 0.008404225337763997,
+          "velocity": -0.0006888570579144761
+        },
+        {
+          "name": "rearwheel_v7",
+          "type": "slide",
+          "position": -7.984872075240092e-06,
+          "velocity": 0.0058366626619415374
+        },
+        {
+          "name": "rearwheel_v8",
+          "type": "slide",
+          "position": -1.1745847225389642e-05,
+          "velocity": -0.0013552069416383626
+        },
+        {
+          "name": "rearwheel_v9",
+          "type": "slide",
+          "position": -1.616193614028565e-05,
+          "velocity": 0.004097784471196566
+        },
+        {
+          "name": "riderElbow",
+          "type": "hinge",
+          "position": -0.016295065776036895,
+          "velocity": 0.0002654100973438286
+        },
+        {
+          "name": "riderHip",
+          "type": "hinge",
+          "position": -0.020100227384179704,
+          "velocity": -2.7427446332413147e-05
+        },
+        {
+          "name": "riderKnee",
+          "type": "hinge",
+          "position": 0.05786686806757327,
+          "velocity": -1.5274223589949083e-05
+        },
+        {
+          "name": "riderPitch",
+          "type": "hinge",
+          "position": -0.02292485401350921,
+          "velocity": -5.277098107942452e-05
+        },
+        {
+          "name": "riderShoulder",
+          "type": "hinge",
+          "position": -0.007313615175075535,
+          "velocity": -0.000181457704634896
+        },
+        {
+          "name": "riderX",
+          "type": "slide",
+          "position": -0.002513838522561637,
+          "velocity": -4.784515728187623e-05
+        },
+        {
+          "name": "riderZ",
+          "type": "slide",
+          "position": -0.020896774337645474,
+          "velocity": -8.139161537413633e-06
+        },
+        {
+          "name": "travel",
+          "type": "slide",
+          "position": -0.49375792625597636,
+          "velocity": 2.53895363970173e-05
+        }
+      ]
+    }
+  },
+  "active": {
+    "format": "bikelab-rider-drive-0.1",
+    "joints": {
+      "hip": {
+        "targetAngle": 1.4792200037917318,
+        "kp": 2400,
+        "kd": 100,
+        "maxTorque": 250,
+        "maxSpeed": 12,
+        "maxPositivePower": 600,
+        "maxNegativePower": 600
+      },
+      "knee": {
+        "targetAngle": 1.6922412012942722,
+        "kp": 2400,
+        "kd": 100,
+        "maxTorque": 250,
+        "maxSpeed": 12,
+        "maxPositivePower": 600,
+        "maxNegativePower": 600
+      },
+      "shoulder": {
+        "targetAngle": 2.492056379089391,
+        "kp": 800,
+        "kd": 30,
+        "maxTorque": 100,
+        "maxSpeed": 12,
+        "maxPositivePower": 200,
+        "maxNegativePower": 200
+      },
+      "elbow": {
+        "targetAngle": -1.1301027328714,
+        "kp": 600,
+        "kd": 25,
+        "maxTorque": 100,
+        "maxSpeed": 12,
+        "maxPositivePower": 200,
+        "maxNegativePower": 200
+      }
+    }
+  },
+  "diagnostics": "bikelab-tyre-motion-0.1"
+}
