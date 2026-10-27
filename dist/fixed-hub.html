@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>BikeLab · Fixed hub</title><link rel="stylesheet" href="./style.css"><script type="module" src="./fixed-hub-app.js"></script></head>
+<body class="moving-page"><header><a class="brand" href="./index.html">◉ <b>BikeLab</b><span>MOUNTAIN BIKE DYNAMICS LABORATORY</span></a><div class="stage">FIXED HUB <i>CASING DIAGNOSTIC</i></div></header>
+<main><nav class="stations"><a href="./trail-bike.html">Back to Trail bike</a><a href="./moving-wheel.html">Moving wheel</a><a href="./fixed-hub.html" aria-current="page">Fixed hub</a></nav>
+<section class="intro"><div class="eyebrow">ISOLATE → OBSERVE → COMPARE</div><h1>Hold the hub. Watch the casing.</h1><p>Remove bike and rider feedback from a saved loaded wheel. Compare its imported local motion with a zero-velocity control at exactly the same starting shape.</p></section>
+<div class="layout"><aside class="panel setup"><h2>Loaded state</h2>
+<label>Source bike<select id="bike"><option value="full">Full suspension · 9.98 s</option><option value="hardtail">Hardtail · 9.98 s</option></select></label>
+<label>Wheel<select id="wheel"><option value="front">Front</option><option value="rear">Rear</option></select></label>
+<label>Initial casing rates<select id="velocityMode"><option value="imported">Imported hub-local rates</option><option value="zero">Zero rates · same positions</option></select></label>
+<label>Integration step<select id="dt"><option value="0.00003125">31.25 µs</option><option value="0.000015625">15.625 µs</option><option value="0.0000078125">7.8125 µs</option></select></label>
+<button class="primary wide" id="calculate">Calculate 20 ms</button><div class="buttons"><button id="cancel" disabled>Cancel</button><button id="save" disabled>Save run</button></div>
+<label class="file-button">Load fixture or trail-bike record<input id="load" type="file" accept=".json,application/json"></label>
+<p id="sourceInfo" class="hint">Preserved accepted late-window states from the 10-second posture hold.</p>
+<p class="hint">The hub position and rotation are fixed. Imported rates remain relative to that hub; hub translation and spin are removed. This is a fresh casing experiment, not a continued bike run.</p></aside>
+<section class="workspace"><section class="panel calculation-progress"><div class="panel-title"><h2>Calculation</h2><span id="status" role="status">Ready</span></div><progress id="progress" max="1" value="0" aria-label="Calculation progress"></progress><p id="error" role="alert"></p></section>
+<section class="panel rig"><h2>Loaded casing and ground forces</h2><canvas id="rig" aria-label="Fixed hub, deformed casing and active ground contact forces"></canvas>
+<div class="readouts"><div><small>TIME</small><strong id="time">—</strong></div><div><small>RMS LOCAL SPEED</small><strong id="speed">—</strong></div><div><small>ENERGY RESIDUAL</small><strong id="residual">—</strong></div></div>
+<label class="scrub">Inspect sample<input id="scrub" type="range" min="0" max="1" value="0" disabled></label><p id="forces" class="hint"></p><p id="ledger" class="hint"></p></section>
+<section class="panel"><h2>Casing speed history</h2><canvas id="history" aria-label="RMS casing speed over recorded time"></canvas><p class="hint">Cyan: current run. Orange: previous compatible control (same physical fixture, source and observation schedule). Sampled speeds do not certify decay or equilibrium.</p></section>
+<section class="panel"><h2>What this experiment establishes</h2><p class="hint">A stationary support performs zero work. Initial elastic and gravitational energy are retained; contact work is signed, and viscous loss is counted once. Continued motion here can occur without rider or suspension feedback. It does not by itself justify extra damping or prove long-term instability.</p><p id="receipt" class="hint"></p></section>
+</section></div></main></body></html>
+
