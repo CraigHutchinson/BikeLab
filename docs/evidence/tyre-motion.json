@@ -5,25 +5,131 @@
   "implementationHead": "70c960f1b18c675f9bed91656adab53b3260e396",
   "implementationTree": "846ebd30b01ccd871ff0fc6a19a29bbcebc24f7b",
   "hosted": {
-    "status": "in_progress",
-    "runId": 40467149012,
-    "capturesInspected": false,
+    "status": "received",
+    "runId": 40468235078,
+    "head": "2808f36479619dbcc909bdd94d9086899a146210",
+    "mergedMain": "842b30eff0fb7aac7645bfc8de3d50115653fcea",
     "jobs": {
       "ubuntu": {
-        "id": 122065202047,
+        "id": 122068748976,
         "passed": 261,
         "failed": 0
       },
       "windows": {
-        "id": 122065202437,
+        "id": 122068748775,
         "passed": 261,
         "failed": 0
       },
       "browser": {
-        "id": 122065202508,
-        "status": "in_progress"
+        "id": 122068749049,
+        "conclusion": "success"
       }
-    }
+    },
+    "artifact": {
+      "id": 12718482638,
+      "bytes": 3853627,
+      "sha256": "fd0c6d6c4da293e35f353f790f6dc0ce83c53ec1a71537e56d13ba0023ac5e50"
+    },
+    "browserReport": {
+      "cases": [
+        {
+          "bike": "full",
+          "status": "completed",
+          "steps": 16000,
+          "riderWork": -7.515636092244099,
+          "agreement": {
+            "tolerance": 1e-09,
+            "maxAbsolute": 0,
+            "maxNormalized": 0,
+            "exact": true
+          },
+          "tyreProbe": {
+            "status": "completed",
+            "steps": 640,
+            "agreement": {
+              "tolerance": 1e-09,
+              "maxAbsolute": 0,
+              "maxNormalized": 0,
+              "exact": true
+            }
+          }
+        },
+        {
+          "bike": "hardtail",
+          "status": "completed",
+          "steps": 16000,
+          "riderWork": -12.0674742116769,
+          "agreement": {
+            "tolerance": 1e-09,
+            "maxAbsolute": 0,
+            "maxNormalized": 0,
+            "exact": true
+          },
+          "tyreProbe": {
+            "status": "completed",
+            "steps": 640,
+            "agreement": {
+              "tolerance": 1e-09,
+              "maxAbsolute": 0,
+              "maxNormalized": 0,
+              "exact": true
+            }
+          }
+        }
+      ],
+      "scope": "Actual worker, full-record replay, active readouts, mobile layout, JSON admission, legacy mode transition and long-probe cancellation. Also receives short fresh-state tyre diagnostics, dense observations, unchanged native identity, plots and mode cleanup. No equilibrium or calibrated active rider claim."
+    },
+    "localReplay": [
+      {
+        "name": "full",
+        "agreement": {
+          "tolerance": 1e-09,
+          "maxAbsolute": 0,
+          "maxNormalized": 0,
+          "exact": true
+        }
+      },
+      {
+        "name": "hardtail",
+        "agreement": {
+          "tolerance": 1e-09,
+          "maxAbsolute": 0,
+          "maxNormalized": 0,
+          "exact": true
+        }
+      },
+      {
+        "name": "full-tyre",
+        "agreement": {
+          "tolerance": 1e-09,
+          "maxAbsolute": 0,
+          "maxNormalized": 0,
+          "exact": true
+        }
+      },
+      {
+        "name": "hardtail-tyre",
+        "agreement": {
+          "tolerance": 1e-09,
+          "maxAbsolute": 0,
+          "maxNormalized": 0,
+          "exact": true
+        }
+      }
+    ],
+    "recordHashes": {
+      "full.json": "218535d1411f5aaad2f63a8cc6dd3de55fe21007ddf580ca6debf9be1433b613",
+      "hardtail.json": "12b3f69e26c94b47414269c8fecb4c966a88fa9188b4e14e6e745245d8623764",
+      "full-tyre.json": "d4807253436146ad32d1083c69beb163a4a24db8ad078e0c330a10f7d9d74c11",
+      "hardtail-tyre.json": "73f0540bfc55242b742a6942f961a5abb7291faabbcdb041befbde436f6bd8c9"
+    },
+    "capturesInspected": [
+      "full-tyre-desktop.png",
+      "full-tyre-320.png",
+      "full-320.png",
+      "hardtail-tyre-history.png"
+    ],
+    "visualFinding": "Actual dense diagnostic panels, mobile heading fix and node history plots received; labels/readouts visible at320px."
   },
   "local": {
     "focused": {
