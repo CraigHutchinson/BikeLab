@@ -68,6 +68,7 @@ jobs:
             !artifacts/browser/rider-setup/**
             !artifacts/browser/rider-unbound/**
             !artifacts/browser/rider-drive/**
+            !artifacts/browser/tyre-fixture/**
             !artifacts/browser/calculation/**
           if-no-files-found: error
           retention-days: 14
@@ -105,6 +106,15 @@ jobs:
         with:
           name: rider-setup-evidence
           path: artifacts/browser/rider-setup
+          if-no-files-found: warn
+          retention-days: 14
+
+      - name: Preserve fixed-hub casing evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: tyre-fixture-evidence
+          path: artifacts/browser/tyre-fixture
           if-no-files-found: warn
           retention-days: 14
 
