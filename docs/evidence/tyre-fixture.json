@@ -5,7 +5,7 @@
   "baseTree": "48de624ac0f8ab8518b1444ced453add4412cc72",
   "hashConvention": "Input hashes use UTF-8 JSON.stringify(input) without newline. Record hashes use Node JSON.stringify(record) plus newline.",
   "hosted": {
-    "status": "Ubuntu received; Windows/browser receiving pending",
+    "status": "Both OS test logs received; browser stopped at inconsistent station navigation before fixture execution",
     "expectedTestsPerOS": 270,
     "artifactName": "tyre-fixture-evidence",
     "actualScreenshotsInspected": false,
@@ -22,11 +22,16 @@
       },
       "windows": {
         "id": 122403795198,
-        "status": "pending receiving"
+        "conclusion": "success",
+        "passed": 270,
+        "failed": 0,
+        "skipped": 0
       },
       "browser": {
         "id": 122403794806,
-        "status": "pending receiving"
+        "status": "completed",
+        "conclusion": "failure",
+        "failure": "trail-bike-browser-check.mjs expected 10 station links but received 11; navigation also differed across pages. Fixed all eleven menus and browser expectation; no fixture records/captures were produced by this run."
       }
     }
   },

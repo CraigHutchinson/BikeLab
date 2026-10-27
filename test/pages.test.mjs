@@ -8,6 +8,7 @@ test('static page, modules and worker resolve under the Pages project path', asy
   const base = new URL('https://example.test/BikeLab/');
   const pending = [new URL('index.html', base)];
   const visited = new Set();
+  let stationLinks;
   while (pending.length) {
     const url = pending.pop();
     if (visited.has(url.href)) continue;
@@ -18,6 +19,15 @@ test('static page, modules and worker resolve under the Pages project path', asy
     if(name.endsWith('.wasm')){assert.ok((await readFile(new URL('../dist/'+name,import.meta.url))).length>0);continue;}
     if(name==='vendor/mujoco-3.16.0/mujoco.js'){pending.push(new URL('./mujoco.wasm',url));continue;}
     const source = await readFile(new URL('../dist/' + name, import.meta.url), 'utf8');
+    const nav = name.endsWith('.html') && source.match(/<nav class="stations"[\s\S]*?<\/nav>/)?.[0];
+    if (nav) {
+      const links = [...nav.matchAll(/<a href="([^"]+)"([^>]*)>([^<]+)<\/a>/g)];
+      const destinations = links.map(([,href,,label]) => [href,label]);
+      stationLinks ??= destinations;
+      assert.deepEqual(destinations, stationLinks, `Inconsistent station navigation: ${name}`);
+      assert.equal(new Set(links.map(([,href]) => href)).size, links.length);
+      assert.deepEqual(links.filter(([, ,attributes]) => attributes.includes('aria-current="page"')).map(([,href]) => href), ['./'+name]);
+    }
     // The pinned compat bundle embeds its WASM. A dead fallback URL in the
     // upstream bundle is not a fetch dependency; integrity and real loading are tested separately.
     if(name === 'vendor/rapier-0.21.0/rapier.mjs')continue;
