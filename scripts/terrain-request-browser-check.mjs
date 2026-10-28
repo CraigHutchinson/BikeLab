@@ -21,12 +21,14 @@ export async function checkTerrainRequest({page,root,dir,report}){
   }
   await page.locator('#load').setInputFiles(first.path);await ready();assert.equal(await page.locator('#track').inputValue(),'straight');assert.equal(await page.locator('#status').textContent(),'VERIFIED');
   await page.locator('#load').setInputFiles({name:'invalid.json',mimeType:'application/json',buffer:Buffer.from('{"format":"wrong"}')});await page.waitForFunction(()=>document.getElementById('status').textContent==='REJECTED');assert.equal(await page.locator('#save').isDisabled(),true);
-  await page.locator('#latency').selectOption('150');await page.locator('#calculate').click();await page.waitForFunction(()=>document.getElementById('status').textContent.startsWith('WAITING'));await page.locator('#cancel').click();
+  await page.locator('#latency').selectOption('150');await page.locator('#calculate').click();
+  await page.waitForFunction(()=>document.getElementById('status').textContent.startsWith('WAITING')&&document.getElementById('detail').textContent.includes('Lookahead at delivery:'));
+  assert.equal(await page.locator('#save').isDisabled(),true);await shot('terrain-request-live-delivery');await page.locator('#cancel').click();
   await page.waitForTimeout(400);assert.equal(await page.locator('#status').textContent(),'CANCELLED');assert.equal(await page.locator('#save').isDisabled(),true);
   await page.locator('#calculate').click();await page.locator('#track').selectOption('reverse');await page.locator('#latency').selectOption('0');await page.locator('#calculate').click();await ready();
   const latest=await save('terrain-request-after-cancel');assert.equal(latest.value.track,'reverse');agreement.push(compareReplay(latest.value,await replay('reverse')));
   await page.locator('#cutMode').selectOption('long');await page.locator('#row').selectOption('0.01');
   for(const width of [390,320]){await page.setViewportSize({width,height:844});await page.waitForTimeout(50);assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'terrain request horizontal overflow');await shot('terrain-request-mobile-'+width);}
   report.terrainRequest={agreement};
-  report.checks.push('terrain R0a: six browser/Node replays with exact discrete identities and 1e-12 geometric tolerance; explicit missing-data stop; cut directions/rows; play/pause/rewind/scrub; export/verified import and invalid rejection; delayed wait/cancel/supersession; mobile 390/320');
+  report.checks.push('terrain R0a: six browser/Node replays with exact geometry identities and 1e-12 geometric tolerance; bounded cache observations validated separately; explicit missing-data stop; cut directions/rows; play/pause/rewind/scrub; export/verified import and invalid rejection; live accepted intervals during delayed wait/cancel/supersession; mobile 390/320');
 }
