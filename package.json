@@ -7,6 +7,9 @@
     "start": "node server.mjs",
     "test": "node --test",
     "scenario": "node scripts/scenario.mjs",
-    "browser-check": "node scripts/browser-check.mjs"
+    "browser-check": "node scripts/browser-check.mjs",
+    "ci:quick": "node scripts/local-ci.mjs quick",
+    "ci:unit": "node scripts/local-ci.mjs unit",
+    "ci:full": "node scripts/local-ci.mjs full"
   }
 }
