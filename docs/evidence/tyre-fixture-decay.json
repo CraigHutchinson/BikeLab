@@ -10007,8 +10007,187 @@
     }
   },
   "hosted": {
-    "status": "Pending new 100 ms worker records and actual capture inspection. Prior 20 ms viewer receiving remains in tyre-fixture.json.",
-    "actualScreenshotsInspected": false,
+    "status": "Received both OS test logs, successful browser suite, eleven complete records and actual 100 ms panel/history captures",
+    "runId": 40659445351,
+    "head": "fa3b5a376430530f112ce857f82407de6ed296e9",
+    "jobs": {
+      "ubuntu": {
+        "id": 122718494459,
+        "passed": 272,
+        "failed": 0,
+        "skipped": 0
+      },
+      "windows": {
+        "id": 122718494233,
+        "passed": 272,
+        "failed": 0,
+        "skipped": 0
+      },
+      "browser": {
+        "id": 122718494488,
+        "conclusion": "success"
+      }
+    },
+    "artifact": {
+      "id": 12803998904,
+      "bytes": 4429275,
+      "zipSha256": "92647fabbaf71b3e60af45b29e83da1fd9715490d63dae8173934336bb2a2765",
+      "expiresAt": "2026-11-11T09:17:16Z"
+    },
+    "cases": [
+      {
+        "name": "full-front-imported",
+        "agreement": {
+          "tolerance": 1e-09,
+          "maxAbsolute": 0,
+          "maxNormalized": 0,
+          "exact": true
+        },
+        "status": "completed",
+        "steps": 640,
+        "recordSha256": "a42c3123af411cacd5643d0d5389f3f5c69b4e77fae735f6bd68a06aee9e9fd6"
+      },
+      {
+        "name": "full-front-zero",
+        "agreement": {
+          "tolerance": 1e-09,
+          "maxAbsolute": 0,
+          "maxNormalized": 0,
+          "exact": true
+        },
+        "status": "completed",
+        "steps": 640,
+        "recordSha256": "c091ab02468a9b2d26f5020fb89d60b9ba42b9f0ecf1d212c90dd85d02c0e8a0"
+      },
+      {
+        "name": "full-rear-imported",
+        "agreement": {
+          "tolerance": 1e-09,
+          "maxAbsolute": 0,
+          "maxNormalized": 0,
+          "exact": true
+        },
+        "status": "completed",
+        "steps": 640,
+        "recordSha256": "5972d24c33948fc10752f88fd707ca6134926eebf9d56c8f7c37dd42376a12a9"
+      },
+      {
+        "name": "full-rear-zero",
+        "agreement": {
+          "tolerance": 1e-09,
+          "maxAbsolute": 0,
+          "maxNormalized": 0,
+          "exact": true
+        },
+        "status": "completed",
+        "steps": 640,
+        "recordSha256": "7f952b7881dbf01ecf42efc378e70116557b36e67534ec78feb48d46cddee4ed"
+      },
+      {
+        "name": "hardtail-front-imported",
+        "agreement": {
+          "tolerance": 1e-09,
+          "maxAbsolute": 0,
+          "maxNormalized": 0,
+          "exact": true
+        },
+        "status": "completed",
+        "steps": 640,
+        "recordSha256": "9a4737520a1f016ecb2781fd04ce4cd7b2e585ca8fd9a9958882c415d58d71b2"
+      },
+      {
+        "name": "hardtail-front-zero",
+        "agreement": {
+          "tolerance": 1e-09,
+          "maxAbsolute": 0,
+          "maxNormalized": 0,
+          "exact": true
+        },
+        "status": "completed",
+        "steps": 640,
+        "recordSha256": "96fe159fed9beb1f72bef4c6c44972630dc7dfbfdb4ba73642600190403fe8ea"
+      },
+      {
+        "name": "hardtail-rear-imported",
+        "agreement": {
+          "tolerance": 1e-09,
+          "maxAbsolute": 0,
+          "maxNormalized": 0,
+          "exact": true
+        },
+        "status": "completed",
+        "steps": 640,
+        "recordSha256": "51e4ae71a51cca01c5425bba343626ca9808df01b9668b9c6b24f38b817b6c4a"
+      },
+      {
+        "name": "hardtail-rear-zero",
+        "agreement": {
+          "tolerance": 1e-09,
+          "maxAbsolute": 0,
+          "maxNormalized": 0,
+          "exact": true
+        },
+        "status": "completed",
+        "steps": 640,
+        "recordSha256": "3c1dabcaa2c90adae7b22e2a6bbe2c09930b02475441c17b911cea5b6da45064"
+      },
+      {
+        "name": "loaded-window-rear",
+        "agreement": {
+          "tolerance": 1e-09,
+          "maxAbsolute": 0,
+          "maxNormalized": 0,
+          "exact": true
+        },
+        "status": "completed",
+        "steps": 640,
+        "recordSha256": "25db20b8e7caf0bd645374cbdeb36a2d13e41401e4e25d2c1dd26a0cdfdaf551"
+      },
+      {
+        "name": "full-front-100ms",
+        "agreement": {
+          "tolerance": 1e-09,
+          "maxAbsolute": 0,
+          "maxNormalized": 0,
+          "exact": true
+        },
+        "status": "completed",
+        "steps": 12800,
+        "recordSha256": "2599115e2f0ac6b6e410b32b96d1b57a03101a06aa06e5669ad2c2ce2f734167"
+      },
+      {
+        "name": "hardtail-rear-100ms",
+        "agreement": {
+          "tolerance": 1e-09,
+          "maxAbsolute": 0,
+          "maxNormalized": 0,
+          "exact": true
+        },
+        "status": "completed",
+        "steps": 12800,
+        "recordSha256": "0962624af8294bf8ae9f21aa859fa5fea1b5894abf321cf2bf6ce296485e0e68"
+      }
+    ],
+    "actualScreenshotsInspected": true,
+    "images": [
+      {
+        "name": "full-front-100ms-panel.png",
+        "sha256": "e0b446a12ba56bcd9dd8b5a91dd0e208d87668e4415cceaf0f875bbc21fb4143"
+      },
+      {
+        "name": "full-front-100ms-rms.png",
+        "sha256": "b7b5cdcc425a49462fd90262ac6fde0b85388bb73a4c2b242b47a2bcfad74624"
+      },
+      {
+        "name": "hardtail-rear-100ms-panel.png",
+        "sha256": "136038130fd52ed4ca1cb7cbc0f865be19b9773d457a70205cbb16624b99e506"
+      },
+      {
+        "name": "hardtail-rear-100ms-rms.png",
+        "sha256": "0a69cf3e033e3ccee062ded9214fccacdd0c78d8a44f58352292b0297ede90cc"
+      }
+    ],
+    "inspection": "Both final panels show 0.10000 s, 12800 accepted steps, fixed hub/rim/casing, visible upward contact arrows and explicit non-equilibrium scope. Full-front RMS waveform has intermittent groups of peaks; hardtail-rear zero-rate waveform rises from zero into persistent oscillation. Histories and endpoint cursor are legible. These sampled traces are not convergence or decay-rate evidence.",
     "priorAttempt": {
       "runId": 40653872316,
       "head": "209a8a063792dc5fc6a4195e8c0049607e79489f",
