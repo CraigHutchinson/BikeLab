@@ -19299,17 +19299,316 @@
       "failed": 0,
       "logSha256": "65785b38e185cba29823cfde81fc8bb9382b28aabbc9261f53e31e6adcf5fc1b",
       "command": "node --test --test-isolation=none test/tyre-fixture-observation.test.mjs test/tyre-fixture-ui.test.mjs test/tyre-fixture.test.mjs test/tyre-fixture-decay-analysis.test.mjs test/pages.test.mjs"
+    },
+    "receivingFocused": {
+      "command": "node --test --test-isolation=none test/tyre-fixture-observation.test.mjs test/tyre-fixture-ui.test.mjs test/tyre-fixture.test.mjs test/tyre-fixture-decay-analysis.test.mjs test/pages.test.mjs test/ci.test.mjs",
+      "passed": 17,
+      "failed": 0,
+      "skipped": 0,
+      "logSha256": "3a33d90c0e9983e49109567d2d9cfe4ad6c8bdccb390dbe3cb02fb972045dc81",
+      "scope": "Current focused controls after upstream integration; no production runtime edits in this receiving update."
+    },
+    "ciAdoption": {
+      "upstreamMain": "2dd2be60073cd0c4e5b5e55548800984b270434a",
+      "localIntegrationCommit": "d965dba13628d1728891637108341f81c60adfe8",
+      "remoteIntegrationCommit": "e6f99bb29f3fa3a7e7e62715f82d96049c5f7e06",
+      "quickReceipt": {
+        "schemaVersion": 1,
+        "level": "quick",
+        "head": "0040e03073acb07785fdef1537720bd4150c1f57",
+        "clean": false,
+        "node": "v24.19.0",
+        "platform": "linux",
+        "arch": "x64",
+        "startedAt": "2026-10-28T18:38:13.039Z",
+        "checks": [
+          {
+            "command": [
+              "node",
+              "scripts/check-provenance.mjs"
+            ],
+            "exitCode": 0,
+            "error": null
+          },
+          {
+            "command": [
+              "node",
+              "--test",
+              "test/ci.test.mjs",
+              "test/pages.test.mjs",
+              "test/physics.test.mjs",
+              "test/suspension-reference.test.mjs",
+              "test/records.test.mjs",
+              "test/terrain-request.test.mjs"
+            ],
+            "exitCode": 1,
+            "error": null
+          }
+        ],
+        "coverage": "selected quick tests and pinned vendor hashes; no full suite or browser",
+        "success": false,
+        "finishedAt": "2026-10-28T18:38:15.540Z"
+      },
+      "quickFailure": "Suspension-reference CLI cannot spawn child Node: EPERM. All six vendor hashes verified. Loopback binding independently fails EPERM.",
+      "browserPrerequisite": "Available Playwright 1.62.1 correctly rejected by full-local pinned 1.56.1 gate.",
+      "attestationPublished": false,
+      "hostedRunRequested": false,
+      "pagesDeploymentRequested": false
     }
   },
   "hosted": {
-    "status": "New measured-mode browser/headless checks and actual captures pending; prior100ms controls received separately.",
-    "actualScreenshotsInspected": false
+    "status": "partial-received; browser job failed after long-control captures; corrected receiver and lifecycle tail pending",
+    "sourceHead": "a5ea4bec6173b408b89ede9dcc48c53720d711f3",
+    "sourceTree": "bdfa0f88638b17689b2f7951b4a6393884539813",
+    "runId": 40699354561,
+    "runUrl": "https://github.com/CraigHutchinson/BikeLab/actions/runs/40699354561",
+    "startedBeforeCiPause": true,
+    "unitJobs": [
+      {
+        "id": 122854627834,
+        "os": "ubuntu-latest",
+        "passed": 277,
+        "failed": 0,
+        "skipped": 0
+      },
+      {
+        "id": 122854628361,
+        "os": "windows-latest",
+        "passed": 277,
+        "failed": 0,
+        "skipped": 0
+      }
+    ],
+    "browserJob": {
+      "id": 122854628038,
+      "conclusion": "failure",
+      "playwright": "1.56.1",
+      "chromium": "141.0.7390.37",
+      "failure": "Legacy dense-window option isDisabled() retargets the enclosing label to its enabled select.",
+      "sourceDiagnosis": "Playwright v1.56.1 packages/injected/src/injectedScript.ts elementState and retarget follow-label.",
+      "fix": "Read the option disabled property; require enabled whole-run select, empty summary and exact legacy replay without measurement fields.",
+      "rerunStatus": "pending; no hosted run requested during pause",
+      "tailNotReached": [
+        "initial-state rejection",
+        "cancellation",
+        "file-read cancellation and same-file retry",
+        "stale example parse failure"
+      ]
+    },
+    "artifact": {
+      "id": 12823695669,
+      "name": "tyre-fixture-evidence",
+      "bytes": 6304645,
+      "sha256": "b4c63a8d435abc9c82a4b282e551385cc456da04bfc380f063e68ca2583f8028",
+      "digestVerified": true,
+      "expiresAt": "2026-11-11T14:10:57Z"
+    },
+    "records": [
+      {
+        "file": "full-front-100ms.json",
+        "sha256": "2599115e2f0ac6b6e410b32b96d1b57a03101a06aa06e5669ad2c2ce2f734167",
+        "bytes": 1890531,
+        "model": "bikelab-fixed-hub-casing-0.1",
+        "status": "completed",
+        "steps": 12800,
+        "frames": 201,
+        "intervals": 0,
+        "denseWindowFrames": 0,
+        "completeRecordExact": true
+      },
+      {
+        "file": "full-front-imported.json",
+        "sha256": "a42c3123af411cacd5643d0d5389f3f5c69b4e77fae735f6bd68a06aee9e9fd6",
+        "bytes": 1515382,
+        "model": "bikelab-fixed-hub-casing-0.1",
+        "status": "completed",
+        "steps": 640,
+        "frames": 161,
+        "intervals": 0,
+        "denseWindowFrames": 0,
+        "completeRecordExact": true
+      },
+      {
+        "file": "full-front-settling.json",
+        "sha256": "d99f753c35efb627f255b075e67d402c2dd5fc068531a4c01a51b8fb9737938a",
+        "bytes": 3306139,
+        "model": "bikelab-fixed-hub-measured-0.1",
+        "status": "completed",
+        "steps": 16000,
+        "frames": 353,
+        "intervals": 5,
+        "denseWindowFrames": 161,
+        "completeRecordExact": true
+      },
+      {
+        "file": "full-front-zero.json",
+        "sha256": "c091ab02468a9b2d26f5020fb89d60b9ba42b9f0ecf1d212c90dd85d02c0e8a0",
+        "bytes": 1518823,
+        "model": "bikelab-fixed-hub-casing-0.1",
+        "status": "completed",
+        "steps": 640,
+        "frames": 161,
+        "intervals": 0,
+        "denseWindowFrames": 0,
+        "completeRecordExact": true
+      },
+      {
+        "file": "full-rear-imported.json",
+        "sha256": "5972d24c33948fc10752f88fd707ca6134926eebf9d56c8f7c37dd42376a12a9",
+        "bytes": 1558474,
+        "model": "bikelab-fixed-hub-casing-0.1",
+        "status": "completed",
+        "steps": 640,
+        "frames": 161,
+        "intervals": 0,
+        "denseWindowFrames": 0,
+        "completeRecordExact": true
+      },
+      {
+        "file": "full-rear-zero.json",
+        "sha256": "7f952b7881dbf01ecf42efc378e70116557b36e67534ec78feb48d46cddee4ed",
+        "bytes": 1558783,
+        "model": "bikelab-fixed-hub-casing-0.1",
+        "status": "completed",
+        "steps": 640,
+        "frames": 161,
+        "intervals": 0,
+        "denseWindowFrames": 0,
+        "completeRecordExact": true
+      },
+      {
+        "file": "hardtail-front-imported.json",
+        "sha256": "9a4737520a1f016ecb2781fd04ce4cd7b2e585ca8fd9a9958882c415d58d71b2",
+        "bytes": 1518471,
+        "model": "bikelab-fixed-hub-casing-0.1",
+        "status": "completed",
+        "steps": 640,
+        "frames": 161,
+        "intervals": 0,
+        "denseWindowFrames": 0,
+        "completeRecordExact": true
+      },
+      {
+        "file": "hardtail-front-zero.json",
+        "sha256": "96fe159fed9beb1f72bef4c6c44972630dc7dfbfdb4ba73642600190403fe8ea",
+        "bytes": 1515205,
+        "model": "bikelab-fixed-hub-casing-0.1",
+        "status": "completed",
+        "steps": 640,
+        "frames": 161,
+        "intervals": 0,
+        "denseWindowFrames": 0,
+        "completeRecordExact": true
+      },
+      {
+        "file": "hardtail-rear-100ms.json",
+        "sha256": "0962624af8294bf8ae9f21aa859fa5fea1b5894abf321cf2bf6ce296485e0e68",
+        "bytes": 1942481,
+        "model": "bikelab-fixed-hub-casing-0.1",
+        "status": "completed",
+        "steps": 12800,
+        "frames": 201,
+        "intervals": 0,
+        "denseWindowFrames": 0,
+        "completeRecordExact": true
+      },
+      {
+        "file": "hardtail-rear-imported.json",
+        "sha256": "51e4ae71a51cca01c5425bba343626ca9808df01b9668b9c6b24f38b817b6c4a",
+        "bytes": 1555476,
+        "model": "bikelab-fixed-hub-casing-0.1",
+        "status": "completed",
+        "steps": 640,
+        "frames": 161,
+        "intervals": 0,
+        "denseWindowFrames": 0,
+        "completeRecordExact": true
+      },
+      {
+        "file": "hardtail-rear-settling.json",
+        "sha256": "5701c5209d50e8fad7db5b336b20cfc9314c2e2b5337af9479f2fac3af344631",
+        "bytes": 3506251,
+        "model": "bikelab-fixed-hub-measured-0.1",
+        "status": "completed",
+        "steps": 160000,
+        "frames": 361,
+        "intervals": 50,
+        "denseWindowFrames": 161,
+        "completeRecordExact": true
+      },
+      {
+        "file": "hardtail-rear-zero.json",
+        "sha256": "3c1dabcaa2c90adae7b22e2a6bbe2c09930b02475441c17b911cea5b6da45064",
+        "bytes": 1560078,
+        "model": "bikelab-fixed-hub-casing-0.1",
+        "status": "completed",
+        "steps": 640,
+        "frames": 161,
+        "intervals": 0,
+        "denseWindowFrames": 0,
+        "completeRecordExact": true
+      },
+      {
+        "file": "loaded-window-rear.json",
+        "sha256": "25db20b8e7caf0bd645374cbdeb36a2d13e41401e4e25d2c1dd26a0cdfdaf551",
+        "bytes": 1512304,
+        "model": "bikelab-fixed-hub-casing-0.1",
+        "status": "completed",
+        "steps": 640,
+        "frames": 161,
+        "intervals": 0,
+        "denseWindowFrames": 0,
+        "completeRecordExact": true
+      }
+    ],
+    "actualScreenshotsInspected": true,
+    "captures": [
+      {
+        "file": "full-front-settling-intervals.png",
+        "sha256": "f6cdf9fe102a30fea18ecee27ca6e78c7678bffbb4dfb322ab0749290da8bd07",
+        "bytes": 4311,
+        "inspected": true
+      },
+      {
+        "file": "full-front-settling-panel.png",
+        "sha256": "ce2c109fc5bbd9442321f9c469eba22e977cc6806c6f27f830c079787c2df3ac",
+        "bytes": 181941,
+        "inspected": true
+      },
+      {
+        "file": "full-front-settling-window.png",
+        "sha256": "a70e997934508e52090043bf668fc573d35ed5f01585ef3e77ab6b68ac24cba9",
+        "bytes": 28936,
+        "inspected": true
+      },
+      {
+        "file": "hardtail-rear-settling-intervals.png",
+        "sha256": "8ed17e516bc594bf86ed32a79f19b23befa7b2d89e072124d5852d44b93fe298",
+        "bytes": 6802,
+        "inspected": true
+      },
+      {
+        "file": "hardtail-rear-settling-panel.png",
+        "sha256": "e5987077951485e87fda812ef79edba773409d682dd1a474813ef7682bd0481e",
+        "bytes": 181644,
+        "inspected": true
+      },
+      {
+        "file": "hardtail-rear-settling-window.png",
+        "sha256": "ef8562a77957799f18867f5f20faf602d7b77792bac3dcd56475b16d031cb645",
+        "bytes": 38946,
+        "inspected": true
+      }
+    ],
+    "visualFinding": "Both panels show completed 0.5/5 s accepted controls, readable loads and casing/contact arrows. Interval/dense-window axes agree with the selected horizon; persistent motion remains. No settling, calibration or performance conclusion.",
+    "replayScope": "All thirteen complete downloaded records compare exactly after native headless replay. Numerical study source hashes remain unchanged. This is not a passing complete browser job or exact-head full attestation."
   },
   "findings": [
-    "All12 controls complete5s without changing dt or physical coefficients/guards; .5/1/5s horizons are prefixes of each uninterrupted run. All eight source/rate starts use31.25us, with full-front/imported and hardtail-rear/zero also at15.625/7.8125us.",
-    "Every-step interval metrics retain nonzero motion through5s. Front/rear values and energy residuals remain timestep dependent; longer duration alone does not establish settling or physical instability.",
+    "All 12 controls complete 5 s without changing dt or physical coefficients/guards; 0.5/1/5 s horizons are prefixes of each uninterrupted run. All eight source/rate starts use 31.25 us, with full-front/imported and hardtail-rear/zero also at 15.625/7.8125 us.",
+    "Every-step interval metrics retain nonzero motion through 5 s. Front/rear values and energy residuals remain timestep dependent; longer duration alone does not establish settling or physical instability.",
     "Saved-sample aliasing is removed from interval averages of the discrete accepted trajectory; continuous-time peaks and timestep convergence remain separate.",
-    "New issues48/49 distinguish solver regularization from calibrated tread compliance and request independent sharp-impact refinement/event evidence. Docs clarify the first distinction; port performance/accuracy figures are not treated as locally reproduced."
+    "Issues #48/#49 distinguish solver regularization from calibrated tread compliance and request independent sharp-impact refinement/event evidence. #51-53 extend solver, contact-distribution and cheaper-tier qualification. Port performance/accuracy figures are not treated as locally reproduced.",
+    "The pre-pause Node suites pass and all thirteen exported browser records replay exactly; the complete browser suite remains failed. The option assertion is corrected without changing application or physics behavior."
   ],
-  "next": "Receive measured-mode UI/worker records. Reproduce isolated contact regularization and PR46 contact-free derivative controls before adding damping or changing native stepping. Preserve whole-bike perturbation/60s idle and active rider gates; small geometry/mandatory-terrain fixes can proceed independently."
+  "next": "Run the corrected browser receiver and remaining lifecycle checks on a capable local machine; retain PR54 draft until its acceptance scope is complete. Hosted CI remains paused through 31 October with deliberate resumption only. Reproduce isolated contact regularization and PR46 contact-free derivative controls before adding damping or changing native stepping. Preserve whole-bike perturbation/60 s idle and active rider gates; small geometry/mandatory-terrain fixes can proceed independently."
 }
