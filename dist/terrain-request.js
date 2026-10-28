@@ -1,8 +1,9 @@
 // R0a: immutable synthetic source -> finite swept request -> owned layer arrays.
 // Geometry delivery only. All coordinates are terrain-local metres, x/y/z up.
-export const FORMAT='bikelab-terrain-request-0.1';
+export const FORMAT='bikelab-terrain-request-0.2',LEGACY_FORMAT='bikelab-terrain-request-0.1';
 export const GRID=Object.freeze({spacing:.02,tileCells:40,nx:400,ny:160,x0:0,y0:-1.6,zMin:-.2,zMax:.2});
-export const LIMITS=Object.freeze({columns:4096,spans:12288,tiles:32,pending:8,requests:4});
+const LEGACY_LIMITS=Object.freeze({columns:4096,spans:12288,tiles:32,pending:8,requests:4});
+export const LIMITS=Object.freeze({...LEGACY_LIMITS,prefetchQueued:8,prefetchActive:1});
 export const ENVELOPE=Object.freeze({radius:.36,width:.06,margin:.02,behind:.10});
 export const MATERIALS=Object.freeze(['air','soil (synthetic)','rock (synthetic)']);
 const TILE_BYTES=40*40*(7*8+5);
@@ -76,41 +77,80 @@ function buildTile(kind,key){
   }
   return {values,materials,count,valid,bytes:values.byteLength+materials.byteLength+count.byteLength+valid.byteLength};
 }
-export function makeRequest({generation=0,wheel='front',sequence=0,a,b,optional=[],depth=[-.2,.2],fixture='layered'}){
+export function makeRequest({format=FORMAT,generation=0,wheel='front',sequence=0,a,b,optional=[],depth=[-.2,.2],fixture='layered'}){
+  if(![FORMAT,LEGACY_FORMAT].includes(format))throw Error('Invalid request format');
   if(!Number.isSafeInteger(generation)||generation<0||!Number.isSafeInteger(sequence)||sequence<0||!['front','rear'].includes(wheel))throw Error('Invalid request identity');
   if(!['plane','ramp','layered','hole'].includes(fixture))throw Error('Unknown fixture');
   if(!Array.isArray(depth)||depth.length!==2||!depth.every(Number.isFinite)||depth[0]>=depth[1])throw Error('Invalid depth');
   if(!Array.isArray(optional)||optional.length>8)throw Error('Optional route budget');
-  return freeze({format:FORMAT,generation,wheel,sequence,source:fixture+'/1',fixture,snapshot:0,envelope:'fixed-1',a:pose(a),b:pose(b),box:sweptBox(a,b),optional:freeze(optional.map(pair=>{if(!Array.isArray(pair)||pair.length!==2)throw Error('Invalid optional segment');return freeze(pair.map(pose));})),depth:freeze([...depth])});
+  return freeze({format,generation,wheel,sequence,source:fixture+'/1',fixture,snapshot:0,envelope:'fixed-1',a:pose(a),b:pose(b),box:sweptBox(a,b),optional:freeze(optional.map(pair=>{if(!Array.isArray(pair)||pair.length!==2)throw Error('Invalid optional segment');return freeze(pair.map(pose));})),depth:freeze([...depth])});
 }
 export class TerrainCache {
   #tiles=new Map(); #pending=new Map(); #latest=new Map(); #cancelled=new Set(); #active=0; #generation=0;
+  #optional=new Map(); #scheduled=false; #prefetchActive=0;
+  #prefetchStats={completed:0,failed:0,discarded:0};
   constructor({fixture='layered',delay=()=>Promise.resolve(),tileLimit=LIMITS.tiles}={}){
     fixtureColumn(fixture,0,0);if(!Number.isInteger(tileLimit)||tileLimit<1||tileLimit>LIMITS.tiles)throw Error('Invalid tile limit');
     Object.defineProperties(this,{fixture:{value:fixture,enumerable:true},delay:{value:delay},tileLimit:{value:tileLimit,enumerable:true}});this.stats={hits:0,misses:0,loads:0,evictions:0};
   }
   get generation(){return this.#generation;}
-  reset(){this.#generation++;this.#latest.clear();this.#cancelled.clear();}
-  cancel(wheel){this.#cancelled.add(wheel);}
+  reset(){this.#generation++;this.#latest.clear();this.#cancelled.clear();this.#pruneOptional();}
+  cancel(wheel){this.#cancelled.add(wheel);this.#pruneOptional();}
   get resident(){return [...this.#tiles.keys()].sort();}
   get bytes(){return this.#tiles.size*TILE_BYTES;}
-  async #tile(key){
-    if(this.#tiles.has(key)){this.stats.hits++;const t=this.#tiles.get(key);this.#tiles.delete(key);this.#tiles.set(key,t);return t;}
-    if(this.#pending.has(key)){this.stats.hits++;return this.#pending.get(key);}
+  get prefetch(){return {queued:this.#optional.size,active:this.#prefetchActive,...this.#prefetchStats};}
+  #current(q){return q.generation===this.#generation&&!this.#cancelled.has(q.wheel)&&q.sequence===this.#latest.get(q.wheel);}
+  #pruneOptional(){for(const [key,q] of this.#optional)if(!this.#current(q)){this.#optional.delete(key);this.#prefetchStats.discarded++;}}
+  #schedulePrefetch(){
+    if(this.#scheduled||!this.#optional.size)return;
+    this.#scheduled=true;queueMicrotask(()=>{
+      this.#scheduled=false;this.#pruneOptional();
+      if(this.#prefetchActive||this.#pending.size>=LIMITS.pending||!this.#optional.size)return;
+      const [key,q]=this.#optional.entries().next().value;this.#optional.delete(key);this.#prefetchActive=1;
+      this.#tile(key,q).then(()=>{this.#prefetchStats.completed++;},()=>{this.#prefetchStats.failed++;}).finally(()=>{
+        this.#prefetchActive=0;this.#schedulePrefetch();
+      });
+    });
+  }
+  #queueOptional(keys,q){
+    this.#pruneOptional();
+    for(const key of keys){
+      if(this.#tiles.has(key))continue;
+      const pending=this.#pending.get(key);
+      if(pending){if(!pending.required)pending.optional=q;continue;}
+      if(this.#optional.has(key)||this.#optional.size<LIMITS.prefetchQueued)this.#optional.set(key,q);
+      else this.#prefetchStats.discarded++;
+    }
+    this.#schedulePrefetch();
+  }
+  #store(key,t,optional){
+    if(this.#tiles.size>=this.tileLimit){
+      const prefetched=[...this.#tiles].find(([,entry])=>entry.optional);
+      // Speculation may replace only speculation, never demand-resident data.
+      if(optional&&!prefetched){this.#prefetchStats.discarded++;return;}
+      this.#tiles.delete(prefetched?prefetched[0]:this.#tiles.keys().next().value);this.stats.evictions++;
+    }
+    this.#tiles.set(key,{tile:t,optional});
+  }
+  async #tile(key,optional=null){
+    if(this.#tiles.has(key)){this.stats.hits++;const entry=this.#tiles.get(key);if(!optional)entry.optional=false;this.#tiles.delete(key);this.#tiles.set(key,entry);return entry.tile;}
+    if(this.#pending.has(key)){this.stats.hits++;const entry=this.#pending.get(key);if(!optional)entry.required=true;return entry.promise;}
     if(this.#pending.size>=LIMITS.pending)throw Error('pending tile budget');
     this.stats.misses++;
+    const entry={required:!optional,optional,promise:null};
     const p=Promise.resolve().then(()=>this.delay(key)).then(()=>{
       const t=buildTile(this.fixture,key);
-      while(this.#tiles.size>=this.tileLimit){this.#tiles.delete(this.#tiles.keys().next().value);this.stats.evictions++;}
-      this.#tiles.set(key,t);this.stats.loads++;return t;
-    });
-    this.#pending.set(key,p);try{return await p;}finally{this.#pending.delete(key);}
+      if(entry.required||this.#current(entry.optional))this.#store(key,t,!entry.required);
+      else this.#prefetchStats.discarded++;
+      this.stats.loads++;return t;
+    }).finally(()=>{this.#pending.delete(key);this.#schedulePrefetch();});
+    entry.promise=p;this.#pending.set(key,entry);return p;
   }
   async request(q){
     // Only requests authored by the bounded constructor are accepted; recompute
     // coverage from poses to prevent a forged box from certifying less terrain.
     let canonical;try{canonical=makeRequest(q);}catch(error){return {status:'unsupported',reason:error.message};}
-    if(q.format!==FORMAT||q.source!==canonical.source||q.snapshot!==0||q.envelope!=='fixed-1')return {status:'unsupported',reason:'source/state/layout revision'};
+    if(q.format!==canonical.format||q.source!==canonical.source||q.snapshot!==0||q.envelope!=='fixed-1')return {status:'unsupported',reason:'source/state/layout revision'};
     q=canonical;
     const identity={generation:q.generation,wheel:q.wheel,sequence:q.sequence,source:q.source,snapshot:q.snapshot};
     const result=(status,extra={})=>({status,identity,...extra});
@@ -118,6 +158,7 @@ export class TerrainCache {
     if(q.generation!==this.generation||q.sequence<=(this.#latest.get(q.wheel)??-1))return result('cancelled',{reason:'stale request'});
     if(this.#active>=LIMITS.requests)return result('pending',{reason:'request budget'});
     this.#latest.set(q.wheel,q.sequence);this.#cancelled.delete(q.wheel);
+    this.#pruneOptional();
     if(q.depth[0]<GRID.zMin||q.depth[1]>GRID.zMax)return result('unsupported',{reason:'unknown depth'});
     const region=cells(q.box);if(region.status!=='complete')return result(region.status,{reason:region.reason});
     const keys=[...new Set(region.ids.map(id=>location(id).key))];
@@ -139,13 +180,14 @@ export class TerrainCache {
         for(let k=0;k<t.count[l.index];k++){const s=offset[j]+k;upper[s]=k?t.values[v+3+k]:top[j];lower[s]=t.values[v+4+k];material[s]=t.materials[3*l.index+k];}
       }
       const features=['layered','hole'].includes(this.fixture)?FEATURES.filter(f=>overlaps(f.bounds,q.box)):[];
-      // Optional prefetch is bounded and awaited only after mandatory extraction;
-      // failures/clipping never change mandatory completeness. No probabilities.
+      // Clipping describes the requested geometry/budget, not later I/O success.
       let optionalClipped=false;
       const optionalKeys=new Set();for(const pair of q.optional){const c=cells(sweptBox(...pair));if(c.status!=='complete'){optionalClipped=true;continue;}for(const id of c.ids)optionalKeys.add(location(id).key);}
       const optionalBudget=Math.max(0,this.tileLimit-keys.length);
       const wanted=[...optionalKeys].filter(k=>!keys.includes(k));if(wanted.length>optionalBudget)optionalClipped=true;
-      for(const key of wanted.slice(0,optionalBudget)){if(stale())break;try{await this.#tile(key);}catch{optionalClipped=true;}}
+      if(q.format===LEGACY_FORMAT){
+        for(const key of wanted.slice(0,optionalBudget)){if(stale())break;try{await this.#tile(key);}catch{optionalClipped=true;}}
+      }else this.#queueOptional(wanted.slice(0,optionalBudget),q);
       if(stale())return result('cancelled',{reason:'superseded or reset'});
       return result('complete',{request:q,ids:new Uint32Array(region.ids),x,y,top,normal,offset,upper,lower,material,features,optionalClipped,tiles:keys,spacing:.02,knownDepth:[GRID.zMin,GRID.zMax],ownership:'owned copies; no cache aliases'});
     }catch(error){return result(stale()?'cancelled':error.message==='pending tile budget'?'pending':'failed',{reason:error.message});}
@@ -160,23 +202,40 @@ export function track(name){
   return p;
 }
 export function serializable(value){return JSON.parse(JSON.stringify(value,(_k,v)=>ArrayBuffer.isView(v)?Array.from(v):v));}
-export async function replay(name='straight',{delay,onWait=()=>{},onFrame=()=>{},cancelled=()=>false}={}){
+export async function replay(name='straight',{format=FORMAT,delay,onWait=()=>{},onFrame=()=>{},cancelled=()=>false}={}){
+  if(![FORMAT,LEGACY_FORMAT].includes(format))throw Error('Unsupported terrain record');
   const poses=track(name),cache=new TerrainCache({fixture:name==='missing'?'hole':'layered',delay}),frames=[];
+  try{
   for(let i=0;i<poses.length-1;i++){
     if(cancelled())break;
-    const q=makeRequest({generation:cache.generation,sequence:i,a:poses[i],b:poses[i+1],fixture:cache.fixture,optional:i+5<poses.length?[[poses[i+1],poses[i+5]]]:[]});
+    const q=makeRequest({format,generation:cache.generation,sequence:i,a:poses[i],b:poses[i+1],fixture:cache.fixture,optional:i+5<poses.length?[[poses[i+1],poses[i+5]]]:[]});
     onWait(i);const response=await cache.request(q);if(cancelled())break;
-    const frame=serializable({tick:i,time:i*.05,request:q,accepted:response.status==='complete',response,cache:{...cache.stats,bytes:cache.bytes,resident:cache.resident}});frames.push(frame);onFrame(frame);
+    const frame=serializable({tick:i,time:i*.05,request:q,accepted:response.status==='complete',response,cache:{...cache.stats,bytes:cache.bytes,resident:cache.resident,...(format===FORMAT?{prefetch:cache.prefetch}:{})}});frames.push(frame);onFrame(frame);
     if(!frame.accepted)break;
   }
-  return {format:FORMAT,track:name,dt:.05,source:'synthetic analytic v1; static epoch 0',grid:GRID,envelope:ENVELOPE,limits:LIMITS,frames};
+  return {format,track:name,dt:.05,source:'synthetic analytic v1; static epoch 0',grid:GRID,envelope:ENVELOPE,limits:format===LEGACY_FORMAT?LEGACY_LIMITS:LIMITS,frames};
+  }finally{cache.cancel('front');cache.cancel('rear');}
 }
 // Geometry is compared in metres/radians against the 1e-12 numerical budget.
 // Discrete identities, masks, offsets, counts, statuses and structure stay exact.
 const FLOAT_FIELDS=new Set(['x','y','top','normal','upper','lower','a','b','box','optional','vertices','bounds','time','dt','spacing','depth','knownDepth','radius','width','margin','behind']);
+function validateCacheObservation(cache){
+  const exactKeys=(value,keys)=>value&&typeof value==='object'&&Object.keys(value).length===keys.length&&keys.every(k=>Object.hasOwn(value,k));
+  const count=n=>Number.isSafeInteger(n)&&n>=0;
+  if(!exactKeys(cache,['hits','misses','loads','evictions','bytes','resident','prefetch'])||
+    !['hits','misses','loads','evictions'].every(k=>count(cache[k]))||
+    !Array.isArray(cache.resident)||cache.resident.length>LIMITS.tiles||
+    new Set(cache.resident).size!==cache.resident.length||!cache.resident.every(k=>typeof k==='string'&&/^[0-9],[0-3]$/.test(k))||
+    cache.bytes!==cache.resident.length*TILE_BYTES||
+    !exactKeys(cache.prefetch,['queued','active','completed','failed','discarded'])||
+    !Object.values(cache.prefetch).every(count)||cache.prefetch.queued>LIMITS.prefetchQueued||cache.prefetch.active>LIMITS.prefetchActive)
+    throw Error('Invalid cache observation');
+}
 export function compareReplay(actual,expected){
+  const asynchronous=actual?.format===FORMAT&&expected?.format===FORMAT;
   let maxDifference=0,numbers=0;
   function walk(a,b,path='',field=''){
+    if(asynchronous&&/^\/frames\/\d+\/cache$/.test(path)){validateCacheObservation(a);validateCacheObservation(b);return;}
     if(typeof b==='number'){
       if(typeof a!=='number'||!Number.isFinite(a))throw Error('Invalid number at '+path);
       const difference=Math.abs(a-b);numbers++;
@@ -189,9 +248,10 @@ export function compareReplay(actual,expected){
     const keys=Object.keys(b);if(keys.length!==Object.keys(a).length||keys.some(k=>!Object.hasOwn(a,k)))throw Error('Record fields differ at '+path);
     for(const k of keys)walk(a[k],b[k],path+'/'+k,Array.isArray(b)?field:k);
   }
-  walk(actual,expected);return {maxDifference,numbers,geometryTolerance:1e-12,discreteFieldsExact:true};
+  walk(actual,expected);return {maxDifference,numbers,geometryTolerance:1e-12,discreteFieldsExact:true,cacheObservationsCompared:!asynchronous};
 }
 export async function verifyReplay(record){
-  if(!record||record.format!==FORMAT||!TRACKS.includes(record.track))throw Error('Unsupported terrain record');
-  const expected=await replay(record.track);compareReplay(record,expected);return expected;
+  if(!record||![FORMAT,LEGACY_FORMAT].includes(record.format)||!TRACKS.includes(record.track))throw Error('Unsupported terrain record');
+  const expected=await replay(record.track,{format:record.format});compareReplay(record,expected);
+  return record.format===FORMAT?serializable(record):expected;
 }

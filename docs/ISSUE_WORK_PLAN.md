@@ -4,9 +4,9 @@ This plan consolidates issues [#37–45](https://github.com/CraigHutchinson/Bike
 
 This consolidates the detailed triage from draft [PR54 at `a5ea4be`](https://github.com/CraigHutchinson/BikeLab/pull/54), which remains unmerged. Its 5 s implementation, source-specific findings and documentation changes are proposals/evidence on that branch, not received mainline behavior. PR46's separate fixture implementation also remains unmerged; use the received PR47/50 fixture as the product path.
 
-**Current first package: [local-first CI adoption](CI_WORKFLOW.md).** All projects avoid needing hosted CI until 1 November 2026. Continue local checks and record missing hosted/browser coverage; do not close A or release work on skipped CI. After adoption, resume PR54 receiving and the bounded B/C work below. No hosted resumption is scheduled.
+**Current package: C, mandatory-first terrain delivery (#40), separate from stability work.** [Local-first CI adoption](CI_WORKFLOW.md) is received in PR55. PR54 retains the separate stability receiving gates; PR60 contains #39 geometry label work with browser verification deferred. Continue #40 without waiting on either stream. All projects avoid needing hosted CI until 1 November 2026; no hosted resumption is scheduled. Local checks do not close missing browser or release gates.
 
-Reports #37–45 describe a native C++ port pinned to `e73f6cc`; #48–49 and #51–53 use `bc44e90`. Port percentages, speedups and native/WASM comparisons are external reports until reproduced with complete inputs, revisions, compiler/FP settings and converged references. Current source confirms constant-impedance soft normal contacts, zero foundation damping, exact derived-coordinate label comparisons and awaited optional terrain work. Numerical identity, convergence, physical calibration and speed remain separate gates. No issue is closed by this plan.
+Reports #37–45 describe a native C++ port pinned to `e73f6cc`; #48–49 and #51–53 use `bc44e90`. Port percentages, speedups and native/WASM comparisons are external reports until reproduced with complete inputs, revisions, compiler/FP settings and converged references. The triage baseline confirmed constant-impedance soft normal contacts, zero foundation damping, exact derived-coordinate label comparisons and awaited optional terrain work. Numerical identity, convergence, physical calibration and speed remain separate gates. No issue is closed by this plan.
 
 ## Ordered work packages
 
@@ -43,7 +43,7 @@ B and C are separate bounded packages and can be interleaved; terrain or station
 
 ### #40 — Mandatory-first terrain publication
 
-[Issue](https://github.com/CraigHutchinson/BikeLab/issues/40) is confirmed in `dist/terrain-request.js`: mandatory data is extracted, then optional tiles are awaited before the complete result returns and the active request slot is released.
+[Issue](https://github.com/CraigHutchinson/BikeLab/issues/40) was confirmed at main `2dd2be6`: mandatory data was extracted, then optional tiles were awaited before the complete result returned and the active request slot was released. The current branch implements [mandatory-first delivery](TERRAIN_MANDATORY_FIRST.md), bounded prefetch, legacy replay compatibility and live viewer delivery. Browser receiving remains deferred; keep the issue open until that gate is received.
 
 **Disposition: high-priority terrain correctness/latency fix (C).** Publish owned mandatory coverage independently; optional work needs a bounded queue and explicit cancellation/generation semantics, error handling and cache priority. Exercise delayed/failed optional tiles, reset/supersession, eviction, admission and pending budgets. The mandatory completion must not wait for optional I/O. A finite cache/bandwidth can still be hurt by aggressive prefetch, so do not promise that any lookahead “only ever helps.” Receive the corrected pending/ready behavior in the R0 viewer and headless latency fixture; it does not implement terrain forces.
 
