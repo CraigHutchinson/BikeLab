@@ -16,8 +16,15 @@ export function geometryFor(p=PHOTO_GEOMETRY){
     armZ:p.pivotZ===-.15?-.14:BASE.axleZ-p.pivotZ});
 }
 export const GEOMETRY=geometryFor();
+// Label equivalence only: eight binary64 epsilons at a one-metre coordinate
+// scale (about 1.8e-15 m) cover rounding in the pixel/length conversion.
+// Authored pivot/stroke values and the literal reference preset stay exact.
+const LABEL_ROUNDING_METRES=8*Number.EPSILON;
+const PHOTO_DERIVED_KEYS=Object.freeze(['shockArmX','shockArmZ','shockFrameX','shockFrameZ']);
 export function geometryLabel(p){
-  const matches=preset=>GEOMETRY_KEYS.every(k=>p[k]===preset[k]);
+  const matches=preset=>GEOMETRY_KEYS.every(k=>p[k]===preset[k]||
+    (preset===PHOTO_GEOMETRY&&PHOTO_DERIVED_KEYS.includes(k)&&Number.isFinite(p[k])&&
+      Math.abs(p[k]-preset[k])<=LABEL_ROUNDING_METRES));
   return matches(PHOTO_GEOMETRY)?'Annotated layout · estimated geometry':matches(REFERENCE_GEOMETRY)?'Original reference geometry':'Custom geometry · uncalibrated';
 }
 export function shockLength(angle,g=GEOMETRY){

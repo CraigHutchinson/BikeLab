@@ -21,7 +21,7 @@ export async function checkBike({page,root,dir,report}) {
   await page.locator('#geometrySettings summary').click();
   await page.locator('#referenceGeometry').click();await ready();assert.match(await page.locator('#geometryName').textContent(),/Original/);
   const legacyGeometry=await exportRun('geometry-reference');assert.equal(legacyGeometry.record.params.pivotX,0);await shot('geometry-reference');
-  await page.locator('#annotatedGeometry').click();await ready();
+  await checkGeometryLabels({page,dir,report});
   await page.locator('[name=pivotX]').fill('.045');assert.equal(await page.locator('#save').isDisabled(),true);await apply();
   assert.match(await page.locator('#geometryName').textContent(),/Custom/);const custom=await exportRun('geometry-custom');const customNode=await runRig(custom.record.params);
   for(const [key,values] of Object.entries(custom.record.signals))for(let i=0;i<values.length;i++)assert.ok(Math.abs(values[i]-customNode.signals[key][i])<1e-8,key);
@@ -152,4 +152,29 @@ export async function checkBike({page,root,dir,report}) {
   await page.locator('#riderStopExample').click();await ready();await page.evaluate(()=>{window.dispatchEvent(new PageTransitionEvent('pagehide',{persisted:true}));window.dispatchEvent(new PageTransitionEvent('pageshow',{persisted:true}));});
   for(const width of [390,320]){await page.setViewportSize({width,height:844});await page.waitForFunction(()=>['riderGuidePlot','attachmentForcePlot','riderStopForcePlot','riderStopEnergyPlot'].every(id=>{const c=document.getElementById(id);return c.width===Math.round(c.clientWidth*devicePixelRatio);}));assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));await shot('rider-stops-mobile-'+width);}
   report.checks.push('rider stops and loads: both assemblies, lower/upper engagement, worker/headless parity, record reconstruction, invalid overlapping zones, weak-stop ultimate termination, fixed-mode dormancy, responsive plots and lifecycle');
+}
+
+// Shared by the full station suite and the focused local receiving command.
+export async function checkGeometryLabels({page,dir,report}) {
+  const ready=()=>page.waitForFunction(()=>['READY','TRAVEL LIMIT'].includes(document.getElementById('status').textContent));
+  const shot=async name=>{await page.locator('section.panel:has(#geometryName)').screenshot({path:join(dir,name+'.png')});report.screenshots.push(name+'.png');};
+  const exportRun=async name=>{const pending=page.waitForEvent('download');await page.locator('#save').click();const download=await pending,path=join(dir,name+'.json');await download.saveAs(path);return {path,record:JSON.parse(await readFile(path,'utf8'))};};
+  const apply=async()=>{await page.locator('button[type=submit]').click();await ready();};
+  if(!await page.locator('#geometrySettings').evaluate(element=>element.open))await page.locator('#geometrySettings summary').click();
+  await page.locator('#annotatedGeometry').click();await ready();
+  const annotated=await exportRun('geometry-annotated-label');
+  const rounded=structuredClone(annotated.record);
+  rounded.params.shockFrameX+=Number.EPSILON;
+  assert.notEqual(rounded.params.shockFrameX,annotated.record.params.shockFrameX);
+  await page.locator('#load').setInputFiles({name:'rounded-geometry.json',mimeType:'application/json',buffer:Buffer.from(JSON.stringify(rounded))});await ready();
+  assert.match(await page.locator('#geometryName').textContent(),/Annotated/);
+  assert.equal(Number(await page.locator('[name=shockFrameX]').inputValue()),rounded.params.shockFrameX);
+  const roundedExport=await exportRun('geometry-rounded-label');
+  assert.equal(roundedExport.record.params.shockFrameX,rounded.params.shockFrameX);
+  await page.locator('#load').setInputFiles(roundedExport.path);await ready();
+  assert.match(await page.locator('#geometryName').textContent(),/Annotated/);await shot('geometry-rounded-label');
+  await page.locator('[name=shockFrameX]').fill(String(annotated.record.params.shockFrameX+1e-12));await apply();
+  assert.match(await page.locator('#geometryName').textContent(),/Custom/);
+  await page.locator('#annotatedGeometry').click();await ready();
+  report.checks.push('geometry labels: rounded derived coordinates survive import/export/reload without snapping; a nearby custom edit remains custom');
 }

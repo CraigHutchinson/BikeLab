@@ -10,6 +10,7 @@
     "browser-check": "node scripts/browser-check.mjs",
     "ci:quick": "node scripts/local-ci.mjs quick",
     "ci:unit": "node scripts/local-ci.mjs unit",
-    "ci:full": "node scripts/local-ci.mjs full"
+    "ci:full": "node scripts/local-ci.mjs full",
+    "browser-check:geometry": "node scripts/geometry-label-check.mjs"
   }
 }
