@@ -16,8 +16,20 @@ export async function checkTyreFixture({page,root,dir,report}){
   if(name==='full-front'){await page.locator('.rig').screenshot({path:join(out,'full-front-panel.png')});await page.locator('#history').screenshot({path:join(out,'full-front-force.png')});}
   await page.locator('#rates').selectOption('zero');assert.ok(await page.locator('#save').isDisabled());await page.locator('#calculate').click();await ready();const zero=await save(name+'-zero');assert.equal(zero.frames[0].kineticEnergy,0);assert.deepEqual(zero.frames[0].nodes,imported.frames[0].nodes);
  }
- await page.setViewportSize({width:320,height:844});await page.waitForTimeout(50);assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));assert.ok(await page.locator('#rig').evaluate(c=>Math.abs(c.width/c.height-c.clientWidth/c.clientHeight)<.01),'equal canvas/CSS aspect ratio');await page.locator('.rig').screenshot({path:join(out,'hardtail-rear-320.png')});
+ await page.setViewportSize({width:320,height:844});
+ // ResizeObserver redraw is asynchronous; wait for its observable result,
+ // without assuming a busy CI runner completes it within a fixed 50 ms.
+ await page.waitForFunction(()=>{const c=document.getElementById('rig');return c.clientWidth>0&&c.clientWidth<320&&c.height>0&&c.width===Math.round(c.getBoundingClientRect().width*devicePixelRatio)&&Math.abs(c.width/c.height-c.clientWidth/c.clientHeight)<.01;},null,{timeout:10000});
+ assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));await page.locator('.rig').screenshot({path:join(out,'hardtail-rear-320.png')});
  await page.setViewportSize({width:1440,height:1100});await page.locator('#sourceWheel').selectOption('rear');await page.locator('#load').setInputFiles(join(dir,'rider-drive','full-window.json'));await ready();const extracted=await save('loaded-window-rear');assert.equal(extracted.scenario.seed.source.wheel,'rear');assert.equal(extracted.scenario.seed.source.tick,15360);
+ // Complete the existing 100 ms control at the finest step; retain exported
+ // records and actual late-time captures independently of short-run evidence.
+ for(const [name,rates] of [['full-front','imported'],['hardtail-rear','zero']]){
+  await page.locator('#example').selectOption(name);await page.locator('#rates').selectOption(rates);await page.locator('#duration').selectOption('0.1');await page.locator('#dt').selectOption('0.0000078125');await page.locator('#calculate').click();await ready();
+  const r=await save(name+'-100ms');assert.equal(r.summary.steps,12800);assert.equal(r.frames.length,201);assert.equal(r.scenario.motion.sampleDt,.0005);
+  await page.locator('#scrub').fill('200');assert.match(await page.locator('#time').textContent(),/0.10000/);await page.locator('#channel').selectOption('rms');
+  await page.locator('.rig').screenshot({path:join(out,name+'-100ms-panel.png')});await page.locator('#history').screenshot({path:join(out,name+'-100ms-rms.png')});
+ }
  const bad=structuredClone(extracted.scenario);bad.seed.hub.position[2]=.2;await page.locator('details').evaluate(el=>el.open=true);await page.locator('#setupText').fill(JSON.stringify(bad));await page.locator('#applyJson').click();await page.waitForFunction(()=>document.getElementById('status').textContent==='INITIAL-STATE-REJECTED');assert.ok(await page.locator('#scrub').isDisabled());assert.match(await page.locator('#result').textContent(),/rim-contact/);
  await page.locator('#example').selectOption('full-front');await page.locator('#duration').selectOption('0.1');await page.locator('#dt').selectOption('0.0000078125');await page.locator('#calculate').click();await page.locator('#cancel').click();assert.equal(await page.locator('#status').textContent(),'CANCELLED');assert.ok(await page.locator('#save').isDisabled());await page.waitForTimeout(150);assert.equal(await page.locator('#status').textContent(),'CANCELLED');
  // A pending file read is cancellable, and cancelling does not prevent retrying
