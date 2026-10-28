@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "nodeMajor": 24,
+  "levels": {
+    "quick": [
+      [
+        "node",
+        "scripts/check-provenance.mjs"
+      ],
+      [
+        "node",
+        "--test",
+        "test/ci.test.mjs",
+        "test/pages.test.mjs",
+        "test/physics.test.mjs",
+        "test/suspension-reference.test.mjs",
+        "test/records.test.mjs",
+        "test/terrain-request.test.mjs"
+      ]
+    ],
+    "unit": [
+      [
+        "node",
+        "scripts/check-provenance.mjs"
+      ],
+      [
+        "node",
+        "--test"
+      ]
+    ],
+    "full": [
+      [
+        "node",
+        "scripts/check-browser-tooling.mjs"
+      ],
+      [
+        "node",
+        "scripts/check-provenance.mjs"
+      ],
+      [
+        "node",
+        "--test"
+      ],
+      [
+        "node",
+        "scripts/rider-idle-review.mjs",
+        "artifacts/rider-idle"
+      ],
+      [
+        "node",
+        "scripts/browser-check.mjs"
+      ]
+    ]
+  }
+}

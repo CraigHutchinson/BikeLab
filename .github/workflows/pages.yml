@@ -1,186 +1,52 @@
-name: Test and deploy Pages
-
+# Quota hold through 2026-10-31: remove the literal false guards only on/after 1 November.
+name: Deploy verified Pages
 on:
-  push:
-    branches: [main]
-  pull_request:
-    branches: [main]
   workflow_dispatch:
-
 permissions:
   contents: read
-
+concurrency:
+  group: github-pages
+  cancel-in-progress: false
 jobs:
-  test:
-    name: Test (${{ matrix.os }})
-    strategy:
-      fail-fast: false
-      matrix:
-        os: [ubuntu-latest, windows-latest]
-    runs-on: ${{ matrix.os }}
-    steps:
-      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
-        with:
-          persist-credentials: false
-      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
-        with:
-          node-version: '24'
-      - run: node --test
-
-  browser:
-    name: Browser and headless agreement
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
-        with:
-          persist-credentials: false
-      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
-        with:
-          node-version: '24'
-      - name: Install isolated browser test tooling
-        run: |
-          npm install --prefix "$RUNNER_TEMP/bikelab-browser" --no-save --package-lock=false playwright@1.56.1
-          "$RUNNER_TEMP/bikelab-browser/node_modules/.bin/playwright" install --with-deps chromium
-      - name: Record passive idle limitation
-        run: node scripts/rider-idle-review.mjs artifacts/rider-idle
-      - name: Preserve passive idle records
-        if: always()
-        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
-        with:
-          name: rider-idle-evidence
-          path: artifacts/rider-idle
-          if-no-files-found: error
-          retention-days: 14
-      - name: Exercise all stations and capture evidence
-        env:
-          NODE_PATH: ${{ runner.temp }}/bikelab-browser/node_modules
-        run: node scripts/browser-check.mjs
-      - name: Preserve browser evidence
-        if: always()
-        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
-        with:
-          name: browser-evidence
-          path: |
-            artifacts/browser
-            !artifacts/browser/footprint/**
-            !artifacts/browser/trail-bike/**
-            !artifacts/browser/rider-poses/**
-            !artifacts/browser/rider-setup/**
-            !artifacts/browser/rider-unbound/**
-            !artifacts/browser/rider-drive/**
-            !artifacts/browser/tyre-fixture/**
-            !artifacts/browser/calculation/**
-          if-no-files-found: error
-          retention-days: 14
-
-      - name: Preserve static footprint captures
-        if: always()
-        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
-        with:
-          name: footprint-evidence
-          path: artifacts/browser/footprint
-          if-no-files-found: warn
-          retention-days: 14
-
-      - name: Preserve rider pose evidence
-        if: always()
-        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
-        with:
-          name: rider-pose-evidence
-          path: artifacts/browser/rider-poses
-          if-no-files-found: warn
-          retention-days: 14
-
-      - name: Preserve calculation progress evidence
-        if: always()
-        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
-        with:
-          name: calculation-evidence
-          path: artifacts/browser/calculation
-          if-no-files-found: warn
-          retention-days: 14
-
-      - name: Preserve portable rider setup evidence
-        if: always()
-        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
-        with:
-          name: rider-setup-evidence
-          path: artifacts/browser/rider-setup
-          if-no-files-found: warn
-          retention-days: 14
-
-      - name: Preserve fixed-hub casing evidence
-        if: always()
-        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
-        with:
-          name: tyre-fixture-evidence
-          path: artifacts/browser/tyre-fixture
-          if-no-files-found: warn
-          retention-days: 14
-
-      - name: Preserve active rider evidence
-        if: always()
-        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
-        with:
-          name: rider-drive-evidence
-          path: artifacts/browser/rider-drive
-          if-no-files-found: warn
-          retention-days: 14
-
-      - name: Preserve unbound rider evidence
-        if: always()
-        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
-        with:
-          name: rider-unbound-evidence
-          path: artifacts/browser/rider-unbound
-          if-no-files-found: warn
-          retention-days: 14
-
-      - name: Preserve connected trail bike captures
-        if: always()
-        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
-        with:
-          name: trail-bike-evidence
-          path: artifacts/browser/trail-bike/*.png
-          if-no-files-found: warn
-          retention-days: 14
-
-      - name: Preserve connected trail bike records
-        if: always()
-        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
-        with:
-          name: trail-bike-records
-          path: artifacts/browser/trail-bike/*.json
-          if-no-files-found: warn
-          retention-days: 14
-
   package:
-    name: Package static site
-    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
-    needs: [test, browser]
-    runs-on: ubuntu-latest
+    if: false && vars.BIKELAB_HOSTED_CI_ENABLED == 'true' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    permissions:
+      contents: read
+      statuses: read
+    outputs:
+      sha: ${{ steps.guard.outputs.sha }}
     steps:
       - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
         with:
+          ref: main
+          persist-credentials: false
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          node-version: '24'
+      - id: guard
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: node scripts/ci-github.mjs pages-guard
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          ref: ${{ steps.guard.outputs.sha }}
           persist-credentials: false
       - uses: actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b # v5
       - uses: actions/upload-pages-artifact@7b1f4a764d45c48632c6b24a0339c27f5614fb0b # v4
         with:
           path: dist
-
   deploy:
-    name: Deploy GitHub Pages
     needs: package
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
     permissions:
       pages: write
       id-token: write
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    concurrency:
-      group: github-pages
-      cancel-in-progress: false
     steps:
       - name: Deploy
         id: deployment

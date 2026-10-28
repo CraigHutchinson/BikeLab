@@ -1,0 +1,40 @@
+# Quota hold through 2026-10-31: remove the literal false guards only on/after 1 November.
+name: PR policy
+on:
+  pull_request_target:
+    branches: [main]
+    types: [opened, synchronize, reopened, labeled, unlabeled]
+    paths-ignore: ['**/*.md', 'docs/**', 'LICENSE*', '**/provenance.json']
+  workflow_run:
+    workflows: [Smoke]
+    types: [completed]
+  status:
+permissions:
+  contents: read
+concurrency:
+  group: policy-${{ github.event.pull_request.head.sha || github.event.workflow_run.head_sha || github.event.sha }}
+  cancel-in-progress: true
+jobs:
+  policy:
+    if: >-
+      false && vars.BIKELAB_HOSTED_CI_ENABLED == 'true' &&
+      (github.event_name != 'status' || github.event.context == 'local-ci/full')
+    runs-on: ubuntu-24.04
+    timeout-minutes: 3
+    permissions:
+      contents: read
+      actions: read
+      pull-requests: read
+      statuses: write
+    steps:
+      # Metadata only: never execute the PR branch with this write-capable token.
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          ref: main
+          persist-credentials: false
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          node-version: '24'
+      - env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: node scripts/ci-github.mjs policy
