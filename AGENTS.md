@@ -19,3 +19,5 @@ Before substantive C++ authoring, read cpp-write; before merging substantive C++
 Research delegation preference: bounded data gathering to Sonnet/Terra when available. If those classes are unavailable, say so and work locally. This does not authorize installs or contended measurements.
 
 User authorization, 2026-10-15: publish CraigHutchinson/BikeLab as a public GitHub repository; push and merge all project work. Host the static laboratory through GitHub Pages Actions. Keep deployment limited to the tested dist/ assets.
+
+CI pause, 2026-10-28: avoid triggering or depending on hosted CI until 1 November 2026. Follow docs/CI_WORKFLOW.md: validate locally, keep BIKELAB_HOSTED_CI_ENABLED unset/false, use [skip ci] on publication/merge commits, and retain pending hosted/browser gates. Do not dispatch workflows, deploy Pages or create release tags during the pause. Resumption is deliberate, not automatic.
