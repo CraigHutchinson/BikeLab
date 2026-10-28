@@ -18,3 +18,11 @@ No coordinates are rounded or snapped, and no model, force law, solver or saved-
 - Actual browser interaction and capture verification remain pending: the in-app browser timed out reaching the isolated local server at port 4189. That failed attempt is not visual evidence. No hosted CI or Pages deployment is requested during the pause through 31 October.
 
 Keep issue #39 open until that browser receiving check succeeds. These checks do not claim that the reporting native port or Apple/FMA hardware has been rerun.
+
+## Focused browser receiving
+
+Run `npm run browser-check:geometry` from the checkout with Playwright available through `NODE_PATH`. `BIKELAB_CHROMIUM` may select an installed Chromium-family executable, and `BIKELAB_ARTIFACTS` may select the evidence directory (default: `artifacts/geometry-labels`). The full BikeLab suite invokes the same exported check, so the focused path does not duplicate the acceptance sequence.
+
+The command opens the actual bicycle worker/viewer under a Pages-style `/BikeLab/` path, checks rounded-record import/export/reload, verifies a nearby custom edit, restores the annotated preset and captures the diagnostic panel. Its JSON receipt records the actual Node, Playwright and browser versions, errors and completed checks. Inspect the PNG as a separate visual gate. This focused command is not the full-local attestation and does not claim other stations or operating systems passed.
+
+Follow-up verification attempts on 2026-10-28: bundled Playwright 1.62.1 could be loaded, but installed headless Edge exited before page creation with Windows `0x80070005` and Crashpad pipe errors. The computer-use tool's separate access request for the already-open Edge window timed out. Neither attempt verified the UI. The focused runner's missing-executable control exits nonzero, saves `success: false` with no browser/checks/captures, and closes its local server; syntax and whitespace checks pass. Actual browser receiving is still pending app access or a working local browser-launch environment.
