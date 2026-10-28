@@ -1,3 +1,4 @@
+import {checkTyreFixture} from './tyre-fixture-browser-check.mjs';
 import {checkRiderDrive} from './rider-drive-browser-check.mjs';
 import {checkRiderPoses} from './rider-pose-browser-check.mjs';
 import {checkRiderSetup} from './rider-setup-browser-check.mjs';
@@ -340,6 +341,7 @@ try {
   await checkRiderSetup({page,root,dir,report});
   await checkRiderUnbound({page,root,dir,report});
   await checkRiderDrive({page,root,dir,report});
+  await checkTyreFixture({page,root,dir,report});
   await checkTrailProgress({page,root,dir,report});
 
   // Pixel availability is separate from human inspection of captured images.

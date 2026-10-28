@@ -1,0 +1,2309 @@
+{
+  "format": "bikelab-fixed-hub-receiving-0.1",
+  "date": "2026-10-28",
+  "baseHead": "bc44e90939e3f84bfd9adaae3e9750b54860911a",
+  "baseTree": "48de624ac0f8ab8518b1444ced453add4412cc72",
+  "hashConvention": "Input hashes use UTF-8 JSON.stringify(input) without newline. Record hashes use Node JSON.stringify(record) plus newline.",
+  "hosted": {
+    "status": "Received both OS logs, successful full browser suite, nine complete records and three visually inspected captures",
+    "runId": 40586565280,
+    "head": "f2a816fdf1bc71b33e6d0e636fe799b81d5d9520",
+    "tree": "bab56262ed99a61d692030fa6f04e5a23f4bd2a3",
+    "jobs": {
+      "ubuntu": {
+        "id": 122479430486,
+        "conclusion": "success",
+        "logSha256": "a66bc8f6ae1df8fc95b3515d1cc7d9c25509f03cbc3181f788ffd6d6dff72f50",
+        "passed": 270,
+        "failed": 0,
+        "skipped": 0
+      },
+      "windows": {
+        "id": 122479431473,
+        "conclusion": "success",
+        "logSha256": "90f4d18a084eb077a93a53091dd8763ccec4665c30e6d99fd278b5f671b464c6",
+        "passed": 270,
+        "failed": 0,
+        "skipped": 0
+      },
+      "browser": {
+        "id": 122479430945,
+        "conclusion": "success",
+        "logSha256": "b50e9c766a2557e2440601460e54ac39de8cdf7fcf535b3949c5760de6585aa1"
+      }
+    },
+    "artifact": {
+      "id": 12772724346,
+      "name": "tyre-fixture-evidence",
+      "bytes": 3178299,
+      "zipSha256": "d99e3f500b03da690d85860317834915425e3ffd3cdf59cc1e72a1c02a0199ee",
+      "expiresAt": "2026-11-10T21:41:29Z"
+    },
+    "browserReportSha256": "5d598a9116b1f9b5baddc8012cc850d784877479712ad823adc56dc1c568263b",
+    "actualScreenshotsInspected": true,
+    "screenshots": [
+      {
+        "name": "full-front-panel.png",
+        "sha256": "8bf5fe10682ecc6503addcd2ecfd9eca5ba9c0f08657fe2de21e3865af1e1adc",
+        "inspection": "Desktop final accepted sample at 20 ms: equal-scale casing/rim/hub, flat terrain, upward contact forces, 341.78 N ground load, 1.265e-3 m/s RMS speed, completed progress and explicit non-equilibrium label are visible without clipping."
+      },
+      {
+        "name": "full-front-force.png",
+        "sha256": "03fc6c3ac1ed38cad2433744cb2b2815fe27e6503d6374450db4fc3689ed940c",
+        "inspection": "Desktop force history shows repeated dips and recoveries; selected 20 ms cursor, time labels and force range are visible. Visible periodicity is not a convergence or physical oscillation claim."
+      },
+      {
+        "name": "hardtail-rear-320.png",
+        "sha256": "28041f3f6ba6bab862e829cc91fa66dfd3f8d3eac6854bf1b9444f1b3d3a3f04",
+        "inspection": "320 px viewport: casing and rim retain circular proportions, ground/contact arrows are visible, source and scope text wrap, stacked readouts and scrub/save controls fit. This capture is the zero-rate initial sample; it is not a final-state comparison."
+      }
+    ],
+    "cases": [
+      {
+        "name": "full-front-imported",
+        "recordSha256": "a42c3123af411cacd5643d0d5389f3f5c69b4e77fae735f6bd68a06aee9e9fd6",
+        "status": "completed",
+        "steps": 640,
+        "frames": 161,
+        "agreement": {
+          "tolerance": 1e-09,
+          "maxAbsolute": 0,
+          "maxNormalized": 0,
+          "exact": true
+        }
+      },
+      {
+        "name": "full-front-zero",
+        "recordSha256": "c091ab02468a9b2d26f5020fb89d60b9ba42b9f0ecf1d212c90dd85d02c0e8a0",
+        "status": "completed",
+        "steps": 640,
+        "frames": 161,
+        "agreement": {
+          "tolerance": 1e-09,
+          "maxAbsolute": 0,
+          "maxNormalized": 0,
+          "exact": true
+        }
+      },
+      {
+        "name": "full-rear-imported",
+        "recordSha256": "5972d24c33948fc10752f88fd707ca6134926eebf9d56c8f7c37dd42376a12a9",
+        "status": "completed",
+        "steps": 640,
+        "frames": 161,
+        "agreement": {
+          "tolerance": 1e-09,
+          "maxAbsolute": 0,
+          "maxNormalized": 0,
+          "exact": true
+        }
+      },
+      {
+        "name": "full-rear-zero",
+        "recordSha256": "7f952b7881dbf01ecf42efc378e70116557b36e67534ec78feb48d46cddee4ed",
+        "status": "completed",
+        "steps": 640,
+        "frames": 161,
+        "agreement": {
+          "tolerance": 1e-09,
+          "maxAbsolute": 0,
+          "maxNormalized": 0,
+          "exact": true
+        }
+      },
+      {
+        "name": "hardtail-front-imported",
+        "recordSha256": "9a4737520a1f016ecb2781fd04ce4cd7b2e585ca8fd9a9958882c415d58d71b2",
+        "status": "completed",
+        "steps": 640,
+        "frames": 161,
+        "agreement": {
+          "tolerance": 1e-09,
+          "maxAbsolute": 0,
+          "maxNormalized": 0,
+          "exact": true
+        }
+      },
+      {
+        "name": "hardtail-front-zero",
+        "recordSha256": "96fe159fed9beb1f72bef4c6c44972630dc7dfbfdb4ba73642600190403fe8ea",
+        "status": "completed",
+        "steps": 640,
+        "frames": 161,
+        "agreement": {
+          "tolerance": 1e-09,
+          "maxAbsolute": 0,
+          "maxNormalized": 0,
+          "exact": true
+        }
+      },
+      {
+        "name": "hardtail-rear-imported",
+        "recordSha256": "51e4ae71a51cca01c5425bba343626ca9808df01b9668b9c6b24f38b817b6c4a",
+        "status": "completed",
+        "steps": 640,
+        "frames": 161,
+        "agreement": {
+          "tolerance": 1e-09,
+          "maxAbsolute": 0,
+          "maxNormalized": 0,
+          "exact": true
+        }
+      },
+      {
+        "name": "hardtail-rear-zero",
+        "recordSha256": "3c1dabcaa2c90adae7b22e2a6bbe2c09930b02475441c17b911cea5b6da45064",
+        "status": "completed",
+        "steps": 640,
+        "frames": 161,
+        "agreement": {
+          "tolerance": 1e-09,
+          "maxAbsolute": 0,
+          "maxNormalized": 0,
+          "exact": true
+        }
+      },
+      {
+        "name": "loaded-window-rear",
+        "recordSha256": "25db20b8e7caf0bd645374cbdeb36a2d13e41401e4e25d2c1dd26a0cdfdaf551",
+        "status": "completed",
+        "steps": 640,
+        "frames": 161,
+        "agreement": {
+          "tolerance": 1e-09,
+          "maxAbsolute": 0,
+          "maxNormalized": 0,
+          "exact": true
+        }
+      }
+    ],
+    "scope": "Actual worker, both wheels/bikes, imported/zero rates, full replay, JSON source-window extraction, rejected initial state, stale-result cancellation and visually inspected desktop/mobile captures. No equilibrium, calibration or performance claim.",
+    "localReplay": "All nine downloaded complete records replay with exact numerical equality on the receiving machine; structure and nonnumeric fields also agree. Declared cross-runtime normalized budget remains 1e-9.",
+    "limits": "Bounded numerical/UI receiving only. No physical calibration, trajectory/load convergence, long idle, real-time performance or Pages deployment claim."
+  },
+  "local": {
+    "focused": {
+      "command": "node --test --test-isolation=none test/tyre-fixture.test.mjs test/pages.test.mjs",
+      "passed": 6,
+      "failed": 0,
+      "logSha256": "d30c4b02f82057b1eb3f7e13a910a8ccb2864393de0cdb624919657193b15d35"
+    },
+    "fullSuite": {
+      "command": "node --test",
+      "passedFiles": 44,
+      "failedFiles": 11,
+      "failedFileNames": [
+        "test/cli.test.mjs",
+        "test/footprint-cli.test.mjs",
+        "test/moving-wheel-cli.test.mjs",
+        "test/rider-cli.test.mjs",
+        "test/rider-setup-cli.test.mjs",
+        "test/server.test.mjs",
+        "test/solver-cli.test.mjs",
+        "test/suspension-records.test.mjs",
+        "test/suspension-reference.test.mjs",
+        "test/terrain-cli.test.mjs",
+        "test/wheel-limits-cli.test.mjs"
+      ],
+      "logSha256": "6ac8910a9c7d272235a3ec3052416662f1860ecf72e55a54accf1a56c2fbb8bd",
+      "limitation": "Same eleven subprocess/loopback-restricted files; this is not a full local test pass."
+    },
+    "cli": {
+      "command": "node scripts/tyre-fixture.mjs",
+      "recordMatchesFirstReviewCaseExactly": true,
+      "progressOnStderr": true,
+      "logSha256": "5da83928b6aef49b65d22527e578411a875c0293819b9d106f52f004501d260a"
+    },
+    "review": "GPT-6.1 Sol reviewed mapping/guards, force and energy accounting, pinned native contact weights and browser lifecycle; fixes are included.",
+    "staticAssets": {
+      "topLevelFiles": 75,
+      "status": "all bytes identical",
+      "method": "Real preview request handler; no loopback listener or browser execution."
+    },
+    "momentMappingReview": {
+      "format": "bikelab-fixed-hub-contact-moment-review-0.1",
+      "budget": 1e-08,
+      "units": "N m",
+      "scope": "Recorded contact/node geometry, inverse-distance prediction; projected planar coordinates and active contacts above1e-8 N. Does not modify forces or work.",
+      "cases": [
+        {
+          "name": "full-front-imported-coarse",
+          "maxPredictionError": 4.0885689720437067e-10,
+          "maxMomentDifference": 0.000233876956491853,
+          "passed": true
+        },
+        {
+          "name": "full-front-imported-fine",
+          "maxPredictionError": 2.455978348853648e-10,
+          "maxMomentDifference": 1.1710712619773573,
+          "passed": true
+        },
+        {
+          "name": "full-front-imported-finest",
+          "maxPredictionError": 2.455978348853648e-10,
+          "maxMomentDifference": 0.0002629083801189267,
+          "passed": true
+        },
+        {
+          "name": "full-front-zero-coarse",
+          "maxPredictionError": 4.134628922737712e-10,
+          "maxMomentDifference": 0.0005542747798540648,
+          "passed": true
+        },
+        {
+          "name": "full-front-zero-fine",
+          "maxPredictionError": 2.485064341806176e-10,
+          "maxMomentDifference": 0.0005542747798540648,
+          "passed": true
+        },
+        {
+          "name": "full-front-zero-finest",
+          "maxPredictionError": 2.485064341806176e-10,
+          "maxMomentDifference": 0.0005542747798540648,
+          "passed": true
+        },
+        {
+          "name": "full-rear-imported-coarse",
+          "maxPredictionError": 6.411382535986831e-11,
+          "maxMomentDifference": 0.9051317222090085,
+          "passed": true
+        },
+        {
+          "name": "full-rear-imported-fine",
+          "maxPredictionError": 5.407951864100369e-11,
+          "maxMomentDifference": 0.9117264542991679,
+          "passed": true
+        },
+        {
+          "name": "full-rear-imported-finest",
+          "maxPredictionError": 5.830202987056055e-11,
+          "maxMomentDifference": 0.9089774848817962,
+          "passed": true
+        },
+        {
+          "name": "full-rear-zero-coarse",
+          "maxPredictionError": 5.322353668901769e-11,
+          "maxMomentDifference": 0.9131004393505728,
+          "passed": true
+        },
+        {
+          "name": "full-rear-zero-fine",
+          "maxPredictionError": 5.322353668901769e-11,
+          "maxMomentDifference": 0.9157768510068784,
+          "passed": true
+        },
+        {
+          "name": "full-rear-zero-finest",
+          "maxPredictionError": 5.7749915960414455e-11,
+          "maxMomentDifference": 0.9076046228485293,
+          "passed": true
+        },
+        {
+          "name": "hardtail-front-imported-coarse",
+          "maxPredictionError": 4.380939849172455e-10,
+          "maxMomentDifference": 1.2036129172139671,
+          "passed": true
+        },
+        {
+          "name": "hardtail-front-imported-fine",
+          "maxPredictionError": 1.2130431300281033e-10,
+          "maxMomentDifference": 1.212014378583169,
+          "passed": true
+        },
+        {
+          "name": "hardtail-front-imported-finest",
+          "maxPredictionError": 9.655868362908396e-11,
+          "maxMomentDifference": 1.1993992009223955,
+          "passed": true
+        },
+        {
+          "name": "hardtail-front-zero-coarse",
+          "maxPredictionError": 4.439229760698493e-10,
+          "maxMomentDifference": 0.0013908215767508474,
+          "passed": true
+        },
+        {
+          "name": "hardtail-front-zero-fine",
+          "maxPredictionError": 1.2109449321106094e-10,
+          "maxMomentDifference": 0.0005521022178964642,
+          "passed": true
+        },
+        {
+          "name": "hardtail-front-zero-finest",
+          "maxPredictionError": 9.864644967853484e-11,
+          "maxMomentDifference": 1.2000243924577483,
+          "passed": true
+        },
+        {
+          "name": "hardtail-rear-imported-coarse",
+          "maxPredictionError": 5.103062417077808e-11,
+          "maxMomentDifference": 0.8571034220216895,
+          "passed": true
+        },
+        {
+          "name": "hardtail-rear-imported-fine",
+          "maxPredictionError": 4.4135917143250936e-11,
+          "maxMomentDifference": 0.8565336869203206,
+          "passed": true
+        },
+        {
+          "name": "hardtail-rear-imported-finest",
+          "maxPredictionError": 4.9541259983243435e-11,
+          "maxMomentDifference": 0.8587348032447215,
+          "passed": true
+        },
+        {
+          "name": "hardtail-rear-zero-coarse",
+          "maxPredictionError": 3.8640424193658873e-11,
+          "maxMomentDifference": 0.8517054249040963,
+          "passed": true
+        },
+        {
+          "name": "hardtail-rear-zero-fine",
+          "maxPredictionError": 4.13125089693267e-11,
+          "maxMomentDifference": 0.8556044458570051,
+          "passed": true
+        },
+        {
+          "name": "hardtail-rear-zero-finest",
+          "maxPredictionError": 4.1285752594433234e-11,
+          "maxMomentDifference": 0.8556325321392808,
+          "passed": true
+        }
+      ]
+    },
+    "momentMappingScriptSha256": "731ee09d45a641d9888b43b356a1e32c6468317337f34c18818e5bfa3f4e35e5"
+  },
+  "comparison": {
+    "format": "bikelab-fixed-hub-review-0.1",
+    "scope": "Four 9.98 s loaded seeds; retained local rates versus zero rates at identical deformation, each at three steps over20 ms. Sampled motion/contact changes, not continuous peaks, long-time decay, calibrated stability or a unique cause. Fixed boundary changes world kinetic energy. Source hashes collected before execution.",
+    "sourcesSha256": {
+      "dist/tyre-fixture.js": "9ec997b623bb32e0ba67aa7575cc5218707ec75aa171607aa8162e8f36f97cca",
+      "dist/tyre-fixture-examples.json": "a1ced8fd04f04e49d151e9500b5b21d852fb8f4240a82c7fa44f85d875533525",
+      "dist/moving-wheel.js": "45b1068fabf5413dfc90bfd2ee47f46600deb093b756d7c8d1bdc8ad24411e35",
+      "dist/tyre-motion.js": "7a4d485f481139a33a0e8e59299fddffecca042e26200eeb0f88da07b0821a2c",
+      "dist/trail-initial-state.js": "ace3d2fc934b0eb9a1aace7916f278ddeb7f2a0889018cb0617fda23bbf77bab",
+      "scripts/tyre-fixture-review.mjs": "a02acad671f32d934ebf9b085d596154e8d311e3a861a66550a3a222529e479c"
+    },
+    "cases": [
+      {
+        "name": "full-front-imported-coarse",
+        "transfer": {
+          "geometryMaxAbsolute": 0,
+          "restLengthMaxAbsolute": 1.457167719820518e-16,
+          "budget": 1e-10,
+          "compiledMassInertiaSpringDampingMatch": true,
+          "scope": "World-fixed hub; fresh time, warm start and ledgers. Imported node rates remain hub-local; removing hub motion changes kinetic energy and momentum. This is a diagnostic boundary, not continued whole-bike motion, equilibrium, calibrated tyre damping or failure."
+        },
+        "recordSha256": "8a1c0f48be56f9b279dc66470b8894d1f15c8476e81c6c040c2bd531f0784f47",
+        "status": "completed",
+        "termination": null,
+        "summary": {
+          "steps": 640,
+          "acceptedTime": 0.020000000000000014,
+          "initialEnergy": 4.714087022853096,
+          "finalEnergy": 4.712613299215373,
+          "maxResidual": 0.0014795899799792498,
+          "maxForceResidual": 1.8332002582610585e-12,
+          "peakForce": 345.7173606369376
+        },
+        "sampledContactSetChanges": 12,
+        "sampledRanges": {
+          "rmsSpeed": {
+            "min": 0.000852950168692526,
+            "max": 0.012321763622275793
+          },
+          "maxNodeSpeed": {
+            "min": 0.002719275132177359,
+            "max": 0.09496038710360374
+          },
+          "maxNodeAcceleration": {
+            "min": 4.722201145542615,
+            "max": 3696.99022348771
+          },
+          "edgeDampingPower": {
+            "min": 1.8995502624060002e-06,
+            "max": 0.00011252614889545942
+          },
+          "contactMomentDifference": {
+            "min": -0.00013063953528163946,
+            "max": 0.000233876956491853
+          }
+        },
+        "final": {
+          "rmsSpeed": 0.0012651134951896202,
+          "dampingLoss": 4.3626492024171183e-07,
+          "contactWork": -0.0029528773527828086
+        },
+        "inputSource": {
+          "file": "dist/tyre-fixture-examples.json",
+          "caseIndex": 0,
+          "caseName": "full-front",
+          "overrides": {
+            "rates": "imported",
+            "motion": {
+              "dt": 3.125e-05,
+              "duration": 0.02,
+              "sampleDt": 0.000125
+            }
+          }
+        },
+        "inputSha256": "3801583baa893d1afc18bff5df9ea6983a5df6bae72a463bab8d349e1de91f97"
+      },
+      {
+        "name": "full-front-imported-fine",
+        "transfer": {
+          "geometryMaxAbsolute": 0,
+          "restLengthMaxAbsolute": 1.457167719820518e-16,
+          "budget": 1e-10,
+          "compiledMassInertiaSpringDampingMatch": true,
+          "scope": "World-fixed hub; fresh time, warm start and ledgers. Imported node rates remain hub-local; removing hub motion changes kinetic energy and momentum. This is a diagnostic boundary, not continued whole-bike motion, equilibrium, calibrated tyre damping or failure."
+        },
+        "recordSha256": "9e32336e6c3c2a99e760edea78f3ab80e57dcf08ca401b61dd1f83424b0d9ab5",
+        "status": "completed",
+        "termination": null,
+        "summary": {
+          "steps": 1280,
+          "acceptedTime": 0.01999999999999953,
+          "initialEnergy": 4.714087022853096,
+          "finalEnergy": 4.713685229643356,
+          "maxResidual": 0.0004134762352315559,
+          "maxForceResidual": 1.6200374375330284e-12,
+          "peakForce": 343.4132252050734
+        },
+        "sampledContactSetChanges": 4,
+        "sampledRanges": {
+          "rmsSpeed": {
+            "min": 0.0008367793798580722,
+            "max": 0.005403118072156382
+          },
+          "maxNodeSpeed": {
+            "min": 0.002371813499192029,
+            "max": 0.04187502543513616
+          },
+          "maxNodeAcceleration": {
+            "min": 2.783903170485008,
+            "max": 3697.1239497826705
+          },
+          "edgeDampingPower": {
+            "min": 3.776370915465187e-07,
+            "max": 3.1582072405231276e-05
+          },
+          "contactMomentDifference": {
+            "min": -1.170697945491907,
+            "max": 1.1710712619773573
+          }
+        },
+        "final": {
+          "rmsSpeed": 0.001322387379536081,
+          "dampingLoss": 1.2022493154528174e-07,
+          "contactWork": -0.0008137553616779309
+        },
+        "inputSource": {
+          "file": "dist/tyre-fixture-examples.json",
+          "caseIndex": 0,
+          "caseName": "full-front",
+          "overrides": {
+            "rates": "imported",
+            "motion": {
+              "dt": 1.5625e-05,
+              "duration": 0.02,
+              "sampleDt": 0.000125
+            }
+          }
+        },
+        "inputSha256": "8479a69f0bae6adc409aedc052a9f23c597c915827a65316f7e7b98fdd1ed92b"
+      },
+      {
+        "name": "full-front-imported-finest",
+        "transfer": {
+          "geometryMaxAbsolute": 0,
+          "restLengthMaxAbsolute": 1.457167719820518e-16,
+          "budget": 1e-10,
+          "compiledMassInertiaSpringDampingMatch": true,
+          "scope": "World-fixed hub; fresh time, warm start and ledgers. Imported node rates remain hub-local; removing hub motion changes kinetic energy and momentum. This is a diagnostic boundary, not continued whole-bike motion, equilibrium, calibrated tyre damping or failure."
+        },
+        "recordSha256": "d9e7e2b851763fd51d6b9c7188ccab591d7698fd2072303928672ead9ce7a1a5",
+        "status": "completed",
+        "termination": null,
+        "summary": {
+          "steps": 2560,
+          "acceptedTime": 0.019999999999998665,
+          "initialEnergy": 4.714087022853096,
+          "finalEnergy": 4.713624745383517,
+          "maxResidual": 0.00013586958268342912,
+          "maxForceResidual": 1.9042545318370685e-12,
+          "peakForce": 342.4338903938749
+        },
+        "sampledContactSetChanges": 4,
+        "sampledRanges": {
+          "rmsSpeed": {
+            "min": 0.0008020649411855866,
+            "max": 0.003297014425242507
+          },
+          "maxNodeSpeed": {
+            "min": 0.002035508628893674,
+            "max": 0.024136375957193236
+          },
+          "maxNodeAcceleration": {
+            "min": 1.9147014775221205,
+            "max": 3697.099512795508
+          },
+          "edgeDampingPower": {
+            "min": 2.6545372560848597e-07,
+            "max": 1.3633898343138557e-05
+          },
+          "contactMomentDifference": {
+            "min": -0.0001688241350618973,
+            "max": 0.0002629083801189267
+          }
+        },
+        "final": {
+          "rmsSpeed": 0.001141306993490086,
+          "dampingLoss": 5.1728829215976125e-08,
+          "contactWork": -0.0005980953234337105
+        },
+        "inputSource": {
+          "file": "dist/tyre-fixture-examples.json",
+          "caseIndex": 0,
+          "caseName": "full-front",
+          "overrides": {
+            "rates": "imported",
+            "motion": {
+              "dt": 7.8125e-06,
+              "duration": 0.02,
+              "sampleDt": 0.000125
+            }
+          }
+        },
+        "inputSha256": "d53e91eb366c274df0d193ae6e2ccd3615059fb79a3526fdccd6ca40e1fd0c3d"
+      },
+      {
+        "name": "full-front-zero-coarse",
+        "transfer": {
+          "geometryMaxAbsolute": 0,
+          "restLengthMaxAbsolute": 1.457167719820518e-16,
+          "budget": 1e-10,
+          "compiledMassInertiaSpringDampingMatch": true,
+          "scope": "World-fixed hub; fresh time, warm start and ledgers. Imported node rates remain hub-local; removing hub motion changes kinetic energy and momentum. This is a diagnostic boundary, not continued whole-bike motion, equilibrium, calibrated tyre damping or failure."
+        },
+        "recordSha256": "686feef4285d7ff8172b7086472b068851218dc6d71626cf19891b68e7da0259",
+        "status": "completed",
+        "termination": null,
+        "summary": {
+          "steps": 640,
+          "acceptedTime": 0.020000000000000014,
+          "initialEnergy": 4.714083782079075,
+          "finalEnergy": 4.712655229235491,
+          "maxResidual": 0.001467076332591333,
+          "maxForceResidual": 1.7053025658242404e-12,
+          "peakForce": 345.6921251485939
+        },
+        "sampledContactSetChanges": 0,
+        "sampledRanges": {
+          "rmsSpeed": {
+            "min": 0,
+            "max": 0.01413810411425603
+          },
+          "maxNodeSpeed": {
+            "min": 0,
+            "max": 0.10783769278845114
+          },
+          "maxNodeAcceleration": {
+            "min": 3.983749550528669,
+            "max": 466.18180636487466
+          },
+          "edgeDampingPower": {
+            "min": 0,
+            "max": 0.00013071769640987096
+          },
+          "contactMomentDifference": {
+            "min": -0.0005542747798540648,
+            "max": 0.00019929158400762697
+          }
+        },
+        "final": {
+          "rmsSpeed": 0.0032337870543289646,
+          "dampingLoss": 4.361936752907704e-07,
+          "contactWork": -0.00289519298250005
+        },
+        "inputSource": {
+          "file": "dist/tyre-fixture-examples.json",
+          "caseIndex": 0,
+          "caseName": "full-front",
+          "overrides": {
+            "rates": "zero",
+            "motion": {
+              "dt": 3.125e-05,
+              "duration": 0.02,
+              "sampleDt": 0.000125
+            }
+          }
+        },
+        "inputSha256": "f806d783f7016ff6333a4c06073e49bee4feca72e2988064995960c9ba1324c0"
+      },
+      {
+        "name": "full-front-zero-fine",
+        "transfer": {
+          "geometryMaxAbsolute": 0,
+          "restLengthMaxAbsolute": 1.457167719820518e-16,
+          "budget": 1e-10,
+          "compiledMassInertiaSpringDampingMatch": true,
+          "scope": "World-fixed hub; fresh time, warm start and ledgers. Imported node rates remain hub-local; removing hub motion changes kinetic energy and momentum. This is a diagnostic boundary, not continued whole-bike motion, equilibrium, calibrated tyre damping or failure."
+        },
+        "recordSha256": "b6eef7909b4b90b8eb41fe99bf1ac3fa4b3edf42faf22907149dac4dfdc2ffc7",
+        "status": "completed",
+        "termination": null,
+        "summary": {
+          "steps": 1280,
+          "acceptedTime": 0.01999999999999953,
+          "initialEnergy": 4.714083782079075,
+          "finalEnergy": 4.713561276116252,
+          "maxResidual": 0.0004229907268459948,
+          "maxForceResidual": 1.9895196601282805e-12,
+          "peakForce": 343.38923555244327
+        },
+        "sampledContactSetChanges": 2,
+        "sampledRanges": {
+          "rmsSpeed": {
+            "min": 0,
+            "max": 0.006839830308473028
+          },
+          "maxNodeSpeed": {
+            "min": 0,
+            "max": 0.05168693354251249
+          },
+          "maxNodeAcceleration": {
+            "min": 1.8806210306145128,
+            "max": 3696.9871259766187
+          },
+          "edgeDampingPower": {
+            "min": 0,
+            "max": 5.1224381884602746e-05
+          },
+          "contactMomentDifference": {
+            "min": -0.0005542747798540648,
+            "max": 0.00041088517054325714
+          }
+        },
+        "final": {
+          "rmsSpeed": 0.0013616155627094613,
+          "dampingLoss": 1.1693330431606907e-07,
+          "contactWork": -0.0009449318482664686
+        },
+        "inputSource": {
+          "file": "dist/tyre-fixture-examples.json",
+          "caseIndex": 0,
+          "caseName": "full-front",
+          "overrides": {
+            "rates": "zero",
+            "motion": {
+              "dt": 1.5625e-05,
+              "duration": 0.02,
+              "sampleDt": 0.000125
+            }
+          }
+        },
+        "inputSha256": "5fa7facf5d2b3628e605d60475309af8131d8f4004a0166534fa5f4d3a5ff01d"
+      },
+      {
+        "name": "full-front-zero-finest",
+        "transfer": {
+          "geometryMaxAbsolute": 0,
+          "restLengthMaxAbsolute": 1.457167719820518e-16,
+          "budget": 1e-10,
+          "compiledMassInertiaSpringDampingMatch": true,
+          "scope": "World-fixed hub; fresh time, warm start and ledgers. Imported node rates remain hub-local; removing hub motion changes kinetic energy and momentum. This is a diagnostic boundary, not continued whole-bike motion, equilibrium, calibrated tyre damping or failure."
+        },
+        "recordSha256": "e5cbd4d5d791b6794b403ef70cb64e20b29d4272ddaca4685fede36444172df0",
+        "status": "completed",
+        "termination": null,
+        "summary": {
+          "steps": 2560,
+          "acceptedTime": 0.019999999999998665,
+          "initialEnergy": 4.714083782079075,
+          "finalEnergy": 4.713542760777591,
+          "maxResidual": 0.0001403314099213636,
+          "maxForceResidual": 1.4210854715202004e-12,
+          "peakForce": 342.56670362209536
+        },
+        "sampledContactSetChanges": 2,
+        "sampledRanges": {
+          "rmsSpeed": {
+            "min": 0,
+            "max": 0.0032695767383273634
+          },
+          "maxNodeSpeed": {
+            "min": 0,
+            "max": 0.02386568298341077
+          },
+          "maxNodeAcceleration": {
+            "min": 1.1836093410856101,
+            "max": 3697.166275846179
+          },
+          "edgeDampingPower": {
+            "min": 0,
+            "max": 1.508443442996088e-05
+          },
+          "contactMomentDifference": {
+            "min": -0.0005542747798540648,
+            "max": 0.00021043793632889002
+          }
+        },
+        "final": {
+          "rmsSpeed": 0.0008810425688010753,
+          "dampingLoss": 4.655686802862422e-08,
+          "contactWork": -0.0006813061545375918
+        },
+        "inputSource": {
+          "file": "dist/tyre-fixture-examples.json",
+          "caseIndex": 0,
+          "caseName": "full-front",
+          "overrides": {
+            "rates": "zero",
+            "motion": {
+              "dt": 7.8125e-06,
+              "duration": 0.02,
+              "sampleDt": 0.000125
+            }
+          }
+        },
+        "inputSha256": "0132fc7a684825462be994bd87e29894b64296e5485c8d33185cee9d120ccaef"
+      },
+      {
+        "name": "full-rear-imported-coarse",
+        "transfer": {
+          "geometryMaxAbsolute": 0,
+          "restLengthMaxAbsolute": 1.5959455978986625e-16,
+          "budget": 1e-10,
+          "compiledMassInertiaSpringDampingMatch": true,
+          "scope": "World-fixed hub; fresh time, warm start and ledgers. Imported node rates remain hub-local; removing hub motion changes kinetic energy and momentum. This is a diagnostic boundary, not continued whole-bike motion, equilibrium, calibrated tyre damping or failure."
+        },
+        "recordSha256": "15f1a5b34d1ffd0314509bf44efa6288f9b1c6aa0823b734f1e5769ca7d0f7d1",
+        "status": "completed",
+        "termination": null,
+        "summary": {
+          "steps": 640,
+          "acceptedTime": 0.020000000000000014,
+          "initialEnergy": 5.72681483508276,
+          "finalEnergy": 5.724691049859395,
+          "maxResidual": 4.081118997742786e-05,
+          "maxForceResidual": 1.3855583347321954e-13,
+          "peakForce": 474.13187762771685
+        },
+        "sampledContactSetChanges": 21,
+        "sampledRanges": {
+          "rmsSpeed": {
+            "min": 0.0054659757209654155,
+            "max": 0.008309163828550773
+          },
+          "maxNodeSpeed": {
+            "min": 0.021410640252854825,
+            "max": 0.04838290639809968
+          },
+          "maxNodeAcceleration": {
+            "min": 18.762490019437042,
+            "max": 387.1791700025211
+          },
+          "edgeDampingPower": {
+            "min": 8.833975807824592e-06,
+            "max": 0.0001309817294601273
+          },
+          "contactMomentDifference": {
+            "min": -0.9039226613641309,
+            "max": 0.9051317222090085
+          }
+        },
+        "final": {
+          "rmsSpeed": 0.007943119527466081,
+          "dampingLoss": 6.423218473409855e-07,
+          "contactWork": -0.002163950103761564
+        },
+        "inputSource": {
+          "file": "dist/tyre-fixture-examples.json",
+          "caseIndex": 1,
+          "caseName": "full-rear",
+          "overrides": {
+            "rates": "imported",
+            "motion": {
+              "dt": 3.125e-05,
+              "duration": 0.02,
+              "sampleDt": 0.000125
+            }
+          }
+        },
+        "inputSha256": "4f1c6089a96ce0a038431419ab0e2bf6de4c233795fba9b538c03c3a6047d258"
+      },
+      {
+        "name": "full-rear-imported-fine",
+        "transfer": {
+          "geometryMaxAbsolute": 0,
+          "restLengthMaxAbsolute": 1.5959455978986625e-16,
+          "budget": 1e-10,
+          "compiledMassInertiaSpringDampingMatch": true,
+          "scope": "World-fixed hub; fresh time, warm start and ledgers. Imported node rates remain hub-local; removing hub motion changes kinetic energy and momentum. This is a diagnostic boundary, not continued whole-bike motion, equilibrium, calibrated tyre damping or failure."
+        },
+        "recordSha256": "20f7c2d0ae1c9b699cf720ba6777ecb6c385a30490f78ec8d200491fd52fe8b6",
+        "status": "completed",
+        "termination": null,
+        "summary": {
+          "steps": 1280,
+          "acceptedTime": 0.01999999999999953,
+          "initialEnergy": 5.72681483508276,
+          "finalEnergy": 5.724704467371704,
+          "maxResidual": 1.9360665740765417e-05,
+          "maxForceResidual": 1.6342482922482304e-13,
+          "peakForce": 473.86560426810456
+        },
+        "sampledContactSetChanges": 13,
+        "sampledRanges": {
+          "rmsSpeed": {
+            "min": 0.005614064026560023,
+            "max": 0.008172992711949984
+          },
+          "maxNodeSpeed": {
+            "min": 0.02048151918738591,
+            "max": 0.04646777137715222
+          },
+          "maxNodeAcceleration": {
+            "min": 24.405455714355142,
+            "max": 366.1839271338599
+          },
+          "edgeDampingPower": {
+            "min": 5.819928493264382e-06,
+            "max": 9.45442893121715e-05
+          },
+          "contactMomentDifference": {
+            "min": -0.8270057679081249,
+            "max": 0.9117264542991679
+          }
+        },
+        "final": {
+          "rmsSpeed": 0.00811186925480108,
+          "dampingLoss": 5.406746144466719e-07,
+          "contactWork": -0.0021291877021826456
+        },
+        "inputSource": {
+          "file": "dist/tyre-fixture-examples.json",
+          "caseIndex": 1,
+          "caseName": "full-rear",
+          "overrides": {
+            "rates": "imported",
+            "motion": {
+              "dt": 1.5625e-05,
+              "duration": 0.02,
+              "sampleDt": 0.000125
+            }
+          }
+        },
+        "inputSha256": "bda00a4ed4cb67078f909fffc2aeb6d9bf8195675fc9fed05da50e8978dd1cf6"
+      },
+      {
+        "name": "full-rear-imported-finest",
+        "transfer": {
+          "geometryMaxAbsolute": 0,
+          "restLengthMaxAbsolute": 1.5959455978986625e-16,
+          "budget": 1e-10,
+          "compiledMassInertiaSpringDampingMatch": true,
+          "scope": "World-fixed hub; fresh time, warm start and ledgers. Imported node rates remain hub-local; removing hub motion changes kinetic energy and momentum. This is a diagnostic boundary, not continued whole-bike motion, equilibrium, calibrated tyre damping or failure."
+        },
+        "recordSha256": "4c61859e67986ff89a7d6d703f26ae7069366805fad40c49d978845e06e3f2a6",
+        "status": "completed",
+        "termination": null,
+        "summary": {
+          "steps": 2560,
+          "acceptedTime": 0.019999999999998665,
+          "initialEnergy": 5.72681483508276,
+          "finalEnergy": 5.724706791524194,
+          "maxResidual": 9.2468141147657e-06,
+          "maxForceResidual": 2.3447910280083306e-13,
+          "peakForce": 473.7787507698047
+        },
+        "sampledContactSetChanges": 18,
+        "sampledRanges": {
+          "rmsSpeed": {
+            "min": 0.0056351557248545976,
+            "max": 0.008099664668562523
+          },
+          "maxNodeSpeed": {
+            "min": 0.020456282843909084,
+            "max": 0.04577250996514282
+          },
+          "maxNodeAcceleration": {
+            "min": 24.18435428700501,
+            "max": 385.90915329930726
+          },
+          "edgeDampingPower": {
+            "min": 5.5350685989052e-06,
+            "max": 7.424794779044316e-05
+          },
+          "contactMomentDifference": {
+            "min": -0.907778469562339,
+            "max": 0.9089774848817962
+          }
+        },
+        "final": {
+          "rmsSpeed": 0.007905918870098564,
+          "dampingLoss": 5.064522246403287e-07,
+          "contactWork": -0.002116770672976874
+        },
+        "inputSource": {
+          "file": "dist/tyre-fixture-examples.json",
+          "caseIndex": 1,
+          "caseName": "full-rear",
+          "overrides": {
+            "rates": "imported",
+            "motion": {
+              "dt": 7.8125e-06,
+              "duration": 0.02,
+              "sampleDt": 0.000125
+            }
+          }
+        },
+        "inputSha256": "1a983089dacc40183633910a97d46c127b7d5b2c449388d4691a3226cb778c93"
+      },
+      {
+        "name": "full-rear-zero-coarse",
+        "transfer": {
+          "geometryMaxAbsolute": 0,
+          "restLengthMaxAbsolute": 1.5959455978986625e-16,
+          "budget": 1e-10,
+          "compiledMassInertiaSpringDampingMatch": true,
+          "scope": "World-fixed hub; fresh time, warm start and ledgers. Imported node rates remain hub-local; removing hub motion changes kinetic energy and momentum. This is a diagnostic boundary, not continued whole-bike motion, equilibrium, calibrated tyre damping or failure."
+        },
+        "recordSha256": "7bfc82c5fbe7cfc4daf58c07ea5fd5114522b0ed4138ac8c09a480aa8b70c614",
+        "status": "completed",
+        "termination": null,
+        "summary": {
+          "steps": 640,
+          "acceptedTime": 0.020000000000000014,
+          "initialEnergy": 5.726787764029721,
+          "finalEnergy": 5.7246521346616035,
+          "maxResidual": 2.7661374391043238e-05,
+          "maxForceResidual": 1.3500311979441904e-13,
+          "peakForce": 473.71557623130883
+        },
+        "sampledContactSetChanges": 15,
+        "sampledRanges": {
+          "rmsSpeed": {
+            "min": 0,
+            "max": 0.006673687041137344
+          },
+          "maxNodeSpeed": {
+            "min": 0,
+            "max": 0.045877260116002114
+          },
+          "maxNodeAcceleration": {
+            "min": 20.804803296377237,
+            "max": 386.0459517285039
+          },
+          "edgeDampingPower": {
+            "min": 0,
+            "max": 8.498184059144634e-05
+          },
+          "contactMomentDifference": {
+            "min": -0.9067205862460019,
+            "max": 0.9131004393505728
+          }
+        },
+        "final": {
+          "rmsSpeed": 0.002010776190464924,
+          "dampingLoss": 4.290035023639545e-07,
+          "contactWork": -0.002161497637052535
+        },
+        "inputSource": {
+          "file": "dist/tyre-fixture-examples.json",
+          "caseIndex": 1,
+          "caseName": "full-rear",
+          "overrides": {
+            "rates": "zero",
+            "motion": {
+              "dt": 3.125e-05,
+              "duration": 0.02,
+              "sampleDt": 0.000125
+            }
+          }
+        },
+        "inputSha256": "baf0ad11253c2ba171c4c338d7770014478c203445f906ffbb1cf5a743a7cdcc"
+      },
+      {
+        "name": "full-rear-zero-fine",
+        "transfer": {
+          "geometryMaxAbsolute": 0,
+          "restLengthMaxAbsolute": 1.5959455978986625e-16,
+          "budget": 1e-10,
+          "compiledMassInertiaSpringDampingMatch": true,
+          "scope": "World-fixed hub; fresh time, warm start and ledgers. Imported node rates remain hub-local; removing hub motion changes kinetic energy and momentum. This is a diagnostic boundary, not continued whole-bike motion, equilibrium, calibrated tyre damping or failure."
+        },
+        "recordSha256": "72a31293801a70cd69bdeb7fee092cd7f3a1b03ceeb04e52c204214f50ae9d02",
+        "status": "completed",
+        "termination": null,
+        "summary": {
+          "steps": 1280,
+          "acceptedTime": 0.01999999999999953,
+          "initialEnergy": 5.726787764029721,
+          "finalEnergy": 5.724654549991001,
+          "maxResidual": 1.3748049652527157e-05,
+          "maxForceResidual": 1.9539925233402755e-13,
+          "peakForce": 473.47210900207546
+        },
+        "sampledContactSetChanges": 6,
+        "sampledRanges": {
+          "rmsSpeed": {
+            "min": 0,
+            "max": 0.006596741159484392
+          },
+          "maxNodeSpeed": {
+            "min": 0,
+            "max": 0.04534238235910708
+          },
+          "maxNodeAcceleration": {
+            "min": 22.24597304371438,
+            "max": 386.38142074681514
+          },
+          "edgeDampingPower": {
+            "min": 0,
+            "max": 0.00010418116513871168
+          },
+          "contactMomentDifference": {
+            "min": -0.8282260985164951,
+            "max": 0.9157768510068784
+          }
+        },
+        "final": {
+          "rmsSpeed": 0.0022317526507909945,
+          "dampingLoss": 3.9439333949302264e-07,
+          "contactWork": -0.002145303600425772
+        },
+        "inputSource": {
+          "file": "dist/tyre-fixture-examples.json",
+          "caseIndex": 1,
+          "caseName": "full-rear",
+          "overrides": {
+            "rates": "zero",
+            "motion": {
+              "dt": 1.5625e-05,
+              "duration": 0.02,
+              "sampleDt": 0.000125
+            }
+          }
+        },
+        "inputSha256": "df3a95724538c3af301524a9d080156c209acf6a67131c0d1b4de8c5b77b8d24"
+      },
+      {
+        "name": "full-rear-zero-finest",
+        "transfer": {
+          "geometryMaxAbsolute": 0,
+          "restLengthMaxAbsolute": 1.5959455978986625e-16,
+          "budget": 1e-10,
+          "compiledMassInertiaSpringDampingMatch": true,
+          "scope": "World-fixed hub; fresh time, warm start and ledgers. Imported node rates remain hub-local; removing hub motion changes kinetic energy and momentum. This is a diagnostic boundary, not continued whole-bike motion, equilibrium, calibrated tyre damping or failure."
+        },
+        "recordSha256": "a06f3e50ac61288919d5ad0e64e103a42d4b32469075abd61ddb1ba24f8e2910",
+        "status": "completed",
+        "termination": null,
+        "summary": {
+          "steps": 2560,
+          "acceptedTime": 0.019999999999998665,
+          "initialEnergy": 5.726787764029721,
+          "finalEnergy": 5.72465630087831,
+          "maxResidual": 6.864994424951544e-06,
+          "maxForceResidual": 1.7408297026122455e-13,
+          "peakForce": 473.313376699445
+        },
+        "sampledContactSetChanges": 6,
+        "sampledRanges": {
+          "rmsSpeed": {
+            "min": 0,
+            "max": 0.00654586815047248
+          },
+          "maxNodeSpeed": {
+            "min": 0,
+            "max": 0.0451557109279365
+          },
+          "maxNodeAcceleration": {
+            "min": 19.488779861354896,
+            "max": 386.50736377428575
+          },
+          "edgeDampingPower": {
+            "min": 0,
+            "max": 6.891320654058912e-05
+          },
+          "contactMomentDifference": {
+            "min": -0.8282654707309665,
+            "max": 0.9076046228485293
+          }
+        },
+        "final": {
+          "rmsSpeed": 0.0024139581686312846,
+          "dampingLoss": 3.71394946720846e-07,
+          "contactWork": -0.0021370012334821008
+        },
+        "inputSource": {
+          "file": "dist/tyre-fixture-examples.json",
+          "caseIndex": 1,
+          "caseName": "full-rear",
+          "overrides": {
+            "rates": "zero",
+            "motion": {
+              "dt": 7.8125e-06,
+              "duration": 0.02,
+              "sampleDt": 0.000125
+            }
+          }
+        },
+        "inputSha256": "0838d01b8d00b969644c7879333565ea22815613b33e77d9e413c05890db0284"
+      },
+      {
+        "name": "hardtail-front-imported-coarse",
+        "transfer": {
+          "geometryMaxAbsolute": 0,
+          "restLengthMaxAbsolute": 1.249000902703301e-16,
+          "budget": 1e-10,
+          "compiledMassInertiaSpringDampingMatch": true,
+          "scope": "World-fixed hub; fresh time, warm start and ledgers. Imported node rates remain hub-local; removing hub motion changes kinetic energy and momentum. This is a diagnostic boundary, not continued whole-bike motion, equilibrium, calibrated tyre damping or failure."
+        },
+        "recordSha256": "748152e7598eb6b941265e29876fa21a1a57e3034f2af6cb2fb4cee4e2e2757a",
+        "status": "completed",
+        "termination": null,
+        "summary": {
+          "steps": 640,
+          "acceptedTime": 0.020000000000000014,
+          "initialEnergy": 4.793408027140176,
+          "finalEnergy": 4.791842439555943,
+          "maxResidual": 0.0015609303600385574,
+          "maxForceResidual": 3.055333763768431e-12,
+          "peakForce": 358.99882470124726
+        },
+        "sampledContactSetChanges": 0,
+        "sampledRanges": {
+          "rmsSpeed": {
+            "min": 0.0007239939282655493,
+            "max": 0.014454438838374961
+          },
+          "maxNodeSpeed": {
+            "min": 0.002495209972874598,
+            "max": 0.10997935284003049
+          },
+          "maxNodeAcceleration": {
+            "min": 2.969617084495657,
+            "max": 475.8056179275416
+          },
+          "edgeDampingPower": {
+            "min": 2.1620212045832915e-06,
+            "max": 0.00017371882515071464
+          },
+          "contactMomentDifference": {
+            "min": -0.0014085075985819612,
+            "max": 1.2036129172139671
+          }
+        },
+        "final": {
+          "rmsSpeed": 0.002710301292868401,
+          "dampingLoss": 4.904289284338704e-07,
+          "contactWork": -0.003125435141345601
+        },
+        "inputSource": {
+          "file": "dist/tyre-fixture-examples.json",
+          "caseIndex": 2,
+          "caseName": "hardtail-front",
+          "overrides": {
+            "rates": "imported",
+            "motion": {
+              "dt": 3.125e-05,
+              "duration": 0.02,
+              "sampleDt": 0.000125
+            }
+          }
+        },
+        "inputSha256": "df8ca7451dd7da2790cfbb3b689dfb4aecaa2b856f408892f8ba810ad5f1da0b"
+      },
+      {
+        "name": "hardtail-front-imported-fine",
+        "transfer": {
+          "geometryMaxAbsolute": 0,
+          "restLengthMaxAbsolute": 1.249000902703301e-16,
+          "budget": 1e-10,
+          "compiledMassInertiaSpringDampingMatch": true,
+          "scope": "World-fixed hub; fresh time, warm start and ledgers. Imported node rates remain hub-local; removing hub motion changes kinetic energy and momentum. This is a diagnostic boundary, not continued whole-bike motion, equilibrium, calibrated tyre damping or failure."
+        },
+        "recordSha256": "977e7889b5675cee7dbe3aeb483d6ac9e9c08795a1bba969fc4ecfbf4464b4c8",
+        "status": "completed",
+        "termination": null,
+        "summary": {
+          "steps": 1280,
+          "acceptedTime": 0.01999999999999953,
+          "initialEnergy": 4.793408027140176,
+          "finalEnergy": 4.7919221964328536,
+          "maxResidual": 0.0004615800199449045,
+          "maxForceResidual": 1.6200374375330284e-12,
+          "peakForce": 356.6285387136742
+        },
+        "sampledContactSetChanges": 4,
+        "sampledRanges": {
+          "rmsSpeed": {
+            "min": 0.0005952286939773205,
+            "max": 0.006884510466755443
+          },
+          "maxNodeSpeed": {
+            "min": 0.0014570569775574503,
+            "max": 0.05194408319054536
+          },
+          "maxNodeAcceleration": {
+            "min": 2.857871543816212,
+            "max": 3775.23732278258
+          },
+          "edgeDampingPower": {
+            "min": 9.702491526653387e-07,
+            "max": 4.884822555270823e-05
+          },
+          "contactMomentDifference": {
+            "min": -1.212014378583169,
+            "max": 8.78133092337861e-05
+          }
+        },
+        "final": {
+          "rmsSpeed": 0.0009777314044332778,
+          "dampingLoss": 1.4190466497179457e-07,
+          "contactWork": -0.0019472688226021548
+        },
+        "inputSource": {
+          "file": "dist/tyre-fixture-examples.json",
+          "caseIndex": 2,
+          "caseName": "hardtail-front",
+          "overrides": {
+            "rates": "imported",
+            "motion": {
+              "dt": 1.5625e-05,
+              "duration": 0.02,
+              "sampleDt": 0.000125
+            }
+          }
+        },
+        "inputSha256": "554b928797400881c84250c09731855dcc02489022d296b773f807fa0f37b268"
+      },
+      {
+        "name": "hardtail-front-imported-finest",
+        "transfer": {
+          "geometryMaxAbsolute": 0,
+          "restLengthMaxAbsolute": 1.249000902703301e-16,
+          "budget": 1e-10,
+          "compiledMassInertiaSpringDampingMatch": true,
+          "scope": "World-fixed hub; fresh time, warm start and ledgers. Imported node rates remain hub-local; removing hub motion changes kinetic energy and momentum. This is a diagnostic boundary, not continued whole-bike motion, equilibrium, calibrated tyre damping or failure."
+        },
+        "recordSha256": "b49a2d925e0b346579485f9dbefc5f9cf7b0679092fd828f121232d729b84d30",
+        "status": "completed",
+        "termination": null,
+        "summary": {
+          "steps": 2560,
+          "acceptedTime": 0.019999999999998665,
+          "initialEnergy": 4.793408027140176,
+          "finalEnergy": 4.792204108424416,
+          "maxResidual": 0.00014949751908512401,
+          "maxForceResidual": 1.7763568394002505e-12,
+          "peakForce": 355.84297284943943
+        },
+        "sampledContactSetChanges": 4,
+        "sampledRanges": {
+          "rmsSpeed": {
+            "min": 0.0006178374828237636,
+            "max": 0.0032328836386393478
+          },
+          "maxNodeSpeed": {
+            "min": 0.001426629544612883,
+            "max": 0.023732347572471
+          },
+          "maxNodeAcceleration": {
+            "min": 1.9654618710854659,
+            "max": 3775.2621483306452
+          },
+          "edgeDampingPower": {
+            "min": 6.103976256294584e-07,
+            "max": 1.336307879651011e-05
+          },
+          "contactMomentDifference": {
+            "min": -0.0006593538994592568,
+            "max": 1.1993992009223955
+          }
+        },
+        "final": {
+          "rmsSpeed": 0.0007919024994010837,
+          "dampingLoss": 6.710591062870823e-08,
+          "contactWork": -0.0013533491289342506
+        },
+        "inputSource": {
+          "file": "dist/tyre-fixture-examples.json",
+          "caseIndex": 2,
+          "caseName": "hardtail-front",
+          "overrides": {
+            "rates": "imported",
+            "motion": {
+              "dt": 7.8125e-06,
+              "duration": 0.02,
+              "sampleDt": 0.000125
+            }
+          }
+        },
+        "inputSha256": "e3bf62f10555dfd44c8bcc4cdbb84f264128372d7d3b2cb34ba3d15ca8bbddc3"
+      },
+      {
+        "name": "hardtail-front-zero-coarse",
+        "transfer": {
+          "geometryMaxAbsolute": 0,
+          "restLengthMaxAbsolute": 1.249000902703301e-16,
+          "budget": 1e-10,
+          "compiledMassInertiaSpringDampingMatch": true,
+          "scope": "World-fixed hub; fresh time, warm start and ledgers. Imported node rates remain hub-local; removing hub motion changes kinetic energy and momentum. This is a diagnostic boundary, not continued whole-bike motion, equilibrium, calibrated tyre damping or failure."
+        },
+        "recordSha256": "86fd711b798b8ff87866710f7d4eaeb716d64db0b5e2dd3b80efe9b1399c579f",
+        "status": "completed",
+        "termination": null,
+        "summary": {
+          "steps": 640,
+          "acceptedTime": 0.020000000000000014,
+          "initialEnergy": 4.793405806476142,
+          "finalEnergy": 4.791380452442009,
+          "maxResidual": 0.0015720047162998728,
+          "maxForceResidual": 1.1226575225009583e-12,
+          "peakForce": 359.08290711201823
+        },
+        "sampledContactSetChanges": 12,
+        "sampledRanges": {
+          "rmsSpeed": {
+            "min": 0,
+            "max": 0.012829157207764456
+          },
+          "maxNodeSpeed": {
+            "min": 0,
+            "max": 0.09889860854826066
+          },
+          "maxNodeAcceleration": {
+            "min": 3.618120452882565,
+            "max": 3775.6031527706737
+          },
+          "edgeDampingPower": {
+            "min": 0,
+            "max": 0.00014928749214462855
+          },
+          "contactMomentDifference": {
+            "min": -0.0013908215767508474,
+            "max": -0.00013684662546520343
+          }
+        },
+        "final": {
+          "rmsSpeed": 0.0021207539298706557,
+          "dampingLoss": 4.790457370801268e-07,
+          "contactWork": -0.003596879704695191
+        },
+        "inputSource": {
+          "file": "dist/tyre-fixture-examples.json",
+          "caseIndex": 2,
+          "caseName": "hardtail-front",
+          "overrides": {
+            "rates": "zero",
+            "motion": {
+              "dt": 3.125e-05,
+              "duration": 0.02,
+              "sampleDt": 0.000125
+            }
+          }
+        },
+        "inputSha256": "14270285a9d8372c4219dafb2aea12edc93575fafa9a2ea571ef4f1bcd714c35"
+      },
+      {
+        "name": "hardtail-front-zero-fine",
+        "transfer": {
+          "geometryMaxAbsolute": 0,
+          "restLengthMaxAbsolute": 1.249000902703301e-16,
+          "budget": 1e-10,
+          "compiledMassInertiaSpringDampingMatch": true,
+          "scope": "World-fixed hub; fresh time, warm start and ledgers. Imported node rates remain hub-local; removing hub motion changes kinetic energy and momentum. This is a diagnostic boundary, not continued whole-bike motion, equilibrium, calibrated tyre damping or failure."
+        },
+        "recordSha256": "69760ec2c2e4b37cef79cbf428d9d64218ffeab3986cf782fda9a42bd5f8acfc",
+        "status": "completed",
+        "termination": null,
+        "summary": {
+          "steps": 1280,
+          "acceptedTime": 0.01999999999999953,
+          "initialEnergy": 4.793405806476142,
+          "finalEnergy": 4.792027175841472,
+          "maxResidual": 0.0004548384919623302,
+          "maxForceResidual": 2.5011104298755527e-12,
+          "peakForce": 356.72637256359167
+        },
+        "sampledContactSetChanges": 4,
+        "sampledRanges": {
+          "rmsSpeed": {
+            "min": 0,
+            "max": 0.00687804005872427
+          },
+          "maxNodeSpeed": {
+            "min": 0,
+            "max": 0.0519524139774833
+          },
+          "maxNodeAcceleration": {
+            "min": 2.5018711777752185,
+            "max": 3775.2577611202737
+          },
+          "edgeDampingPower": {
+            "min": 0,
+            "max": 2.9697558709445096e-05
+          },
+          "contactMomentDifference": {
+            "min": -0.0005521022178964642,
+            "max": -0.00012912739682091612
+          }
+        },
+        "final": {
+          "rmsSpeed": 0.0030140076715779933,
+          "dampingLoss": 1.2415588897815524e-07,
+          "contactWork": -0.0018333449707430495
+        },
+        "inputSource": {
+          "file": "dist/tyre-fixture-examples.json",
+          "caseIndex": 2,
+          "caseName": "hardtail-front",
+          "overrides": {
+            "rates": "zero",
+            "motion": {
+              "dt": 1.5625e-05,
+              "duration": 0.02,
+              "sampleDt": 0.000125
+            }
+          }
+        },
+        "inputSha256": "194e76fe1c0aa0f566514b1b5d826e5c1b0b468b89313840e43f183b17dc140b"
+      },
+      {
+        "name": "hardtail-front-zero-finest",
+        "transfer": {
+          "geometryMaxAbsolute": 0,
+          "restLengthMaxAbsolute": 1.249000902703301e-16,
+          "budget": 1e-10,
+          "compiledMassInertiaSpringDampingMatch": true,
+          "scope": "World-fixed hub; fresh time, warm start and ledgers. Imported node rates remain hub-local; removing hub motion changes kinetic energy and momentum. This is a diagnostic boundary, not continued whole-bike motion, equilibrium, calibrated tyre damping or failure."
+        },
+        "recordSha256": "f951dcbf866696c2d29273addcdec108c4501025738d2b96c34e66416d28a94c",
+        "status": "completed",
+        "termination": null,
+        "summary": {
+          "steps": 2560,
+          "acceptedTime": 0.019999999999998665,
+          "initialEnergy": 4.793405806476142,
+          "finalEnergy": 4.792341417125502,
+          "maxResidual": 0.00014804615909638796,
+          "maxForceResidual": 2.4726887204451486e-12,
+          "peakForce": 355.6692085688885
+        },
+        "sampledContactSetChanges": 2,
+        "sampledRanges": {
+          "rmsSpeed": {
+            "min": 0,
+            "max": 0.0032614802477972803
+          },
+          "maxNodeSpeed": {
+            "min": 0,
+            "max": 0.02392309770340099
+          },
+          "maxNodeAcceleration": {
+            "min": 1.8805354559765586,
+            "max": 3775.226429084494
+          },
+          "edgeDampingPower": {
+            "min": 0,
+            "max": 1.3226640691469435e-05
+          },
+          "contactMomentDifference": {
+            "min": -0.0006821641561650964,
+            "max": 1.2000243924577483
+          }
+        },
+        "final": {
+          "rmsSpeed": 0.0024964693799883857,
+          "dampingLoss": 6.541439533964034e-08,
+          "contactWork": -0.001212158211510309
+        },
+        "inputSource": {
+          "file": "dist/tyre-fixture-examples.json",
+          "caseIndex": 2,
+          "caseName": "hardtail-front",
+          "overrides": {
+            "rates": "zero",
+            "motion": {
+              "dt": 7.8125e-06,
+              "duration": 0.02,
+              "sampleDt": 0.000125
+            }
+          }
+        },
+        "inputSha256": "19ac950fa29bd8442ccd3ef7108a8452a21c05e51276d90fb044a47396e744da"
+      },
+      {
+        "name": "hardtail-rear-imported-coarse",
+        "transfer": {
+          "geometryMaxAbsolute": 0,
+          "restLengthMaxAbsolute": 2.2898349882893854e-16,
+          "budget": 1e-10,
+          "compiledMassInertiaSpringDampingMatch": true,
+          "scope": "World-fixed hub; fresh time, warm start and ledgers. Imported node rates remain hub-local; removing hub motion changes kinetic energy and momentum. This is a diagnostic boundary, not continued whole-bike motion, equilibrium, calibrated tyre damping or failure."
+        },
+        "recordSha256": "2456420c236c2a79bdeb56a5353bf0c17289f1622531cf434b40d4f809d16b47",
+        "status": "completed",
+        "termination": null,
+        "summary": {
+          "steps": 640,
+          "acceptedTime": 0.020000000000000014,
+          "initialEnergy": 5.63682039931296,
+          "finalEnergy": 5.634590337342931,
+          "maxResidual": 3.392408466879569e-05,
+          "maxForceResidual": 1.4566126083082054e-13,
+          "peakForce": 460.9324842896199
+        },
+        "sampledContactSetChanges": 32,
+        "sampledRanges": {
+          "rmsSpeed": {
+            "min": 0.005308484182958386,
+            "max": 0.009311343477763384
+          },
+          "maxNodeSpeed": {
+            "min": 0.024171630850629323,
+            "max": 0.05332082358964103
+          },
+          "maxNodeAcceleration": {
+            "min": 22.326846065816003,
+            "max": 272.9887474718812
+          },
+          "edgeDampingPower": {
+            "min": 6.032248133969877e-06,
+            "max": 9.519052516552247e-05
+          },
+          "contactMomentDifference": {
+            "min": -0.8557767428818273,
+            "max": 0.8571034220216895
+          }
+        },
+        "final": {
+          "rmsSpeed": 0.008424882897433287,
+          "dampingLoss": 5.357324043697328e-07,
+          "contactWork": -0.0022634503222934885
+        },
+        "inputSource": {
+          "file": "dist/tyre-fixture-examples.json",
+          "caseIndex": 3,
+          "caseName": "hardtail-rear",
+          "overrides": {
+            "rates": "imported",
+            "motion": {
+              "dt": 3.125e-05,
+              "duration": 0.02,
+              "sampleDt": 0.000125
+            }
+          }
+        },
+        "inputSha256": "28b6a880cdcdf17494a4a28fd36614d6c8b4be770f81c931e51518f9016c98c0"
+      },
+      {
+        "name": "hardtail-rear-imported-fine",
+        "transfer": {
+          "geometryMaxAbsolute": 0,
+          "restLengthMaxAbsolute": 2.2898349882893854e-16,
+          "budget": 1e-10,
+          "compiledMassInertiaSpringDampingMatch": true,
+          "scope": "World-fixed hub; fresh time, warm start and ledgers. Imported node rates remain hub-local; removing hub motion changes kinetic energy and momentum. This is a diagnostic boundary, not continued whole-bike motion, equilibrium, calibrated tyre damping or failure."
+        },
+        "recordSha256": "54a63f09d32e1daa3e0e1a73aeb53798728f66f89e61e465d86c730cd791f989",
+        "status": "completed",
+        "termination": null,
+        "summary": {
+          "steps": 1280,
+          "acceptedTime": 0.01999999999999953,
+          "initialEnergy": 5.63682039931296,
+          "finalEnergy": 5.634587987108323,
+          "maxResidual": 1.5495780607605383e-05,
+          "maxForceResidual": 9.947598300641403e-14,
+          "peakForce": 460.8557889088918
+        },
+        "sampledContactSetChanges": 22,
+        "sampledRanges": {
+          "rmsSpeed": {
+            "min": 0.005397239531348004,
+            "max": 0.009346100898025726
+          },
+          "maxNodeSpeed": {
+            "min": 0.02390019995618284,
+            "max": 0.05340505497455482
+          },
+          "maxNodeAcceleration": {
+            "min": 23.044423126353227,
+            "max": 272.8721251321199
+          },
+          "edgeDampingPower": {
+            "min": 4.145694544865267e-06,
+            "max": 6.244225783848146e-05
+          },
+          "contactMomentDifference": {
+            "min": -0.8565336869203206,
+            "max": 0.8561142563669253
+          }
+        },
+        "final": {
+          "rmsSpeed": 0.008137098355829047,
+          "dampingLoss": 4.591789431821181e-07,
+          "contactWork": -0.002247448806301303
+        },
+        "inputSource": {
+          "file": "dist/tyre-fixture-examples.json",
+          "caseIndex": 3,
+          "caseName": "hardtail-rear",
+          "overrides": {
+            "rates": "imported",
+            "motion": {
+              "dt": 1.5625e-05,
+              "duration": 0.02,
+              "sampleDt": 0.000125
+            }
+          }
+        },
+        "inputSha256": "360d969300308380a1ff8cad62800243225ecdd05706b2901f0b953936021e17"
+      },
+      {
+        "name": "hardtail-rear-imported-finest",
+        "transfer": {
+          "geometryMaxAbsolute": 0,
+          "restLengthMaxAbsolute": 2.2898349882893854e-16,
+          "budget": 1e-10,
+          "compiledMassInertiaSpringDampingMatch": true,
+          "scope": "World-fixed hub; fresh time, warm start and ledgers. Imported node rates remain hub-local; removing hub motion changes kinetic energy and momentum. This is a diagnostic boundary, not continued whole-bike motion, equilibrium, calibrated tyre damping or failure."
+        },
+        "recordSha256": "79cea291f561a60c7f58ca5d56ab6c51ad81fe4d4831617dd4333836b477593d",
+        "status": "completed",
+        "termination": null,
+        "summary": {
+          "steps": 2560,
+          "acceptedTime": 0.019999999999998665,
+          "initialEnergy": 5.63682039931296,
+          "finalEnergy": 5.634589009622083,
+          "maxResidual": 7.725271709646628e-06,
+          "maxForceResidual": 1.2079226507921703e-13,
+          "peakForce": 460.8325720951706
+        },
+        "sampledContactSetChanges": 23,
+        "sampledRanges": {
+          "rmsSpeed": {
+            "min": 0.00540385835457406,
+            "max": 0.009314515637829208
+          },
+          "maxNodeSpeed": {
+            "min": 0.023448862258067298,
+            "max": 0.0534845169248006
+          },
+          "maxNodeAcceleration": {
+            "min": 23.68096495766624,
+            "max": 273.1437178518154
+          },
+          "edgeDampingPower": {
+            "min": 4.787261577284862e-06,
+            "max": 6.697133914594319e-05
+          },
+          "contactMomentDifference": {
+            "min": -0.8546133108064811,
+            "max": 0.8587348032447215
+          }
+        },
+        "final": {
+          "rmsSpeed": 0.0080350261355166,
+          "dampingLoss": 4.0906669307987035e-07,
+          "contactWork": -0.0022387058958935617
+        },
+        "inputSource": {
+          "file": "dist/tyre-fixture-examples.json",
+          "caseIndex": 3,
+          "caseName": "hardtail-rear",
+          "overrides": {
+            "rates": "imported",
+            "motion": {
+              "dt": 7.8125e-06,
+              "duration": 0.02,
+              "sampleDt": 0.000125
+            }
+          }
+        },
+        "inputSha256": "1d5a924144b255fb03bbc9a4bb198769adc93121dd344869ee7f4d016966e9cb"
+      },
+      {
+        "name": "hardtail-rear-zero-coarse",
+        "transfer": {
+          "geometryMaxAbsolute": 0,
+          "restLengthMaxAbsolute": 2.2898349882893854e-16,
+          "budget": 1e-10,
+          "compiledMassInertiaSpringDampingMatch": true,
+          "scope": "World-fixed hub; fresh time, warm start and ledgers. Imported node rates remain hub-local; removing hub motion changes kinetic energy and momentum. This is a diagnostic boundary, not continued whole-bike motion, equilibrium, calibrated tyre damping or failure."
+        },
+        "recordSha256": "93eda06ec0f5da93aae952780da24952de4566b399000072f1bc23d1bcd9b92f",
+        "status": "completed",
+        "termination": null,
+        "summary": {
+          "steps": 640,
+          "acceptedTime": 0.020000000000000014,
+          "initialEnergy": 5.636780494681716,
+          "finalEnergy": 5.634655969141098,
+          "maxResidual": 2.622304854979073e-05,
+          "maxForceResidual": 8.526512829121202e-14,
+          "peakForce": 460.6940957859371
+        },
+        "sampledContactSetChanges": 10,
+        "sampledRanges": {
+          "rmsSpeed": {
+            "min": 0,
+            "max": 0.006132595963633423
+          },
+          "maxNodeSpeed": {
+            "min": 0,
+            "max": 0.0318091588778629
+          },
+          "maxNodeAcceleration": {
+            "min": 24.226054966029096,
+            "max": 272.8108435012583
+          },
+          "edgeDampingPower": {
+            "min": 0,
+            "max": 0.00011266857460626845
+          },
+          "contactMomentDifference": {
+            "min": -0.8517054249040963,
+            "max": 0.8077773258565641
+          }
+        },
+        "final": {
+          "rmsSpeed": 0.001992510287208852,
+          "dampingLoss": 1.8804888357401032e-07,
+          "contactWork": -0.0021443616972282864
+        },
+        "inputSource": {
+          "file": "dist/tyre-fixture-examples.json",
+          "caseIndex": 3,
+          "caseName": "hardtail-rear",
+          "overrides": {
+            "rates": "zero",
+            "motion": {
+              "dt": 3.125e-05,
+              "duration": 0.02,
+              "sampleDt": 0.000125
+            }
+          }
+        },
+        "inputSha256": "6d357f00c16cac5e7f21ac12768e32e986fa7226d5b46917a3ce8bb3d13ad1df"
+      },
+      {
+        "name": "hardtail-rear-zero-fine",
+        "transfer": {
+          "geometryMaxAbsolute": 0,
+          "restLengthMaxAbsolute": 2.2898349882893854e-16,
+          "budget": 1e-10,
+          "compiledMassInertiaSpringDampingMatch": true,
+          "scope": "World-fixed hub; fresh time, warm start and ledgers. Imported node rates remain hub-local; removing hub motion changes kinetic energy and momentum. This is a diagnostic boundary, not continued whole-bike motion, equilibrium, calibrated tyre damping or failure."
+        },
+        "recordSha256": "e6f8daf4ab00c4e09de79424e1241486107a747152582eef054f6787400b27f4",
+        "status": "completed",
+        "termination": null,
+        "summary": {
+          "steps": 1280,
+          "acceptedTime": 0.01999999999999953,
+          "initialEnergy": 5.636780494681716,
+          "finalEnergy": 5.6346567720500405,
+          "maxResidual": 1.306662298556705e-05,
+          "maxForceResidual": 1.1013412404281553e-13,
+          "peakForce": 460.0929430553598
+        },
+        "sampledContactSetChanges": 21,
+        "sampledRanges": {
+          "rmsSpeed": {
+            "min": 0,
+            "max": 0.006115001199550081
+          },
+          "maxNodeSpeed": {
+            "min": 0,
+            "max": 0.03140206730376633
+          },
+          "maxNodeAcceleration": {
+            "min": 21.93832302423944,
+            "max": 272.20047993706623
+          },
+          "edgeDampingPower": {
+            "min": 0,
+            "max": 2.7864480312005703e-05
+          },
+          "contactMomentDifference": {
+            "min": -0.8542461601345677,
+            "max": 0.8556044458570051
+          }
+        },
+        "final": {
+          "rmsSpeed": 0.002330214927656643,
+          "dampingLoss": 1.2720056544442846e-07,
+          "contactWork": -0.002132456922029692
+        },
+        "inputSource": {
+          "file": "dist/tyre-fixture-examples.json",
+          "caseIndex": 3,
+          "caseName": "hardtail-rear",
+          "overrides": {
+            "rates": "zero",
+            "motion": {
+              "dt": 1.5625e-05,
+              "duration": 0.02,
+              "sampleDt": 0.000125
+            }
+          }
+        },
+        "inputSha256": "6be6945c9b508edc64be0a68e8ea6589b7787393e2dd102bd4d802ada128761a"
+      },
+      {
+        "name": "hardtail-rear-zero-finest",
+        "transfer": {
+          "geometryMaxAbsolute": 0,
+          "restLengthMaxAbsolute": 2.2898349882893854e-16,
+          "budget": 1e-10,
+          "compiledMassInertiaSpringDampingMatch": true,
+          "scope": "World-fixed hub; fresh time, warm start and ledgers. Imported node rates remain hub-local; removing hub motion changes kinetic energy and momentum. This is a diagnostic boundary, not continued whole-bike motion, equilibrium, calibrated tyre damping or failure."
+        },
+        "recordSha256": "3593cebdd89fc7d718ac6919d4d48dca5cde880a87a37167f00fff8c57b71573",
+        "status": "completed",
+        "termination": null,
+        "summary": {
+          "steps": 2560,
+          "acceptedTime": 0.019999999999998665,
+          "initialEnergy": 5.636780494681716,
+          "finalEnergy": 5.634657931778889,
+          "maxResidual": 6.509508160239068e-06,
+          "maxForceResidual": 1.0302869668521453e-13,
+          "peakForce": 460.007209815612
+        },
+        "sampledContactSetChanges": 13,
+        "sampledRanges": {
+          "rmsSpeed": {
+            "min": 0,
+            "max": 0.0061357792998047445
+          },
+          "maxNodeSpeed": {
+            "min": 0,
+            "max": 0.03177452133152477
+          },
+          "maxNodeAcceleration": {
+            "min": 22.36561505747625,
+            "max": 272.92989450548623
+          },
+          "edgeDampingPower": {
+            "min": 0,
+            "max": 4.151050782763718e-05
+          },
+          "contactMomentDifference": {
+            "min": -0.8556325321392808,
+            "max": 0.8538919920846451
+          }
+        },
+        "final": {
+          "rmsSpeed": 0.0025779458667538526,
+          "dampingLoss": 1.1856479223990708e-07,
+          "contactWork": -0.0021269520651230165
+        },
+        "inputSource": {
+          "file": "dist/tyre-fixture-examples.json",
+          "caseIndex": 3,
+          "caseName": "hardtail-rear",
+          "overrides": {
+            "rates": "zero",
+            "motion": {
+              "dt": 7.8125e-06,
+              "duration": 0.02,
+              "sampleDt": 0.000125
+            }
+          }
+        },
+        "inputSha256": "2cfb5453dfec48cce0dfedd8054af7b7d6a33103cceb12c56d7ec314bd22cd14"
+      }
+    ],
+    "comparisons": [
+      {
+        "seed": "full-front",
+        "rates": "imported",
+        "coarse": "coarse",
+        "fine": "fine",
+        "samples": 161,
+        "fields": {
+          "node0Velocity": {
+            "maxAbsolute": 0.10310460692236754,
+            "rms": 0.030707073658285233
+          },
+          "rmsSpeed": {
+            "maxAbsolute": 0.011012603027078478,
+            "rms": 0.002812254685967137
+          },
+          "verticalForce": {
+            "maxAbsolute": 29.175493263806516,
+            "rms": 6.357172052017385
+          }
+        }
+      },
+      {
+        "seed": "full-front",
+        "rates": "imported",
+        "coarse": "fine",
+        "fine": "finest",
+        "samples": 161,
+        "fields": {
+          "node0Velocity": {
+            "maxAbsolute": 0.04108349167369893,
+            "rms": 0.015306266333070712
+          },
+          "rmsSpeed": {
+            "maxAbsolute": 0.003504721008098336,
+            "rms": 0.0010785305873137322
+          },
+          "verticalForce": {
+            "maxAbsolute": 28.619473552715192,
+            "rms": 4.455745373391543
+          }
+        }
+      },
+      {
+        "seed": "full-front",
+        "rates": "zero",
+        "coarse": "coarse",
+        "fine": "fine",
+        "samples": 161,
+        "fields": {
+          "node0Velocity": {
+            "maxAbsolute": 0.11818994255273103,
+            "rms": 0.035407234076310856
+          },
+          "rmsSpeed": {
+            "maxAbsolute": 0.01330731890988705,
+            "rms": 0.003413520726976408
+          },
+          "verticalForce": {
+            "maxAbsolute": 28.667406296226318,
+            "rms": 2.6579541006249485
+          }
+        }
+      },
+      {
+        "seed": "full-front",
+        "rates": "zero",
+        "coarse": "fine",
+        "fine": "finest",
+        "samples": 161,
+        "fields": {
+          "node0Velocity": {
+            "maxAbsolute": 0.057131720754995854,
+            "rms": 0.01813588164744254
+          },
+          "rmsSpeed": {
+            "maxAbsolute": 0.005875760493993373,
+            "rms": 0.0015763992911903889
+          },
+          "verticalForce": {
+            "maxAbsolute": 27.812757179613186,
+            "rms": 3.1633553767120337
+          }
+        }
+      },
+      {
+        "seed": "full-rear",
+        "rates": "imported",
+        "coarse": "coarse",
+        "fine": "fine",
+        "samples": 161,
+        "fields": {
+          "node0Velocity": {
+            "maxAbsolute": 0.003214908239579625,
+            "rms": 0.001238327314943074
+          },
+          "rmsSpeed": {
+            "maxAbsolute": 0.0004010233648371825,
+            "rms": 0.000131373600094635
+          },
+          "verticalForce": {
+            "maxAbsolute": 7.383550646661945,
+            "rms": 1.7826288778114032
+          }
+        }
+      },
+      {
+        "seed": "full-rear",
+        "rates": "imported",
+        "coarse": "fine",
+        "fine": "finest",
+        "samples": 161,
+        "fields": {
+          "node0Velocity": {
+            "maxAbsolute": 0.0016010410233624492,
+            "rms": 0.0006288381225519819
+          },
+          "rmsSpeed": {
+            "maxAbsolute": 0.0002504671337453645,
+            "rms": 6.613269832256905e-05
+          },
+          "verticalForce": {
+            "maxAbsolute": 6.413242613778436,
+            "rms": 1.5303739712436333
+          }
+        }
+      },
+      {
+        "seed": "full-rear",
+        "rates": "zero",
+        "coarse": "coarse",
+        "fine": "fine",
+        "samples": 161,
+        "fields": {
+          "node0Velocity": {
+            "maxAbsolute": 0.0025353814358407027,
+            "rms": 0.0008740838821733093
+          },
+          "rmsSpeed": {
+            "maxAbsolute": 0.000653678025806331,
+            "rms": 0.0001601408568507679
+          },
+          "verticalForce": {
+            "maxAbsolute": 6.733102495971991,
+            "rms": 1.1961183857461624
+          }
+        }
+      },
+      {
+        "seed": "full-rear",
+        "rates": "zero",
+        "coarse": "fine",
+        "fine": "finest",
+        "samples": 161,
+        "fields": {
+          "node0Velocity": {
+            "maxAbsolute": 0.0013973043539375711,
+            "rms": 0.0005700302504471934
+          },
+          "rmsSpeed": {
+            "maxAbsolute": 0.00025290500335547507,
+            "rms": 8.319875695210196e-05
+          },
+          "verticalForce": {
+            "maxAbsolute": 6.637893409558387,
+            "rms": 1.0574546977167532
+          }
+        }
+      },
+      {
+        "seed": "hardtail-front",
+        "rates": "imported",
+        "coarse": "coarse",
+        "fine": "fine",
+        "samples": 161,
+        "fields": {
+          "node0Velocity": {
+            "maxAbsolute": 0.11946045023613953,
+            "rms": 0.036754927317887646
+          },
+          "rmsSpeed": {
+            "maxAbsolute": 0.013209982641078661,
+            "rms": 0.0034720792086392685
+          },
+          "verticalForce": {
+            "maxAbsolute": 28.937500050401184,
+            "rms": 3.4960560559066085
+          }
+        }
+      },
+      {
+        "seed": "hardtail-front",
+        "rates": "imported",
+        "coarse": "fine",
+        "fine": "finest",
+        "samples": 161,
+        "fields": {
+          "node0Velocity": {
+            "maxAbsolute": 0.0563149198888389,
+            "rms": 0.01746487917254133
+          },
+          "rmsSpeed": {
+            "maxAbsolute": 0.0057316917606171185,
+            "rms": 0.0014241751887470338
+          },
+          "verticalForce": {
+            "maxAbsolute": 29.409539267694527,
+            "rms": 4.560695569529894
+          }
+        }
+      },
+      {
+        "seed": "hardtail-front",
+        "rates": "zero",
+        "coarse": "coarse",
+        "fine": "fine",
+        "samples": 161,
+        "fields": {
+          "node0Velocity": {
+            "maxAbsolute": 0.10548395251491015,
+            "rms": 0.032294822221479336
+          },
+          "rmsSpeed": {
+            "maxAbsolute": 0.011071189481152913,
+            "rms": 0.0029162157641154417
+          },
+          "verticalForce": {
+            "maxAbsolute": 29.11658235649736,
+            "rms": 6.467042382315887
+          }
+        }
+      },
+      {
+        "seed": "hardtail-front",
+        "rates": "zero",
+        "coarse": "fine",
+        "fine": "finest",
+        "samples": 161,
+        "fields": {
+          "node0Velocity": {
+            "maxAbsolute": 0.05474205811931134,
+            "rms": 0.01787965240424144
+          },
+          "rmsSpeed": {
+            "maxAbsolute": 0.005849265386893193,
+            "rms": 0.0015300895327024688
+          },
+          "verticalForce": {
+            "maxAbsolute": 28.996961940241192,
+            "rms": 3.9420925150200206
+          }
+        }
+      },
+      {
+        "seed": "hardtail-rear",
+        "rates": "imported",
+        "coarse": "coarse",
+        "fine": "fine",
+        "samples": 161,
+        "fields": {
+          "node0Velocity": {
+            "maxAbsolute": 0.0024552285033115316,
+            "rms": 0.00118585992696697
+          },
+          "rmsSpeed": {
+            "maxAbsolute": 0.0004176548180379004,
+            "rms": 0.00014527780929968445
+          },
+          "verticalForce": {
+            "maxAbsolute": 5.140650337291618,
+            "rms": 1.3381141611187022
+          }
+        }
+      },
+      {
+        "seed": "hardtail-rear",
+        "rates": "imported",
+        "coarse": "fine",
+        "fine": "finest",
+        "samples": 161,
+        "fields": {
+          "node0Velocity": {
+            "maxAbsolute": 0.0017573336754942795,
+            "rms": 0.0006770152360570234
+          },
+          "rmsSpeed": {
+            "maxAbsolute": 0.000262345418576412,
+            "rms": 7.93167492021998e-05
+          },
+          "verticalForce": {
+            "maxAbsolute": 5.257022431287851,
+            "rms": 1.3005780656246848
+          }
+        }
+      },
+      {
+        "seed": "hardtail-rear",
+        "rates": "zero",
+        "coarse": "coarse",
+        "fine": "fine",
+        "samples": 161,
+        "fields": {
+          "node0Velocity": {
+            "maxAbsolute": 0.002812191805632079,
+            "rms": 0.0011468305253646018
+          },
+          "rmsSpeed": {
+            "maxAbsolute": 0.0004043330188699466,
+            "rms": 0.00016754200940884828
+          },
+          "verticalForce": {
+            "maxAbsolute": 4.979331889240768,
+            "rms": 1.0084598525459547
+          }
+        }
+      },
+      {
+        "seed": "hardtail-rear",
+        "rates": "zero",
+        "coarse": "fine",
+        "fine": "finest",
+        "samples": 161,
+        "fields": {
+          "node0Velocity": {
+            "maxAbsolute": 0.0016047616304267014,
+            "rms": 0.0006206210194906194
+          },
+          "rmsSpeed": {
+            "maxAbsolute": 0.00024773093909720954,
+            "rms": 9.043144692687547e-05
+          },
+          "verticalForce": {
+            "maxAbsolute": 4.964261885542214,
+            "rms": 0.6692035367822335
+          }
+        }
+      }
+    ]
+  },
+  "findings": [
+    "All 24 short controls complete. Retained-rate and zero-rate loaded casings move with a stationary hub; rider/suspension feedback is unnecessary for this short-window activity.",
+    "Energy residuals decrease across the three steps. Contact switching and local trajectories do not uniformly converge; neither damping calibration nor long-term stability is established.",
+    "Zero local rates do not create equilibrium: loaded deformation and stored energy remain.",
+    "Native nodal-force moments and physical contact-point moments differ under blocked rotation. Preserve the difference and infer the clamp moment by angular balance; do not change dynamics or add work. Independent inverse-distance weighting predicts the difference within 1e-8 N m.",
+    "The sampled nodal/contact-point moment difference reaches 1.212014378583169 N m. Independent contact-weight reconstruction matches all 24 records within 4.439229760698493e-10 N m.",
+    "Full-front retained-rate fine/finest differences reach 0.04108349167369893 m/s in node-0 velocity and 28.619473552715192 N in vertical load; reduced energy residuals do not qualify full trajectory/load convergence."
+  ],
+  "next": "Use the existing 100 ms fixed-hub control to measure longer same-state decay at all three timesteps before constitutive damping changes. Refine contact loads and node motion, not only energy residuals. Whole-bike perturbation recovery, 60 s idle and support-aware rider/IK remain open.",
+  "implementationHead": "243f7a3e148104de101290e9f259018db9b59767",
+  "implementationTree": "d89a583caaa6360bdec4795e5875f0d418e0802b",
+  "hostedPriorAttempts": [
+    {
+      "status": "Both OS test logs received; browser stopped at inconsistent station navigation before fixture execution",
+      "expectedTestsPerOS": 270,
+      "artifactName": "tyre-fixture-evidence",
+      "actualScreenshotsInspected": false,
+      "scope": "New browser receiver exercises all four seeds, both rate controls, complete replay, source-window import, initial rejection, cancellation including pending file reads, same-file retry, stale startup failure and 320 px aspect/layout.",
+      "runId": 40564995337,
+      "head": "243f7a3e148104de101290e9f259018db9b59767",
+      "jobs": {
+        "ubuntu": {
+          "id": 122403795185,
+          "conclusion": "success",
+          "passed": 270,
+          "failed": 0,
+          "skipped": 0
+        },
+        "windows": {
+          "id": 122403795198,
+          "conclusion": "success",
+          "passed": 270,
+          "failed": 0,
+          "skipped": 0
+        },
+        "browser": {
+          "id": 122403794806,
+          "status": "completed",
+          "conclusion": "failure",
+          "failure": "trail-bike-browser-check.mjs expected 10 station links but received 11; navigation also differed across pages. Fixed all eleven menus and browser expectation; no fixture records/captures were produced by this run."
+        }
+      }
+    }
+  ]
+}

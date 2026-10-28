@@ -49,9 +49,9 @@ The uninterrupted windows still reach sampled maximum local node speeds of 0.070
 
 Provenance qualification: the long process imported the helper before its authored-timestep correction. Its recorded source hashes were collected at completion and must not be described as hashes of the loaded helper bytes. Both exact recorded default inputs are reproduced by the final helper, and both saved fresh records replay exactly under final source. The integration/capture/restart implementation did not change during execution. The receipt retains this distinction instead of asserting an unavailable loaded-source hash.
 
-## Next bounded control
+## Following control
 
-Use a separately identified **fixed-hub loaded casing fixture** before changing constitutive damping or contact regularization. Transfer one wheel's accepted hub transform, local node displacements and rates into the same ring/contact mechanism. Preserve node masses, spring/rest geometry, edge viscosity, gravity and flat-contact settings. Explicitly hold the hub stationary, removing rider, suspension and hub-motion feedback; this diagnostic boundary is not a replacement whole-bike model or solved equilibrium.
+The separately identified [fixed-hub loaded casing fixture](TYRE_FIXTURE.md) now implements this next control; its hosted receiving remains separate. It precedes changes to constitutive damping or contact regularization. Transfer one wheel's accepted hub transform, local node displacements and rates into the same ring/contact mechanism. Preserve node masses, spring/rest geometry, edge viscosity, gravity and flat-contact settings. Explicitly hold the hub stationary, removing rider, suspension and hub-motion feedback; this diagnostic boundary is not a replacement whole-bike model or solved equilibrium.
 
 Compare the imported moving-node state with a separately labelled zero-node-velocity control at the same positions, then repeat at the existing refined timesteps. Keep the initial stored energy, gravity potential, signed contact work, nonnegative viscous loss and fixture reactions in the accounting. The stationary fixture performs zero work. A distinct identity and explicit wheel-state adapter must prevent bypassing whole-bike state compatibility.
 
