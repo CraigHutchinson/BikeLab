@@ -1,39 +1,185 @@
 {
   "format": "bikelab-fixed-hub-receiving-0.1",
-  "date": "2026-10-27",
+  "date": "2026-10-28",
   "baseHead": "bc44e90939e3f84bfd9adaae3e9750b54860911a",
   "baseTree": "48de624ac0f8ab8518b1444ced453add4412cc72",
   "hashConvention": "Input hashes use UTF-8 JSON.stringify(input) without newline. Record hashes use Node JSON.stringify(record) plus newline.",
   "hosted": {
-    "status": "Both OS test logs received; browser stopped at inconsistent station navigation before fixture execution",
-    "expectedTestsPerOS": 270,
-    "artifactName": "tyre-fixture-evidence",
-    "actualScreenshotsInspected": false,
-    "scope": "New browser receiver exercises all four seeds, both rate controls, complete replay, source-window import, initial rejection, cancellation including pending file reads, same-file retry, stale startup failure and 320 px aspect/layout.",
-    "runId": 40564995337,
-    "head": "243f7a3e148104de101290e9f259018db9b59767",
+    "status": "Received both OS logs, successful full browser suite, nine complete records and three visually inspected captures",
+    "runId": 40586565280,
+    "head": "f2a816fdf1bc71b33e6d0e636fe799b81d5d9520",
+    "tree": "bab56262ed99a61d692030fa6f04e5a23f4bd2a3",
     "jobs": {
       "ubuntu": {
-        "id": 122403795185,
+        "id": 122479430486,
         "conclusion": "success",
+        "logSha256": "a66bc8f6ae1df8fc95b3515d1cc7d9c25509f03cbc3181f788ffd6d6dff72f50",
         "passed": 270,
         "failed": 0,
         "skipped": 0
       },
       "windows": {
-        "id": 122403795198,
+        "id": 122479431473,
         "conclusion": "success",
+        "logSha256": "90f4d18a084eb077a93a53091dd8763ccec4665c30e6d99fd278b5f671b464c6",
         "passed": 270,
         "failed": 0,
         "skipped": 0
       },
       "browser": {
-        "id": 122403794806,
-        "status": "completed",
-        "conclusion": "failure",
-        "failure": "trail-bike-browser-check.mjs expected 10 station links but received 11; navigation also differed across pages. Fixed all eleven menus and browser expectation; no fixture records/captures were produced by this run."
+        "id": 122479430945,
+        "conclusion": "success",
+        "logSha256": "b50e9c766a2557e2440601460e54ac39de8cdf7fcf535b3949c5760de6585aa1"
       }
-    }
+    },
+    "artifact": {
+      "id": 12772724346,
+      "name": "tyre-fixture-evidence",
+      "bytes": 3178299,
+      "zipSha256": "d99e3f500b03da690d85860317834915425e3ffd3cdf59cc1e72a1c02a0199ee",
+      "expiresAt": "2026-11-10T21:41:29Z"
+    },
+    "browserReportSha256": "5d598a9116b1f9b5baddc8012cc850d784877479712ad823adc56dc1c568263b",
+    "actualScreenshotsInspected": true,
+    "screenshots": [
+      {
+        "name": "full-front-panel.png",
+        "sha256": "8bf5fe10682ecc6503addcd2ecfd9eca5ba9c0f08657fe2de21e3865af1e1adc",
+        "inspection": "Desktop final accepted sample at 20 ms: equal-scale casing/rim/hub, flat terrain, upward contact forces, 341.78 N ground load, 1.265e-3 m/s RMS speed, completed progress and explicit non-equilibrium label are visible without clipping."
+      },
+      {
+        "name": "full-front-force.png",
+        "sha256": "03fc6c3ac1ed38cad2433744cb2b2815fe27e6503d6374450db4fc3689ed940c",
+        "inspection": "Desktop force history shows repeated dips and recoveries; selected 20 ms cursor, time labels and force range are visible. Visible periodicity is not a convergence or physical oscillation claim."
+      },
+      {
+        "name": "hardtail-rear-320.png",
+        "sha256": "28041f3f6ba6bab862e829cc91fa66dfd3f8d3eac6854bf1b9444f1b3d3a3f04",
+        "inspection": "320 px viewport: casing and rim retain circular proportions, ground/contact arrows are visible, source and scope text wrap, stacked readouts and scrub/save controls fit. This capture is the zero-rate initial sample; it is not a final-state comparison."
+      }
+    ],
+    "cases": [
+      {
+        "name": "full-front-imported",
+        "recordSha256": "a42c3123af411cacd5643d0d5389f3f5c69b4e77fae735f6bd68a06aee9e9fd6",
+        "status": "completed",
+        "steps": 640,
+        "frames": 161,
+        "agreement": {
+          "tolerance": 1e-09,
+          "maxAbsolute": 0,
+          "maxNormalized": 0,
+          "exact": true
+        }
+      },
+      {
+        "name": "full-front-zero",
+        "recordSha256": "c091ab02468a9b2d26f5020fb89d60b9ba42b9f0ecf1d212c90dd85d02c0e8a0",
+        "status": "completed",
+        "steps": 640,
+        "frames": 161,
+        "agreement": {
+          "tolerance": 1e-09,
+          "maxAbsolute": 0,
+          "maxNormalized": 0,
+          "exact": true
+        }
+      },
+      {
+        "name": "full-rear-imported",
+        "recordSha256": "5972d24c33948fc10752f88fd707ca6134926eebf9d56c8f7c37dd42376a12a9",
+        "status": "completed",
+        "steps": 640,
+        "frames": 161,
+        "agreement": {
+          "tolerance": 1e-09,
+          "maxAbsolute": 0,
+          "maxNormalized": 0,
+          "exact": true
+        }
+      },
+      {
+        "name": "full-rear-zero",
+        "recordSha256": "7f952b7881dbf01ecf42efc378e70116557b36e67534ec78feb48d46cddee4ed",
+        "status": "completed",
+        "steps": 640,
+        "frames": 161,
+        "agreement": {
+          "tolerance": 1e-09,
+          "maxAbsolute": 0,
+          "maxNormalized": 0,
+          "exact": true
+        }
+      },
+      {
+        "name": "hardtail-front-imported",
+        "recordSha256": "9a4737520a1f016ecb2781fd04ce4cd7b2e585ca8fd9a9958882c415d58d71b2",
+        "status": "completed",
+        "steps": 640,
+        "frames": 161,
+        "agreement": {
+          "tolerance": 1e-09,
+          "maxAbsolute": 0,
+          "maxNormalized": 0,
+          "exact": true
+        }
+      },
+      {
+        "name": "hardtail-front-zero",
+        "recordSha256": "96fe159fed9beb1f72bef4c6c44972630dc7dfbfdb4ba73642600190403fe8ea",
+        "status": "completed",
+        "steps": 640,
+        "frames": 161,
+        "agreement": {
+          "tolerance": 1e-09,
+          "maxAbsolute": 0,
+          "maxNormalized": 0,
+          "exact": true
+        }
+      },
+      {
+        "name": "hardtail-rear-imported",
+        "recordSha256": "51e4ae71a51cca01c5425bba343626ca9808df01b9668b9c6b24f38b817b6c4a",
+        "status": "completed",
+        "steps": 640,
+        "frames": 161,
+        "agreement": {
+          "tolerance": 1e-09,
+          "maxAbsolute": 0,
+          "maxNormalized": 0,
+          "exact": true
+        }
+      },
+      {
+        "name": "hardtail-rear-zero",
+        "recordSha256": "3c1dabcaa2c90adae7b22e2a6bbe2c09930b02475441c17b911cea5b6da45064",
+        "status": "completed",
+        "steps": 640,
+        "frames": 161,
+        "agreement": {
+          "tolerance": 1e-09,
+          "maxAbsolute": 0,
+          "maxNormalized": 0,
+          "exact": true
+        }
+      },
+      {
+        "name": "loaded-window-rear",
+        "recordSha256": "25db20b8e7caf0bd645374cbdeb36a2d13e41401e4e25d2c1dd26a0cdfdaf551",
+        "status": "completed",
+        "steps": 640,
+        "frames": 161,
+        "agreement": {
+          "tolerance": 1e-09,
+          "maxAbsolute": 0,
+          "maxNormalized": 0,
+          "exact": true
+        }
+      }
+    ],
+    "scope": "Actual worker, both wheels/bikes, imported/zero rates, full replay, JSON source-window extraction, rejected initial state, stale-result cancellation and visually inspected desktop/mobile captures. No equilibrium, calibration or performance claim.",
+    "localReplay": "All nine downloaded complete records replay with exact numerical equality on the receiving machine; structure and nonnumeric fields also agree. Declared cross-runtime normalized budget remains 1e-9.",
+    "limits": "Bounded numerical/UI receiving only. No physical calibration, trajectory/load convergence, long idle, real-time performance or Pages deployment claim."
   },
   "local": {
     "focused": {
@@ -2124,7 +2270,40 @@
     "The sampled nodal/contact-point moment difference reaches 1.212014378583169 N m. Independent contact-weight reconstruction matches all 24 records within 4.439229760698493e-10 N m.",
     "Full-front retained-rate fine/finest differences reach 0.04108349167369893 m/s in node-0 velocity and 28.619473552715192 N in vertical load; reduced energy residuals do not qualify full trajectory/load convergence."
   ],
-  "next": "Receive hosted worker records and actual captures; quantify longer isolated decay/refinement before constitutive damping. Whole-bike perturbation recovery, 60 s idle and support-aware rider/IK remain open.",
+  "next": "Use the existing 100 ms fixed-hub control to measure longer same-state decay at all three timesteps before constitutive damping changes. Refine contact loads and node motion, not only energy residuals. Whole-bike perturbation recovery, 60 s idle and support-aware rider/IK remain open.",
   "implementationHead": "243f7a3e148104de101290e9f259018db9b59767",
-  "implementationTree": "d89a583caaa6360bdec4795e5875f0d418e0802b"
+  "implementationTree": "d89a583caaa6360bdec4795e5875f0d418e0802b",
+  "hostedPriorAttempts": [
+    {
+      "status": "Both OS test logs received; browser stopped at inconsistent station navigation before fixture execution",
+      "expectedTestsPerOS": 270,
+      "artifactName": "tyre-fixture-evidence",
+      "actualScreenshotsInspected": false,
+      "scope": "New browser receiver exercises all four seeds, both rate controls, complete replay, source-window import, initial rejection, cancellation including pending file reads, same-file retry, stale startup failure and 320 px aspect/layout.",
+      "runId": 40564995337,
+      "head": "243f7a3e148104de101290e9f259018db9b59767",
+      "jobs": {
+        "ubuntu": {
+          "id": 122403795185,
+          "conclusion": "success",
+          "passed": 270,
+          "failed": 0,
+          "skipped": 0
+        },
+        "windows": {
+          "id": 122403795198,
+          "conclusion": "success",
+          "passed": 270,
+          "failed": 0,
+          "skipped": 0
+        },
+        "browser": {
+          "id": 122403794806,
+          "status": "completed",
+          "conclusion": "failure",
+          "failure": "trail-bike-browser-check.mjs expected 10 station links but received 11; navigation also differed across pages. Fixed all eleven menus and browser expectation; no fixture records/captures were produced by this run."
+        }
+      }
+    }
+  ]
 }
