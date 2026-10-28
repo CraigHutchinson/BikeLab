@@ -16,7 +16,11 @@ export async function checkTyreFixture({page,root,dir,report}){
   if(name==='full-front'){await page.locator('.rig').screenshot({path:join(out,'full-front-panel.png')});await page.locator('#history').screenshot({path:join(out,'full-front-force.png')});}
   await page.locator('#rates').selectOption('zero');assert.ok(await page.locator('#save').isDisabled());await page.locator('#calculate').click();await ready();const zero=await save(name+'-zero');assert.equal(zero.frames[0].kineticEnergy,0);assert.deepEqual(zero.frames[0].nodes,imported.frames[0].nodes);
  }
- await page.setViewportSize({width:320,height:844});await page.waitForTimeout(50);assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));assert.ok(await page.locator('#rig').evaluate(c=>Math.abs(c.width/c.height-c.clientWidth/c.clientHeight)<.01),'equal canvas/CSS aspect ratio');await page.locator('.rig').screenshot({path:join(out,'hardtail-rear-320.png')});
+ await page.setViewportSize({width:320,height:844});
+ // ResizeObserver redraw is asynchronous; wait for its observable result,
+ // without assuming a busy CI runner completes it within a fixed 50 ms.
+ await page.waitForFunction(()=>{const c=document.getElementById('rig');return c.clientWidth>0&&c.clientWidth<320&&c.height>0&&c.width===Math.round(c.getBoundingClientRect().width*devicePixelRatio)&&Math.abs(c.width/c.height-c.clientWidth/c.clientHeight)<.01;},null,{timeout:10000});
+ assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));await page.locator('.rig').screenshot({path:join(out,'hardtail-rear-320.png')});
  await page.setViewportSize({width:1440,height:1100});await page.locator('#sourceWheel').selectOption('rear');await page.locator('#load').setInputFiles(join(dir,'rider-drive','full-window.json'));await ready();const extracted=await save('loaded-window-rear');assert.equal(extracted.scenario.seed.source.wheel,'rear');assert.equal(extracted.scenario.seed.source.tick,15360);
  // Complete the existing 100 ms control at the finest step; retain exported
  // records and actual late-time captures independently of short-run evidence.

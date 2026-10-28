@@ -10008,7 +10008,17 @@
   },
   "hosted": {
     "status": "Pending new 100 ms worker records and actual capture inspection. Prior 20 ms viewer receiving remains in tyre-fixture.json.",
-    "actualScreenshotsInspected": false
+    "actualScreenshotsInspected": false,
+    "priorAttempt": {
+      "runId": 40653872316,
+      "head": "209a8a063792dc5fc6a4195e8c0049607e79489f",
+      "ubuntuJob": 122700109234,
+      "windowsJob": 122700109661,
+      "osConclusion": "success",
+      "browserJob": 122700109494,
+      "browserConclusion": "failure",
+      "failure": "Mobile canvas/CSS aspect assertion after fixed 50 ms delay, before new 100 ms controls. Receiver now waits for actual matching rendered dimensions; receiving remains pending."
+    }
   },
   "findings": [
     "All 24 primary 100 ms, 24 dense 20 ms and eight alternate-cadence controls complete. All 24 original 20 ms record hashes are unchanged. Shared prefixes, alternate-cadence shared frames, final node states and summaries agree exactly.",
