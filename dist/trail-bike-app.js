@@ -1,3 +1,4 @@
+import {riderLoadSample} from './rider-loads.js';
 import {riderTransferPreset,summarizeRiderTracking} from './rider-transfer.js';
 import {tailWindow,restartWindow} from './tyre-window.js';
 import {tyreMotionProbe} from './tyre-motion.js';
@@ -115,12 +116,13 @@ function renderSupport(){
  if(panel.hidden)return;
  $('riderSupportState').textContent=dirty?'Showing the last applied run; current edits are not applied.':!f?'No accepted rider state.':r.status==='terminated'?'Stopped run · last accepted state available for inspection.':(r.scenario.riderTargets?'Timed targets · authored start.':r.scenario.active?'Active posture hold · authored start.':'Passive unseated motion · authored start.');
  $('riderSupportNote').textContent=r.scenario.motion.gravity===0?'Gravity is zero. This run does not test body-weight support. No saddle support.':r.scenario.riderTargets?'Bounded joint effort follows timed geometric targets. Phase labels do not classify actual support or manoeuvre success. No saddle or support-aware balance controller.':r.scenario.active?'Bounded internal joint effort holds posture with a gravity-dependent error. No saddle or support-aware COM controller; a small force balance alone does not establish equilibrium.':'This passive model has no active posture control or saddle support. Balanced standing has not been established; a force balance at one instant is not equilibrium.';
+ $('riderLoadEffort').textContent='';
  const fields=['handVertical','handHorizontal','footVertical','footHorizontal','riderVerticalSum','riderWeight','riderVerticalNet','riderVerticalVelocity'];
  if(!f?.articulated){for(const id of fields)$(id).textContent='—';return;}
- const attachments=f.articulated.interfaces.attachments, hand=attachments.find(a=>a.name==='hand'), foot=attachments.find(a=>a.name==='foot');
- for(const [name,a] of [['hand',hand],['foot',foot]]){$(name+'Vertical').textContent=signed(a.forceOnRider[2]);$(name+'Horizontal').textContent=signed(a.forceOnRider[0]);}
- const p=r.scenario.articulated.passive.posture, support=hand.forceOnRider[2]+foot.forceOnRider[2], weight=p.riderMass*r.scenario.motion.gravity;
- const speed=f.articulated.segments.reduce((sum,s)=>sum+p.segments[s.name].massFraction*s.velocity[5],0);
+ const loads=riderLoadSample(r.scenario,f);
+ for(const [name,force] of [['hand',loads.hand],['foot',loads.foot]]){$(name+'Vertical').textContent=signed(force[2]);$(name+'Horizontal').textContent=signed(force[0]);}
+ const support=loads.support[2],weight=loads.weight,speed=loads.comVelocity[2];
+ if(loads.joints.length)$('riderLoadEffort').textContent='Current joint effort from posture error / velocity damping (N m): '+loads.joints.map(j=>j.name+' '+signed(j.proportional)+' / '+signed(j.damping)).join('; ')+'. These sum to requested torque before limits. Nonzero effort and small net force do not establish equilibrium.';
  $('riderVerticalSum').textContent=signed(support)+' N';$('riderWeight').textContent=weight.toFixed(1)+' N';
  $('riderVerticalNet').textContent=signed(support-weight)+' N';$('riderVerticalVelocity').textContent=signed(speed,3)+' m/s';
 }
