@@ -1,3 +1,4 @@
+import {riderLoadSample} from '../dist/rider-loads.js';
 import {summarizeRiderTracking,compareRiderTransfers} from '../dist/rider-transfer.js';
 import {TARGET_MODEL} from '../dist/rider-targets.js';
 import assert from 'node:assert/strict';
@@ -77,6 +78,11 @@ export async function checkRiderDrive({page,root,dir,report}){
    assert.equal(record.status,'completed');assert.equal(tracking.phases.length,5);assert.ok(tracking.phases.every(p=>p.complete));
    await page.locator('#scrub').fill(String(record.frames.length-1));
    assert.match(await page.locator('#riderTrackingSummary').innerText(),/recovery-hold.*Phase interval completed.*not a tracking or support pass/);
+   const loads=riderLoadSample(record.scenario,record.frames.at(-1));
+   assert.match(await page.locator('#riderLoadEffort').innerText(),/posture error \/ velocity damping.*knee.*before limits/);
+   assert.ok(Math.abs(Number.parseFloat(await page.locator('#riderVerticalNet').innerText())-loads.netForce[2])<=.051);
+   assert.ok(Math.abs(Number.parseFloat(await page.locator('#riderVerticalVelocity').innerText())-loads.comVelocity[2])<=.00051);
+   await page.locator('#riderSupport').screenshot({path:join(dir,bike+'-'+example+'-loads.png')});report.screenshots.push(prefix+'/'+bike+'-'+example+'-loads.png');
    assert.ok(await page.locator('#restartState').isDisabled());await capture(bike+'-'+example);
    if(bike==='full'){await page.setViewportSize({width:320,height:1100});assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true);await capture(bike+'-'+example+'-320');await page.setViewportSize({width:1440,height:1100});}
    transfers.push({record,agreement,tracking});

@@ -57,3 +57,5 @@ Keep planned roles distinct: the current task producer supplies sampled hip/trun
 ## Matched transfer observation — 2026-10-29
 
 The [held transfer/control diagnostic](RIDER_TRANSFER_REVIEW.md) now exercises the shared path for one second on both bikes. Relative hip response follows the tiny requested shift and nearly returns to the matched baseline; absolute posture error remains large. Characterize unchanged-target support, effort and COM motion next. Numerical qualification and declared hold/transfer budgets precede gain changes and support-aware phase policy; this evidence does not promote crouch, wheelie, endo or hop to accepted manoeuvres.
+
+The [hold-load observer](RIDER_HOLD_LOADS.md) now shares signed support, world COM velocity and PD-effort decomposition between the viewer and headless review. These remain observations, not phase success predicates. Next distinguish joint tracking from attachment compliance before selecting support-aware feedback budgets; unchanged gains preserve the numerical investigation.
