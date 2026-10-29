@@ -1,3 +1,4 @@
+import {riderGeometryError} from './rider-geometry-error.js';
 import {riderLoadSample} from './rider-loads.js';
 import {riderTransferPreset,summarizeRiderTracking} from './rider-transfer.js';
 import {tailWindow,restartWindow} from './tyre-window.js';
@@ -82,7 +83,7 @@ const trackingReports=new WeakMap();
 function renderActive(){
  const r=applied,f=r?.frames[index],panel=$('riderDrive');panel.hidden=!r?.scenario.active;if(panel.hidden)return;
  const d=f?.active;const names=['hip','knee','shoulder','elbow'];
- $('riderTrackingSummary').textContent='';
+ $('riderTrackingSummary').textContent='';$('riderGeometryError').textContent='';
  if(r.scenario.riderTargets&&r.frames.length){
   if(!trackingReports.has(r))trackingReports.set(r,summarizeRiderTracking(r));
   const review=trackingReports.get(r),tick=Math.round((f?.time||0)/review.dt);
@@ -90,6 +91,10 @@ function renderActive(){
   if(phase)$('riderTrackingSummary').textContent=`Saved-sample phase ${phase.phase}: ${phase.samples} samples; peak hip error ${phase.sampleMaxHipErrorM===null?'unavailable':(1000*phase.sampleMaxHipErrorM).toFixed(2)+' mm'}, COM error ${phase.sampleMaxCOMErrorM===null?'unavailable':(1000*phase.sampleMaxCOMErrorM).toFixed(2)+' mm'}; work ${phase.riderWorkJ===null?'unavailable':phase.riderWorkJ.toFixed(3)+' J'}. ${phase.complete?'Phase interval completed':'Partial or unreached interval'}; this is not a tracking or support pass.`;
  }
 
+ if(r.scenario.riderTargets&&f){
+  const geometry=riderGeometryError(r.scenario,f),leg=geometry.chains.foot;
+  $('riderGeometryError').textContent='Vertical hip error '+signed(1000*geometry.hipError[1],2)+' mm. Leg-chain split: joints '+signed(1000*leg.jointTracking[1],2)+', trunk '+signed(1000*leg.trunkTracking[1],2)+', foot gap '+signed(1000*leg.attachmentGap[1],2)+' mm; other geometry terms '+signed(1000*(leg.anchorOffset[1]+leg.targetClosure[1]+leg.reconstructionResidual[1]),2)+' mm. Joint changes are accounted first, trunk second; these are geometric terms, not independent causes.';
+ }
  const target=r.scenario.riderTargets?.commands[d?.targetCommand];$('riderTargetStatus').textContent=target?`Target ${d.targetCommand} · ${target.phase} · tick ${target.tick}. Requested frame-local hip ${target.hip.map(x=>x.toFixed(4)).join(' / ')} m, trunk ${target.trunkPitch.toFixed(4)} rad. Actual hip ${d.actualHip.map(x=>x.toFixed(4)).join(' / ')} m, trunk ${d.actualTrunkPitch.toFixed(4)} rad. Target / actual frame-local rider COM ${d.targetCOM.map(x=>x.toFixed(4)).join(' / ')} / ${d.actualCOM.map(x=>x.toFixed(4)).join(' / ')} m. Launch-only probe; no phase-resuming restart.`:'';
  for(let i=0;i<4;i++){
   const values=d?[d.targetAngles[i].toFixed(3)+' / '+d.angles[i].toFixed(3),d.requestedTorque[i].toFixed(1)+' / '+d.torque[i].toFixed(1),d.saturation[i]?[(d.saturation[i]&1)?'torque':'',(d.saturation[i]&2)?'power':''].filter(Boolean).join(' + '):'none']:['—','—','—'];
