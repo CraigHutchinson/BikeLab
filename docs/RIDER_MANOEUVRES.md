@@ -40,3 +40,7 @@ M1–M6 form a progression, not a promise that their outcomes already follow fro
 Acceptance budgets must be declared per receiving case before tuning. Keep qualitative behavior, numerical balance/refinement, measured calibration, visual inspection and real-time performance as separate evidence. Offline playback of a successful trick does not establish a real-time game simulation.
 
 Seated support, unseated hovering, chosen absorption/resistance and transitions have a separate [primary-source research follow-up](RIDER_SEATED_UNSEATED.md). Keep intended posture distinct from actual saddle contact; receive passive support first, then identify bounded active strategies from measured motion and loads.
+
+## Unified controller receiving — 2026-10-29
+
+Bunny hop, endo and wheelie remain explicit intended scope alongside the initial crouch/shift. The [shared control-loop direction](RIDER_CONTROL_ARCHITECTURE.md#unified-mtb-control-direction--2026-10-29) assigns phase/feedback policy above common feasible targets and bounded effort. The [D1 runtime command receiver](RIDER_TARGET_DRIVE.md) exercises transfer/recovery target scheduling, work and rollback on both bikes, without claiming any M1–M7 manoeuvre or stable dynamic recovery. Phase labels are intent, not contact evidence. Use the same mechanism for future policies while retaining each manoeuvre's support, momentum, work and validity gates above.
