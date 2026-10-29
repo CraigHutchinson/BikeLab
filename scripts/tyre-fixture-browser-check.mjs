@@ -1,13 +1,13 @@
 import assert from 'node:assert/strict';
 import {mkdir,readFile,writeFile} from 'node:fs/promises';
 import {join} from 'node:path';
-import {replay,MODEL} from '../dist/tyre-fixture.js';
+import {replay,MODEL,MEASURED_MODEL} from '../dist/tyre-fixture.js';
 import {compareCanonicalTrailRecord} from './trail-section-browser-check.mjs';
 
 export async function checkTyreFixture({page,root,dir,report}){
  const out=join(dir,'tyre-fixture');await mkdir(out,{recursive:true});const cases=[];
- const ready=()=>page.waitForFunction(()=>document.getElementById('status').textContent==='COMPLETED',null,{timeout:120000});
- const save=async name=>{const pending=page.waitForEvent('download');await page.locator('#save').click();const path=join(out,name+'.json');await (await pending).saveAs(path);const r=JSON.parse(await readFile(path,'utf8'));assert.equal(r.model,MODEL);const agreement=compareCanonicalTrailRecord(r,await replay(r));cases.push({name,agreement,status:r.status,steps:r.summary.steps});return r;};
+ const ready=()=>page.waitForFunction(()=>document.getElementById('status').textContent==='COMPLETED',null,{timeout:240000});
+ const save=async name=>{const pending=page.waitForEvent('download');await page.locator('#save').click();const path=join(out,name+'.json');await (await pending).saveAs(path);const r=JSON.parse(await readFile(path,'utf8'));assert.ok([MODEL,MEASURED_MODEL].includes(r.model));const agreement=compareCanonicalTrailRecord(r,await replay(r));cases.push({name,agreement,status:r.status,steps:r.summary.steps});return r;};
  await page.setViewportSize({width:1440,height:1100});await page.goto(root+'tyre-fixture.html');await ready();
  for(const name of ['full-front','full-rear','hardtail-front','hardtail-rear']){
   await page.locator('#example').selectOption(name);assert.equal(await page.locator('#status').textContent(),'UNAPPLIED EDITS');assert.ok(await page.locator('#save').isDisabled());
@@ -30,6 +30,17 @@ export async function checkTyreFixture({page,root,dir,report}){
   await page.locator('#scrub').fill('200');assert.match(await page.locator('#time').textContent(),/0.10000/);await page.locator('#channel').selectOption('rms');
   await page.locator('.rig').screenshot({path:join(out,name+'-100ms-panel.png')});await page.locator('#history').screenshot({path:join(out,name+'-100ms-rms.png')});
  }
+ for(const [name,rates,duration] of [['full-front','imported',.5],['hardtail-rear','zero',5]]){
+  await page.locator('#example').selectOption(name);await page.locator('#rates').selectOption(rates);await page.locator('#duration').selectOption(String(duration));assert.ok(await page.locator('#measure').isChecked());assert.ok(await page.locator('#measure').isDisabled());await page.locator('#dt').selectOption('0.00003125');await page.locator('#calculate').click();await ready();
+  const r=await save(name+'-settling');assert.equal(r.model,MEASURED_MODEL);assert.equal(r.summary.steps,Math.round(duration/.00003125));assert.equal(r.observation.intervals.length,Math.round(duration/.1));assert.ok(r.frames.length<=600);assert.equal(r.observation.windowFrameIndices.length,161);assert.equal(await page.locator('#channel').inputValue(),'interval-rms');
+  await page.locator('#scrub').fill(String(r.frames.length-1));assert.match(await page.locator('#intervalSummary').textContent(),/Every accepted physics step/);assert.equal(await page.locator('#time').textContent(),duration.toFixed(5)+' s');await page.locator('.rig').screenshot({path:join(out,name+'-settling-panel.png')});await page.locator('#history').screenshot({path:join(out,name+'-settling-intervals.png')});
+  await page.locator('#historyScope').selectOption('window');assert.equal(await page.locator('#channel').inputValue(),'node');await page.locator('#history').screenshot({path:join(out,name+'-settling-window.png')});await page.locator('#channel').selectOption('interval-force');assert.equal(await page.locator('#historyScope').inputValue(),'all');
+ }
+ // Playwright 1.56 follows an option's enclosing label to its select for
+ // isDisabled(). Inspect the option itself; the whole-run select stays enabled.
+ await page.locator('#example').selectOption('full-front');await page.locator('#calculate').click();await ready();
+ assert.equal(await page.locator('#historyScope option[value=window]').evaluate(option=>option.disabled),true);assert.ok(await page.locator('#historyScope').isEnabled());assert.equal(await page.locator('#historyScope').inputValue(),'all');assert.equal(await page.locator('#intervalSummary').textContent(),'');
+ const legacy=await save('legacy-after-settling');assert.equal(legacy.model,MODEL);assert.equal(legacy.observation,undefined);assert.equal(legacy.scenario.measurement,undefined);
  const bad=structuredClone(extracted.scenario);bad.seed.hub.position[2]=.2;await page.locator('details').evaluate(el=>el.open=true);await page.locator('#setupText').fill(JSON.stringify(bad));await page.locator('#applyJson').click();await page.waitForFunction(()=>document.getElementById('status').textContent==='INITIAL-STATE-REJECTED');assert.ok(await page.locator('#scrub').isDisabled());assert.match(await page.locator('#result').textContent(),/rim-contact/);
  await page.locator('#example').selectOption('full-front');await page.locator('#duration').selectOption('0.1');await page.locator('#dt').selectOption('0.0000078125');await page.locator('#calculate').click();await page.locator('#cancel').click();assert.equal(await page.locator('#status').textContent(),'CANCELLED');assert.ok(await page.locator('#save').isDisabled());await page.waitForTimeout(150);assert.equal(await page.locator('#status').textContent(),'CANCELLED');
  // A pending file read is cancellable, and cancelling does not prevent retrying

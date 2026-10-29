@@ -2,6 +2,8 @@
 
 The Trail bike station receives the spatial wheel model into a single moving hardtail or full-suspension bike, including the existing passive guided rider. It is the connected consumer for controlled traction and subsequent articulated rider work, with the earlier stations retained as diagnostic controls. `dist/trail-bike.js` runs identically in the module worker and `node scripts/trail-bike.mjs [scenario-or-record.json]`. Exit 0 means completion within declared numerical/model limits, 2 means an explicit support stop or rejected launch/assembly, and 1 means invalid input or execution failure.
 
+The wheel contacts inherit the [moving-wheel regularization](MOVING_WHEEL.md): normal overlap is controlled by native contact time/impedance, not a calibrated tread stiffness. Casing elasticity, this soft-contact response and optional tangential friction have separate roles. Contact loads and penetration must not be exported as calibrated tyre stress or material deformation. Sharp-rock timestep sensitivity and an independently parameterized tread law remain [explicit receiving gates](ISSUE_WORK_PLAN.md#new-contact-feedback).
+
 ## Received articulated extension
 
 PR23 is merged; PR24–26 receive trail captures, the independent pose study and calculation progress. The newer canonical guided and explicit articulated fresh-state contracts supplement the historical formats described below. See [the current system review](MTB_SYSTEM_REVIEW.md) for integration status and [the canonical policy](TRAIL_CANONICAL.md) for version-specific numerical semantics.

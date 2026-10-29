@@ -1,3 +1,5 @@
+import {MEASUREMENT,MEASURED_MODEL,validateMeasurement,recordingTicks,createEndpoint,createIntervals} from './tyre-fixture-observation.js';
+export {MEASUREMENT,MEASURED_MODEL} from './tyre-fixture-observation.js';
 import {wheelParts,terrainParts,canonicalProfile,geometryLimits,validate as validateWheel,getRuntime} from './moving-wheel.js';
 import {WHEEL_DEFAULTS,inputFromRecord as trailInput,validate as validateTrail,modelXML as trailXML} from './trail-bike.js';
 import {TYRE_WINDOW_MODEL} from './tyre-window.js';
@@ -19,14 +21,16 @@ function vector(a,n,limit,label){
  return [...a];
 }
 export function validate(input){
- object(input,['seed','motion','rates'],'fixture input');const s=input.seed,m=input.motion;
+ const measured=Object.hasOwn(input??{},'measurement');
+ object(input,measured?['seed','motion','rates','measurement']:['seed','motion','rates'],'fixture input');const s=input.seed,m=input.motion;
  object(s,['format','source','wheel','profile','gravity','hub','q','v'],'seed');
  if(s.format!==SEED)throw Error('Unsupported fixed-hub seed.');
  object(s.source,['recordSha256','identity','bike','wheel','tick','time','nativeBuild'],'source');
  if(!/^[a-f0-9]{64}$/.test(s.source.recordSha256)||!/^[a-f0-9]{64}$/.test(s.source.identity)||s.source.nativeBuild!==NATIVE_BUILD||!['full','hardtail'].includes(s.source.bike)||!['front','rear'].includes(s.source.wheel)||!Number.isSafeInteger(s.source.tick)||s.source.tick<0||!Number.isFinite(s.source.time)||s.source.time<0||s.source.time>10.000001)throw Error('Invalid source provenance.');
  object(s.wheel,Object.keys(WHEEL_DEFAULTS),'wheel');object(m,['dt','duration','sampleDt'],'motion');
- if(!Number.isFinite(m.dt)||m.dt<.0000078125||m.dt>.0000625||!Number.isFinite(m.duration)||m.duration<.02||m.duration>.1||!Number.isFinite(m.sampleDt)||m.sampleDt<.000125||m.sampleDt>.005||m.duration/m.sampleDt>300)throw Error('Unsupported fixture time/recording range.');
+ if(!Number.isFinite(m.dt)||m.dt<.0000078125||m.dt>.0000625||!Number.isFinite(m.duration)||m.duration<(measured ? .001 : .02)||m.duration>(measured?5:.1)||!Number.isFinite(m.sampleDt)||m.sampleDt<(measured?m.dt:.000125)||m.sampleDt>(measured ? .05 : .005)||m.duration/m.sampleDt>300)throw Error('Unsupported fixture time/recording range.');
  for(const ratio of [m.duration/m.sampleDt,m.sampleDt/m.dt])if(Math.abs(ratio-Math.round(ratio))>1e-7)throw Error('Fixture observations must align to fixed steps.');
+ const measurement=measured?validateMeasurement(input.measurement,m):null;
  const w=validateWheel({...s.wheel,dt:m.dt}),profile=canonicalProfile(s.profile);
  if(profile.points.some(p=>p[1]!==profile.points[0][1]))throw Error('Fixed-hub control currently requires flat terrain.');
  if(!Number.isFinite(s.gravity)||s.gravity<0||s.gravity>15)throw Error('Invalid gravity.');
@@ -34,7 +38,7 @@ export function validate(input){
  if(position[1]!==0||quaternion[1]!==0||quaternion[3]!==0||Math.abs(Math.hypot(...quaternion)-1)>1e-12)throw Error('Hub must have a normalized planar orientation.');
  if(!['imported','zero'].includes(input.rates))throw Error('Choose imported or zero node rates.');
  const q=vector(s.q,2*w.nodes,10,'node positions'),v=vector(s.v,2*w.nodes,10,'node velocities');
- return {seed:{format:SEED,source:{...s.source},wheel:{...s.wheel},profile,gravity:s.gravity,hub:{position,quaternion},q,v},motion:{...m},rates:input.rates};
+ return {seed:{format:SEED,source:{...s.source},wheel:{...s.wheel},profile,gravity:s.gravity,hub:{position,quaternion},q,v},motion:{...m},rates:input.rates,...(measured?{measurement}:{})};
 }
 export function modelXML(input){
  const a=validate(input),s=a.seed,w=validateWheel({...s.wheel,dt:a.motion.dt}),ring=wheelParts(w,'casing'),ground=terrainParts(w,s.profile);
@@ -90,10 +94,12 @@ export async function run(input,onProgress){
   progress('initializing');model=mj.MjModel.from_xml_string(xml);data=new mj.MjData(model);forceBuffer=new mj.DoubleBuffer(6);const b=binding(mj,model,'casing',w.nodes);applyNodes(a,b,data);
   if(model.nq!==2*w.nodes||model.nv!==2*w.nodes||model.body_jntnum[b.bodies[0]]!==0)throw Error('Unexpected fixed-hub topology.');
   const diagnostic=createTyreMotion(model,b),hub=new Float64Array([s.hub.position[0],s.hub.position[2]]),xyz=new Float64Array(3*w.nodes),oldXYZ=new Float64Array(xyz.length),oldQ=new Float64Array(model.nq),oldV=new Float64Array(model.nv),oldWarm=new Float64Array(model.nv),ground=new Float64Array(3),clamp=new Float64Array(3),limits={};
-  const slots=Array.from({length:Math.round(m.duration/m.sampleDt)+2},()=>({nodes:new Float64Array(2*w.nodes),ground:new Float64Array(3),clamp:new Float64Array(3),tyreMotion:createTyreMotionFrame(),limits:{},contactData:new Float64Array(256*7)}));
+  const measured=!!a.measurement,schedule=measured?recordingTicks(m,a.measurement):null,intervals=measured?createIntervals(m.dt,m.duration,a.measurement.binDt):null,endpoint=measured?createEndpoint():null,oldEndpoint=measured?createEndpoint():null;let nextSample=1;
+  const slots=Array.from({length:measured?schedule.length+1:Math.round(m.duration/m.sampleDt)+2},()=>({nodes:new Float64Array(2*w.nodes),ground:new Float64Array(3),clamp:new Float64Array(3),tyreMotion:createTyreMotionFrame(),limits:{},contactData:new Float64Array(256*7)}));
   let energy=0,lossPower=0,contactPower=0,forceResidual=0,loss=0,work=0,initialEnergy=0,count=0,accepted=0,termination=null,maxResidual=0,maxForceResidual=0,peakForce=0;
   function observe(){
    mj.mj_forward(model,data);mj.mj_energyPos(model,data);mj.mj_energyVel(model,data);energy=data.energy[0]+data.energy[1];lossPower=0;contactPower=0;forceResidual=0;ground.fill(0);clamp.fill(0);xyz.set(data.flexvert_xpos.subarray(b.vertex,b.vertex+xyz.length));
+   if(measured){endpoint.kineticEnergy=data.energy[1];endpoint.meanSquareSpeed=0;endpoint.maxSpeed=0;endpoint.maxSpeedIndex=0;endpoint.maxAcceleration=0;endpoint.maxAccelerationIndex=0;}
    const qv=data.qvel,acc=data.qacc,cf=data.qfrc_constraint,damper=data.qfrc_damper,passive=data.qfrc_passive,R=data.xmat,h=9*b.bodies[0];
    for(let i=0;i<w.nodes;i++){
     const u=b.nodeJoints[i][0].v,v=b.nodeJoints[i][1].v,mass=model.body_mass[b.bodies[i+1]],x=xyz[3*i]-hub[0],z=xyz[3*i+2]-hub[1];
@@ -102,9 +108,12 @@ export async function run(input,onProgress){
     clamp[0]+=cx;clamp[1]+=cz;clamp[2]+=z*cx-x*cz;
     forceResidual=Math.max(forceResidual,Math.abs(cx-(R[h]*passive[u]+R[h+2]*passive[v])),Math.abs(cz-(R[h+6]*passive[u]+R[h+8]*passive[v])));
     lossPower-=damper[u]*qv[u]+damper[v]*qv[v];contactPower+=cf[u]*qv[u]+cf[v]*qv[v];
+    if(measured){const speed2=qv[u]**2+qv[v]**2,speed=Math.sqrt(speed2),acceleration=Math.hypot(acc[u],acc[v]);endpoint.meanSquareSpeed+=speed2/w.nodes;if(speed>endpoint.maxSpeed){endpoint.maxSpeed=speed;endpoint.maxSpeedIndex=i;}if(acceleration>endpoint.maxAcceleration){endpoint.maxAcceleration=acceleration;endpoint.maxAccelerationIndex=i;}}
    }
+   if(measured)endpoint.verticalForce=ground[1];
   }
   function guard(previous=false){
+   if(measured&&(!Number.isFinite(endpoint.meanSquareSpeed)||!Number.isFinite(endpoint.maxSpeed)||!Number.isFinite(endpoint.maxAcceleration)))return 'nonfinite-observation';
    if(!Number.isFinite(energy)||!Number.isFinite(lossPower)||!Number.isFinite(contactPower)||!Number.isFinite(forceResidual)||!ground.every(Number.isFinite)||!clamp.every(Number.isFinite))return 'nonfinite-state';
    const q=data.qpos,v=data.qvel,acc=data.qacc;for(let i=0;i<model.nv;i++)if(!Number.isFinite(q[i])||!Number.isFinite(v[i])||!Number.isFinite(acc[i]))return 'nonfinite-state';
    if(data.solver_niter[0]>=100)return 'native-solver-iteration-limit';if(data.ncon>256)return 'contact-capacity-limit';
@@ -125,20 +134,21 @@ export async function run(input,onProgress){
    // total angular balance, not a directly measured native bearing torque.
    f.contactMomentDifference=f.nodalGroundMoment-contactMoment;f.ground[2]=contactMoment;f.clamp[2]+=f.contactMomentDifference;
   }
-  const report={model:MODEL,identity,nativeBuild:NATIVE_BUILD,scenario:a,scope:SCOPE,units:'SI; world x forward, y left, z up. ground/clamp [Fx,Fz,My] act on casing about fixed hub. Clamp is inferred from balance; its moment includes the separately reported nodal/contact-point moment discrepancy, not a measured bearing torque. Node rates are hub-local.',dynamicMass:Array.from({length:w.nodes},(_,i)=>model.body_mass[b.bodies[i+1]]).reduce((x,y)=>x+y,0)};
-  observe();initialEnergy=energy;const initialIssue=guard();if(initialIssue){progress('finalizing');return {...report,status:'initial-state-rejected',termination:{reason:initialIssue,time:0},summary:{steps:0,acceptedTime:0},frames:[]};}
+  const report={model:measured?MEASURED_MODEL:MODEL,identity,nativeBuild:NATIVE_BUILD,scenario:a,scope:SCOPE,units:'SI; world x forward, y left, z up. ground/clamp [Fx,Fz,My] act on casing about fixed hub. Clamp is inferred from balance; its moment includes the separately reported nodal/contact-point moment discrepancy, not a measured bearing torque. Node rates are hub-local.',dynamicMass:Array.from({length:w.nodes},(_,i)=>model.body_mass[b.bodies[i+1]]).reduce((x,y)=>x+y,0)};
+  observe();initialEnergy=energy;const initialIssue=guard();if(initialIssue){progress('finalizing');return {...report,status:'initial-state-rejected',termination:{reason:initialIssue,time:0},summary:{steps:0,acceptedTime:0},frames:[],...(measured?{observation:{format:MEASUREMENT,intervals:[],windowFrameIndices:[]}}:{})};}
   peakForce=Math.hypot(ground[0],ground[1]);maxForceResidual=forceResidual;record();progress('integrating');
   for(let tick=1;tick<=steps;tick++){
-   oldQ.set(data.qpos);oldV.set(data.qvel);oldWarm.set(data.qacc_warmstart);oldXYZ.set(xyz);const time=data.time,oldLoss=lossPower,oldPower=contactPower;
+   oldQ.set(data.qpos);oldV.set(data.qvel);oldWarm.set(data.qacc_warmstart);oldXYZ.set(xyz);const time=data.time,oldLoss=lossPower,oldPower=contactPower,oldEnergy=energy,previousLoss=loss,previousWork=work;if(measured)Object.assign(oldEndpoint,endpoint);
    mj.mj_step(model,data);observe();const reason=guard(true)||(Math.abs(data.time-time-m.dt)>1e-9?'native-clock-reset':null);
    if(reason){termination={reason,time,attemptedTime:time+m.dt};data.qpos.set(oldQ);data.qvel.set(oldV);data.qacc_warmstart.set(oldWarm);data.time=time;observe();guard();break;}
    loss+=.5*m.dt*(oldLoss+lossPower);work+=.5*m.dt*(oldPower+contactPower);accepted=tick;maxResidual=Math.max(maxResidual,Math.abs(energy-initialEnergy+loss-work));maxForceResidual=Math.max(maxForceResidual,forceResidual);peakForce=Math.max(peakForce,Math.hypot(ground[0],ground[1]));
-   if(tick%stride===0)record();if(tick%progressStride===0)progress('integrating',tick);
+   if(measured)intervals.accept(tick,oldEndpoint,endpoint,oldEnergy,previousLoss,previousWork,energy,loss,work);
+   if(measured?tick===schedule[nextSample]:tick%stride===0){record();if(measured)nextSample++;}if(tick%progressStride===0)progress('integrating',tick);
   }
   if(slots[count-1].time!==data.time)record();progress('finalizing',accepted);
   const finalNodes={q:[],v:[]};for(const axes of b.nodeJoints)for(const j of axes){finalNodes.q.push(data.qpos[j.q]);finalNodes.v.push(data.qvel[j.v]);}
-  return {...report,status:termination?'terminated':'completed',termination,finalNodes,summary:{steps:accepted,acceptedTime:data.time,initialEnergy,finalEnergy:energy,maxResidual,maxForceResidual,peakForce},frames:slots.slice(0,count).map(f=>{const {contactData,contactCount,nodes,ground,clamp,tyreMotion,...rest}=f;return {...rest,ground:Array.from(ground),clamp:Array.from(clamp),nodes:Array.from({length:w.nodes},(_,i)=>[nodes[2*i],nodes[2*i+1]]),tyreMotion:materializeTyreMotion(tyreMotion),contacts:Array.from({length:contactCount},(_,i)=>{const k=7*i;return {point:[contactData[k],contactData[k+1]],force:[contactData[k+2],contactData[k+3]],normalForce:contactData[k+4],edge:contactData[k+5],vertex:contactData[k+6]};})};})};
+  return {...report,status:termination?'terminated':'completed',termination,finalNodes,summary:{steps:accepted,acceptedTime:data.time,initialEnergy,finalEnergy:energy,maxResidual,maxForceResidual,peakForce},...(measured?{observation:{format:MEASUREMENT,scope:'Trapezoidal statistics at every accepted physics endpoint; maxima are discrete endpoint observations, not continuous peaks or settling certification.',intervals:intervals.result(),windowFrameIndices:slots.slice(0,count).flatMap((f,i)=>{const tick=Math.round(f.time/m.dt),window=a.measurement.window;return window&&tick>=window.startTick&&tick<=window.endTick&&(tick-window.startTick)%window.strideTicks===0?[i]:[];})}}:{}),frames:slots.slice(0,count).map(f=>{const {contactData,contactCount,nodes,ground,clamp,tyreMotion,...rest}=f;return {...rest,ground:Array.from(ground),clamp:Array.from(clamp),nodes:Array.from({length:w.nodes},(_,i)=>[nodes[2*i],nodes[2*i+1]]),tyreMotion:materializeTyreMotion(tyreMotion),contacts:Array.from({length:contactCount},(_,i)=>{const k=7*i;return {point:[contactData[k],contactData[k+1]],force:[contactData[k+2],contactData[k+3]],normalForce:contactData[k+4],edge:contactData[k+5],vertex:contactData[k+6]};})};})};
  }finally{forceBuffer?.delete();data?.delete();model?.delete();}
 }
-export function inputFromRecord(record){if(record?.model!==MODEL)throw Error('Unsupported fixed-hub record.');return validate(record.scenario);}
+export function inputFromRecord(record){if(![MODEL,MEASURED_MODEL].includes(record?.model))throw Error('Unsupported fixed-hub record.');const input=validate(record.scenario);if((record.model===MEASURED_MODEL)!==!!input.measurement)throw Error('Fixture measurement discriminator mismatch.');return input;}
 export const replay=record=>run(inputFromRecord(record));
