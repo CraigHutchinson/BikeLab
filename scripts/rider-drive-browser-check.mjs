@@ -79,6 +79,7 @@ export async function checkRiderDrive({page,root,dir,report}){
    assert.equal(record.status,'completed');assert.equal(tracking.phases.length,5);assert.ok(tracking.phases.every(p=>p.complete));
    await page.locator('#scrub').fill(String(record.frames.length-1));
    assert.match(await page.locator('#riderTrackingSummary').innerText(),/recovery-hold.*Phase interval completed.*not a tracking or support pass/);
+   assert.match(await page.locator('#riderStaticReference').innerText(),/Ideal fixed-anchor static target.*knee.*not applied to the simulation/);
    const geometryText=await page.locator('#riderGeometryError').innerText(),geometry=riderGeometryError(record.scenario,record.frames.at(-1));
    assert.match(geometryText,/Vertical hip error.*Leg-chain split.*foot gap.*not independent causes/);
    assert.ok(Math.abs(Number.parseFloat(geometryText.slice('Vertical hip error '.length))-1000*geometry.hipError[1])<=.0051);

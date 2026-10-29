@@ -1,3 +1,4 @@
+import {staticRiderReference} from './rider-static-reference.js';
 import {riderGeometryError} from './rider-geometry-error.js';
 import {riderLoadSample} from './rider-loads.js';
 import {riderTransferPreset,summarizeRiderTracking} from './rider-transfer.js';
@@ -80,10 +81,11 @@ const signed = (value, digits = 1) => {
  return (rounded > 0 ? '+' : '') + rounded.toFixed(digits);
 };
 const trackingReports=new WeakMap();
+let staticFrame=null,staticReport=null;
 function renderActive(){
  const r=applied,f=r?.frames[index],panel=$('riderDrive');panel.hidden=!r?.scenario.active;if(panel.hidden)return;
  const d=f?.active;const names=['hip','knee','shoulder','elbow'];
- $('riderTrackingSummary').textContent='';$('riderGeometryError').textContent='';
+ $('riderTrackingSummary').textContent='';$('riderGeometryError').textContent='';$('riderStaticReference').textContent='';
  if(r.scenario.riderTargets&&r.frames.length){
   if(!trackingReports.has(r))trackingReports.set(r,summarizeRiderTracking(r));
   const review=trackingReports.get(r),tick=Math.round((f?.time||0)/review.dt);
@@ -92,6 +94,11 @@ function renderActive(){
  }
 
  if(r.scenario.riderTargets&&f){
+  if(staticFrame!==f){
+   const goal=r.scenario.riderTargets.commands[f.active.targetCommand];
+   staticReport=staticRiderReference({passive:r.scenario.articulated.passive,drive:r.scenario.active,goal:{hip:goal.hip,trunkPitch:goal.trunkPitch},gravity:r.scenario.motion.gravity,framePitch:f.frame[2]});staticFrame=f;
+  }
+  $('riderStaticReference').textContent=staticReport.status==='available'?'Ideal fixed-anchor static target: reference / recorded active torque (N m): '+staticReport.joints.map((j,i)=>j.name+' '+signed(j.active)+' / '+signed(f.active.torque[i])).join('; ')+'. Minimum squared active torque within limits; bilateral anchors, no tyre or soft-attachment equilibrium. This reference is not applied to the simulation.':'Ideal fixed-anchor static reference unavailable: '+staticReport.reason+'. No effort is applied.';
   const geometry=riderGeometryError(r.scenario,f),leg=geometry.chains.foot;
   $('riderGeometryError').textContent='Vertical hip error '+signed(1000*geometry.hipError[1],2)+' mm. Leg-chain split: joints '+signed(1000*leg.jointTracking[1],2)+', trunk '+signed(1000*leg.trunkTracking[1],2)+', foot gap '+signed(1000*leg.attachmentGap[1],2)+' mm; other geometry terms '+signed(1000*(leg.anchorOffset[1]+leg.targetClosure[1]+leg.reconstructionResidual[1]),2)+' mm. Joint changes are accounted first, trunk second; these are geometric terms, not independent causes.';
  }
