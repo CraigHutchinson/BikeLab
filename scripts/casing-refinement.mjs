@@ -39,32 +39,34 @@ export function geometricRhs(p,state,out,observation){
  for(let i=0;i<nv;i++)assert.ok(Number.isFinite(out[nv+i]),'Nonfinite reference acceleration');
 }
 
-export function createGeometricRK4(p,initial){
+export function createGeometricRK4(p,initial,onStage){
  const nv=p.rest.length,size=2*nv+1;
  assert.ok(nv>=4&&nv%2===0&&initial.length===size);
  assert.ok(Number.isFinite(p.mass)&&p.mass>0&&Number.isFinite(p.k)&&p.k>0&&Number.isFinite(p.edgeK)&&p.edgeK>=0&&Number.isFinite(p.edgeC)&&p.edgeC>=0);
  assert.ok(Number.isFinite(p.maxStrain)&&p.maxStrain>0&&Number.isFinite(p.maxDisplacement)&&p.maxDisplacement>0);
  assert.equal(p.edges.length,2*p.lengths.length);assert.ok(p.rest.every(Number.isFinite));
  assert.ok(p.lengths.every(x=>Number.isFinite(x)&&x>0));assert.ok(p.edges.every(x=>Number.isInteger(x)&&x>=0&&x<nv/2));
+ assert.ok(onStage===undefined||typeof onStage==='function');
  const state=Float64Array.from(initial),candidate=new Float64Array(size),stage=new Float64Array(size),k1=new Float64Array(size),k2=new Float64Array(size),k3=new Float64Array(size),k4=new Float64Array(size),observation={xyz:new Float64Array(3*nv/2)};
- const observe=()=>{geometricRhs(p,state,k1,observation);return observation;};observe();
+ const evaluate=(value,out)=>{geometricRhs(p,value,out,observation);onStage?.(observation.xyz);};
+ const observe=()=>{evaluate(state,k1);return observation;};observe();
  return {state,observation,observe,step(h){
-  assert.ok(Number.isFinite(h)&&h>0);try{geometricRhs(p,state,k1,observation);
-  for(let i=0;i<size;i++)stage[i]=state[i]+h*k1[i]/2;geometricRhs(p,stage,k2,observation);
-  for(let i=0;i<size;i++)stage[i]=state[i]+h*k2[i]/2;geometricRhs(p,stage,k3,observation);
-  for(let i=0;i<size;i++)stage[i]=state[i]+h*k3[i];geometricRhs(p,stage,k4,observation);
+  assert.ok(Number.isFinite(h)&&h>0);try{evaluate(state,k1);
+  for(let i=0;i<size;i++)stage[i]=state[i]+h*k1[i]/2;evaluate(stage,k2);
+  for(let i=0;i<size;i++)stage[i]=state[i]+h*k2[i]/2;evaluate(stage,k3);
+  for(let i=0;i<size;i++)stage[i]=state[i]+h*k3[i];evaluate(stage,k4);
   for(let i=0;i<size;i++)candidate[i]=state[i]+h*(k1[i]+2*k2[i]+2*k3[i]+k4[i])/6;
-  geometricRhs(p,candidate,k1,observation);state.set(candidate);
+  evaluate(candidate,k1);state.set(candidate);
   }catch(error){observe();throw error;}
  }};
 }
 
-function warningCounters(d){const out=[],w=d.warning;for(let i=0;i<w.size();i++){const v=w.get(i);try{if(v.number)out.push({index:i,number:v.number,lastinfo:v.lastinfo});}finally{v.delete();}}return out;}
+export function warningCounters(d){const out=[],w=d.warning;for(let i=0;i<w.size();i++){const v=w.get(i);try{if(v.number)out.push({index:i,number:v.number,lastinfo:v.lastinfo});}finally{v.delete();}}return out;}
 
-function compiledPhysical(mj,m,d,n){
+export function compiledPhysical(mj,m,d,n,integrator='Euler'){
  const nv=2*n;assert.equal(m.nv,nv);assert.equal(m.nq,nv);assert.equal(m.nC,nv);assert.equal(m.nflex,1);assert.equal(m.nflexedge,n);assert.equal(m.flex_vertnum[0],n);assert.equal(m.nu,0);assert.equal(m.ntendon,0);
  for(const values of [m.opt.gravity,m.qpos_spring,m.dof_damping,m.dof_dampingpoly])assert.ok(Array.from(values).every(x=>x===0));
- assert.equal(m.opt.integrator,mj.mjtIntegrator.mjINT_EULER.value);
+ assert.ok(['Euler','RK4'].includes(integrator));assert.equal(m.opt.integrator,integrator==='Euler'?mj.mjtIntegrator.mjINT_EULER.value:mj.mjtIntegrator.mjINT_RK4.value);
  const hub=mj.mj_name2id(m,mj.mjtObj.mjOBJ_BODY.value,'hub');assert.ok(hub>=0);assert.equal(m.body_jntnum[hub],0);
  const rest=new Float64Array(nv),mass=d.M[0],k=m.jnt_stiffness[0];
  for(let i=0;i<n;i++){
@@ -80,7 +82,7 @@ function compiledPhysical(mj,m,d,n){
  return {mass,k,edgeK:m.flex_edgestiffness[0],edgeC:m.flex_edgedamping[0],rest:Array.from(rest),edges,lengths:Array.from(m.flexedge_length0),maxStrain:.25,maxDisplacement:.06};
 }
 
-function integrateReference(p,initial,duration,h,guard,onProgress){
+export function integrateReference(p,initial,duration,h,guard,onProgress){
  const nv=p.rest.length,count=Math.round(duration/GRID)+1,stride=Math.round(GRID/h),steps=(count-1)*stride,engine=createGeometricRK4(p,initial),state=engine.state;
  const trajectory=new Float64Array(count*2*nv),energy=new Float64Array(count),power=new Float64Array(count),loss=new Float64Array(count),oldXYZ=new Float64Array(3*nv/2);
  const initialEnergy=engine.observation.energy;let maxResidual=0,sample=0;
@@ -94,7 +96,7 @@ function integrateReference(p,initial,duration,h,guard,onProgress){
  return {dt:h,steps,initialEnergy,maxResidual,trajectory,energy,power,loss};
 }
 
-function compareReferences(a,b,nv){
+export function compareReferences(a,b,nv){
  let position=0,velocity=0,loss=0,energy=0,power=0,sampledLoss=0;
  for(let i=0;i<a.energy.length;i++){
   for(let j=0;j<nv;j++){position=Math.max(position,Math.abs(a.trajectory[i*2*nv+j]-b.trajectory[i*2*nv+j]));velocity=Math.max(velocity,Math.abs(a.trajectory[i*2*nv+nv+j]-b.trajectory[i*2*nv+nv+j]));}
