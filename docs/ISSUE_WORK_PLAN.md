@@ -115,3 +115,7 @@ The next physical change must identify whether it changes **the material/contact
 ## Tracking and closure
 
 All issues remain open. This plan consolidates them without declaring a fix, accepting the port's quantitative claims as local evidence, or changing any issue text. Later implementation PRs should name their issue, source baseline, receiving cases and exact validation receipts. Close an issue only after its actual acceptance scope is received; metadata delivery alone does not close an issue whose requested mechanics remain outstanding.
+
+## Current independent rider increment — 2026-10-29
+
+Local-first CI adoption is received in PR55. PR60 carries #39 labels and PR61 carries #40 terrain delivery; both retain deferred browser receiving. Separate from stability PR54, [D0 task-target preparation](RIDER_TASK_TARGETS.md) now adds a sampled hip/trunk target viewer and headless input receiver. This reuses the existing analytic setup IK and fixed passive domains. It is a reviewable preparation step toward D, not completion of runtime IK, dynamic recovery or whole-path support validation. The next D1 slice binds targets to the existing bounded drive, integer command ticks and actual retained interfaces after the B dynamic-acceptance gate; no repeated-bump or supported-crouch claim is made here. Continue local verification without triggering hosted CI before deliberate resumption on or after 1 November.

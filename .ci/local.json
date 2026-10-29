@@ -15,7 +15,8 @@
         "test/physics.test.mjs",
         "test/suspension-reference.test.mjs",
         "test/records.test.mjs",
-        "test/terrain-request.test.mjs"
+        "test/terrain-request.test.mjs",
+        "test/rider-task.test.mjs"
       ]
     ],
     "unit": [
