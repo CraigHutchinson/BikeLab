@@ -29,3 +29,5 @@ The browser regression selects the new example on both bikes, compares complete 
 ## Next acceptance gate
 
 Use this common command/effort path for the [unified manoeuvre-control direction](RIDER_CONTROL_ARCHITECTURE.md#unified-mtb-control-direction--2026-10-29). First establish a slow supported shift and recovery with declared tracking, work, contact and convergence budgets after the B numerical/stability gate. Then receive support-aware feedback and checkpointed phase transitions before attempting lifts, flight or balance. The completed D1 mechanism does not waive those gates.
+
+The [held transfer/control follow-up](RIDER_TRANSFER_REVIEW.md) adds longer target and recovery holds, matched controls and saved-sample phase diagnostics. It separates relative command response from the larger absolute hold error; stable supported tracking remains unqualified.
