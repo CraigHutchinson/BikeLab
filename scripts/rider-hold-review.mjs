@@ -1,3 +1,4 @@
+import {staticRiderReference} from '../dist/rider-static-reference.js';
 import {riderGeometryError} from '../dist/rider-geometry-error.js';
 import {readFile,mkdir,writeFile} from 'node:fs/promises';
 import {join,basename} from 'node:path';
@@ -17,7 +18,12 @@ for(const entry of input.cases){
   maxSumResidual=Math.max(maxSumResidual,Math.hypot(...chain.sum.map((v,i)=>v-observation.hipError[i])));
  }
  const geometry={scope:'Ordered joint-then-trunk geometric accounting, not independent causal contributions.',samples:observations.length,maxNormM:maxima,maxSumResidualM:maxSumResidual,final:observations.at(-1)??null};
- cases.push({file:entry.file,sha256,bike:record.scenario.bike.bike,dt:record.scenario.motion.dt,summary:summarizeRiderLoads(record),geometry});
+ const staticSamples=[0,.4,.6,1].map(time=>{
+  const frame=record.frames.find(f=>Math.abs(f.time-time)<1e-8);if(!frame)return {time,status:'unreached'};
+  const command=record.scenario.riderTargets.commands[frame.active.targetCommand],reference=staticRiderReference({passive:record.scenario.articulated.passive,drive:record.scenario.active,goal:{hip:command.hip,trunkPitch:command.trunkPitch},gravity:record.scenario.motion.gravity,framePitch:frame.frame[2]});
+  return {time,reference,recordedActive:frame.active.torque};
+ });
+ cases.push({file:entry.file,sha256,bike:record.scenario.bike.bike,dt:record.scenario.motion.dt,summary:summarizeRiderLoads(record),geometry,staticSamples});
 }
 await mkdir(destination,{recursive:true});await writeFile(join(destination,'report.json'),JSON.stringify({source:'Unchanged native records; verified against source receipt hashes.',cases},null,2)+'\n');
 console.log('Reviewed '+cases.length+' records; no dynamics rerun.');

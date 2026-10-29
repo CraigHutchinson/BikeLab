@@ -19,7 +19,8 @@
         "test/rider-task.test.mjs",
         "test/rider-transfer.test.mjs",
         "test/rider-loads.test.mjs",
-        "test/rider-geometry-error.test.mjs"
+        "test/rider-geometry-error.test.mjs",
+        "test/rider-static-reference.test.mjs"
       ]
     ],
     "unit": [
