@@ -28,15 +28,18 @@ export function validateDrive(input,passive){
 export function createDriveFrame(){return {targetAngles:new Float64Array(4),angles:new Float64Array(4),velocities:new Float64Array(4),error:new Float64Array(4),requestedTorque:new Float64Array(4),torque:new Float64Array(4),power:new Float64Array(4),saturation:new Uint8Array(4),totalPower:0,work:0};}
 export function materializeDriveFrame(f){return Object.fromEntries(Object.entries(f).map(([k,v])=>[k,ArrayBuffer.isView(v)?Array.from(v):v]));}
 
+// Shared native target policy for static and scheduled goals.
+export function canonicalTargetDelta(angle,initial){const delta=angle-initial;return Math.abs(delta)<1e-12?0:Number(delta.toPrecision(12));}
 // Pure evaluator into caller-owned storage. Saturation bits: 1 torque, 2 power.
-export function evaluateDrive(laws,q,v,out){
+// Optional targets come from the validated, setup-time target compiler.
+export function evaluateDrive(laws,q,v,out,targets=null){
  out.totalPower=0;
  for(let i=0;i<4;i++){
-  const law=laws[i],c=law.drive,rate=v[i],error=law.targetQ-q[i],requested=c.kp*error-c.kd*rate;
+  const law=laws[i],c=law.drive,rate=v[i],error=(targets?targets.q[i]:law.targetQ)-q[i],requested=c.kp*error-c.kd*rate;
   let torque=Math.max(-c.maxTorque,Math.min(c.maxTorque,requested)),bits=torque===requested?0:1;
   const power=torque*rate,limit=power>=0?c.maxPositivePower:c.maxNegativePower;
   if(Math.abs(power)>limit){torque*=limit/Math.abs(power);bits|=2;}
-  out.targetAngles[i]=c.targetAngle;out.angles[i]=law.angle0+q[i];out.velocities[i]=rate;out.error[i]=error;out.requestedTorque[i]=requested;out.torque[i]=torque;out.power[i]=torque*rate;out.saturation[i]=bits;out.totalPower+=out.power[i];
+  out.targetAngles[i]=targets?targets.angles[i]:c.targetAngle;out.angles[i]=law.angle0+q[i];out.velocities[i]=rate;out.error[i]=error;out.requestedTorque[i]=requested;out.torque[i]=torque;out.power[i]=torque*rate;out.saturation[i]=bits;out.totalPower+=out.power[i];
  }
  return out;
 }
@@ -47,7 +50,7 @@ export function createRiderDrive(mj,model,configuration,passive){
   if(id<0||body<0||model.jnt_type[id]!==mj.mjtJoint.mjJNT_HINGE.value||model.jnt_bodyid[id]!==body)throw Error('Invalid rider drive joint binding.');
   // Match the canonical model's precision policy. Host trig may differ by an
   // ulp; a nominal zero target must not become a tiny host-dependent drive.
-  const drive=spec.joints[law.name],delta=drive.targetAngle-law.angle0,targetQ=Math.abs(delta)<1e-12?0:Number(delta.toPrecision(12));
+  const drive=spec.joints[law.name],targetQ=canonicalTargetDelta(drive.targetAngle,law.angle0);
   return Object.freeze({name:law.name,angle0:law.angle0,targetQ,drive,q:model.jnt_qposadr[id],v:model.jnt_dofadr[id]});
  });
  const q=new Float64Array(4),v=new Float64Array(4),frame=createDriveFrame();
@@ -61,7 +64,7 @@ export function createRiderDrive(mj,model,configuration,passive){
   return null;
  }
  return {laws,frame,issue,
-  apply(data){const positions=data.qpos,velocities=data.qvel,force=data.qfrc_applied;for(let i=0;i<4;i++){q[i]=positions[laws[i].q];v[i]=velocities[laws[i].v];}evaluateDrive(laws,q,v,frame);for(let i=0;i<4;i++)force[laws[i].v]+=frame.torque[i];},
+  apply(data,targets=null){const positions=data.qpos,velocities=data.qvel,force=data.qfrc_applied;for(let i=0;i<4;i++){q[i]=positions[laws[i].q];v[i]=velocities[laws[i].v];}evaluateDrive(laws,q,v,frame,targets);for(let i=0;i<4;i++)force[laws[i].v]+=frame.torque[i];},
   record(out,work){for(const key of Object.keys(frame))if(ArrayBuffer.isView(frame[key]))out[key].set(frame[key]);out.totalPower=frame.totalPower;out.work=work;}
  };
 }

@@ -1,0 +1,31 @@
+# Timed rider targets through the common drive — D1 mechanism checkpoint
+
+2026-10-29. This continues the D0 task preview (PR62) with a native consumer. The Trail bike example **Rider targets · small shift and return** and `node scripts/rider-target-review.mjs [output-directory]` share the same scenario and engine. It is independent of the numerical/stability work in PR54. No controller gains, passive laws, contact laws, pitch limits or masses are changed.
+
+## Common command path
+
+A producer supplies `riderTargets` with format `bikelab-rider-targets-0.1` and 1–64 commands. Each command has an integer physics `tick`, a short `phase` label, frame-local hip x/z and trunk pitch. Ticks start at zero, increase, and fit the run. The first target must match the original posture. Phase names annotate intent; they do not detect contact, certify success or change mechanics.
+
+At setup, the existing analytic IK maps each requested posture to four absolute joint goals against the original body, retained anchors, bend branch and passive domains. The common canonical target conversion maps angle differences to native joint displacements with the existing zero/12-significant-digit policy. Source requests remain in the scenario; compiled goals use preallocated storage during stepping. Conflicting static drive targets are rejected. The current producer is a five-tick 2 mm forward/down transfer with a 0.002 rad trunk change, then the reversed target sequence. This small 0.1 s probe is a scheduling receiver, not a slow controlled crouch or a manoeuvre.
+
+The native effort layer is the same sampled/held PD controller used by posture hold. It reads actual joint displacement and velocity each physics tick and applies bounded internal torque. Existing torque/power saturation, speed/held-power guards and signed torque-times-actual-displacement work accounting remain authoritative. Goals are never written to native positions or velocities; no root drive, spring-rest change or lift impulse is added. The target producer can later change without replacing this effort layer, subject to the same feasibility and recording contracts.
+
+Target changes and drive/brake changes share a right-continuous integer tick boundary. Integrate and account for the preceding interval under its old commands, then install the new commands. Both command changes can occur together. If either guard rejects the endpoint, restore native state, equality activation, warm start, hub command and target index; rejected work is excluded. Records include every target boundary even when the ordinary observation cadence is coarser. A command at the final tick is observable but has no following interval in which to act.
+
+The new record model is `bikelab-trail-bike-targets-0.1`. Older formats cannot silently contain target commands. Native identity binds the sequence and its physical tick duration. Existing record/model behavior is unchanged when the field is absent. This checkpoint is **launch-only**: fresh-state continuation has no accepted target-clock/phase-resume contract yet, so it is rejected and the corresponding UI restart/tyre-probe buttons are disabled. Combining target sequences with the separate tyre observation formats is also rejected rather than silently dropping one contract.
+
+## Receiving diagnostics
+
+Each target record reports the command index, absolute target/actual joint angles, tracking errors, requested/applied torque, saturation, instantaneous power and accumulated work. It also reports actual hip, trunk pitch and whole-rider COM transformed from native world geometry into the moving frame's coordinates, alongside the requested hip/trunk and target COM. Native rotation matrices own the transform. Existing wheel contact/load, whole-system momentum, energy and attachment diagnostics remain available.
+
+The [saved evidence](evidence/rider-target-drive.json) includes full normalized inputs and SHA-256 hashes for four reproducible 0.1 s records: unchanged hold and target sequence on both bikes. All four complete within existing guards. Target-sequence rider work is approximately −5.80 J full suspension and −9.28 J hardtail: the controller absorbs mechanical energy in this probe. The actual posture does not follow the tiny target exactly; for example the hardtail ends about 20.3 mm below the requested hip height. This is **not successful tracking, equilibrium or a returned rider**, even though the command sequence ends at its original target. Closed-loop support control and the stability gate remain unresolved.
+
+On Windows / Node 24.22.0, all 54 quick-tier tests pass. The full Node suite passes 289 of 290 tests; its only failure is the unchanged loopback-server `connect EACCES` environment limitation. The unit receipt records failure and no full attestation is claimed.
+
+Six focused target tests check strict bounded input/ownership, right-continuous target receipt, replay on both bikes, observation-cadence independence, unchanged-target physical equivalence, simultaneous hub/target rollback, independently intercepted work, and flight momentum/energy bounds with timestep refinement. Existing eight drive tests retain their gates. Two pre-change short active records were also compared byte for byte on this host after the change. These are numerical/mechanism controls, not physical calibration.
+
+The browser regression selects the new example on both bikes, compares complete records to headless replay, checks requested/actual readouts and launch-only controls, captures desktop/mobile layouts and verifies cleanup when leaving active mode. Browser execution and capture inspection remain deferred under the approved unavailable-Edge fallback. Hosted CI and Pages deployment remain paused until deliberate resumption on or after 1 November 2026.
+
+## Next acceptance gate
+
+Use this common command/effort path for the [unified manoeuvre-control direction](RIDER_CONTROL_ARCHITECTURE.md#unified-mtb-control-direction--2026-10-29). First establish a slow supported shift and recovery with declared tracking, work, contact and convergence budgets after the B numerical/stability gate. Then receive support-aware feedback and checkpointed phase transitions before attempting lifts, flight or balance. The completed D1 mechanism does not waive those gates.

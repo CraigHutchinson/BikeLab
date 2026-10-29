@@ -1,3 +1,4 @@
+import {TARGET_MODEL} from '../dist/rider-targets.js';
 import assert from 'node:assert/strict';
 import {mkdir,readFile,writeFile} from 'node:fs/promises';
 import {join} from 'node:path';
@@ -57,12 +58,23 @@ export async function checkRiderDrive({page,root,dir,report}){
   const freshPending=page.waitForEvent('download');await page.locator('#save').click();const freshPath=join(dir,bike+'-window-fresh.json');await (await freshPending).saveAs(freshPath);
   const freshRecord=JSON.parse(await readFile(freshPath,'utf8'));assert.deepEqual(freshRecord.initialState,windowRecord.windowObservation.start.state);
   const freshAgreement=compareCanonicalTrailRecord(freshRecord,await replay(freshRecord));
+  await page.locator('#example').selectOption('rider-targets');await ready();
+  assert.ok(await page.locator('#restartState').isDisabled());assert.ok(await page.locator('#inspectTyres').isDisabled());assert.ok(await page.locator('#observeTyreWindow').isDisabled());
+  const targetPending=page.waitForEvent('download');await page.locator('#save').click();const targetPath=join(dir,bike+'-targets.json');await (await targetPending).saveAs(targetPath);
+  const targetRecord=JSON.parse(await readFile(targetPath,'utf8'));assert.equal(targetRecord.model,TARGET_MODEL);
+  const targetAgreement=compareCanonicalTrailRecord(targetRecord,await replay(targetRecord));
+  await page.locator('#scrub').fill(String(targetRecord.frames.length-1));
+  assert.match(await page.locator('#riderTargetStatus').innerText(),/recover.*Actual hip.*Target \/ actual frame-local rider COM/);
+  await capture(bike+'-targets-desktop');
+  for(const width of [390,320]){await page.setViewportSize({width,height:1100});assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true);await capture(bike+'-targets-'+width);}
+  await page.setViewportSize({width:1440,height:1100});
   // Mode edits remove active drive before the legacy consumer executes.
   await page.locator('[name=rider]').selectOption('compliant');await page.locator('[name=duration]').fill('.02');await page.locator('#setup button[type=submit]').click();await ready();
   assert.ok(await page.locator('#riderDrive').isHidden());assert.equal(Object.hasOwn(JSON.parse(await page.locator('#setupText').inputValue()),'active'),false);
   assert.ok(await page.locator('#tyreMotion').isHidden());assert.ok(await page.locator('#inspectTyres').isDisabled());
   assert.equal(Object.hasOwn(JSON.parse(await page.locator('#setupText').inputValue()),'diagnostics'),false);
-  cases.push({bike,status:actual.status,steps:actual.summary.steps,riderWork:actual.summary.riderWork,agreement,tyreProbe:{status:tyreRecord.status,steps:tyreRecord.summary.steps,agreement:tyreAgreement},window:{agreement:windowAgreement,freshAgreement,startTick:windowRecord.windowObservation.start.tick}});
+  assert.equal(Object.hasOwn(JSON.parse(await page.locator('#setupText').inputValue()),'riderTargets'),false);
+  cases.push({bike,targetSequence:{agreement:targetAgreement,status:targetRecord.status,riderWork:targetRecord.summary.riderWork},status:actual.status,steps:actual.summary.steps,riderWork:actual.summary.riderWork,agreement,tyreProbe:{status:tyreRecord.status,steps:tyreRecord.summary.steps,agreement:tyreAgreement},window:{agreement:windowAgreement,freshAgreement,startTick:windowRecord.windowObservation.start.tick}});
  }
  // Authored drive settings survive JSON normalization; invalid controls fail visibly.
  const authored=activePreset('full');authored.motion.duration=.02;
@@ -74,6 +86,6 @@ export async function checkRiderDrive({page,root,dir,report}){
  assert.equal(await page.locator('[name=duration]').getAttribute('max'),'10');
  await page.locator('#cancel').click();assert.ok(await page.locator('#save').isDisabled());
  report.riderDrive={cases,scope:'Actual worker, full-record replay, active readouts, mobile layout, JSON admission, legacy mode transition and long-probe cancellation. Also receives short fresh-state tyre diagnostics, dense observations, unchanged native identity, plots and mode cleanup. Also receives uninterrupted late windows, unchanged final state, window plots and fresh-start comparison controls. No equilibrium or calibrated active rider claim.'};
- report.checks.push('Active rider hold on both bikes: full browser/headless records, target/torque/work readouts, mobile panels and lifecycle controls.');
+ report.checks.push('Active rider hold on both bikes: full browser/headless records, timed target sequences and requested/actual hip/trunk/COM, target/torque/work readouts, mobile panels and lifecycle controls.');
  await writeFile(join(dir,'report.json'),JSON.stringify(report.riderDrive,null,2)+'\n');
 }
