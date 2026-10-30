@@ -1,3 +1,4 @@
+import {CONTROL_MODEL} from '../dist/rider-controller.js';
 import {riderGeometryError} from '../dist/rider-geometry-error.js';
 import {riderLoadSample} from '../dist/rider-loads.js';
 import {summarizeRiderTracking,compareRiderTransfers} from '../dist/rider-transfer.js';
@@ -93,13 +94,31 @@ export async function checkRiderDrive({page,root,dir,report}){
    transfers.push({record,agreement,tracking});
   }
   const transferComparison=compareRiderTransfers(transfers[1].record,transfers[0].record);
+  const controllerCases=[];
+  for(const example of ['rider-controller-hold','rider-controller']){
+   await page.locator('#example').selectOption(example);await ready();
+   const pending=page.waitForEvent('download');await page.locator('#save').click();const path=join(dir,bike+'-'+example+'.json');await (await pending).saveAs(path);
+   const record=JSON.parse(await readFile(path,'utf8'));assert.equal(record.model,CONTROL_MODEL);
+   const agreement=compareCanonicalTrailRecord(record,await replay(record));
+   await page.locator('#scrub').fill(String(record.frames.length-1));
+   assert.match(await page.locator('#riderControlStatus').innerText(),/Runtime estimate:.*Estimate \/ posture feedback \/ velocity feedback/);
+   assert.match(await page.locator('#riderControlGains').innerText(),/Mass 70 kg.*current subtree inertia/);
+   for(const j of riderLoadSample(record.scenario,record.frames.at(-1)).joints)assert.ok(Math.abs(j.decompositionResidual)<1e-8);
+   assert.ok(await page.locator('#restartState').isDisabled());await capture(bike+'-'+example);
+   await page.setViewportSize({width:320,height:1100});assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true);await capture(bike+'-'+example+'-320');await page.setViewportSize({width:1440,height:1100});
+   controllerCases.push({example,agreement,tracking:summarizeRiderTracking(record)});
+  }
+  // A user mass edit recomputes gains; no fixed gain values survive in JSON.
+  await page.locator('[name=riderMass]').fill('100');await page.locator('#setup button[type=submit]').click();await ready();
+  assert.match(await page.locator('#riderControlGains').innerText(),/Mass 100 kg/);
+  assert.equal(Object.hasOwn(JSON.parse(await page.locator('#setupText').inputValue()).active.joints.hip,'kp'),false);
   // Mode edits remove active drive before the legacy consumer executes.
   await page.locator('[name=rider]').selectOption('compliant');await page.locator('[name=duration]').fill('.02');await page.locator('#setup button[type=submit]').click();await ready();
   assert.ok(await page.locator('#riderDrive').isHidden());assert.equal(Object.hasOwn(JSON.parse(await page.locator('#setupText').inputValue()),'active'),false);
   assert.ok(await page.locator('#tyreMotion').isHidden());assert.ok(await page.locator('#inspectTyres').isDisabled());
   assert.equal(Object.hasOwn(JSON.parse(await page.locator('#setupText').inputValue()),'diagnostics'),false);
   assert.equal(Object.hasOwn(JSON.parse(await page.locator('#setupText').inputValue()),'riderTargets'),false);
-  cases.push({bike,heldTransfer:{cases:transfers.map(({agreement,tracking})=>({agreement,tracking})),comparison:transferComparison},targetSequence:{agreement:targetAgreement,status:targetRecord.status,riderWork:targetRecord.summary.riderWork},status:actual.status,steps:actual.summary.steps,riderWork:actual.summary.riderWork,agreement,tyreProbe:{status:tyreRecord.status,steps:tyreRecord.summary.steps,agreement:tyreAgreement},window:{agreement:windowAgreement,freshAgreement,startTick:windowRecord.windowObservation.start.tick}});
+  cases.push({bike,controller:controllerCases,heldTransfer:{cases:transfers.map(({agreement,tracking})=>({agreement,tracking})),comparison:transferComparison},targetSequence:{agreement:targetAgreement,status:targetRecord.status,riderWork:targetRecord.summary.riderWork},status:actual.status,steps:actual.summary.steps,riderWork:actual.summary.riderWork,agreement,tyreProbe:{status:tyreRecord.status,steps:tyreRecord.summary.steps,agreement:tyreAgreement},window:{agreement:windowAgreement,freshAgreement,startTick:windowRecord.windowObservation.start.tick}});
  }
  // Authored drive settings survive JSON normalization; invalid controls fail visibly.
  const authored=activePreset('full');authored.motion.duration=.02;

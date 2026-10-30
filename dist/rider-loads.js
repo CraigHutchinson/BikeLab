@@ -1,3 +1,4 @@
+import {CONTROL_FORMAT} from './rider-controller.js';
 // Postprocess accepted samples only. Never feeds forces or targets into dynamics.
 import {JOINTS} from './rider-passive.js';
 import {SEGMENTS} from './rider-posture.js';
@@ -22,9 +23,10 @@ export function riderLoadSample(scenario,frame){
  const joints=[];
  if(scenario.active){
   const active=frame.active;for(const key of ['error','velocities','requestedTorque','torque','saturation'])vector(active?.[key],4,'drive '+key);
+  if(scenario.active.format===CONTROL_FORMAT)for(const key of ['kp','kd','estimate'])vector(active[key],4,'controller '+key);
   for(let i=0;i<JOINTS.length;i++){
-   const name=JOINTS[i],law=scenario.active.joints[name],proportional=finite(law.kp,'kp')*active.error[i],damping=-finite(law.kd,'kd')*active.velocities[i];
-   joints.push({name,proportional,damping,requested:active.requestedTorque[i],applied:active.torque[i],saturation:active.saturation[i],decompositionResidual:active.requestedTorque[i]-proportional-damping});
+   const name=JOINTS[i],law=scenario.active.joints[name],proportional=finite(active.kp?.[i]??law.kp,'kp')*active.error[i],damping=-finite(active.kd?.[i]??law.kd,'kd')*active.velocities[i],estimate=finite(active.estimate?.[i]??0,'effort estimate');
+   joints.push({name,...(active.estimate?{estimate}:{}),proportional,damping,requested:active.requestedTorque[i],applied:active.torque[i],saturation:active.saturation[i],decompositionResidual:active.requestedTorque[i]-proportional-damping-estimate});
   }
  }
  return {hand,foot,support,weight,netForce,comVelocity,joints};

@@ -41,6 +41,8 @@ The **Solver trial** station runs a pinned Rapier 3D prismatic assembly against 
 
 The **[moving-wheel station](https://craighutchinson.github.io/BikeLab/moving-wheel.html)** launches a deformable wheel over flat, rounded and square-edge terrain, with independent hub motion/spin, distributed normal contacts, force and work histories, replay and explicit support-limit termination. Run `node scripts/moving-wheel.mjs [setup-or-record.json]` headlessly. This is an uncalibrated frictionless spring-supported ring; sharp-corner mesh sensitivity, inflation and fracture remain open; connected full-bike contact is now received by the connected Trail bike station. See [model](docs/MOVING_WHEEL.md), [evidence](docs/ITERATION_15_EVIDENCE.md) and [connected bike/rider milestones](docs/DYNAMICS_DELIVERY_PLAN.md).
 
+The experimental **[runtime rider controller](docs/RIDER_CONTROLLER_ITERATION.md)** adds estimated effort plus feedback and a matched hold control in Trail bike. Rider mass and current geometry determine gravity effort and nominal gains; the viewer shows estimate, feedback, limits and applied work. Its static estimate requires two-wheel contact geometry. This is not a calibrated balance or stunt controller. Run `node scripts/rider-controller-review.mjs` for the complete both-bike configuration matrix.
+
 ## Inspect numerical agreement
 
 In the suspension station, use **Use reference setup** to select fixed support and equal compression/rebound damping. The independent analytical trace and per-channel error measurements appear for supported interior-travel runs. Unsupported setups show why no reference comparison is available. This checks the synthetic equations, not physical fork accuracy.

@@ -1,3 +1,4 @@
+import {CONTROL_FORMAT,CONTROL_MODEL} from './rider-controller.js';
 // Observation-only matched controls. No controller tuning or force-law changes.
 import {activePreset,validate} from './trail-bike.js';
 import {compileRiderTask} from './rider-task.js';
@@ -16,9 +17,14 @@ export function riderTransferPreset(bike='full',{control=false,dt=.00003125}={})
  add(80,'recovery-hold',0);
  a.riderTargets={format:TARGET_FORMAT,commands};const {wheelParams,...scenario}=validate(a);return scenario;
 }
+// Same target producer and matched schedule, with a versioned runtime effort policy.
+export function riderControllerPreset(bike='full',options={}){
+ const a=riderTransferPreset(bike,options);a.active={format:CONTROL_FORMAT};
+ const {wheelParams,...scenario}=validate(a);return scenario;
+}
 const finite=(v,label)=>{if(!Number.isFinite(v))throw Error('Invalid '+label);return v;};
 function samples(record){
- if(record?.model!==TARGET_MODEL||!Array.isArray(record.frames)||!record.frames.length)throw Error('Tracking needs an accepted target record.');
+ if(![TARGET_MODEL,CONTROL_MODEL].includes(record?.model)||!Array.isArray(record.frames)||!record.frames.length)throw Error('Tracking needs an accepted target record.');
  const {dt,duration}=record.scenario.motion,commands=record.scenario.riderTargets.commands;
  if(!(dt>0)||!Number.isFinite(dt)||!Number.isFinite(duration)||duration<0||!commands?.length)throw Error('Invalid target clock.');
  let previous=-1,index=0;
