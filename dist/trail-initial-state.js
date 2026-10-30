@@ -1,3 +1,4 @@
+import {CONTROL_FORMAT,CONTROL_MODEL} from './rider-controller.js';
 import {TARGET_MODEL} from './rider-targets.js';
 import {ACTIVE_MODEL} from './rider-drive.js';
 // Fresh-run scalar state, not a continuation checkpoint. All derived native state
@@ -47,7 +48,7 @@ export async function stateIdentity(xml,scenario) {
  // dt and command/recording schedule are run controls. Physical geometry,
  // constitutive laws, gravity, admission limits and native build are bound.
  // Launch-only target sequences additionally bind their commands and tick duration.
- const physical={model:scenario.riderTargets?TARGET_MODEL:scenario.active?ACTIVE_MODEL:STATE_MODEL,nativeBuild,forceMapping:'native-shock-jacobian-0.1',xml:xml.replace(/timestep="[^"]*"/,'timestep="run-control"'),bike:scenario.bike,wheel:scenario.wheel,articulated:scenario.articulated,assembly:scenario.assembly,...(scenario.active?{active:scenario.active,driveSemantics:'explicit-held-pd-torque-displacement-work-0.1'}:{})};
+ const physical={model:scenario.active?.format===CONTROL_FORMAT?CONTROL_MODEL:scenario.riderTargets?TARGET_MODEL:scenario.active?ACTIVE_MODEL:STATE_MODEL,nativeBuild,forceMapping:'native-shock-jacobian-0.1',xml:xml.replace(/timestep="[^"]*"/,'timestep="run-control"'),bike:scenario.bike,wheel:scenario.wheel,articulated:scenario.articulated,assembly:scenario.assembly,...(scenario.active?{active:scenario.active,driveSemantics:scenario.active.format===CONTROL_FORMAT?'runtime-static-estimate-inertia-pd-held-0.1':'explicit-held-pd-torque-displacement-work-0.1'}:{})};
  if(scenario.riderTargets){physical.riderTargets=scenario.riderTargets;physical.targetStepSeconds=scenario.motion.dt;}
  const bytes=new TextEncoder().encode(JSON.stringify(physical));
  return Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',bytes)),v=>v.toString(16).padStart(2,'0')).join('');

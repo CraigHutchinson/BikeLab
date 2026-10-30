@@ -1,3 +1,4 @@
+import {CONTROL_FORMAT,createControlFrame,createRiderController} from './rider-controller.js';
 // Application-owned, explicit sampled/held joint effort. No root actuation,
 // integral state, torque slew model, posture projection or passive-law changes.
 import {compilePassiveRider,JOINTS} from './rider-passive.js';
@@ -12,30 +13,38 @@ function object(v,fields,label){
  }
 }
 export function validateDrive(input,passive){
- object(input,['format','joints'],'rider drive');
- if(Object.hasOwn(input,'format')&&input.format!==DRIVE_FORMAT)throw Error('Unsupported rider drive format.');
+ object(input,['format','joints','response'],'rider drive');
+ const controlled=input.format===CONTROL_FORMAT;
+ object(input,controlled?['format','joints','response']:['format','joints'],'rider drive');
+ if(Object.hasOwn(input,'format')&&!controlled&&input.format!==DRIVE_FORMAT)throw Error('Unsupported rider drive format.');
  const compiled=compilePassiveRider(passive),supplied=Object.hasOwn(input,'joints')?input.joints:{};object(supplied,JOINTS,'drive joints');
- const joints={};
+ let response;
+ if(controlled){const r=Object.hasOwn(input,'response')?input.response:{};object(r,['frequencyHz','dampingRatio','compensation'],'rider response');response={frequencyHz:4,dampingRatio:1,compensation:'two-wheel-static',...r};
+  if(!Number.isFinite(response.frequencyHz)||response.frequencyHz<.1||response.frequencyHz>10||!Number.isFinite(response.dampingRatio)||response.dampingRatio<0||response.dampingRatio>3||!['off','two-wheel-static'].includes(response.compensation))throw Error('Unsupported rider response policy.');Object.freeze(response);
+ }
+ const jointKeys=controlled?keys.filter(k=>k!=='kp'&&k!=='kd'):keys,joints={};
  for(let i=0;i<4;i++){
-  const name=JOINTS[i],law=compiled.laws[i],patch=Object.hasOwn(supplied,name)?supplied[name]:{};object(patch,keys,name+' drive');
+  const name=JOINTS[i],law=compiled.laws[i],patch=Object.hasOwn(supplied,name)?supplied[name]:{};object(patch,jointKeys,name+' drive');
   const v={targetAngle:law.angle0,kp:[2400,2400,800,600][i],kd:[100,100,30,25][i],maxTorque:i<2?250:100,maxSpeed:12,maxPositivePower:i<2?600:200,maxNegativePower:i<2?600:200,...patch};
   const bounds={targetAngle:[law.minAngle,law.maxAngle],kp:[0,5000],kd:[0,500],maxTorque:[0,500],maxSpeed:[.1,30],maxPositivePower:[0,5000],maxNegativePower:[0,5000]};
-  for(const k of keys)if(!Number.isFinite(v[k])||v[k]<bounds[k][0]||v[k]>bounds[k][1])throw Error(name+' '+k+' outside supported range.');
+  if(controlled){delete v.kp;delete v.kd;}
+  for(const k of jointKeys)if(!Number.isFinite(v[k])||v[k]<bounds[k][0]||v[k]>bounds[k][1])throw Error(name+' '+k+' outside supported range.');
   joints[name]=Object.freeze(v);
  }
- return Object.freeze({format:DRIVE_FORMAT,joints:Object.freeze(joints)});
+ return Object.freeze({format:controlled?CONTROL_FORMAT:DRIVE_FORMAT,joints:Object.freeze(joints),...(controlled?{response}:{})});
 }
-export function createDriveFrame(){return {targetAngles:new Float64Array(4),angles:new Float64Array(4),velocities:new Float64Array(4),error:new Float64Array(4),requestedTorque:new Float64Array(4),torque:new Float64Array(4),power:new Float64Array(4),saturation:new Uint8Array(4),totalPower:0,work:0};}
+export function createDriveFrame(controlled=false){return {...(controlled?createControlFrame():{}),targetAngles:new Float64Array(4),angles:new Float64Array(4),velocities:new Float64Array(4),error:new Float64Array(4),requestedTorque:new Float64Array(4),torque:new Float64Array(4),power:new Float64Array(4),saturation:new Uint8Array(4),totalPower:0,work:0};}
 export function materializeDriveFrame(f){return Object.fromEntries(Object.entries(f).map(([k,v])=>[k,ArrayBuffer.isView(v)?Array.from(v):v]));}
 
 // Shared native target policy for static and scheduled goals.
 export function canonicalTargetDelta(angle,initial){const delta=angle-initial;return Math.abs(delta)<1e-12?0:Number(delta.toPrecision(12));}
 // Pure evaluator into caller-owned storage. Saturation bits: 1 torque, 2 power.
 // Optional targets come from the validated, setup-time target compiler.
-export function evaluateDrive(laws,q,v,out,targets=null){
+export function evaluateDrive(laws,q,v,out,targets=null,control=null){
  out.totalPower=0;
  for(let i=0;i<4;i++){
-  const law=laws[i],c=law.drive,rate=v[i],error=(targets?targets.q[i]:law.targetQ)-q[i],requested=c.kp*error-c.kd*rate;
+  const law=laws[i],c=law.drive,rate=v[i],error=(targets?targets.q[i]:law.targetQ)-q[i],proportional=(control?control.kp[i]:c.kp)*error,damping=-(control?control.kd[i]:c.kd)*rate,requested=proportional+damping+(control?control.estimate[i]:0);
+  if(control){control.proportional[i]=proportional;control.damping[i]=damping;}
   let torque=Math.max(-c.maxTorque,Math.min(c.maxTorque,requested)),bits=torque===requested?0:1;
   const power=torque*rate,limit=power>=0?c.maxPositivePower:c.maxNegativePower;
   if(Math.abs(power)>limit){torque*=limit/Math.abs(power);bits|=2;}
@@ -53,7 +62,8 @@ export function createRiderDrive(mj,model,configuration,passive){
   const drive=spec.joints[law.name],targetQ=canonicalTargetDelta(drive.targetAngle,law.angle0);
   return Object.freeze({name:law.name,angle0:law.angle0,targetQ,drive,q:model.jnt_qposadr[id],v:model.jnt_dofadr[id]});
  });
- const q=new Float64Array(4),v=new Float64Array(4),frame=createDriveFrame();
+ const q=new Float64Array(4),v=new Float64Array(4),frame=createDriveFrame(spec.format===CONTROL_FORMAT),controller=spec.format===CONTROL_FORMAT?createRiderController(mj,model,laws,compiled,spec.response):null;
+ const controlKeys=controller?Object.keys(controller.frame):[],frameArrays=Object.keys(frame).filter(k=>ArrayBuffer.isView(frame[k]));
  function issue(velocities,effort){
   for(let i=0;i<4;i++){
    const law=laws[i],rate=velocities[law.v],power=effort[i]*rate,c=law.drive;
@@ -64,7 +74,9 @@ export function createRiderDrive(mj,model,configuration,passive){
   return null;
  }
  return {laws,frame,issue,
-  apply(data,targets=null){const positions=data.qpos,velocities=data.qvel,force=data.qfrc_applied;for(let i=0;i<4;i++){q[i]=positions[laws[i].q];v[i]=velocities[laws[i].v];}evaluateDrive(laws,q,v,frame,targets);for(let i=0;i<4;i++)force[laws[i].v]+=frame.torque[i];},
-  record(out,work){for(const key of Object.keys(frame))if(ArrayBuffer.isView(frame[key]))out[key].set(frame[key]);out.totalPower=frame.totalPower;out.work=work;}
+  apply(data,targets=null,contactMask=0){const positions=data.qpos,velocities=data.qvel,force=data.qfrc_applied;for(let i=0;i<4;i++){q[i]=positions[laws[i].q];v[i]=velocities[laws[i].v];}if(controller){controller.frame.contactMask=contactMask;controller.evaluate(data,q);}
+   evaluateDrive(laws,q,v,frame,targets,controller?.frame);
+   if(controller){for(const key of controlKeys){const value=controller.frame[key];if(ArrayBuffer.isView(value))frame[key].set(value);else frame[key]=value;}}for(let i=0;i<4;i++)force[laws[i].v]+=frame.torque[i];},
+  record(out,work){for(const key of frameArrays)out[key].set(frame[key]);if(controller){out.contactMask=frame.contactMask;out.estimateStatus=frame.estimateStatus;}out.totalPower=frame.totalPower;out.work=work;}
  };
 }
