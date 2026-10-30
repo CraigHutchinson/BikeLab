@@ -49,3 +49,7 @@ Run `node --test test/rider-controller.test.mjs` for native mapping, mass/curren
 ## Next balanced slice
 
 The controller is an experimental shared effort mechanism, not production promotion past PR54's numerical/support gates. Preserve that separate stability work and the issue plan. Next measure a larger crouch and its recovery with declared posture/load/work budgets and actual browser interaction. Then develop support-transition policy from measured loads and momentum: one-wheel balance for endo/wheelie, followed by preload/release/flight/landing for a bunny hop. Those policies should issue targets through this same bounded drive; they need explicit support feasibility, event/phase history and checkpoint semantics, rather than separate hard-coded force sequences. Retention/release, saddle, independent rider actor and 3D motion retain their existing gates.
+
+## Received follow-up checkpoint — 2026-10-30
+
+The [larger crouch/recovery](RIDER_CROUCH.md) now completes ten both-bike mass/control/refinement runs with frozen budgets. Its transient tracking screen fails in all moving cases, despite successful final recovery. Preserve that result and test a versioned reference-rate feedback policy next; browser interaction and physical support qualification remain pending. This supersedes the earlier unmeasured-crouch next step without promoting the controller past stability or manoeuvre gates.

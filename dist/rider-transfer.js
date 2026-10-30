@@ -1,21 +1,13 @@
 import {CONTROL_FORMAT,CONTROL_MODEL} from './rider-controller.js';
 // Observation-only matched controls. No controller tuning or force-law changes.
 import {activePreset,validate} from './trail-bike.js';
-import {compileRiderTask} from './rider-task.js';
-import {TARGET_FORMAT,TARGET_MODEL} from './rider-targets.js';
+import {riderCycleTargets} from './rider-cycle.js';
+import {TARGET_MODEL} from './rider-targets.js';
 export function riderTransferPreset(bike='full',{control=false,dt=.00003125}={}){
  if(!['full','hardtail'].includes(bike)||typeof control!=='boolean')throw Error('Invalid transfer control.');
- const stride=.01/dt;if(!Number.isSafeInteger(stride)||stride<1)throw Error('Transfer commands must align to physics ticks.');
  const a=activePreset(bike,1);a.motion={...a.motion,dt,sampleDt:.01};
  const base=a.articulated.passive.posture;
- const path=compileRiderTask({passive:a.articulated.passive,goal:{hip:[base.hip[0]+.002,base.hip[1]-.002],trunkPitch:base.trunkPitch+.002},ticks:20,tickSeconds:.01}).frames;
- const commands=[],add=(timeTick,phase,index)=>{const p=control?base:path[index];commands.push({tick:timeTick*stride,phase,hip:[...p.hip],trunkPitch:p.trunkPitch});};
- add(0,'initial-hold',0);add(20,'transfer',0);
- for(let i=1;i<20;i++)add(20+i,'transfer',i);
- add(40,'target-hold',20);add(60,'recover',20);
- for(let i=1;i<20;i++)add(60+i,'recover',20-i);
- add(80,'recovery-hold',0);
- a.riderTargets={format:TARGET_FORMAT,commands};const {wheelParams,...scenario}=validate(a);return scenario;
+ a.riderTargets=riderCycleTargets(a.articulated.passive,{goal:{hip:[base.hip[0]+.002,base.hip[1]-.002],trunkPitch:base.trunkPitch+.002},control,dt,phaseSeconds:.2,phases:['initial-hold','transfer','target-hold','recover','recovery-hold']});const {wheelParams,...scenario}=validate(a);return scenario;
 }
 // Same target producer and matched schedule, with a versioned runtime effort policy.
 export function riderControllerPreset(bike='full',options={}){

@@ -151,3 +151,7 @@ All 18 currently open issues were refreshed. The [controller iteration](RIDER_CO
 - **#37–45, #48–49, #51–53:** existing A–F triage remains in force. Station/tyre laws, witness switches, event-aware stepping and reduced wheel tiers are separate changes with their own sources and convergence gates. They are not bundled into this rider implementation.
 
 Next rider consumer: larger crouch/recovery with declared tracking/support budgets and browser interaction, then measured support transitions for one-wheel balance and hop/flight/landing through the shared effort layer. Independent rider ownership, saddle/retention semantics and 3D remain required. No GitHub issue is closed by this experimental controller.
+
+## Quota holding checkpoint — 2026-10-30
+
+The [larger crouch experiment](RIDER_CROUCH.md) and complete evidence summary are ready for review on a separate draft stacked on PR68. Ten runs complete; all eight moving cases fail only the frozen transient tracking budget. The next common-control investigation is reference-velocity feedback derived from target geometry and the command clock, with no gain-table tuning or manoeuvre-specific force sequence. Browser receiving, including the newly authorized #39 Edge retry, is pending at the user-requested quota checkpoint. Keep #39/#40 browser gates, PR54 stability and #56–59 delivery/contact/reference gates open; this change closes no issue. [Handoff and commands](HOLDING_STATE.md).

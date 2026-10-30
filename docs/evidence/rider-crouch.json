@@ -1,0 +1,2757 @@
+{
+  "format": "bikelab-rider-crouch-evidence-0.1",
+  "date": "2026-10-30",
+  "implementationCommit": "3a05ffbd42047ec11a80ff22b1bb55f76d2534d5",
+  "scope": "Declared saved-sample screen. All failures retained. No gain tuning, relaxed budget or manoeuvre certification.",
+  "recordLocation": "Local ignored artifacts/rider-crouch-matrix; regenerate with node scripts/rider-crouch-review.mjs. Complete raw records are not committed.",
+  "simulationSourceWorkingBytesSHA256": {
+    "rider-crouch": "8b847e79cb523ae82c79e7fa7ad5b20ed7bdb2ba58e67cbf9b41e2c4d02e05a9",
+    "rider-cycle": "e6a2f4f0d874570fd3570abc41f344a5868df92f732fe4ac889db494c0e36401",
+    "rider-controller": "db2859d7804fc42ff509ed90ad1c5b4e74618e3939df0f204c736f985d4c4bc5",
+    "rider-drive": "c8b49e1638cdfdf88db76e518a11f8c0ac48c1ca15597cd1b7d06f4d78d0c335",
+    "rider-transfer": "44feab8ac44194329026b5a7ce507d16077e9b36ab38729427b2436b3d49cc19",
+    "trail-bike": "5933751b5cc8d993f78021deecb2ab2fee6d2e3fa7c426d91fd57fbf12e8831b"
+  },
+  "finalSourceWorkingBytesSHA256": {
+    "dist/rider-crouch.js": "1748fcafa1b996d6d3e5451c97ae1725c2b397a2194b32fce3bbf33ffd22894b",
+    "dist/rider-cycle.js": "e6a2f4f0d874570fd3570abc41f344a5868df92f732fe4ac889db494c0e36401",
+    "dist/rider-controller.js": "db2859d7804fc42ff509ed90ad1c5b4e74618e3939df0f204c736f985d4c4bc5",
+    "dist/rider-drive.js": "c8b49e1638cdfdf88db76e518a11f8c0ac48c1ca15597cd1b7d06f4d78d0c335",
+    "dist/rider-transfer.js": "44feab8ac44194329026b5a7ce507d16077e9b36ab38729427b2436b3d49cc19",
+    "dist/trail-bike.js": "5933751b5cc8d993f78021deecb2ab2fee6d2e3fa7c426d91fd57fbf12e8831b"
+  },
+  "sourceGitBlobs": {
+    "dist/rider-crouch.js": "678b98dfc9be49d61d2d9cb1232c2b646f4a2c1f",
+    "dist/rider-cycle.js": "ac29b26640f9dde622736df9c2a9702ee17515cb",
+    "dist/rider-controller.js": "b58a2f2d3c41e0031af3a290be3c84eeee5676b0",
+    "dist/rider-drive.js": "dd75778f53ad053baa48625abfa6b4885c5c0d83",
+    "dist/rider-transfer.js": "849d8688a0f1646d0775ce93727a5f6a77f78252",
+    "dist/trail-bike.js": "d6a375d9005dcf786456739b41f9b182c3c98204"
+  },
+  "sourceNote": "Working bytes may include Windows line endings. Observer validation was hardened after simulation started; all ten record SHA-256 values and final-observer assessments were independently rechecked and match. Target generation and dynamics did not change. Git blobs identify publication content.",
+  "verification": {
+    "recordHashesAndFinalAssessment": "10/10 match",
+    "targetedCrouchTests": "6/6",
+    "legacyTransferPresets": "Eight pre-refactor presets unchanged",
+    "quick": {
+      "schemaVersion": 1,
+      "level": "quick",
+      "head": "3a05ffbd42047ec11a80ff22b1bb55f76d2534d5",
+      "clean": true,
+      "node": "v24.22.0",
+      "platform": "win32",
+      "arch": "x64",
+      "startedAt": "2026-10-30T14:20:17.019Z",
+      "checks": [
+        {
+          "command": [
+            "node",
+            "scripts/check-provenance.mjs"
+          ],
+          "exitCode": 0,
+          "error": null
+        },
+        {
+          "command": [
+            "node",
+            "--test",
+            "test/ci.test.mjs",
+            "test/pages.test.mjs",
+            "test/physics.test.mjs",
+            "test/suspension-reference.test.mjs",
+            "test/records.test.mjs",
+            "test/terrain-request.test.mjs",
+            "test/rider-task.test.mjs",
+            "test/rider-transfer.test.mjs",
+            "test/rider-loads.test.mjs",
+            "test/rider-geometry-error.test.mjs",
+            "test/rider-static-reference.test.mjs",
+            "test/rider-crouch.test.mjs"
+          ],
+          "exitCode": 0,
+          "error": null
+        }
+      ],
+      "coverage": "selected quick tests and pinned vendor hashes; no full suite or browser",
+      "success": true,
+      "finishedAt": "2026-10-30T14:20:18.594Z"
+    },
+    "quickTests": {
+      "passed": 90,
+      "total": 90
+    },
+    "unit": {
+      "schemaVersion": 1,
+      "level": "unit",
+      "head": "b81d76402d18c612521319506f7784c416f3380b",
+      "clean": false,
+      "node": "v24.22.0",
+      "platform": "win32",
+      "arch": "x64",
+      "startedAt": "2026-10-30T08:33:19.931Z",
+      "checks": [
+        {
+          "command": [
+            "node",
+            "scripts/check-provenance.mjs"
+          ],
+          "exitCode": 0,
+          "error": null
+        },
+        {
+          "command": [
+            "node",
+            "--test"
+          ],
+          "exitCode": 1,
+          "error": null
+        }
+      ],
+      "coverage": "local Node suite and pinned vendor hashes; no browser",
+      "success": false,
+      "finishedAt": "2026-10-30T08:35:18.294Z"
+    },
+    "unitTests": {
+      "passed": 335,
+      "total": 336,
+      "failure": "Loopback server test: connect EACCES 127.0.0.1 in sandbox"
+    },
+    "browser": "Pending: #39 Edge retry and rider worker/replay/mobile receiving. User requested quota holding state before retry.",
+    "hosted": "Paused until deliberate resumption on or after 2026-11-01; no full attestation."
+  },
+  "complete": true,
+  "cases": [
+    {
+      "bike": "full",
+      "mass": 20,
+      "kind": "20",
+      "dt": 3.125e-05,
+      "file": "full-20.json",
+      "sha256": "887756976232b7fbe5ed3c4c72d2416b60c7f0a8ed94bfb4bb14a445c97af2e8",
+      "status": "completed",
+      "termination": null,
+      "assessment": {
+        "status": "screen-failed",
+        "scope": "Saved-sample protocol only; no continuous support, equilibrium or manoeuvre qualification.",
+        "requestedDepthM": 0.04300000000000001,
+        "observedLoweringM": 0.04508240180662948,
+        "finalHipErrorM": 0.0008454361182460442,
+        "checks": [
+          {
+            "name": "complete",
+            "pass": true
+          },
+          {
+            "name": "sampling",
+            "pass": true,
+            "value": 0.01,
+            "limit": 0.01
+          },
+          {
+            "name": "tracking",
+            "pass": false,
+            "value": 0.016601214562787934,
+            "limit": 0.010750000000000003
+          },
+          {
+            "name": "lowering",
+            "pass": true,
+            "value": 0.04508240180662948,
+            "min": 0.03440000000000001,
+            "max": 0.051600000000000014
+          },
+          {
+            "name": "recovery",
+            "pass": true,
+            "value": 0.0008454361182460442,
+            "limit": 0.003
+          },
+          {
+            "name": "wheel-loads",
+            "pass": true,
+            "value": 129.85504736067674,
+            "min": 3.2361945
+          },
+          {
+            "name": "estimate-eligibility",
+            "pass": true
+          },
+          {
+            "name": "saturation",
+            "pass": true
+          },
+          {
+            "name": "net-work",
+            "pass": true,
+            "value": 0.47733748604113047,
+            "limit": 25.301157000000003
+          }
+        ]
+      },
+      "tracking": {
+        "scope": "Saved-sample diagnostics only; no continuous support or stable tracking qualification.",
+        "dt": 3.125e-05,
+        "acceptedTick": 80000,
+        "requestedEndTick": 80000,
+        "status": "completed",
+        "phases": [
+          {
+            "phase": "initial-hold",
+            "startTick": 0,
+            "endTick": 16000,
+            "complete": true,
+            "samples": 50,
+            "lastSampleTick": 15680,
+            "sampleMaxHipErrorM": 0.015261165666766536,
+            "sampleMaxCOMErrorM": 0.010396907919779288,
+            "sampleMaxJointErrorRad": 0.04524064552772265,
+            "saturatedSamples": 0,
+            "sampleMinWheelLoadN": 0,
+            "riderWorkJ": -0.1559084269950261
+          },
+          {
+            "phase": "lower",
+            "startTick": 16000,
+            "endTick": 32000,
+            "complete": true,
+            "samples": 60,
+            "lastSampleTick": 31680,
+            "sampleMaxHipErrorM": 0.01535467838851143,
+            "sampleMaxCOMErrorM": 0.01151951592412483,
+            "sampleMaxJointErrorRad": 0.047935427709724296,
+            "saturatedSamples": 0,
+            "sampleMinWheelLoadN": 129.85504736067674,
+            "riderWorkJ": -3.8104465324103702
+          },
+          {
+            "phase": "crouch-hold",
+            "startTick": 32000,
+            "endTick": 48000,
+            "complete": true,
+            "samples": 50,
+            "lastSampleTick": 47680,
+            "sampleMaxHipErrorM": 0.014636407587163221,
+            "sampleMaxCOMErrorM": 0.011141688472020449,
+            "sampleMaxJointErrorRad": 0.04774403277783562,
+            "saturatedSamples": 0,
+            "sampleMinWheelLoadN": 136.45764531683616,
+            "riderWorkJ": -1.6573330782063027
+          },
+          {
+            "phase": "rise",
+            "startTick": 48000,
+            "endTick": 64000,
+            "complete": true,
+            "samples": 60,
+            "lastSampleTick": 63680,
+            "sampleMaxHipErrorM": 0.016601214562787934,
+            "sampleMaxCOMErrorM": 0.012589260047262242,
+            "sampleMaxJointErrorRad": 0.05298182413996993,
+            "saturatedSamples": 0,
+            "sampleMinWheelLoadN": 136.5217470072661,
+            "riderWorkJ": 3.7654495489314783
+          },
+          {
+            "phase": "recovery-hold",
+            "startTick": 64000,
+            "endTick": 80000,
+            "complete": true,
+            "samples": 51,
+            "lastSampleTick": 80000,
+            "sampleMaxHipErrorM": 0.01574615721469366,
+            "sampleMaxCOMErrorM": 0.012084916593289412,
+            "sampleMaxJointErrorRad": 0.05362084669304579,
+            "saturatedSamples": 0,
+            "sampleMinWheelLoadN": 133.1786309705697,
+            "riderWorkJ": 2.335575974721351
+          }
+        ]
+      },
+      "maxTracking": {
+        "time": 1.8499999999985228,
+        "errorM": 0.016601214562787934,
+        "geometry": {
+          "hipError": [
+            0.0014276603463624915,
+            -0.016539713144282348
+          ],
+          "chains": {
+            "foot": {
+              "jointTracking": [
+                0.0065209304001282165,
+                -0.014644424640005815
+              ],
+              "trunkTracking": [
+                -0.005093367885470268,
+                -0.001425535479709139
+              ],
+              "attachmentGap": [
+                9.78320556704294e-08,
+                -0.0004697530245239058
+              ],
+              "anchorOffset": [
+                -5.5185890579512176e-17,
+                0
+              ],
+              "targetClosure": [
+                3.3306690738754696e-16,
+                1.3877787807814457e-16
+              ],
+              "reconstructionResidual": [
+                -3.5141334286947767e-13,
+                -4.368727601899991e-14
+              ],
+              "sum": [
+                0.0014276603463624833,
+                -0.01653971314428241
+              ]
+            },
+            "hand": {
+              "jointTracking": [
+                0.0004900840468557988,
+                -0.010579412892010531
+              ],
+              "trunkTracking": [
+                0.0009411110655963562,
+                -0.005847953811601303
+              ],
+              "attachmentGap": [
+                -3.534765736037837e-06,
+                -0.00011234644030065807
+              ],
+              "anchorOffset": [
+                0,
+                0
+              ],
+              "targetClosure": [
+                -3.0531133177191805e-16,
+                -2.7755575615628914e-17
+              ],
+              "reconstructionResidual": [
+                -3.533562331625717e-13,
+                -3.6981528950263964e-13
+              ],
+              "sum": [
+                0.0014276603463624555,
+                -0.016539713144282337
+              ]
+            }
+          }
+        },
+        "jointError": [
+          0.019651275807583055,
+          -0.04794590387056872,
+          -0.011911153629613347,
+          0.049537639105230825
+        ],
+        "jointVelocity": [
+          0.1559041747340174,
+          -0.24333631643873463,
+          -0.06743791378830342,
+          0.348173700232283
+        ],
+        "kp": [
+          424.5957956501654,
+          79.4095210639325,
+          106.29526488072246,
+          17.282072090483506
+        ],
+        "kd": [
+          33.78825984688005,
+          6.319208902942421,
+          8.458708416514662,
+          1.3752636000354677
+        ],
+        "estimate": [
+          7.700911378333434,
+          -33.981169464660425,
+          5.043882448130621,
+          2.352731353681072
+        ],
+        "proportional": [
+          8.343849087061574,
+          -3.8073612633392098,
+          -1.2660992300947294,
+          0.856113050208954
+        ],
+        "damping": [
+          -5.267730767126372,
+          1.537693017248866,
+          0.5704376489533124,
+          -0.4788306164191193
+        ]
+      },
+      "netRiderWorkJ": 0.47733748604113047,
+      "energyResidualJ": 0.07341320878028801
+    },
+    {
+      "bike": "full",
+      "mass": 70,
+      "kind": "70",
+      "dt": 3.125e-05,
+      "file": "full-70.json",
+      "sha256": "df0577c886a0f149f1bffb17880f712b04c78b958cb007e3fde00758b7056336",
+      "status": "completed",
+      "termination": null,
+      "assessment": {
+        "status": "screen-failed",
+        "scope": "Saved-sample protocol only; no continuous support, equilibrium or manoeuvre qualification.",
+        "requestedDepthM": 0.04300000000000001,
+        "observedLoweringM": 0.04607377951847719,
+        "finalHipErrorM": 0.0012890826065890956,
+        "checks": [
+          {
+            "name": "complete",
+            "pass": true
+          },
+          {
+            "name": "sampling",
+            "pass": true,
+            "value": 0.01,
+            "limit": 0.01
+          },
+          {
+            "name": "tracking",
+            "pass": false,
+            "value": 0.015939027527972827,
+            "limit": 0.010750000000000003
+          },
+          {
+            "name": "lowering",
+            "pass": true,
+            "value": 0.04607377951847719,
+            "min": 0.03440000000000001,
+            "max": 0.051600000000000014
+          },
+          {
+            "name": "recovery",
+            "pass": true,
+            "value": 0.0012890826065890956,
+            "limit": 0.003
+          },
+          {
+            "name": "wheel-loads",
+            "pass": true,
+            "value": 304.7845881374256,
+            "min": 8.139519499999999
+          },
+          {
+            "name": "estimate-eligibility",
+            "pass": true
+          },
+          {
+            "name": "saturation",
+            "pass": true
+          },
+          {
+            "name": "net-work",
+            "pass": true,
+            "value": 0.9012560703689859,
+            "limit": 88.5540495
+          }
+        ]
+      },
+      "tracking": {
+        "scope": "Saved-sample diagnostics only; no continuous support or stable tracking qualification.",
+        "dt": 3.125e-05,
+        "acceptedTick": 80000,
+        "requestedEndTick": 80000,
+        "status": "completed",
+        "phases": [
+          {
+            "phase": "initial-hold",
+            "startTick": 0,
+            "endTick": 16000,
+            "complete": true,
+            "samples": 50,
+            "lastSampleTick": 15680,
+            "sampleMaxHipErrorM": 0.006804463707596912,
+            "sampleMaxCOMErrorM": 0.0046599414400538735,
+            "sampleMaxJointErrorRad": 0.022254262766570877,
+            "saturatedSamples": 0,
+            "sampleMinWheelLoadN": 0,
+            "riderWorkJ": -1.7570726323796546
+          },
+          {
+            "phase": "lower",
+            "startTick": 16000,
+            "endTick": 32000,
+            "complete": true,
+            "samples": 60,
+            "lastSampleTick": 31680,
+            "sampleMaxHipErrorM": 0.015939027527972827,
+            "sampleMaxCOMErrorM": 0.011471703125559637,
+            "sampleMaxJointErrorRad": 0.04919860006454052,
+            "saturatedSamples": 0,
+            "sampleMinWheelLoadN": 304.7845881374256,
+            "riderWorkJ": -15.397679358126274
+          },
+          {
+            "phase": "crouch-hold",
+            "startTick": 32000,
+            "endTick": 48000,
+            "complete": true,
+            "samples": 50,
+            "lastSampleTick": 47680,
+            "sampleMaxHipErrorM": 0.010965650394000763,
+            "sampleMaxCOMErrorM": 0.008364061261311038,
+            "sampleMaxJointErrorRad": 0.03644324387172773,
+            "saturatedSamples": 0,
+            "sampleMinWheelLoadN": 327.69708499646515,
+            "riderWorkJ": -6.731881790634645
+          },
+          {
+            "phase": "rise",
+            "startTick": 48000,
+            "endTick": 64000,
+            "complete": true,
+            "samples": 60,
+            "lastSampleTick": 63680,
+            "sampleMaxHipErrorM": 0.013298174043917437,
+            "sampleMaxCOMErrorM": 0.010190366591277233,
+            "sampleMaxJointErrorRad": 0.04175267947078006,
+            "saturatedSamples": 0,
+            "sampleMinWheelLoadN": 318.77237966882404,
+            "riderWorkJ": 18.141972049689223
+          },
+          {
+            "phase": "recovery-hold",
+            "startTick": 64000,
+            "endTick": 80000,
+            "complete": true,
+            "samples": 51,
+            "lastSampleTick": 80000,
+            "sampleMaxHipErrorM": 0.012019296759476085,
+            "sampleMaxCOMErrorM": 0.009373865623837388,
+            "sampleMaxJointErrorRad": 0.042248435573279855,
+            "saturatedSamples": 0,
+            "sampleMinWheelLoadN": 314.03559717523154,
+            "riderWorkJ": 6.645917801820338
+          }
+        ]
+      },
+      "maxTracking": {
+        "time": 0.8000000000002595,
+        "errorM": 0.015939027527972827,
+        "geometry": {
+          "hipError": [
+            -0.0011197227151746314,
+            0.01589964841053404
+          ],
+          "chains": {
+            "foot": {
+              "jointTracking": [
+                -0.008171242675780649,
+                0.014491443253972447
+              ],
+              "trunkTracking": [
+                0.007045533451920577,
+                0.002018860935094735
+              ],
+              "attachmentGap": [
+                5.986509048639755e-06,
+                -0.0006106557784868943
+              ],
+              "anchorOffset": [
+                8.239936510889834e-18,
+                0
+              ],
+              "targetClosure": [
+                2.7755575615628914e-16,
+                -8.326672684688674e-17
+              ],
+              "reconstructionResidual": [
+                -3.6348701826227625e-13,
+                -4.6157522248790883e-14
+              ],
+              "sum": [
+                -0.0011197227151746334,
+                0.015899648410534047
+              ]
+            },
+            "hand": {
+              "jointTracking": [
+                9.081228283802645e-07,
+                0.008245466566142168
+              ],
+              "trunkTracking": [
+                -0.0010918094665759437,
+                0.007839824000703155
+              ],
+              "attachmentGap": [
+                -2.882137105793261e-05,
+                -0.00018564215594956692
+              ],
+              "anchorOffset": [
+                5.551115123125783e-17,
+                5.551115123125783e-17
+              ],
+              "targetClosure": [
+                -1.942890293094024e-16,
+                -1.3877787807814457e-16
+              ],
+              "reconstructionResidual": [
+                -3.6906588896101766e-13,
+                -3.616273946960291e-13
+              ],
+              "sum": [
+                -0.0011197227151747008,
+                0.015899648410534047
+              ]
+            }
+          }
+        },
+        "jointError": [
+          -0.01770755820362912,
+          0.04919860006454052,
+          0.007585621689127787,
+          -0.036652600710405325
+        ],
+        "jointVelocity": [
+          -0.15564525956217906,
+          0.25289349345099205,
+          0.07797046914805364,
+          -0.3575714799485136
+        ],
+        "kp": [
+          1533.9722231301448,
+          277.9333237234797,
+          376.7979199421598,
+          60.4872523166923
+        ],
+        "kd": [
+          122.0696309384132,
+          22.117231160275868,
+          29.984625752769492,
+          4.813422600124139
+        ],
+        "estimate": [
+          39.55281110912651,
+          -138.73015625335168,
+          22.05900980326121,
+          15.875266323979616
+        ],
+        "proportional": [
+          -27.162902423827394,
+          13.67393043847995,
+          2.858246473931483,
+          -2.2170151072332622
+        ],
+        "damping": [
+          18.999559392068726,
+          -5.593303853585303,
+          -2.3379153371722485,
+          1.7211426427440109
+        ]
+      },
+      "netRiderWorkJ": 0.9012560703689859,
+      "energyResidualJ": 0.47019411311901205
+    },
+    {
+      "bike": "full",
+      "mass": 100,
+      "kind": "100",
+      "dt": 3.125e-05,
+      "file": "full-100.json",
+      "sha256": "7427357002d2c9b5764685a317ed83ba2dae73bf4ea612535b7f2f152040ccc5",
+      "status": "completed",
+      "termination": null,
+      "assessment": {
+        "status": "screen-failed",
+        "scope": "Saved-sample protocol only; no continuous support, equilibrium or manoeuvre qualification.",
+        "requestedDepthM": 0.04300000000000001,
+        "observedLoweringM": 0.04761766054539365,
+        "finalHipErrorM": 0.0016318129468172705,
+        "checks": [
+          {
+            "name": "complete",
+            "pass": true
+          },
+          {
+            "name": "sampling",
+            "pass": true,
+            "value": 0.01,
+            "limit": 0.01
+          },
+          {
+            "name": "tracking",
+            "pass": false,
+            "value": 0.01842630575674364,
+            "limit": 0.010750000000000003
+          },
+          {
+            "name": "lowering",
+            "pass": true,
+            "value": 0.04761766054539365,
+            "min": 0.03440000000000001,
+            "max": 0.051600000000000014
+          },
+          {
+            "name": "recovery",
+            "pass": true,
+            "value": 0.0016318129468172705,
+            "limit": 0.003
+          },
+          {
+            "name": "wheel-loads",
+            "pass": true,
+            "value": 437.3146479030934,
+            "min": 11.081514499999999
+          },
+          {
+            "name": "estimate-eligibility",
+            "pass": true
+          },
+          {
+            "name": "saturation",
+            "pass": true
+          },
+          {
+            "name": "net-work",
+            "pass": true,
+            "value": -0.5355917086496681,
+            "limit": 126.50578500000003
+          }
+        ]
+      },
+      "tracking": {
+        "scope": "Saved-sample diagnostics only; no continuous support or stable tracking qualification.",
+        "dt": 3.125e-05,
+        "acceptedTick": 80000,
+        "requestedEndTick": 80000,
+        "status": "completed",
+        "phases": [
+          {
+            "phase": "initial-hold",
+            "startTick": 0,
+            "endTick": 16000,
+            "complete": true,
+            "samples": 50,
+            "lastSampleTick": 15680,
+            "sampleMaxHipErrorM": 0.013271909095681565,
+            "sampleMaxCOMErrorM": 0.008571515504377233,
+            "sampleMaxJointErrorRad": 0.043328680542090596,
+            "saturatedSamples": 0,
+            "sampleMinWheelLoadN": 0,
+            "riderWorkJ": -8.32791936532182
+          },
+          {
+            "phase": "lower",
+            "startTick": 16000,
+            "endTick": 32000,
+            "complete": true,
+            "samples": 60,
+            "lastSampleTick": 31680,
+            "sampleMaxHipErrorM": 0.01842630575674364,
+            "sampleMaxCOMErrorM": 0.012996866896921923,
+            "sampleMaxJointErrorRad": 0.05669312066443162,
+            "saturatedSamples": 0,
+            "sampleMinWheelLoadN": 451.32935265666333,
+            "riderWorkJ": -16.99003043624085
+          },
+          {
+            "phase": "crouch-hold",
+            "startTick": 32000,
+            "endTick": 48000,
+            "complete": true,
+            "samples": 50,
+            "lastSampleTick": 47680,
+            "sampleMaxHipErrorM": 0.013096007212196234,
+            "sampleMaxCOMErrorM": 0.009623742099053825,
+            "sampleMaxJointErrorRad": 0.04008570137669473,
+            "saturatedSamples": 0,
+            "sampleMinWheelLoadN": 437.3146479030934,
+            "riderWorkJ": -12.191962486399735
+          },
+          {
+            "phase": "rise",
+            "startTick": 48000,
+            "endTick": 64000,
+            "complete": true,
+            "samples": 60,
+            "lastSampleTick": 63680,
+            "sampleMaxHipErrorM": 0.011914543171906428,
+            "sampleMaxCOMErrorM": 0.009286196911209563,
+            "sampleMaxJointErrorRad": 0.04062463282235067,
+            "saturatedSamples": 0,
+            "sampleMinWheelLoadN": 444.3983862905768,
+            "riderWorkJ": 27.698302083325107
+          },
+          {
+            "phase": "recovery-hold",
+            "startTick": 64000,
+            "endTick": 80000,
+            "complete": true,
+            "samples": 51,
+            "lastSampleTick": 80000,
+            "sampleMaxHipErrorM": 0.01133337433604104,
+            "sampleMaxCOMErrorM": 0.008915125128280896,
+            "sampleMaxJointErrorRad": 0.04107366251373228,
+            "saturatedSamples": 0,
+            "sampleMinWheelLoadN": 437.77363807810417,
+            "riderWorkJ": 9.276018495987632
+          }
+        ]
+      },
+      "maxTracking": {
+        "time": 0.8250000000002901,
+        "errorM": 0.01842630575674364,
+        "geometry": {
+          "hipError": [
+            -0.0012196772825985858,
+            0.01838589489710296
+          ],
+          "chains": {
+            "foot": {
+              "jointTracking": [
+                -0.010726288891116459,
+                0.016322141729343542
+              ],
+              "trunkTracking": [
+                0.009501546239294084,
+                0.002745756829594437
+              ],
+              "attachmentGap": [
+                5.0653695875819825e-06,
+                -0.0006820036617889812
+              ],
+              "anchorOffset": [
+                -2.211772431870429e-17,
+                0
+              ],
+              "targetClosure": [
+                8.326672684688674e-17,
+                1.3877787807814457e-16
+              ],
+              "reconstructionResidual": [
+                -3.6384784074527943e-13,
+                -4.621303340002214e-14
+              ],
+              "sum": [
+                -0.0012196772825985795,
+                0.018385894897102923
+              ]
+            },
+            "hand": {
+              "jointTracking": [
+                0.0003014614521121839,
+                0.008030757608367745
+              ],
+              "trunkTracking": [
+                -0.0014898809904643207,
+                0.010570067841825237
+              ],
+              "attachmentGap": [
+                -3.125774387853499e-05,
+                -0.00021493055272976978
+              ],
+              "anchorOffset": [
+                0,
+                0
+              ],
+              "targetClosure": [
+                -8.326672684688674e-17,
+                -8.326672684688674e-17
+              ],
+              "reconstructionResidual": [
+                -3.6784464363393e-13,
+                -3.6023961591524767e-13
+              ],
+              "sum": [
+                -0.0012196772825985996,
+                0.01838589489710289
+              ]
+            }
+          }
+        },
+        "jointError": [
+          -0.01802029657350064,
+          0.05669312066443162,
+          0.006118154874824023,
+          -0.03425189238540054
+        ],
+        "jointVelocity": [
+          -0.1561108253929605,
+          0.23770917320135462,
+          0.07822583634774993,
+          -0.3594757223713411
+        ],
+        "kp": [
+          2192.8760891920933,
+          397.04760531934704,
+          535.460671395343,
+          86.41036045241755
+        ],
+        "kd": [
+          174.5035345914728,
+          31.596044514687,
+          42.61060634193694,
+          6.876318000177339
+        ],
+        "estimate": [
+          57.67426957139268,
+          -198.90712664981686,
+          32.21978759870714,
+          23.435264772015277
+        ],
+        "proportional": [
+          -39.516277476179766,
+          22.509867797893364,
+          3.276031316973962,
+          -2.9597183671998764
+        ],
+        "damping": [
+          27.241890819063855,
+          -7.510669618019443,
+          -3.333250318382755,
+          2.4718693803688048
+        ]
+      },
+      "netRiderWorkJ": -0.5355917086496681,
+      "energyResidualJ": 0.3366267660717924
+    },
+    {
+      "bike": "full",
+      "mass": 70,
+      "kind": "hold",
+      "dt": 3.125e-05,
+      "file": "full-hold.json",
+      "sha256": "196ff19f2edc04988d01bdc6eaee3119aa9b887ef8e85408a085708d89ae1221",
+      "status": "completed",
+      "termination": null,
+      "assessment": {
+        "status": "control",
+        "reason": "Unchanged-posture control; no requested lowering.",
+        "checks": []
+      },
+      "tracking": {
+        "scope": "Saved-sample diagnostics only; no continuous support or stable tracking qualification.",
+        "dt": 3.125e-05,
+        "acceptedTick": 80000,
+        "requestedEndTick": 80000,
+        "status": "completed",
+        "phases": [
+          {
+            "phase": "initial-hold",
+            "startTick": 0,
+            "endTick": 16000,
+            "complete": true,
+            "samples": 50,
+            "lastSampleTick": 15680,
+            "sampleMaxHipErrorM": 0.006804463707596912,
+            "sampleMaxCOMErrorM": 0.0046599414400538735,
+            "sampleMaxJointErrorRad": 0.022254262766570877,
+            "saturatedSamples": 0,
+            "sampleMinWheelLoadN": 0,
+            "riderWorkJ": -1.7570726323796546
+          },
+          {
+            "phase": "lower",
+            "startTick": 16000,
+            "endTick": 32000,
+            "complete": true,
+            "samples": 60,
+            "lastSampleTick": 31680,
+            "sampleMaxHipErrorM": 0.002829202936021145,
+            "sampleMaxCOMErrorM": 0.002030864967838983,
+            "sampleMaxJointErrorRad": 0.006566476596869628,
+            "saturatedSamples": 0,
+            "sampleMinWheelLoadN": 330.40790124206586,
+            "riderWorkJ": 0.99212508322804
+          },
+          {
+            "phase": "crouch-hold",
+            "startTick": 32000,
+            "endTick": 48000,
+            "complete": true,
+            "samples": 50,
+            "lastSampleTick": 47680,
+            "sampleMaxHipErrorM": 0.0013883327871104072,
+            "sampleMaxCOMErrorM": 0.0010963824366387771,
+            "sampleMaxJointErrorRad": 0.0021485609644343747,
+            "saturatedSamples": 0,
+            "sampleMinWheelLoadN": 317.51352382605154,
+            "riderWorkJ": -0.047217411472183723
+          },
+          {
+            "phase": "rise",
+            "startTick": 48000,
+            "endTick": 64000,
+            "complete": true,
+            "samples": 60,
+            "lastSampleTick": 63680,
+            "sampleMaxHipErrorM": 0.0007526835269900363,
+            "sampleMaxCOMErrorM": 0.0006735852235571113,
+            "sampleMaxJointErrorRad": 0.0008514332666133546,
+            "saturatedSamples": 0,
+            "sampleMinWheelLoadN": 331.41759634634167,
+            "riderWorkJ": -0.06360711755352788
+          },
+          {
+            "phase": "recovery-hold",
+            "startTick": 64000,
+            "endTick": 80000,
+            "complete": true,
+            "samples": 51,
+            "lastSampleTick": 80000,
+            "sampleMaxHipErrorM": 0.0007758826677875109,
+            "sampleMaxCOMErrorM": 0.0006891426326269807,
+            "sampleMaxJointErrorRad": 0.0007646360768283304,
+            "saturatedSamples": 0,
+            "sampleMinWheelLoadN": 279.4565650848158,
+            "riderWorkJ": 0.03881674925892575
+          }
+        ]
+      },
+      "maxTracking": {
+        "time": 0.49999999999989286,
+        "errorM": 0.002829202936021145,
+        "geometry": {
+          "hipError": [
+            -3.278466976158745e-05,
+            -0.0028290129760429328
+          ],
+          "chains": {
+            "foot": {
+              "jointTracking": [
+                0.002227910981996206,
+                -0.0015895742791610656
+              ],
+              "trunkTracking": [
+                -0.002270064100957314,
+                -0.0006167258488133376
+              ],
+              "attachmentGap": [
+                9.368449567234736e-06,
+                -0.0006227128480228903
+              ],
+              "anchorOffset": [
+                -7.806255641895632e-18,
+                0
+              ],
+              "targetClosure": [
+                -1.1102230246251565e-16,
+                2.7755575615628914e-16
+              ],
+              "reconstructionResidual": [
+                -3.6759484345338933e-13,
+                -4.590772206825022e-14
+              ],
+              "sum": [
+                -3.278466976158689e-05,
+                -0.0028290129760429237
+              ]
+            },
+            "hand": {
+              "jointTracking": [
+                -0.00028684143058310685,
+                -0.00016490910186267582
+              ],
+              "trunkTracking": [
+                0.0002957479459333445,
+                -0.0024855843794134858
+              ],
+              "attachmentGap": [
+                -4.169118472808061e-05,
+                -0.00017851949440050703
+              ],
+              "anchorOffset": [
+                -5.551115123125783e-17,
+                1.1102230246251565e-16
+              ],
+              "targetClosure": [
+                -3.0531133177191805e-16,
+                -1.6653345369377348e-16
+              ],
+              "reconstructionResidual": [
+                -3.8344327712991344e-13,
+                -3.6615155352137663e-13
+              ],
+              "sum": [
+                -3.278466976164703e-05,
+                -0.0028290129760428755
+              ]
+            }
+          }
+        },
+        "jointError": [
+          0.0002352531066421059,
+          -0.006566476596869628,
+          0.0007931579082657795,
+          -0.00029385762531721095
+        ],
+        "jointVelocity": [
+          0.005199022750391723,
+          -0.089596620707179,
+          0.010056313698426028,
+          -0.015034045458214452
+        ],
+        "kp": [
+          1550.2966454564596,
+          277.93332372347965,
+          390.472064011376,
+          60.48725231669228
+        ],
+        "kd": [
+          123.36868719158953,
+          22.117231160275864,
+          31.072779563352732,
+          4.813422600124137
+        ],
+        "estimate": [
+          42.102370260942756,
+          -140.32905717123091,
+          22.5195899359101,
+          17.152049517462782
+        ],
+        "proportional": [
+          0.3647121020604675,
+          -1.8250426657204193,
+          0.30970600552748456,
+          -0.017774640327746158
+        ],
+        "damping": [
+          -0.6413966113950339,
+          1.981629171360237,
+          -0.3124776187711164,
+          0.07236521417986308
+        ]
+      },
+      "netRiderWorkJ": -0.8369553289184004,
+      "energyResidualJ": 0.41456310515654526
+    },
+    {
+      "bike": "full",
+      "mass": 70,
+      "kind": "refined",
+      "dt": 1.5625e-05,
+      "file": "full-refined.json",
+      "sha256": "0c8a5ed49ac58658bf2ac37b402079ea53e7a02ef1c3144143342aa7b04553f0",
+      "status": "completed",
+      "termination": null,
+      "assessment": {
+        "status": "screen-failed",
+        "scope": "Saved-sample protocol only; no continuous support, equilibrium or manoeuvre qualification.",
+        "requestedDepthM": 0.04300000000000001,
+        "observedLoweringM": 0.04607527432497824,
+        "finalHipErrorM": 0.0012912939870335285,
+        "checks": [
+          {
+            "name": "complete",
+            "pass": true
+          },
+          {
+            "name": "sampling",
+            "pass": true,
+            "value": 0.01,
+            "limit": 0.01
+          },
+          {
+            "name": "tracking",
+            "pass": false,
+            "value": 0.015932315083971946,
+            "limit": 0.010750000000000003
+          },
+          {
+            "name": "lowering",
+            "pass": true,
+            "value": 0.04607527432497824,
+            "min": 0.03440000000000001,
+            "max": 0.051600000000000014
+          },
+          {
+            "name": "recovery",
+            "pass": true,
+            "value": 0.0012912939870335285,
+            "limit": 0.003
+          },
+          {
+            "name": "wheel-loads",
+            "pass": true,
+            "value": 260.79949815986674,
+            "min": 8.139519499999999
+          },
+          {
+            "name": "estimate-eligibility",
+            "pass": true
+          },
+          {
+            "name": "saturation",
+            "pass": true
+          },
+          {
+            "name": "net-work",
+            "pass": true,
+            "value": 0.8963906616540899,
+            "limit": 88.5540495
+          }
+        ]
+      },
+      "tracking": {
+        "scope": "Saved-sample diagnostics only; no continuous support or stable tracking qualification.",
+        "dt": 1.5625e-05,
+        "acceptedTick": 160000,
+        "requestedEndTick": 160000,
+        "status": "completed",
+        "phases": [
+          {
+            "phase": "initial-hold",
+            "startTick": 0,
+            "endTick": 32000,
+            "complete": true,
+            "samples": 50,
+            "lastSampleTick": 31360,
+            "sampleMaxHipErrorM": 0.006778887703378525,
+            "sampleMaxCOMErrorM": 0.004643257140049778,
+            "sampleMaxJointErrorRad": 0.022342245874699785,
+            "saturatedSamples": 0,
+            "sampleMinWheelLoadN": 0,
+            "riderWorkJ": -1.7627461539787017
+          },
+          {
+            "phase": "lower",
+            "startTick": 32000,
+            "endTick": 64000,
+            "complete": true,
+            "samples": 60,
+            "lastSampleTick": 63360,
+            "sampleMaxHipErrorM": 0.015932315083971946,
+            "sampleMaxCOMErrorM": 0.011467648930200745,
+            "sampleMaxJointErrorRad": 0.04917893828912771,
+            "saturatedSamples": 0,
+            "sampleMinWheelLoadN": 304.20466419315227,
+            "riderWorkJ": -15.397305484683384
+          },
+          {
+            "phase": "crouch-hold",
+            "startTick": 64000,
+            "endTick": 96000,
+            "complete": true,
+            "samples": 50,
+            "lastSampleTick": 95360,
+            "sampleMaxHipErrorM": 0.010967591720130806,
+            "sampleMaxCOMErrorM": 0.008365587873895351,
+            "sampleMaxJointErrorRad": 0.036449519918404893,
+            "saturatedSamples": 0,
+            "sampleMinWheelLoadN": 334.9683710640643,
+            "riderWorkJ": -6.733158941330256
+          },
+          {
+            "phase": "rise",
+            "startTick": 96000,
+            "endTick": 128000,
+            "complete": true,
+            "samples": 60,
+            "lastSampleTick": 127360,
+            "sampleMaxHipErrorM": 0.013298794608988349,
+            "sampleMaxCOMErrorM": 0.010190817405830877,
+            "sampleMaxJointErrorRad": 0.041763585140261704,
+            "saturatedSamples": 0,
+            "sampleMinWheelLoadN": 260.79949815986674,
+            "riderWorkJ": 18.142362853310427
+          },
+          {
+            "phase": "recovery-hold",
+            "startTick": 128000,
+            "endTick": 160000,
+            "complete": true,
+            "samples": 51,
+            "lastSampleTick": 160000,
+            "sampleMaxHipErrorM": 0.012019824219879393,
+            "sampleMaxCOMErrorM": 0.00937424107612156,
+            "sampleMaxJointErrorRad": 0.042248475407749356,
+            "saturatedSamples": 0,
+            "sampleMinWheelLoadN": 309.1340126400844,
+            "riderWorkJ": 6.647238388336005
+          }
+        ]
+      },
+      "maxTracking": {
+        "time": 0.7999999999995527,
+        "errorM": 0.015932315083971946,
+        "geometry": {
+          "hipError": [
+            -0.0011200174886143721,
+            0.015892898563829
+          ],
+          "chains": {
+            "foot": {
+              "jointTracking": [
+                -0.008164298131501463,
+                0.014486807520536438
+              ],
+              "trunkTracking": [
+                0.007038341112056007,
+                0.0020167775564025048
+              ],
+              "attachmentGap": [
+                5.939531194732477e-06,
+                -0.0006106865130637688
+              ],
+              "anchorOffset": [
+                -9.540979117872439e-18,
+                0
+              ],
+              "targetClosure": [
+                2.7755575615628914e-16,
+                -8.326672684688674e-17
+              ],
+              "reconstructionResidual": [
+                -3.639033518965107e-13,
+                -4.6129766673175254e-14
+              ],
+              "sum": [
+                -0.0011200174886143589,
+                0.015892898563828962
+              ]
+            },
+            "hand": {
+              "jointTracking": [
+                -5.372693246963323e-07,
+                0.008246661914205644
+              ],
+              "trunkTracking": [
+                -0.0010907423634078928,
+                0.007831915099700215
+              ],
+              "attachmentGap": [
+                -2.8737855512588004e-05,
+                -0.000185678449714951
+              ],
+              "anchorOffset": [
+                -5.551115123125783e-17,
+                0
+              ],
+              "targetClosure": [
+                -1.942890293094024e-16,
+                -1.3877787807814457e-16
+              ],
+              "reconstructionResidual": [
+                -3.689826222341708e-13,
+                -3.6176617257410726e-13
+              ],
+              "sum": [
+                -0.0011200174886144096,
+                0.015892898563829003
+              ]
+            }
+          }
+        },
+        "jointError": [
+          -0.017707269505229786,
+          0.04917893828912771,
+          0.007591735690812826,
+          -0.036663367456133494
+        ],
+        "jointVelocity": [
+          -0.15581594730780013,
+          0.25274036976887426,
+          0.07865630698085622,
+          -0.35901424942083343
+        ],
+        "kp": [
+          1533.95632478864,
+          277.93332372347976,
+          376.7997256938315,
+          60.48725231669227
+        ],
+        "kd": [
+          122.06836578859445,
+          22.117231160275875,
+          29.984769449921764,
+          4.813422600124136
+        ],
+        "estimate": [
+          39.55205547380089,
+          -138.73031559780756,
+          22.058629567781104,
+          15.875242853782058
+        ],
+        "proportional": [
+          -27.16217805228424,
+          13.668465775889166,
+          2.860563925838343,
+          -2.2176663580987506
+        ],
+        "damping": [
+          19.020198051664906,
+          -5.589917181711792,
+          -2.3584912306032457,
+          1.7280873019288432
+        ]
+      },
+      "netRiderWorkJ": 0.8963906616540899,
+      "energyResidualJ": 0.11836692441650931
+    },
+    {
+      "bike": "hardtail",
+      "mass": 20,
+      "kind": "20",
+      "dt": 3.125e-05,
+      "file": "hardtail-20.json",
+      "sha256": "5db88f5d7bb225f523681e879c6ac4844fd60b87bccee49c4f8e2f0b277df844",
+      "status": "completed",
+      "termination": null,
+      "assessment": {
+        "status": "screen-failed",
+        "scope": "Saved-sample protocol only; no continuous support, equilibrium or manoeuvre qualification.",
+        "requestedDepthM": 0.04300000000000001,
+        "observedLoweringM": 0.04505850151262533,
+        "finalHipErrorM": 0.0008410070220671778,
+        "checks": [
+          {
+            "name": "complete",
+            "pass": true
+          },
+          {
+            "name": "sampling",
+            "pass": true,
+            "value": 0.01,
+            "limit": 0.01
+          },
+          {
+            "name": "tracking",
+            "pass": false,
+            "value": 0.016562132612472295,
+            "limit": 0.010750000000000003
+          },
+          {
+            "name": "lowering",
+            "pass": true,
+            "value": 0.04505850151262533,
+            "min": 0.03440000000000001,
+            "max": 0.051600000000000014
+          },
+          {
+            "name": "recovery",
+            "pass": true,
+            "value": 0.0008410070220671778,
+            "limit": 0.003
+          },
+          {
+            "name": "wheel-loads",
+            "pass": true,
+            "value": 121.16293011659907,
+            "min": 3.2361945
+          },
+          {
+            "name": "estimate-eligibility",
+            "pass": true
+          },
+          {
+            "name": "saturation",
+            "pass": true
+          },
+          {
+            "name": "net-work",
+            "pass": true,
+            "value": 0.3098069625587738,
+            "limit": 25.301157000000003
+          }
+        ]
+      },
+      "tracking": {
+        "scope": "Saved-sample diagnostics only; no continuous support or stable tracking qualification.",
+        "dt": 3.125e-05,
+        "acceptedTick": 80000,
+        "requestedEndTick": 80000,
+        "status": "completed",
+        "phases": [
+          {
+            "phase": "initial-hold",
+            "startTick": 0,
+            "endTick": 16000,
+            "complete": true,
+            "samples": 50,
+            "lastSampleTick": 15680,
+            "sampleMaxHipErrorM": 0.008096699910053753,
+            "sampleMaxCOMErrorM": 0.005737840483302447,
+            "sampleMaxJointErrorRad": 0.03088449601633134,
+            "saturatedSamples": 0,
+            "sampleMinWheelLoadN": 0,
+            "riderWorkJ": -0.5629082453744592
+          },
+          {
+            "phase": "lower",
+            "startTick": 16000,
+            "endTick": 32000,
+            "complete": true,
+            "samples": 60,
+            "lastSampleTick": 31680,
+            "sampleMaxHipErrorM": 0.015783609454132926,
+            "sampleMaxCOMErrorM": 0.011781304885427337,
+            "sampleMaxJointErrorRad": 0.048333043857981844,
+            "saturatedSamples": 0,
+            "sampleMinWheelLoadN": 132.0314686890295,
+            "riderWorkJ": -3.5528167783076072
+          },
+          {
+            "phase": "crouch-hold",
+            "startTick": 32000,
+            "endTick": 48000,
+            "complete": true,
+            "samples": 50,
+            "lastSampleTick": 47680,
+            "sampleMaxHipErrorM": 0.014814449968091361,
+            "sampleMaxCOMErrorM": 0.011252861123105,
+            "sampleMaxJointErrorRad": 0.047733323721668525,
+            "saturatedSamples": 0,
+            "sampleMinWheelLoadN": 132.34873298606652,
+            "riderWorkJ": -1.6755170014408343
+          },
+          {
+            "phase": "rise",
+            "startTick": 48000,
+            "endTick": 64000,
+            "complete": true,
+            "samples": 60,
+            "lastSampleTick": 63680,
+            "sampleMaxHipErrorM": 0.016562132612472295,
+            "sampleMaxCOMErrorM": 0.012564669747875701,
+            "sampleMaxJointErrorRad": 0.053020213150281444,
+            "saturatedSamples": 0,
+            "sampleMinWheelLoadN": 121.16293011659907,
+            "riderWorkJ": 3.7687429475507424
+          },
+          {
+            "phase": "recovery-hold",
+            "startTick": 64000,
+            "endTick": 80000,
+            "complete": true,
+            "samples": 51,
+            "lastSampleTick": 80000,
+            "sampleMaxHipErrorM": 0.015711573039802963,
+            "sampleMaxCOMErrorM": 0.012062084575051904,
+            "sampleMaxJointErrorRad": 0.053637758193885034,
+            "saturatedSamples": 0,
+            "sampleMinWheelLoadN": 126.91626245619945,
+            "riderWorkJ": 2.3323060401309323
+          }
+        ]
+      },
+      "maxTracking": {
+        "time": 1.8499999999985228,
+        "errorM": 0.016562132612472295,
+        "geometry": {
+          "hipError": [
+            0.0014566451758510068,
+            -0.016497952039716574
+          ],
+          "chains": {
+            "foot": {
+              "jointTracking": [
+                0.006507798888182065,
+                -0.014629089930352057
+              ],
+              "trunkTracking": [
+                -0.005053039763998651,
+                -0.001414123277587942
+              ],
+              "attachmentGap": [
+                1.8860520187893896e-06,
+                -0.0004547388317330959
+              ],
+              "anchorOffset": [
+                1.734723475976807e-17,
+                0
+              ],
+              "targetClosure": [
+                3.3306690738754696e-16,
+                1.3877787807814457e-16
+              ],
+              "reconstructionResidual": [
+                -3.515521207475558e-13,
+                -4.363176486776865e-14
+              ],
+              "sum": [
+                0.0014566451758510012,
+                -0.016497952039716587
+              ]
+            },
+            "hand": {
+              "jointTracking": [
+                0.0005114654900818527,
+                -0.010579974535415981
+              ],
+              "trunkTracking": [
+                0.0009334011866010128,
+                -0.005801247356226502
+              ],
+              "attachmentGap": [
+                1.1778499521875611e-05,
+                -0.0001167301477040957
+              ],
+              "anchorOffset": [
+                0,
+                5.551115123125783e-17
+              ],
+              "targetClosure": [
+                -3.0531133177191805e-16,
+                -2.7755575615628914e-17
+              ],
+              "reconstructionResidual": [
+                -3.534394998894186e-13,
+                -3.699818229563334e-13
+              ],
+              "sum": [
+                0.0014566451758509962,
+                -0.016497952039716532
+              ]
+            }
+          }
+        },
+        "jointError": [
+          0.01963980355763131,
+          -0.047891207866542794,
+          -0.01198451592174324,
+          0.04961846441260163
+        ],
+        "jointVelocity": [
+          0.15573643706155368,
+          -0.24340701608843424,
+          -0.06720422964936267,
+          0.34749505097026945
+        ],
+        "kp": [
+          424.6082973665313,
+          79.40952106393252,
+          106.29135236143874,
+          17.28207209048351
+        ],
+        "kd": [
+          33.78925470185843,
+          6.319208902942422,
+          8.45839706812269,
+          1.3752636000354679
+        ],
+        "estimate": [
+          7.312180569683171,
+          -33.91157022814435,
+          4.604225431227274,
+          2.5088002945559915
+        ],
+        "proportional": [
+          8.339223549218975,
+          -3.8030178798554006,
+          -1.2738504047192836,
+          0.8575098789976718
+        ],
+        "damping": [
+          -5.262218138232782,
+          1.538139783104683,
+          0.5684400590316131,
+          -0.47789729479188114
+        ]
+      },
+      "netRiderWorkJ": 0.3098069625587738,
+      "energyResidualJ": 0.08135215858783845
+    },
+    {
+      "bike": "hardtail",
+      "mass": 70,
+      "kind": "70",
+      "dt": 3.125e-05,
+      "file": "hardtail-70.json",
+      "sha256": "50b7b2788b1158f196586924193bde3797bbbfbab1db18595441e423ab9e21f6",
+      "status": "completed",
+      "termination": null,
+      "assessment": {
+        "status": "screen-failed",
+        "scope": "Saved-sample protocol only; no continuous support, equilibrium or manoeuvre qualification.",
+        "requestedDepthM": 0.04300000000000001,
+        "observedLoweringM": 0.04501139426149242,
+        "finalHipErrorM": 0.0004405157346511716,
+        "checks": [
+          {
+            "name": "complete",
+            "pass": true
+          },
+          {
+            "name": "sampling",
+            "pass": true,
+            "value": 0.01,
+            "limit": 0.01
+          },
+          {
+            "name": "tracking",
+            "pass": false,
+            "value": 0.015616889012912215,
+            "limit": 0.010750000000000003
+          },
+          {
+            "name": "lowering",
+            "pass": true,
+            "value": 0.04501139426149242,
+            "min": 0.03440000000000001,
+            "max": 0.051600000000000014
+          },
+          {
+            "name": "recovery",
+            "pass": true,
+            "value": 0.0004405157346511716,
+            "limit": 0.003
+          },
+          {
+            "name": "wheel-loads",
+            "pass": true,
+            "value": 316.57157397293855,
+            "min": 8.139519499999999
+          },
+          {
+            "name": "estimate-eligibility",
+            "pass": true
+          },
+          {
+            "name": "saturation",
+            "pass": true
+          },
+          {
+            "name": "net-work",
+            "pass": true,
+            "value": -1.5027383459406631,
+            "limit": 88.5540495
+          }
+        ]
+      },
+      "tracking": {
+        "scope": "Saved-sample diagnostics only; no continuous support or stable tracking qualification.",
+        "dt": 3.125e-05,
+        "acceptedTick": 80000,
+        "requestedEndTick": 80000,
+        "status": "completed",
+        "phases": [
+          {
+            "phase": "initial-hold",
+            "startTick": 0,
+            "endTick": 16000,
+            "complete": true,
+            "samples": 50,
+            "lastSampleTick": 15680,
+            "sampleMaxHipErrorM": 0.01087669475057955,
+            "sampleMaxCOMErrorM": 0.007024045616204595,
+            "sampleMaxJointErrorRad": 0.03512370255117998,
+            "saturatedSamples": 0,
+            "sampleMinWheelLoadN": 0,
+            "riderWorkJ": -3.1659447218178567
+          },
+          {
+            "phase": "lower",
+            "startTick": 16000,
+            "endTick": 32000,
+            "complete": true,
+            "samples": 60,
+            "lastSampleTick": 31680,
+            "sampleMaxHipErrorM": 0.015616889012912215,
+            "sampleMaxCOMErrorM": 0.011275921117419733,
+            "sampleMaxJointErrorRad": 0.048419975637577085,
+            "saturatedSamples": 0,
+            "sampleMinWheelLoadN": 316.57157397293855,
+            "riderWorkJ": -16.520228129149174
+          },
+          {
+            "phase": "crouch-hold",
+            "startTick": 32000,
+            "endTick": 48000,
+            "complete": true,
+            "samples": 50,
+            "lastSampleTick": 47680,
+            "sampleMaxHipErrorM": 0.009839541681799279,
+            "sampleMaxCOMErrorM": 0.007667437449550249,
+            "sampleMaxJointErrorRad": 0.036842530055822775,
+            "saturatedSamples": 0,
+            "sampleMinWheelLoadN": 328.9243030014993,
+            "riderWorkJ": -5.831078127545414
+          },
+          {
+            "phase": "rise",
+            "startTick": 48000,
+            "endTick": 64000,
+            "complete": true,
+            "samples": 60,
+            "lastSampleTick": 63680,
+            "sampleMaxHipErrorM": 0.013864997748360102,
+            "sampleMaxCOMErrorM": 0.010556317751681468,
+            "sampleMaxJointErrorRad": 0.04191185224809591,
+            "saturatedSamples": 0,
+            "sampleMinWheelLoadN": 329.8216397902294,
+            "riderWorkJ": 17.913600981667514
+          },
+          {
+            "phase": "recovery-hold",
+            "startTick": 64000,
+            "endTick": 80000,
+            "complete": true,
+            "samples": 51,
+            "lastSampleTick": 80000,
+            "sampleMaxHipErrorM": 0.011663226756791713,
+            "sampleMaxCOMErrorM": 0.0091462554455727,
+            "sampleMaxJointErrorRad": 0.04240161796603965,
+            "saturatedSamples": 0,
+            "sampleMinWheelLoadN": 345.1091161366362,
+            "riderWorkJ": 6.100911650904269
+          }
+        ]
+      },
+      "maxTracking": {
+        "time": 0.775000000000229,
+        "errorM": 0.015616889012912215,
+        "geometry": {
+          "hipError": [
+            -0.0011839908010214117,
+            0.015571942339500072
+          ],
+          "chains": {
+            "foot": {
+              "jointTracking": [
+                -0.007975931928297625,
+                0.014210912608878523
+              ],
+              "trunkTracking": [
+                0.006780393748305441,
+                0.0019355431801157952
+              ],
+              "attachmentGap": [
+                1.154737933539014e-05,
+                -0.0005745134494477924
+              ],
+              "anchorOffset": [
+                5.2909066017292616e-17,
+                -1.1102230246251565e-16
+              ],
+              "targetClosure": [
+                8.326672684688674e-17,
+                1.1102230246251565e-16
+              ],
+              "reconstructionResidual": [
+                -3.647637747405952e-13,
+                -4.649058915617843e-14
+              ],
+              "sum": [
+                -0.0011839908010214213,
+                0.015571942339500036
+              ]
+            },
+            "hand": {
+              "jointTracking": [
+                -0.00017353517191942558,
+                0.008245189942166664
+              ],
+              "trunkTracking": [
+                -0.0010222548262295295,
+                0.0075210762601047865
+              ],
+              "attachmentGap": [
+                1.179919749889415e-05,
+                -0.00019432386240973351
+              ],
+              "anchorOffset": [
+                1.1102230246251565e-16,
+                5.551115123125783e-17
+              ],
+              "targetClosure": [
+                -8.326672684688674e-17,
+                1.1102230246251565e-16
+              ],
+              "reconstructionResidual": [
+                -3.7136960173711486e-13,
+                -3.6173841699849163e-13
+              ],
+              "sum": [
+                -0.0011839908010214026,
+                0.015571942339500145
+              ]
+            }
+          }
+        },
+        "jointError": [
+          -0.017455091070320877,
+          0.04831917388622669,
+          0.008423774123927558,
+          -0.03763700482333078
+        ],
+        "jointVelocity": [
+          -0.15476835428536595,
+          0.263131409081574,
+          0.07884672315523422,
+          -0.35645435109889145
+        ],
+        "kp": [
+          1538.296270792248,
+          277.9333237234797,
+          378.5421128365446,
+          60.48725231669228
+        ],
+        "kd": [
+          122.41372771820753,
+          22.117231160275868,
+          30.12342421319304,
+          4.813422600124137
+        ],
+        "estimate": [
+          36.836434445779204,
+          -138.2464808781718,
+          18.5514018322695,
+          17.160010408998854
+        ],
+        "proportional": [
+          -26.851101499813673,
+          13.429508597771749,
+          3.1887532549293502,
+          -2.2765590071933732
+        ],
+        "damping": [
+          18.945771180883863,
+          -5.819738200186285,
+          -2.3751332894253108,
+          1.7157654294919882
+        ]
+      },
+      "netRiderWorkJ": -1.5027383459406631,
+      "energyResidualJ": 0.484797425460217
+    },
+    {
+      "bike": "hardtail",
+      "mass": 100,
+      "kind": "100",
+      "dt": 3.125e-05,
+      "file": "hardtail-100.json",
+      "sha256": "8f2f6692679ea2b745dc8a700fa50aa3103d7086907b45a0c1fd132f78881e61",
+      "status": "completed",
+      "termination": null,
+      "assessment": {
+        "status": "screen-failed",
+        "scope": "Saved-sample protocol only; no continuous support, equilibrium or manoeuvre qualification.",
+        "requestedDepthM": 0.04300000000000001,
+        "observedLoweringM": 0.044936306208321425,
+        "finalHipErrorM": 0.00034631423786816,
+        "checks": [
+          {
+            "name": "complete",
+            "pass": true
+          },
+          {
+            "name": "sampling",
+            "pass": true,
+            "value": 0.01,
+            "limit": 0.01
+          },
+          {
+            "name": "tracking",
+            "pass": false,
+            "value": 0.01653303949436362,
+            "limit": 0.010750000000000003
+          },
+          {
+            "name": "lowering",
+            "pass": true,
+            "value": 0.044936306208321425,
+            "min": 0.03440000000000001,
+            "max": 0.051600000000000014
+          },
+          {
+            "name": "recovery",
+            "pass": true,
+            "value": 0.00034631423786816,
+            "limit": 0.003
+          },
+          {
+            "name": "wheel-loads",
+            "pass": true,
+            "value": 468.7925780456694,
+            "min": 11.081514499999999
+          },
+          {
+            "name": "estimate-eligibility",
+            "pass": true
+          },
+          {
+            "name": "saturation",
+            "pass": true
+          },
+          {
+            "name": "net-work",
+            "pass": true,
+            "value": -3.471348051823836,
+            "limit": 126.50578500000003
+          }
+        ]
+      },
+      "tracking": {
+        "scope": "Saved-sample diagnostics only; no continuous support or stable tracking qualification.",
+        "dt": 3.125e-05,
+        "acceptedTick": 80000,
+        "requestedEndTick": 80000,
+        "status": "completed",
+        "phases": [
+          {
+            "phase": "initial-hold",
+            "startTick": 0,
+            "endTick": 16000,
+            "complete": true,
+            "samples": 50,
+            "lastSampleTick": 15680,
+            "sampleMaxHipErrorM": 0.013790141899255624,
+            "sampleMaxCOMErrorM": 0.008971158595704529,
+            "sampleMaxJointErrorRad": 0.04478385320386102,
+            "saturatedSamples": 0,
+            "sampleMinWheelLoadN": 0,
+            "riderWorkJ": -6.74120301367632
+          },
+          {
+            "phase": "lower",
+            "startTick": 16000,
+            "endTick": 32000,
+            "complete": true,
+            "samples": 60,
+            "lastSampleTick": 31680,
+            "sampleMaxHipErrorM": 0.01653303949436362,
+            "sampleMaxCOMErrorM": 0.011809141268198745,
+            "sampleMaxJointErrorRad": 0.05128204190010231,
+            "saturatedSamples": 0,
+            "sampleMinWheelLoadN": 468.7925780456694,
+            "riderWorkJ": -23.075789365289413
+          },
+          {
+            "phase": "crouch-hold",
+            "startTick": 32000,
+            "endTick": 48000,
+            "complete": true,
+            "samples": 50,
+            "lastSampleTick": 47680,
+            "sampleMaxHipErrorM": 0.009382751703811486,
+            "sampleMaxCOMErrorM": 0.007301357921179511,
+            "sampleMaxJointErrorRad": 0.03537836501049324,
+            "saturatedSamples": 0,
+            "sampleMinWheelLoadN": 495.4402955766217,
+            "riderWorkJ": -8.319939863794513
+          },
+          {
+            "phase": "rise",
+            "startTick": 48000,
+            "endTick": 64000,
+            "complete": true,
+            "samples": 60,
+            "lastSampleTick": 63680,
+            "sampleMaxHipErrorM": 0.01339936020653369,
+            "sampleMaxCOMErrorM": 0.010247080319569736,
+            "sampleMaxJointErrorRad": 0.04071379390424629,
+            "saturatedSamples": 0,
+            "sampleMinWheelLoadN": 475.05323419807047,
+            "riderWorkJ": 26.256881604556142
+          },
+          {
+            "phase": "recovery-hold",
+            "startTick": 64000,
+            "endTick": 80000,
+            "complete": true,
+            "samples": 51,
+            "lastSampleTick": 80000,
+            "sampleMaxHipErrorM": 0.011354567717391677,
+            "sampleMaxCOMErrorM": 0.008927820045939673,
+            "sampleMaxJointErrorRad": 0.04115092205592589,
+            "saturatedSamples": 0,
+            "sampleMinWheelLoadN": 479.23927504468827,
+            "riderWorkJ": 8.408702586380265
+          }
+        ]
+      },
+      "maxTracking": {
+        "time": 0.775000000000229,
+        "errorM": 0.01653303949436362,
+        "geometry": {
+          "hipError": [
+            -0.0012623908133425066,
+            0.016484773712628742
+          ],
+          "chains": {
+            "foot": {
+              "jointTracking": [
+                -0.009078804122856748,
+                0.014890400441321838
+              ],
+              "trunkTracking": [
+                0.007801660601579635,
+                0.002232195775896506
+              ],
+              "attachmentGap": [
+                1.475270829961307e-05,
+                -0.0006378225045433049
+              ],
+              "anchorOffset": [
+                2.2551405187698492e-17,
+                5.551115123125783e-17
+              ],
+              "targetClosure": [
+                8.326672684688674e-17,
+                1.1102230246251565e-16
+              ],
+              "reconstructionResidual": [
+                -3.6512459722359836e-13,
+                -4.64628335805628e-14
+              ],
+              "sum": [
+                -0.001262390813342519,
+                0.016484773712628742
+              ]
+            },
+            "hand": {
+              "jointTracking": [
+                -0.00012146021188974565,
+                0.008070896620322121
+              ],
+              "trunkTracking": [
+                -0.0011688843754706912,
+                0.008641001972548468
+              ],
+              "attachmentGap": [
+                2.795377438972992e-05,
+                -0.00022712487988070743
+              ],
+              "anchorOffset": [
+                0,
+                0
+              ],
+              "targetClosure": [
+                -8.326672684688674e-17,
+                1.1102230246251565e-16
+              ],
+              "reconstructionResidual": [
+                -3.716749130688868e-13,
+                -3.6126657221302594e-13
+              ],
+              "sum": [
+                -0.0012623908133424652,
+                0.016484773712628725
+              ]
+            }
+          }
+        },
+        "jointError": [
+          -0.017397902809598142,
+          0.05128204190010231,
+          0.008070029479125523,
+          -0.03664734901391907
+        ],
+        "jointVelocity": [
+          -0.15449896071998456,
+          0.2613239558502025,
+          0.07932801026686453,
+          -0.3565450758149934
+        ],
+        "kp": [
+          2200.992011940602,
+          397.04760531934704,
+          540.5382234172563,
+          86.41036045241758
+        ],
+        "kd": [
+          175.1493792030614,
+          31.596044514687,
+          43.01466509348382,
+          6.876318000177341
+        ],
+        "estimate": [
+          52.21424709930523,
+          -197.81730894235656,
+          25.191727589025426,
+          25.85567700175245
+        ],
+        "proportional": [
+          -38.29264510844447,
+          20.361411932322042,
+          4.362159397571396,
+          -3.1667106379182965
+        ],
+        "damping": [
+          27.06039705762346,
+          -8.256803341797099,
+          -3.412267794161624,
+          2.4517173227012337
+        ]
+      },
+      "netRiderWorkJ": -3.471348051823836,
+      "energyResidualJ": 0.30083292738892986
+    },
+    {
+      "bike": "hardtail",
+      "mass": 70,
+      "kind": "hold",
+      "dt": 3.125e-05,
+      "file": "hardtail-hold.json",
+      "sha256": "4d7dc323d599312257e111e9f04cbda56e63d2687d729e8418c8e60b8b6cc03f",
+      "status": "completed",
+      "termination": null,
+      "assessment": {
+        "status": "control",
+        "reason": "Unchanged-posture control; no requested lowering.",
+        "checks": []
+      },
+      "tracking": {
+        "scope": "Saved-sample diagnostics only; no continuous support or stable tracking qualification.",
+        "dt": 3.125e-05,
+        "acceptedTick": 80000,
+        "requestedEndTick": 80000,
+        "status": "completed",
+        "phases": [
+          {
+            "phase": "initial-hold",
+            "startTick": 0,
+            "endTick": 16000,
+            "complete": true,
+            "samples": 50,
+            "lastSampleTick": 15680,
+            "sampleMaxHipErrorM": 0.01087669475057955,
+            "sampleMaxCOMErrorM": 0.007024045616204595,
+            "sampleMaxJointErrorRad": 0.03512370255117998,
+            "saturatedSamples": 0,
+            "sampleMinWheelLoadN": 0,
+            "riderWorkJ": -3.1659447218178567
+          },
+          {
+            "phase": "lower",
+            "startTick": 16000,
+            "endTick": 32000,
+            "complete": true,
+            "samples": 60,
+            "lastSampleTick": 31680,
+            "sampleMaxHipErrorM": 0.0016708291744288188,
+            "sampleMaxCOMErrorM": 0.0011171985022269267,
+            "sampleMaxJointErrorRad": 0.0069204620671228494,
+            "saturatedSamples": 0,
+            "sampleMinWheelLoadN": 328.326181498182,
+            "riderWorkJ": 0.19500500387120434
+          },
+          {
+            "phase": "crouch-hold",
+            "startTick": 32000,
+            "endTick": 48000,
+            "complete": true,
+            "samples": 50,
+            "lastSampleTick": 47680,
+            "sampleMaxHipErrorM": 0.0012779163800572004,
+            "sampleMaxCOMErrorM": 0.001009382079812207,
+            "sampleMaxJointErrorRad": 0.001987462474487379,
+            "saturatedSamples": 0,
+            "sampleMinWheelLoadN": 329.9061306202535,
+            "riderWorkJ": 0.20846602054200591
+          },
+          {
+            "phase": "rise",
+            "startTick": 48000,
+            "endTick": 64000,
+            "complete": true,
+            "samples": 60,
+            "lastSampleTick": 63680,
+            "sampleMaxHipErrorM": 0.0006820383972713234,
+            "sampleMaxCOMErrorM": 0.000615927877967716,
+            "sampleMaxJointErrorRad": 0.0007625605803688242,
+            "saturatedSamples": 0,
+            "sampleMinWheelLoadN": 329.9651936455043,
+            "riderWorkJ": -0.09020079062526598
+          },
+          {
+            "phase": "recovery-hold",
+            "startTick": 64000,
+            "endTick": 80000,
+            "complete": true,
+            "samples": 51,
+            "lastSampleTick": 80000,
+            "sampleMaxHipErrorM": 0.0006801149737185656,
+            "sampleMaxCOMErrorM": 0.0006146324699248701,
+            "sampleMaxJointErrorRad": 0.0007127300587962391,
+            "saturatedSamples": 0,
+            "sampleMinWheelLoadN": 329.92746662938237,
+            "riderWorkJ": 0.023401537386209093
+          }
+        ]
+      },
+      "maxTracking": {
+        "time": 0.6900000000001251,
+        "errorM": 0.0016708291744288188,
+        "geometry": {
+          "hipError": [
+            -0.00025738393515367664,
+            0.001650885713805561
+          ],
+          "chains": {
+            "foot": {
+              "jointTracking": [
+                -0.00224905352160934,
+                0.0016897821550294623
+              ],
+              "trunkTracking": [
+                0.0019782914662183904,
+                0.0005421329891260873
+              ],
+              "attachmentGap": [
+                1.3378120607849032e-05,
+                -0.0005810294303038098
+              ],
+              "anchorOffset": [
+                -3.382710778154774e-17,
+                -5.551115123125783e-17
+              ],
+              "targetClosure": [
+                -1.1102230246251565e-16,
+                2.7755575615628914e-16
+              ],
+              "reconstructionResidual": [
+                -3.704259121661835e-13,
+                -4.6407322429331543e-14
+              ],
+              "sum": [
+                -0.00025738393515367127,
+                0.0016508857138055545
+              ]
+            },
+            "hand": {
+              "jointTracking": [
+                -1.7223442677405387e-05,
+                -0.00030675865087576026
+              ],
+              "trunkTracking": [
+                -0.0002481328748606959,
+                0.0021509757353257997
+              ],
+              "attachmentGap": [
+                7.972382770936597e-06,
+                -0.0001933313702811897
+              ],
+              "anchorOffset": [
+                0,
+                5.551115123125783e-17
+              ],
+              "targetClosure": [
+                -3.0531133177191805e-16,
+                -1.6653345369377348e-16
+              ],
+              "reconstructionResidual": [
+                -3.8621883469147633e-13,
+                -3.631539513548887e-13
+              ],
+              "sum": [
+                -0.00025738393515368883,
+                0.0016508857138055847
+              ]
+            }
+          }
+        },
+        "jointError": [
+          -0.00044579830278366795,
+          0.0069204620671228494,
+          -0.00031772250644000543,
+          0.0014360141407260788
+        ],
+        "jointVelocity": [
+          -0.00044040210460551414,
+          0.00042645581822604243,
+          -1.4383186542833343e-05,
+          -0.0006727711404197739
+        ],
+        "kp": [
+          1561.2418418411733,
+          277.9333237234797,
+          390.191810556064,
+          60.4872523166923
+        ],
+        "kd": [
+          124.2396782454589,
+          22.117231160275868,
+          31.05047770198699,
+          4.813422600124139
+        ],
+        "estimate": [
+          39.17028229485024,
+          -139.45750812430455,
+          18.840011040901757,
+          18.295767267320752
+        ],
+        "proportional": [
+          -0.6959989633276428,
+          1.9234270240177165,
+          -0.12397272004223643,
+          0.08686054966043641
+        ],
+        "damping": [
+          0.05471541577481201,
+          -0.009432021911349966,
+          0.000446604813031766,
+          0.00323833181200783
+        ]
+      },
+      "netRiderWorkJ": -2.8292729506437033,
+      "energyResidualJ": 0.4350176661240144
+    },
+    {
+      "bike": "hardtail",
+      "mass": 70,
+      "kind": "refined",
+      "dt": 1.5625e-05,
+      "file": "hardtail-refined.json",
+      "sha256": "89d1a3ce957ee5fc86bd57e23fc231d8cad445a63bc8fb6d76e4831e88fb3d49",
+      "status": "completed",
+      "termination": null,
+      "assessment": {
+        "status": "screen-failed",
+        "scope": "Saved-sample protocol only; no continuous support, equilibrium or manoeuvre qualification.",
+        "requestedDepthM": 0.04300000000000001,
+        "observedLoweringM": 0.04494989513841613,
+        "finalHipErrorM": 0.0004423187327156408,
+        "checks": [
+          {
+            "name": "complete",
+            "pass": true
+          },
+          {
+            "name": "sampling",
+            "pass": true,
+            "value": 0.01,
+            "limit": 0.01
+          },
+          {
+            "name": "tracking",
+            "pass": false,
+            "value": 0.015619233314430383,
+            "limit": 0.010750000000000003
+          },
+          {
+            "name": "lowering",
+            "pass": true,
+            "value": 0.04494989513841613,
+            "min": 0.03440000000000001,
+            "max": 0.051600000000000014
+          },
+          {
+            "name": "recovery",
+            "pass": true,
+            "value": 0.0004423187327156408,
+            "limit": 0.003
+          },
+          {
+            "name": "wheel-loads",
+            "pass": true,
+            "value": 316.05796719583645,
+            "min": 8.139519499999999
+          },
+          {
+            "name": "estimate-eligibility",
+            "pass": true
+          },
+          {
+            "name": "saturation",
+            "pass": true
+          },
+          {
+            "name": "net-work",
+            "pass": true,
+            "value": -1.5014070548747092,
+            "limit": 88.5540495
+          }
+        ]
+      },
+      "tracking": {
+        "scope": "Saved-sample diagnostics only; no continuous support or stable tracking qualification.",
+        "dt": 1.5625e-05,
+        "acceptedTick": 160000,
+        "requestedEndTick": 160000,
+        "status": "completed",
+        "phases": [
+          {
+            "phase": "initial-hold",
+            "startTick": 0,
+            "endTick": 32000,
+            "complete": true,
+            "samples": 50,
+            "lastSampleTick": 31360,
+            "sampleMaxHipErrorM": 0.010858395555050337,
+            "sampleMaxCOMErrorM": 0.007011930183307497,
+            "sampleMaxJointErrorRad": 0.03506373303391423,
+            "saturatedSamples": 0,
+            "sampleMinWheelLoadN": 0,
+            "riderWorkJ": -3.1508059286121766
+          },
+          {
+            "phase": "lower",
+            "startTick": 32000,
+            "endTick": 64000,
+            "complete": true,
+            "samples": 60,
+            "lastSampleTick": 63360,
+            "sampleMaxHipErrorM": 0.015619233314430383,
+            "sampleMaxCOMErrorM": 0.011277851784026354,
+            "sampleMaxJointErrorRad": 0.04843294971337877,
+            "saturatedSamples": 0,
+            "sampleMinWheelLoadN": 331.6321838724607,
+            "riderWorkJ": -16.547051604404643
+          },
+          {
+            "phase": "crouch-hold",
+            "startTick": 64000,
+            "endTick": 96000,
+            "complete": true,
+            "samples": 50,
+            "lastSampleTick": 95360,
+            "sampleMaxHipErrorM": 0.009804612391935762,
+            "sampleMaxCOMErrorM": 0.007646278073939992,
+            "sampleMaxJointErrorRad": 0.03686337184989369,
+            "saturatedSamples": 0,
+            "sampleMinWheelLoadN": 337.0713606514934,
+            "riderWorkJ": -5.794648435242525
+          },
+          {
+            "phase": "rise",
+            "startTick": 96000,
+            "endTick": 128000,
+            "complete": true,
+            "samples": 60,
+            "lastSampleTick": 127360,
+            "sampleMaxHipErrorM": 0.013881081917077156,
+            "sampleMaxCOMErrorM": 0.010567464877834169,
+            "sampleMaxJointErrorRad": 0.04192145973680685,
+            "saturatedSamples": 0,
+            "sampleMinWheelLoadN": 328.0413017753043,
+            "riderWorkJ": 17.882190427289874
+          },
+          {
+            "phase": "recovery-hold",
+            "startTick": 128000,
+            "endTick": 160000,
+            "complete": true,
+            "samples": 51,
+            "lastSampleTick": 160000,
+            "sampleMaxHipErrorM": 0.011679447743927141,
+            "sampleMaxCOMErrorM": 0.009157207397649544,
+            "sampleMaxJointErrorRad": 0.04242029703600086,
+            "saturatedSamples": 0,
+            "sampleMinWheelLoadN": 316.05796719583645,
+            "riderWorkJ": 6.1089084860947604
+          }
+        ]
+      },
+      "maxTracking": {
+        "time": 0.774999999999611,
+        "errorM": 0.015619233314430383,
+        "geometry": {
+          "hipError": [
+            -0.0011862710001532273,
+            0.015574119893104948
+          ],
+          "chains": {
+            "foot": {
+              "jointTracking": [
+                -0.007978044268509205,
+                0.014213197556010582
+              ],
+              "trunkTracking": [
+                0.0067802544092256944,
+                0.001935522594138317
+              ],
+              "attachmentGap": [
+                1.1518859495058913e-05,
+                -0.0005746002569978255
+              ],
+              "anchorOffset": [
+                -2.688821387764051e-17,
+                -5.551115123125783e-17
+              ],
+              "targetClosure": [
+                8.326672684688674e-17,
+                1.1102230246251565e-16
+              ],
+              "reconstructionResidual": [
+                -3.6481928589182644e-13,
+                -4.621303340002214e-14
+              ],
+              "sum": [
+                -0.001186271000153214,
+                0.015574119893104916
+              ]
+            },
+            "hand": {
+              "jointTracking": [
+                -0.00017509435153628683,
+                0.008247178762645302
+              ],
+              "trunkTracking": [
+                -0.0010222056687737568,
+                0.007520909322814795
+              ],
+              "attachmentGap": [
+                1.1029020528429982e-05,
+                -0.00019396819199376286
+              ],
+              "anchorOffset": [
+                0,
+                0
+              ],
+              "targetClosure": [
+                -8.326672684688674e-17,
+                1.1102230246251565e-16
+              ],
+              "reconstructionResidual": [
+                -3.71508379615193e-13,
+                -3.615163723935666e-13
+              ],
+              "sum": [
+                -0.0011862710001532054,
+                0.01557411989310493
+              ]
+            }
+          }
+        },
+        "jointError": [
+          -0.017456915080985777,
+          0.04832774605873446,
+          0.00843112177296549,
+          -0.03765189596725592
+        ],
+        "jointVelocity": [
+          -0.15519134656749298,
+          0.2652285339668274,
+          0.07664612899659541,
+          -0.3533048225726736
+        ],
+        "kp": [
+          1538.303207622721,
+          277.9333237234798,
+          378.54460043831926,
+          60.4872523166923
+        ],
+        "kd": [
+          122.41427973363712,
+          22.117231160275878,
+          30.12362217025248,
+          4.813422600124139
+        ],
+        "estimate": [
+          36.86105199712415,
+          -138.25208507822344,
+          18.578214018329607,
+          17.151780836641834
+        ],
+        "proportional": [
+          -26.85402846427787,
+          13.43189109016837,
+          3.191555622794035,
+          -2.277459731573258
+        ],
+        "damping": [
+          18.99763691095291,
+          -5.866120796045403,
+          -2.308859030705873,
+          1.700605417704156
+        ]
+      },
+      "netRiderWorkJ": -1.5014070548747092,
+      "energyResidualJ": 0.14067924892938954
+    }
+  ],
+  "comparisons": [
+    {
+      "bike": "full",
+      "matchedHold": {
+        "sampleCount": 271,
+        "lowered": {
+          "tick": 48000,
+          "phase": "rise",
+          "requestedHipDelta": [
+            0,
+            -0.04300000000000001
+          ],
+          "actualHipDelta": [
+            0.00032586140205947967,
+            -0.04548227960625123
+          ],
+          "targetCOMDelta": [
+            0.001592902300312657,
+            -0.03497957958612524
+          ],
+          "actualCOMDelta": [
+            0.0013383930741749095,
+            -0.03656657178102529
+          ],
+          "riderWorkDelta": -23.074468820516778
+        },
+        "final": {
+          "tick": 80000,
+          "phase": "recovery-hold",
+          "requestedHipDelta": [
+            0,
+            0
+          ],
+          "actualHipDelta": [
+            -0.0001231493339028944,
+            0.001904368585684102
+          ],
+          "targetCOMDelta": [
+            0,
+            0
+          ],
+          "actualCOMDelta": [
+            0.00031822423419326784,
+            0.001189250263252839
+          ],
+          "riderWorkDelta": 1.7382113992873864
+        }
+      },
+      "refinement": {
+        "maxSavedHipDifferenceM": 4.041392382186123e-05,
+        "finalHipDifferenceM": 2.2113808166380826e-06,
+        "netWorkDifferenceJ": 0.004865408714896047
+      }
+    },
+    {
+      "bike": "hardtail",
+      "matchedHold": {
+        "sampleCount": 271,
+        "lowered": {
+          "tick": 48000,
+          "phase": "rise",
+          "requestedHipDelta": [
+            0,
+            -0.04300000000000001
+          ],
+          "actualHipDelta": [
+            0.00022764783504855557,
+            -0.04455102704422112
+          ],
+          "targetCOMDelta": [
+            0.001592902300312657,
+            -0.03497957958612524
+          ],
+          "actualCOMDelta": [
+            0.0014544180506306445,
+            -0.03597187312941974
+          ],
+          "riderWorkDelta": -22.7547772811078
+        },
+        "final": {
+          "tick": 80000,
+          "phase": "recovery-hold",
+          "requestedHipDelta": [
+            0,
+            0
+          ],
+          "actualHipDelta": [
+            -8.132365890606286e-05,
+            0.0010076151551217938
+          ],
+          "targetCOMDelta": [
+            0,
+            0
+          ],
+          "actualCOMDelta": [
+            0.00015940632658924953,
+            0.0006270748443534813
+          ],
+          "riderWorkDelta": 1.3265346047030402
+        }
+      },
+      "refinement": {
+        "maxSavedHipDifferenceM": 7.112586797068252e-05,
+        "finalHipDifferenceM": 2.175591450815028e-06,
+        "netWorkDifferenceJ": -0.0013312910659539767
+      }
+    }
+  ]
+}
