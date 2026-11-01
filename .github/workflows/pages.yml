@@ -1,4 +1,3 @@
-# Quota hold through 2026-10-31: remove the literal false guards only on/after 1 November.
 name: Deploy verified Pages
 on:
   workflow_dispatch:
@@ -9,7 +8,7 @@ concurrency:
   cancel-in-progress: false
 jobs:
   package:
-    if: false && vars.BIKELAB_HOSTED_CI_ENABLED == 'true' && github.ref == 'refs/heads/main'
+    if: vars.CI_MODE != 'off' && vars.BIKELAB_HOSTED_CI_ENABLED != 'false' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-24.04
     timeout-minutes: 5
     permissions:
