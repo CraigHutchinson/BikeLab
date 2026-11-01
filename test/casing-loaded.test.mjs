@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
-import {runLoaded,createLoadedGuard,STEPS} from '../scripts/casing-loaded.mjs';
+import {runLoaded,createLoadedGuard,compareLoaded,STEPS} from '../scripts/casing-loaded.mjs';
 import {createStageObserver} from '../dist/casing-rk4-observer.js';
 import {getRuntime} from '../dist/moving-wheel.js';
 import {modelXML} from '../dist/tyre-fixture.js';
@@ -55,4 +55,10 @@ test('analytic-plane isolation has its own identity and retains finite terrain g
  const a=input(),plane=await runLoaded(a,{duration:.000125,contactGeometry:'plane'}),mesh=await runLoaded(a,{duration:.000125});
  assert.equal(plane.status,'completed');assert.notEqual(plane.model,mesh.model);assert.notEqual(plane.xmlSha256,mesh.xmlSha256);assert.equal(plane.diagnostic.finiteProfileGuardRetained,true);assert.equal(plane.summary.stageMinContacts,5);assert.ok(plane.summary.maxResidual<1e-10);
  a.seed.hub.position[0]=9;await assert.rejects(runLoaded(a,{duration:.000125,contactGeometry:'plane'}),/authored-domain/);await assert.rejects(runLoaded(input(),{contactGeometry:'unknown'}));
+});
+
+test('refinement refuses different contact models or authored inputs',async()=>{
+ const a=await runLoaded(input(),{duration:.000125,comparison:true}),b=await runLoaded(input(),{duration:.000125,dt:STEPS[1],comparison:true});
+ assert.equal(compareLoaded(a,b).samples,33);
+ const changed=structuredClone(b);changed.model='different-contact-law';assert.throws(()=>compareLoaded(a,changed),/contact model/);changed.model=b.model;changed.input.seed.gravity+=1;assert.throws(()=>compareLoaded(a,changed),/authored inputs/);
 });

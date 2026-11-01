@@ -118,6 +118,8 @@ For #52, distinguish the collision witness from native force distribution. In th
 
 For #53, the current casing has foundation and axial edge-extension elasticity/viscosity but no bending law. A useful high-frequency modal cutoff has not been demonstrated; this does not prove that every radial mode has the same frequency, since curvature, extension, prestress and contact can affect the spectrum. The [adaptive-wheel contract](ADAPTIVE_WHEEL.md) already requires persistent material identity and conservation on representation changes. Compare cheap tiers with a converged nodal reference on flat/rounded/sharp terrain, edge interiors, two supports, seams, unload/recontact and repeated impacts. Preserve mass, COM, momentum, work and unresolved-energy accounting through transfers. Flat-ground agreement alone cannot qualify a game tier on rocks.
 
+The [2026-11-01 prescribed contact audit](CONTACT_GAP.md) reproduces a roughly 32.5% difference between the actual capsule gap rate and the native mesh element row velocity, despite accurate normals and matching independent inverse-distance weights. The first separately identified plane-vertex full-front controls converge; broader wheel receiving is underway. This supports investigating the combined witness/distribution representation, without treating a plane-only result as a sharp-terrain fix or closing #48/#52.
+
 The next physical change must identify whether it changes **the material/contact law**, **the numerical solver**, or only **the observation**. Keep these arms separate in evidence before assessing combinations. The immediate product goal remains a trustworthy rider action on both bikes, not a wholesale replacement of every solver.
 
 ## Tracking and closure
