@@ -1,4 +1,4 @@
-import {validate,MEASUREMENT} from './tyre-fixture.js';
+import {validate,MEASUREMENT,RK4_NUMERICS} from './tyre-fixture.js';
 // Select a recording stride from exact divisors of the horizon, including for
 // authored timesteps which are not one of the built-in dyadic choices.
 function nearestDivisor(total,target,min,max){
@@ -7,8 +7,9 @@ function nearestDivisor(total,target,min,max){
  for(let i=1;i*i<=total;i++)if(total%i===0){consider(i);consider(total/i);}
  if(!best)throw Error('No bounded recording schedule fits the authored timestep.');return best;
 }
-export function fixtureControls(input,{rates,dt,duration,measure}){
+export function fixtureControls(input,{rates,dt,duration,measure,solver=input.numerics?'RK4':'legacy'}){
  const a=structuredClone(input),steps=Math.round(duration/dt);
+ if(!['RK4','legacy'].includes(solver))throw Error('Unsupported fixture solver.');if(solver==='RK4')a.numerics={...RK4_NUMERICS};else delete a.numerics;
  if(!Number.isFinite(duration)||!Number.isFinite(dt)||dt<=0||duration<=0||!Number.isSafeInteger(steps)||Math.abs(duration/dt-steps)>1e-7)throw Error('Duration must align to the integration step.');
  const measured=measure||duration>.1,targetSample=duration>.1?duration/200:duration>.02?.0005:.000125;
  const stride=nearestDivisor(steps,targetSample/dt,Math.max(1,Math.ceil(steps/300),Math.ceil((measured?dt:.000125)/dt-1e-9)),Math.floor((measured ? .05 : .005)/dt+1e-9));

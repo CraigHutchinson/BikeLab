@@ -5,8 +5,12 @@ import {WHEEL_DEFAULTS,inputFromRecord as trailInput,validate as validateTrail,m
 import {TYRE_WINDOW_MODEL} from './tyre-window.js';
 import {NATIVE_BUILD,canonicalModelXML,validateInitialization,stateIdentity,scalarLayout,applyState} from './trail-initial-state.js';
 import {createTyreMotion,createTyreMotionFrame,materializeTyreMotion} from './tyre-motion.js';
+import {createStageObserver,STAGE_WORK,STAGE_BUDGETS,hasNativeWarning,nativeWarnings} from './casing-rk4-observer.js';
 
 export const MODEL='bikelab-fixed-hub-casing-0.1';
+export const RK4_MODEL='bikelab-fixed-hub-casing-rk4-0.1';
+export const RK4_NUMERICS=Object.freeze({format:'bikelab-fixed-hub-numerics-0.1',integrator:'RK4',work:STAGE_WORK});
+export const RK4_STEPS=Object.freeze([.000001953125,.0000009765625,.00000048828125]);
 export const SEED='bikelab-fixed-hub-seed-0.1';
 export const SCOPE='World-fixed hub; fresh time, warm start and ledgers. Imported node rates remain hub-local; removing hub motion changes kinetic energy and momentum. This is a diagnostic boundary, not continued whole-bike motion, equilibrium, calibrated tyre damping or failure.';
 const hash=async value=>Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',new TextEncoder().encode(value))),v=>v.toString(16).padStart(2,'0')).join('');
@@ -21,30 +25,34 @@ function vector(a,n,limit,label){
  return [...a];
 }
 export function validate(input){
- const measured=Object.hasOwn(input??{},'measurement');
- object(input,measured?['seed','motion','rates','measurement']:['seed','motion','rates'],'fixture input');const s=input.seed,m=input.motion;
+ const measured=Object.hasOwn(input??{},'measurement'),rk4=Object.hasOwn(input??{},'numerics');
+ object(input,['seed','motion','rates',...(measured?['measurement']:[]),...(rk4?['numerics']:[])],'fixture input');const s=input.seed,m=input.motion;
+ if(rk4){object(input.numerics,Object.keys(RK4_NUMERICS),'numerics');for(const key of Object.keys(RK4_NUMERICS))if(input.numerics[key]!==RK4_NUMERICS[key])throw Error('Unsupported numerical policy.');}
  object(s,['format','source','wheel','profile','gravity','hub','q','v'],'seed');
  if(s.format!==SEED)throw Error('Unsupported fixed-hub seed.');
  object(s.source,['recordSha256','identity','bike','wheel','tick','time','nativeBuild'],'source');
  if(!/^[a-f0-9]{64}$/.test(s.source.recordSha256)||!/^[a-f0-9]{64}$/.test(s.source.identity)||s.source.nativeBuild!==NATIVE_BUILD||!['full','hardtail'].includes(s.source.bike)||!['front','rear'].includes(s.source.wheel)||!Number.isSafeInteger(s.source.tick)||s.source.tick<0||!Number.isFinite(s.source.time)||s.source.time<0||s.source.time>10.000001)throw Error('Invalid source provenance.');
  object(s.wheel,Object.keys(WHEEL_DEFAULTS),'wheel');object(m,['dt','duration','sampleDt'],'motion');
- if(!Number.isFinite(m.dt)||m.dt<.0000078125||m.dt>.0000625||!Number.isFinite(m.duration)||m.duration<(measured ? .001 : .02)||m.duration>(measured?5:.1)||!Number.isFinite(m.sampleDt)||m.sampleDt<(measured?m.dt:.000125)||m.sampleDt>(measured ? .05 : .005)||m.duration/m.sampleDt>300)throw Error('Unsupported fixture time/recording range.');
+ if(!Number.isFinite(m.dt)||(rk4?!RK4_STEPS.includes(m.dt):m.dt<.0000078125||m.dt>.0000625)||!Number.isFinite(m.duration)||m.duration<(measured ? .001 : .02)||m.duration>(measured?5:.1)||!Number.isFinite(m.sampleDt)||m.sampleDt<(measured?m.dt:.000125)||m.sampleDt>(measured ? .05 : .005)||m.duration/m.sampleDt>300)throw Error('Unsupported fixture time/recording range.');
  for(const ratio of [m.duration/m.sampleDt,m.sampleDt/m.dt])if(Math.abs(ratio-Math.round(ratio))>1e-7)throw Error('Fixture observations must align to fixed steps.');
  const measurement=measured?validateMeasurement(input.measurement,m):null;
- const w=validateWheel({...s.wheel,dt:m.dt}),profile=canonicalProfile(s.profile);
+ const w=fixtureWheel(s.wheel,m.dt,rk4),profile=canonicalProfile(s.profile);
  if(profile.points.some(p=>p[1]!==profile.points[0][1]))throw Error('Fixed-hub control currently requires flat terrain.');
  if(!Number.isFinite(s.gravity)||s.gravity<0||s.gravity>15)throw Error('Invalid gravity.');
  object(s.hub,['position','quaternion'],'hub');const position=vector(s.hub.position,3,10,'hub position'),quaternion=vector(s.hub.quaternion,4,1,'hub quaternion');
  if(position[1]!==0||quaternion[1]!==0||quaternion[3]!==0||Math.abs(Math.hypot(...quaternion)-1)>1e-12)throw Error('Hub must have a normalized planar orientation.');
  if(!['imported','zero'].includes(input.rates))throw Error('Choose imported or zero node rates.');
  const q=vector(s.q,2*w.nodes,10,'node positions'),v=vector(s.v,2*w.nodes,10,'node velocities');
- return {seed:{format:SEED,source:{...s.source},wheel:{...s.wheel},profile,gravity:s.gravity,hub:{position,quaternion},q,v},motion:{...m},rates:input.rates,...(measured?{measurement}:{})};
+ return {seed:{format:SEED,source:{...s.source},wheel:{...s.wheel},profile,gravity:s.gravity,hub:{position,quaternion},q,v},motion:{...m},rates:input.rates,...(measured?{measurement}:{}),...(rk4?{numerics:{...RK4_NUMERICS}}:{})};
 }
+// Reuse the unchanged wheel's physical-domain validation at its strictest
+// legacy step. Geometry/material construction does not consume the run clock.
+function fixtureWheel(wheel,dt,rk4){return validateWheel({...wheel,dt:rk4?.0000078125:dt});}
 export function modelXML(input){
- const a=validate(input),s=a.seed,w=validateWheel({...s.wheel,dt:a.motion.dt}),ring=wheelParts(w,'casing'),ground=terrainParts(w,s.profile);
+ const a=validate(input),s=a.seed,w=fixtureWheel(s.wheel,a.motion.dt,!!a.numerics),ring=wheelParts(w,'casing'),ground=terrainParts(w,s.profile);
  // Constitutive/rest geometry uses the source bike's canonical construction.
  // Preserve the captured binary64 world transform instead of quantizing it again.
- const physical=canonicalModelXML(`<option timestep="${a.motion.dt}" gravity="0 0 -${s.gravity}" integrator="implicitfast" solver="Newton" iterations="100" tolerance="1e-10" ccd_tolerance="${w.collisionTolerance}" ccd_iterations="${w.collisionIterations}"><flag autoreset="disable"/></option><asset>${ground.assets}</asset><worldbody>${ground.geoms}<body name="hub" pos="HUB_POSITION" quat="HUB_QUATERNION">${ring.nodes}</body></worldbody><deformable>${ring.flex}</deformable>`);
+ const physical=canonicalModelXML(`<option timestep="${a.motion.dt}" gravity="0 0 -${s.gravity}" integrator="${a.numerics?'RK4':'implicitfast'}" solver="Newton" iterations="100" tolerance="1e-10" ccd_tolerance="${w.collisionTolerance}" ccd_iterations="${w.collisionIterations}"><flag autoreset="disable"/></option><asset>${ground.assets}</asset><worldbody>${ground.geoms}<body name="hub" pos="HUB_POSITION" quat="HUB_QUATERNION">${ring.nodes}</body></worldbody><deformable>${ring.flex}</deformable>`);
  return '<mujoco model="BikeLab fixed hub casing"><compiler angle="radian" fusestatic="false"/>'+physical.replace('HUB_POSITION',s.hub.position.join(' ')).replace('HUB_QUATERNION',s.hub.quaternion.join(' '))+'</mujoco>';
 }
 function binding(mj,model,prefix,n){
@@ -87,9 +95,9 @@ export async function fromWindow(record,wheel='front'){
 
 export async function run(input,onProgress){
  if(onProgress!==undefined&&typeof onProgress!=='function')throw Error('Progress observer must be a function.');
- const a=validate(input),s=a.seed,m=a.motion,w=validateWheel({...s.wheel,dt:m.dt}),steps=Math.round(m.duration/m.dt),stride=Math.round(m.sampleDt/m.dt),progressStride=Math.max(1,Math.ceil(steps/100));
+ const a=validate(input),s=a.seed,m=a.motion,w=fixtureWheel(s.wheel,m.dt,!!a.numerics),steps=Math.round(m.duration/m.dt),stride=Math.round(m.sampleDt/m.dt),progressStride=Math.max(1,Math.ceil(steps/100));
  const progress=(phase,tick=0)=>onProgress?.(phase,tick,steps,m.dt);progress('preparing');
- const xml=modelXML(a),identity=await hash(JSON.stringify({model:MODEL,nativeBuild:NATIVE_BUILD,xml:xml.replace(/timestep="[^"]*"/,'timestep="run-control"'),limits:{maxPenetration:w.maxPenetration,maxStrain:w.maxStrain,maxDisplacement:w.maxDisplacement}})),mj=await getRuntime();let model,data,forceBuffer;
+ const xml=modelXML(a),identity=await hash(JSON.stringify({model:a.numerics?RK4_MODEL:MODEL,nativeBuild:NATIVE_BUILD,xml:xml.replace(/timestep="[^"]*"/,'timestep="run-control"'),limits:{maxPenetration:w.maxPenetration,maxStrain:w.maxStrain,maxDisplacement:w.maxDisplacement}})),mj=await getRuntime();let model,data,forceBuffer,stageObserver;
  try{
   progress('initializing');model=mj.MjModel.from_xml_string(xml);data=new mj.MjData(model);forceBuffer=new mj.DoubleBuffer(6);const b=binding(mj,model,'casing',w.nodes);applyNodes(a,b,data);
   if(model.nq!==2*w.nodes||model.nv!==2*w.nodes||model.body_jntnum[b.bodies[0]]!==0)throw Error('Unexpected fixed-hub topology.');
@@ -116,7 +124,8 @@ export async function run(input,onProgress){
    if(measured&&(!Number.isFinite(endpoint.meanSquareSpeed)||!Number.isFinite(endpoint.maxSpeed)||!Number.isFinite(endpoint.maxAcceleration)))return 'nonfinite-observation';
    if(!Number.isFinite(energy)||!Number.isFinite(lossPower)||!Number.isFinite(contactPower)||!Number.isFinite(forceResidual)||!ground.every(Number.isFinite)||!clamp.every(Number.isFinite))return 'nonfinite-state';
    const q=data.qpos,v=data.qvel,acc=data.qacc;for(let i=0;i<model.nv;i++)if(!Number.isFinite(q[i])||!Number.isFinite(v[i])||!Number.isFinite(acc[i]))return 'nonfinite-state';
-   if(data.solver_niter[0]>=100)return 'native-solver-iteration-limit';if(data.ncon>256)return 'contact-capacity-limit';
+   if(a.numerics){if(hasNativeWarning(data))return 'native-warning';for(let i=0;i<data.solver_niter.length;i++)if(data.solver_niter[i]>=model.opt.iterations)return 'native-solver-iteration-limit';}
+   else if(data.solver_niter[0]>=100)return 'native-solver-iteration-limit';if(data.ncon>256)return 'contact-capacity-limit';
    geometryLimits(w,s.profile,hub,xyz,previous?oldXYZ:undefined,limits);if(limits.reason)return limits.reason;
    let strain=0,deformation=0;for(let i=0;i<w.nodes;i++){strain=Math.max(strain,Math.abs(data.flexedge_length[b.edge+i]/model.flexedge_length0[b.edge+i]-1));deformation=Math.max(deformation,Math.hypot(q[b.nodeJoints[i][0].q],q[b.nodeJoints[i][1].q]));}limits.strain=strain;limits.deformation=deformation;
    if(strain>w.maxStrain)return 'casing-strain-limit';if(deformation>w.maxDisplacement)return 'casing-displacement-limit';return null;
@@ -134,21 +143,29 @@ export async function run(input,onProgress){
    // total angular balance, not a directly measured native bearing torque.
    f.contactMomentDifference=f.nodalGroundMoment-contactMoment;f.ground[2]=contactMoment;f.clamp[2]+=f.contactMomentDifference;
   }
-  const report={model:measured?MEASURED_MODEL:MODEL,identity,nativeBuild:NATIVE_BUILD,scenario:a,scope:SCOPE,units:'SI; world x forward, y left, z up. ground/clamp [Fx,Fz,My] act on casing about fixed hub. Clamp is inferred from balance; its moment includes the separately reported nodal/contact-point moment discrepancy, not a measured bearing torque. Node rates are hub-local.',dynamicMass:Array.from({length:w.nodes},(_,i)=>model.body_mass[b.bodies[i+1]]).reduce((x,y)=>x+y,0)};
-  observe();initialEnergy=energy;const initialIssue=guard();if(initialIssue){progress('finalizing');return {...report,status:'initial-state-rejected',termination:{reason:initialIssue,time:0},summary:{steps:0,acceptedTime:0},frames:[],...(measured?{observation:{format:MEASUREMENT,intervals:[],windowFrameIndices:[]}}:{})};}
+  const report={model:a.numerics?RK4_MODEL:measured?MEASURED_MODEL:MODEL,identity,nativeBuild:NATIVE_BUILD,scenario:a,scope:SCOPE,units:'SI; world x forward, y left, z up. ground/clamp [Fx,Fz,My] act on casing about fixed hub. Clamp is inferred from balance; its moment includes the separately reported nodal/contact-point moment discrepancy, not a measured bearing torque. Node rates are hub-local.',dynamicMass:Array.from({length:w.nodes},(_,i)=>model.body_mass[b.bodies[i+1]]).reduce((x,y)=>x+y,0),...(a.numerics?{numericalPolicy:{...RK4_NUMERICS,dt:m.dt,stageComparisonBudgets:STAGE_BUDGETS,contactWork:'Signed generalized normal-force work; not a contact dissipation or storage decomposition.',rollback:'Accepted integration state and ledgers; attempted warnings/solver bookkeeping are not resumable state.'}}:{})};
+  observe();initialEnergy=energy;const initialIssue=guard();if(initialIssue){progress('finalizing');return {...report,status:'initial-state-rejected',termination:{reason:initialIssue,time:0},summary:{steps:0,acceptedTime:0},frames:[],...(a.numerics?{attemptedWarnings:{native:nativeWarnings(data),observer:[]}}:{}),...(measured?{observation:{format:MEASUREMENT,intervals:[],windowFrameIndices:[]}}:{})};}
   peakForce=Math.hypot(ground[0],ground[1]);maxForceResidual=forceResidual;record();progress('integrating');
+  if(a.numerics){const stageLimits={},stageObservation={verticalForce:0};stageObserver=createStageObserver(mj,model,(d,index,previous)=>{
+   geometryLimits(w,s.profile,hub,d.flexvert_xpos,previous,stageLimits);if(stageLimits.reason)throw Error(stageLimits.reason);
+   for(let i=0;i<d.solver_niter.length;i++)if(d.solver_niter[i]>=model.opt.iterations)throw Error('native-solver-iteration-limit');if(d.ncon>256)throw Error('contact-capacity-limit');
+   for(let i=0;i<d.nefc;i++)if(d.efc_type[i]!==mj.mjtConstraint.mjCNSTR_CONTACT_FRICTIONLESS.value||!Number.isFinite(d.efc_force[i])||d.efc_force[i]<0)throw Error('unsupported-normal-contact');
+   let vertical=0;const h=9*b.bodies[0];for(let i=0;i<w.nodes;i++){const u=b.nodeJoints[i][0],v=b.nodeJoints[i][1];if(Math.abs(d.flexedge_length[b.edge+i]/model.flexedge_length0[b.edge+i]-1)>w.maxStrain)throw Error('casing-strain-limit');if(Math.hypot(d.qpos[u.q],d.qpos[v.q])>w.maxDisplacement)throw Error('casing-displacement-limit');vertical+=d.xmat[h+6]*d.qfrc_constraint[u.v]+d.xmat[h+8]*d.qfrc_constraint[v.v];}stageObservation.verticalForce=vertical;return stageObservation;
+  });}
   for(let tick=1;tick<=steps;tick++){
    oldQ.set(data.qpos);oldV.set(data.qvel);oldWarm.set(data.qacc_warmstart);oldXYZ.set(xyz);const time=data.time,oldLoss=lossPower,oldPower=contactPower,oldEnergy=energy,previousLoss=loss,previousWork=work;if(measured)Object.assign(oldEndpoint,endpoint);
-   mj.mj_step(model,data);observe();const reason=guard(true)||(Math.abs(data.time-time-m.dt)>1e-9?'native-clock-reset':null);
-   if(reason){termination={reason,time,attemptedTime:time+m.dt};data.qpos.set(oldQ);data.qvel.set(oldV);data.qacc_warmstart.set(oldWarm);data.time=time;observe();guard();break;}
-   loss+=.5*m.dt*(oldLoss+lossPower);work+=.5*m.dt*(oldPower+contactPower);accepted=tick;maxResidual=Math.max(maxResidual,Math.abs(energy-initialEnergy+loss-work));maxForceResidual=Math.max(maxForceResidual,forceResidual);peakForce=Math.max(peakForce,Math.hypot(ground[0],ground[1]));
+   let stageStep=null,reason=null;if(stageObserver){try{stageStep=stageObserver.predict(data);mj.mj_step(model,data);stageObserver.compare(data);observe();reason=guard(true)||(hasNativeWarning(data)?'native-warning':null);}catch(error){reason=error.message;}}
+   else{mj.mj_step(model,data);observe();reason=guard(true)||(Math.abs(data.time-time-m.dt)>1e-9?'native-clock-reset':null);}
+   if(reason){termination={reason,time,attemptedTime:time+m.dt};if(stageObserver)stageObserver.restore(data);else{data.qpos.set(oldQ);data.qvel.set(oldV);data.qacc_warmstart.set(oldWarm);data.time=time;}observe();guard();break;}
+   loss+=stageStep?stageStep.loss:.5*m.dt*(oldLoss+lossPower);work+=stageStep?stageStep.contactWork:.5*m.dt*(oldPower+contactPower);accepted=tick;maxResidual=Math.max(maxResidual,Math.abs(energy-initialEnergy+loss-work));maxForceResidual=Math.max(maxForceResidual,forceResidual);peakForce=Math.max(peakForce,Math.hypot(ground[0],ground[1]));
    if(measured)intervals.accept(tick,oldEndpoint,endpoint,oldEnergy,previousLoss,previousWork,energy,loss,work);
    if(measured?tick===schedule[nextSample]:tick%stride===0){record();if(measured)nextSample++;}if(tick%progressStride===0)progress('integrating',tick);
   }
   if(slots[count-1].time!==data.time)record();progress('finalizing',accepted);
+  if(stageObserver)report.attemptedWarnings={native:nativeWarnings(data),observer:nativeWarnings(stageObserver.data)};
   const finalNodes={q:[],v:[]};for(const axes of b.nodeJoints)for(const j of axes){finalNodes.q.push(data.qpos[j.q]);finalNodes.v.push(data.qvel[j.v]);}
   return {...report,status:termination?'terminated':'completed',termination,finalNodes,summary:{steps:accepted,acceptedTime:data.time,initialEnergy,finalEnergy:energy,maxResidual,maxForceResidual,peakForce},...(measured?{observation:{format:MEASUREMENT,scope:'Trapezoidal statistics at every accepted physics endpoint; maxima are discrete endpoint observations, not continuous peaks or settling certification.',intervals:intervals.result(),windowFrameIndices:slots.slice(0,count).flatMap((f,i)=>{const tick=Math.round(f.time/m.dt),window=a.measurement.window;return window&&tick>=window.startTick&&tick<=window.endTick&&(tick-window.startTick)%window.strideTicks===0?[i]:[];})}}:{}),frames:slots.slice(0,count).map(f=>{const {contactData,contactCount,nodes,ground,clamp,tyreMotion,...rest}=f;return {...rest,ground:Array.from(ground),clamp:Array.from(clamp),nodes:Array.from({length:w.nodes},(_,i)=>[nodes[2*i],nodes[2*i+1]]),tyreMotion:materializeTyreMotion(tyreMotion),contacts:Array.from({length:contactCount},(_,i)=>{const k=7*i;return {point:[contactData[k],contactData[k+1]],force:[contactData[k+2],contactData[k+3]],normalForce:contactData[k+4],edge:contactData[k+5],vertex:contactData[k+6]};})};})};
- }finally{forceBuffer?.delete();data?.delete();model?.delete();}
+ }finally{stageObserver?.dispose();forceBuffer?.delete();data?.delete();model?.delete();}
 }
-export function inputFromRecord(record){if(![MODEL,MEASURED_MODEL].includes(record?.model))throw Error('Unsupported fixed-hub record.');const input=validate(record.scenario);if((record.model===MEASURED_MODEL)!==!!input.measurement)throw Error('Fixture measurement discriminator mismatch.');return input;}
+export function inputFromRecord(record){if(![MODEL,MEASURED_MODEL,RK4_MODEL].includes(record?.model))throw Error('Unsupported fixed-hub record.');const input=validate(record.scenario);if((record.model===RK4_MODEL)!==!!input.numerics||(!input.numerics&&(record.model===MEASURED_MODEL)!==!!input.measurement))throw Error('Fixture numerical/measurement discriminator mismatch.');if(input.numerics){const p=record.numericalPolicy;if(!p||p.dt!==input.motion.dt||Object.keys(RK4_NUMERICS).some(k=>p[k]!==RK4_NUMERICS[k])||Object.keys(STAGE_BUDGETS).some(k=>p.stageComparisonBudgets?.[k]!==STAGE_BUDGETS[k]))throw Error('Fixture numerical policy mismatch.');}return input;}
 export const replay=record=>run(inputFromRecord(record));

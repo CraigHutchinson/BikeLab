@@ -1,10 +1,11 @@
 import {fixtureControls} from './tyre-fixture-ui.js';
-import {validate,inputFromRecord,MODEL,MEASURED_MODEL} from './tyre-fixture.js';
+import {validate,inputFromRecord,MODEL,MEASURED_MODEL,RK4_MODEL,RK4_STEPS} from './tyre-fixture.js';
 const $=id=>document.getElementById(id);
 let examples=[],input=null,accepted=null,worker=null,revision=0;
 function stop(){revision++;worker?.terminate();worker=null;$('cancel').disabled=true;$('experiment').setAttribute('aria-busy','false');}
 function invalidate(message){stop();accepted=null;$('status').textContent=message;$('save').disabled=true;$('scrub').disabled=true;$('progress').hidden=true;for(const id of ['progressText','result','ledger','intervalSummary','error'])$(id).textContent='';for(const id of ['time','force','speed'])$(id).textContent='—';for(const id of ['rig','history']){const c=$(id);c.getContext('2d').clearRect(0,0,c.width,c.height);}}
-function useInput(value){input=validate(value);$('setupText').value=JSON.stringify(input,null,2);for(const id of ['rates','dt','duration']){const value=id==='rates'?input.rates:input.motion[id],select=$(id);if(!Array.from(select.options).some(o=>o.value===String(value)))select.add(new Option(String(value),String(value)));select.value=String(value);}$('measure').checked=!!input.measurement;$('measure').disabled=input.motion.duration>.1;const s=input.seed.source;$('source').textContent=s.bike+' · '+s.wheel+' · source '+s.time.toFixed(5)+' s · '+(input.rates==='zero'?'zero node velocities':'imported node velocities')+' · fixed hub';}
+function solverSteps(solver,selected){const steps=solver==='RK4'?RK4_STEPS:[.00003125,.000015625,.0000078125];$('dt').replaceChildren(...steps.map(dt=>new Option((dt*1e6)+' µs',String(dt))));if(selected!==undefined){if(!steps.includes(selected))$('dt').add(new Option((selected*1e6)+' µs',String(selected)));$('dt').value=String(selected);}}
+function useInput(value){input=validate(value);$('setupText').value=JSON.stringify(input,null,2);$('solver').value=input.numerics?'RK4':'legacy';solverSteps($('solver').value,input.motion.dt);for(const id of ['rates','duration']){const value=id==='rates'?input.rates:input.motion[id],select=$(id);if(!Array.from(select.options).some(o=>o.value===String(value)))select.add(new Option(String(value),String(value)));select.value=String(value);}$('measure').checked=!!input.measurement;$('measure').disabled=input.motion.duration>.1;const s=input.seed.source;$('source').textContent=s.bike+' · '+s.wheel+' · source '+s.time.toFixed(5)+' s · '+(input.rates==='zero'?'zero node velocities':'imported node velocities')+' · fixed hub · '+(input.numerics?'full-force RK4 / stage work':'legacy implicitfast / endpoint work');}
 function launch(payload,ticket=revision){
  if(ticket!==revision)return;$('status').textContent='CALCULATING';$('experiment').setAttribute('aria-busy','true');$('cancel').disabled=false;$('progress').hidden=false;$('progress').removeAttribute('value');
  const fail=message=>{if(ticket!==revision)return;invalidate('CALCULATION FAILED');$('error').textContent=message;};
@@ -16,7 +17,7 @@ function launch(payload,ticket=revision){
  };worker.postMessage(payload);}catch(error){fail(error.message);}
 }
 function calculate(){invalidate('PREPARING');try{
- if(!input)throw Error('No fixture seed loaded.');const a=fixtureControls(input,{rates:$('rates').value,dt:Number($('dt').value),duration:Number($('duration').value),measure:$('measure').checked});
+ if(!input)throw Error('No fixture seed loaded.');const a=fixtureControls(input,{rates:$('rates').value,dt:Number($('dt').value),duration:Number($('duration').value),measure:$('measure').checked,solver:$('solver').value});
  useInput(a);launch({input});
 }catch(e){$('status').textContent='INPUT REJECTED';$('error').textContent=e.message;}}
 
@@ -42,10 +43,11 @@ function draw(){
 }
 $('calculate').onclick=calculate;$('cancel').onclick=()=>invalidate('CANCELLED');
 for(const id of ['rates','dt','duration','measure'])$(id).onchange=()=>{invalidate('UNAPPLIED EDITS');const long=Number($('duration').value)>.1;$('measure').disabled=long;if(long)$('measure').checked=true;};
+$('solver').onchange=()=>{invalidate('UNAPPLIED EDITS');solverSteps($('solver').value);};
 $('example').onchange=()=>{invalidate('UNAPPLIED EDITS');const entry=examples.find(x=>x.name===$('example').value);if(entry)useInput(entry.input);else{input=null;$('status').textContent='INPUT REJECTED';$('error').textContent='Examples are unavailable. Reload the page or load a saved input.';}};
 $('setupText').oninput=()=>invalidate('UNAPPLIED EDITS');
 $('applyJson').onclick=()=>{invalidate('PREPARING');try{useInput(JSON.parse($('setupText').value));$('example').value='custom';launch({input});}catch(e){$('status').textContent='INPUT REJECTED';$('error').textContent=e.message;}};
-$('load').onchange=async()=>{const file=$('load').files[0];if(!file)return;$('load').value='';const selectedWheel=$('sourceWheel').value;invalidate('READING FILE');const ticket=revision;$('cancel').disabled=false;$('experiment').setAttribute('aria-busy','true');try{const value=JSON.parse(await file.text());if(ticket!==revision)return;$('example').value='custom';if([MODEL,MEASURED_MODEL].includes(value.model)){useInput(inputFromRecord(value));launch({input},ticket);}else if(value.model){launch({window:value,wheel:selectedWheel},ticket);}else{useInput(value);launch({input},ticket);}}catch(e){if(ticket===revision){invalidate('INPUT REJECTED');$('error').textContent=e.message;}}};
+$('load').onchange=async()=>{const file=$('load').files[0];if(!file)return;$('load').value='';const selectedWheel=$('sourceWheel').value;invalidate('READING FILE');const ticket=revision;$('cancel').disabled=false;$('experiment').setAttribute('aria-busy','true');try{const value=JSON.parse(await file.text());if(ticket!==revision)return;$('example').value='custom';if([MODEL,MEASURED_MODEL,RK4_MODEL].includes(value.model)){useInput(inputFromRecord(value));launch({input},ticket);}else if(value.model){launch({window:value,wheel:selectedWheel},ticket);}else{useInput(value);launch({input},ticket);}}catch(e){if(ticket===revision){invalidate('INPUT REJECTED');$('error').textContent=e.message;}}};
 $('scrub').oninput=draw;$('channel').onchange=()=>{if($('channel').value.startsWith('interval-'))$('historyScope').value='all';draw();};$('historyScope').onchange=()=>{if($('historyScope').value==='window'&&$('channel').value.startsWith('interval-'))$('channel').value='node';draw();};new ResizeObserver(draw).observe($('rig'));
 $('save').onclick=()=>{if(!accepted)return;const url=URL.createObjectURL(new Blob([JSON.stringify(accepted,null,2)],{type:'application/json'})),a=document.createElement('a');a.href=url;a.download='bikelab-fixed-hub-casing.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);};
 window.addEventListener('pagehide',()=>stop());
