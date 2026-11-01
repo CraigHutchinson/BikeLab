@@ -15,10 +15,11 @@ export function latestStatus(statuses, context) {
 }
 
 export function fullRequested(eventName, event, successfulFull) {
-  if (eventName === 'schedule') return !successfulFull;
+  // Full runs are deliberate. A local result never claims cross-platform coverage.
+  if (eventName === 'workflow_dispatch') return true;
+  if (successfulFull) return false;
   if (eventName === 'pull_request') return (event.action !== 'labeled' ||
     ['ci:full', 'ci:release'].includes(event.label?.name)) && event.pull_request.head.repo?.full_name ===
     event.repository.full_name && event.pull_request.labels.some(l => ['ci:full', 'ci:release'].includes(l.name));
-  return eventName === 'workflow_dispatch' || (eventName === 'push' &&
-    /^refs\/tags\/(v|milestone\/)/.test(event.ref));
+  return eventName === 'push' && /^refs\/tags\/(v|milestone\/)/.test(event.ref);
 }
