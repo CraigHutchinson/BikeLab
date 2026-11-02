@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
-import {runTranslation,translationXML,compareTranslation,STEPS,BUDGETS} from '../scripts/casing-translate.mjs';
+import {runTranslation,translationXML,createTranslationGuard,compareTranslation,STEPS,BUDGETS} from '../scripts/casing-translate.mjs';
 import {controlInput} from '../scripts/casing-derivative.mjs';
 import {oscillatorState} from '../dist/suspension-reference.js';
 import {getRuntime} from '../dist/moving-wheel.js';
@@ -53,5 +53,42 @@ test('attempted native and observer warnings retain the accepted coupled record'
   let calls=0;if(source==='native')mj.mj_step=(m,d)=>{step(m,d);if(++calls===tick)warn(d);};else mj.mj_forwardSkip=(m,d,s,skip)=>{forward(m,d,s,skip);if(++calls===3*(tick-1)+2)warn(d);};let r;
   try{r=await runTranslation(a);}finally{mj.mj_step=step;mj.mj_forwardSkip=forward;}
   assert.equal(r.status,'terminated');assert.equal(r.summary.steps,tick-1);assert.match(r.termination.reason,/warning/i);assert.deepEqual(r.frames,clean.frames.slice(0,tick===1?1:2));assert.equal((source==='native'?r.nativeWarnings:r.observerWarnings).length,1);
+ }
+});
+
+test('normal oracle checks source coefficients independently and receives configured contact parameters',async()=>{
+ const mj=await getRuntime();
+ for(const [tau,impedance] of [[.0005,.99],[.0015,.97]]){
+  const a=structuredClone(examples[0].input);a.seed.wheel.contactTime=tau;a.seed.wheel.contactImpedance=impedance;
+  const m=mj.MjModel.from_xml_string(translationXML(a)),d=new mj.MjData(m);
+  try{
+   d.qpos.set(a.seed.q,2);d.qvel.set(a.seed.v,2);mj.mj_forward(m,d);assert.ok(d.nefc>0);
+   const guard=createTranslationGuard(mj,m,d,a),o=guard.observe(d);
+   for(const k of ['normalForce','referenceAcceleration','regularizer'])assert.ok(o.metrics[k]<=BUDGETS[k]);
+   for(const [field,delta,reason] of [['efc_aref',.001,/referenceAcceleration/],['efc_R',.001,/regularizer/],['efc_force',.001,/normalForce|force/]]){
+    const previous=d[field][0];d[field][0]+=delta;assert.throws(()=>guard.observe(d),reason);d[field][0]=previous;
+   }
+   guard.observe(d);
+   m.opt.enableflags|=mj.mjtEnableBit.mjENBL_DIAGEXACT.value;assert.throws(()=>createTranslationGuard(mj,m,d,a));
+  }finally{d.delete();m.delete();}
+  const r=await runTranslation(a,{duration:.000125});assert.equal(r.status,'completed');
+ }
+});
+
+test('separated fast-closing vertices get no force; active rows distinguish compression from separation',async()=>{
+ const a=await controlInput({nodes:32});a.seed.q.fill(0);a.seed.v.fill(0);const mj=await getRuntime(),w=a.seed.wheel;
+ for(const {gap,vz,detectionGap} of [{gap:1e-5,vz:-.1,detectionGap:false},{gap:1e-5,vz:-.1,detectionGap:true},{gap:-1e-5,vz:-.1,detectionGap:false},{gap:-1e-5,vz:.1,detectionGap:false}]){
+  let xml=translationXML(a);
+  // A synthetic detection margin creates an owned but excluded contact with
+  // zero inclusion margin. Production XML retains zero detection margin.
+  if(detectionGap)xml=xml.replace('<geom name="ground1"','<geom gap=".0001" name="ground1"');
+  const m=mj.MjModel.from_xml_string(xml),d=new mj.MjData(m);
+  try{
+   mj.mj_forward(m,d);let low=Infinity;for(let i=0;i<w.nodes;i++)low=Math.min(low,d.flexvert_xpos[3*i+2]);
+   d.qpos[1]=a.seed.profile.points[0][1]+m.flex_radius[0]+gap-low;d.qvel[1]=vz;mj.mj_forward(m,d);
+   const o=createTranslationGuard(mj,m,d,a).observe(d),ungatedReference=-2*vz/(w.contactImpedance*w.contactTime)-gap/(w.contactImpedance*w.contactTime**2);
+   if(gap>0){assert.ok(ungatedReference>300);assert.equal(d.nefc,0);assert.equal(d.ncon,detectionGap?1:0);assert.ok(d.qfrc_constraint.every(x=>x===0));assert.equal(o.verticalForce,0);}
+   else{assert.equal(d.nefc,1);if(vz<0)assert.ok(o.verticalForce>1);else assert.equal(o.verticalForce,0);assert.ok(o.metrics.normalForce<BUDGETS.normalForce);}
+  }finally{d.delete();m.delete();}
  }
 });

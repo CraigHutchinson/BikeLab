@@ -22,7 +22,7 @@ Completed: initial documentation.
 
 Completed for Slice 1: stack/model decision, implementation, analytical tests, browser interaction checks and subsequent desktop/mobile screenshot inspection. Open: physical reference hardware selection/calibration. See STACK_DECISION.md, SLICE_1_EVIDENCE.md and SLICE_2_EVIDENCE.md.
 
-Translating-hub checkpoint, 2026-11-02: the [new diagnostic](CASING_TRANSLATE.md) adds two hub translations with full coupled mass, absolute node velocities and independent momentum/work checks. Six analytic/rollback/admission tests pass; all 24 one-millisecond loaded releases and 16 refinements pass. Native contact regularization changes with body topology and is explicitly recorded. The five-millisecond extension also passes 24 cases and 16 comparisons, including rear contact removal. Receive a source-derived scalar normal-force check and complete separation/recontact before spin, both connected bikes and active rider recovery.
+Translating-hub checkpoint, 2026-11-02: the [new diagnostic](CASING_TRANSLATE.md) adds two hub translations with full coupled mass, absolute node velocities and independent momentum/work checks. Six analytic/rollback/admission tests pass; all 24 one-millisecond loaded releases and 16 refinements pass. Native contact regularization changes with body topology and is explicitly recorded. The five-millisecond extension also passes 24 cases and 16 comparisons, including rear contact removal. The source-derived normal-force/reference/regularizer guard now passes eight focused tests, including no force across a gap; a 20 ms ladder is running. Receive complete separation/recontact before spin, both connected bikes and active rider recovery.
 
 ## Slice 1 - Loaded-wheel test
 

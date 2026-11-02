@@ -12,8 +12,9 @@ import {NATIVE_BUILD} from '../dist/trail-initial-state.js';
 import {LOADED_BUDGETS} from './casing-loaded.mjs';
 
 export const MODEL='bikelab-translating-hub-rk4-diagnostic-0.1';
+export const NORMAL_ORACLE='bikelab-flat-normal-oracle-0.1';
 export const STEPS=Object.freeze([.000001953125,.0000009765625,.00000048828125]);
-export const BUDGETS=Object.freeze({mass:1e-12,force:1e-8,energy:1e-10,power:1e-8,balance:1e-8,gapRate:1e-9,momentum:1e-8});
+export const BUDGETS=Object.freeze({mass:1e-12,force:1e-8,energy:1e-10,power:1e-8,balance:1e-8,gapRate:1e-9,momentum:1e-8,normalForce:1e-7,referenceAcceleration:1e-7,regularizer:1e-12});
 const hash=x=>createHash('sha256').update(x).digest('hex');
 const require=(ok,message)=>{if(!ok)throw Error(message);};
 
@@ -38,6 +39,9 @@ export function createTranslationGuard(mj,m,initial,input){
  const wheel=wheelParameters({...input.seed.wheel,dt:.0000078125}),hubMass=m.body_mass[hub],masses=new Float64Array(n),forces=new Float64Array(2*n),velocity=new Float64Array(2*n),normal=new Float64Array(n),seen=new Uint8Array(n),hubPoint=new Float64Array(2),limits={};
  assert.equal(m.nq,nv);assert.equal(m.nv,nv);assert.equal(m.njnt,nv);assert.equal(m.nflex,1);assert.equal(m.nflexedge,n);assert.equal(m.flex_vertadr[0],0);assert.equal(m.flex_edgeadr[0],0);assert.equal(m.body_parentid[hub],0);assert.equal(m.body_jntnum[hub],2);assert.equal(hubMass,input.seed.wheel.hubMass);
  require(m.opt.gravity[0]===0&&m.opt.gravity[1]===0&&m.opt.gravity[2]===-input.seed.gravity,'Unexpected gravity');assert.equal(m.dof_damping.some(x=>x!==0),false);
+ assert.equal(m.opt.integrator,mj.mjtIntegrator.mjINT_RK4.value);assert.equal(m.opt.enableflags & mj.mjtEnableBit.mjENBL_DIAGEXACT.value,0);assert.equal(m.nu,0);assert.equal(m.neq,0);assert.equal(m.ntendon,0);
+ const impedance=wheel.contactImpedance,tau=wheel.contactTime,referenceDamping=2/(impedance*tau),referenceStiffness=1/(impedance*tau*tau),groundHeight=input.seed.profile.points[0][1];
+ require(tau>=2*m.opt.timestep,'Unsupported reference safety adjustment');
  for(let j=0;j<nv;j++){
   assert.equal(m.jnt_type[j],mj.mjtJoint.mjJNT_SLIDE.value);assert.equal(m.jnt_qposadr[j],j);assert.equal(m.jnt_dofadr[j],j);assert.equal(m.jnt_limited[j],0);assert.equal(m.qpos_spring[j],0);assert.deepEqual(Array.from(m.jnt_axis.slice(3*j,3*j+3)),j%2?[0,0,1]:[1,0,0]);
   if(j<2){assert.equal(m.jnt_bodyid[j],hub);assert.equal(m.jnt_stiffness[j],0);}
@@ -52,7 +56,7 @@ export function createTranslationGuard(mj,m,initial,input){
   const expected=r%2!==c%2?0:r<2&&c<2?totalMass:r<2?masses[(c-2)>>1]:c<2?masses[(r-2)>>1]:r===c?masses[(r-2)>>1]:0;
   massError=Math.max(massError,Math.abs(full[r*nv+c]-expected));
  }}finally{buffer.delete();}require(massError<=BUDGETS.mass,'Coupled mass matrix mismatch');
- const metrics={force:0,energy:0,power:0,balance:0,gapRate:0},keys=Object.keys(metrics),o={energy:0,kineticEnergy:0,elasticEnergy:0,lossPower:0,contactPower:0,verticalForce:0,contacts:0,hub:hubPoint,momentum:new Float64Array(2),hubReaction:new Float64Array(2),metrics,limits};
+ const metrics={force:0,energy:0,power:0,balance:0,gapRate:0,normalForce:0,referenceAcceleration:0,regularizer:0},keys=Object.keys(metrics),o={energy:0,kineticEnergy:0,elasticEnergy:0,lossPower:0,contactPower:0,verticalForce:0,contacts:0,hub:hubPoint,momentum:new Float64Array(2),hubReaction:new Float64Array(2),metrics,limits};
  // Attempted warning/solver counters are not integration state and survive rollback.
  function observe(d,previous,restoring=false){
   if(!restoring){require(!hasNativeWarning(d),'Native warning');for(let i=0;i<d.solver_niter.length;i++)require(d.solver_niter[i]<m.opt.iterations,'Native solver iteration limit');}require(d.ncon<=256,'Contact capacity limit');
@@ -70,7 +74,21 @@ export function createTranslationGuard(mj,m,initial,input){
    const ex=dx/length,ez=dz/length,rate=ex*(velocity[2*b]-velocity[2*a])+ez*(velocity[2*b+1]-velocity[2*a+1]),f=m.flex_edgestiffness[0]*extension+m.flex_edgedamping[0]*rate,fu=f*(xx*ex+zx*ez),fv=f*(xz*ex+zz*ez);
    forces[2*a]+=fu;forces[2*a+1]+=fv;forces[2*b]-=fu;forces[2*b+1]-=fv;elastic+=.5*m.flex_edgestiffness[0]*extension**2;lossPower+=m.flex_edgedamping[0]*rate**2;
   }
-  const list=d.contact;try{for(let i=0;i<list.size();i++){const c=list.get(i);try{const side=c.flex[0]===0?0:1,node=c.vert[side],row=c.efc_address;require(!seen[node],'Duplicate vertex contact');seen[node]=1;if(row<0)continue;normal[node]=d.efc_force[row];ground+=normal[node];nodePower+=normal[node]*velocity[2*node+1];gapRate=Math.max(gapRate,Math.abs(d.efc_vel[row]-velocity[2*node+1]));}finally{c.delete();}}}finally{list.delete();}
+  // Source-derived, non-metric normal law: see CASING_TRANSLATE.md. Use our
+  // geometry, absolute velocities, internal forces and mass, not native aref/R.
+  // Absent/excluded vertices remain zero: closing speed alone is not contact.
+  let normalForceError=0,referenceError=0,regularizerError=0,activeRows=0;
+  const list=d.contact;try{for(let i=0;i<list.size();i++){const c=list.get(i);try{
+   const side=c.flex[0]===0?0:1,node=c.vert[side],row=c.efc_address;require(!seen[node],'Duplicate vertex contact');seen[node]=1;
+   require(c.adhesion===0&&c.includemargin===0,'Unsupported contact adhesion/margin');
+   require(Math.abs(c.solref[0]-tau)<1e-15&&c.solref[1]===1&&Math.abs(c.solimp[0]-impedance)<1e-15&&Math.abs(c.solimp[1]-impedance)<1e-15,'Unsupported normal law parameters');
+   if(row<0){require(c.exclude!==0&&c.dist>=c.includemargin,'Unexpected excluded normal contact');continue;}
+   require(c.exclude===0&&c.dist<c.includemargin&&row===activeRows++,'Unexpected active normal row');
+   const gap=xyz[3*node+2]-m.flex_radius[0]-groundHeight,mi=masses[node],vz=velocity[2*node+1],regularizer=2/(3*mi)*(1-impedance)/impedance,aref=-referenceDamping*vz-referenceStiffness*gap,smooth=(zx*forces[2*node]+zz*forces[2*node+1])/mi-g,predicted=Math.max(0,(aref-smooth)/(1/mi+regularizer));
+   require(Math.abs(d.efc_pos[row]-gap)<=1e-10&&d.efc_margin[row]===0,'Normal row gap/margin mismatch');
+   normalForceError=Math.max(normalForceError,Math.abs(predicted-d.efc_force[row]));referenceError=Math.max(referenceError,Math.abs(aref-d.efc_aref[row]));regularizerError=Math.max(regularizerError,Math.abs(regularizer-d.efc_R[row]));
+   normal[node]=d.efc_force[row];ground+=normal[node];nodePower+=normal[node]*vz;gapRate=Math.max(gapRate,Math.abs(d.efc_vel[row]-vz));
+  }finally{c.delete();}}}finally{list.delete();}require(activeRows===d.nefc,'Unaccounted normal rows');
   for(let j=0;j<nv;j++){contactPower+=d.qfrc_constraint[j]*v[j];nativeLoss-=d.qfrc_damper[j]*v[j];}
   for(let i=0;i<d.nefc;i++){require(d.efc_type[i]===mj.mjtConstraint.mjCNSTR_CONTACT_FRICTIONLESS.value&&Number.isFinite(d.efc_force[i])&&d.efc_force[i]>=0,'Unsupported normal contact');rowPower+=d.efc_force[i]*d.efc_vel[i];}
   for(let i=0;i<n;i++){
@@ -80,7 +98,7 @@ export function createTranslationGuard(mj,m,initial,input){
   forceError=Math.max(forceError,Math.abs(d.qfrc_passive[0]),Math.abs(d.qfrc_passive[1]),Math.abs(d.qfrc_bias[0]+totalMass*gx),Math.abs(d.qfrc_bias[1]+totalMass*gz),Math.abs(d.qfrc_constraint[0]-zx*ground),Math.abs(d.qfrc_constraint[1]-zz*ground));
   balance=Math.max(balance,Math.abs(hubMaX-d.qfrc_smooth[0]-d.qfrc_constraint[0]),Math.abs(hubMaZ-d.qfrc_smooth[1]-d.qfrc_constraint[1]),Math.abs(hubMass*(acc[0]-gx)+sumFx),Math.abs(hubMass*(acc[1]-gz)+sumFz));
   mj.mj_energyPos(m,d);mj.mj_energyVel(m,d);o.energy=kinetic+elastic+gravity;o.kineticEnergy=kinetic;o.elasticEnergy=elastic;o.lossPower=lossPower;o.contactPower=contactPower;o.verticalForce=ground;o.contacts=d.ncon;o.momentum[0]=xx*px+xz*pz;o.momentum[1]=zx*px+zz*pz;o.hubReaction[0]=-xx*sumFx-xz*sumFz;o.hubReaction[1]=-zx*sumFx-zz*sumFz;
-  metrics.force=forceError;metrics.energy=Math.abs(o.energy-d.energy[0]-d.energy[1]);metrics.power=Math.max(Math.abs(lossPower-nativeLoss),Math.abs(contactPower-nodePower),Math.abs(contactPower-rowPower));metrics.balance=balance;metrics.gapRate=gapRate;
+  metrics.force=forceError;metrics.energy=Math.abs(o.energy-d.energy[0]-d.energy[1]);metrics.power=Math.max(Math.abs(lossPower-nativeLoss),Math.abs(contactPower-nodePower),Math.abs(contactPower-rowPower));metrics.balance=balance;metrics.gapRate=gapRate;metrics.normalForce=normalForceError;metrics.referenceAcceleration=referenceError;metrics.regularizer=regularizerError;
   for(const key of keys)require(Number.isFinite(metrics[key])&&metrics[key]<=BUDGETS[key],'Independent translation '+key+' mismatch');require(o.momentum.every(Number.isFinite)&&o.hub.every(Number.isFinite),'Nonfinite momentum/hub');return o;
  }
  return {observe,observation:o,hubMass,tyreMass,totalMass,massError};
@@ -110,7 +128,7 @@ export async function runTranslation(input,options={}){
    if(tick%stride===0)record();if(tick%comparisonStride===0)compareSample();if(tick%progressStride===0)onProgress?.(tick,steps);
   }
   if(frames[count-1].tick!==accepted)record();onProgress?.(accepted,steps);
-  return {model:MODEL,nativeBuild:NATIVE_BUILD,stageWork:STAGE_WORK,scope:'Fixed orientation, two hub translations plus relative casing slides. Authored hub and casing mass only; no spin, bike/rider load, equilibrium, physical calibration or full contact-transition qualification.',input:a,diagnostic:{dt,duration,hubVelocity:velocity,contact:'plane-vertices; compiled regularization recorded, not fixed-hub compliance parity'},xmlSha256:hash(xml),compiled,budgets:{observer:STAGE_BUDGETS,independent:BUDGETS,refinement:LOADED_BUDGETS},status:termination?'terminated':'completed',termination,nativeWarnings:nativeWarnings(d),observerWarnings:nativeWarnings(observer.data),summary:{steps:accepted,initialEnergy,initialMomentum,maxResidual,maxMomentumError,maxObserver,maxIndependent,minContacts,maxContacts},frames:frames.slice(0,count).map(f=>({...f,q:Array.from(f.q),v:Array.from(f.v),hub:Array.from(f.hub),momentum:Array.from(f.momentum),hubReaction:Array.from(f.hubReaction)})),finalState:{q:Array.from(d.qpos),v:Array.from(d.qvel),warmstart:Array.from(d.qacc_warmstart)},...(comparison?{comparison:{dt:STEPS[0],count:comparisonCount,width,trajectory}}:{})};
+  return {model:MODEL,normalOracle:NORMAL_ORACLE,nativeBuild:NATIVE_BUILD,stageWork:STAGE_WORK,scope:'Fixed orientation, two hub translations plus relative casing slides. Authored hub and casing mass only; no spin, bike/rider load, equilibrium, physical calibration or full contact-transition qualification.',input:a,diagnostic:{dt,duration,hubVelocity:velocity,contact:'plane-vertices; compiled regularization recorded, not fixed-hub compliance parity'},xmlSha256:hash(xml),compiled,budgets:{observer:STAGE_BUDGETS,independent:BUDGETS,refinement:LOADED_BUDGETS},status:termination?'terminated':'completed',termination,nativeWarnings:nativeWarnings(d),observerWarnings:nativeWarnings(observer.data),summary:{steps:accepted,initialEnergy,initialMomentum,maxResidual,maxMomentumError,maxObserver,maxIndependent,minContacts,maxContacts},frames:frames.slice(0,count).map(f=>({...f,q:Array.from(f.q),v:Array.from(f.v),hub:Array.from(f.hub),momentum:Array.from(f.momentum),hubReaction:Array.from(f.hubReaction)})),finalState:{q:Array.from(d.qpos),v:Array.from(d.qvel),warmstart:Array.from(d.qacc_warmstart)},...(comparison?{comparison:{dt:STEPS[0],count:comparisonCount,width,trajectory}}:{})};
  }finally{observer?.dispose();d?.delete();m?.delete();}
 }
 
