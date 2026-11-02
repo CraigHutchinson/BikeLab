@@ -1,0 +1,22 @@
+{
+  "success": true,
+  "node": "v24.22.0",
+  "platform": "win32",
+  "playwright": "1.62.1",
+  "browser": "157.0.4341.30",
+  "checks": [
+    "geometry labels: rounded derived coordinates survive import/export/reload without snapping; a nearby custom edit remains custom"
+  ],
+  "screenshots": [
+    "geometry-rounded-label.png"
+  ],
+  "errors": [],
+  "date": "2026-11-02",
+  "localSourceCommit": "0afdfc9ddce9c92672dc41d7aed45a133b6c706f",
+  "remoteSourceCommit": "c5bbfdab757d10836648cec360b510a0f1e1d1ac",
+  "sourceTree": "55c6baccdc90553e3804111351df04ba167f4abd",
+  "screenshotSHA256": "7fef02ee6765e5af1cd8752c83470267cbb29f59cda9730f263d3490f37576d5",
+  "visualInspection": "Annotated estimated-geometry label, legible sag/load values and linkage plot inspected.",
+  "scope": "Focused Windows geometry browser gate only; no full suite, hosted, Apple/FMA or native-port claim.",
+  "launch": "Approved host process, installed Edge with isolated temporary profile, loopback-only preview."
+}
