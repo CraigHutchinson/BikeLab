@@ -1163,7 +1163,15 @@
     "performanceMeasured": false,
     "integrationCommand": "node --test --test-isolation=none test/casing-loaded.test.mjs test/contact-gap.test.mjs",
     "integrationPassed": 10,
-    "integrationLogSha256": "c8abdd9d03b1074c67372110f8c9e160c9b7afa71b8dfaa43650d4054c362101"
+    "integrationLogSha256": "c8abdd9d03b1074c67372110f8c9e160c9b7afa71b8dfaa43650d4054c362101",
+    "latestRegression": {
+      "command": "node --test --test-isolation=none test/tyre-fixture-plane.test.mjs test/flat-vertex-contact.test.mjs test/contact-gap.test.mjs test/tyre-fixture-rk4.test.mjs test/tyre-fixture-ui.test.mjs",
+      "passed": 17,
+      "failed": 0,
+      "logSha256": "e077aa2a04c208df9e18a946849db50f48833c2d47c24eec9eba3f1a2a9ee411",
+      "addedCoverage": "Independent reconstruction of all nodal constraint-force components from contact normals, forces and endpoint weights.",
+      "testSourceSha256": "09d80cbc2d204e401f2355f8bef180e72f50531838791898227bef9c5ca43489"
+    }
   },
   "visual": {
     "path": "docs/evidence/contact-gap.svg",

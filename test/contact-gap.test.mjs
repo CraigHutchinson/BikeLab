@@ -4,7 +4,7 @@ import {gapSweep,gapXML} from '../scripts/contact-gap.mjs';
 
 test('mesh constraint velocity follows inverse-distance weights rather than actual gap derivative',async()=>{
  const r=await gapSweep();assert.equal(r.samples.length,18);
- for(const s of r.samples){assert.ok(Math.abs(s.powerDifference)<1e-12);for(const c of s.contacts){assert.ok(c.force>=0);assert.ok(Math.abs(c.rowVelocity-c.weightedVelocity)<1e-12);assert.ok(Math.abs(c.weights[0]+c.weights[1]-1)<1e-15);}}
+ for(const s of r.samples){const force=[0,0,0,0];assert.ok(Math.abs(s.powerDifference)<1e-12);for(const c of s.contacts){assert.ok(c.force>=0);assert.ok(Math.abs(c.rowVelocity-c.weightedVelocity)<1e-12);assert.ok(Math.abs(c.weights[0]+c.weights[1]-1)<1e-15);for(let i=0;i<2;i++){force[2*i]+=c.weights[i]*c.force*c.normal[0];force[2*i+1]+=c.weights[i]*c.force*c.normal[2];}}for(let j=0;j<4;j++)assert.ok(Math.abs(force[j]-s.forces[j])<1e-10);}
  for(const s of r.samples.filter(s=>s.kind==='mesh'&&Math.abs(s.delta)>=1e-6)){
   assert.equal(s.contacts.length,1);const c=s.contacts[0];assert.equal(c.element,0);assert.equal(c.vertex,-1);assert.ok(Math.abs(c.normal[0])<1e-9);assert.ok(Math.abs(c.normal[2]-1)<1e-12);assert.ok(Math.abs(c.gap-s.analyticGap)<1e-10);
   assert.ok(Math.abs(s.finiteDifference-c.exactGapDerivative)<1e-8);assert.ok(Math.abs(c.derivativeMismatch)>.0032);assert.ok(Math.abs(c.derivativeMismatch)<.0033);
