@@ -1,6 +1,6 @@
 # Translating hub receiving plan — 2026-11-02
 
-This is the next bounded step after [flat fixed-hub contact](CASING_PLANE.md), researched by GPT-6.1 Sol. This document preserves the source-derived design. After workspace recovery, the [initial translating-hub implementation and one-millisecond receiving](CASING_TRANSLATE.md) now pass; the larger connected-bike gate remains open.
+This is the next bounded step after [flat fixed-hub contact](CASING_PLANE.md), researched by GPT-6.1 Sol. This document preserves the source-derived design. After workspace recovery, the [translating-hub implementation and one-/five-/twenty-millisecond receiving](CASING_TRANSLATE.md) now pass; the larger connected-bike gate remains open.
 
 ## Boundary and purpose
 

@@ -10,7 +10,9 @@ import numpy as np
 directory = Path(sys.argv[1] if len(sys.argv) > 1 else 'artifacts/casing-translate')
 report = json.loads((directory / 'report.json').read_text())
 plt.rcParams.update({'svg.fonttype': 'none', 'svg.hashsalt': 'bikelab-translating-hub', 'font.size': 10})
-figure, axes = plt.subplots(2, 2, figsize=(13, 9), layout='constrained')
+has_normal_oracle = all(c.get('normalOracle') for c in report['cases'])
+figure, axes = plt.subplots(3 if has_normal_oracle else 2, 2,
+                            figsize=(13, 13 if has_normal_oracle else 9), layout='constrained')
 selected = []
 for start in range(0, len(report['cases']), 3):
     case = report['cases'][start + 2]
@@ -54,6 +56,23 @@ axes[1, 1].set_xticks(np.arange(2), ['Approximate diagonal A', 'Regularizer R'])
 axes[1, 1].set(ylabel='Compiled coefficient (1/kg)', title='Same contact settings, different compiled regularization')
 axes[1, 1].legend(fontsize=8)
 axes[1, 1].set_ylim(.2, 200)
+if has_normal_oracle:
+    for record in selected:
+        frames = record['frames']
+        axes[2, 0].step([f['time'] * 1000 for f in frames], [f['contacts'] for f in frames],
+                        where='post', linestyle='--' if record['input']['rates'] == 'zero' else '-')
+    axes[2, 0].set(xlabel='Time (ms)', ylabel='Detected contacts',
+                   title='All eight inputs: separation in saved 0.125 ms frames', yticks=range(7))
+    names = ['normalForce', 'referenceAcceleration', 'regularizer']
+    values = [max(c['summary']['maxIndependent'][k] / c['budgets']['independent'][k]
+                  for c in report['cases']) for k in names]
+    bars = axes[2, 1].bar(range(3), values)
+    axes[2, 1].bar_label(bars, fmt='%.3g', padding=3)
+    axes[2, 1].set_yscale('log')
+    axes[2, 1].set_xticks(range(3), ['Force / 1e-7 N', 'Reference / 1e-7 m/s²', 'Regularizer / 1e-12 kg⁻¹'])
+    axes[2, 1].axhline(1, color='black', linestyle=':')
+    axes[2, 1].set(ylabel='Worst independent discrepancy / budget',
+                   title='Normal law: all cases, stages and accepted endpoints', ylim=(1e-6, 3))
 for ax in axes.flat:
     ax.grid(alpha=.2, axis='y')
 figure.suptitle(f'Translating, nonspinning hub · {report["duration"] * 1000:g} ms · flat native vertex contact')
