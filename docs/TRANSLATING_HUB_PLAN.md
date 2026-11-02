@@ -63,7 +63,7 @@ Use full absolute-node kinetic energy. Keep `E-E0+D-W_contact`. Generalized cont
 
 ## Compiled contact regularization: verify before parity claims
 
-Source review predicts a change in native classification when the hub is freed. Fixed-hub node bodies qualify as `body_simple == 2`; translating-hub descendants do not. The former branch uses inverse weight `1/m_i`, whereas the general body's planar translational trace gives `2/(3m_i)`. Native default contact regularization can therefore change even with identical `solref/solimp`. This is a source-derived prediction awaiting compiled receiving, not a measured result.
+Source review predicts a change in native classification when the hub is freed. Fixed-hub node bodies qualify as `body_simple == 2`; translating-hub descendants do not. The former branch uses inverse weight `1/m_i`, whereas the general body's planar translational trace gives `2/(3m_i)`. Native default contact regularization can therefore change even with identical `solref/solimp`. This prediction is now reproduced in both the one- and five-millisecond diagnostic receipts; it does not establish physical compliance calibration.
 
 Record and assert the actual classification, body inverse weights, constraint diagonal approximation and regularizer for both fixtures. Do not silently tune coefficients to imitate the fixed-hub response. If preserving compliance requires an explicit approximation/model choice, version and explain it separately.
 
