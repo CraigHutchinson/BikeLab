@@ -90,3 +90,5 @@ All links refer to MuJoCo commit `a892750516336d8358949f4518fcc4fbbd85beae`, mat
 - [RK4 stages](https://github.com/google-deepmind/mujoco/blob/a892750516336d8358949f4518fcc4fbbd85beae/src/engine/engine_forward.c#L1655) and [advancement/warm start](https://github.com/google-deepmind/mujoco/blob/a892750516336d8358949f4518fcc4fbbd85beae/src/engine/engine_forward.c#L1463).
 
 The complete MTB goal remains both synthetic reference data and games. This increment does not qualify faceted edges, layered ground, component failure/pressure loss, independent rider detachment, pumping/hopping, 3D turning/lateral dynamics or real-time multirate performance; those retain their existing delivery gates.
+
+Next receiving design: [contact entry/recontact and spinning-hub plan](SPINNING_HUB_PLAN.md) records the rotational-inertia, convective contact-acceleration and held-buffer issues before implementation. Spin remains unimplemented in the corrected diagnostic.

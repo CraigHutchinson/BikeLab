@@ -7415,168 +7415,216 @@
       "finalContacts": 0,
       "firstSavedZeroContacts_s": 0.015125000000001798,
       "firstSavedRecontact_s": null,
-      "hubRise_m": 0.014194951465740624
+      "hubRise_m": 0.014194951465740624,
+      "finalMinimumVertexGap_m": 0.005085701024724283,
+      "minimumSavedVertexGapWhenNoContacts_m": 2.1081208696066556e-07
     },
     "full-front-imported-1.json": {
       "initialContacts": 5,
       "finalContacts": 0,
       "firstSavedZeroContacts_s": 0.015124999999996929,
       "firstSavedRecontact_s": null,
-      "hubRise_m": 0.01419495146009564
+      "hubRise_m": 0.01419495146009564,
+      "finalMinimumVertexGap_m": 0.005085701053304255,
+      "minimumSavedVertexGapWhenNoContacts_m": 2.1080420948421663e-07
     },
     "full-front-imported-2.json": {
       "initialContacts": 5,
       "finalContacts": 0,
       "firstSavedZeroContacts_s": 0.015125000000007263,
       "firstSavedRecontact_s": null,
-      "hubRise_m": 0.0141949514598817
+      "hubRise_m": 0.0141949514598817,
+      "finalMinimumVertexGap_m": 0.005085701046470721,
+      "minimumSavedVertexGapWhenNoContacts_m": 2.1080553975344474e-07
     },
     "full-front-zero-0.json": {
       "initialContacts": 5,
       "finalContacts": 0,
       "firstSavedZeroContacts_s": 0.015125000000001798,
       "firstSavedRecontact_s": null,
-      "hubRise_m": 0.014194591328647366
+      "hubRise_m": 0.014194591328647366,
+      "finalMinimumVertexGap_m": 0.005085119575857951,
+      "minimumSavedVertexGapWhenNoContacts_m": 2.0400655659918998e-07
     },
     "full-front-zero-1.json": {
       "initialContacts": 5,
       "finalContacts": 0,
       "firstSavedZeroContacts_s": 0.015124999999996929,
       "firstSavedRecontact_s": null,
-      "hubRise_m": 0.014194591328235306
+      "hubRise_m": 0.014194591328235306,
+      "finalMinimumVertexGap_m": 0.005085119526066335,
+      "minimumSavedVertexGapWhenNoContacts_m": 2.0401663814589854e-07
     },
     "full-front-zero-2.json": {
       "initialContacts": 5,
       "finalContacts": 0,
       "firstSavedZeroContacts_s": 0.015125000000007263,
       "firstSavedRecontact_s": null,
-      "hubRise_m": 0.014194591326982975
+      "hubRise_m": 0.014194591326982975,
+      "finalMinimumVertexGap_m": 0.005085119532641409,
+      "minimumSavedVertexGapWhenNoContacts_m": 2.0401485063131775e-07
     },
     "full-rear-imported-0.json": {
       "initialContacts": 6,
       "finalContacts": 0,
       "firstSavedZeroContacts_s": 0.013875000000001381,
       "firstSavedRecontact_s": null,
-      "hubRise_m": 0.01980181745854137
+      "hubRise_m": 0.01980181745854137,
+      "finalMinimumVertexGap_m": 0.008806452903143532,
+      "minimumSavedVertexGapWhenNoContacts_m": 1.00383231533413e-06
     },
     "full-rear-imported-1.json": {
       "initialContacts": 6,
       "finalContacts": 0,
       "firstSavedZeroContacts_s": 0.013874999999997622,
       "firstSavedRecontact_s": null,
-      "hubRise_m": 0.019801817456790827
+      "hubRise_m": 0.019801817456790827,
+      "finalMinimumVertexGap_m": 0.008806452970980656,
+      "minimumSavedVertexGapWhenNoContacts_m": 1.0038164593509369e-06
     },
     "full-rear-imported-2.json": {
       "initialContacts": 6,
       "finalContacts": 0,
       "firstSavedZeroContacts_s": 0.013875000000005735,
       "firstSavedRecontact_s": null,
-      "hubRise_m": 0.019801817458930893
+      "hubRise_m": 0.019801817458930893,
+      "finalMinimumVertexGap_m": 0.008806452944724659,
+      "minimumSavedVertexGapWhenNoContacts_m": 1.0038230240996815e-06
     },
     "full-rear-zero-0.json": {
       "initialContacts": 6,
       "finalContacts": 0,
       "firstSavedZeroContacts_s": 0.013875000000001381,
       "firstSavedRecontact_s": null,
-      "hubRise_m": 0.01980200029997614
+      "hubRise_m": 0.01980200029997614,
+      "finalMinimumVertexGap_m": 0.008806546496741736,
+      "minimumSavedVertexGapWhenNoContacts_m": 1.0081601663006201e-06
     },
     "full-rear-zero-1.json": {
       "initialContacts": 6,
       "finalContacts": 0,
       "firstSavedZeroContacts_s": 0.013874999999997622,
       "firstSavedRecontact_s": null,
-      "hubRise_m": 0.019802000302263367
+      "hubRise_m": 0.019802000302263367,
+      "finalMinimumVertexGap_m": 0.008806546541026535,
+      "minimumSavedVertexGapWhenNoContacts_m": 1.0081497859928956e-06
     },
     "full-rear-zero-2.json": {
       "initialContacts": 6,
       "finalContacts": 0,
       "firstSavedZeroContacts_s": 0.013875000000005735,
       "firstSavedRecontact_s": null,
-      "hubRise_m": 0.019802000302487577
+      "hubRise_m": 0.019802000302487577,
+      "finalMinimumVertexGap_m": 0.008806546548650658,
+      "minimumSavedVertexGapWhenNoContacts_m": 1.008148232735373e-06
     },
     "hardtail-front-imported-0.json": {
       "initialContacts": 5,
       "finalContacts": 0,
       "firstSavedZeroContacts_s": 0.015000000000001757,
       "firstSavedRecontact_s": null,
-      "hubRise_m": 0.014711382834830256
+      "hubRise_m": 0.014711382834830256,
+      "finalMinimumVertexGap_m": 0.005446417377806108,
+      "minimumSavedVertexGapWhenNoContacts_m": 3.861890793335765e-07
     },
     "hardtail-front-imported-1.json": {
       "initialContacts": 5,
       "finalContacts": 0,
       "firstSavedZeroContacts_s": 0.014999999999996998,
       "firstSavedRecontact_s": null,
-      "hubRise_m": 0.014711382835943587
+      "hubRise_m": 0.014711382835943587,
+      "finalMinimumVertexGap_m": 0.005446417396264454,
+      "minimumSavedVertexGapWhenNoContacts_m": 3.861857155798565e-07
     },
     "hardtail-front-imported-2.json": {
       "initialContacts": 5,
       "finalContacts": 0,
       "firstSavedZeroContacts_s": 0.01500000000000711,
       "firstSavedRecontact_s": null,
-      "hubRise_m": 0.014711382835970122
+      "hubRise_m": 0.014711382835970122,
+      "finalMinimumVertexGap_m": 0.00544641738810215,
+      "minimumSavedVertexGapWhenNoContacts_m": 3.8618738041479306e-07
     },
     "hardtail-front-zero-0.json": {
       "initialContacts": 5,
       "finalContacts": 0,
       "firstSavedZeroContacts_s": 0.015000000000001757,
       "firstSavedRecontact_s": null,
-      "hubRise_m": 0.0147118634047127
+      "hubRise_m": 0.0147118634047127,
+      "finalMinimumVertexGap_m": 0.00544719920687687,
+      "minimumSavedVertexGapWhenNoContacts_m": 3.966263023638672e-07
     },
     "hardtail-front-zero-1.json": {
       "initialContacts": 5,
       "finalContacts": 0,
       "firstSavedZeroContacts_s": 0.014999999999996998,
       "firstSavedRecontact_s": null,
-      "hubRise_m": 0.0147118634053513
+      "hubRise_m": 0.0147118634053513,
+      "finalMinimumVertexGap_m": 0.005447199209110971,
+      "minimumSavedVertexGapWhenNoContacts_m": 3.9662604884443953e-07
     },
     "hardtail-front-zero-2.json": {
       "initialContacts": 5,
       "finalContacts": 0,
       "firstSavedZeroContacts_s": 0.01500000000000711,
       "firstSavedRecontact_s": null,
-      "hubRise_m": 0.014711863406680181
+      "hubRise_m": 0.014711863406680181,
+      "finalMinimumVertexGap_m": 0.005447199211845895,
+      "minimumSavedVertexGapWhenNoContacts_m": 3.96625928995864e-07
     },
     "hardtail-rear-imported-0.json": {
       "initialContacts": 6,
       "finalContacts": 0,
       "firstSavedZeroContacts_s": 0.014000000000001423,
       "firstSavedRecontact_s": null,
-      "hubRise_m": 0.01934424713541283
+      "hubRise_m": 0.01934424713541283,
+      "finalMinimumVertexGap_m": 0.008574402758472773,
+      "minimumSavedVertexGapWhenNoContacts_m": 2.896531296987803e-06
     },
     "hardtail-rear-imported-1.json": {
       "initialContacts": 6,
       "finalContacts": 0,
       "firstSavedZeroContacts_s": 0.013999999999997553,
       "firstSavedRecontact_s": null,
-      "hubRise_m": 0.019344247133313064
+      "hubRise_m": 0.019344247133313064,
+      "finalMinimumVertexGap_m": 0.008574402769030272,
+      "minimumSavedVertexGapWhenNoContacts_m": 2.896527273872629e-06
     },
     "hardtail-rear-imported-2.json": {
       "initialContacts": 6,
       "finalContacts": 0,
       "firstSavedZeroContacts_s": 0.014000000000005888,
       "firstSavedRecontact_s": null,
-      "hubRise_m": 0.019344247134534587
+      "hubRise_m": 0.019344247134534587,
+      "finalMinimumVertexGap_m": 0.008574402777538688,
+      "minimumSavedVertexGapWhenNoContacts_m": 2.8965252475490755e-06
     },
     "hardtail-rear-zero-0.json": {
       "initialContacts": 6,
       "finalContacts": 0,
       "firstSavedZeroContacts_s": 0.014000000000001423,
       "firstSavedRecontact_s": null,
-      "hubRise_m": 0.019345526664821533
+      "hubRise_m": 0.019345526664821533,
+      "finalMinimumVertexGap_m": 0.008575287005436867,
+      "minimumSavedVertexGapWhenNoContacts_m": 2.93707010268901e-06
     },
     "hardtail-rear-zero-1.json": {
       "initialContacts": 6,
       "finalContacts": 0,
       "firstSavedZeroContacts_s": 0.013999999999997553,
       "firstSavedRecontact_s": null,
-      "hubRise_m": 0.019345526673943514
+      "hubRise_m": 0.019345526673943514,
+      "finalMinimumVertexGap_m": 0.008575286913355747,
+      "minimumSavedVertexGapWhenNoContacts_m": 2.9370975726042414e-06
     },
     "hardtail-rear-zero-2.json": {
       "initialContacts": 6,
       "finalContacts": 0,
       "firstSavedZeroContacts_s": 0.014000000000005888,
       "firstSavedRecontact_s": null,
-      "hubRise_m": 0.019345526672460034
+      "hubRise_m": 0.019345526672460034,
+      "finalMinimumVertexGap_m": 0.008575286920862964,
+      "minimumSavedVertexGapWhenNoContacts_m": 2.937095201556439e-06
     }
   },
   "validation": {
@@ -7587,7 +7635,14 @@
     "studyLogSha256": "d29bd9968e68a838270ca0a1a73982dcadaf76f410e813375db4df956abf17dd",
     "focusedTests": "casing-normal.json",
     "browserReceiving": false,
-    "performanceMeasured": false
+    "performanceMeasured": false,
+    "savedSeparationGeometry": {
+      "method": "Independent ring trigonometry, hub pose and relative coordinates confirm strictly positive vertex-plane gaps at every saved zero-contact frame. Does not certify unsampled stages or general collision detection.",
+      "effectiveRadius_m": 0.36,
+      "radiusSource": "dist/moving-wheel.js DEFAULTS.radius (source hash retained in study)",
+      "formula": "min_i(hub_z + R_zx*((radius-skin)*sin(2*pi*i/n)+q[2+2*i]) + R_zz*(-(radius-skin)*cos(2*pi*i/n)+q[3+2*i]) - skin - ground_height)",
+      "minimumSavedGap_m": 2.0400655659918998e-07
+    }
   },
   "visual": {
     "figure": "casing-normal-20ms.svg",
