@@ -22,6 +22,8 @@ Completed: initial documentation.
 
 Completed for Slice 1: stack/model decision, implementation, analytical tests, browser interaction checks and subsequent desktop/mobile screenshot inspection. Open: physical reference hardware selection/calibration. See STACK_DECISION.md, SLICE_1_EVIDENCE.md and SLICE_2_EVIDENCE.md.
 
+Translating-hub checkpoint, 2026-11-02: the [new diagnostic](CASING_TRANSLATE.md) adds two hub translations with full coupled mass, absolute node velocities and independent momentum/work checks. Six analytic/rollback/admission tests pass; all 24 one-millisecond loaded releases and 16 refinements pass. Native contact regularization changes with body topology and is explicitly recorded. Receive unloading/contact transitions before spin, both connected bikes and active rider recovery.
+
 ## Slice 1 - Loaded-wheel test
 
 ### Experience
