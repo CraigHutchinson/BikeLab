@@ -1,0 +1,616 @@
+{
+  "schema": "bikelab-progress-review-1",
+  "date": "2026-11-03",
+  "window": {
+    "from": "2026-10-20",
+    "through": "2026-11-03"
+  },
+  "main": "1dedf06f5aec4cc22c5ee5c94f1d8bd1eeb8cfa6",
+  "scope": "Catalogue, plans, implementation/evidence review; no numerical rerun or full code audit.",
+  "counts": {
+    "openIssues": 30,
+    "pullRequests": 53,
+    "merged": 44,
+    "openPRs": 2,
+    "closedIncorporated": 7,
+    "mergedInWindow": 24
+  },
+  "issues": [
+    {
+      "number": 37,
+      "title": "Loaded-wheel and suspension stations are not converged on bouncing; consider event location and error control",
+      "state": "open",
+      "stateSource": "GitHub search is:issue state:open"
+    },
+    {
+      "number": 38,
+      "title": "Footprint ring: an exact active-set solve is ~2x faster than projected Gauss-Seidel",
+      "state": "open",
+      "stateSource": "GitHub search is:issue state:open"
+    },
+    {
+      "number": 39,
+      "title": "Discrete outcome depends on exact float equality (photo-geometry label match)",
+      "state": "open",
+      "stateSource": "GitHub search is:issue state:open"
+    },
+    {
+      "number": 40,
+      "title": "Terrain requests: publish mandatory coverage first (a longer lookahead currently increases stalls)",
+      "state": "open",
+      "stateSource": "GitHub search is:issue state:open"
+    },
+    {
+      "number": 41,
+      "title": "Contact-driven runs branch at nanometre contacts; use sensitivity envelopes instead of fixed cross-platform budgets",
+      "state": "open",
+      "stateSource": "GitHub search is:issue state:open"
+    },
+    {
+      "number": 42,
+      "title": "Brake and traction creep under regularised friction: offer an exact-lock option or record the limit",
+      "state": "open",
+      "stateSource": "GitHub search is:issue state:open"
+    },
+    {
+      "number": 43,
+      "title": "Tyre casing: make hub-relative foundation damping an explicit material parameter",
+      "state": "open",
+      "stateSource": "GitHub search is:issue state:open"
+    },
+    {
+      "number": 44,
+      "title": "Bike rig stepping: implicit-Euler-type damping of the stiff tyre mode costs accuracy",
+      "state": "open",
+      "stateSource": "GitHub search is:issue state:open"
+    },
+    {
+      "number": 45,
+      "title": "Determinism: keep canonical numerics and integer ticks as the default; state the transcendental policy",
+      "state": "open",
+      "stateSource": "GitHub search is:issue state:open"
+    },
+    {
+      "number": 48,
+      "title": "Moving-wheel contact stiffness comes from the solver regulariser, not from the tyre",
+      "state": "open",
+      "stateSource": "GitHub search is:issue state:open"
+    },
+    {
+      "number": 49,
+      "title": "Moving wheel: large timestep sensitivity on rocks; report against an event-located run",
+      "state": "open",
+      "stateSource": "GitHub search is:issue state:open"
+    },
+    {
+      "number": 51,
+      "title": "Deformable wheel: the casing is not stiff for an explicit step; an explicit error-controlled step suits interactive use",
+      "state": "open",
+      "stateSource": "GitHub search is:issue state:open"
+    },
+    {
+      "number": 52,
+      "title": "Flex contact: the witness puts an edge's whole force on its deeper node; prefer a tread law continuous along the edge",
+      "state": "open",
+      "stateSource": "GitHub search is:issue state:open"
+    },
+    {
+      "number": 53,
+      "title": "Cheaper wheel tiers: judge them on rock corners against a converged nodal run (no modal cut-off in this casing)",
+      "state": "open",
+      "stateSource": "GitHub search is:issue state:open"
+    },
+    {
+      "number": 56,
+      "title": "Adopt the tiered CI strategy: local-first, smoke per change, full matrix at release",
+      "state": "open",
+      "stateSource": "GitHub search is:issue state:open"
+    },
+    {
+      "number": 57,
+      "title": "Canonical .5 records still branch between native and WASM MuJoCo on the trail preset",
+      "state": "open",
+      "stateSource": "GitHub search is:issue state:open"
+    },
+    {
+      "number": 58,
+      "title": "MuJoCo occasionally reports a flex-capsule contact with its normal reversed into the terrain",
+      "state": "open",
+      "stateSource": "GitHub search is:issue state:open"
+    },
+    {
+      "number": 59,
+      "title": "Engine solver tolerance limits per-step agreement on the light casing nodes (~1e-4)",
+      "state": "open",
+      "stateSource": "GitHub search is:issue state:open"
+    },
+    {
+      "number": 70,
+      "title": "Regularised friction cone: a locked wheel on an incline creeps at a measurable, predictable rate",
+      "state": "open",
+      "stateSource": "GitHub search is:issue state:open"
+    },
+    {
+      "number": 71,
+      "title": "Most tangential work on a rolling wheel is the regulariser's creep, not a rolling loss",
+      "state": "open",
+      "stateSource": "GitHub search is:issue state:open"
+    },
+    {
+      "number": 72,
+      "title": "Planar friction cone: an exact finite solve is available, and engine zone labels are unreliable near a boundary",
+      "state": "open",
+      "stateSource": "GitHub search is:issue state:open"
+    },
+    {
+      "number": 73,
+      "title": "Tyre rest: the settling failure is a limit cycle of the contact law at the level-edge tie, not the integrator",
+      "state": "open",
+      "stateSource": "GitHub search is:issue state:open"
+    },
+    {
+      "number": 74,
+      "title": "#54 direction: the sibling damping derivatives and the flat vertex contact don't address the rest failure",
+      "state": "open",
+      "stateSource": "GitHub search is:issue state:open"
+    },
+    {
+      "number": 75,
+      "title": "A rest test needs friction and a held brake (or rolling loss): frictionless and brake-free rest can't settle under a correct law",
+      "state": "open",
+      "stateSource": "GitHub search is:issue state:open"
+    },
+    {
+      "number": 76,
+      "title": "Cheaper and event-located wheel models fail at rest: include a rest run when judging wheel tiers",
+      "state": "open",
+      "stateSource": "GitHub search is:issue state:open"
+    },
+    {
+      "number": 77,
+      "title": "A held regularised brake lets a parked bike roll downhill at 0.14 m/s, well inside brake capacity",
+      "state": "open",
+      "stateSource": "GitHub search is:issue state:open"
+    },
+    {
+      "number": 78,
+      "title": "full_drive: the engine branches on its own collision tolerance after the drive releases",
+      "state": "open",
+      "stateSource": "GitHub search is:issue state:open"
+    },
+    {
+      "number": 79,
+      "title": "An edge lying along a terrain face has no unique contact point, so recorded forces depend on the collision routine",
+      "state": "open",
+      "stateSource": "GitHub search is:issue state:open"
+    },
+    {
+      "number": 82,
+      "title": "Smoothing a contact law per regime reintroduces a switch: smooth over one fixed candidate set",
+      "state": "open",
+      "stateSource": "GitHub search is:issue state:open"
+    },
+    {
+      "number": 83,
+      "title": "A smoothed contact law's band depends on the step, and the contact margin must be twice the band",
+      "state": "open",
+      "stateSource": "GitHub search is:issue state:open"
+    }
+  ],
+  "pullRequests": [
+    {
+      "number": 81,
+      "title": "Isolate rider target replay divergence with identical-input controls",
+      "state": "closed",
+      "merged": true,
+      "mergedAt": "2026-11-03T15:54:45Z",
+      "head": "75fe98ae367077a08b49139da8a1d39a952f8c71"
+    },
+    {
+      "number": 80,
+      "title": "Integrate rider workstream with geometry, terrain and explicit follow-up gates",
+      "state": "closed",
+      "merged": true,
+      "mergedAt": "2026-11-03T14:35:04Z",
+      "head": "362a546627917f13f2e7eddd700da00ff1014aa9"
+    },
+    {
+      "number": 69,
+      "title": "Receive geometry-scaled crouch with explicit tracking budgets",
+      "state": "closed",
+      "merged": false,
+      "mergedAt": null,
+      "head": "a10b3d1e2c83a3ae2d23cf9a72f696465196032d"
+    },
+    {
+      "number": 68,
+      "title": "Derive rider support effort and feedback from runtime configuration",
+      "state": "closed",
+      "merged": false,
+      "mergedAt": null,
+      "head": "123aecec190a860e3d463112cd20e8b20aad7ae9"
+    },
+    {
+      "number": 67,
+      "title": "Add bounded fixed-anchor rider static effort reference",
+      "state": "closed",
+      "merged": false,
+      "mergedAt": null,
+      "head": "04725f193375e0f186ceafc1a02c1fb7d971f439"
+    },
+    {
+      "number": 66,
+      "title": "Separate rider joint and trunk error from attachment gaps",
+      "state": "closed",
+      "merged": false,
+      "mergedAt": null,
+      "head": "3feee7e96fbc70b464a33285d09071415d2836d6"
+    },
+    {
+      "number": 65,
+      "title": "Explain rider hold loads and proportional/damping effort",
+      "state": "closed",
+      "merged": false,
+      "mergedAt": null,
+      "head": "ccd57420cf2ab4a877a53fb36461f2d92f5c7242"
+    },
+    {
+      "number": 64,
+      "title": "Compare held rider transfer with matched baseline posture",
+      "state": "closed",
+      "merged": false,
+      "mergedAt": null,
+      "head": "64472f754a62b1232a8f06ec3684ff2aa0b0ae2f"
+    },
+    {
+      "number": 63,
+      "title": "Execute timed rider targets through the shared bounded drive",
+      "state": "closed",
+      "merged": false,
+      "mergedAt": null,
+      "head": "9e9ddd059b3b5e1c4d1c0e04a5d5ba2903fcf3aa"
+    },
+    {
+      "number": 62,
+      "title": "Preview sampled rider hip/trunk targets using existing IK",
+      "state": "closed",
+      "merged": true,
+      "mergedAt": "2026-11-03T14:35:06Z",
+      "head": "442b0527d59819142c9cbab13fed25d9b9830238"
+    },
+    {
+      "number": 61,
+      "title": "Deliver mandatory terrain before bounded optional prefetch",
+      "state": "closed",
+      "merged": true,
+      "mergedAt": "2026-11-03T14:35:06Z",
+      "head": "c1056374c887b96178c3193a7ea7bdb67c8d463b"
+    },
+    {
+      "number": 60,
+      "title": "Keep annotated geometry labels stable under coordinate roundoff",
+      "state": "closed",
+      "merged": true,
+      "mergedAt": "2026-11-03T14:35:06Z",
+      "head": "ae5fd730a4899ce8813822f44c0abaf1e8be0db2"
+    },
+    {
+      "number": 55,
+      "title": "Adopt local-first CI, pause hosted jobs, and refresh issue priorities",
+      "state": "closed",
+      "merged": true,
+      "mergedAt": "2026-10-28T16:13:38Z",
+      "head": "ffb07390ca940820892dd5fe8342bfd3ef1432f1"
+    },
+    {
+      "number": 54,
+      "title": "Correct flat tyre dynamics through loaded contact transitions",
+      "state": "open",
+      "merged": false,
+      "mergedAt": null,
+      "head": "7a8000c4aa6c0088db8fd9fb363fb985a2bf72f4"
+    },
+    {
+      "number": 50,
+      "title": "Measure 100 ms casing motion and expose sampling limits",
+      "state": "closed",
+      "merged": true,
+      "mergedAt": "2026-10-28T13:31:51Z",
+      "head": "e22be7f0a8ecf5e5c5d80ca6cada8134a6384992"
+    },
+    {
+      "number": 47,
+      "title": "Isolate loaded tyre motion with a fixed-hub casing control",
+      "state": "closed",
+      "merged": true,
+      "mergedAt": "2026-10-28T07:54:33Z",
+      "head": "fc9f5ee8865b2acef96b707497f458b6d5ef0dec"
+    },
+    {
+      "number": 46,
+      "title": "Isolate casing motion and consolidate the next BikeLab work",
+      "state": "open",
+      "merged": false,
+      "mergedAt": null,
+      "head": "0f4a4636e7d1db0455379752001585bfbba7318b"
+    },
+    {
+      "number": 36,
+      "title": "Compare uninterrupted tyre windows with fresh reconstruction",
+      "state": "closed",
+      "merged": true,
+      "mergedAt": "2026-10-27T14:28:16Z",
+      "head": "13c63a3afe29dbfc56f3811490a019b3e42c7d1b"
+    },
+    {
+      "number": 35,
+      "title": "Inspect persistent tyre motion without changing mechanics",
+      "state": "closed",
+      "merged": true,
+      "mergedAt": "2026-10-27T08:42:49Z",
+      "head": "2808f36479619dbcc909bdd94d9086899a146210"
+    },
+    {
+      "number": 34,
+      "title": "Add bounded active rider posture-hold probe",
+      "state": "closed",
+      "merged": true,
+      "mergedAt": "2026-10-27T03:06:14Z",
+      "head": "82f86c2642be6787d9609ab1758354ceca284dda"
+    },
+    {
+      "number": 33,
+      "title": "Separate chassis construction and record passive idle limits",
+      "state": "closed",
+      "merged": true,
+      "mergedAt": "2026-10-26T18:43:23Z",
+      "head": "78fe49326d0c00aabd6ec23698c077951853457d"
+    },
+    {
+      "number": 32,
+      "title": "Separate rider observation from native world ownership",
+      "state": "closed",
+      "merged": true,
+      "mergedAt": "2026-10-26T14:19:55Z",
+      "head": "59bc407cd67642761262d8bada070750fe44e4ed"
+    },
+    {
+      "number": 31,
+      "title": "Add a bounded unbound rider probe with guarded free-flight records",
+      "state": "closed",
+      "merged": true,
+      "mergedAt": "2026-10-26T08:14:48Z",
+      "head": "c869793d3c6a185ec17ce1608c608fd5389e098d"
+    },
+    {
+      "number": 30,
+      "title": "Record portable rider release and unbound native research",
+      "state": "closed",
+      "merged": true,
+      "mergedAt": "2026-10-25T15:42:45Z",
+      "head": "f1f93bd0428ac7a0f1f7cf16aef593d800bd6dc1"
+    },
+    {
+      "number": 29,
+      "title": "Reuse portable rider definitions across bike setups",
+      "state": "closed",
+      "merged": true,
+      "mergedAt": "2026-10-25T14:57:24Z",
+      "head": "d480a06752d1b7a00ba0e93ad8c03be495408558"
+    },
+    {
+      "number": 28,
+      "title": "Define separate rider control rates and coupled physics requirements",
+      "state": "closed",
+      "merged": true,
+      "mergedAt": "2026-10-25T08:04:33Z",
+      "head": "ddc69b27dff382a500bb8ab63f5254142fc076b0"
+    },
+    {
+      "number": 27,
+      "title": "Review MTB integration gaps and independent rider architecture",
+      "state": "closed",
+      "merged": true,
+      "mergedAt": "2026-10-24T17:48:49Z",
+      "head": "67f294d5145fc18dfdd10d6354db8709dd4a8415"
+    },
+    {
+      "number": 26,
+      "title": "Speed up Trail bike calculation and display accepted-step progress",
+      "state": "closed",
+      "merged": true,
+      "mergedAt": "2026-10-24T12:49:14Z",
+      "head": "1eb45c69936a0f4f755029444deb7d7d8c756994"
+    },
+    {
+      "number": 25,
+      "title": "Compare rider poses and document sit-stand dynamics requirements",
+      "state": "closed",
+      "merged": true,
+      "mergedAt": "2026-10-24T06:55:51Z",
+      "head": "fe9dd4e4474d2fcaf55d27709807f9caf46f0a39"
+    },
+    {
+      "number": 24,
+      "title": "Keep trail simulation evidence downloadable and reconcile PR23 results",
+      "state": "closed",
+      "merged": true,
+      "mergedAt": "2026-10-23T20:02:25Z",
+      "head": "78383bae4621a2accff1ce569fe51bc4b30d358d"
+    },
+    {
+      "number": 23,
+      "title": "Connect passive rider state replay and guarded 2D trail experiments",
+      "state": "closed",
+      "merged": true,
+      "mergedAt": "2026-10-23T07:38:43Z",
+      "head": "8c2c322f397c8c0db6a54f1a496973c782ec4db7"
+    },
+    {
+      "number": 22,
+      "title": "Connect rear drive and front/rear brake controls",
+      "state": "closed",
+      "merged": true,
+      "mergedAt": "2026-10-20T10:42:24Z",
+      "head": "9694e871c7eded6964fd547a7cbff8219bd2b8e9"
+    },
+    {
+      "number": 21,
+      "title": "Connect distributed tyre traction and slip inspection",
+      "state": "closed",
+      "merged": true,
+      "mergedAt": "2026-10-20T06:24:08Z",
+      "head": "a17d42f81f25243d321a6c46655e5f71e8bd1c19"
+    }
+  ],
+  "newIssues": [
+    {
+      "number": 77,
+      "title": "A held regularised brake lets a parked bike roll downhill at 0.14 m/s, well inside brake capacity",
+      "state": "open",
+      "createdAt": "2026-11-03T12:38:58Z",
+      "updatedAt": "2026-11-03T12:38:58Z",
+      "url": "https://github.com/CraigHutchinson/BikeLab/issues/77",
+      "localReproduction": false
+    },
+    {
+      "number": 78,
+      "title": "full_drive: the engine branches on its own collision tolerance after the drive releases",
+      "state": "open",
+      "createdAt": "2026-11-03T12:38:59Z",
+      "updatedAt": "2026-11-03T12:38:59Z",
+      "url": "https://github.com/CraigHutchinson/BikeLab/issues/78",
+      "localReproduction": false
+    },
+    {
+      "number": 79,
+      "title": "An edge lying along a terrain face has no unique contact point, so recorded forces depend on the collision routine",
+      "state": "open",
+      "createdAt": "2026-11-03T12:39:01Z",
+      "updatedAt": "2026-11-03T12:39:01Z",
+      "url": "https://github.com/CraigHutchinson/BikeLab/issues/79",
+      "localReproduction": false
+    },
+    {
+      "number": 82,
+      "title": "Smoothing a contact law per regime reintroduces a switch: smooth over one fixed candidate set",
+      "state": "open",
+      "createdAt": "2026-11-03T15:57:41Z",
+      "updatedAt": "2026-11-03T15:57:41Z",
+      "url": "https://github.com/CraigHutchinson/BikeLab/issues/82",
+      "localReproduction": false
+    },
+    {
+      "number": 83,
+      "title": "A smoothed contact law's band depends on the step, and the contact margin must be twice the band",
+      "state": "open",
+      "createdAt": "2026-11-03T15:57:43Z",
+      "updatedAt": "2026-11-03T15:57:43Z",
+      "url": "https://github.com/CraigHutchinson/BikeLab/issues/83",
+      "localReproduction": false
+    }
+  ],
+  "pr54": {
+    "head": "7a8000c4aa6c0088db8fd9fb363fb985a2bf72f4",
+    "mainIncluded": "1dedf06f5aec4cc22c5ee5c94f1d8bd1eeb8cfa6",
+    "mergeable": true,
+    "draft": false,
+    "statuses": [
+      {
+        "context": "ci/full",
+        "state": "failure",
+        "target_url": "https://github.com/CraigHutchinson/BikeLab/actions/runs/41706182290"
+      },
+      {
+        "context": "ci/policy",
+        "state": "failure",
+        "target_url": "https://github.com/CraigHutchinson/BikeLab/actions/runs/41706182290"
+      }
+    ],
+    "fullRun": 41706182290,
+    "ubuntuUnit": "pass",
+    "windowsUnit": "pass",
+    "macosUnit": {
+      "pass": 416,
+      "total": 418,
+      "failed": [
+        "test/linkage.test.mjs:98",
+        "test/rider-stops.test.mjs:59"
+      ],
+      "cause": "unestablished"
+    },
+    "browser": "cancelled",
+    "decision": "Complete software receiving before bounded-checkpoint merge; broader physics follow-ups remain."
+  },
+  "pr46": {
+    "head": "0f4a4636e7d1db0455379752001585bfbba7318b",
+    "draft": true,
+    "mergeable": false,
+    "decision": "Preserve original nullspace receipt; receive PR54 independent reproduction, then explicitly supersede.",
+    "originalReceipt": {
+      "path": "docs/evidence/fixed-hub-nullspace.json",
+      "blob": "d12d4d94f568bfef02f11c4aa4c3832fa4f51446",
+      "archive": "docs/evidence/pr46-nullspace-original.json",
+      "rerun": false
+    }
+  },
+  "pr81": {
+    "head": "75fe98ae367077a08b49139da8a1d39a952f8c71",
+    "workflows": [
+      {
+        "id": 41668721384,
+        "name": "Full",
+        "status": "completed",
+        "conclusion": "skipped"
+      },
+      {
+        "id": 41668721424,
+        "name": "Smoke",
+        "status": "completed",
+        "conclusion": "success"
+      }
+    ],
+    "fullAttestation": false
+  },
+  "primaryPortDoc": {
+    "repo": "CraigHutchinson/Sub0Physics",
+    "path": "docs/WHEEL.md",
+    "blob": "d482780a397f34b52b63d8e16cff642b121478b2"
+  },
+  "sourceDocuments": [
+    {
+      "path": "docs/PR54_HANDOFF.md",
+      "blob": "9e847deda506d9b7c86e199256107b33d2ef5d56"
+    },
+    {
+      "path": "docs/CASING_CONTACT_LOADED.md",
+      "blob": "93c7c231fc58bb8d1d159b1f74e891ede442bcfd"
+    },
+    {
+      "path": "docs/evidence/pr54-main-integration.json",
+      "blob": "ecd688319802f96bc92f1777aecf0796af2502be"
+    },
+    {
+      "path": "docs/FIXED_HUB.md",
+      "blob": "9a93beb702c8b0c94b5c88b61124696335ee2615"
+    },
+    {
+      "path": "docs/CASING_DERIVATIVE.md",
+      "blob": "8778fcace58ef84abf31f1a12cd39b959762edc2"
+    }
+  ],
+  "remainingGates": {
+    "riderReplay": {
+      "pass": 10,
+      "fail": 12,
+      "total": 22
+    },
+    "movingCrouch": {
+      "pass": 0,
+      "fail": 8
+    },
+    "fullRiderAttestation": false,
+    "calibration": false,
+    "realTime": false
+  }
+}
