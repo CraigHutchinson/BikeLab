@@ -37,3 +37,12 @@ Do not “fix” legacy records by silently rounding their evolving state or rec
 First extend the same diagnostic to the longer transfer and estimated-controller records: mass/geometry-derived static estimates and feedback may expose other host-derived quantities. A remedy must preserve runtime-configured mass/gravity/geometry, the unchanged crouch budget and same-runtime legacy replay. Reference-rate feedback remains a separate controller change after its target identity is explicit. PR54's contact-law/rest/spin/connected qualification and #58/#59 support/reference checks remain independent. No manoeuvre acceptance follows from this two-case diagnostic.
 
 Validation: complete local Node suite **353/353**, no skips, and vendor hashes pass on the clean source recorded in the receipt. Both diagnostic baseline commands exit nonzero as required; both target-table controls pass the original strict comparator. Production `dist/` bytes are unchanged. No full-local/hosted attestation or new production replay pass is claimed.
+
+
+## Longer controller receiving — 3 November 2026
+
+The full-suspension estimated-controller record reproduces the archived browser result exactly. XML and all 4,253 inspected native attributes match Node. Nevertheless 5,678 complete-record numeric leaves exceed the unchanged normalized 1e-9 budget; the first saved failure is at 0.01 s. Fourteen of 172 compiled target displacements differ. Substituting the Node target table reduces failures to 5,208 but still fails the original strict comparator. No browser/server errors were reported. See [source-bound receipt](evidence/controller-replay-full.json).
+
+This rules out target-table identity as a sufficient remedy for this longer case. It does not establish the remaining cause. The controller subtracts passive torque using host-derived initial/rest angles, while initial passive-load observations already differ below budget. Next capture those complete compiled passive laws and compare controller effort on identical native states before testing a diagnostic-only angle substitution. Retain signed work and native spring semantics; do not change production angles or round evolving state. Then repeat on hardtail and longer transfer cases.
+
+Raw snapshots remain in artifacts/replay-controller-full. This is one failed diagnostic, not a production fix or a full test attestation. Existing crouch and replay budgets are unchanged.
