@@ -4,7 +4,7 @@ import {readFile,writeFile,mkdir,readdir} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
 import {resolve,join} from 'node:path';
 import {pathToFileURL} from 'node:url';
-import {runTranslation,compareTranslation,STEPS} from './casing-translate.mjs';
+import {runTranslation,compareTranslation,STEPS,BUDGETS} from './casing-translate.mjs';
 import {DEFAULTS as WHEEL_DEFAULTS} from '../dist/moving-wheel.js';
 import {CONTACT_TRACE,TRACE_COLUMNS} from './casing-contact-step.mjs';
 export const CONTROLS=Object.freeze({drop:Object.freeze({gap:1e-5,velocityZ:-.1,gravity:9.80665}),recontact:Object.freeze({gap:-5e-5,velocityZ:.05,gravity:9.80665})});
@@ -26,7 +26,7 @@ export function analyseContactTrace(trace,control){
    const i=row*width,t=end.time;freePosition=Math.max(freePosition,Math.hypot(x[i+7],x[i+8]-control.velocityZ*t+.5*control.gravity*t*t)+x[i+11]);freeVelocity=Math.max(freeVelocity,Math.hypot(x[i+9],x[i+10]-control.velocityZ+control.gravity*t)+x[i+12]);freeSteps++;
    for(let s=0;s<5;s++)freeForce=Math.max(freeForce,Math.abs(x[(row-4+s)*width+4]));
   }else flightEligible=false;
-  if(!end.rows&&end.gap>0)minimumSeparatedGap=Math.min(minimumSeparatedGap??Infinity,end.gap);
+  if(!end.rows&&end.gap>0){minimumSeparatedGap=Math.min(minimumSeparatedGap??Infinity,end.gap);if(everContact)separated=true;}
   if((previous.rows>0)!==(end.rows>0)){
    const event={kind:end.rows?'entry':'separation',bracket:[previous.time,end.time],before:previous,after:end,predictors:Array.from({length:4},(_,s)=>({stage:s,...snapshot(row-4+s)}))};events.push(event);
    if(end.rows){firstEntry??=event.bracket;if(everContact&&separated)cycles++;everContact=true;separated=false;}else if(end.gap>0)separated=true;
@@ -39,6 +39,12 @@ export function analyseContactTrace(trace,control){
  return {acceptedSubsteps:(trace.rows-1)/5,events,forceEvents,completedCycles:cycles,minimumSeparatedGap,predictorDisagreements,analyticEntry,firstEntry,bracketContainsAnalytic,freeFlight:{acceptedSteps:freeSteps,positionErrorBound:freePosition,velocityErrorBound:freeVelocity,maxForce:freeForce,withinBudgets:control.gap<=0?null:freeSteps>0&&freePosition<=ENTRY_BUDGETS.freePosition&&freeVelocity<=ENTRY_BUDGETS.freeVelocity&&freeForce===0}};
 }
 export function encodeTrace(trace){const buffer=Buffer.allocUnsafe(trace.data.length*8);for(let i=0;i<trace.data.length;i++)buffer.writeDoubleLE(trace.data[i],i*8);return buffer;}
+
+export function entryReceiving(cases,refinement,selection,sourcesUnchanged){
+ assert.ok(['drop','recontact','all'].includes(selection));const names=selection==='all'?Object.keys(CONTROLS):[selection];
+ const coverage=cases.length===3*names.length&&refinement.length===2*names.length&&names.every(name=>STEPS.every(dt=>cases.filter(c=>c.name===name&&c.diagnostic.dt===dt).length===1)&&STEPS.slice(0,2).every((dt,i)=>refinement.filter(r=>r.name===name&&r.coarseDt===dt&&r.fineDt===STEPS[i+1]&&r.budgetFraction===(i?.1:1)).length===1));
+ return {coverage,complete:cases.length>0&&cases.every(c=>c.status==='completed'),momentum:cases.length>0&&cases.every(c=>Number.isFinite(c.summary.maxMomentumError)&&c.summary.maxMomentumError<=BUDGETS.momentum),...(names.includes('drop')?{entry:cases.filter(c=>c.name==='drop').every(c=>c.analysis.bracketContainsAnalytic&&c.analysis.freeFlight.withinBudgets)}:{}),...(names.includes('recontact')?{recontact:cases.filter(c=>c.name==='recontact').every(c=>c.analysis.completedCycles>=1)}:{}),refinement:refinement.length>0&&refinement.every(r=>r.withinBudgets),sourcesUnchanged:sourcesUnchanged===true};
+}
 
 async function main(){
  assert.ok(process.argv.length<=5,'Usage: node scripts/casing-entry.mjs [directory] [fixed|substeps] [drop|recontact|all]');const directory=resolve(process.argv[2]??'artifacts/casing-entry'),policy=process.argv[3]??'substeps',selection=process.argv[4]??'all';assert.ok(['fixed','substeps'].includes(policy));assert.ok(['drop','recontact','all'].includes(selection));await mkdir(directory,{recursive:true});
@@ -55,7 +61,7 @@ async function main(){
    console.log('completed',label,result.status,'substeps',analysis.acceptedSubsteps,'cycles',analysis.completedCycles);
   }
  }
- const sourcesUnchanged=JSON.stringify(await sourceHashes())===JSON.stringify(sourcesSha256),receiving={complete:cases.every(c=>c.status==='completed'),entry:cases.filter(c=>c.name==='drop').every(c=>c.analysis.bracketContainsAnalytic&&c.analysis.freeFlight.withinBudgets),recontact:cases.filter(c=>c.name==='recontact').every(c=>c.analysis.completedCycles>=1),refinement:refinement.length===2*(selection==='all'?2:1)&&refinement.every(c=>c.withinBudgets),sourcesUnchanged};
+ const sourcesUnchanged=JSON.stringify(await sourceHashes())===JSON.stringify(sourcesSha256),receiving=entryReceiving(cases,refinement,selection,sourcesUnchanged);
  await writeFile(join(directory,'report.json'),JSON.stringify({scope:'Synthetic translating, nonspinning controls; donor state provenance is parameter lineage only. Ordered RK predictors are not physical trajectory samples. No calibrated tyre, full-bike, browser or performance claim.',policy,controls:CONTROLS,duration:.02,budgets:ENTRY_BUDGETS,cases,refinement,sourcesSha256,receiving},null,2)+'\n');console.log(JSON.stringify(receiving));if(!Object.values(receiving).every(Boolean))process.exitCode=2;
 }
 if(process.argv[1]&&pathToFileURL(resolve(process.argv[1])).href===import.meta.url)await main();

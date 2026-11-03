@@ -2,9 +2,11 @@
 
 The [translating diagnostic](CASING_TRANSLATE.md) now passes the 20 ms ladder: 24 completed cases, 16 refinements, independent normal-law checks and complete separation. No case recontacts. This document preserves GPT-6.1 Sol's read-only source research for the next increment; spinning implementation or receiving is not claimed.
 
-## Immediate next increment: translating contact entry and recontact
+## Translating contact entry and recontact — received 2026-11-03
 
-Keep the published sources and budgets frozen. Add separately recorded synthetic controls before expanding the topology:
+The [completed contact activity](CASING_ENTRY.md) now passes six 20 ms runs, four refinements and 16 focused tests. It required a separately identified bounded substep policy and tighter native Newton accuracy; the original fixed-step entry failure remains saved. The sequence below records the receiving design that was exercised. Cross-check the new policy against the loaded release set before spin.
+
+Original receiving design:
 
 1. Start an undeformed ring 10 µm above a flat plane with common downward speed 0.1 m/s, zero relative rates and authored gravity. Before first contact, receive exact common free fall and zero contact force/work. The analytic lowest-point gap is `gap0 + vz0*t - g*t²/2`; bracket first activation against its zero using actual stage times. Save force, gap, contact identity and impulse across entry. Do not replace a missed discontinuity with a relaxed force budget.
 2. Receive unloading, full separation and subsequent recontact in one bounded drop/rebound control. Declare initial conditions, timestep ladder, geometric/force/work budgets and horizon before comparison. If the proposed horizon contains no recontact, record that outcome and design a separately identified control; duration alone is not evidence of a cycle.

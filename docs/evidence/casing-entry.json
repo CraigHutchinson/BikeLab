@@ -1,0 +1,2573 @@
+{
+  "date": "2026-11-03",
+  "measuredRemoteCommit": "9d473d548018de83de216423272fd92b715ed61b",
+  "measuredTree": "065b027017a8e5e566bf1e4048406d001b864bc3",
+  "command": "node scripts/casing-entry.mjs artifacts/casing-entry-substeps substeps all",
+  "scope": "Two synthetic translating/nonspinning controls at three timesteps. First entry and one separation/recontact cycle received under original budgets. Donor identifiers are parameter lineage only. No whole-bike, long-idle, 3D/faceted-contact, physical calibration, browser or real-time acceptance.",
+  "inputs": {
+    "drop": {
+      "seed": {
+        "format": "bikelab-fixed-hub-seed-0.1",
+        "source": {
+          "recordSha256": "bca6750805a54a237a4865e002462d70c692cc79ce0429a6d2cd1e739fd80aef",
+          "identity": "eb016f86713f7c50175471efab39fcdbb31005ff8729cb7a67d9ec4420983c2a",
+          "bike": "full",
+          "wheel": "front",
+          "tick": 319360,
+          "time": 9.97999999998,
+          "nativeBuild": "5d5d89ddd0857a6518c628fa502d42f99d6dd67ca240182f1068cd30a45465ac:e05ac96db7f45bd46e76fed6e3469bf9204329e093344d742a18bca2cc0e230e"
+        },
+        "wheel": {
+          "nodes": 64,
+          "tyreMass": 1,
+          "hubMass": 1.5,
+          "hubInertia": 0.04,
+          "skin": 0.008,
+          "rimRadius": 0.29,
+          "foundation": 300000,
+          "extension": 500,
+          "edgeViscosity": 0.5,
+          "contactTime": 0.0005,
+          "contactImpedance": 0.99,
+          "collisionTolerance": 1e-10,
+          "collisionIterations": 100,
+          "maxPenetration": 0.0005,
+          "maxStrain": 0.25,
+          "maxDisplacement": 0.06
+        },
+        "profile": {
+          "format": "bikelab-profile-1",
+          "units": "m",
+          "axes": "x-forward,z-up",
+          "solid": "below",
+          "interpolation": "linear",
+          "source": {
+            "kind": "illustrative",
+            "description": "Synthetic flat rigid trail."
+          },
+          "points": [
+            [
+              -3,
+              0
+            ],
+            [
+              5,
+              0
+            ]
+          ]
+        },
+        "gravity": 9.80665,
+        "hub": {
+          "position": [
+            0,
+            0,
+            0.36001
+          ],
+          "quaternion": [
+            1,
+            0,
+            0,
+            0
+          ]
+        },
+        "q": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "v": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "motion": {
+        "dt": 3.125e-05,
+        "duration": 0.02,
+        "sampleDt": 0.000125
+      },
+      "rates": "zero"
+    },
+    "recontact": {
+      "seed": {
+        "format": "bikelab-fixed-hub-seed-0.1",
+        "source": {
+          "recordSha256": "bca6750805a54a237a4865e002462d70c692cc79ce0429a6d2cd1e739fd80aef",
+          "identity": "eb016f86713f7c50175471efab39fcdbb31005ff8729cb7a67d9ec4420983c2a",
+          "bike": "full",
+          "wheel": "front",
+          "tick": 319360,
+          "time": 9.97999999998,
+          "nativeBuild": "5d5d89ddd0857a6518c628fa502d42f99d6dd67ca240182f1068cd30a45465ac:e05ac96db7f45bd46e76fed6e3469bf9204329e093344d742a18bca2cc0e230e"
+        },
+        "wheel": {
+          "nodes": 64,
+          "tyreMass": 1,
+          "hubMass": 1.5,
+          "hubInertia": 0.04,
+          "skin": 0.008,
+          "rimRadius": 0.29,
+          "foundation": 300000,
+          "extension": 500,
+          "edgeViscosity": 0.5,
+          "contactTime": 0.0005,
+          "contactImpedance": 0.99,
+          "collisionTolerance": 1e-10,
+          "collisionIterations": 100,
+          "maxPenetration": 0.0005,
+          "maxStrain": 0.25,
+          "maxDisplacement": 0.06
+        },
+        "profile": {
+          "format": "bikelab-profile-1",
+          "units": "m",
+          "axes": "x-forward,z-up",
+          "solid": "below",
+          "interpolation": "linear",
+          "source": {
+            "kind": "illustrative",
+            "description": "Synthetic flat rigid trail."
+          },
+          "points": [
+            [
+              -3,
+              0
+            ],
+            [
+              5,
+              0
+            ]
+          ]
+        },
+        "gravity": 9.80665,
+        "hub": {
+          "position": [
+            0,
+            0,
+            0.35995
+          ],
+          "quaternion": [
+            1,
+            0,
+            0,
+            0
+          ]
+        },
+        "q": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "v": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "motion": {
+        "dt": 3.125e-05,
+        "duration": 0.02,
+        "sampleDt": 0.000125
+      },
+      "rates": "zero"
+    }
+  },
+  "study": {
+    "scope": "Synthetic translating, nonspinning controls; donor state provenance is parameter lineage only. Ordered RK predictors are not physical trajectory samples. No calibrated tyre, full-bike, browser or performance claim.",
+    "policy": "substeps",
+    "controls": {
+      "drop": {
+        "gap": 1e-05,
+        "velocityZ": -0.1,
+        "gravity": 9.80665
+      },
+      "recontact": {
+        "gap": -5e-05,
+        "velocityZ": 0.05,
+        "gravity": 9.80665
+      }
+    },
+    "duration": 0.02,
+    "budgets": {
+      "freePosition": 1e-12,
+      "freeVelocity": 1e-10,
+      "eventBracketTime": 1e-12
+    },
+    "cases": [
+      {
+        "name": "drop",
+        "file": "drop-0.json",
+        "sha256": "0fd7368b58a1e85b9bc42ad3adedee3ab7dcd62d355772b7eff21845046d3692",
+        "model": "bikelab-translating-hub-contact-rk4-diagnostic-0.1",
+        "contactStep": {
+          "format": "bikelab-contact-bisection-0.1",
+          "maxBisections": 8,
+          "maxExtraSubsteps": 4096,
+          "solverTolerance": 1e-20
+        },
+        "normalOracle": "bikelab-flat-normal-oracle-0.1",
+        "nativeBuild": "5d5d89ddd0857a6518c628fa502d42f99d6dd67ca240182f1068cd30a45465ac:e05ac96db7f45bd46e76fed6e3469bf9204329e093344d742a18bca2cc0e230e",
+        "stageWork": "bikelab-native-rk4-stage-work-0.1",
+        "scope": "Fixed orientation, two hub translations plus relative casing slides. Authored hub and casing mass only; no spin, bike/rider load, equilibrium, physical calibration or full contact-transition qualification.",
+        "diagnostic": {
+          "dt": 1.953125e-06,
+          "duration": 0.02,
+          "hubVelocity": [
+            0,
+            -0.1
+          ],
+          "contact": "plane-vertices; compiled regularization recorded, not fixed-hub compliance parity"
+        },
+        "xmlSha256": "0d7a92d3603093461f92c1a7ac037af7a855a8959b19b7d6aad72de5a548382c",
+        "budgets": {
+          "observer": {
+            "position": 1e-12,
+            "velocity": 1e-09,
+            "warmstart": 1e-06,
+            "acceleration": 1e-06,
+            "force": 1e-08
+          },
+          "independent": {
+            "mass": 1e-12,
+            "force": 1e-08,
+            "energy": 1e-10,
+            "power": 1e-08,
+            "balance": 1e-08,
+            "gapRate": 1e-09,
+            "momentum": 1e-08,
+            "normalForce": 1e-07,
+            "referenceAcceleration": 1e-07,
+            "regularizer": 1e-12
+          },
+          "refinement": {
+            "position": 1e-07,
+            "velocity": 0.0001,
+            "force": 0.05,
+            "impulse": 1e-05,
+            "loss": 1e-06,
+            "work": 1e-06,
+            "residual": 1e-06
+          }
+        },
+        "status": "completed",
+        "termination": null,
+        "nativeWarnings": [],
+        "observerWarnings": [],
+        "summary": {
+          "steps": 10240,
+          "initialEnergy": 8.838730166250004,
+          "initialMomentum": [
+            0,
+            -0.25
+          ],
+          "maxResidual": 4.911874943239192e-14,
+          "maxMomentumError": 4.6906922790412864e-14,
+          "maxObserver": {
+            "position": 0,
+            "velocity": 0,
+            "warmstart": 0,
+            "acceleration": 0,
+            "force": 0
+          },
+          "maxIndependent": {
+            "force": 3.0148106233696126e-13,
+            "energy": 5.678096881567285e-14,
+            "power": 1.966309060019711e-15,
+            "balance": 1.5205614545266144e-12,
+            "gapRate": 0,
+            "normalForce": 5.186961971048731e-13,
+            "referenceAcceleration": 0,
+            "regularizer": 0
+          },
+          "minContacts": 0,
+          "maxContacts": 3,
+          "stepping": {
+            "acceptedIntervals": 10240,
+            "acceptedSubsteps": 10256,
+            "attemptedSubsteps": 10272,
+            "discardedContactTrials": 16,
+            "deepestBisection": 8,
+            "transitionLimitedSubsteps": 2
+          }
+        },
+        "contactTrace": {
+          "format": "bikelab-contact-stage-trace-0.1",
+          "columns": [
+            "time",
+            "contacts",
+            "rows",
+            "loadedRows",
+            "verticalForce",
+            "minimumGap",
+            "minimumGapVelocity",
+            "hubQX",
+            "hubQZ",
+            "hubVX",
+            "hubVZ",
+            "maxRelativeDisplacement",
+            "maxRelativeSpeed"
+          ],
+          "rows": 51281,
+          "encoding": "float64 little-endian, row-major",
+          "file": "drop-0.f64",
+          "sha256": "9a4677fd3d90d8c5b2d29a659b82bb095139f80d302c4852e073b381af9c9edf"
+        },
+        "analysis": {
+          "acceptedSubsteps": 10256,
+          "events": [
+            {
+              "kind": "entry",
+              "bracket": [
+                9.951019287109383e-05,
+                9.951782226562507e-05
+              ],
+              "before": {
+                "time": 9.951019287109383e-05,
+                "contacts": 0,
+                "rows": 0,
+                "loadedRows": 0,
+                "force": 0,
+                "gap": 4.266232436767048e-10,
+                "gapRate": -0.10097586163291947
+              },
+              "after": {
+                "time": 9.951782226562507e-05,
+                "contacts": 1,
+                "rows": 1,
+                "loadedRows": 1,
+                "force": 6.4842955042873065,
+                "gap": -3.437617343560184e-10,
+                "gapRate": -0.1009754087557123
+              },
+              "predictors": [
+                {
+                  "stage": 0,
+                  "time": 9.951019287109383e-05,
+                  "contacts": 0,
+                  "rows": 0,
+                  "loadedRows": 0,
+                  "force": 0,
+                  "gap": 4.266232436767048e-10,
+                  "gapRate": -0.10097586163291947
+                },
+                {
+                  "stage": 1,
+                  "time": 9.951400756835946e-05,
+                  "contacts": 0,
+                  "rows": 0,
+                  "loadedRows": 0,
+                  "force": 0,
+                  "gap": 4.143092119379688e-11,
+                  "gapRate": -0.1009758990423204
+                },
+                {
+                  "stage": 2,
+                  "time": 9.951400756835946e-05,
+                  "contacts": 0,
+                  "rows": 0,
+                  "loadedRows": 0,
+                  "force": 0,
+                  "gap": 4.143075466034318e-11,
+                  "gapRate": -0.1009758990423204
+                },
+                {
+                  "stage": 3,
+                  "time": 9.951782226562507e-05,
+                  "contacts": 1,
+                  "rows": 1,
+                  "loadedRows": 1,
+                  "force": 6.4843285590587465,
+                  "gap": -3.437617343560184e-10,
+                  "gapRate": -0.10097593645172134
+                }
+              ]
+            }
+          ],
+          "forceEvents": [
+            {
+              "kind": "loading",
+              "bracket": [
+                9.951019287109383e-05,
+                9.951782226562507e-05
+              ],
+              "before": {
+                "time": 9.951019287109383e-05,
+                "contacts": 0,
+                "rows": 0,
+                "loadedRows": 0,
+                "force": 0,
+                "gap": 4.266232436767048e-10,
+                "gapRate": -0.10097586163291947
+              },
+              "after": {
+                "time": 9.951782226562507e-05,
+                "contacts": 1,
+                "rows": 1,
+                "loadedRows": 1,
+                "force": 6.4842955042873065,
+                "gap": -3.437617343560184e-10,
+                "gapRate": -0.1009754087557123
+              }
+            }
+          ],
+          "completedCycles": 0,
+          "minimumSeparatedGap": 4.266232436767048e-10,
+          "predictorDisagreements": 2,
+          "analyticEntry": 9.951441787242129e-05,
+          "firstEntry": [
+            9.951019287109383e-05,
+            9.951782226562507e-05
+          ],
+          "bracketContainsAnalytic": true,
+          "freeFlight": {
+            "acceptedSteps": 56,
+            "positionErrorBound": 4.517428426504422e-19,
+            "velocityErrorBound": 8.921037605479236e-15,
+            "maxForce": 0,
+            "withinBudgets": true
+          }
+        },
+        "inputKey": "drop"
+      },
+      {
+        "name": "drop",
+        "file": "drop-1.json",
+        "sha256": "ab343ae05fa40e685a8400ff2a1fd3e6ae9936547aa719e6b5b2490729102ef0",
+        "model": "bikelab-translating-hub-contact-rk4-diagnostic-0.1",
+        "contactStep": {
+          "format": "bikelab-contact-bisection-0.1",
+          "maxBisections": 8,
+          "maxExtraSubsteps": 4096,
+          "solverTolerance": 1e-20
+        },
+        "normalOracle": "bikelab-flat-normal-oracle-0.1",
+        "nativeBuild": "5d5d89ddd0857a6518c628fa502d42f99d6dd67ca240182f1068cd30a45465ac:e05ac96db7f45bd46e76fed6e3469bf9204329e093344d742a18bca2cc0e230e",
+        "stageWork": "bikelab-native-rk4-stage-work-0.1",
+        "scope": "Fixed orientation, two hub translations plus relative casing slides. Authored hub and casing mass only; no spin, bike/rider load, equilibrium, physical calibration or full contact-transition qualification.",
+        "diagnostic": {
+          "dt": 9.765625e-07,
+          "duration": 0.02,
+          "hubVelocity": [
+            0,
+            -0.1
+          ],
+          "contact": "plane-vertices; compiled regularization recorded, not fixed-hub compliance parity"
+        },
+        "xmlSha256": "29e152073df5dd9ff26d848d8ec3a3d28164d3d0ac487919b2844b6be012312e",
+        "budgets": {
+          "observer": {
+            "position": 1e-12,
+            "velocity": 1e-09,
+            "warmstart": 1e-06,
+            "acceleration": 1e-06,
+            "force": 1e-08
+          },
+          "independent": {
+            "mass": 1e-12,
+            "force": 1e-08,
+            "energy": 1e-10,
+            "power": 1e-08,
+            "balance": 1e-08,
+            "gapRate": 1e-09,
+            "momentum": 1e-08,
+            "normalForce": 1e-07,
+            "referenceAcceleration": 1e-07,
+            "regularizer": 1e-12
+          },
+          "refinement": {
+            "position": 1e-07,
+            "velocity": 0.0001,
+            "force": 0.05,
+            "impulse": 1e-05,
+            "loss": 1e-06,
+            "work": 1e-06,
+            "residual": 1e-06
+          }
+        },
+        "status": "completed",
+        "termination": null,
+        "nativeWarnings": [],
+        "observerWarnings": [],
+        "summary": {
+          "steps": 20480,
+          "initialEnergy": 8.838730166250004,
+          "initialMomentum": [
+            0,
+            -0.25
+          ],
+          "maxResidual": 1.4210854715202004e-14,
+          "maxMomentumError": 8.421041641781812e-14,
+          "maxObserver": {
+            "position": 0,
+            "velocity": 0,
+            "warmstart": 0,
+            "acceleration": 0,
+            "force": 0
+          },
+          "maxIndependent": {
+            "force": 3.01800251456541e-13,
+            "energy": 5.698913563279007e-14,
+            "power": 2.0860049798621105e-15,
+            "balance": 1.2043699371133698e-12,
+            "gapRate": 0,
+            "normalForce": 1.2434497875801753e-13,
+            "referenceAcceleration": 0,
+            "regularizer": 0
+          },
+          "minContacts": 0,
+          "maxContacts": 3,
+          "stepping": {
+            "acceptedIntervals": 20480,
+            "acceptedSubsteps": 20496,
+            "attemptedSubsteps": 20512,
+            "discardedContactTrials": 16,
+            "deepestBisection": 8,
+            "transitionLimitedSubsteps": 2
+          }
+        },
+        "contactTrace": {
+          "format": "bikelab-contact-stage-trace-0.1",
+          "columns": [
+            "time",
+            "contacts",
+            "rows",
+            "loadedRows",
+            "verticalForce",
+            "minimumGap",
+            "minimumGapVelocity",
+            "hubQX",
+            "hubQZ",
+            "hubVX",
+            "hubVZ",
+            "maxRelativeDisplacement",
+            "maxRelativeSpeed"
+          ],
+          "rows": 102481,
+          "encoding": "float64 little-endian, row-major",
+          "file": "drop-1.f64",
+          "sha256": "e97af9b21437cd77e7f3cf06a8c43eb7e1175b54dd05395a0529528f773c3c59"
+        },
+        "analysis": {
+          "acceptedSubsteps": 20496,
+          "events": [
+            {
+              "kind": "entry",
+              "bracket": [
+                9.951400756835946e-05,
+                9.951782226562509e-05
+              ],
+              "before": {
+                "time": 9.951400756835946e-05,
+                "contacts": 0,
+                "rows": 0,
+                "loadedRows": 0,
+                "force": 0,
+                "gap": 4.1430865682645646e-11,
+                "gapRate": -0.1009758990423204
+              },
+              "after": {
+                "time": 9.951782226562509e-05,
+                "contacts": 1,
+                "rows": 1,
+                "loadedRows": 1,
+                "force": 6.484245922665976,
+                "gap": -3.437597220767863e-10,
+                "gapRate": -0.10097461722193435
+              },
+              "predictors": [
+                {
+                  "stage": 0,
+                  "time": 9.951400756835946e-05,
+                  "contacts": 0,
+                  "rows": 0,
+                  "loadedRows": 0,
+                  "force": 0,
+                  "gap": 4.1430865682645646e-11,
+                  "gapRate": -0.1009758990423204
+                },
+                {
+                  "stage": 1,
+                  "time": 9.951591491699226e-05,
+                  "contacts": 1,
+                  "rows": 1,
+                  "loadedRows": 1,
+                  "force": 6.484315308576224,
+                  "gap": -1.5116540658111077e-10,
+                  "gapRate": -0.10097591774702087
+                },
+                {
+                  "stage": 2,
+                  "time": 9.951591491699226e-05,
+                  "contacts": 1,
+                  "rows": 1,
+                  "loadedRows": 1,
+                  "force": 6.484265726523992,
+                  "gap": -1.51165462092262e-10,
+                  "gapRate": -0.1009751262046248
+                },
+                {
+                  "stage": 3,
+                  "time": 9.951782226562509e-05,
+                  "contacts": 1,
+                  "rows": 1,
+                  "loadedRows": 1,
+                  "force": 6.484229395548072,
+                  "gap": -3.4375871420244675e-10,
+                  "gapRate": -0.10097435337904767
+                }
+              ]
+            }
+          ],
+          "forceEvents": [
+            {
+              "kind": "loading",
+              "bracket": [
+                9.951400756835946e-05,
+                9.951782226562509e-05
+              ],
+              "before": {
+                "time": 9.951400756835946e-05,
+                "contacts": 0,
+                "rows": 0,
+                "loadedRows": 0,
+                "force": 0,
+                "gap": 4.1430865682645646e-11,
+                "gapRate": -0.1009758990423204
+              },
+              "after": {
+                "time": 9.951782226562509e-05,
+                "contacts": 1,
+                "rows": 1,
+                "loadedRows": 1,
+                "force": 6.484245922665976,
+                "gap": -3.437597220767863e-10,
+                "gapRate": -0.10097461722193435
+              }
+            }
+          ],
+          "completedCycles": 0,
+          "minimumSeparatedGap": 4.1430865682645646e-11,
+          "predictorDisagreements": 2,
+          "analyticEntry": 9.951441787242129e-05,
+          "firstEntry": [
+            9.951400756835946e-05,
+            9.951782226562509e-05
+          ],
+          "bracketContainsAnalytic": true,
+          "freeFlight": {
+            "acceptedSteps": 107,
+            "positionErrorBound": 4.552635837724306e-19,
+            "velocityErrorBound": 9.00374520139012e-15,
+            "maxForce": 0,
+            "withinBudgets": true
+          }
+        },
+        "inputKey": "drop"
+      },
+      {
+        "name": "drop",
+        "file": "drop-2.json",
+        "sha256": "2fe9ef0fa1c748dfb9a23a6716d0645e18a9c73962d93e21a959a2f47bc87d5e",
+        "model": "bikelab-translating-hub-contact-rk4-diagnostic-0.1",
+        "contactStep": {
+          "format": "bikelab-contact-bisection-0.1",
+          "maxBisections": 8,
+          "maxExtraSubsteps": 4096,
+          "solverTolerance": 1e-20
+        },
+        "normalOracle": "bikelab-flat-normal-oracle-0.1",
+        "nativeBuild": "5d5d89ddd0857a6518c628fa502d42f99d6dd67ca240182f1068cd30a45465ac:e05ac96db7f45bd46e76fed6e3469bf9204329e093344d742a18bca2cc0e230e",
+        "stageWork": "bikelab-native-rk4-stage-work-0.1",
+        "scope": "Fixed orientation, two hub translations plus relative casing slides. Authored hub and casing mass only; no spin, bike/rider load, equilibrium, physical calibration or full contact-transition qualification.",
+        "diagnostic": {
+          "dt": 4.8828125e-07,
+          "duration": 0.02,
+          "hubVelocity": [
+            0,
+            -0.1
+          ],
+          "contact": "plane-vertices; compiled regularization recorded, not fixed-hub compliance parity"
+        },
+        "xmlSha256": "6f5db8414803cc7f479f741c03cc546add7db3b88d77832083d0ed6fa3e1287f",
+        "budgets": {
+          "observer": {
+            "position": 1e-12,
+            "velocity": 1e-09,
+            "warmstart": 1e-06,
+            "acceleration": 1e-06,
+            "force": 1e-08
+          },
+          "independent": {
+            "mass": 1e-12,
+            "force": 1e-08,
+            "energy": 1e-10,
+            "power": 1e-08,
+            "balance": 1e-08,
+            "gapRate": 1e-09,
+            "momentum": 1e-08,
+            "normalForce": 1e-07,
+            "referenceAcceleration": 1e-07,
+            "regularizer": 1e-12
+          },
+          "refinement": {
+            "position": 1e-07,
+            "velocity": 0.0001,
+            "force": 0.05,
+            "impulse": 1e-05,
+            "loss": 1e-06,
+            "work": 1e-06,
+            "residual": 1e-06
+          }
+        },
+        "status": "completed",
+        "termination": null,
+        "nativeWarnings": [],
+        "observerWarnings": [],
+        "summary": {
+          "steps": 40960,
+          "initialEnergy": 8.838730166250004,
+          "initialMomentum": [
+            0,
+            -0.25
+          ],
+          "maxResidual": 1.5455193548563617e-14,
+          "maxMomentumError": 1.9106938253798944e-13,
+          "maxObserver": {
+            "position": 0,
+            "velocity": 0,
+            "warmstart": 0,
+            "acceleration": 0,
+            "force": 0
+          },
+          "maxIndependent": {
+            "force": 3.016406568967511e-13,
+            "energy": 5.626055177287981e-14,
+            "power": 2.0990154059319366e-15,
+            "balance": 2.2097879082139116e-12,
+            "gapRate": 0,
+            "normalForce": 5.524469770534779e-13,
+            "referenceAcceleration": 0,
+            "regularizer": 0
+          },
+          "minContacts": 0,
+          "maxContacts": 3,
+          "stepping": {
+            "acceptedIntervals": 40960,
+            "acceptedSubsteps": 40976,
+            "attemptedSubsteps": 40992,
+            "discardedContactTrials": 16,
+            "deepestBisection": 8,
+            "transitionLimitedSubsteps": 2
+          }
+        },
+        "contactTrace": {
+          "format": "bikelab-contact-stage-trace-0.1",
+          "columns": [
+            "time",
+            "contacts",
+            "rows",
+            "loadedRows",
+            "verticalForce",
+            "minimumGap",
+            "minimumGapVelocity",
+            "hubQX",
+            "hubQZ",
+            "hubVX",
+            "hubVZ",
+            "maxRelativeDisplacement",
+            "maxRelativeSpeed"
+          ],
+          "rows": 204881,
+          "encoding": "float64 little-endian, row-major",
+          "file": "drop-2.f64",
+          "sha256": "9803e7f29fc3821f570ca1178b29ab061f703133a2d580cba1cd532c052e461c"
+        },
+        "analysis": {
+          "acceptedSubsteps": 40976,
+          "events": [
+            {
+              "kind": "entry",
+              "bracket": [
+                9.951400756835946e-05,
+                9.951591491699226e-05
+              ],
+              "before": {
+                "time": 9.951400756835946e-05,
+                "contacts": 0,
+                "rows": 0,
+                "loadedRows": 0,
+                "force": 0,
+                "gap": 4.1430865682645646e-11,
+                "gapRate": -0.1009758990423204
+              },
+              "after": {
+                "time": 9.951591491699226e-05,
+                "contacts": 1,
+                "rows": 1,
+                "loadedRows": 1,
+                "force": 6.484273990330288,
+                "gap": -1.5116490351130274e-10,
+                "gapRate": -0.10097525813091639
+              },
+              "predictors": [
+                {
+                  "stage": 0,
+                  "time": 9.951400756835946e-05,
+                  "contacts": 0,
+                  "rows": 0,
+                  "loadedRows": 0,
+                  "force": 0,
+                  "gap": 4.1430865682645646e-11,
+                  "gapRate": -0.1009758990423204
+                },
+                {
+                  "stage": 1,
+                  "time": 9.951496124267587e-05,
+                  "contacts": 1,
+                  "rows": 1,
+                  "loadedRows": 1,
+                  "force": 6.484308683336742,
+                  "gap": -5.4867270449232564e-11,
+                  "gapRate": -0.10097590839467065
+                },
+                {
+                  "stage": 2,
+                  "time": 9.951496124267587e-05,
+                  "contacts": 1,
+                  "rows": 1,
+                  "loadedRows": 1,
+                  "force": 6.484283892333972,
+                  "gap": -5.4867270449232564e-11,
+                  "gapRate": -0.10097551262387698
+                },
+                {
+                  "stage": 3,
+                  "time": 9.951591491699226e-05,
+                  "contacts": 1,
+                  "rows": 1,
+                  "loadedRows": 1,
+                  "force": 6.484265726721306,
+                  "gap": -1.5116465197639872e-10,
+                  "gapRate": -0.10097512620846316
+                }
+              ]
+            }
+          ],
+          "forceEvents": [
+            {
+              "kind": "loading",
+              "bracket": [
+                9.951400756835946e-05,
+                9.951591491699226e-05
+              ],
+              "before": {
+                "time": 9.951400756835946e-05,
+                "contacts": 0,
+                "rows": 0,
+                "loadedRows": 0,
+                "force": 0,
+                "gap": 4.1430865682645646e-11,
+                "gapRate": -0.1009758990423204
+              },
+              "after": {
+                "time": 9.951591491699226e-05,
+                "contacts": 1,
+                "rows": 1,
+                "loadedRows": 1,
+                "force": 6.484273990330288,
+                "gap": -1.5116490351130274e-10,
+                "gapRate": -0.10097525813091639
+              }
+            }
+          ],
+          "completedCycles": 0,
+          "minimumSeparatedGap": 4.1430865682645646e-11,
+          "predictorDisagreements": 2,
+          "analyticEntry": 9.951441787242129e-05,
+          "firstEntry": [
+            9.951400756835946e-05,
+            9.951591491699226e-05
+          ],
+          "bracketContainsAnalytic": true,
+          "freeFlight": {
+            "acceptedSteps": 208,
+            "positionErrorBound": 4.883553789617663e-19,
+            "velocityErrorBound": 9.190023334567041e-15,
+            "maxForce": 0,
+            "withinBudgets": true
+          }
+        },
+        "inputKey": "drop"
+      },
+      {
+        "name": "recontact",
+        "file": "recontact-0.json",
+        "sha256": "84d7d8906b70f60647fc4d37e1dbd3f507509772a7bb63d6ec434e7340252051",
+        "model": "bikelab-translating-hub-contact-rk4-diagnostic-0.1",
+        "contactStep": {
+          "format": "bikelab-contact-bisection-0.1",
+          "maxBisections": 8,
+          "maxExtraSubsteps": 4096,
+          "solverTolerance": 1e-20
+        },
+        "normalOracle": "bikelab-flat-normal-oracle-0.1",
+        "nativeBuild": "5d5d89ddd0857a6518c628fa502d42f99d6dd67ca240182f1068cd30a45465ac:e05ac96db7f45bd46e76fed6e3469bf9204329e093344d742a18bca2cc0e230e",
+        "stageWork": "bikelab-native-rk4-stage-work-0.1",
+        "scope": "Fixed orientation, two hub translations plus relative casing slides. Authored hub and casing mass only; no spin, bike/rider load, equilibrium, physical calibration or full contact-transition qualification.",
+        "diagnostic": {
+          "dt": 1.953125e-06,
+          "duration": 0.02,
+          "hubVelocity": [
+            0,
+            0.05
+          ],
+          "contact": "plane-vertices; compiled regularization recorded, not fixed-hub compliance parity"
+        },
+        "xmlSha256": "00427ab3a056f31292e3405c5b3dd2adbd4f27c3ba30070d060582b8d5aef21a",
+        "budgets": {
+          "observer": {
+            "position": 1e-12,
+            "velocity": 1e-09,
+            "warmstart": 1e-06,
+            "acceleration": 1e-06,
+            "force": 1e-08
+          },
+          "independent": {
+            "mass": 1e-12,
+            "force": 1e-08,
+            "energy": 1e-10,
+            "power": 1e-08,
+            "balance": 1e-08,
+            "gapRate": 1e-09,
+            "momentum": 1e-08,
+            "normalForce": 1e-07,
+            "referenceAcceleration": 1e-07,
+            "regularizer": 1e-12
+          },
+          "refinement": {
+            "position": 1e-07,
+            "velocity": 0.0001,
+            "force": 0.05,
+            "impulse": 1e-05,
+            "loss": 1e-06,
+            "work": 1e-06,
+            "residual": 1e-06
+          }
+        },
+        "status": "completed",
+        "termination": null,
+        "nativeWarnings": [],
+        "observerWarnings": [],
+        "summary": {
+          "steps": 10240,
+          "initialEnergy": 8.827884168749998,
+          "initialMomentum": [
+            0,
+            0.125
+          ],
+          "maxResidual": 1.3102630688332367e-14,
+          "maxMomentumError": 4.873879078104437e-14,
+          "maxObserver": {
+            "position": 0,
+            "velocity": 0,
+            "warmstart": 0,
+            "acceleration": 0,
+            "force": 0
+          },
+          "maxIndependent": {
+            "force": 3.008869195464392e-13,
+            "energy": 6.134849572791978e-14,
+            "power": 2.207435623180487e-16,
+            "balance": 4.2366110619695974e-13,
+            "gapRate": 0,
+            "normalForce": 5.417888360170764e-14,
+            "referenceAcceleration": 0,
+            "regularizer": 0
+          },
+          "minContacts": 0,
+          "maxContacts": 1,
+          "stepping": {
+            "acceptedIntervals": 10240,
+            "acceptedSubsteps": 10256,
+            "attemptedSubsteps": 10272,
+            "discardedContactTrials": 16,
+            "deepestBisection": 8,
+            "transitionLimitedSubsteps": 2
+          }
+        },
+        "contactTrace": {
+          "format": "bikelab-contact-stage-trace-0.1",
+          "columns": [
+            "time",
+            "contacts",
+            "rows",
+            "loadedRows",
+            "verticalForce",
+            "minimumGap",
+            "minimumGapVelocity",
+            "hubQX",
+            "hubQZ",
+            "hubVX",
+            "hubVZ",
+            "maxRelativeDisplacement",
+            "maxRelativeSpeed"
+          ],
+          "rows": 51281,
+          "encoding": "float64 little-endian, row-major",
+          "file": "recontact-0.f64",
+          "sha256": "fba3bb07a2ec1f0f3f239f4acf06b804f6f836ec79cbe6cc07a185695f4e6d2f"
+        },
+        "analysis": {
+          "acceptedSubsteps": 10256,
+          "events": [
+            {
+              "kind": "separation",
+              "bracket": [
+                0.0011176300048828134,
+                0.0011176376342773447
+              ],
+              "before": {
+                "time": 0.0011176300048828134,
+                "contacts": 1,
+                "rows": 1,
+                "loadedRows": 0,
+                "force": 0,
+                "gap": -9.88311828209465e-11,
+                "gapRate": 0.03919774476394211
+              },
+              "after": {
+                "time": 0.0011176376342773447,
+                "contacts": 0,
+                "rows": 0,
+                "loadedRows": 0,
+                "force": 0,
+                "gap": 2.0022359985272242e-10,
+                "gapRate": 0.03919766870993472
+              },
+              "predictors": [
+                {
+                  "stage": 0,
+                  "time": 0.0011176300048828134,
+                  "contacts": 1,
+                  "rows": 1,
+                  "loadedRows": 0,
+                  "force": 0,
+                  "gap": -9.88311828209465e-11,
+                  "gapRate": 0.03919774476394211
+                },
+                {
+                  "stage": 1,
+                  "time": 0.001117633819580079,
+                  "contacts": 0,
+                  "rows": 0,
+                  "loadedRows": 0,
+                  "force": 0,
+                  "gap": 5.069637765142687e-11,
+                  "gapRate": 0.03919770673693992
+                },
+                {
+                  "stage": 2,
+                  "time": 0.001117633819580079,
+                  "contacts": 0,
+                  "rows": 0,
+                  "loadedRows": 0,
+                  "force": 0,
+                  "gap": 5.0696207648526226e-11,
+                  "gapRate": 0.03919770673693842
+                },
+                {
+                  "stage": 3,
+                  "time": 0.0011176376342773447,
+                  "contacts": 0,
+                  "rows": 0,
+                  "loadedRows": 0,
+                  "force": 0,
+                  "gap": 2.0022359985272242e-10,
+                  "gapRate": 0.03919766870993472
+                }
+              ]
+            },
+            {
+              "kind": "entry",
+              "bracket": [
+                0.009080612182616967,
+                0.009080619812011498
+              ],
+              "before": {
+                "time": 0.009080612182616967,
+                "contacts": 0,
+                "rows": 0,
+                "loadedRows": 0,
+                "force": 0,
+                "gap": 2.564772491608913e-10,
+                "gapRate": -0.03894000097997792
+              },
+              "after": {
+                "time": 0.009080619812011498,
+                "contacts": 1,
+                "rows": 1,
+                "loadedRows": 1,
+                "force": 2.5968838136549244,
+                "gap": -4.06116928280964e-11,
+                "gapRate": -0.03893986583721677
+              },
+              "predictors": [
+                {
+                  "stage": 0,
+                  "time": 0.009080612182616967,
+                  "contacts": 0,
+                  "rows": 0,
+                  "loadedRows": 0,
+                  "force": 0,
+                  "gap": 2.564772491608913e-10,
+                  "gapRate": -0.03894000097997792
+                },
+                {
+                  "stage": 1,
+                  "time": 0.009080615997314233,
+                  "contacts": 0,
+                  "rows": 0,
+                  "loadedRows": 0,
+                  "force": 0,
+                  "gap": 1.0793294730193637e-10,
+                  "gapRate": -0.03894003907660786
+                },
+                {
+                  "stage": 2,
+                  "time": 0.009080615997314233,
+                  "contacts": 0,
+                  "rows": 0,
+                  "loadedRows": 0,
+                  "force": 0,
+                  "gap": 1.0793277729903572e-10,
+                  "gapRate": -0.038940039076608896
+                },
+                {
+                  "stage": 3,
+                  "time": 0.009080619812011498,
+                  "contacts": 1,
+                  "rows": 1,
+                  "loadedRows": 1,
+                  "force": 2.596897051705418,
+                  "gap": -4.06116928280964e-11,
+                  "gapRate": -0.03894007717323986
+                }
+              ]
+            }
+          ],
+          "forceEvents": [
+            {
+              "kind": "unloading",
+              "bracket": [
+                5.273437500000003e-05,
+                5.4687500000000035e-05
+              ],
+              "before": {
+                "time": 5.273437500000003e-05,
+                "contacts": 1,
+                "rows": 1,
+                "loadedRows": 1,
+                "force": 0.003769937336391077,
+                "gap": -4.7368019510121706e-05,
+                "gapRate": 0.04973678961342555
+              },
+              "after": {
+                "time": 5.4687500000000035e-05,
+                "contacts": 1,
+                "rows": 1,
+                "loadedRows": 0,
+                "force": 0,
+                "gap": -4.7270895800553825e-05,
+                "gapRate": 0.04971781030067297
+              }
+            },
+            {
+              "kind": "loading",
+              "bracket": [
+                0.009080612182616967,
+                0.009080619812011498
+              ],
+              "before": {
+                "time": 0.009080612182616967,
+                "contacts": 0,
+                "rows": 0,
+                "loadedRows": 0,
+                "force": 0,
+                "gap": 2.564772491608913e-10,
+                "gapRate": -0.03894000097997792
+              },
+              "after": {
+                "time": 0.009080619812011498,
+                "contacts": 1,
+                "rows": 1,
+                "loadedRows": 1,
+                "force": 2.5968838136549244,
+                "gap": -4.06116928280964e-11,
+                "gapRate": -0.03893986583721677
+              }
+            }
+          ],
+          "completedCycles": 1,
+          "minimumSeparatedGap": 2.0022359985272242e-10,
+          "predictorDisagreements": 2,
+          "analyticEntry": null,
+          "firstEntry": [
+            0.009080612182616967,
+            0.009080619812011498
+          ],
+          "bracketContainsAnalytic": null,
+          "freeFlight": {
+            "acceptedSteps": 0,
+            "positionErrorBound": 0,
+            "velocityErrorBound": 0,
+            "maxForce": 0,
+            "withinBudgets": null
+          }
+        },
+        "inputKey": "recontact"
+      },
+      {
+        "name": "recontact",
+        "file": "recontact-1.json",
+        "sha256": "bd6e3b55181b5f4f5b93a79f5b8ab91e0e61669be9bac8014cd7caa5db640edf",
+        "model": "bikelab-translating-hub-contact-rk4-diagnostic-0.1",
+        "contactStep": {
+          "format": "bikelab-contact-bisection-0.1",
+          "maxBisections": 8,
+          "maxExtraSubsteps": 4096,
+          "solverTolerance": 1e-20
+        },
+        "normalOracle": "bikelab-flat-normal-oracle-0.1",
+        "nativeBuild": "5d5d89ddd0857a6518c628fa502d42f99d6dd67ca240182f1068cd30a45465ac:e05ac96db7f45bd46e76fed6e3469bf9204329e093344d742a18bca2cc0e230e",
+        "stageWork": "bikelab-native-rk4-stage-work-0.1",
+        "scope": "Fixed orientation, two hub translations plus relative casing slides. Authored hub and casing mass only; no spin, bike/rider load, equilibrium, physical calibration or full contact-transition qualification.",
+        "diagnostic": {
+          "dt": 9.765625e-07,
+          "duration": 0.02,
+          "hubVelocity": [
+            0,
+            0.05
+          ],
+          "contact": "plane-vertices; compiled regularization recorded, not fixed-hub compliance parity"
+        },
+        "xmlSha256": "e93cf95ed9b8c484fbed8dfb17abd6fcfd29ab6ee99372b0a0b8df8cbb713a64",
+        "budgets": {
+          "observer": {
+            "position": 1e-12,
+            "velocity": 1e-09,
+            "warmstart": 1e-06,
+            "acceleration": 1e-06,
+            "force": 1e-08
+          },
+          "independent": {
+            "mass": 1e-12,
+            "force": 1e-08,
+            "energy": 1e-10,
+            "power": 1e-08,
+            "balance": 1e-08,
+            "gapRate": 1e-09,
+            "momentum": 1e-08,
+            "normalForce": 1e-07,
+            "referenceAcceleration": 1e-07,
+            "regularizer": 1e-12
+          },
+          "refinement": {
+            "position": 1e-07,
+            "velocity": 0.0001,
+            "force": 0.05,
+            "impulse": 1e-05,
+            "loss": 1e-06,
+            "work": 1e-06,
+            "residual": 1e-06
+          }
+        },
+        "status": "completed",
+        "termination": null,
+        "nativeWarnings": [],
+        "observerWarnings": [],
+        "summary": {
+          "steps": 20480,
+          "initialEnergy": 8.827884168749998,
+          "initialMomentum": [
+            0,
+            0.125
+          ],
+          "maxResidual": 1.2139716010597153e-14,
+          "maxMomentumError": 8.287814878826794e-14,
+          "maxObserver": {
+            "position": 0,
+            "velocity": 0,
+            "warmstart": 0,
+            "acceleration": 0,
+            "force": 0
+          },
+          "maxIndependent": {
+            "force": 3.0125901773203623e-13,
+            "energy": 6.092956000847138e-14,
+            "power": 2.211772431870429e-16,
+            "balance": 2.8466118351389014e-13,
+            "gapRate": 0,
+            "normalForce": 4.3076653355456074e-14,
+            "referenceAcceleration": 0,
+            "regularizer": 0
+          },
+          "minContacts": 0,
+          "maxContacts": 1,
+          "stepping": {
+            "acceptedIntervals": 20480,
+            "acceptedSubsteps": 20496,
+            "attemptedSubsteps": 20512,
+            "discardedContactTrials": 16,
+            "deepestBisection": 8,
+            "transitionLimitedSubsteps": 2
+          }
+        },
+        "contactTrace": {
+          "format": "bikelab-contact-stage-trace-0.1",
+          "columns": [
+            "time",
+            "contacts",
+            "rows",
+            "loadedRows",
+            "verticalForce",
+            "minimumGap",
+            "minimumGapVelocity",
+            "hubQX",
+            "hubQZ",
+            "hubVX",
+            "hubVZ",
+            "maxRelativeDisplacement",
+            "maxRelativeSpeed"
+          ],
+          "rows": 102481,
+          "encoding": "float64 little-endian, row-major",
+          "file": "recontact-1.f64",
+          "sha256": "5ce5152e939d99a113b7d797dd2690552265daaf04da448960d2982f3f0039ad"
+        },
+        "analysis": {
+          "acceptedSubsteps": 20496,
+          "events": [
+            {
+              "kind": "separation",
+              "bracket": [
+                0.0011176300048827978,
+                0.0011176338195800634
+              ],
+              "before": {
+                "time": 0.0011176300048827978,
+                "contacts": 1,
+                "rows": 1,
+                "loadedRows": 0,
+                "force": 0,
+                "gap": -1.0975146312597328e-10,
+                "gapRate": 0.03919773721946057
+              },
+              "after": {
+                "time": 0.0011176338195800634,
+                "contacts": 0,
+                "rows": 0,
+                "loadedRows": 0,
+                "force": 0,
+                "gap": 3.9775955099075055e-11,
+                "gapRate": 0.039197699192485384
+              },
+              "predictors": [
+                {
+                  "stage": 0,
+                  "time": 0.0011176300048827978,
+                  "contacts": 1,
+                  "rows": 1,
+                  "loadedRows": 0,
+                  "force": 0,
+                  "gap": -1.0975146312597328e-10,
+                  "gapRate": 0.03919773721946057
+                },
+                {
+                  "stage": 1,
+                  "time": 0.0011176319122314306,
+                  "contacts": 1,
+                  "rows": 1,
+                  "loadedRows": 0,
+                  "force": 0,
+                  "gap": -3.4987696767574405e-11,
+                  "gapRate": 0.03919771820597335
+                },
+                {
+                  "stage": 2,
+                  "time": 0.0011176319122314306,
+                  "contacts": 1,
+                  "rows": 1,
+                  "loadedRows": 0,
+                  "force": 0,
+                  "gap": -3.498775401344911e-11,
+                  "gapRate": 0.039197718205972974
+                },
+                {
+                  "stage": 3,
+                  "time": 0.0011176338195800634,
+                  "contacts": 0,
+                  "rows": 0,
+                  "loadedRows": 0,
+                  "force": 0,
+                  "gap": 3.9775955099075055e-11,
+                  "gapRate": 0.039197699192485384
+                }
+              ]
+            },
+            {
+              "kind": "entry",
+              "bracket": [
+                0.009080615997314733,
+                0.009080619812012
+              ],
+              "before": {
+                "time": 0.009080615997314733,
+                "contacts": 0,
+                "rows": 0,
+                "loadedRows": 0,
+                "force": 0,
+                "gap": 9.497428017646303e-11,
+                "gapRate": -0.03894004446308813
+              },
+              "after": {
+                "time": 0.009080619812012,
+                "contacts": 1,
+                "rows": 1,
+                "loadedRows": 1,
+                "force": 2.596891456271431,
+                "gap": -5.357026801322551e-11,
+                "gapRate": -0.03893997689163526
+              },
+              "predictors": [
+                {
+                  "stage": 0,
+                  "time": 0.009080615997314733,
+                  "contacts": 0,
+                  "rows": 0,
+                  "loadedRows": 0,
+                  "force": 0,
+                  "gap": 9.497428017646303e-11,
+                  "gapRate": -0.03894004446308813
+                },
+                {
+                  "stage": 1,
+                  "time": 0.009080617904663366,
+                  "contacts": 0,
+                  "rows": 0,
+                  "loadedRows": 0,
+                  "force": 0,
+                  "gap": 2.0702061592769994e-11,
+                  "gapRate": -0.03894006351138803
+                },
+                {
+                  "stage": 2,
+                  "time": 0.009080617904663366,
+                  "contacts": 0,
+                  "rows": 0,
+                  "loadedRows": 0,
+                  "force": 0,
+                  "gap": 2.0702006081618762e-11,
+                  "gapRate": -0.03894006351138829
+                },
+                {
+                  "stage": 3,
+                  "time": 0.009080619812012,
+                  "contacts": 1,
+                  "rows": 1,
+                  "loadedRows": 1,
+                  "force": 2.596898075299358,
+                  "gap": -5.357026801322551e-11,
+                  "gapRate": -0.038940082559688456
+                }
+              ]
+            }
+          ],
+          "forceEvents": [
+            {
+              "kind": "unloading",
+              "bracket": [
+                5.371093750000004e-05,
+                5.468750000000004e-05
+              ],
+              "before": {
+                "time": 5.371093750000004e-05,
+                "contacts": 1,
+                "rows": 1,
+                "loadedRows": 1,
+                "force": 0.0013179670747869045,
+                "gap": -4.731945301598289e-05,
+                "gapRate": 0.04972736479592068
+              },
+              "after": {
+                "time": 5.468750000000004e-05,
+                "contacts": 1,
+                "rows": 1,
+                "loadedRows": 0,
+                "force": 0,
+                "gap": -4.72708958005677e-05,
+                "gapRate": 0.049717798593716375
+              }
+            },
+            {
+              "kind": "loading",
+              "bracket": [
+                0.009080615997314733,
+                0.009080619812012
+              ],
+              "before": {
+                "time": 0.009080615997314733,
+                "contacts": 0,
+                "rows": 0,
+                "loadedRows": 0,
+                "force": 0,
+                "gap": 9.497428017646303e-11,
+                "gapRate": -0.03894004446308813
+              },
+              "after": {
+                "time": 0.009080619812012,
+                "contacts": 1,
+                "rows": 1,
+                "loadedRows": 1,
+                "force": 2.596891456271431,
+                "gap": -5.357026801322551e-11,
+                "gapRate": -0.03893997689163526
+              }
+            }
+          ],
+          "completedCycles": 1,
+          "minimumSeparatedGap": 3.9775955099075055e-11,
+          "predictorDisagreements": 2,
+          "analyticEntry": null,
+          "firstEntry": [
+            0.009080615997314733,
+            0.009080619812012
+          ],
+          "bracketContainsAnalytic": null,
+          "freeFlight": {
+            "acceptedSteps": 0,
+            "positionErrorBound": 0,
+            "velocityErrorBound": 0,
+            "maxForce": 0,
+            "withinBudgets": null
+          }
+        },
+        "inputKey": "recontact"
+      },
+      {
+        "name": "recontact",
+        "file": "recontact-2.json",
+        "sha256": "d9fffe2392ddd1c58cc78a3cb3d0b924912601b64d10e1739845d2c42fe5fa81",
+        "model": "bikelab-translating-hub-contact-rk4-diagnostic-0.1",
+        "contactStep": {
+          "format": "bikelab-contact-bisection-0.1",
+          "maxBisections": 8,
+          "maxExtraSubsteps": 4096,
+          "solverTolerance": 1e-20
+        },
+        "normalOracle": "bikelab-flat-normal-oracle-0.1",
+        "nativeBuild": "5d5d89ddd0857a6518c628fa502d42f99d6dd67ca240182f1068cd30a45465ac:e05ac96db7f45bd46e76fed6e3469bf9204329e093344d742a18bca2cc0e230e",
+        "stageWork": "bikelab-native-rk4-stage-work-0.1",
+        "scope": "Fixed orientation, two hub translations plus relative casing slides. Authored hub and casing mass only; no spin, bike/rider load, equilibrium, physical calibration or full contact-transition qualification.",
+        "diagnostic": {
+          "dt": 4.8828125e-07,
+          "duration": 0.02,
+          "hubVelocity": [
+            0,
+            0.05
+          ],
+          "contact": "plane-vertices; compiled regularization recorded, not fixed-hub compliance parity"
+        },
+        "xmlSha256": "86ceda17f243bf0e3b6453408b586c255c5b0b885399baa122e8ab4afb404beb",
+        "budgets": {
+          "observer": {
+            "position": 1e-12,
+            "velocity": 1e-09,
+            "warmstart": 1e-06,
+            "acceleration": 1e-06,
+            "force": 1e-08
+          },
+          "independent": {
+            "mass": 1e-12,
+            "force": 1e-08,
+            "energy": 1e-10,
+            "power": 1e-08,
+            "balance": 1e-08,
+            "gapRate": 1e-09,
+            "momentum": 1e-08,
+            "normalForce": 1e-07,
+            "referenceAcceleration": 1e-07,
+            "regularizer": 1e-12
+          },
+          "refinement": {
+            "position": 1e-07,
+            "velocity": 0.0001,
+            "force": 0.05,
+            "impulse": 1e-05,
+            "loss": 1e-06,
+            "work": 1e-06,
+            "residual": 1e-06
+          }
+        },
+        "status": "completed",
+        "termination": null,
+        "nativeWarnings": [],
+        "observerWarnings": [],
+        "summary": {
+          "steps": 40960,
+          "initialEnergy": 8.827884168749998,
+          "initialMomentum": [
+            0,
+            0.125
+          ],
+          "maxResidual": 1.3913381270458605e-14,
+          "maxMomentumError": 1.9384494009955233e-13,
+          "maxObserver": {
+            "position": 0,
+            "velocity": 0,
+            "warmstart": 0,
+            "acceleration": 0,
+            "force": 0
+          },
+          "maxIndependent": {
+            "force": 3.011636079408575e-13,
+            "energy": 6.057589325980661e-14,
+            "power": 2.216109240560371e-16,
+            "balance": 1.0274176258026624e-13,
+            "gapRate": 0,
+            "normalForce": 8.748557434046234e-14,
+            "referenceAcceleration": 0,
+            "regularizer": 0
+          },
+          "minContacts": 0,
+          "maxContacts": 1,
+          "stepping": {
+            "acceptedIntervals": 40960,
+            "acceptedSubsteps": 40976,
+            "attemptedSubsteps": 40992,
+            "discardedContactTrials": 16,
+            "deepestBisection": 8,
+            "transitionLimitedSubsteps": 2
+          }
+        },
+        "contactTrace": {
+          "format": "bikelab-contact-stage-trace-0.1",
+          "columns": [
+            "time",
+            "contacts",
+            "rows",
+            "loadedRows",
+            "verticalForce",
+            "minimumGap",
+            "minimumGapVelocity",
+            "hubQX",
+            "hubQZ",
+            "hubVX",
+            "hubVZ",
+            "maxRelativeDisplacement",
+            "maxRelativeSpeed"
+          ],
+          "rows": 204881,
+          "encoding": "float64 little-endian, row-major",
+          "file": "recontact-2.f64",
+          "sha256": "a04be5520aaa9d00a9c2642d4c00346caa706940b5dcb838137ab9bdc6796058"
+        },
+        "analysis": {
+          "acceptedSubsteps": 40976,
+          "events": [
+            {
+              "kind": "separation",
+              "bracket": [
+                0.0011176319122313766,
+                0.0011176338195800094
+              ],
+              "before": {
+                "time": 0.0011176319122313766,
+                "contacts": 1,
+                "rows": 1,
+                "loadedRows": 0,
+                "force": 0,
+                "gap": -3.0450808541360175e-11,
+                "gapRate": 0.03919772133761209
+              },
+              "after": {
+                "time": 0.0011176338195800094,
+                "contacts": 0,
+                "rows": 0,
+                "loadedRows": 0,
+                "force": 0,
+                "gap": 4.43129075100579e-11,
+                "gapRate": 0.039197702324118545
+              },
+              "predictors": [
+                {
+                  "stage": 0,
+                  "time": 0.0011176319122313766,
+                  "contacts": 1,
+                  "rows": 1,
+                  "loadedRows": 0,
+                  "force": 0,
+                  "gap": -3.0450808541360175e-11,
+                  "gapRate": 0.03919772133761209
+                },
+                {
+                  "stage": 1,
+                  "time": 0.001117632865905693,
+                  "contacts": 0,
+                  "rows": 0,
+                  "loadedRows": 0,
+                  "force": 0,
+                  "gap": 6.931077239924477e-12,
+                  "gapRate": 0.03919771183086541
+                },
+                {
+                  "stage": 2,
+                  "time": 0.001117632865905693,
+                  "contacts": 0,
+                  "rows": 0,
+                  "loadedRows": 0,
+                  "force": 0,
+                  "gap": 6.931077239924477e-12,
+                  "gapRate": 0.03919771183086532
+                },
+                {
+                  "stage": 3,
+                  "time": 0.0011176338195800094,
+                  "contacts": 0,
+                  "rows": 0,
+                  "loadedRows": 0,
+                  "force": 0,
+                  "gap": 4.43129075100579e-11,
+                  "gapRate": 0.039197702324118545
+                }
+              ]
+            },
+            {
+              "kind": "entry",
+              "bracket": [
+                0.009080617904662962,
+                0.009080619812011595
+              ],
+              "before": {
+                "time": 0.009080617904662962,
+                "contacts": 0,
+                "rows": 0,
+                "loadedRows": 0,
+                "force": 0,
+                "gap": 2.608497619294159e-11,
+                "gapRate": -0.03894006127618021
+              },
+              "after": {
+                "time": 0.009080619812011595,
+                "contacts": 1,
+                "rows": 1,
+                "loadedRows": 1,
+                "force": 2.596881102733746,
+                "gap": -4.8187093204532516e-11,
+                "gapRate": -0.03893981615544431
+              },
+              "predictors": [
+                {
+                  "stage": 0,
+                  "time": 0.009080617904662962,
+                  "contacts": 0,
+                  "rows": 0,
+                  "loadedRows": 0,
+                  "force": 0,
+                  "gap": 2.608497619294159e-11,
+                  "gapRate": -0.03894006127618021
+                },
+                {
+                  "stage": 1,
+                  "time": 0.009080618858337278,
+                  "contacts": 1,
+                  "rows": 1,
+                  "loadedRows": 1,
+                  "force": 2.59689472317438,
+                  "gap": -1.1051158252395332e-11,
+                  "gapRate": -0.03894007080033352
+                },
+                {
+                  "stage": 2,
+                  "time": 0.009080618858337278,
+                  "contacts": 1,
+                  "rows": 1,
+                  "loadedRows": 1,
+                  "force": 2.5968847946453093,
+                  "gap": -1.1051158252395332e-11,
+                  "gapRate": -0.03893991229845839
+                },
+                {
+                  "stage": 3,
+                  "time": 0.009080619812011595,
+                  "contacts": 1,
+                  "rows": 1,
+                  "loadedRows": 1,
+                  "force": 2.5968777932478053,
+                  "gap": -4.8186990855847434e-11,
+                  "gapRate": -0.038939763321949906
+                }
+              ]
+            }
+          ],
+          "forceEvents": [
+            {
+              "kind": "unloading",
+              "bracket": [
+                5.419921875000004e-05,
+                5.468750000000004e-05
+              ],
+              "before": {
+                "time": 5.419921875000004e-05,
+                "contacts": 1,
+                "rows": 1,
+                "loadedRows": 1,
+                "force": 9.579853097038546e-05,
+                "gap": -4.729517323912372e-05,
+                "gapRate": 0.049722594938169926
+              },
+              "after": {
+                "time": 5.468750000000004e-05,
+                "contacts": 1,
+                "rows": 1,
+                "loadedRows": 0,
+                "force": 0,
+                "gap": -4.727089579795174e-05,
+                "gapRate": 0.04971780345567094
+              }
+            },
+            {
+              "kind": "loading",
+              "bracket": [
+                0.009080617904662962,
+                0.009080619812011595
+              ],
+              "before": {
+                "time": 0.009080617904662962,
+                "contacts": 0,
+                "rows": 0,
+                "loadedRows": 0,
+                "force": 0,
+                "gap": 2.608497619294159e-11,
+                "gapRate": -0.03894006127618021
+              },
+              "after": {
+                "time": 0.009080619812011595,
+                "contacts": 1,
+                "rows": 1,
+                "loadedRows": 1,
+                "force": 2.596881102733746,
+                "gap": -4.8187093204532516e-11,
+                "gapRate": -0.03893981615544431
+              }
+            }
+          ],
+          "completedCycles": 1,
+          "minimumSeparatedGap": 2.608497619294159e-11,
+          "predictorDisagreements": 2,
+          "analyticEntry": null,
+          "firstEntry": [
+            0.009080617904662962,
+            0.009080619812011595
+          ],
+          "bracketContainsAnalytic": null,
+          "freeFlight": {
+            "acceptedSteps": 0,
+            "positionErrorBound": 0,
+            "velocityErrorBound": 0,
+            "maxForce": 0,
+            "withinBudgets": null
+          }
+        },
+        "inputKey": "recontact"
+      }
+    ],
+    "refinement": [
+      {
+        "name": "drop",
+        "stateBasis": "Maximum generalized component and absolute world hub/node vector errors",
+        "coarseDt": 1.953125e-06,
+        "fineDt": 9.765625e-07,
+        "samples": 10241,
+        "budgetFraction": 1,
+        "maxima": {
+          "position": 1.4516373608670701e-10,
+          "velocity": 7.91242977367108e-07,
+          "force": 5.780462526416841e-05,
+          "impulse": 1.5738335648607382e-08,
+          "loss": 6.8203607570135015e-12,
+          "work": 2.729976156240618e-09,
+          "residual": 4.911874943239192e-14
+        },
+        "withinBudgets": true
+      },
+      {
+        "name": "drop",
+        "stateBasis": "Maximum generalized component and absolute world hub/node vector errors",
+        "coarseDt": 9.765625e-07,
+        "fineDt": 4.8828125e-07,
+        "samples": 10241,
+        "budgetFraction": 0.1,
+        "maxima": {
+          "position": 1.2540238782826098e-10,
+          "velocity": 6.793113798482411e-07,
+          "force": 8.467128404987534e-05,
+          "impulse": 2.0964282809732282e-08,
+          "loss": 7.755695750606782e-12,
+          "work": 3.7173739505732845e-09,
+          "residual": 1.5455193548563617e-14
+        },
+        "withinBudgets": true
+      },
+      {
+        "name": "recontact",
+        "stateBasis": "Maximum generalized component and absolute world hub/node vector errors",
+        "coarseDt": 1.953125e-06,
+        "fineDt": 9.765625e-07,
+        "samples": 10241,
+        "budgetFraction": 1,
+        "maxima": {
+          "position": 3.038624140683005e-11,
+          "velocity": 1.1035339197214972e-07,
+          "force": 7.606895555234416e-06,
+          "impulse": 1.823221327156295e-09,
+          "loss": 1.1183083024489984e-13,
+          "work": 5.437522786618837e-11,
+          "residual": 1.3102630688332367e-14
+        },
+        "withinBudgets": true
+      },
+      {
+        "name": "recontact",
+        "stateBasis": "Maximum generalized component and absolute world hub/node vector errors",
+        "coarseDt": 9.765625e-07,
+        "fineDt": 4.8828125e-07,
+        "samples": 10241,
+        "budgetFraction": 0.1,
+        "maxima": {
+          "position": 3.350383622743652e-11,
+          "velocity": 1.597971662628062e-07,
+          "force": 1.0306574302898497e-05,
+          "impulse": 2.537965990399995e-09,
+          "loss": 1.1356046008824833e-13,
+          "work": 9.150779911094333e-11,
+          "residual": 1.3913381270458605e-14
+        },
+        "withinBudgets": true
+      }
+    ],
+    "sourcesSha256": {
+      "scripts/casing-entry.mjs": "08358d22b8daff88d7ab269f18385b7ba27f912e66cbd15a56456bfca788c764",
+      "scripts/casing-contact-step.mjs": "874715dacb48326d79f8b192c8acc4a9764d40426e9e40cd8c7655dfd0bb1be7",
+      "scripts/casing-translate.mjs": "71d21888b8f828f5d3390a404abc0e6ee5d59aa6605ff2120c037a34556c3d3f",
+      "scripts/casing-loaded.mjs": "2f9722fe40aaa82122e53c0ee9afa971a9a57032ce0ec6e93a4e86b7fddce7d4",
+      "dist/tyre-fixture-examples.json": "a1ced8fd04f04e49d151e9500b5b21d852fb8f4240a82c7fa44f85d875533525",
+      "dist/app.js": "35a43cd94428e8f1e540e96b0f09b14251802baa85aa86609b2b80ccf8958afd",
+      "dist/bike-app.js": "c45d2c63d6558e2073f5687293b5a980d77e8e70f1d946be9625eb1f5da52612",
+      "dist/bike-assembly.js": "b08ce39f029dc8b27eb1bd41cea741438d924755322e03eb19ce78d47101da19",
+      "dist/bike-chassis.js": "5558eb7c55dc0599710afc43afd950ad0bc47042cf809195138a0deb15b066c8",
+      "dist/bike-geometry.js": "b4269671738c378281b77444ee96b0983c022f0d6e82cf328a60b88e66894cc3",
+      "dist/bike-rig.js": "055258d1d5bd34bff8bebb2997ba651e95126e21366d7cf8fff68a17d586f8e1",
+      "dist/bike-worker.js": "6b277ed4620d29172f67e3517d856f79110b037e7f398cbb88eb369dc16ffa27",
+      "dist/calculation.js": "bc90dbfd9e0c2027a02d173f5efc6ed10af4bfaf8b9cd7ec1079f10772cf12a1",
+      "dist/casing-rk4-observer.js": "2a15beada33db32a7d514760257e73b8ff683ba180cfea2cf0016a83b545402b",
+      "dist/drive-controls.js": "c55ab225b5b5f8eebade49a9aead4190f4afcb5fdb077559ebe08fc37d035e48",
+      "dist/flat-vertex-contact.js": "773259b2ba85bf9ac1f8a05476b0542433a1c02df39ef6b0d789c3d61775bd9d",
+      "dist/footprint-app.js": "3c517df71824c291b2327910bd95ef6f821a888ccdeed9d324fbb09cc8eb5ced",
+      "dist/footprint-worker.js": "9845b22af86f53446e1fb7ad9f4e80766e9684a0a36493fa2273c9d2aed3c55e",
+      "dist/footprint.js": "8bf670171b4088c621d5739b54b20f58481735fcf184a154207fab4b111bc451",
+      "dist/geometry-catalogue.js": "f04f3036bb9346759737cd46b62265fbd511f79491eb40022882f955ceb73109",
+      "dist/geometry-reference-app.js": "e0ada84c86133c0d7b9c92a4c96cb0c10517f4ba67475d350e7770638d5c5949",
+      "dist/linkage.js": "4788206d4530a82d1f95072f4ab9dd6ad77bc241fe258b67dff64b5fa3c0c08a",
+      "dist/moving-wheel-app.js": "489ea4cb19189721d82788c48fde54f13ee3c59c1057e5dd3fb276894d205d6d",
+      "dist/moving-wheel-worker.js": "8c6427dba11bd0307c98f1b6d792d690ceb202304f13807debf7b21b5a95e592",
+      "dist/moving-wheel.js": "45b1068fabf5413dfc90bfd2ee47f46600deb093b756d7c8d1bdc8ad24411e35",
+      "dist/physics.js": "06f5993ea0ff3f0ddde8c52880b4e7a43180aa6bcecd4612ef2a335f21d79beb",
+      "dist/rider-connected.js": "2bd89a6eead541ebbeacf11508c4cb2eb4429fb1155771081c19db1749c12922",
+      "dist/rider-drive.js": "b63e9fea694bebb5376886b101027691c6ee4fd0cedeb6bca9241b00fddfdbe5",
+      "dist/rider-interfaces.js": "0de4412d2a33ea088889891bb72fe23dbb38ad07ea175f232051baedfae1a1ee",
+      "dist/rider-native.js": "2b532e4db120253c5ecd07b2e4e687d597ab493375dbd89d1d7c3b804972855f",
+      "dist/rider-passive.js": "cfb4e41a6f8463787db3ab3efc4af877bcbcc7b37be4e36683b340138a9e9fda",
+      "dist/rider-pose-study-app.js": "9a7126e2112bf06082944d691715b23b697fead9af20f6351f31db1a978328a1",
+      "dist/rider-pose-study.js": "0bd25756d50999342e72af488ecb78236828bc0ff94e2fc8c71f01c37266799f",
+      "dist/rider-posture.js": "6eaffb5f9062cb7270ddc7d8e304dc45ef8eba4db2044da5cbf2349f4cc6c258",
+      "dist/rider-setup.js": "c082e3feea19448352aa3b0bb70e9ee98a6d5c33f87f1be8c25f4309080ff43e",
+      "dist/rider-unbound-app.js": "d66d38c3364bf3b743f723385abe7c26294187872b37e0f25c62b0ef931a35b6",
+      "dist/rider-unbound-observer.js": "de6d1b92c6f6ae0a17704424c90473e7229beea7b7503d8451ac91ea3751495d",
+      "dist/rider-unbound-worker.js": "a04ff45f8d58f9e3cb73229bc88f05248cdbaadf27ba2e57c22e1390eff910d6",
+      "dist/rider-unbound.js": "109c560dd30baf86c716a00f851e04d1cdd83092e31686f177c1c0ed176d1533",
+      "dist/rig-loads.js": "64884a8df150aff725b32ddcba224d87108809e7475c97e3f189fa8f2840a31d",
+      "dist/solver-app.js": "d56e193ccebbc14ad21b3a55cbe583eac86b49597b3c3b4faa791208e0c06b9a",
+      "dist/solver-config.js": "67295e127f6041ff24a0d8057354809423250427e7b88df58cd779f72c75e4aa",
+      "dist/solver-trial.js": "620a439072e6937779148c3dd073a5fc9f3342ab7c12dee9f7aad9dbab6f30cd",
+      "dist/solver-worker.js": "9f41274068d99bc4033379e235c020a2c4fac96e9e943f3fada3e8efde83cb33",
+      "dist/suspension-app.js": "fd06f8a167642d86bdc8e67f25b4dc4c64ae6ffd5559cebb60130778464412eb",
+      "dist/suspension-reference.js": "dcbbd27cb339c9130a1d86b09b6431d5dbf9965816bf6e50bd033fa1676511e0",
+      "dist/suspension-ui-model.js": "cdecbdfe0291d98e7b855fdf5b0a456c4ae9e0914d3783d5d03ef3bac2094f8d",
+      "dist/suspension.js": "47be8e940b2f14fc5046e0e54fbe4596f00baaa827e1506e1770ae57971b1e96",
+      "dist/terrain-app.js": "7c811a10c4bbe2704ed29d59fcfa2c0e29c88e8556fb3e410a9adf498a575994",
+      "dist/terrain-request-app.js": "34eea4395483a80788b63bafd56948d5fa0abeb4d2e3d77afa0a95af6b381759",
+      "dist/terrain-request.js": "8bc7759dd6777307583658836db4e52a55e2dd3ed6b7050763cd77a40d601a47",
+      "dist/terrain.js": "b23bdf17d23c93f901ba5d2abd4a26b14677c74e8860f1f569e96adf7119dce3",
+      "dist/trail-bike-app.js": "ce48c051274de6fd198792e9134a930a7fb6817122b5a9611d0e38bb6384f389",
+      "dist/trail-bike-worker.js": "fc69de91ec1d888fda9a10db12cffdc5c7ce8bbdbf8307db4614149ac6b8f395",
+      "dist/trail-bike.js": "756470e48c51082a5ebc9a588cf6494be57307d2bdfdd35760c82b9405839010",
+      "dist/trail-canonical.js": "fef3d44edb561baf806f5a016474d074a6e229c42282136e781463b6302e61a5",
+      "dist/trail-initial-state.js": "ace3d2fc934b0eb9a1aace7916f278ddeb7f2a0889018cb0617fda23bbf77bab",
+      "dist/trail-section.js": "302aa124001dc6bdffbc24d0e5884c4c268d3719f7c33cd89b23026cf14c1835",
+      "dist/travel-buffer.js": "cac86e6feafb3abcccdf6b85882371f5d7b952c4703ed3a84022c5ca86068da7",
+      "dist/tyre-fixture-app.js": "a96b835e59eea5e2aee4487103a6a8ece8b7e706edf9c26440666715719622f0",
+      "dist/tyre-fixture-observation.js": "787b6cdb600880a2db790a81aac45e2a35e7b1ebb5410769324661605f60b5e3",
+      "dist/tyre-fixture-ui.js": "3fda1b1a3e20a7ed729e53c13c4559578bdca481f088927ecb61763423345a36",
+      "dist/tyre-fixture-worker.js": "c2a5956ca1b653f292297c6ef5176ceface5fee6620568a093e583c614d0eaf7",
+      "dist/tyre-fixture.js": "70aa1c85a9b9bb7d5cff588d220e134c3264aa111b5896c95ed56f2c7b02b175",
+      "dist/tyre-motion.js": "7a4d485f481139a33a0e8e59299fddffecca042e26200eeb0f88da07b0821a2c",
+      "dist/tyre-window.js": "2a40858f93876111a547bbb3f47f386544de7483ff10ace3115211966b95a685",
+      "dist/ui-model.js": "de3749a082fc84c05123978d3c1452f6f831b2a813b8e0398e37669efabd17af",
+      "dist/wheel-limits-app.js": "420b519de3f04884c4056ce27806bf09bcda123527c0962e5f7c02f6eb755ef9",
+      "dist/wheel-limits-worker.js": "ec51fad1c639fe7d5e73959b174bb39050c466263fb8b9579ffc7afae0d4dc67",
+      "dist/wheel-limits.js": "b43362eb9b1f0a47540d8b66462c98f33e78504d08221ffd79f9a1a2b55f1c39",
+      "dist/worker.js": "bd88c99989e731d7162b5635b0d1b80813bfe69e3933b11d2280c957f1fb5ee9",
+      "dist/vendor/mujoco-3.16.0/mujoco.js": "5d5d89ddd0857a6518c628fa502d42f99d6dd67ca240182f1068cd30a45465ac",
+      "dist/vendor/mujoco-3.16.0/mujoco.wasm": "e05ac96db7f45bd46e76fed6e3469bf9204329e093344d742a18bca2cc0e230e"
+    },
+    "receiving": {
+      "complete": true,
+      "entry": true,
+      "recontact": true,
+      "refinement": true,
+      "sourcesUnchanged": true
+    }
+  },
+  "reviewReceiving": {
+    "command": "node scripts/casing-entry-receive.mjs artifacts/casing-entry-substeps",
+    "receiptSha256": "1565b5ec80129ac568f53c4e3aff8ab4b9099308f6691512ef3abe38607aeba8",
+    "measuredReportSha256": "841baa9ac7a27692f06c0debd46e1f3852bfeffcb0d13fd482ea238a76681a03",
+    "analysisSourcesSha256": {
+      "scripts/casing-entry-receive.mjs": "1e2dfa119868a11688254990d4cae8f3a6f559d45c8a09c76c2ba6431c1f07a9",
+      "scripts/casing-entry.mjs": "eff5e20a4714975d0122e8dd7ed74106115949a5928e0eea46b143583d7638d7",
+      "scripts/casing-translate.mjs": "d347bbc8770c8112bcb8da9a765dd6fd4ae1541dc0c84325a9c529ea7ae30420",
+      "scripts/casing-contact-step.mjs": "874715dacb48326d79f8b192c8acc4a9764d40426e9e40cd8c7655dfd0bb1be7"
+    },
+    "receiving": {
+      "coverage": true,
+      "complete": true,
+      "momentum": true,
+      "entry": true,
+      "recontact": true,
+      "refinement": true,
+      "sourcesUnchanged": true
+    },
+    "caseAndTraceHashesVerified": true,
+    "analysesUnchangedForActualStudy": true,
+    "scope": "Revalidated archived observations after review fixes to momentum gating, zero-gap endpoint cycle recognition and comparison identity. Dynamics and numeric common-grid comparisons were measured at 9d473d5, not rerun after metadata/analysis changes.",
+    "logSha256": "040989ee698e1e79fbff1e0d45123a39a9efe1b33cd613f7932bd0e1b365e64d"
+  },
+  "visual": {
+    "figure": "casing-entry.svg",
+    "inspected": true,
+    "scope": "Scientific PNG: accepted endpoint gap/force near analytic entry, separation/recontact, original failed and corrected refinement budgets, additional substep counts. No browser/performance claim.",
+    "svgSha256": "28e497d9edb8c014897be594476a5234a10621d48d07ade817a99f0a65bb66ce",
+    "pngSha256": "fff03ef84238ece514f90df0849b4597cfa930a07a20d13c413067cc6ba28b2e",
+    "plotSourceSha256": "0a3c98744f02499c8ddcadf04dfa686af139c960a6674516627311c50cdfd78f"
+  }
+}
