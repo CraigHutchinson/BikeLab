@@ -15,7 +15,13 @@
         "test/physics.test.mjs",
         "test/suspension-reference.test.mjs",
         "test/records.test.mjs",
-        "test/terrain-request.test.mjs"
+        "test/terrain-request.test.mjs",
+        "test/rider-task.test.mjs",
+        "test/rider-transfer.test.mjs",
+        "test/rider-loads.test.mjs",
+        "test/rider-geometry-error.test.mjs",
+        "test/rider-static-reference.test.mjs",
+        "test/rider-crouch.test.mjs"
       ]
     ],
     "unit": [

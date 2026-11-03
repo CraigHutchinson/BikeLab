@@ -2,6 +2,12 @@
 
 Adopted 2026-10-28 from [CraigHutchinson/.github CI strategy](https://github.com/CraigHutchinson/.github/blob/main/docs/ci-strategy.md), source blob `40526a967ab0ef3fedbff3a35b24f053050c0ef0`.
 
+## Workstream integration — 2026-11-03
+
+This integration receives upstream main `05cf120` and its complete workflow, policy implementation and tests. The old literal pause guards are removed by that existing upstream change; routine smoke, deliberate full requests, emergency off settings and separately verified Pages retain their upstream semantics.
+
+The user explicitly requested this experimental workstream be merged with remaining work in follow-up PRs. This is a one-time acceptance of the documented missing full attestation and known replay/tracking failures, not a successful full result or a change to the normal policy below. Repository variables, protection rules and check statuses are not altered. See [integration receipt and follow-up gates](WORKSTREAM_INTEGRATION.md).
+
 ## Minimal hosted-CI resumption, 2026-11-01
 
 The user authorized resumption with local-first verification and full hosted runs only when needed. This supersedes the 28–31 October pause. Routine code changes allocate one short Ubuntu smoke job. Ordinary PRs may use exact-head successful `local-ci/full` plus `ci:local-verified` instead of the full hosted matrix. A quick or partial local run never substitutes for that full attestation. Full validation remains mandatory for critical version/release candidates; request it explicitly with a label, tag or manual dispatch.
@@ -67,3 +73,7 @@ The four policy tests pass locally. Vendor hashes pass. The quick command report
 ## Adoption evidence
 
 Local quick passed 46 tests; the complete Node suite passed 276 tests with no skips/failures on Windows / Node 24.22.0. Actionlint 1.7.7 passed all four workflows. Missing Playwright correctly failed the full-local runner, and a dirty checkout correctly refused attestation before any publication. GitHub settings require credentials unavailable to this shell; no variable or ruleset change is claimed. At adoption the checked-in false guards guaranteed the pause independently of repository variables; the resumption above replaces them. No hosted run, cross-OS execution, new browser receiving or deployment is claimed by the infrastructure change. Browser evidence for the existing product remains in its prior receiving receipts; new longer-settling controls in PR54 retain their own pending gates.
+
+## Desktop loopback receiving — 2026-11-02
+
+See [LOCAL_PREVIEW.md](LOCAL_PREVIEW.md) for the verified host launch procedure. Sandbox EACCES and browser-launch failures can prevent HTTP assertions from running; they do not establish that the preview serves its complete dependency graph. Run the real server regression through the approved host path where required. Focused rider receiving retains numerical replay failures even when later UI cases complete, and never produces a full attestation.

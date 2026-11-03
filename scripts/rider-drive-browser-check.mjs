@@ -1,3 +1,9 @@
+import {assessRiderCrouch} from '../dist/rider-crouch.js';
+import {CONTROL_MODEL} from '../dist/rider-controller.js';
+import {riderGeometryError} from '../dist/rider-geometry-error.js';
+import {riderLoadSample} from '../dist/rider-loads.js';
+import {summarizeRiderTracking,compareRiderTransfers} from '../dist/rider-transfer.js';
+import {TARGET_MODEL} from '../dist/rider-targets.js';
 import assert from 'node:assert/strict';
 import {mkdir,readFile,writeFile} from 'node:fs/promises';
 import {join} from 'node:path';
@@ -7,7 +13,7 @@ import {TYRE_WINDOW_MODEL} from '../dist/tyre-window.js';
 import {ACTIVE_MODEL} from '../dist/rider-drive.js';
 import {compareCanonicalTrailRecord} from './trail-section-browser-check.mjs';
 
-export async function checkRiderDrive({page,root,dir,report}){
+export async function checkRiderDrive({page,root,dir,report,compareRecord=compareCanonicalTrailRecord}){
  const prefix='rider-drive';dir=join(dir,prefix);await mkdir(dir,{recursive:true});const cases=[];
  const ready=()=>page.waitForFunction(()=>document.getElementById('status').textContent==='COMPLETED',null,{timeout:180000});
  const capture=async name=>{await page.locator('#riderDrive').screenshot({path:join(dir,name+'.png')});report.screenshots.push(prefix+'/'+name+'.png');};
@@ -16,7 +22,7 @@ export async function checkRiderDrive({page,root,dir,report}){
   await page.locator('[name=bike]').selectOption(bike);await page.locator('#example').selectOption('rider-hold');await ready();
   assert.ok(await page.locator('#riderDrive').isVisible());assert.match(await page.locator('#riderSupportNote').innerText(),/Bounded internal joint effort/);
   const pending=page.waitForEvent('download');await page.locator('#save').click();const path=join(dir,bike+'.json');await (await pending).saveAs(path);
-  const actual=JSON.parse(await readFile(path,'utf8')),expected=await replay(actual),agreement=compareCanonicalTrailRecord(actual,expected);
+  const actual=JSON.parse(await readFile(path,'utf8')),expected=await replay(actual),agreement=compareRecord(actual,expected);
   assert.equal(actual.model,ACTIVE_MODEL);assert.equal(actual.status,'completed');assert.ok(Math.abs(actual.summary.riderWork)>1);
   assert.deepEqual(JSON.parse(await page.locator('#setupText').inputValue()).active,actual.scenario.active);
   await page.locator('#scrub').fill(String(actual.frames.length-1));await capture(bike+'-desktop');
@@ -30,7 +36,7 @@ export async function checkRiderDrive({page,root,dir,report}){
   assert.match(await page.locator('#tyreMotionStatus').innerText(),/125.0 µs/);
   const tyrePending=page.waitForEvent('download');await page.locator('#save').click();const tyrePath=join(dir,bike+'-tyre.json');await (await tyrePending).saveAs(tyrePath);
   const tyreRecord=JSON.parse(await readFile(tyrePath,'utf8'));assert.equal(tyreRecord.model,TYRE_MOTION_MODEL);assert.equal(tyreRecord.frames.length,161);
-  assert.deepEqual(tyreRecord.initialState,actual.finalState);const tyreAgreement=compareCanonicalTrailRecord(tyreRecord,await replay(tyreRecord));
+  assert.deepEqual(tyreRecord.initialState,actual.finalState);const tyreAgreement=compareRecord(tyreRecord,await replay(tyreRecord));
   await page.locator('#scrub').fill(String(tyreRecord.frames.length-1));
   await page.locator('#tyreMotion').screenshot({path:join(dir,bike+'-tyre-desktop.png')});report.screenshots.push(prefix+'/'+bike+'-tyre-desktop.png');
   await page.locator('#history').screenshot({path:join(dir,bike+'-tyre-history.png')});report.screenshots.push(prefix+'/'+bike+'-tyre-history.png');
@@ -48,7 +54,7 @@ export async function checkRiderDrive({page,root,dir,report}){
   assert.match(await page.locator('#tyreMotionStatus').innerText(),/Uninterrupted run.*0.4800 to 0.5000/);
   const windowPending=page.waitForEvent('download');await page.locator('#save').click();const windowPath=join(dir,bike+'-window.json');await (await windowPending).saveAs(windowPath);
   const windowRecord=JSON.parse(await readFile(windowPath,'utf8'));assert.equal(windowRecord.model,TYRE_WINDOW_MODEL);assert.deepEqual(windowRecord.finalState,actual.finalState);
-  const windowAgreement=compareCanonicalTrailRecord(windowRecord,await replay(windowRecord));
+  const windowAgreement=compareRecord(windowRecord,await replay(windowRecord));
   await page.locator('#scrub').fill(String(windowRecord.frames.length-1));
   for(const [selector,suffix] of [['#tyreMotion','window-panel'],['#history','window-history']]){await page.locator(selector).screenshot({path:join(dir,bike+'-'+suffix+'.png')});report.screenshots.push(prefix+'/'+bike+'-'+suffix+'.png');}
   if(bike==='full'){await page.setViewportSize({width:320,height:1100});assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true);await page.locator('#tyreMotion').screenshot({path:join(dir,'full-window-320.png')});report.screenshots.push(prefix+'/full-window-320.png');await page.setViewportSize({width:1440,height:1100});}
@@ -56,13 +62,77 @@ export async function checkRiderDrive({page,root,dir,report}){
   assert.ok(await page.locator('#restartTyreWindow').isDisabled());
   const freshPending=page.waitForEvent('download');await page.locator('#save').click();const freshPath=join(dir,bike+'-window-fresh.json');await (await freshPending).saveAs(freshPath);
   const freshRecord=JSON.parse(await readFile(freshPath,'utf8'));assert.deepEqual(freshRecord.initialState,windowRecord.windowObservation.start.state);
-  const freshAgreement=compareCanonicalTrailRecord(freshRecord,await replay(freshRecord));
+  const freshAgreement=compareRecord(freshRecord,await replay(freshRecord));
+  await page.locator('#example').selectOption('rider-targets');await ready();
+  assert.ok(await page.locator('#restartState').isDisabled());assert.ok(await page.locator('#inspectTyres').isDisabled());assert.ok(await page.locator('#observeTyreWindow').isDisabled());
+  const targetPending=page.waitForEvent('download');await page.locator('#save').click();const targetPath=join(dir,bike+'-targets.json');await (await targetPending).saveAs(targetPath);
+  const targetRecord=JSON.parse(await readFile(targetPath,'utf8'));assert.equal(targetRecord.model,TARGET_MODEL);
+  const targetAgreement=compareRecord(targetRecord,await replay(targetRecord));
+  await page.locator('#scrub').fill(String(targetRecord.frames.length-1));
+  assert.match(await page.locator('#riderTargetStatus').innerText(),/recover.*Actual hip.*Target \/ actual frame-local rider COM/);
+  await capture(bike+'-targets-desktop');
+  for(const width of [390,320]){await page.setViewportSize({width,height:1100});assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true);await capture(bike+'-targets-'+width);}
+  await page.setViewportSize({width:1440,height:1100});
+  const transfers=[];
+  for(const example of ['rider-transfer-control','rider-transfer']){
+   await page.locator('#example').selectOption(example);await ready();
+   const pending=page.waitForEvent('download');await page.locator('#save').click();const path=join(dir,bike+'-'+example+'.json');await (await pending).saveAs(path);
+   const record=JSON.parse(await readFile(path,'utf8')),agreement=compareRecord(record,await replay(record)),tracking=summarizeRiderTracking(record);
+   assert.equal(record.status,'completed');assert.equal(tracking.phases.length,5);assert.ok(tracking.phases.every(p=>p.complete));
+   await page.locator('#scrub').fill(String(record.frames.length-1));
+   assert.match(await page.locator('#riderTrackingSummary').innerText(),/recovery-hold.*Phase interval completed.*not a tracking or support pass/);
+   assert.match(await page.locator('#riderStaticReference').innerText(),/Ideal fixed-anchor static target.*knee.*not applied to the simulation/);
+   const geometryText=await page.locator('#riderGeometryError').innerText(),geometry=riderGeometryError(record.scenario,record.frames.at(-1));
+   assert.match(geometryText,/Vertical hip error.*Leg-chain split.*foot gap.*not independent causes/);
+   assert.ok(Math.abs(Number.parseFloat(geometryText.slice('Vertical hip error '.length))-1000*geometry.hipError[1])<=.0051);
+   const loads=riderLoadSample(record.scenario,record.frames.at(-1));
+   assert.match(await page.locator('#riderLoadEffort').innerText(),/posture error \/ velocity damping.*knee.*before limits/);
+   assert.ok(Math.abs(Number.parseFloat(await page.locator('#riderVerticalNet').innerText())-loads.netForce[2])<=.051);
+   assert.ok(Math.abs(Number.parseFloat(await page.locator('#riderVerticalVelocity').innerText())-loads.comVelocity[2])<=.00051);
+   await page.locator('#riderSupport').screenshot({path:join(dir,bike+'-'+example+'-loads.png')});report.screenshots.push(prefix+'/'+bike+'-'+example+'-loads.png');
+   assert.ok(await page.locator('#restartState').isDisabled());await capture(bike+'-'+example);
+   if(bike==='full'){await page.setViewportSize({width:320,height:1100});assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true);await capture(bike+'-'+example+'-320');await page.setViewportSize({width:1440,height:1100});}
+   transfers.push({record,agreement,tracking});
+  }
+  const transferComparison=compareRiderTransfers(transfers[1].record,transfers[0].record);
+  const controllerCases=[];
+  for(const example of ['rider-controller-hold','rider-controller']){
+   await page.locator('#example').selectOption(example);await ready();
+   const pending=page.waitForEvent('download');await page.locator('#save').click();const path=join(dir,bike+'-'+example+'.json');await (await pending).saveAs(path);
+   const record=JSON.parse(await readFile(path,'utf8'));assert.equal(record.model,CONTROL_MODEL);
+   const agreement=compareRecord(record,await replay(record));
+   await page.locator('#scrub').fill(String(record.frames.length-1));
+   assert.match(await page.locator('#riderControlStatus').innerText(),/Runtime estimate:.*Estimate \/ posture feedback \/ velocity feedback/);
+   assert.match(await page.locator('#riderControlGains').innerText(),/Mass 70 kg.*current subtree inertia/);
+   for(const j of riderLoadSample(record.scenario,record.frames.at(-1)).joints)assert.ok(Math.abs(j.decompositionResidual)<1e-8);
+   assert.ok(await page.locator('#restartState').isDisabled());await capture(bike+'-'+example);
+   await page.setViewportSize({width:320,height:1100});assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true);await capture(bike+'-'+example+'-320');await page.setViewportSize({width:1440,height:1100});
+   controllerCases.push({example,agreement,tracking:summarizeRiderTracking(record)});
+  }
+  // A user mass edit recomputes gains; no fixed gain values survive in JSON.
+  await page.locator('[name=riderMass]').fill('100');await page.locator('#setup button[type=submit]').click();await ready();
+  assert.match(await page.locator('#riderControlGains').innerText(),/Mass 100 kg/);
+  assert.equal(Object.hasOwn(JSON.parse(await page.locator('#setupText').inputValue()).active.joints.hip,'kp'),false);
+  const crouchCases=[];
+  for(const example of ['rider-crouch-control','rider-crouch']){
+   await page.locator('#example').selectOption(example);await ready();
+   const pending=page.waitForEvent('download');await page.locator('#save').click();const path=join(dir,bike+'-'+example+'.json');await (await pending).saveAs(path);
+   const record=JSON.parse(await readFile(path,'utf8')),assessment=assessRiderCrouch(record),agreement=compareRecord(record,await replay(record));
+   assert.equal(record.scenario.motion.duration,2.5);await page.locator('#scrub').fill(String(record.frames.length-1));
+   const text=await page.locator('#riderCrouchStatus').innerText();
+   if(example==='rider-crouch'){assert.match(text,/Requested lowering 43.0 mm/);assert.ok(text.includes(assessment.status.replaceAll('-',' ')));assert.match(text,/Saved samples only/);}else assert.match(text,/Unchanged-posture control/);
+   await capture(bike+'-'+example);await page.setViewportSize({width:320,height:1100});assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true);await capture(bike+'-'+example+'-320');await page.setViewportSize({width:1440,height:1100});
+   crouchCases.push({example,assessment,agreement});
+  }
+  // Long active runs require selecting a short case before legacy coupling.
+  await page.locator('#example').selectOption('rider-targets');await ready();
   // Mode edits remove active drive before the legacy consumer executes.
   await page.locator('[name=rider]').selectOption('compliant');await page.locator('[name=duration]').fill('.02');await page.locator('#setup button[type=submit]').click();await ready();
   assert.ok(await page.locator('#riderDrive').isHidden());assert.equal(Object.hasOwn(JSON.parse(await page.locator('#setupText').inputValue()),'active'),false);
   assert.ok(await page.locator('#tyreMotion').isHidden());assert.ok(await page.locator('#inspectTyres').isDisabled());
   assert.equal(Object.hasOwn(JSON.parse(await page.locator('#setupText').inputValue()),'diagnostics'),false);
-  cases.push({bike,status:actual.status,steps:actual.summary.steps,riderWork:actual.summary.riderWork,agreement,tyreProbe:{status:tyreRecord.status,steps:tyreRecord.summary.steps,agreement:tyreAgreement},window:{agreement:windowAgreement,freshAgreement,startTick:windowRecord.windowObservation.start.tick}});
+  assert.equal(Object.hasOwn(JSON.parse(await page.locator('#setupText').inputValue()),'riderTargets'),false);
+  cases.push({bike,crouch:crouchCases,controller:controllerCases,heldTransfer:{cases:transfers.map(({agreement,tracking})=>({agreement,tracking})),comparison:transferComparison},targetSequence:{agreement:targetAgreement,status:targetRecord.status,riderWork:targetRecord.summary.riderWork},status:actual.status,steps:actual.summary.steps,riderWork:actual.summary.riderWork,agreement,tyreProbe:{status:tyreRecord.status,steps:tyreRecord.summary.steps,agreement:tyreAgreement},window:{agreement:windowAgreement,freshAgreement,startTick:windowRecord.windowObservation.start.tick}});
  }
  // Authored drive settings survive JSON normalization; invalid controls fail visibly.
  const authored=activePreset('full');authored.motion.duration=.02;
@@ -74,6 +144,7 @@ export async function checkRiderDrive({page,root,dir,report}){
  assert.equal(await page.locator('[name=duration]').getAttribute('max'),'10');
  await page.locator('#cancel').click();assert.ok(await page.locator('#save').isDisabled());
  report.riderDrive={cases,scope:'Actual worker, full-record replay, active readouts, mobile layout, JSON admission, legacy mode transition and long-probe cancellation. Also receives short fresh-state tyre diagnostics, dense observations, unchanged native identity, plots and mode cleanup. Also receives uninterrupted late windows, unchanged final state, window plots and fresh-start comparison controls. No equilibrium or calibrated active rider claim.'};
- report.checks.push('Active rider hold on both bikes: full browser/headless records, target/torque/work readouts, mobile panels and lifecycle controls.');
+ report.checks.push('Matched hold and slow transfer/recovery on both bikes: phase summaries, full-record replay and mobile capture.');
+ report.checks.push('Active rider hold on both bikes: full browser/headless records, timed target sequences and requested/actual hip/trunk/COM, target/torque/work readouts, mobile panels and lifecycle controls.');
  await writeFile(join(dir,'report.json'),JSON.stringify(report.riderDrive,null,2)+'\n');
 }

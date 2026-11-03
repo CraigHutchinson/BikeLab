@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import {readFile,writeFile,mkdir} from 'node:fs/promises';
 import {join} from 'node:path';
+import {compileRiderTask} from '../dist/rider-task.js';
 import {POSE_EXAMPLES,inspectRiderPose} from '../dist/rider-pose-study.js';
 
 export async function checkRiderPoses({page,root,dir,report}) {
@@ -55,11 +56,35 @@ export async function checkRiderPoses({page,root,dir,report}) {
     const custom=JSON.parse(await download('savePose',bike+'-custom'));
     assert.deepEqual(custom,inspectRiderPose({hip:[-.21,.07],trunkPitch:.65}).posture.spec);
     assert.deepEqual(await snapshot(),before);
+    await page.locator('#riderTaskStudy').evaluate(el=>{el.open=true;});
+    await page.locator('#taskHipX').fill('-.14');await page.locator('#taskHipZ').fill('.24');await page.locator('#taskPitch').fill('.56');
+    assert.ok(await page.locator('#saveTask').isDisabled());await page.locator('#previewTask').click();
+    assert.match(await page.locator('#taskStatus').textContent(),/101 sampled targets admitted/);
+    const taskSpec=JSON.parse(await download('saveTask',bike+'-task-input'));
+    const target=compileRiderTask(taskSpec);
+    const actualTask=await page.evaluate(async({root,spec})=>(await import(root+'rider-task.js')).compileRiderTask(spec),{root,spec:taskSpec});
+    assert.equal(actualTask.frames.length,target.frames.length);
+    for(let i=0;i<target.frames.length;i++){
+      assert.equal(actualTask.frames[i].tick,i);
+      for(const key of ['hip','com','jointAngles','relativeAngles'])target.frames[i][key].forEach((value,j)=>assert.ok(Math.abs(value-actualTask.frames[i][key][j])<=1e-12));
+    }
+    await page.locator('#taskScrub').fill('100');
+    assert.equal(await page.locator('#taskCom').textContent(),target.frames.at(-1).com.map(n=>n.toFixed(4)).join(' / ')+' m');
+    assert.match(await page.locator('#taskTime').textContent(),/Tick 100 \/ 100/);assert.deepEqual(await snapshot(),before);
+    const taskShot=async name=>{await page.locator('#riderTaskStudy').screenshot({path:join(dir,name)});report.screenshots.push('rider-poses/'+name);};
+    await taskShot(bike+'-task-desktop.png');
+    for(const value of ['', '2']){
+      await page.locator('#taskHipZ').fill(value);assert.ok(await page.locator('#saveTask').isDisabled());assert.ok(await page.locator('#taskResult').isHidden());
+      await page.locator('#previewTask').click();assert.ok(await page.locator('#saveTask').isDisabled());assert.deepEqual(await snapshot(),before);
+    }
+    await page.locator('#taskHipZ').fill('.24');await page.locator('#previewTask').click();
     for(const width of [390,320]) {
       await page.setViewportSize({width,height:844});
       assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'horizontal overflow');
+      await taskShot(bike+'-task-'+width+'.png');
       const name=bike+'-pose-'+width+'.png';await page.locator('#riderPoseStudy').screenshot({path:join(dir,name)});report.screenshots.push('rider-poses/'+name);
     }
+    await page.locator('#riderTaskStudy').evaluate(el=>{el.open=false;});
     assert.equal(await download('save',bike+'-after'),recordBefore,'pose edits changed applied record');
     // One JS turn: the worker cannot deliver completion before the pose edit.
     const pending=await page.evaluate(()=>{
@@ -74,6 +99,6 @@ export async function checkRiderPoses({page,root,dir,report}) {
     await page.locator('#riderPoseStudy').evaluate(el=>{el.open=false;});
   }
   report.riderPoses={cases,tolerance:1e-12,scope:'Geometry only; no support or active transition'};
-  report.checks.push('Rider pose study: four preserved-body geometries, default-domain diagnosis, export parity, invalid/blank rejection, unchanged applied records and worker completion, both bikes and 390/320 px captures.');
+  report.checks.push('Rider pose study: four preserved-body geometries, default-domain diagnosis, export parity, invalid/blank rejection, unchanged applied records and worker completion, both bikes and 390/320 px captures; sampled task input export, browser/Node target agreement, scrub and stale/invalid target rejection.');
   await writeFile(join(dir,'report.json'),JSON.stringify(report.riderPoses,null,2));
 }
