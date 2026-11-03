@@ -1,5 +1,7 @@
 # PR54 bounded correction checkpoint — 2026-11-03
 
+**Subsequent delivery decision, 3 November:** after reviewing the known failed macOS hashes and cancelled browser job, the user explicitly requested the merges. The [checkpoint decision](MERGE_CHECKPOINT_2026_11_03.md) supersedes the earlier wait-before-merge disposition for PR54 only; missing software receiving remains follow-up work, not a pass. PR46 is to be closed as superseded after its preserved evidence and replacement reach main. Dated catalogue counts below describe the review snapshot.
+
 The user requests merging the completed workstream checkpoint into main. This supersedes the earlier instruction to keep PR54 draft until spinning/connected receiving. It does not claim that those follow-up physics gates are complete or waive the [normal software merge checks](CI_WORKFLOW.md#normal-merge-and-release-policy).
 
 The checkpoint preserves the implicit derivative and mesh contact failures, adds versioned native-RK4/flat-vertex paths, receives coupled hub translation and bounded contact entry/recontact, and completes the supplied loaded-policy cross-check. Fresh product defaults and legacy record mechanics are preserved. The scientific plots consume saved diagnostic data; they do not constitute product browser receiving.
