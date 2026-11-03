@@ -1,5 +1,15 @@
 # Delivery and validation plan
 
+## Current execution order — 2026-11-03
+
+The [upstream consolidation](ISSUE_WORK_PLAN.md#current-upstream-reconciliation) reconciles all 25 open issues and 12 draft PRs, including #70–76 and PR54 at `f595805`. It is authoritative for current ordering; dated checkpoints below remain historical. Main `05cf120` has restored minimal local-first CI, while the rider stack retains old guards pending integration. See [branch-aware CI policy](CI_WORKFLOW.md).
+
+Receive independent #39/#40 fixes; trace the 12/22 rider browser replay failures from identical inputs; qualify contact-law/rest behavior separately from integrator changes in PR54; then receive runtime-derived reference-rate feedback against unchanged crouch budgets. New #73–76 evidence requires paired long-rest and law/integrator controls before promoting short flat-vertex success to whole-bike stability. Keep PR46's overlapping fixture work as a preservation/supersession review and integrate #62–69 in dependency order.
+
+Both-bike UI and 337/337 Node checks are received at the recorded rider implementation, but strict replay and all eight moving crouch transient screens remain failed. Subsequent endo/wheelie/hop policy shares the existing effort layer; support qualification, rider ownership, saddle/retention, persistent execution, calibration, terrain and 3D retain their gates. No new physics or hosted validation is claimed by this plan update.
+
+## Historical checkpoints
+
 Current rider update, 2026-10-30: the [major controller iteration](RIDER_CONTROLLER_ITERATION.md) connects runtime mass/geometry/gravity effort estimates to inertia-derived feedback and the shared bounded drive. [Receiving evidence](RIDER_CONTROLLER_EVIDENCE.md) covers both bikes, mass/geometry/gravity variations and failure controls. This is a versioned experimental path; PR54 numerical qualification, browser receiving and production manoeuvre acceptance remain separate. The [issue refresh](ISSUE_WORK_PLAN.md#major-controller-and-issue-refresh--2026-10-30) includes #56–59. Hosted CI and Pages stay paused.
 
 Current delivery update, 2026-10-28: adopt the [local-first CI workflow](CI_WORKFLOW.md) before more publication. Hosted CI is paused across projects until 1 November; local verification continues, and missing platform/browser gates remain explicit. PR50 is merged at `26c567c` with its 100 ms browser receipt. Draft [PR54](https://github.com/CraigHutchinson/BikeLab/pull/54) adds longer every-step measurements but is not received mainline work. The [consolidated issue plan](ISSUE_WORK_PLAN.md) covers #37-45, #48-49 and #51-53, preserves the settling/numerical-contract prerequisites for IK, and separates the small geometry/terrain fixes from later solver/material proposals.

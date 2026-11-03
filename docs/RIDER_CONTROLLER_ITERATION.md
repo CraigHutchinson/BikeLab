@@ -57,3 +57,7 @@ The [larger crouch/recovery](RIDER_CROUCH.md) now completes ten both-bike mass/c
 ## Browser receiving update — 2026-11-03
 
 The [focused rider UI sequence](RIDER_BROWSER_RECEIVING.md) completes on both bikes, including configured-mass edits, effort decomposition, controller/crouch examples, mobile panels, exports and cancellation. The full Node suite passes 337/337. All eight estimated-controller browser/Node record comparisons (hold/transfer/crouch/control on both bikes) fail the unchanged strict numerical budget. UI completion does not promote the controller. Next reconcile the first portability divergence, then receive the versioned reference-rate experiment against the frozen crouch baseline.
+
+## Upstream qualification update — 2026-11-03
+
+The [consolidated plan](ISSUE_WORK_PLAN.md#current-upstream-reconciliation) adds #70–76 and PR54's current entry/recontact results. Trace identical-input replay differences with contact witness/normal/residual evidence before attributing lag to controller policy. Keep the versioned reference-rate experiment isolated; supported acceptance also requires contact-law-versus-integrator and physically specified long-rest evidence. Runtime-derived mass/geometry/gravity effort, shared manoeuvre control and the frozen crouch budgets remain unchanged. Earlier CI-pause/browser-deferral statements describe their dated checkpoints; current branch/upstream delivery state is in [CI_WORKFLOW.md](CI_WORKFLOW.md).

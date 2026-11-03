@@ -1,29 +1,31 @@
 # BikeLab current checkpoint — 2026-11-03
 
-The quota hold was resumed at the user's request. Continue autonomously from this reviewed checkpoint; preserve other worktrees and the independent stability stream.
+## Upstream reconciliation
 
-## Delivery state
+Use the [current issue/PR consolidation](ISSUE_WORK_PLAN.md#current-upstream-reconciliation) as the execution order. Live review found 25 open issues, including new #70–76, and 12 open draft PRs. The [catalogue receipt](evidence/upstream-catalogue-2026-11-03.json) pins their heads. No issue or PR was closed or merged.
 
-Draft [PR69](https://github.com/CraigHutchinson/BikeLab/pull/69), branch `codex/rider-crouch`, remains stacked on [PR68](https://github.com/CraigHutchinson/BikeLab/pull/68). It now includes preview asset serving, canonical starting-angle admission, focused browser receiving and the evidence below. Local implementation commits are `8be092f` and `0fc2c8a`; connector publication uses separate commits with a verified identical tree. Do not rewrite the parent stack.
+Upstream main `05cf120` restored minimal local-first CI on 1 November; the previous statement that the entire project remained paused was stale. This rider branch still has older literal workflow guards. Reconcile upstream policy at the stack root before integration; do not overwrite it from a stale branch. No repository setting or workflow was changed by this review, and no successful hosted check is inferred. See [CI policy and branch state](CI_WORKFLOW.md).
 
-[PR60](https://github.com/CraigHutchinson/BikeLab/pull/60) now carries successful focused #39 geometry browser evidence at `ae5fd730a4899ce8813822f44c0abaf1e8be0db2`; it is still draft/unmerged. No GitHub issue is closed. The original geometry preview and current rider checkout are separate branches; do not use one as evidence for the other.
+## Delivery and evidence
 
-## Evidence and limits
+Draft [PR69](https://github.com/CraigHutchinson/BikeLab/pull/69), branch `codex/rider-crouch`, is stacked on PR68 and the ordered #62–69 rider chain. It includes preview asset serving, canonical starting-angle admission and focused browser receiving. Local implementation commits `8be092f` and `0fc2c8a` were connector-published with identical trees; do not rewrite the parent stack. The current consolidation changes documentation only.
 
-[Browser receiving](RIDER_BROWSER_RECEIVING.md) completed all UI assertions on both bikes with no page/console errors. Six representative captures were visually reviewed. The overall browser gate remains failed: **12/22** browser/Node complete-record comparisons exceed the unchanged tolerance. The complete Node suite passes **337/337**, including real HTTP serving and the new starting-angle regression. No full-local/hosted attestation is claimed.
+[PR60](https://github.com/CraigHutchinson/BikeLab/pull/60) at `ae5fd73` has successful focused #39 import/export/reload and visual evidence, but remains draft/unmerged. [PR61](https://github.com/CraigHutchinson/BikeLab/pull/61) at `c105637` still needs its own host/server and browser receiving for #40. The now-working preview procedure removes the old execution obstacle; results from PR69 do not certify PR61.
 
-The [crouch matrix](RIDER_CROUCH.md) still completes all ten native runs. All eight moving cases fail only the declared 10.75 mm transient tracking budget; no gains, physics, passive domains or acceptance thresholds were tuned. Current browser crouches show the same tracking failure visibly. Complete raw records/captures/logs remain in ignored artifacts; compact receipts and hashes are committed.
+[Browser receiving](RIDER_BROWSER_RECEIVING.md) completes both-bike UI assertions with no page/console errors; six representative captures were inspected. Overall browser verification still fails: **12/22** full-record comparisons exceed the unchanged budget. Node tests pass **337/337** on the recorded implementation tree; no full-local or hosted attestation is claimed. [Crouch](RIDER_CROUCH.md) completes all ten native runs, but all eight moving cases fail the frozen 10.75 mm transient tracking budget. Raw records remain in ignored artifacts with committed hashes.
+
+[PR54](https://github.com/CraigHutchinson/BikeLab/pull/54) at review head `f595805` has advanced through flat fixed-hub, translation, and bounded entry/recontact receiving. Loaded-policy cross-check, spin, both-bike held buffers/control, long supported rest and full/browser gates remain. #73–76 require a law-versus-integrator comparison and physically specified rest before broad stability claims. PR46 overlaps the received fixture work: preserve unique evidence and review supersession, without merging its old duplicate path wholesale.
 
 ## Next balanced work
 
-1. Trace the first browser/Node divergence from identical serialized target/controller configuration: compiled target deltas/native attributes, then state/contact/effort history. Coordinate with #57 and PR54; keep this narrow portability investigation separate from broader stability implementation. Do not weaken comparisons or tune gains to hide it.
-2. Design and receive versioned reference-velocity feedback through the common bounded drive, with geometry/clock-derived rates, explicit interpolation and boundary ownership, record/replay identity, and the unchanged crouch budgets. Actual-velocity damping remains a hypothesis for lag, not a proven diagnosis.
-3. Receive supported tracking before one-wheel endo/wheelie or hop/flight/landing policies. Keep support feasibility, phase history and continuation ownership explicit; #58 normal and #59 solver/reference gates remain independent.
+1. Complete independent #39/#40 delivery gates and reconcile the stale CI/plan documents during integration; no full matrix merely for this documentation checkpoint.
+2. Trace identical-input browser/Node target/model/state/contact/effort divergence. Include witness weights, contact normals and solver residuals to test the #52/#73 hypothesis. Preserve strict replay budgets; coordinate a minimal case with PR54 rather than adding a second stability implementation.
+3. In the separate stability stream, cross-check entry policy against loaded releases and qualify contact law independently of integrator. Add 10 s rest diagnostics with friction and an explicitly described held brake/lock or rolling-loss model, paired fixed/free-hub and both-bike controls, drift/ripple/switch/work metrics. Retain the later 60 s idle/recovery gate.
+4. Receive versioned reference-velocity feedback through the existing common bounded drive, with geometry/clock-derived rates, runtime mass/inertia, legacy record compatibility and unchanged crouch budgets. An isolated controller experiment can progress; supported manoeuvre acceptance still needs numerical/contact evidence.
+5. After supported crouch/recovery, add phase/support policy for endo, wheelie and bunny-hop preload/release/flight/landing. Keep independent rider ownership, saddle/retention, continuation and eventual 3D explicit.
 
-## Working preview and reproduction
+## Preview and reproduction
 
-Use the `bikelab-rider-controller` checkout beneath the authorized visualization workspace, not Sub0Llm. [LOCAL_PREVIEW.md](LOCAL_PREVIEW.md) records the verified host launch. Restricted sandbox Node can report listening while host browsers time out; run the loopback-only preview/check through the approved host path when needed, verify HTTP and browser readiness, and leave it running for user inspection. Restart after a host-session teardown if it is no longer listening; do not assume an old process or tab survives.
+Use this `bikelab-rider-controller` checkout, not Sub0Llm. [LOCAL_PREVIEW.md](LOCAL_PREVIEW.md) records the verified host launch: loopback-only rider preview at port 4178, geometry branch at 4189. Verify HTTP and in-app readiness; a restricted Node listening banner is insufficient. Keep the host process alive while the user inspects it, and recheck rather than assume an old session survives.
 
-`npm run browser-check:rider` collects the complete focused UI sequence while retaining every strict replay failure and exits nonzero if any comparison fails. `npm run ci:unit` checks all Node tests and vendor hashes. `node scripts/rider-crouch-review.mjs` regenerates the mass/control/refinement matrix. Avoid editing during local CI receipt generation.
-
-Hosted CI/Pages remain disabled in this branch; resumption on/after 1 November is deliberate. Follow [CI workflow](CI_WORKFLOW.md), use `[skip ci]`, and do not claim skipped checks as passed. No hosted run, deployment or merge was part of this receiving checkpoint.
+`npm run browser-check:rider` collects all focused UI cases while retaining replay failures and exits nonzero for any failed comparison. `npm run ci:unit` verifies all Node tests and vendor hashes. `node scripts/rider-crouch-review.mjs` regenerates the mass/control/refinement matrix. Do not edit during evidence generation. Current focused Edge evidence uses Playwright 1.62.1, not the full-local pinned 1.56.1 requirement.
