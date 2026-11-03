@@ -1,5 +1,8 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import {readFile} from 'node:fs/promises';
+import {createHash} from 'node:crypto';
+import {LEGACY_FORMAT} from '../dist/terrain-request.js';
 import {GRID,FORMAT,ENVELOPE,LIMITS,TerrainCache,makeRequest,sweptBox,envelopeCorners,fixtureColumn,replay,verifyReplay,serializable,compareReplay} from '../dist/terrain-request.js';
 const close=(a,b)=>assert.ok(Math.abs(a-b)<1e-12,`${a} != ${b}`);
 const request=(overrides={})=>makeRequest({a:[6,0,0],b:[6.01,0,0],...overrides});
@@ -98,8 +101,9 @@ test('whole-interval admission and deterministic replay match despite delivery o
     else {assert.equal(r.frames.length,24);assert.ok(r.frames.every(f=>f.accepted));}
     assert.deepEqual(await verifyReplay(r),r);
   }
-  const baseline=await replay('left'),delayed=await replay('left',{delay:key=>new Promise(resolve=>setTimeout(resolve,key.charCodeAt(0)%3))});assert.deepEqual(delayed,baseline);
-  assert.ok(baseline.frames.at(-1).cache.loads>(await replay('straight')).frames.at(-1).cache.loads);
+  const baseline=await replay('left'),delayed=await replay('left',{delay:key=>new Promise(resolve=>setTimeout(resolve,key.charCodeAt(0)%3))});
+  assert.equal(compareReplay(delayed,baseline).maxDifference,0);
+  assert.equal(compareReplay(delayed,baseline).cacheObservationsCompared,false);
   const changed=structuredClone(baseline);changed.frames[0].response.top[0]+=1;await assert.rejects(()=>verifyReplay(changed),/differs/);
 });
 
@@ -132,4 +136,108 @@ test('cross-runtime geometry tolerance never relaxes source identities or topolo
   near.frames[0].response.top[0]+=2e-12;assert.throws(()=>compareReplay(near,base),/differs/);
   const wrong=structuredClone(base);wrong.frames[0].response.ids[0]++;assert.throws(()=>compareReplay(wrong,base),/identity/);
   const shape=structuredClone(base);shape.frames[0].response.offset.pop();assert.throws(()=>compareReplay(shape,base),/fields/);
+});
+
+const turn=()=>new Promise(resolve=>setImmediate(resolve));
+const lookahead=[[[2,0,0],[2.01,0,0]]];
+const low=key=>Number(key.split(',')[0])<4;
+const beforeOptional=async promise=>{
+  const value=await Promise.race([promise,turn().then(()=>null)]);
+  assert.ok(value,'mandatory response must arrive before the optional gate is released');
+  assert.equal(value.status,'complete');return value;
+};
+
+test('mandatory delivery and subsequent demand finish while unrelated optional I/O is held',async t=>{
+  const g=gate();t.after(()=>g.resolve());
+  const cache=new TerrainCache({delay:key=>low(key)?g.promise:Promise.resolve()});
+  const response=await beforeOptional(cache.request(request({optional:lookahead})));
+  const baseline=await new TerrainCache().request(request());
+  assert.deepEqual(response.ids,baseline.ids);assert.deepEqual(response.lower,baseline.lower);
+  const saved=serializable(response);assert.equal(cache.prefetch.active,1);assert.ok(cache.prefetch.queued>0);
+  await beforeOptional(cache.request(request({sequence:1,a:[4,0,0],b:[4.01,0,0]})));
+  assert.equal(cache.prefetch.queued,0);g.resolve();await turn();
+  assert.equal(cache.prefetch.active,0);assert.ok(cache.resident.every(key=>!low(key)));
+  assert.deepEqual(serializable(response),saved);
+});
+
+test('reset and cancellation discard queued and late optional tiles',async t=>{
+  for(const stop of [cache=>cache.reset(),cache=>cache.cancel('front')]){
+    const g=gate();t.after(()=>g.resolve());const cache=new TerrainCache({delay:key=>low(key)?g.promise:Promise.resolve()});
+    await beforeOptional(cache.request(request({optional:lookahead})));stop(cache);
+    assert.equal(cache.prefetch.queued,0);g.resolve();await turn();
+    assert.equal(cache.prefetch.active,0);assert.ok(cache.resident.every(key=>!low(key)));
+    assert.ok(cache.prefetch.discarded>0);
+  }
+});
+
+test('optional failures are observed without rejecting or mutating mandatory output',async()=>{
+  const cache=new TerrainCache({delay:key=>low(key)?Promise.reject(Error('optional unavailable')):Promise.resolve()});
+  const response=await cache.request(request({optional:lookahead})),saved=serializable(response);
+  assert.equal(response.status,'complete');await turn();
+  assert.ok(cache.prefetch.failed>0);assert.equal(cache.prefetch.active,0);
+  assert.deepEqual(serializable(response),saved);
+});
+
+test('new demand promotes an in-flight optional tile and shares its source load',async t=>{
+  const g=gate(),calls=new Map();t.after(()=>g.resolve());
+  const cache=new TerrainCache({delay:key=>{calls.set(key,(calls.get(key)||0)+1);return low(key)?g.promise:Promise.resolve();}});
+  await beforeOptional(cache.request(request({optional:lookahead})));
+  const demand=cache.request(request({sequence:1,a:[2,0,0],b:[2.01,0,0]}));
+  await turn();g.resolve();const response=await demand;
+  assert.equal(response.status,'complete');assert.ok(response.tiles.every(key=>calls.get(key)===1));
+  const baseline=await new TerrainCache().request(request({a:[2,0,0],b:[2.01,0,0]}));
+  assert.deepEqual(response.top,baseline.top);assert.deepEqual(response.ids,baseline.ids);
+});
+
+test('prefetch is bounded and cannot evict demand-resident tiles',async t=>{
+  const g=gate();t.after(()=>g.resolve());let active=0,peak=0;
+  const cache=new TerrainCache({tileLimit:6,delay:async key=>{active++;peak=Math.max(peak,active);try{if(low(key))await g.promise;}finally{active--;}}});
+  await beforeOptional(cache.request(request({optional:lookahead})));
+  assert.equal(active,1);assert.ok(cache.prefetch.queued<=LIMITS.prefetchQueued);
+  await beforeOptional(cache.request(request({wheel:'rear',a:[4,0,0],b:[4.01,0,0]})));
+  const resident=cache.resident;assert.equal(resident.length,6);g.resolve();await turn();
+  assert.deepEqual(cache.resident,resident);assert.ok(cache.prefetch.discarded>0);
+  assert.ok(peak<=LIMITS.pending);assert.equal(cache.prefetch.active,0);assert.equal(cache.bytes,6*97600);
+});
+
+test('new replay validates cache observations without claiming deterministic cache timing',async()=>{
+  const base=await replay('straight'),changed=structuredClone(base);
+  changed.frames[0].cache.hits+=7;assert.equal(compareReplay(changed,base).cacheObservationsCompared,false);
+  assert.deepEqual(await verifyReplay(changed),changed);
+  for(const corrupt of [c=>c.bytes++,c=>c.prefetch.queued=9,c=>c.prefetch.active=2,c=>c.extra=1,c=>c.resident.push('99,0')]){
+    const bad=structuredClone(base);corrupt(bad.frames[0].cache);assert.throws(()=>compareReplay(bad,base),/cache observation/);
+  }
+});
+
+test('all six legacy records retain their original bytes and strict cache verification',async()=>{
+  const hashes=JSON.parse(await readFile(new URL('./fixtures/terrain-request-legacy-hashes.json',import.meta.url),'utf8'));
+  for(const [name,hash] of Object.entries(hashes)){
+    const record=await replay(name,{format:LEGACY_FORMAT});
+    assert.equal(createHash('sha256').update(JSON.stringify(record)).digest('hex'),hash,name);
+    assert.deepEqual(await verifyReplay(record),record);
+    const changed=structuredClone(record);changed.frames[0].cache.hits++;
+    assert.throws(()=>compareReplay(changed,record),/identity/);
+  }
+});
+
+test('the same held source blocks legacy delivery but not mandatory-first delivery',async t=>{
+  const g=gate();t.after(()=>g.resolve());const delay=key=>low(key)?g.promise:Promise.resolve();
+  let legacyFinished=false;
+  const old=new TerrainCache({delay}).request(request({format:LEGACY_FORMAT,optional:lookahead})).then(r=>{legacyFinished=true;return r;});
+  const current=await beforeOptional(new TerrainCache({delay}).request(request({optional:lookahead})));
+  assert.equal(legacyFinished,false);g.resolve();const legacy=await old;
+  assert.equal(legacy.status,'complete');assert.deepEqual(current.ids,legacy.ids);assert.deepEqual(current.top,legacy.top);
+});
+
+test('wide speculative routes cap the queue and keep only one optional load active',async t=>{
+  const g=gate();t.after(()=>g.resolve());let held=0;
+  const cache=new TerrainCache({delay:key=>{
+    const [x,y]=key.split(',').map(Number);if((x===6||x===7)&&(y===1||y===2))return Promise.resolve();
+    held++;return g.promise.finally(()=>held--);
+  }});
+  const optional=Array.from({length:8},(_,i)=>[[.8+i*.7,.8,0],[.81+i*.7,.8,0]]);
+  await beforeOptional(cache.request(request({optional})));await turn();
+  assert.equal(held,1);assert.equal(cache.prefetch.active,1);
+  assert.ok(cache.prefetch.queued<=LIMITS.prefetchQueued);assert.ok(cache.prefetch.discarded>0);
+  cache.cancel('front');g.resolve();await turn();assert.equal(held,0);assert.equal(cache.prefetch.queued,0);
 });

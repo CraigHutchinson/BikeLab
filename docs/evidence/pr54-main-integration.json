@@ -1,0 +1,50 @@
+{
+  "format": "bikelab-pr54-integration-review-0.1",
+  "date": "2026-11-03",
+  "upstreamMain": "1dedf06f5aec4cc22c5ee5c94f1d8bd1eeb8cfa6",
+  "previousRemoteHead": "220d19e2efc72863d0c3fe25dfa147f8d80a692a",
+  "runtime": {
+    "node": "24.19.0",
+    "platform": "linux",
+    "architecture": "x64"
+  },
+  "command": "node --test --test-isolation=none",
+  "status": "failed-environment-blocked",
+  "exitCode": 1,
+  "counts": {
+    "tests": 418,
+    "pass": 405,
+    "fail": 13,
+    "cancelled": 0,
+    "skipped": 0,
+    "todo": 0
+  },
+  "failedTests": [
+    "scenario CLI rejects invalid inputs without overwriting evidence",
+    "footprint CLI replays records and separates unsupported from invalid input",
+    "moving-wheel CLI shares mechanics and distinguishes completed, terminated and invalid input",
+    "all rider CLI modes export canonical replay; malformed specifications and option combinations fail cleanly",
+    "unbound CLI distinguishes accepted prefix, initial rejection and invalid input",
+    "portable rider CLI exports examples, canonical scenarios and provenance receipts with clean rejection",
+    "headless task tool receives saved inputs and rejects unsupported input without a report",
+    "loopback server serves only assets and survives malformed requests",
+    "solver CLI distinguishes unmet numerical gates, successful trial and invalid input",
+    "suspension CLI preserves evidence, verifies exports, and signals a travel limit with exit 2",
+    "reference CLI reports complete configuration and distinct unsupported/invalid exits",
+    "terrain CLI reports reproducible geometry and distinguishes unavailable from invalid",
+    "wheel-limit CLI distinguishes boundary, clear, incompatible and invalid records"
+  ],
+  "limitations": "Twelve child-process checks and one real loopback test are unavailable in this sandbox. Eleven CLI failures explicitly report spawnSync EPERM; the rider-task test parses empty stdout, and a matching subprocess probe confirms EPERM. No skipped check is counted as a pass. This in-process working-tree run is not an exact-head full attestation or a performance benchmark.",
+  "riderTaskSpawnProbe": {
+    "status": 0,
+    "error": "EPERM",
+    "stdoutLength": 0,
+    "stderrLength": 0
+  },
+  "logSha256": "30c54269c974ce5203edc316c7ec78a1d1b4b5610ab7511f178dede6d185a831",
+  "vendorProvenance": "Six pinned SHA-256 hashes pass",
+  "review": "GPT-6.1 Sol found no lost behavior in the seven overlapping files. Binary comparator self-comparison and adjacent float controls pass.",
+  "upstreamFilesVerified": 84,
+  "downloadedMainAndBaseBlobsVerified": 98,
+  "otherEvidence": "Existing numerical result receipts retain their original source identities; no 24-case study was rerun for this integration."
+}

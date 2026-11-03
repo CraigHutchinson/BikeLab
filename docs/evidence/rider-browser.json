@@ -1,0 +1,1699 @@
+{
+  "format": "bikelab-rider-browser-evidence-0.1",
+  "reviewDate": "2026-11-03",
+  "executionDate": "2026-11-02",
+  "implementationCommit": "0fc2c8ac2fd0aa77a1e6212c707d572b727cce48",
+  "sourceGitBlobs": {
+    "server.mjs": "b4fd5c9864ab53ce1847722a98ef44ca5bd3c6de",
+    "package.json": "9fc92995b35c2d3ff5cb16a77410d099710d3ea2",
+    "scripts/rider-browser-check.mjs": "e55d61dc7de30ddb876e7e2fffe0151e21e3a4e1",
+    "scripts/rider-drive-browser-check.mjs": "eb71d18aaeb195af0c52f77107d48cafe8cc27fe",
+    "dist/trail-bike.js": "6914bedf55c0d78b4794ab10ea2d9a466e707c96",
+    "dist/rider-drive.js": "dd75778f53ad053baa48625abfa6b4885c5c0d83",
+    "dist/rider-controller.js": "b58a2f2d3c41e0031af3a290be3c84eeee5676b0",
+    "dist/rider-crouch.js": "678b98dfc9be49d61d2d9cb1232c2b646f4a2c1f",
+    "test/rider-targets.test.mjs": "aab787ac31a5ffe50822de942eed2b443148bbeb"
+  },
+  "sourceWorkingBytesSHA256": {
+    "server.mjs": "e4ae73715ff9b3773a29629417837ba41a9151d73e2b05b7ba78eb4674f4316b",
+    "package.json": "55dd0e62c0445eb1d86b8449cf223b32ff84c50523189fc9d03501e708968bd7",
+    "scripts/rider-browser-check.mjs": "f272d7c184341b1fed04c20fd97a97a392caa28b7d091bf67e7ea395443fc127",
+    "scripts/rider-drive-browser-check.mjs": "23adccbe7db7492cf7a124174ac362e2c8c99d6d77b6b88749271b909ce5949e",
+    "dist/trail-bike.js": "b813a3c130defd26e0f132f0ffd2c3ef054cbfccc7612a2cf38a3ba5168b508c",
+    "dist/rider-drive.js": "c8b49e1638cdfdf88db76e518a11f8c0ac48c1ca15597cd1b7d06f4d78d0c335",
+    "dist/rider-controller.js": "db2859d7804fc42ff509ed90ad1c5b4e74618e3939df0f204c736f985d4c4bc5",
+    "dist/rider-crouch.js": "1748fcafa1b996d6d3e5451c97ae1725c2b397a2194b32fce3bbf33ffd22894b",
+    "test/rider-targets.test.mjs": "1eb55fdc8ea90c570341993da48eeb1f0ab9b507e6d2673405de16a2c429fe0d"
+  },
+  "unit": {
+    "schemaVersion": 1,
+    "level": "unit",
+    "head": "0fc2c8ac2fd0aa77a1e6212c707d572b727cce48",
+    "clean": true,
+    "node": "v24.22.0",
+    "platform": "win32",
+    "arch": "x64",
+    "startedAt": "2026-11-02T22:18:39.135Z",
+    "checks": [
+      {
+        "command": [
+          "node",
+          "scripts/check-provenance.mjs"
+        ],
+        "exitCode": 0,
+        "error": null
+      },
+      {
+        "command": [
+          "node",
+          "--test"
+        ],
+        "exitCode": 0,
+        "error": null
+      }
+    ],
+    "coverage": "local Node suite and pinned vendor hashes; no browser",
+    "success": true,
+    "finishedAt": "2026-11-02T22:20:47.412Z"
+  },
+  "unitTests": {
+    "passed": 337,
+    "total": 337
+  },
+  "replayCounts": {
+    "passed": 10,
+    "failed": 12,
+    "total": 22
+  },
+  "visualInspection": {
+    "reviewed": [
+      "rider-drive/full-rig.png",
+      "rider-drive/hardtail-rig.png",
+      "rider-drive/full-rider-crouch.png",
+      "rider-drive/hardtail-rider-crouch.png",
+      "rider-drive/full-rider-crouch-320.png",
+      "rider-drive/hardtail-rider-crouch-320.png"
+    ],
+    "finding": "Rendered bike/segments/contacts and readable crouch budgets, effort decomposition and wrapped 320px panels. Crouch tracking failure remains visible; not participant or calibration evidence."
+  },
+  "artifacts": [
+    {
+      "path": "report.json",
+      "bytes": 177782,
+      "sha256": "3d5b46a1dd94e964f0393413a4c1b53fa8f63696d9e5fe9d971461adbaa94c81"
+    },
+    {
+      "path": "rider-drive/full-320.png",
+      "bytes": 29837,
+      "sha256": "7e8701aa74e59b54e808137187913c9dece61db4ebdcb7b02bb698f7e5b5d4a3"
+    },
+    {
+      "path": "rider-drive/full-390.png",
+      "bytes": 30406,
+      "sha256": "2484fa9473ebc9a1ec35a6a95d7ab160b2d784d6fea90e244658a0b060f4f781"
+    },
+    {
+      "path": "rider-drive/full-desktop.png",
+      "bytes": 31630,
+      "sha256": "434362a867b08d1d007e3e9fb1b48f113c354166bc84a600697951f7e7ba45f5"
+    },
+    {
+      "path": "rider-drive/full-rider-controller-320.png",
+      "bytes": 71592,
+      "sha256": "8d8e6aace6af08488e8abfdeadc5610e84df2f9783bb5523b74cd1172b179c16"
+    },
+    {
+      "path": "rider-drive/full-rider-controller-hold-320.png",
+      "bytes": 71759,
+      "sha256": "647698d054eaf6b1a2e906c59097eaf7e662dc9fdb480711288139293269283e"
+    },
+    {
+      "path": "rider-drive/full-rider-controller-hold.json",
+      "bytes": 1812672,
+      "sha256": "b2c4bfe75bed9e462c7d15649fd164145e43198af43a052a866cb051e95a4e91"
+    },
+    {
+      "path": "rider-drive/full-rider-controller-hold.png",
+      "bytes": 76413,
+      "sha256": "d859126626e5a6ca9111efb06d10a0b11d834a755f64408549de5e15196d53a2"
+    },
+    {
+      "path": "rider-drive/full-rider-controller.json",
+      "bytes": 1810887,
+      "sha256": "ea0801405de2b6fa69796bf49f702b2ed7d1b35e6728afa78b24e8bb18f8b231"
+    },
+    {
+      "path": "rider-drive/full-rider-controller.png",
+      "bytes": 75900,
+      "sha256": "695aa812d55fae45a1f1a7d475f46ae0bc56b1935a664e4fc4f0c8a0725b4bcd"
+    },
+    {
+      "path": "rider-drive/full-rider-crouch-320.png",
+      "bytes": 80385,
+      "sha256": "6f887926d2fb766eb2b6abc95f4b19c615400c552270105326e69b151818bc84"
+    },
+    {
+      "path": "rider-drive/full-rider-crouch-control-320.png",
+      "bytes": 73683,
+      "sha256": "564ba970a6cdeace4b5a3705436ea93794744657557ded3f8930555cc267f5d6"
+    },
+    {
+      "path": "rider-drive/full-rider-crouch-control.json",
+      "bytes": 4807184,
+      "sha256": "e6cd8ee59cd499d97cc2e07ac292a1aa4849232f7d910879ee62380627e5e0aa"
+    },
+    {
+      "path": "rider-drive/full-rider-crouch-control.png",
+      "bytes": 78507,
+      "sha256": "878bc9aed78a52babda802dd160df0b88c4a6877658f3973a7aaad5f5e0dfe28"
+    },
+    {
+      "path": "rider-drive/full-rider-crouch.json",
+      "bytes": 4768474,
+      "sha256": "2defde90b636534664563fb641865adbb6cc5f69bbb4b2c700d54f7282e12a3b"
+    },
+    {
+      "path": "rider-drive/full-rider-crouch.png",
+      "bytes": 85733,
+      "sha256": "8054545d9a4d805d17ee60c88ee5fee02d7830c656afdd5b7a8f5c009cdfb4fa"
+    },
+    {
+      "path": "rider-drive/full-rider-transfer-320.png",
+      "bytes": 56428,
+      "sha256": "31e6b484351b5ed3fbdd66847b79183a4251b9ba27f5c096c523d818355d4098"
+    },
+    {
+      "path": "rider-drive/full-rider-transfer-control-320.png",
+      "bytes": 56383,
+      "sha256": "0ee64b36472c3abb6c5fa49c9321d4da357c3e18563058880a8f97ed005f2142"
+    },
+    {
+      "path": "rider-drive/full-rider-transfer-control-loads.png",
+      "bytes": 31501,
+      "sha256": "60950ecac3d8bc00d1fd27968e586b4ad3471829034dae8fb1e9a7613cc0cf10"
+    },
+    {
+      "path": "rider-drive/full-rider-transfer-control.json",
+      "bytes": 1728924,
+      "sha256": "6d81af1935fda1b20a9a782232afac153e7de6d01631443e0af4f72227d27d4c"
+    },
+    {
+      "path": "rider-drive/full-rider-transfer-control.png",
+      "bytes": 59377,
+      "sha256": "bdbc3b6bb1d325bd326aa0b962028db113a417f7784639a5f1b8d69686b5b37a"
+    },
+    {
+      "path": "rider-drive/full-rider-transfer-loads.png",
+      "bytes": 31261,
+      "sha256": "e5f4cf5609009d50b7ab812bf8c5d072d9b4a94cd4ad2fe6e70bf17b2ab0cebf"
+    },
+    {
+      "path": "rider-drive/full-rider-transfer.json",
+      "bytes": 1725584,
+      "sha256": "76fb735a130dd51aced053e6812edaf423177494d48d7b0dd2ab0a4a1a0c1bb1"
+    },
+    {
+      "path": "rider-drive/full-rider-transfer.png",
+      "bytes": 59348,
+      "sha256": "5f7d0c6b74b3b6fbe7c8e500e3ca108e3e60aa468df566b54e294fcbeb6ceca6"
+    },
+    {
+      "path": "rider-drive/full-rig.png",
+      "bytes": 158716,
+      "sha256": "2d686ee325c1426cd1b4e7689bcfa1b34b7dfe69b1ed5170008fa283b36d6d8a"
+    },
+    {
+      "path": "rider-drive/full-targets-320.png",
+      "bytes": 55808,
+      "sha256": "1c3237415e9bca643e909ba242a80be5e31a1e570695f59ab13bca7456a66380"
+    },
+    {
+      "path": "rider-drive/full-targets-390.png",
+      "bytes": 56562,
+      "sha256": "e85725f91bcb40350193d610b9d149e04d15928e5da8bdadc7fd20519bc6cbf6"
+    },
+    {
+      "path": "rider-drive/full-targets-desktop.png",
+      "bytes": 59151,
+      "sha256": "9a4ff5224c79b8742585a923a58b6df41609c3b4d6a600e5895191d4395d988c"
+    },
+    {
+      "path": "rider-drive/full-targets.json",
+      "bytes": 392307,
+      "sha256": "a896025621fd71c0fc4e2167413a8ac584bd1301946f049260eb4d1de60dd940"
+    },
+    {
+      "path": "rider-drive/full-tyre-320.png",
+      "bytes": 48779,
+      "sha256": "481e8ca1e24f0e3d967bb8e04807c8ada076421c748901000d978b5de872e7b0"
+    },
+    {
+      "path": "rider-drive/full-tyre-390.png",
+      "bytes": 49743,
+      "sha256": "868949b4062f9048c3a8441abc079c8c519490ca62c270d93c5660f33322e564"
+    },
+    {
+      "path": "rider-drive/full-tyre-desktop.png",
+      "bytes": 48743,
+      "sha256": "34be294663e14ca804f43995d2c9a7047c12058fd44f77cddbe19aeb95b0c71d"
+    },
+    {
+      "path": "rider-drive/full-tyre-history.png",
+      "bytes": 44429,
+      "sha256": "202dfe89f50faac5b9739a677e9131ffc3d914d9e4e75e2714460141012f6d51"
+    },
+    {
+      "path": "rider-drive/full-tyre.json",
+      "bytes": 2991921,
+      "sha256": "5d48f9fe9356ed47b5e0ac2175b283e09e735f36363b998ed8573a7fd50c8f7a"
+    },
+    {
+      "path": "rider-drive/full-window-320.png",
+      "bytes": 50144,
+      "sha256": "6e86ad7c37bafc554bf9d97c06870af2ef6e2d3928861da02361191588a102b2"
+    },
+    {
+      "path": "rider-drive/full-window-fresh.json",
+      "bytes": 2993159,
+      "sha256": "0a153a6806a680a77b16145c586eabff45622a8906d30427ada8cceff4ee22ab"
+    },
+    {
+      "path": "rider-drive/full-window-history.png",
+      "bytes": 43254,
+      "sha256": "5dcef9ef96db06e86b5de4b1a82f63760ea5faf96114d92b6bd0913a7e320bd3"
+    },
+    {
+      "path": "rider-drive/full-window-panel.png",
+      "bytes": 49736,
+      "sha256": "b660c16510e940ad9fb39a9a6519fbe369c665d23c05c3375a09debbedcac4d9"
+    },
+    {
+      "path": "rider-drive/full-window.json",
+      "bytes": 4688534,
+      "sha256": "872b91444c29072f507a7680de5bb27f88b4b17b562ebce3b091719fcb35005a"
+    },
+    {
+      "path": "rider-drive/full.json",
+      "bytes": 1693783,
+      "sha256": "01de003ec0474841b1d3853afe2adf9c49fdb96e470306534b8bd39502b57130"
+    },
+    {
+      "path": "rider-drive/hardtail-desktop.png",
+      "bytes": 31606,
+      "sha256": "fd4c09b5f78e4206c5d1dd50988f83406fe4931e93b99b2724a19774fa5888e2"
+    },
+    {
+      "path": "rider-drive/hardtail-rider-controller-320.png",
+      "bytes": 72739,
+      "sha256": "e0ff92af661495057bbe3f1e2a4dd1856516663e2ef07b55b624ef4603f504b1"
+    },
+    {
+      "path": "rider-drive/hardtail-rider-controller-hold-320.png",
+      "bytes": 72364,
+      "sha256": "2babc1d99204e46f76bffa1e211e9fa6359f0a02443a59a89b6395b2712e7b2b"
+    },
+    {
+      "path": "rider-drive/hardtail-rider-controller-hold.json",
+      "bytes": 1791304,
+      "sha256": "404044fc685bd26247d80dcdaee8ad62fd01943e59d7292d81ab4493520fee34"
+    },
+    {
+      "path": "rider-drive/hardtail-rider-controller-hold.png",
+      "bytes": 76597,
+      "sha256": "f3f6c46942280d53dcc9f2fdf85670486aafb5434df5ef129e111ef7fa8a9ef5"
+    },
+    {
+      "path": "rider-drive/hardtail-rider-controller.json",
+      "bytes": 1797738,
+      "sha256": "e068af5c61a6d5bc0312391f285bb2c6f032c878f0e5be9c469789145883bd02"
+    },
+    {
+      "path": "rider-drive/hardtail-rider-controller.png",
+      "bytes": 76111,
+      "sha256": "6a2f59d1317b98e4f3f4ad86d558705c7378f9cd0d4d1e3b5e4a27672d182261"
+    },
+    {
+      "path": "rider-drive/hardtail-rider-crouch-320.png",
+      "bytes": 80226,
+      "sha256": "807ab8aa0d04f50af54a17da2d5e7acb0f82dda572c099c4812399e24d1e9b3e"
+    },
+    {
+      "path": "rider-drive/hardtail-rider-crouch-control-320.png",
+      "bytes": 73757,
+      "sha256": "2ca9875ee0a2950bd97e5e960bd78b8ba66c93d9084cd200f1a70982dd53dd9c"
+    },
+    {
+      "path": "rider-drive/hardtail-rider-crouch-control.json",
+      "bytes": 4774504,
+      "sha256": "506a5ce95ddf399426b26768e86f3384d4c2bb61c178009d7ad1e38439303231"
+    },
+    {
+      "path": "rider-drive/hardtail-rider-crouch-control.png",
+      "bytes": 78610,
+      "sha256": "4f6883bdffb5b7cfff0d9c25bbafd9ff103743ff1b33102e65503098577407fd"
+    },
+    {
+      "path": "rider-drive/hardtail-rider-crouch.json",
+      "bytes": 4729165,
+      "sha256": "e4e3d08473047932be553efe7331404376714bdb6b23762178800e5c1dd4061a"
+    },
+    {
+      "path": "rider-drive/hardtail-rider-crouch.png",
+      "bytes": 85197,
+      "sha256": "843f8f779f9166745b7b63699ac92a6fbacd2f0f88803edb066ac9e3b6033a06"
+    },
+    {
+      "path": "rider-drive/hardtail-rider-transfer-control-loads.png",
+      "bytes": 31289,
+      "sha256": "2b0e99d52aa139398691c0cf46be70b35d963001b7cb42569a2e84dbd9d56df0"
+    },
+    {
+      "path": "rider-drive/hardtail-rider-transfer-control.json",
+      "bytes": 1726529,
+      "sha256": "1b6cbefd308a8df8b3754de3685283e41fd49a31a48f5e4b83693e6f57165b07"
+    },
+    {
+      "path": "rider-drive/hardtail-rider-transfer-control.png",
+      "bytes": 59636,
+      "sha256": "f8b619d95e047f4cb9a5c9bb10e9f238c8463daba25238a13ce95e0c7c71962e"
+    },
+    {
+      "path": "rider-drive/hardtail-rider-transfer-loads.png",
+      "bytes": 31465,
+      "sha256": "4a9abb3f7e44a5ee482b22dcccc704f901ff9a1426a51b0f442647e91123aa4f"
+    },
+    {
+      "path": "rider-drive/hardtail-rider-transfer.json",
+      "bytes": 1720926,
+      "sha256": "3b9c3d70512df5801314824ee62657b17ebe3de7a1ecb328982910af70729182"
+    },
+    {
+      "path": "rider-drive/hardtail-rider-transfer.png",
+      "bytes": 59695,
+      "sha256": "7452093cf05aac7721d4d6dd55b6c3839d9252ea819501302050ea8a69d40c70"
+    },
+    {
+      "path": "rider-drive/hardtail-rig.png",
+      "bytes": 158986,
+      "sha256": "341973a46058ebac0edd566ef60ff83e0ed292273d0b91d2b8a184fa66a0dfc7"
+    },
+    {
+      "path": "rider-drive/hardtail-targets-320.png",
+      "bytes": 55762,
+      "sha256": "e15dbdc62f0f53ebf071cf84879a5afdaac38da5d8e31f82572c3e1d52144472"
+    },
+    {
+      "path": "rider-drive/hardtail-targets-390.png",
+      "bytes": 57679,
+      "sha256": "a0cc14d4d7d299745c2645c309e20c5d672a2f8131cacdb5e36d5c9b8a6ecf5b"
+    },
+    {
+      "path": "rider-drive/hardtail-targets-desktop.png",
+      "bytes": 58994,
+      "sha256": "c40f49141a6f67ad69ca9a767e5fb2e45bb0726332748ad90ad92521f4d72d9c"
+    },
+    {
+      "path": "rider-drive/hardtail-targets.json",
+      "bytes": 385457,
+      "sha256": "033b7173c3b37c11af39918fbe47e0093c8d8eb0b217361a3c894d45d4662936"
+    },
+    {
+      "path": "rider-drive/hardtail-tyre-desktop.png",
+      "bytes": 48170,
+      "sha256": "519c61c9bbe215ac18be9369b4ad669f72fb10fc11d966757a6ef990ff8e13f4"
+    },
+    {
+      "path": "rider-drive/hardtail-tyre-history.png",
+      "bytes": 65171,
+      "sha256": "679f8cd0fe4abb453929502a08ae330059cdb862b47f570451756b9ad4fed5d0"
+    },
+    {
+      "path": "rider-drive/hardtail-tyre.json",
+      "bytes": 2991564,
+      "sha256": "22733a265ba9ee8fd90b832558be017131ed0d8345e4e9fafecfcb039a619cd4"
+    },
+    {
+      "path": "rider-drive/hardtail-window-fresh.json",
+      "bytes": 2991057,
+      "sha256": "284f4b357d31cb6156569c890f91edf15418eef8c67c6f49f8eab55736c4034b"
+    },
+    {
+      "path": "rider-drive/hardtail-window-history.png",
+      "bytes": 60670,
+      "sha256": "af202162e0d1b14256968569150be09f57427ec08e62974abded027b5b3912a6"
+    },
+    {
+      "path": "rider-drive/hardtail-window-panel.png",
+      "bytes": 49830,
+      "sha256": "bf431d670fc875ab154989af835099f30c6e8fb488c6b8f0f871c473677b2fe9"
+    },
+    {
+      "path": "rider-drive/hardtail-window.json",
+      "bytes": 4675237,
+      "sha256": "8c77a8cc6f757f3d35556b801499b0eaa34dac8c7b4e0baa71bd0b2bca490629"
+    },
+    {
+      "path": "rider-drive/hardtail.json",
+      "bytes": 1683164,
+      "sha256": "97c1fe1b2035b6fd79f58d8f28ea8e88b5f455633647208757cf390c5b84f57c"
+    },
+    {
+      "path": "rider-drive/report.json",
+      "bytes": 161552,
+      "sha256": "8b16a8c0c0c23d3df22029fdb58a1563b272659c3c11215d99e24502ec4a1ae8"
+    }
+  ],
+  "rawLocation": "Local ignored artifacts/rider-browser-2026-11-02-received. Reproduce using npm run browser-check:rider through approved host execution.",
+  "targetPortabilityDiagnostic": {
+    "scope": "Diagnostic only; unchanged strict 1e-9 normalized budget. Not acceptance.",
+    "numericLeaves": 16464,
+    "outsideBudget": 431,
+    "structuralDifferences": [],
+    "maxAbsolute": {
+      "value": 1.1625517402080732e-06,
+      "path": "record.frames.7.active.maxHingeAcceleration",
+      "browser": 117.61948174492359,
+      "node": 117.61948058237185
+    },
+    "maxNormalized": {
+      "value": 7.212587178617724e-07,
+      "path": "record.frames.4.wheels.0.ground.0",
+      "browser": 4.852895036933091e-07,
+      "node": -2.3596921416846328e-07
+    },
+    "maxSavedHipDifferenceM": 3.6249958371549116e-13
+  },
+  "scope": "UI received on this Windows/Edge combination. Strict numerical replay gate failed and remains blocking. No full-local, hosted, universal replay or accepted manoeuvre claim.",
+  "browserReport": {
+    "success": false,
+    "node": "v24.22.0",
+    "platform": "win32",
+    "playwright": "1.62.1",
+    "browser": "157.0.4341.30",
+    "checks": [
+      "Matched hold and slow transfer/recovery on both bikes: phase summaries, full-record replay and mobile capture.",
+      "Active rider hold on both bikes: full browser/headless records, timed target sequences and requested/actual hip/trunk/COM, target/torque/work readouts, mobile panels and lifecycle controls."
+    ],
+    "screenshots": [
+      "rider-drive/full-desktop.png",
+      "rider-drive/full-rig.png",
+      "rider-drive/full-390.png",
+      "rider-drive/full-320.png",
+      "rider-drive/full-tyre-desktop.png",
+      "rider-drive/full-tyre-history.png",
+      "rider-drive/full-tyre-390.png",
+      "rider-drive/full-tyre-320.png",
+      "rider-drive/full-window-panel.png",
+      "rider-drive/full-window-history.png",
+      "rider-drive/full-window-320.png",
+      "rider-drive/full-targets-desktop.png",
+      "rider-drive/full-targets-390.png",
+      "rider-drive/full-targets-320.png",
+      "rider-drive/full-rider-transfer-control-loads.png",
+      "rider-drive/full-rider-transfer-control.png",
+      "rider-drive/full-rider-transfer-control-320.png",
+      "rider-drive/full-rider-transfer-loads.png",
+      "rider-drive/full-rider-transfer.png",
+      "rider-drive/full-rider-transfer-320.png",
+      "rider-drive/full-rider-controller-hold.png",
+      "rider-drive/full-rider-controller-hold-320.png",
+      "rider-drive/full-rider-controller.png",
+      "rider-drive/full-rider-controller-320.png",
+      "rider-drive/full-rider-crouch-control.png",
+      "rider-drive/full-rider-crouch-control-320.png",
+      "rider-drive/full-rider-crouch.png",
+      "rider-drive/full-rider-crouch-320.png",
+      "rider-drive/hardtail-desktop.png",
+      "rider-drive/hardtail-rig.png",
+      "rider-drive/hardtail-tyre-desktop.png",
+      "rider-drive/hardtail-tyre-history.png",
+      "rider-drive/hardtail-window-panel.png",
+      "rider-drive/hardtail-window-history.png",
+      "rider-drive/hardtail-targets-desktop.png",
+      "rider-drive/hardtail-targets-390.png",
+      "rider-drive/hardtail-targets-320.png",
+      "rider-drive/hardtail-rider-transfer-control-loads.png",
+      "rider-drive/hardtail-rider-transfer-control.png",
+      "rider-drive/hardtail-rider-transfer-loads.png",
+      "rider-drive/hardtail-rider-transfer.png",
+      "rider-drive/hardtail-rider-controller-hold.png",
+      "rider-drive/hardtail-rider-controller-hold-320.png",
+      "rider-drive/hardtail-rider-controller.png",
+      "rider-drive/hardtail-rider-controller-320.png",
+      "rider-drive/hardtail-rider-crouch-control.png",
+      "rider-drive/hardtail-rider-crouch-control-320.png",
+      "rider-drive/hardtail-rider-crouch.png",
+      "rider-drive/hardtail-rider-crouch-320.png"
+    ],
+    "errors": [],
+    "replayFailures": [
+      {
+        "model": "bikelab-trail-bike-targets-0.1",
+        "bike": "full",
+        "duration": 0.1,
+        "firstDifference": "record.finalState.joints.132.velocity: -0.18386798438130067 vs -0.18386798599829843"
+      },
+      {
+        "model": "bikelab-trail-bike-targets-0.1",
+        "bike": "full",
+        "duration": 1,
+        "firstDifference": "record.finalState.joints.2.velocity: 0.0008213686823433754 vs 0.0008213699341297168"
+      },
+      {
+        "model": "bikelab-trail-bike-controller-0.1",
+        "bike": "full",
+        "duration": 1,
+        "firstDifference": "record.finalState.joints.0.position: 0.03161472047317857 vs 0.03161511418169747"
+      },
+      {
+        "model": "bikelab-trail-bike-controller-0.1",
+        "bike": "full",
+        "duration": 1,
+        "firstDifference": "record.finalState.joints.1.velocity: 0.027273388320761684 vs 0.027273385326845735"
+      },
+      {
+        "model": "bikelab-trail-bike-controller-0.1",
+        "bike": "full",
+        "duration": 2.5,
+        "firstDifference": "record.finalState.joints.0.position: 0.0315981245480382 vs 0.03159935335090132"
+      },
+      {
+        "model": "bikelab-trail-bike-controller-0.1",
+        "bike": "full",
+        "duration": 2.5,
+        "firstDifference": "record.finalState.joints.0.position: 0.031539390307672395 vs 0.03154038428185191"
+      },
+      {
+        "model": "bikelab-trail-bike-targets-0.1",
+        "bike": "hardtail",
+        "duration": 0.1,
+        "firstDifference": "record.frames.3.wheels.0.ground.0: 3.381049484829646e-8 vs -1.520361259110814e-8"
+      },
+      {
+        "model": "bikelab-trail-bike-targets-0.1",
+        "bike": "hardtail",
+        "duration": 1,
+        "firstDifference": "record.finalState.joints.1.velocity: -0.03502557769806214 vs -0.035025581505829594"
+      },
+      {
+        "model": "bikelab-trail-bike-controller-0.1",
+        "bike": "hardtail",
+        "duration": 1,
+        "firstDifference": "record.finalState.joints.1.velocity: 0.0018526482486891842 vs 0.0018526425866595066"
+      },
+      {
+        "model": "bikelab-trail-bike-controller-0.1",
+        "bike": "hardtail",
+        "duration": 1,
+        "firstDifference": "record.finalState.joints.1.velocity: 0.018453521094326925 vs 0.018453525888664658"
+      },
+      {
+        "model": "bikelab-trail-bike-controller-0.1",
+        "bike": "hardtail",
+        "duration": 2.5,
+        "firstDifference": "record.finalState.joints.0.position: 0.03343476186874083 vs 0.03343473645438592"
+      },
+      {
+        "model": "bikelab-trail-bike-controller-0.1",
+        "bike": "hardtail",
+        "duration": 2.5,
+        "firstDifference": "record.finalState.joints.0.position: 0.033422367659222185 vs 0.033422950678894996"
+      }
+    ],
+    "uiChecksCompleted": true,
+    "riderDrive": {
+      "cases": [
+        {
+          "bike": "full",
+          "crouch": [
+            {
+              "example": "rider-crouch-control",
+              "assessment": {
+                "status": "control",
+                "reason": "Unchanged-posture control; no requested lowering.",
+                "checks": []
+              },
+              "agreement": {
+                "passed": false,
+                "model": "bikelab-trail-bike-controller-0.1",
+                "bike": "full",
+                "duration": 2.5,
+                "firstDifference": "record.finalState.joints.0.position: 0.0315981245480382 vs 0.03159935335090132"
+              }
+            },
+            {
+              "example": "rider-crouch",
+              "assessment": {
+                "status": "screen-failed",
+                "scope": "Saved-sample protocol only; no continuous support, equilibrium or manoeuvre qualification.",
+                "requestedDepthM": 0.04300000000000001,
+                "observedLoweringM": 0.04607377951847719,
+                "finalHipErrorM": 0.0012890826065890956,
+                "checks": [
+                  {
+                    "name": "complete",
+                    "pass": true
+                  },
+                  {
+                    "name": "sampling",
+                    "pass": true,
+                    "value": 0.01,
+                    "limit": 0.01
+                  },
+                  {
+                    "name": "tracking",
+                    "pass": false,
+                    "value": 0.015939027527972827,
+                    "limit": 0.010750000000000003
+                  },
+                  {
+                    "name": "lowering",
+                    "pass": true,
+                    "value": 0.04607377951847719,
+                    "min": 0.03440000000000001,
+                    "max": 0.051600000000000014
+                  },
+                  {
+                    "name": "recovery",
+                    "pass": true,
+                    "value": 0.0012890826065890956,
+                    "limit": 0.003
+                  },
+                  {
+                    "name": "wheel-loads",
+                    "pass": true,
+                    "value": 304.7845881374256,
+                    "min": 8.139519499999999
+                  },
+                  {
+                    "name": "estimate-eligibility",
+                    "pass": true
+                  },
+                  {
+                    "name": "saturation",
+                    "pass": true
+                  },
+                  {
+                    "name": "net-work",
+                    "pass": true,
+                    "value": 0.9012560703689859,
+                    "limit": 88.5540495
+                  }
+                ]
+              },
+              "agreement": {
+                "passed": false,
+                "model": "bikelab-trail-bike-controller-0.1",
+                "bike": "full",
+                "duration": 2.5,
+                "firstDifference": "record.finalState.joints.0.position: 0.031539390307672395 vs 0.03154038428185191"
+              }
+            }
+          ],
+          "controller": [
+            {
+              "example": "rider-controller-hold",
+              "agreement": {
+                "passed": false,
+                "model": "bikelab-trail-bike-controller-0.1",
+                "bike": "full",
+                "duration": 1,
+                "firstDifference": "record.finalState.joints.0.position: 0.03161472047317857 vs 0.03161511418169747"
+              },
+              "tracking": {
+                "scope": "Saved-sample diagnostics only; no continuous support or stable tracking qualification.",
+                "dt": 3.125e-05,
+                "acceptedTick": 32000,
+                "requestedEndTick": 32000,
+                "status": "completed",
+                "phases": [
+                  {
+                    "phase": "initial-hold",
+                    "startTick": 0,
+                    "endTick": 6400,
+                    "complete": true,
+                    "samples": 20,
+                    "lastSampleTick": 6080,
+                    "sampleMaxHipErrorM": 0.00658184151949533,
+                    "sampleMaxCOMErrorM": 0.004164517871124281,
+                    "sampleMaxJointErrorRad": 0.022254262766570877,
+                    "saturatedSamples": 0,
+                    "sampleMinWheelLoadN": 0,
+                    "riderWorkJ": -2.4366905471573483
+                  },
+                  {
+                    "phase": "transfer",
+                    "startTick": 6400,
+                    "endTick": 12800,
+                    "complete": true,
+                    "samples": 20,
+                    "lastSampleTick": 12480,
+                    "sampleMaxHipErrorM": 0.006804463707596912,
+                    "sampleMaxCOMErrorM": 0.0046599414400538735,
+                    "sampleMaxJointErrorRad": 0.018384612258287806,
+                    "saturatedSamples": 0,
+                    "sampleMinWheelLoadN": 346.04294819429407,
+                    "riderWorkJ": -0.5265625241200045
+                  },
+                  {
+                    "phase": "target-hold",
+                    "startTick": 12800,
+                    "endTick": 19200,
+                    "complete": true,
+                    "samples": 20,
+                    "lastSampleTick": 18880,
+                    "sampleMaxHipErrorM": 0.005634984717455808,
+                    "sampleMaxCOMErrorM": 0.003876833089105691,
+                    "sampleMaxJointErrorRad": 0.014953741506523455,
+                    "saturatedSamples": 0,
+                    "sampleMinWheelLoadN": 323.0780015106708,
+                    "riderWorkJ": 2.3291059881652245
+                  },
+                  {
+                    "phase": "recover",
+                    "startTick": 19200,
+                    "endTick": 25600,
+                    "complete": true,
+                    "samples": 20,
+                    "lastSampleTick": 25280,
+                    "sampleMaxHipErrorM": 0.0014194684259059267,
+                    "sampleMaxCOMErrorM": 0.0007198010857835881,
+                    "sampleMaxJointErrorRad": 0.006266248819542315,
+                    "saturatedSamples": 0,
+                    "sampleMinWheelLoadN": 341.98027031793583,
+                    "riderWorkJ": 0.6328742524730524
+                  },
+                  {
+                    "phase": "recovery-hold",
+                    "startTick": 25600,
+                    "endTick": 32000,
+                    "complete": true,
+                    "samples": 21,
+                    "lastSampleTick": 32000,
+                    "sampleMaxHipErrorM": 0.001310244661676261,
+                    "sampleMaxCOMErrorM": 0.0006449292380867787,
+                    "sampleMaxJointErrorRad": 0.005934863166653541,
+                    "saturatedSamples": 0,
+                    "sampleMinWheelLoadN": 330.40790124206586,
+                    "riderWorkJ": -0.7636747185125387
+                  }
+                ]
+              }
+            },
+            {
+              "example": "rider-controller",
+              "agreement": {
+                "passed": false,
+                "model": "bikelab-trail-bike-controller-0.1",
+                "bike": "full",
+                "duration": 1,
+                "firstDifference": "record.finalState.joints.1.velocity: 0.027273388320761684 vs 0.027273385326845735"
+              },
+              "tracking": {
+                "scope": "Saved-sample diagnostics only; no continuous support or stable tracking qualification.",
+                "dt": 3.125e-05,
+                "acceptedTick": 32000,
+                "requestedEndTick": 32000,
+                "status": "completed",
+                "phases": [
+                  {
+                    "phase": "initial-hold",
+                    "startTick": 0,
+                    "endTick": 6400,
+                    "complete": true,
+                    "samples": 20,
+                    "lastSampleTick": 6080,
+                    "sampleMaxHipErrorM": 0.00658184151949533,
+                    "sampleMaxCOMErrorM": 0.004164517871124281,
+                    "sampleMaxJointErrorRad": 0.022254262766570877,
+                    "saturatedSamples": 0,
+                    "sampleMinWheelLoadN": 0,
+                    "riderWorkJ": -2.4366905471573483
+                  },
+                  {
+                    "phase": "transfer",
+                    "startTick": 6400,
+                    "endTick": 12800,
+                    "complete": true,
+                    "samples": 20,
+                    "lastSampleTick": 12480,
+                    "sampleMaxHipErrorM": 0.006000466606883463,
+                    "sampleMaxCOMErrorM": 0.004219630230123196,
+                    "sampleMaxJointErrorRad": 0.015263913057133942,
+                    "saturatedSamples": 0,
+                    "sampleMinWheelLoadN": 330.7916739630976,
+                    "riderWorkJ": -1.0448738768137713
+                  },
+                  {
+                    "phase": "target-hold",
+                    "startTick": 12800,
+                    "endTick": 19200,
+                    "complete": true,
+                    "samples": 20,
+                    "lastSampleTick": 18880,
+                    "sampleMaxHipErrorM": 0.004343837872417443,
+                    "sampleMaxCOMErrorM": 0.0032121787314462764,
+                    "sampleMaxJointErrorRad": 0.013009710863537891,
+                    "saturatedSamples": 0,
+                    "sampleMinWheelLoadN": 319.1942227865324,
+                    "riderWorkJ": 1.5326703759793623
+                  },
+                  {
+                    "phase": "recover",
+                    "startTick": 19200,
+                    "endTick": 25600,
+                    "complete": true,
+                    "samples": 20,
+                    "lastSampleTick": 25280,
+                    "sampleMaxHipErrorM": 0.0009149067305895356,
+                    "sampleMaxCOMErrorM": 0.0012973895104762257,
+                    "sampleMaxJointErrorRad": 0.01233404233657059,
+                    "saturatedSamples": 0,
+                    "sampleMinWheelLoadN": 319.0599259794077,
+                    "riderWorkJ": 0.9094972244700268
+                  },
+                  {
+                    "phase": "recovery-hold",
+                    "startTick": 25600,
+                    "endTick": 32000,
+                    "complete": true,
+                    "samples": 21,
+                    "lastSampleTick": 32000,
+                    "sampleMaxHipErrorM": 0.0009686425986430915,
+                    "sampleMaxCOMErrorM": 0.001328237736058384,
+                    "sampleMaxJointErrorRad": 0.012410883022064249,
+                    "saturatedSamples": 0,
+                    "sampleMinWheelLoadN": 330.8515730607324,
+                    "riderWorkJ": 0.18427412892645068
+                  }
+                ]
+              }
+            }
+          ],
+          "heldTransfer": {
+            "cases": [
+              {
+                "agreement": {
+                  "passed": true,
+                  "tolerance": 1e-09,
+                  "maxAbsolute": 7.993605777301127e-14,
+                  "maxNormalized": 7.993605777301127e-14,
+                  "exact": false
+                },
+                "tracking": {
+                  "scope": "Saved-sample diagnostics only; no continuous support or stable tracking qualification.",
+                  "dt": 3.125e-05,
+                  "acceptedTick": 32000,
+                  "requestedEndTick": 32000,
+                  "status": "completed",
+                  "phases": [
+                    {
+                      "phase": "initial-hold",
+                      "startTick": 0,
+                      "endTick": 6400,
+                      "complete": true,
+                      "samples": 20,
+                      "lastSampleTick": 6080,
+                      "sampleMaxHipErrorM": 0.02565125764411527,
+                      "sampleMaxCOMErrorM": 0.018680328108716386,
+                      "sampleMaxJointErrorRad": 0.06798779550531693,
+                      "saturatedSamples": 0,
+                      "sampleMinWheelLoadN": 0,
+                      "riderWorkJ": -10.204434377375696
+                    },
+                    {
+                      "phase": "transfer",
+                      "startTick": 6400,
+                      "endTick": 12800,
+                      "complete": true,
+                      "samples": 20,
+                      "lastSampleTick": 12480,
+                      "sampleMaxHipErrorM": 0.027029926018875845,
+                      "sampleMaxCOMErrorM": 0.019685353715706955,
+                      "sampleMaxJointErrorRad": 0.0715870223720767,
+                      "saturatedSamples": 0,
+                      "sampleMinWheelLoadN": 325.4023950756568,
+                      "riderWorkJ": 2.0987353383856195
+                    },
+                    {
+                      "phase": "target-hold",
+                      "startTick": 12800,
+                      "endTick": 19200,
+                      "complete": true,
+                      "samples": 20,
+                      "lastSampleTick": 18880,
+                      "sampleMaxHipErrorM": 0.020813453890646722,
+                      "sampleMaxCOMErrorM": 0.015126814883124043,
+                      "sampleMaxJointErrorRad": 0.05608593012931034,
+                      "saturatedSamples": 0,
+                      "sampleMinWheelLoadN": 290.9491107905897,
+                      "riderWorkJ": -0.1531731614358236
+                    },
+                    {
+                      "phase": "recover",
+                      "startTick": 19200,
+                      "endTick": 25600,
+                      "complete": true,
+                      "samples": 20,
+                      "lastSampleTick": 25280,
+                      "sampleMaxHipErrorM": 0.022738656464915425,
+                      "sampleMaxCOMErrorM": 0.016529559636304716,
+                      "sampleMaxJointErrorRad": 0.06097825531888957,
+                      "saturatedSamples": 0,
+                      "sampleMinWheelLoadN": 321.65284125509703,
+                      "riderWorkJ": -0.5700547487925594
+                    },
+                    {
+                      "phase": "recovery-hold",
+                      "startTick": 25600,
+                      "endTick": 32000,
+                      "complete": true,
+                      "samples": 21,
+                      "lastSampleTick": 32000,
+                      "sampleMaxHipErrorM": 0.022327055776769942,
+                      "sampleMaxCOMErrorM": 0.016226540584970618,
+                      "sampleMaxJointErrorRad": 0.05996639550621507,
+                      "saturatedSamples": 0,
+                      "sampleMinWheelLoadN": 312.6306482895029,
+                      "riderWorkJ": 0.503319616311563
+                    }
+                  ]
+                }
+              },
+              {
+                "agreement": {
+                  "passed": false,
+                  "model": "bikelab-trail-bike-targets-0.1",
+                  "bike": "full",
+                  "duration": 1,
+                  "firstDifference": "record.finalState.joints.2.velocity: 0.0008213686823433754 vs 0.0008213699341297168"
+                },
+                "tracking": {
+                  "scope": "Saved-sample diagnostics only; no continuous support or stable tracking qualification.",
+                  "dt": 3.125e-05,
+                  "acceptedTick": 32000,
+                  "requestedEndTick": 32000,
+                  "status": "completed",
+                  "phases": [
+                    {
+                      "phase": "initial-hold",
+                      "startTick": 0,
+                      "endTick": 6400,
+                      "complete": true,
+                      "samples": 20,
+                      "lastSampleTick": 6080,
+                      "sampleMaxHipErrorM": 0.02565125764411527,
+                      "sampleMaxCOMErrorM": 0.018680328108716386,
+                      "sampleMaxJointErrorRad": 0.06798779550531693,
+                      "saturatedSamples": 0,
+                      "sampleMinWheelLoadN": 0,
+                      "riderWorkJ": -10.204434377375696
+                    },
+                    {
+                      "phase": "transfer",
+                      "startTick": 6400,
+                      "endTick": 12800,
+                      "complete": true,
+                      "samples": 20,
+                      "lastSampleTick": 12480,
+                      "sampleMaxHipErrorM": 0.026772166582819938,
+                      "sampleMaxCOMErrorM": 0.019522054847055496,
+                      "sampleMaxJointErrorRad": 0.07040029237400611,
+                      "saturatedSamples": 0,
+                      "sampleMinWheelLoadN": 328.109703377186,
+                      "riderWorkJ": 1.1348576837952127
+                    },
+                    {
+                      "phase": "target-hold",
+                      "startTick": 12800,
+                      "endTick": 19200,
+                      "complete": true,
+                      "samples": 20,
+                      "lastSampleTick": 18880,
+                      "sampleMaxHipErrorM": 0.020985557861674324,
+                      "sampleMaxCOMErrorM": 0.01522915690799655,
+                      "sampleMaxJointErrorRad": 0.05651492635075584,
+                      "saturatedSamples": 0,
+                      "sampleMinWheelLoadN": 322.32411772029724,
+                      "riderWorkJ": -0.5788988418774661
+                    },
+                    {
+                      "phase": "recover",
+                      "startTick": 19200,
+                      "endTick": 25600,
+                      "complete": true,
+                      "samples": 20,
+                      "lastSampleTick": 25280,
+                      "sampleMaxHipErrorM": 0.023199040193067854,
+                      "sampleMaxCOMErrorM": 0.016833810772832542,
+                      "sampleMaxJointErrorRad": 0.06303897690758685,
+                      "saturatedSamples": 0,
+                      "sampleMinWheelLoadN": 344.75853573477286,
+                      "riderWorkJ": 0.5211452333267612
+                    },
+                    {
+                      "phase": "recovery-hold",
+                      "startTick": 25600,
+                      "endTick": 32000,
+                      "complete": true,
+                      "samples": 21,
+                      "lastSampleTick": 32000,
+                      "sampleMaxHipErrorM": 0.022766156870887753,
+                      "sampleMaxCOMErrorM": 0.01652783820477297,
+                      "sampleMaxJointErrorRad": 0.06192419179115778,
+                      "saturatedSamples": 0,
+                      "sampleMinWheelLoadN": 308.30308232470793,
+                      "riderWorkJ": 0.902672605168032
+                    }
+                  ]
+                }
+              }
+            ],
+            "comparison": {
+              "scope": "Matched-run differences; static droop remains visible in each absolute record. No causal isolation of numerical error.",
+              "sampleCount": 101,
+              "firstSample": {
+                "tick": 0,
+                "phase": "initial-hold",
+                "requestedHipDelta": [
+                  0,
+                  0
+                ],
+                "actualHipDelta": [
+                  0,
+                  0
+                ],
+                "targetCOMDelta": [
+                  0,
+                  0
+                ],
+                "actualCOMDelta": [
+                  0,
+                  0
+                ],
+                "riderWorkDelta": 0
+              },
+              "finalSample": {
+                "tick": 32000,
+                "phase": "recovery-hold",
+                "requestedHipDelta": [
+                  0,
+                  0
+                ],
+                "actualHipDelta": [
+                  4.2895253996227956e-05,
+                  0.00017517240075726193
+                ],
+                "targetCOMDelta": [
+                  0,
+                  0
+                ],
+                "actualCOMDelta": [
+                  6.37670102206847e-05,
+                  0.00011503173787080767
+                ],
+                "riderWorkDelta": 0.10094963594374029
+              },
+              "fullSamples": "Retained in the hashed local browser report."
+            }
+          },
+          "targetSequence": {
+            "agreement": {
+              "passed": false,
+              "model": "bikelab-trail-bike-targets-0.1",
+              "bike": "full",
+              "duration": 0.1,
+              "firstDifference": "record.finalState.joints.132.velocity: -0.18386798438130067 vs -0.18386798599829843"
+            },
+            "status": "completed",
+            "riderWork": -5.7973355007145075
+          },
+          "status": "completed",
+          "steps": 16000,
+          "riderWork": -7.515636092244099,
+          "agreement": {
+            "passed": true,
+            "tolerance": 1e-09,
+            "maxAbsolute": 7.993605777301127e-14,
+            "maxNormalized": 7.993605777301127e-14,
+            "exact": false
+          },
+          "tyreProbe": {
+            "status": "completed",
+            "steps": 640,
+            "agreement": {
+              "passed": true,
+              "tolerance": 1e-09,
+              "maxAbsolute": 7.993605777301127e-14,
+              "maxNormalized": 2.2913019529601667e-14,
+              "exact": false
+            }
+          },
+          "window": {
+            "agreement": {
+              "passed": true,
+              "tolerance": 1e-09,
+              "maxAbsolute": 7.993605777301127e-14,
+              "maxNormalized": 7.993605777301127e-14,
+              "exact": false
+            },
+            "freshAgreement": {
+              "passed": true,
+              "tolerance": 1e-09,
+              "maxAbsolute": 7.993605777301127e-14,
+              "maxNormalized": 2.310516564369048e-14,
+              "exact": false
+            },
+            "startTick": 15360
+          }
+        },
+        {
+          "bike": "hardtail",
+          "crouch": [
+            {
+              "example": "rider-crouch-control",
+              "assessment": {
+                "status": "control",
+                "reason": "Unchanged-posture control; no requested lowering.",
+                "checks": []
+              },
+              "agreement": {
+                "passed": false,
+                "model": "bikelab-trail-bike-controller-0.1",
+                "bike": "hardtail",
+                "duration": 2.5,
+                "firstDifference": "record.finalState.joints.0.position: 0.03343476186874083 vs 0.03343473645438592"
+              }
+            },
+            {
+              "example": "rider-crouch",
+              "assessment": {
+                "status": "screen-failed",
+                "scope": "Saved-sample protocol only; no continuous support, equilibrium or manoeuvre qualification.",
+                "requestedDepthM": 0.04300000000000001,
+                "observedLoweringM": 0.04501139426149242,
+                "finalHipErrorM": 0.0004405157346511716,
+                "checks": [
+                  {
+                    "name": "complete",
+                    "pass": true
+                  },
+                  {
+                    "name": "sampling",
+                    "pass": true,
+                    "value": 0.01,
+                    "limit": 0.01
+                  },
+                  {
+                    "name": "tracking",
+                    "pass": false,
+                    "value": 0.015616889012912215,
+                    "limit": 0.010750000000000003
+                  },
+                  {
+                    "name": "lowering",
+                    "pass": true,
+                    "value": 0.04501139426149242,
+                    "min": 0.03440000000000001,
+                    "max": 0.051600000000000014
+                  },
+                  {
+                    "name": "recovery",
+                    "pass": true,
+                    "value": 0.0004405157346511716,
+                    "limit": 0.003
+                  },
+                  {
+                    "name": "wheel-loads",
+                    "pass": true,
+                    "value": 316.57157397293855,
+                    "min": 8.139519499999999
+                  },
+                  {
+                    "name": "estimate-eligibility",
+                    "pass": true
+                  },
+                  {
+                    "name": "saturation",
+                    "pass": true
+                  },
+                  {
+                    "name": "net-work",
+                    "pass": true,
+                    "value": -1.5027383459406631,
+                    "limit": 88.5540495
+                  }
+                ]
+              },
+              "agreement": {
+                "passed": false,
+                "model": "bikelab-trail-bike-controller-0.1",
+                "bike": "hardtail",
+                "duration": 2.5,
+                "firstDifference": "record.finalState.joints.0.position: 0.033422367659222185 vs 0.033422950678894996"
+              }
+            }
+          ],
+          "controller": [
+            {
+              "example": "rider-controller-hold",
+              "agreement": {
+                "passed": false,
+                "model": "bikelab-trail-bike-controller-0.1",
+                "bike": "hardtail",
+                "duration": 1,
+                "firstDifference": "record.finalState.joints.1.velocity: 0.0018526482486891842 vs 0.0018526425866595066"
+              },
+              "tracking": {
+                "scope": "Saved-sample diagnostics only; no continuous support or stable tracking qualification.",
+                "dt": 3.125e-05,
+                "acceptedTick": 32000,
+                "requestedEndTick": 32000,
+                "status": "completed",
+                "phases": [
+                  {
+                    "phase": "initial-hold",
+                    "startTick": 0,
+                    "endTick": 6400,
+                    "complete": true,
+                    "samples": 20,
+                    "lastSampleTick": 6080,
+                    "sampleMaxHipErrorM": 0.01087669475057955,
+                    "sampleMaxCOMErrorM": 0.007024045616204595,
+                    "sampleMaxJointErrorRad": 0.03512370255117998,
+                    "saturatedSamples": 0,
+                    "sampleMinWheelLoadN": 0,
+                    "riderWorkJ": -5.948822187476909
+                  },
+                  {
+                    "phase": "transfer",
+                    "startTick": 6400,
+                    "endTick": 12800,
+                    "complete": true,
+                    "samples": 20,
+                    "lastSampleTick": 12480,
+                    "sampleMaxHipErrorM": 0.009053198489310441,
+                    "sampleMaxCOMErrorM": 0.006106145670952498,
+                    "sampleMaxJointErrorRad": 0.025518211125947137,
+                    "saturatedSamples": 0,
+                    "sampleMinWheelLoadN": 343.5281040081944,
+                    "riderWorkJ": 1.1283625519804223
+                  },
+                  {
+                    "phase": "target-hold",
+                    "startTick": 12800,
+                    "endTick": 19200,
+                    "complete": true,
+                    "samples": 20,
+                    "lastSampleTick": 18880,
+                    "sampleMaxHipErrorM": 0.005358401931367937,
+                    "sampleMaxCOMErrorM": 0.0036645095498616404,
+                    "sampleMaxJointErrorRad": 0.014343151374771629,
+                    "saturatedSamples": 0,
+                    "sampleMinWheelLoadN": 341.1170792459762,
+                    "riderWorkJ": 2.707846645535094
+                  },
+                  {
+                    "phase": "recover",
+                    "startTick": 19200,
+                    "endTick": 25600,
+                    "complete": true,
+                    "samples": 20,
+                    "lastSampleTick": 25280,
+                    "sampleMaxHipErrorM": 0.0016708291744288188,
+                    "sampleMaxCOMErrorM": 0.0008970647706415355,
+                    "sampleMaxJointErrorRad": 0.0069204620671228494,
+                    "saturatedSamples": 0,
+                    "sampleMinWheelLoadN": 328.326181498182,
+                    "riderWorkJ": -0.04344313845235126
+                  },
+                  {
+                    "phase": "recovery-hold",
+                    "startTick": 25600,
+                    "endTick": 32000,
+                    "complete": true,
+                    "samples": 21,
+                    "lastSampleTick": 32000,
+                    "sampleMaxHipErrorM": 0.0009743909196063484,
+                    "sampleMaxCOMErrorM": 0.0007966418811872521,
+                    "sampleMaxJointErrorRad": 0.004791500245589727,
+                    "saturatedSamples": 0,
+                    "sampleMinWheelLoadN": 357.4134339173315,
+                    "riderWorkJ": -0.8148835895329078
+                  }
+                ]
+              }
+            },
+            {
+              "example": "rider-controller",
+              "agreement": {
+                "passed": false,
+                "model": "bikelab-trail-bike-controller-0.1",
+                "bike": "hardtail",
+                "duration": 1,
+                "firstDifference": "record.finalState.joints.1.velocity: 0.018453521094326925 vs 0.018453525888664658"
+              },
+              "tracking": {
+                "scope": "Saved-sample diagnostics only; no continuous support or stable tracking qualification.",
+                "dt": 3.125e-05,
+                "acceptedTick": 32000,
+                "requestedEndTick": 32000,
+                "status": "completed",
+                "phases": [
+                  {
+                    "phase": "initial-hold",
+                    "startTick": 0,
+                    "endTick": 6400,
+                    "complete": true,
+                    "samples": 20,
+                    "lastSampleTick": 6080,
+                    "sampleMaxHipErrorM": 0.01087669475057955,
+                    "sampleMaxCOMErrorM": 0.007024045616204595,
+                    "sampleMaxJointErrorRad": 0.03512370255117998,
+                    "saturatedSamples": 0,
+                    "sampleMinWheelLoadN": 0,
+                    "riderWorkJ": -5.948822187476909
+                  },
+                  {
+                    "phase": "transfer",
+                    "startTick": 6400,
+                    "endTick": 12800,
+                    "complete": true,
+                    "samples": 20,
+                    "lastSampleTick": 12480,
+                    "sampleMaxHipErrorM": 0.008485026927135604,
+                    "sampleMaxCOMErrorM": 0.00573741265305053,
+                    "sampleMaxJointErrorRad": 0.023426078607806544,
+                    "saturatedSamples": 0,
+                    "sampleMinWheelLoadN": 327.9767094789463,
+                    "riderWorkJ": 0.6264401043270436
+                  },
+                  {
+                    "phase": "target-hold",
+                    "startTick": 12800,
+                    "endTick": 19200,
+                    "complete": true,
+                    "samples": 20,
+                    "lastSampleTick": 18880,
+                    "sampleMaxHipErrorM": 0.003939412330325244,
+                    "sampleMaxCOMErrorM": 0.002911758515967178,
+                    "sampleMaxJointErrorRad": 0.012668145685972229,
+                    "saturatedSamples": 0,
+                    "sampleMinWheelLoadN": 356.8341877426434,
+                    "riderWorkJ": 1.7965139510298913
+                  },
+                  {
+                    "phase": "recover",
+                    "startTick": 19200,
+                    "endTick": 25600,
+                    "complete": true,
+                    "samples": 20,
+                    "lastSampleTick": 25280,
+                    "sampleMaxHipErrorM": 0.0012418552009462829,
+                    "sampleMaxCOMErrorM": 0.0014610441197078568,
+                    "sampleMaxJointErrorRad": 0.012098341106322444,
+                    "saturatedSamples": 0,
+                    "sampleMinWheelLoadN": 358.6269380084295,
+                    "riderWorkJ": 0.24463942797685334
+                  },
+                  {
+                    "phase": "recovery-hold",
+                    "startTick": 25600,
+                    "endTick": 32000,
+                    "complete": true,
+                    "samples": 21,
+                    "lastSampleTick": 32000,
+                    "sampleMaxHipErrorM": 0.0013512810767472285,
+                    "sampleMaxCOMErrorM": 0.0015192000335295815,
+                    "sampleMaxJointErrorRad": 0.012165732927551447,
+                    "saturatedSamples": 0,
+                    "sampleMinWheelLoadN": 329.5747370660392,
+                    "riderWorkJ": 0.2954367314982389
+                  }
+                ]
+              }
+            }
+          ],
+          "heldTransfer": {
+            "cases": [
+              {
+                "agreement": {
+                  "passed": true,
+                  "tolerance": 1e-09,
+                  "maxAbsolute": 8.171241461241152e-14,
+                  "maxNormalized": 7.993605777301127e-14,
+                  "exact": false
+                },
+                "tracking": {
+                  "scope": "Saved-sample diagnostics only; no continuous support or stable tracking qualification.",
+                  "dt": 3.125e-05,
+                  "acceptedTick": 32000,
+                  "requestedEndTick": 32000,
+                  "status": "completed",
+                  "phases": [
+                    {
+                      "phase": "initial-hold",
+                      "startTick": 0,
+                      "endTick": 6400,
+                      "complete": true,
+                      "samples": 20,
+                      "lastSampleTick": 6080,
+                      "sampleMaxHipErrorM": 0.028985766882216935,
+                      "sampleMaxCOMErrorM": 0.0209277944263693,
+                      "sampleMaxJointErrorRad": 0.0785135965114729,
+                      "saturatedSamples": 0,
+                      "sampleMinWheelLoadN": 0,
+                      "riderWorkJ": -14.411293608650974
+                    },
+                    {
+                      "phase": "transfer",
+                      "startTick": 6400,
+                      "endTick": 12800,
+                      "complete": true,
+                      "samples": 20,
+                      "lastSampleTick": 12480,
+                      "sampleMaxHipErrorM": 0.02754141311410581,
+                      "sampleMaxCOMErrorM": 0.019843880913746528,
+                      "sampleMaxJointErrorRad": 0.07529024018030911,
+                      "saturatedSamples": 0,
+                      "sampleMinWheelLoadN": 324.3410498873106,
+                      "riderWorkJ": 3.1098582534413595
+                    },
+                    {
+                      "phase": "target-hold",
+                      "startTick": 12800,
+                      "endTick": 19200,
+                      "complete": true,
+                      "samples": 20,
+                      "lastSampleTick": 18880,
+                      "sampleMaxHipErrorM": 0.021607977194563265,
+                      "sampleMaxCOMErrorM": 0.015588193204447256,
+                      "sampleMaxJointErrorRad": 0.059351356996369446,
+                      "saturatedSamples": 0,
+                      "sampleMinWheelLoadN": 345.8722809716671,
+                      "riderWorkJ": -0.626966517685899
+                    },
+                    {
+                      "phase": "recover",
+                      "startTick": 19200,
+                      "endTick": 25600,
+                      "complete": true,
+                      "samples": 20,
+                      "lastSampleTick": 25280,
+                      "sampleMaxHipErrorM": 0.021201206317586933,
+                      "sampleMaxCOMErrorM": 0.015289729552423128,
+                      "sampleMaxJointErrorRad": 0.05834692709021635,
+                      "saturatedSamples": 0,
+                      "sampleMinWheelLoadN": 352.028934197794,
+                      "riderWorkJ": 0.07059420181679066
+                    },
+                    {
+                      "phase": "recovery-hold",
+                      "startTick": 25600,
+                      "endTick": 32000,
+                      "complete": true,
+                      "samples": 21,
+                      "lastSampleTick": 32000,
+                      "sampleMaxHipErrorM": 0.021086440027101146,
+                      "sampleMaxCOMErrorM": 0.015211696910822635,
+                      "sampleMaxJointErrorRad": 0.057969115788974034,
+                      "saturatedSamples": 0,
+                      "sampleMinWheelLoadN": 327.44756664037976,
+                      "riderWorkJ": 0.00576171369282541
+                    }
+                  ]
+                }
+              },
+              {
+                "agreement": {
+                  "passed": false,
+                  "model": "bikelab-trail-bike-targets-0.1",
+                  "bike": "hardtail",
+                  "duration": 1,
+                  "firstDifference": "record.finalState.joints.1.velocity: -0.03502557769806214 vs -0.035025581505829594"
+                },
+                "tracking": {
+                  "scope": "Saved-sample diagnostics only; no continuous support or stable tracking qualification.",
+                  "dt": 3.125e-05,
+                  "acceptedTick": 32000,
+                  "requestedEndTick": 32000,
+                  "status": "completed",
+                  "phases": [
+                    {
+                      "phase": "initial-hold",
+                      "startTick": 0,
+                      "endTick": 6400,
+                      "complete": true,
+                      "samples": 20,
+                      "lastSampleTick": 6080,
+                      "sampleMaxHipErrorM": 0.028985766882216935,
+                      "sampleMaxCOMErrorM": 0.0209277944263693,
+                      "sampleMaxJointErrorRad": 0.0785135965114729,
+                      "saturatedSamples": 0,
+                      "sampleMinWheelLoadN": 0,
+                      "riderWorkJ": -14.411293608650974
+                    },
+                    {
+                      "phase": "transfer",
+                      "startTick": 6400,
+                      "endTick": 12800,
+                      "complete": true,
+                      "samples": 20,
+                      "lastSampleTick": 12480,
+                      "sampleMaxHipErrorM": 0.02754141311410581,
+                      "sampleMaxCOMErrorM": 0.019843880913746528,
+                      "sampleMaxJointErrorRad": 0.07529024018030911,
+                      "saturatedSamples": 0,
+                      "sampleMinWheelLoadN": 314.6282143233754,
+                      "riderWorkJ": 2.1770144611670794
+                    },
+                    {
+                      "phase": "target-hold",
+                      "startTick": 12800,
+                      "endTick": 19200,
+                      "complete": true,
+                      "samples": 20,
+                      "lastSampleTick": 18880,
+                      "sampleMaxHipErrorM": 0.02179821458577834,
+                      "sampleMaxCOMErrorM": 0.01569935020938341,
+                      "sampleMaxJointErrorRad": 0.05992416224543023,
+                      "saturatedSamples": 0,
+                      "sampleMinWheelLoadN": 337.53967867312434,
+                      "riderWorkJ": -1.0544750819086453
+                    },
+                    {
+                      "phase": "recover",
+                      "startTick": 19200,
+                      "endTick": 25600,
+                      "complete": true,
+                      "samples": 20,
+                      "lastSampleTick": 25280,
+                      "sampleMaxHipErrorM": 0.021532940747555473,
+                      "sampleMaxCOMErrorM": 0.015534272449516882,
+                      "sampleMaxJointErrorRad": 0.0598606772123745,
+                      "saturatedSamples": 0,
+                      "sampleMinWheelLoadN": 340.61931797047083,
+                      "riderWorkJ": 1.1250921815296362
+                    },
+                    {
+                      "phase": "recovery-hold",
+                      "startTick": 25600,
+                      "endTick": 32000,
+                      "complete": true,
+                      "samples": 21,
+                      "lastSampleTick": 32000,
+                      "sampleMaxHipErrorM": 0.02154713539922681,
+                      "sampleMaxCOMErrorM": 0.015545676984818865,
+                      "sampleMaxJointErrorRad": 0.0598948424072986,
+                      "saturatedSamples": 0,
+                      "sampleMinWheelLoadN": 324.48414965403924,
+                      "riderWorkJ": 0.4019472066224097
+                    }
+                  ]
+                }
+              }
+            ],
+            "comparison": {
+              "scope": "Matched-run differences; static droop remains visible in each absolute record. No causal isolation of numerical error.",
+              "sampleCount": 101,
+              "firstSample": {
+                "tick": 0,
+                "phase": "initial-hold",
+                "requestedHipDelta": [
+                  0,
+                  0
+                ],
+                "actualHipDelta": [
+                  0,
+                  0
+                ],
+                "targetCOMDelta": [
+                  0,
+                  0
+                ],
+                "actualCOMDelta": [
+                  0,
+                  0
+                ],
+                "riderWorkDelta": 0
+              },
+              "finalSample": {
+                "tick": 32000,
+                "phase": "recovery-hold",
+                "requestedHipDelta": [
+                  0,
+                  0
+                ],
+                "actualHipDelta": [
+                  -9.603022449178322e-07,
+                  9.832337272008829e-05
+                ],
+                "targetCOMDelta": [
+                  0,
+                  0
+                ],
+                "actualCOMDelta": [
+                  1.3742781337505727e-05,
+                  6.719701379082066e-05
+                ],
+                "riderWorkDelta": 0.09033111614540346
+              },
+              "fullSamples": "Retained in the hashed local browser report."
+            }
+          },
+          "targetSequence": {
+            "agreement": {
+              "passed": false,
+              "model": "bikelab-trail-bike-targets-0.1",
+              "bike": "hardtail",
+              "duration": 0.1,
+              "firstDifference": "record.frames.3.wheels.0.ground.0: 3.381049484829646e-8 vs -1.520361259110814e-8"
+            },
+            "status": "completed",
+            "riderWork": -9.28307095417518
+          },
+          "status": "completed",
+          "steps": 16000,
+          "riderWork": -12.0674742116769,
+          "agreement": {
+            "passed": true,
+            "tolerance": 1e-09,
+            "maxAbsolute": 8.171241461241152e-14,
+            "maxNormalized": 7.993605777301127e-14,
+            "exact": false
+          },
+          "tyreProbe": {
+            "status": "completed",
+            "steps": 640,
+            "agreement": {
+              "passed": true,
+              "tolerance": 1e-09,
+              "maxAbsolute": 7.993605777301127e-14,
+              "maxNormalized": 2.161240522557631e-14,
+              "exact": false
+            }
+          },
+          "window": {
+            "agreement": {
+              "passed": true,
+              "tolerance": 1e-09,
+              "maxAbsolute": 8.171241461241152e-14,
+              "maxNormalized": 7.993605777301127e-14,
+              "exact": false
+            },
+            "freshAgreement": {
+              "passed": true,
+              "tolerance": 1e-09,
+              "maxAbsolute": 7.993605777301127e-14,
+              "maxNormalized": 2.1633271814709835e-14,
+              "exact": false
+            },
+            "startTick": 15360
+          }
+        }
+      ],
+      "scope": "Actual worker, full-record replay, active readouts, mobile layout, JSON admission, legacy mode transition and long-probe cancellation. Also receives short fresh-state tyre diagnostics, dense observations, unchanged native identity, plots and mode cleanup. Also receives uninterrupted late windows, unchanged final state, window plots and fresh-start comparison controls. No equilibrium or calibrated active rider claim."
+    },
+    "failure": "AssertionError [ERR_ASSERTION]: Browser/Node replay failures retained; see replayFailures.\n\n12 !== 0\n\n    at file:///C:/Users/craig/.codex/visualizations/2026/10/27/01a17de1-8b2b-7413-a83e-4925203a12a0/bikelab-rider-controller/scripts/rider-browser-check.mjs:40:10"
+  }
+}

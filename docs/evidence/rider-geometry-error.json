@@ -1,0 +1,703 @@
+{
+  "scope": "Ordered geometric accounting of unchanged PR64 native records; sampled extrema only, no causal or dynamic qualification.",
+  "sourcePR": "https://github.com/CraigHutchinson/BikeLab/pull/64",
+  "sourceCommit": "64472f754a62b1232a8f06ec3684ff2aa0b0ae2f",
+  "cases": [
+    {
+      "file": "full-0.00003125-hold.json",
+      "sha256": "262a7d289f17c068975eead9d06044d34f1c86ddf1ce673ff147bb34ece9e00f",
+      "bike": "full",
+      "dt": 3.125e-05,
+      "geometry": {
+        "scope": "Ordered joint-then-trunk geometric accounting, not independent causal contributions.",
+        "samples": 101,
+        "maxNormM": {
+          "jointTracking": 0.023866380636777002,
+          "trunkTracking": 0.018343440725892887,
+          "attachmentGap": 0.0007212734613768561,
+          "anchorOffset": 1.6653345369377348e-16,
+          "targetClosure": 3.477763656540197e-16,
+          "reconstructionResidual": 5.303479290350961e-13
+        },
+        "maxSumResidualM": 9.34831278988525e-17,
+        "final": {
+          "hipError": [
+            -0.003402561842176355,
+            -0.020830481296456038
+          ],
+          "chains": {
+            "foot": {
+              "jointTracking": [
+                0.008632152057269193,
+                -0.016862482847734395
+              ],
+              "trunkTracking": [
+                -0.012029108881500272,
+                -0.003335804938812581
+              ],
+              "attachmentGap": [
+                -5.6050175879703e-06,
+                -0.0006321935098621781
+              ],
+              "anchorOffset": [
+                -3.469446951953614e-18,
+                0
+              ],
+              "targetClosure": [
+                -1.1102230246251565e-16,
+                2.7755575615628914e-16
+              ],
+              "reconstructionResidual": [
+                -3.571865025975285e-13,
+                -4.7128967395337895e-14
+              ],
+              "sum": [
+                -0.00340256184217635,
+                -0.020830481296456003
+              ]
+            },
+            "hand": {
+              "jointTracking": [
+                -0.005298516614927751,
+                -0.007036893508703401
+              ],
+              "trunkTracking": [
+                0.001898426739906811,
+                -0.013678643840308091
+              ],
+              "attachmentGap": [
+                -2.4719667866043028e-06,
+                -0.00011494394706599774
+              ],
+              "anchorOffset": [
+                0,
+                5.551115123125783e-17
+              ],
+              "targetClosure": [
+                -3.0531133177191805e-16,
+                -1.6653345369377348e-16
+              ],
+              "reconstructionResidual": [
+                -3.685107774487051e-13,
+                -3.784195179434846e-13
+              ],
+              "sum": [
+                -0.00340256184217636,
+                -0.02083048129645602
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "file": "full-0.00003125-transfer.json",
+      "sha256": "9f431ded2faf1bde4634353735c9c97100ab67c758f33d10df7ffffd387117fa",
+      "bike": "full",
+      "dt": 3.125e-05,
+      "geometry": {
+        "scope": "Ordered joint-then-trunk geometric accounting, not independent causal contributions.",
+        "samples": 101,
+        "maxNormM": {
+          "jointTracking": 0.023478759639313906,
+          "trunkTracking": 0.018511156284019115,
+          "attachmentGap": 0.0007212734613768561,
+          "anchorOffset": 2.0014830212433607e-16,
+          "targetClosure": 3.944808480857958e-16,
+          "reconstructionResidual": 5.303479290350961e-13
+        },
+        "maxSumResidualM": 9.34831278988525e-17,
+        "final": {
+          "hipError": [
+            -0.0033596665881020227,
+            -0.020655308895066338
+          ],
+          "chains": {
+            "foot": {
+              "jointTracking": [
+                0.008560068448825064,
+                -0.016722051653160985
+              ],
+              "trunkTracking": [
+                -0.011913821950494091,
+                -0.0033031841201219825
+              ],
+              "attachmentGap": [
+                -5.9130860755359455e-06,
+                -0.0006300731217361747
+              ],
+              "anchorOffset": [
+                1.0408340855860843e-17,
+                0
+              ],
+              "targetClosure": [
+                -1.1102230246251565e-16,
+                2.7755575615628914e-16
+              ],
+              "reconstructionResidual": [
+                -3.5735303605122226e-13,
+                -4.7406523151494184e-14
+              ],
+              "sum": [
+                -0.003359666588102016,
+                -0.020655308895066272
+              ]
+            },
+            "hand": {
+              "jointTracking": [
+                -0.005236517907077354,
+                -0.006996977060012788
+              ],
+              "trunkTracking": [
+                0.0018772567284927044,
+                -0.013542401304853402
+              ],
+              "attachmentGap": [
+                -4.0540914815203173e-07,
+                -0.0001159305298217578
+              ],
+              "anchorOffset": [
+                0,
+                5.551115123125783e-17
+              ],
+              "targetClosure": [
+                -3.0531133177191805e-16,
+                -1.6653345369377348e-16
+              ],
+              "reconstructionResidual": [
+                -3.689271110829395e-13,
+                -3.7825298448979083e-13
+              ],
+              "sum": [
+                -0.003359666588102034,
+                -0.02065530889506631
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "file": "full-0.000015625-hold.json",
+      "sha256": "b5bf383a7cc71646007f94369c02b12a4391e19a8adda1dbd08cb2bff891c2a1",
+      "bike": "full",
+      "dt": 1.5625e-05,
+      "geometry": {
+        "scope": "Ordered joint-then-trunk geometric accounting, not independent causal contributions.",
+        "samples": 101,
+        "maxNormM": {
+          "jointTracking": 0.023848560175337385,
+          "trunkTracking": 0.01832727960682123,
+          "attachmentGap": 0.0007209825035767354,
+          "anchorOffset": 2.0014830212433607e-16,
+          "targetClosure": 3.477763656540197e-16,
+          "reconstructionResidual": 5.302283160464881e-13
+        },
+        "maxSumResidualM": 1.0031536292372888e-16,
+        "final": {
+          "hipError": [
+            -0.0034015853417446174,
+            -0.020830483923110987
+          ],
+          "chains": {
+            "foot": {
+              "jointTracking": [
+                0.00863212880025846,
+                -0.016862603871635296
+              ],
+              "trunkTracking": [
+                -0.012028079149270732,
+                -0.00333550808472749
+              ],
+              "attachmentGap": [
+                -5.634992374940061e-06,
+                -0.0006323719667014007
+              ],
+              "anchorOffset": [
+                1.1275702593849246e-17,
+                0
+              ],
+              "targetClosure": [
+                -1.1102230246251565e-16,
+                2.7755575615628914e-16
+              ],
+              "reconstructionResidual": [
+                -3.57297524899991e-13,
+                -4.707345624410664e-14
+              ],
+              "sum": [
+                -0.0034015853417446095,
+                -0.02083048392311098
+              ]
+            },
+            "hand": {
+              "jointTracking": [
+                -0.0052975125867991135,
+                -0.007037973248674778
+              ],
+              "trunkTracking": [
+                0.0018982750708289586,
+                -0.01367745119047642
+              ],
+              "attachmentGap": [
+                -2.3478254054357548e-06,
+                -0.00011505948358123587
+              ],
+              "anchorOffset": [
+                -5.551115123125783e-17,
+                0
+              ],
+              "targetClosure": [
+                -3.0531133177191805e-16,
+                -1.6653345369377348e-16
+              ],
+              "reconstructionResidual": [
+                -3.6867731090239886e-13,
+                -3.784195179434846e-13
+              ],
+              "sum": [
+                -0.0034015853417446286,
+                -0.02083048392311102
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "file": "full-0.000015625-transfer.json",
+      "sha256": "07af2b67acbdce2b3e963fe982f08f0e9be248a1d251ca834ccf7033557b8a27",
+      "bike": "full",
+      "dt": 1.5625e-05,
+      "geometry": {
+        "scope": "Ordered joint-then-trunk geometric accounting, not independent causal contributions.",
+        "samples": 101,
+        "maxNormM": {
+          "jointTracking": 0.023459166102538703,
+          "trunkTracking": 0.01849623702555686,
+          "attachmentGap": 0.0007209825035767354,
+          "anchorOffset": 1.7554167342883506e-16,
+          "targetClosure": 3.944808480857958e-16,
+          "reconstructionResidual": 5.302283160464881e-13
+        },
+        "maxSumResidualM": 1.0031536292372888e-16,
+        "final": {
+          "hipError": [
+            -0.003361603076224573,
+            -0.02065902827592983
+          ],
+          "chains": {
+            "foot": {
+              "jointTracking": [
+                0.008560943394253867,
+                -0.01672496117944733
+              ],
+              "trunkTracking": [
+                -0.01191663989528402,
+                -0.003303997995424801
+              ],
+              "attachmentGap": [
+                -5.90657483719617e-06,
+                -0.0006300691010106085
+              ],
+              "anchorOffset": [
+                -2.3418766925686896e-17,
+                0
+              ],
+              "targetClosure": [
+                -1.1102230246251565e-16,
+                2.7755575615628914e-16
+              ],
+              "reconstructionResidual": [
+                -3.5707548029506597e-13,
+                -4.7378767575878555e-14
+              ],
+              "sum": [
+                -0.003361603076224559,
+                -0.02065902827592984
+              ]
+            },
+            "hand": {
+              "jointTracking": [
+                -0.005238860432383308,
+                -0.006997464883850946
+              ],
+              "trunkTracking": [
+                0.0018777607722174627,
+                -0.013545735815623294
+              ],
+              "attachmentGap": [
+                -5.034156898113736e-07,
+                -0.00011582757607690276
+              ],
+              "anchorOffset": [
+                0,
+                -1.1102230246251565e-16
+              ],
+              "targetClosure": [
+                -3.0531133177191805e-16,
+                -1.6653345369377348e-16
+              ],
+              "reconstructionResidual": [
+                -3.686217997511676e-13,
+                -3.7844727351910024e-13
+              ],
+              "sum": [
+                -0.0033616030762245834,
+                -0.02065902827592987
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "file": "hardtail-0.00003125-hold.json",
+      "sha256": "c2841ee654d34762e7d8237ae9a8d4030ae7747175317bdbb9f252d664cf27b0",
+      "bike": "hardtail",
+      "dt": 3.125e-05,
+      "geometry": {
+        "scope": "Ordered joint-then-trunk geometric accounting, not independent causal contributions.",
+        "samples": 101,
+        "maxNormM": {
+          "jointTracking": 0.02651493992031802,
+          "trunkTracking": 0.02009185320700579,
+          "attachmentGap": 0.0007359414708564861,
+          "anchorOffset": 1.5700924586837752e-16,
+          "targetClosure": 3.477763656540197e-16,
+          "reconstructionResidual": 5.303215357540325e-13
+        },
+        "maxSumResidualM": 9.425153509883075e-17,
+        "final": {
+          "hipError": [
+            -0.002511153338649097,
+            -0.020888341715035258
+          ],
+          "chains": {
+            "foot": {
+              "jointTracking": [
+                0.009663950782996061,
+                -0.01693436434622142
+              ],
+              "trunkTracking": [
+                -0.012176500549502811,
+                -0.0033552423363326644
+              ],
+              "attachmentGap": [
+                1.3964282148206766e-06,
+                -0.0005987350324345749
+              ],
+              "anchorOffset": [
+                -6.938893903907228e-18,
+                0
+              ],
+              "targetClosure": [
+                -1.1102230246251565e-16,
+                2.7755575615628914e-16
+              ],
+              "reconstructionResidual": [
+                -3.5704772471945034e-13,
+                -4.6879167214797235e-14
+              ],
+              "sum": [
+                -0.002511153338649095,
+                -0.02088834171503526
+              ]
+            },
+            "hand": {
+              "jointTracking": [
+                -0.004469471329833108,
+                -0.006926211736451804
+              ],
+              "trunkTracking": [
+                0.0019211708742031819,
+                -0.013829115599861996
+              ],
+              "attachmentGap": [
+                3.71471173496655e-05,
+                -0.00013301437834340715
+              ],
+              "anchorOffset": [
+                -5.551115123125783e-17,
+                -5.551115123125783e-17
+              ],
+              "targetClosure": [
+                -3.0531133177191805e-16,
+                -1.6653345369377348e-16
+              ],
+              "reconstructionResidual": [
+                -3.6845526629747383e-13,
+                -3.7778113970432514e-13
+              ],
+              "sum": [
+                -0.0025111533386490766,
+                -0.02088834171503521
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "file": "hardtail-0.00003125-transfer.json",
+      "sha256": "2d8a18cd2c0275685905b269acd20310d2b9db22b0f5da75383bb5ffd3ccda00",
+      "bike": "hardtail",
+      "dt": 3.125e-05,
+      "geometry": {
+        "scope": "Ordered joint-then-trunk geometric accounting, not independent causal contributions.",
+        "samples": 101,
+        "maxNormM": {
+          "jointTracking": 0.02651493992031802,
+          "trunkTracking": 0.02009185320700579,
+          "attachmentGap": 0.0007359414708564861,
+          "anchorOffset": 1.5700924586837752e-16,
+          "targetClosure": 3.944808480857958e-16,
+          "reconstructionResidual": 5.303215357540325e-13
+        },
+        "maxSumResidualM": 9.37112008063875e-17,
+        "final": {
+          "hipError": [
+            -0.002512113641028213,
+            -0.020790018342797506
+          ],
+          "chains": {
+            "foot": {
+              "jointTracking": [
+                0.009601370664282988,
+                -0.01685326250399566
+              ],
+              "trunkTracking": [
+                -0.012114790633732025,
+                -0.0033383989893289723
+              ],
+              "attachmentGap": [
+                1.3063287781751839e-06,
+                -0.0005983568494266348
+              ],
+              "anchorOffset": [
+                3.382710778154774e-17,
+                0
+              ],
+              "targetClosure": [
+                -1.1102230246251565e-16,
+                2.7755575615628914e-16
+              ],
+              "reconstructionResidual": [
+                -3.5726976932437537e-13,
+                -4.649058915617843e-14
+              ],
+              "sum": [
+                -0.0025121136410282095,
+                -0.02079001834279748
+              ]
+            },
+            "hand": {
+              "jointTracking": [
+                -0.004458586602454351,
+                -0.006900832053378714
+              ],
+              "trunkTracking": [
+                0.001909707453108589,
+                -0.013756595241940284
+              ],
+              "attachmentGap": [
+                3.676550868639795e-05,
+                -0.00013259104710064266
+              ],
+              "anchorOffset": [
+                5.551115123125783e-17,
+                1.1102230246251565e-16
+              ],
+              "targetClosure": [
+                -3.0531133177191805e-16,
+                -1.6653345369377348e-16
+              ],
+              "reconstructionResidual": [
+                -3.686217997511676e-13,
+                -3.7778113970432514e-13
+              ],
+              "sum": [
+                -0.0025121136410282355,
+                -0.02079001834279748
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "file": "hardtail-0.000015625-hold.json",
+      "sha256": "78a124951ff5b9bfc827efa71abf7afcdd3ed826ce376a34988ae331510c03be",
+      "bike": "hardtail",
+      "dt": 1.5625e-05,
+      "geometry": {
+        "scope": "Ordered joint-then-trunk geometric accounting, not independent causal contributions.",
+        "samples": 101,
+        "maxNormM": {
+          "jointTracking": 0.026510823963617446,
+          "trunkTracking": 0.020087640999341624,
+          "attachmentGap": 0.0007359870022037589,
+          "anchorOffset": 1.7554167342883506e-16,
+          "targetClosure": 3.477763656540197e-16,
+          "reconstructionResidual": 5.303215357540325e-13
+        },
+        "maxSumResidualM": 1.0412044554322458e-16,
+        "final": {
+          "hipError": [
+            -0.0025036329456530892,
+            -0.02088828324267905
+          ],
+          "chains": {
+            "foot": {
+              "jointTracking": [
+                0.0096719160573365,
+                -0.01693446544491939
+              ],
+              "trunkTracking": [
+                -0.012176995256313133,
+                -0.003355202305437621
+              ],
+              "attachmentGap": [
+                1.4462536805204286e-06,
+                -0.0005986154922755926
+              ],
+              "anchorOffset": [
+                3.729655473350135e-17,
+                0
+              ],
+              "targetClosure": [
+                -1.1102230246251565e-16,
+                2.7755575615628914e-16
+              ],
+              "reconstructionResidual": [
+                -3.569089468413722e-13,
+                -4.668487818548783e-14
+              ],
+              "sum": [
+                -0.002503632945653096,
+                -0.02088828324267901
+              ]
+            },
+            "hand": {
+              "jointTracking": [
+                -0.004462392682716754,
+                -0.006925534263647115
+              ],
+              "trunkTracking": [
+                0.0019212382903682768,
+                -0.013829516576505496
+              ],
+              "attachmentGap": [
+                3.7521447064325605e-05,
+                -0.00013323240214855076
+              ],
+              "anchorOffset": [
+                5.551115123125783e-17,
+                0
+              ],
+              "targetClosure": [
+                -3.0531133177191805e-16,
+                -1.6653345369377348e-16
+              ],
+              "reconstructionResidual": [
+                -3.6867731090239886e-13,
+                -3.777533841287095e-13
+              ],
+              "sum": [
+                -0.0025036329456530784,
+                -0.020888283242679082
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "file": "hardtail-0.000015625-transfer.json",
+      "sha256": "4270403ed1afd086fc61576b43709209005a8ee1e71ef55a70ea4cf626996a22",
+      "bike": "hardtail",
+      "dt": 1.5625e-05,
+      "geometry": {
+        "scope": "Ordered joint-then-trunk geometric accounting, not independent causal contributions.",
+        "samples": 101,
+        "maxNormM": {
+          "jointTracking": 0.026510823963617446,
+          "trunkTracking": 0.020087640999341624,
+          "attachmentGap": 0.0007359870022037589,
+          "anchorOffset": 1.5700924586837752e-16,
+          "targetClosure": 3.944808480857958e-16,
+          "reconstructionResidual": 5.303215357540325e-13
+        },
+        "maxSumResidualM": 1.052487269512598e-16,
+        "final": {
+          "hipError": [
+            -0.0025142697086136256,
+            -0.02079921000646051
+          ],
+          "chains": {
+            "foot": {
+              "jointTracking": [
+                0.009604768456575707,
+                -0.016860670365148045
+              ],
+              "trunkTracking": [
+                -0.012120367468128446,
+                -0.003339973367048943
+              ],
+              "attachmentGap": [
+                1.3293032964561385e-06,
+                -0.0005985662742169511
+              ],
+              "anchorOffset": [
+                4.336808689942018e-18,
+                5.551115123125783e-17
+              ],
+              "targetClosure": [
+                -1.1102230246251565e-16,
+                2.7755575615628914e-16
+              ],
+              "reconstructionResidual": [
+                -3.5724201374875975e-13,
+                -4.6906922790412864e-14
+              ],
+              "sum": [
+                -0.002514269708613631,
+                -0.02079921000646051
+              ]
+            },
+            "hand": {
+              "jointTracking": [
+                -0.004461749332431264,
+                -0.006903395383509314
+              ],
+              "trunkTracking": [
+                0.0019107497877951518,
+                -0.013763200313555268
+              ],
+              "attachmentGap": [
+                3.6729836391605816e-05,
+                -0.00013261430901760033
+              ],
+              "anchorOffset": [
+                -1.1102230246251565e-16,
+                -5.551115123125783e-17
+              ],
+              "targetClosure": [
+                -3.0531133177191805e-16,
+                -1.6653345369377348e-16
+              ],
+              "reconstructionResidual": [
+                -3.687328220536301e-13,
+                -3.7808645103609706e-13
+              ],
+              "sum": [
+                -0.0025142697086136556,
+                -0.02079921000646049
+              ]
+            }
+          }
+        }
+      }
+    }
+  ]
+}

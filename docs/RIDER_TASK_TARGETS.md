@@ -1,0 +1,29 @@
+# Rider task targets — D0 sampled geometry checkpoint
+
+2026-10-29. This slice receives the first task-to-pose preparation in the [control architecture](RIDER_CONTROL_ARCHITECTURE.md). It is separate from PR54 stability work, PR60 geometry labels and PR61 mandatory-first terrain delivery. Main baseline: `2dd2be6`.
+
+The named consumers are the **Rider task targets · shift and crouch preview** panel on the Trail bike page and `node scripts/rider-task.mjs [task-input.json]`. The panel is independent of the applied hardtail/full-suspension scenario, worker, playback and actual state. It uses the same illustrative reference body and retained hand/foot anchors with either bike selection. It does not infer bindings from a moving or released rider.
+
+## Contract and interpretation
+
+`compileRiderTask` consumes a passive rider definition, an absolute hip x/z and trunk-pitch goal, an integer number of command intervals and seconds per interval. It uses the existing `constructPosture` analytic two-link solver; no new IK algorithm or force law is introduced. Frame-local x is forward and z up; trunk pitch runs from +z toward +x. Hip position is distinct from mass-weighted whole-rider COM.
+
+The compiler preserves segment lengths, masses, inertias, bend choices, conditioning margin, hand/foot anchors and original absolute passive joint laws. Each integer tick interpolates hip x/z and unwrapped trunk pitch linearly. Exact start/end assignment avoids accumulated clock drift. Every sample must satisfy reach/conditioning, the original four passive joint domains and angle-branch continuity between samples. Failure rejects the entire table with the failing tick; targets are never clamped, laws are never recentered, and an accepted endpoint cannot conceal a rejected sampled interior.
+
+The input is bounded to 1–1000 intervals, 0.001–0.1 seconds per interval. Generation and allocation occur during offline preparation, not a mechanical integration loop. Each immutable frame contains requested hip/pitch, absolute joint goals in declared hip/knee/shoulder/elbow order, geometric angle changes relative to the original posture, target COM and closure/conditioning diagnostics. Relative angles are geometry diagnostics, not permission to write native qpos. The existing bounded-drive validator accepts the generated absolute goals; this does not execute the drive or establish sufficient torque.
+
+`bikelab-rider-task-0.1` identifies task inputs and the generated report. Saving from the panel exports complete normalized **inputs**, including the unchanged passive body/laws and retained-binding declaration. Recompiling these inputs regenerates the target table. The headless command prints the complete report and exits nonzero without a report on rejected inputs. Input files are limited to 1 MiB. Existing posture and Trail record formats remain unchanged.
+
+Command time is `tick * tickSeconds`; the tick is authoritative. Geometry uses host JavaScript Math, with a 1e-12 receiving comparison budget, not cross-platform bit identity. This is not the native simulation's canonical target conversion or a new integration clock. The viewer scrubs target ticks; render timing does not select targets. Edited or invalid inputs hide stale results and disable export. The task viewer and old pose viewer share one equal-scale SVG renderer.
+
+## Boundaries and next receiver
+
+This is a sampled kinematic preview, not runtime task control. It does not certify the continuous path between samples, actual posture/COM, balance, unilateral support, anatomical plausibility, effort, power, work or feasible execution speed. Default values are illustrative, not calibrated human parameters. Sparse sampling can miss an invalid intermediate geometry; finer sampling is useful evidence but not a continuous feasibility proof. There is no saddle or automatic contact reattachment.
+
+The next D1 receiver must bind the task to the actual retained interfaces and the original native body, map goals through the existing canonical drive target policy, align integer target ticks with mechanical steps, and retain replay/rollback. It must record requested targets separately from actual hip/trunk/COM, errors, torque/saturation and signed work. Dynamic acceptance still depends on the B stability/numerical gate; this preview does not waive that gate or turn the failed stationary-hold evidence into a successful crouch. Receive a slow shift/recovery on both bikes before repeated bumps or support changes.
+
+## Evidence
+
+On Windows / Node 24.22.0, the focused posture/passive/task/static-asset set passes 22 Node tests and the local quick tier passes 54. The full Node suite passes 283 of 284 tests; the unchanged server test fails with `connect EACCES 127.0.0.1` under the environment network restriction, as also reproduced on the earlier unchanged baseline. The unit receipt records failure, not a full-suite pass or attestation. Eight new task tests cover independent forward-chain closure, an independently mass-weighted COM, compatibility with existing bounded-drive target domains, exact endpoints/zero hold, common ticks at two sampling resolutions, bounded input rejection, immutable ownership and serialization, custom anchors with preserved laws, valid endpoints with a singular interior, headless saved-input receiving, and finite SVG geometry. The SVG test checks generated structure and numeric attributes; it is not a browser or visual-layout test.
+
+The existing browser suite now checks task input export, browser/Node targets, scrubbing, stale/invalid rejection, unchanged applied records and desktop/390/320 captures with both bike selections. Actual browser execution and capture inspection remain deferred under the previously authorized unavailable-Edge fallback. No actual-motion or visual acceptance is claimed. Hosted CI and deployment remain paused until deliberate resumption on or after 1 November 2026.
