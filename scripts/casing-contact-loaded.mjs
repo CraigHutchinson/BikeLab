@@ -12,6 +12,10 @@ import {NATIVE_BUILD} from '../dist/trail-initial-state.js';
 import {validate} from '../dist/tyre-fixture.js';
 export const GROUPS=Object.freeze(['full-front','full-rear','hardtail-front','hardtail-rear'].flatMap(name=>['imported','zero'].map(rates=>name+'-'+rates)));
 export const CACHE='bikelab-loaded-contact-checkpoint-0.1';
+export function studyPartition(value){
+ if(value===undefined)return {id:null,groups:[...GROUPS],reportFile:'report.json'};
+ assert.match(value,/^[0-7]\/[1-8]$/,'Partition must be INDEX/COUNT, with 0 <= INDEX < COUNT <= 8');const [index,count]=value.split('/').map(Number);assert.ok(index<count,'Partition index must be below count');return {id:value,groups:GROUPS.filter((_,i)=>i%count===index),reportFile:`report-${index}-of-${count}.json`};
+}
 const hash=bytes=>createHash('sha256').update(bytes).digest('hex');
 const sameSources=async sources=>{for(const [p,h] of Object.entries(sources))assert.equal(hash(await readFile(new URL('../'+p,import.meta.url))),h,'Study source changed: '+p);};
 const atomicJSON=async(path,value)=>{await writeFile(path+'.tmp',JSON.stringify(value,null,2)+'\n');await rename(path+'.tmp',path);};
@@ -32,7 +36,7 @@ export async function runOrLoadCase(directory,label,input,dt,duration,sources,on
   assert.equal(binary.length,8*cached.comparison.count*cached.comparison.width);const trajectory=new Float64Array(binary.length/8);for(let i=0;i<trajectory.length;i++)trajectory[i]=binary.readDoubleLE(8*i);assert.ok(trajectory.every(Number.isFinite));await sameSources(sources);
   return {result:{...record,comparison:{dt:cached.comparison.dt,width:cached.comparison.width,count:cached.comparison.count,trajectory}},checkpoint:cached,reused:true};
  }
- const result=await runTranslation(a,{dt,duration,contactSubsteps:true,comparison:true,onProgress});await sameSources(sources);const {comparison,...record}=result,binary=Buffer.allocUnsafe(8*comparison.trajectory.length);for(let i=0;i<comparison.trajectory.length;i++)binary.writeDoubleLE(comparison.trajectory[i],8*i);
+ const result=await runTranslation(a,{dt,duration,contactSubsteps:true,comparison:true,onProgress});await sameSources(sources);const {comparison,...record}=result,values=comparison.count*comparison.width,binary=Buffer.allocUnsafe(8*values);assert.ok(values<=comparison.trajectory.length);for(let i=0;i<values;i++)binary.writeDoubleLE(comparison.trajectory[i],8*i);
  const bytes=JSON.stringify(record,null,2)+'\n',checkpoint={format:CACHE,file,sha256:hash(bytes),sourcesSha256:sources,comparison:{file:comparisonFile,sha256:hash(binary),encoding:'float64 little-endian, row-major',dt:comparison.dt,count:comparison.count,width:comparison.width}};validateRecord(record,a,dt,duration,checkpoint.comparison);
  await writeFile(join(directory,comparisonFile),binary);await writeFile(join(directory,file),bytes);await atomicJSON(join(directory,checkpointFile),checkpoint);return {result,checkpoint,reused:false};
 }
@@ -44,19 +48,19 @@ export function receiveLoadedContacts(cases,refinement,sourcesUnchanged){
 }
 
 async function main(){
- assert.ok(process.argv.length<=4,'Usage: node scripts/casing-contact-loaded.mjs [directory] [.001|.005|.02]');const directory=resolve(process.argv[2]??'artifacts/casing-contact-loaded'),duration=Number(process.argv[3]??.02);assert.ok([.001,.005,.02].includes(duration));await mkdir(directory,{recursive:true});
+ assert.ok(process.argv.length<=5,'Usage: node scripts/casing-contact-loaded.mjs [directory] [.001|.005|.02] [INDEX/COUNT]');const directory=resolve(process.argv[2]??'artifacts/casing-contact-loaded'),duration=Number(process.argv[3]??.02),partition=studyPartition(process.argv[4]);assert.ok([.001,.005,.02].includes(duration));await mkdir(directory,{recursive:true});
  const files=['scripts/casing-contact-loaded.mjs','scripts/casing-contact-step.mjs','scripts/casing-translate.mjs','scripts/casing-loaded.mjs',...(await readdir(new URL('../dist/',import.meta.url))).filter(p=>p.endsWith('.js')).sort().map(p=>'dist/'+p),'dist/tyre-fixture-examples.json','dist/vendor/mujoco-3.16.0/mujoco.js','dist/vendor/mujoco-3.16.0/mujoco.wasm'],sourcesSha256=Object.fromEntries(await Promise.all(files.map(async p=>[p,hash(await readFile(new URL('../'+p,import.meta.url)))]))),examples=JSON.parse(await readFile(new URL('../dist/tyre-fixture-examples.json',import.meta.url))).cases,cases=[],refinement=[];
  assert.deepEqual(examples.map(c=>c.name).sort(),['full-front','full-rear','hardtail-front','hardtail-rear']);
- const save=async(state,error=null)=>{let sourcesUnchanged=true;try{await sameSources(sourcesSha256);}catch{sourcesUnchanged=false;}const receiving=receiveLoadedContacts(cases,refinement,sourcesUnchanged);await atomicJSON(join(directory,'report.json'),{model:CONTACT_MODEL,contactStep:CONTACT_STEP,duration,state,error,progress:{completedCases:cases.length,totalCases:24},scope:'Loaded translating, fixed-orientation wheel release. Native contact-substep/solver policy; original budgets. No spin, connected-bike, physical calibration, browser or performance acceptance.',cases,refinement,sourcesSha256,sourcesUnchanged,receiving});return receiving;};
+ const save=async(state,error=null)=>{let sourcesUnchanged=true;try{await sameSources(sourcesSha256);}catch{sourcesUnchanged=false;}const receiving=receiveLoadedContacts(cases,refinement,sourcesUnchanged);await atomicJSON(join(directory,partition.reportFile),{model:CONTACT_MODEL,contactStep:CONTACT_STEP,duration,state,error,partition:partition.id,progress:{completedCases:cases.length,totalCases:3*partition.groups.length,matrixTotalCases:24},scope:'Loaded translating, fixed-orientation wheel release. Native contact-substep/solver policy; original budgets. No spin, connected-bike, physical calibration, browser or performance acceptance.',cases,refinement,sourcesSha256,sourcesUnchanged,receiving});return receiving;};
  try{
   for(const example of examples)for(const rates of ['imported','zero']){
-   const input=structuredClone(example.input);input.rates=rates;const name=example.name+'-'+rates;let previous;
+   const input=structuredClone(example.input);input.rates=rates;const name=example.name+'-'+rates;if(!partition.groups.includes(name))continue;let previous;
    for(const [index,dt] of STEPS.entries()){
-    const label=name+'-'+index;console.log('starting',cases.length+1,'/24',label);const {result,checkpoint,reused}=await runOrLoadCase(directory,label,input,dt,duration,sourcesSha256,(tick,total)=>console.log(label,Math.round(100*tick/total)+'%'));
+    const label=name+'-'+index;console.log('starting',cases.length+1,'/'+(3*partition.groups.length),label);const {result,checkpoint,reused}=await runOrLoadCase(directory,label,input,dt,duration,sourcesSha256,(tick,total)=>console.log(label,Math.round(100*tick/total)+'%'));
     const {comparison,frames,finalState,...summary}=result;cases.push({name,file:checkpoint.file,sha256:checkpoint.sha256,comparison:checkpoint.comparison,...summary});if(previous&&previous.status==='completed'&&result.status==='completed')refinement.push({name,...compareTranslation(previous,result,index===2?.1:1)});previous=result;await save('running');console.log(reused?'resumed':'completed',label,result.status,'extra substeps',result.summary.stepping.acceptedSubsteps-result.summary.steps);
    }
   }
-  const receiving=await save('completed');console.log(JSON.stringify(receiving));if(!Object.values(receiving).every(Boolean))process.exitCode=2;
+  const receiving=await save('completed');console.log(JSON.stringify(receiving));if(!Object.entries(receiving).every(([key,value])=>value||(partition.id!==null&&key==='coverage')))process.exitCode=2;
  }catch(error){await save('interrupted',error.message);throw error;}
 }
 if(process.argv[1]&&pathToFileURL(resolve(process.argv[1])).href===import.meta.url)await main();

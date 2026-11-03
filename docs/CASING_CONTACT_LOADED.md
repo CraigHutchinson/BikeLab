@@ -11,7 +11,21 @@ node scripts/casing-contact-loaded.mjs artifacts/casing-contact-loaded-20ms .02
 
 The runner prints accepted-case progress and writes an atomic report after every completed case. A checkpoint commits the complete JSON record plus its common-grid trajectory in little-endian float64 form, with SHA-256 hashes, shape, model/native/policy identity, inputs, compiled XML and source hashes. Repeating the same command verifies and reuses completed cases, recomputing comparisons from the saved grids. Partial files without a checkpoint are recomputed; stale or changed checkpoints are rejected. Failed cases remain failed evidence, with the accepted prefix preserved. This is case-level study resumption, not restart from an arbitrary native integration state.
 
-Two focused tests pass: exact numeric-grid resumption and rejection of changed inputs, duration, sources, records, binary data and encoding; then complete unique matrix coverage and mandatory physical/refinement gates. The synthetic matrix in the gate test is explicitly not a physics result.
+Four focused tests cover exact numeric-grid resumption and rejection of changed inputs, duration, sources, records, binary data and encoding; terminated-prefix resumption; disjoint complete study partitions; and complete unique matrix coverage with mandatory physical/refinement gates. The synthetic matrix in the gate test is explicitly not a physics result.
+
+GPT-6.1 Sol's review found that the first writer saved unused trajectory capacity after termination, while the reader required only the accepted prefix. The corrected writer saves exactly `count*width` values. A warning injected after four accepted intervals now verifies failed-state/prefix recovery without repeating integration. The preliminary sequential study was stopped and retained under `artifacts/casing-contact-loaded-pre-review`; measured physics will restart with unchanged dynamics and corrected storage sources.
+
+Independent partitions may run in separate processes. Each owns disjoint whole timestep ladders and a separate report; use one shared directory and identical duration/sources. Wait for both to exit before running the normal command to verify all caches and recompute the full 24/16 matrix. Do not overlap two writers for the same partition or run the full command concurrently with partitions.
+
+```sh
+# In two separate processes; numerical validation, not a performance benchmark:
+node scripts/casing-contact-loaded.mjs artifacts/casing-contact-loaded-20ms .02 0/2
+node scripts/casing-contact-loaded.mjs artifacts/casing-contact-loaded-20ms .02 1/2
+# After both finish:
+node scripts/casing-contact-loaded.mjs artifacts/casing-contact-loaded-20ms .02
+```
+
+Partition reports deliberately fail full-matrix coverage. A partition's successful exit means its own runs and available comparisons passed, not that the complete study is received. Only the assembled `report.json` can supply the full coverage gate.
 
 Source hashes cover the runner, translating/contact scripts, top-level runtime modules, fixtures and pinned native JS/WASM. These files stay fixed throughout the measured study. Save full records and grids under ignored artifacts; commit compact evidence with case/input/source hashes and scientific plots after receiving. Timing and extra substep counts are not real-time performance evidence.
 
