@@ -41,8 +41,12 @@ The final observer reproduces all ten original assessments, and all ten record h
 
 ## Next balanced slice
 
-First finish browser receiving: the previously authorized #39 Edge retry, then both-bike crouch/control selection, visible budget failures, export/replay and 320 px layout. This remains pending at the user's requested quota checkpoint.
+Browser UI receiving is now complete on the tested Windows/Edge combination: both-bike crouch/control selection, visible failures, exports and 320 px layouts pass. The overall browser gate remains failed because 12 of 22 broader rider replay comparisons exceed the unchanged numerical budget; see [browser receiving](RIDER_BROWSER_RECEIVING.md). The #39 focused geometry check separately passes in PR60. First reconcile the portability boundary, preserving this crouch baseline.
 
 The next numerical experiment should compare a versioned reference-velocity feedback policy against this unchanged baseline, using rates derived from the requested geometry and command clock through the same bounded drive. Current damping uses actual joint velocity alone; at the full-suspension 70 kg peak lag, it substantially opposes the position-feedback term. This motivates a test, not a causal proof or an instruction to increase gains. Define target-rate interpolation, command-boundary ownership, serialized record identity and replay before implementation; retain the frozen crouch budgets and both-bike mass/refinement/control matrix.
 
 Only after supported tracking is received should support-transition policy extend the shared loop to endo/wheelie and hop/flight/landing. Keep PR54 and contact/solver qualification separate. No accepted crouch, one-wheel balance, hop, physical calibration or continuous-support claim follows from this checkpoint.
+
+## Browser follow-up — reviewed 2026-11-03
+
+The viewer displays the declared tracking failure for both default 70 kg crouches and labels unchanged-pose controls separately. All UI assertions complete, but both crouch/control replay pairs fail the strict browser/Node comparison. The complete local Node suite now passes 337/337 after repairing the preview allowlist and roundoff-inconsistent target admission. [Receiving report and limitations](RIDER_BROWSER_RECEIVING.md) supersede the earlier pending-browser and sandbox-blocked Node status without changing the original matrix evidence.

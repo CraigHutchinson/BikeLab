@@ -1,25 +1,29 @@
-# BikeLab holding state — 2026-10-30
+# BikeLab current checkpoint — 2026-11-03
 
-User requested a clean pushed checkpoint to conserve quota. Stop here after publication; no further controller tuning, browser experiment, merge or deployment is part of this checkpoint.
+The quota hold was resumed at the user's request. Continue autonomously from this reviewed checkpoint; preserve other worktrees and the independent stability stream.
 
-## Published work and local ownership
+## Delivery state
 
-The runtime configuration-derived controller is in draft [PR68](https://github.com/CraigHutchinson/BikeLab/pull/68), remote head `123aecec190a860e3d463112cd20e8b20aad7ae9`, based on PR67. The crouch follow-up lives on `codex/rider-crouch`, stacked on `codex/rider-controller`. Local implementation commit is `3a05ffbd42047ec11a80ff22b1bb55f76d2534d5`; connector publication uses a separate commit with an identical verified Git tree. The publication commit and draft PR are the remote recovery points. Do not rewrite the parent stack.
+Draft [PR69](https://github.com/CraigHutchinson/BikeLab/pull/69), branch `codex/rider-crouch`, remains stacked on [PR68](https://github.com/CraigHutchinson/BikeLab/pull/68). It now includes preview asset serving, canonical starting-angle admission, focused browser receiving and the evidence below. Local implementation commits are `8be092f` and `0fc2c8a`; connector publication uses separate commits with a verified identical tree. Do not rewrite the parent stack.
 
-Use the `bikelab-rider-controller` checkout under the authorized visualization workspace, not the unrelated Sub0Llm working directory. No stability work is folded into this branch. Preserve other worktrees and PR54.
+[PR60](https://github.com/CraigHutchinson/BikeLab/pull/60) now carries successful focused #39 geometry browser evidence at `ae5fd730a4899ce8813822f44c0abaf1e8be0db2`; it is still draft/unmerged. No GitHub issue is closed. The original geometry preview and current rider checkout are separate branches; do not use one as evidence for the other.
 
-## Evidence and known limit
+## Evidence and limits
 
-See [crouch protocol/results](RIDER_CROUCH.md) and [machine-readable receipt](evidence/rider-crouch.json). All ten native runs complete; all eight moving cases fail only the 10.75 mm tracking-error budget (peaks 15.6–18.4 mm). Final hip errors are below 1.7 mm. The two unchanged-posture controls are labelled controls. No tuned gains, relaxed domains or new force law was introduced.
+[Browser receiving](RIDER_BROWSER_RECEIVING.md) completed all UI assertions on both bikes with no page/console errors. Six representative captures were visually reviewed. The overall browser gate remains failed: **12/22** browser/Node complete-record comparisons exceed the unchanged tolerance. The complete Node suite passes **337/337**, including real HTTP serving and the new starting-angle regression. No full-local/hosted attestation is claimed.
 
-Quick: 90/90 on the clean implementation commit. Full local Node suite: 335/336, with the existing sandbox loopback EACCES failure. No browser/full/hosted attestation is claimed. All ten raw-record hashes and final-observer assessments were rechecked. Complete raw records and local logs are retained under ignored `artifacts/`; their summary, hashes, phase metrics and reproduction script are committed.
+The [crouch matrix](RIDER_CROUCH.md) still completes all ten native runs. All eight moving cases fail only the declared 10.75 mm transient tracking budget; no gains, physics, passive domains or acceptance thresholds were tuned. Current browser crouches show the same tracking failure visibly. Complete raw records/captures/logs remain in ignored artifacts; compact receipts and hashes are committed.
 
-## Resume in this order
+## Next balanced work
 
-1. Retry authorized Edge access for #39's geometry-provenance UI check. Verify the served source/revision before claiming evidence; the old ambient port 4177 alone does not establish it. Then receive both-bike rider worker/replay/crouch/control/mobile cases in `scripts/rider-drive-browser-check.mjs`. No successful retry is claimed at this checkpoint.
-2. Review the failed crouch baseline and design versioned reference-velocity feedback through the common bounded drive. Derive rates from target geometry/clock; define interpolation, boundary semantics and record/replay identity first. Preserve mass-derived effort/gains and frozen budgets. Actual-velocity damping is a hypothesis for lag, not a proven diagnosis.
-3. Receive supported tracking before one-wheel endo/wheelie or hop/flight/landing policy. Keep support feasibility, phase history and continuation ownership explicit. Stability PR54, contact-normal #58 and residual/reference #59 gates remain independent.
+1. Trace the first browser/Node divergence from identical serialized target/controller configuration: compiled target deltas/native attributes, then state/contact/effort history. Coordinate with #57 and PR54; keep this narrow portability investigation separate from broader stability implementation. Do not weaken comparisons or tune gains to hide it.
+2. Design and receive versioned reference-velocity feedback through the common bounded drive, with geometry/clock-derived rates, explicit interpolation and boundary ownership, record/replay identity, and the unchanged crouch budgets. Actual-velocity damping remains a hypothesis for lag, not a proven diagnosis.
+3. Receive supported tracking before one-wheel endo/wheelie or hop/flight/landing policies. Keep support feasibility, phase history and continuation ownership explicit; #58 normal and #59 solver/reference gates remain independent.
 
-Reproduction: `node scripts/rider-crouch-review.mjs` writes the ten full records and report; `node --test test/rider-crouch.test.mjs test/rider-transfer.test.mjs test/pages.test.mjs` checks the focused surface. Run `npm run ci:quick` or `npm run ci:unit` without concurrent repository edits.
+## Working preview and reproduction
 
-Hosted CI and Pages remain paused. Follow [CI workflow](CI_WORKFLOW.md): keep literal guards and repository enable variable disabled, use `[skip ci]`, and do not dispatch, deploy, tag releases or merge. Resumption on/after 1 November is deliberate, not automatic. Skipped checks are not passed checks.
+Use the `bikelab-rider-controller` checkout beneath the authorized visualization workspace, not Sub0Llm. [LOCAL_PREVIEW.md](LOCAL_PREVIEW.md) records the verified host launch. Restricted sandbox Node can report listening while host browsers time out; run the loopback-only preview/check through the approved host path when needed, verify HTTP and browser readiness, and leave it running for user inspection. Restart after a host-session teardown if it is no longer listening; do not assume an old process or tab survives.
+
+`npm run browser-check:rider` collects the complete focused UI sequence while retaining every strict replay failure and exits nonzero if any comparison fails. `npm run ci:unit` checks all Node tests and vendor hashes. `node scripts/rider-crouch-review.mjs` regenerates the mass/control/refinement matrix. Avoid editing during local CI receipt generation.
+
+Hosted CI/Pages remain disabled in this branch; resumption on/after 1 November is deliberate. Follow [CI workflow](CI_WORKFLOW.md), use `[skip ci]`, and do not claim skipped checks as passed. No hosted run, deployment or merge was part of this receiving checkpoint.

@@ -1,3 +1,4 @@
+import {CONTROL_FORMAT,CONTROL_MODEL} from '../dist/rider-controller.js';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {compileRiderTargets,TARGET_MODEL} from '../dist/rider-targets.js';
@@ -80,5 +81,29 @@ test('timed targets in flight retain momentum bounds and refine integration erro
    assert.ok(linear<2e-4);assert.ok(Math.abs(f.momentumResidual[2])<2e-4);assert.ok(energy<.02);assert.ok(r.summary.maxSampledRootWrench<1e-7);
    if(previous){assert.ok(linear<.6*previous.linear);assert.ok(energy<.6*previous.energy);}previous={linear,energy};
   }
+ }
+});
+
+// Values captured from Edge 157's exported default target sequence. Node 24
+// reconstructs hip/knee 4.44e-16 / 8.88e-16 radians away; no commanded motion changes.
+test('foreign derived starting angles retain bytes and share canonical drive admission',async()=>{
+ const a=short('full'),base=await run(a),saved=structuredClone(base.scenario);
+ saved.active.joints.hip.targetAngle=1.4792200037917314;
+ saved.active.joints.knee.targetAngle=1.6922412012942731;
+ const received=inputFromRecord({...base,scenario:saved});
+ assert.deepEqual(received.active,saved.active);
+ const rerun=await run(received);assert.deepEqual(rerun.frames,base.frames);assert.deepEqual(rerun.summary,base.summary);
+ assert.deepEqual(await replay(rerun),rerun);
+ for(const controlled of [false,true]){
+  const request=structuredClone(saved);
+  if(controlled)request.active={format:CONTROL_FORMAT,joints:Object.fromEntries(Object.entries(saved.active.joints).map(([name,j])=>[name,{targetAngle:j.targetAngle}]))};
+  const {wheelParams,...scenario}=validate(request);
+  assert.deepEqual(inputFromRecord({model:controlled?CONTROL_MODEL:TARGET_MODEL,scenario}).active,scenario.active);
+  for(const name of Object.keys(scenario.active.joints))for(const sign of [-1,1]){
+   const conflict=structuredClone(scenario);conflict.active.joints[name].targetAngle+=sign*1e-10;
+   assert.throws(()=>validate(conflict),/conflicts/);
+  }
+  const changedPose=structuredClone(scenario);changedPose.riderTargets.commands[0].hip[0]+=1e-14;
+  assert.throws(()=>validate(changedPose),/First target/);
  }
 });

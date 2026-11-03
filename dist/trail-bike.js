@@ -3,7 +3,7 @@ import {TARGET_MODEL,TARGET_FORMAT,compileRiderTargets} from './rider-targets.js
 import {compileRiderTask} from './rider-task.js';
 import {TYRE_WINDOW_MODEL,WINDOW_SCOPE,validateWindow,windowSchedule} from './tyre-window.js';
 import {TYRE_MOTION,TYRE_MOTION_MODEL,TYRE_MOTION_SCOPE,createTyreMotion,createTyreMotionFrame,materializeTyreMotion} from './tyre-motion.js';
-import {ACTIVE_MODEL,validateDrive,createRiderDrive,createDriveFrame,materializeDriveFrame} from './rider-drive.js';
+import {ACTIVE_MODEL,canonicalTargetDelta,validateDrive,createRiderDrive,createDriveFrame,materializeDriveFrame} from './rider-drive.js';
 import {CANONICAL_MODEL,CANONICAL_NUMERICS,canonicalLaunch} from './trail-canonical.js';
 import {STATE_MODEL,RUN_MOTION,validateInitialization,canonicalModelXML,stateIdentity,scalarLayout,applyState,captureState,scalarStateIssue} from './trail-initial-state.js';
 import {DEFAULTS as RIG_DEFAULTS,validate as validateRig} from './bike-rig.js';
@@ -80,7 +80,9 @@ export function validate(input={}){
  const hasTargets=Object.hasOwn(input,'riderTargets');
  if(hasTargets&&(!active||initialization?.mode!=='launch'||hasDiagnostics))throw Error('Rider targets require active launch without tyre observation diagnostics.');
  const targetCompilation=hasTargets?compileRiderTargets(input.riderTargets,articulated.passive,Math.round(motion.duration/motion.dt)):null,riderTargets=targetCompilation?.spec;
- if(riderTargets){const origin=targetCompilation.commands[0];for(let i=0;i<4;i++)if(Object.values(active.joints)[i].targetAngle!==origin.angles[i])throw Error('Static drive target conflicts with rider target sequence.');}
+ // Use the drive's existing zero-displacement rule for derived initial angles.
+ // Browser/Node trig can differ by ulps; preserve saved angles and reject actual drive conflicts.
+ if(riderTargets){const origin=targetCompilation.commands[0];for(let i=0;i<4;i++)if(canonicalTargetDelta(Object.values(active.joints)[i].targetAngle,origin.angles[i])!==0)throw Error('Static drive target conflicts with rider target sequence.');}
  const hasWindow=Object.hasOwn(input,'observationWindow');if(hasWindow&&!hasDiagnostics)throw Error('Observation windows require tyre motion diagnostics.');
  const observationWindow=hasWindow?validateWindow(input.observationWindow,motion,commands):null;
  return {commands,surface:Object.freeze(surface),bike:Object.freeze(bike),wheel:Object.freeze(wheel),motion:Object.freeze(motion),profile,assembly,wheelParams:wp,...(hasRider?{articulated}:{}),...(initialization?{initialization}:{}),...(canonical?{numerics:CANONICAL_NUMERICS}:{}),...(active?{active}:{}),...(riderTargets?{riderTargets}:{}),...(hasDiagnostics?{diagnostics:TYRE_MOTION}:{}),...(observationWindow?{observationWindow}:{})};

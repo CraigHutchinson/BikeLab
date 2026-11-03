@@ -155,3 +155,9 @@ Next rider consumer: larger crouch/recovery with declared tracking/support budge
 ## Quota holding checkpoint — 2026-10-30
 
 The [larger crouch experiment](RIDER_CROUCH.md) and complete evidence summary are ready for review on a separate draft stacked on PR68. Ten runs complete; all eight moving cases fail only the frozen transient tracking budget. The next common-control investigation is reference-velocity feedback derived from target geometry and the command clock, with no gain-table tuning or manoeuvre-specific force sequence. Browser receiving, including the newly authorized #39 Edge retry, is pending at the user-requested quota checkpoint. Keep #39/#40 browser gates, PR54 stability and #56–59 delivery/contact/reference gates open; this change closes no issue. [Handoff and commands](HOLDING_STATE.md).
+
+## Browser receiving update — 2026-11-03
+
+The focused #39 geometry import/export/reload and visual gate passes in PR60; integration/issue closure remain pending. On PR69, the rider UI, mass edits, exports, cancellation and mobile checks complete on both bikes, and the Node suite passes 337/337. The real server test exposed and now covers twelve previously unserved rider modules. Target admission now uses the existing drive zero-displacement rule for roundoff-only derived starting angles, preserving serialized inputs and meaningful conflict rejection.
+
+**#57 remains blocking for browser/Node numerical receiving:** 12/22 full-record comparisons exceed the unchanged 1e-9 normalized budget. [Receipts and cases](RIDER_BROWSER_RECEIVING.md) distinguish completed UI from failed replay. Next isolate compiled targets/native attributes and the first accepted state/contact/effort divergence from identical serialized inputs; do not fold a gain/tolerance change into this observation. Keep PR54, #58/#59 and #40 separate. No hosted workflow, deployment, merge or issue closure was performed.

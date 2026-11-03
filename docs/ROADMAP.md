@@ -294,3 +294,7 @@ The [calculation progress and optimization pass](TRAIL_CALCULATION_PROGRESS.md#i
 ## Rider crouch checkpoint — 2026-10-30
 
 The [geometry-scaled crouch/recovery](RIDER_CROUCH.md) completes all ten mass/control/refinement cases through the shared runtime effort layer, with explicit saved-sample budgets. All moving cases fail transient tracking; final recovery, lowering, load, eligibility, saturation and net-work screens pass. Preserve this baseline. Next receive browser interaction, then test versioned target-rate feedback with geometry/clock-derived rates and unchanged budgets. Support-aware endo/wheelie/hop policies follow accepted tracking; PR54 stability and contact/solver gates remain separate. See [holding-state handoff](HOLDING_STATE.md).
+
+## Browser receiving checkpoint — 2026-11-03
+
+[Both-bike rider UI receiving](RIDER_BROWSER_RECEIVING.md) now completes, including crouch controls and mobile budget readouts. Local Node coverage passes 337/337. Browser/Node numerical acceptance remains open (12/22 comparisons fail). Reconcile that portability boundary with identical-input traces before promoting the shared controller; preserve the next reference-velocity experiment and frozen crouch budgets. The working host-preview procedure is documented in [LOCAL_PREVIEW.md](LOCAL_PREVIEW.md).

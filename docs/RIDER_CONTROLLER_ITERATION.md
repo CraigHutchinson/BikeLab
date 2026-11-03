@@ -53,3 +53,7 @@ The controller is an experimental shared effort mechanism, not production promot
 ## Received follow-up checkpoint — 2026-10-30
 
 The [larger crouch/recovery](RIDER_CROUCH.md) now completes ten both-bike mass/control/refinement runs with frozen budgets. Its transient tracking screen fails in all moving cases, despite successful final recovery. Preserve that result and test a versioned reference-rate feedback policy next; browser interaction and physical support qualification remain pending. This supersedes the earlier unmeasured-crouch next step without promoting the controller past stability or manoeuvre gates.
+
+## Browser receiving update — 2026-11-03
+
+The [focused rider UI sequence](RIDER_BROWSER_RECEIVING.md) completes on both bikes, including configured-mass edits, effort decomposition, controller/crouch examples, mobile panels, exports and cancellation. The full Node suite passes 337/337. All eight estimated-controller browser/Node record comparisons (hold/transfer/crouch/control on both bikes) fail the unchanged strict numerical budget. UI completion does not promote the controller. Next reconcile the first portability divergence, then receive the versioned reference-rate experiment against the frozen crouch baseline.

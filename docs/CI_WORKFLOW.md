@@ -54,3 +54,7 @@ On or after 1 November, remove the temporary literal false guards from the four 
 ## Adoption evidence
 
 Local quick passed 46 tests; the complete Node suite passed 276 tests with no skips/failures on Windows / Node 24.22.0. Actionlint 1.7.7 passed all four workflows. Missing Playwright correctly failed the full-local runner, and a dirty checkout correctly refused attestation before any publication. GitHub settings require credentials unavailable to this shell; no variable or ruleset change is claimed. The checked-in false guards guarantee the pause independently of repository variables. No hosted run, cross-OS execution, new browser receiving or deployment is claimed by the infrastructure change. Browser evidence for the existing product remains in its prior receiving receipts; new longer-settling controls in PR54 retain their own pending gates.
+
+## Desktop loopback receiving — 2026-11-02
+
+See [LOCAL_PREVIEW.md](LOCAL_PREVIEW.md) for the verified host launch procedure. Sandbox EACCES and browser-launch failures can prevent HTTP assertions from running; they do not establish that the preview serves its complete dependency graph. Run the real server regression through the approved host path where required. Focused rider receiving retains numerical replay failures even when later UI cases complete, and never produces a full attestation.
