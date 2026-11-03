@@ -1,5 +1,7 @@
 # Delivery and validation plan
 
+**Integration update:** PR60, PR61 and the complete PR62–69 rider stack are assembled with current main for the user-requested experimental merge. [Integration receipt and follow-up PR boundaries](WORKSTREAM_INTEGRATION.md) supersede the pre-integration inventory below. Integrated tests pass 349/349; geometry/terrain browser gates pass. Rider replay/tracking failures remain explicit. Current main CI policy is preserved.
+
 ## Current execution order — 2026-11-03
 
 The [upstream consolidation](ISSUE_WORK_PLAN.md#current-upstream-reconciliation) reconciles all 25 open issues and 12 draft PRs, including #70–76 and PR54 at `f595805`. It is authoritative for current ordering; dated checkpoints below remain historical. Main `05cf120` has restored minimal local-first CI, while the rider stack retains old guards pending integration. See [branch-aware CI policy](CI_WORKFLOW.md).

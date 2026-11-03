@@ -136,4 +136,4 @@ The [larger crouch/recovery experiment](docs/RIDER_CROUCH.md) derives displaceme
 
 For reliable local previews and focused rider browser checks, see [local preview and receiving](docs/LOCAL_PREVIEW.md). Keep the preview process alive while inspecting it; verify actual HTTP responses rather than relying on the listening banner.
 
-The [current work and upstream catalogue](docs/ISSUE_WORK_PLAN.md#current-upstream-reconciliation) maps all open issues and draft PRs to receiving gates, including the contact-law/rest findings and rider stack integration order. [CI policy](docs/CI_WORKFLOW.md) distinguishes upstream's minimal resumption from this branch's older guards.
+The [current work and upstream catalogue](docs/ISSUE_WORK_PLAN.md#current-upstream-reconciliation) maps all open issues and draft PRs to receiving gates, including the contact-law/rest findings and rider stack integration order. [Integration receipt](docs/WORKSTREAM_INTEGRATION.md) records the combined main checkpoint, successful geometry/terrain receiving and the remaining rider follow-up gates. Current upstream CI policy is preserved.

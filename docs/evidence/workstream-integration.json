@@ -1,0 +1,258 @@
+{
+  "schema": "bikelab-workstream-integration-1",
+  "date": "2026-11-03",
+  "testedSource": "3f12b7d4b68f356d73311cb77f97ed9bbdfd6ffa",
+  "sourcePRs": [
+    {
+      "number": 69,
+      "head": "codex/rider-crouch",
+      "headSha": "a10b3d1e2c83a3ae2d23cf9a72f696465196032d",
+      "url": "https://github.com/CraigHutchinson/BikeLab/pull/69"
+    },
+    {
+      "number": 68,
+      "head": "codex/rider-controller",
+      "headSha": "123aecec190a860e3d463112cd20e8b20aad7ae9",
+      "url": "https://github.com/CraigHutchinson/BikeLab/pull/68"
+    },
+    {
+      "number": 67,
+      "head": "codex/rider-static-reference",
+      "headSha": "04725f193375e0f186ceafc1a02c1fb7d971f439",
+      "url": "https://github.com/CraigHutchinson/BikeLab/pull/67"
+    },
+    {
+      "number": 66,
+      "head": "codex/rider-geometry-error",
+      "headSha": "3feee7e96fbc70b464a33285d09071415d2836d6",
+      "url": "https://github.com/CraigHutchinson/BikeLab/pull/66"
+    },
+    {
+      "number": 65,
+      "head": "codex/rider-hold-loads",
+      "headSha": "ccd57420cf2ab4a877a53fb36461f2d92f5c7242",
+      "url": "https://github.com/CraigHutchinson/BikeLab/pull/65"
+    },
+    {
+      "number": 64,
+      "head": "codex/rider-transfer-review",
+      "headSha": "64472f754a62b1232a8f06ec3684ff2aa0b0ae2f",
+      "url": "https://github.com/CraigHutchinson/BikeLab/pull/64"
+    },
+    {
+      "number": 63,
+      "head": "codex/rider-target-drive",
+      "headSha": "9e9ddd059b3b5e1c4d1c0e04a5d5ba2903fcf3aa",
+      "url": "https://github.com/CraigHutchinson/BikeLab/pull/63"
+    },
+    {
+      "number": 62,
+      "head": "codex/rider-task-targets",
+      "headSha": "442b0527d59819142c9cbab13fed25d9b9830238",
+      "url": "https://github.com/CraigHutchinson/BikeLab/pull/62"
+    },
+    {
+      "number": 61,
+      "head": "codex/terrain-mandatory-first",
+      "headSha": "c1056374c887b96178c3193a7ea7bdb67c8d463b",
+      "url": "https://github.com/CraigHutchinson/BikeLab/pull/61"
+    },
+    {
+      "number": 60,
+      "head": "codex/geometry-labels",
+      "headSha": "ae5fd730a4899ce8813822f44c0abaf1e8be0db2",
+      "url": "https://github.com/CraigHutchinson/BikeLab/pull/60"
+    }
+  ],
+  "unit": {
+    "schemaVersion": 1,
+    "level": "unit",
+    "head": "3f12b7d4b68f356d73311cb77f97ed9bbdfd6ffa",
+    "clean": true,
+    "node": "v24.22.0",
+    "platform": "win32",
+    "arch": "x64",
+    "startedAt": "2026-11-03T11:31:58.470Z",
+    "checks": [
+      {
+        "command": [
+          "node",
+          "scripts/check-provenance.mjs"
+        ],
+        "exitCode": 0,
+        "error": null
+      },
+      {
+        "command": [
+          "node",
+          "--test"
+        ],
+        "exitCode": 0,
+        "error": null
+      }
+    ],
+    "coverage": "local Node suite and pinned vendor hashes; no browser",
+    "success": true,
+    "finishedAt": "2026-11-03T11:33:55.086Z"
+  },
+  "browser": {
+    "success": true,
+    "node": "v24.22.0",
+    "platform": "win32",
+    "playwright": "1.62.1",
+    "browser": "157.0.4341.36",
+    "checks": [
+      "geometry labels: rounded derived coordinates survive import/export/reload without snapping; a nearby custom edit remains custom",
+      "terrain R0a: six browser/Node replays with exact geometry identities and 1e-12 geometric tolerance; bounded cache observations validated separately; explicit missing-data stop; cut directions/rows; play/pause/rewind/scrub; export/verified import and invalid rejection; live accepted intervals during delayed wait/cancel/supersession; mobile 390/320"
+    ],
+    "screenshots": [
+      "geometry-rounded-label.png",
+      "terrain-request-step.png",
+      "terrain-request-off-centre.png",
+      "terrain-request-transverse.png",
+      "terrain-request-missing.png",
+      "terrain-request-live-delivery.png",
+      "terrain-request-mobile-390.png",
+      "terrain-request-mobile-320.png"
+    ],
+    "errors": [],
+    "terrainRequest": {
+      "agreement": [
+        {
+          "maxDifference": 0,
+          "numbers": 80429,
+          "geometryTolerance": 1e-12,
+          "discreteFieldsExact": true,
+          "cacheObservationsCompared": false
+        },
+        {
+          "maxDifference": 6.938893903907228e-18,
+          "numbers": 268674,
+          "geometryTolerance": 1e-12,
+          "discreteFieldsExact": true,
+          "cacheObservationsCompared": false
+        },
+        {
+          "maxDifference": 6.938893903907228e-18,
+          "numbers": 267798,
+          "geometryTolerance": 1e-12,
+          "discreteFieldsExact": true,
+          "cacheObservationsCompared": false
+        },
+        {
+          "maxDifference": 0,
+          "numbers": 80695,
+          "geometryTolerance": 1e-12,
+          "discreteFieldsExact": true,
+          "cacheObservationsCompared": false
+        },
+        {
+          "maxDifference": 2.7755575615628914e-17,
+          "numbers": 239567,
+          "geometryTolerance": 1e-12,
+          "discreteFieldsExact": true,
+          "cacheObservationsCompared": false
+        },
+        {
+          "maxDifference": 0,
+          "numbers": 42282,
+          "geometryTolerance": 1e-12,
+          "discreteFieldsExact": true,
+          "cacheObservationsCompared": false
+        },
+        {
+          "maxDifference": 0,
+          "numbers": 80695,
+          "geometryTolerance": 1e-12,
+          "discreteFieldsExact": true,
+          "cacheObservationsCompared": false
+        }
+      ]
+    }
+  },
+  "visuallyInspected": [
+    "geometry-rounded-label.png",
+    "terrain-request-live-delivery.png",
+    "terrain-request-mobile-320.png"
+  ],
+  "artifacts": [
+    {
+      "path": "artifacts\\integration-browser\\geometry-annotated-label.json",
+      "sha256": "64486a11156cb7b57e48fa7e9d52d5420f2ce9c3c01f3aaebb3b98432046f54c"
+    },
+    {
+      "path": "artifacts\\integration-browser\\geometry-rounded-label.json",
+      "sha256": "e2b015fec0411bfb7512e18ed955fbe254b99ed9e03b1470c58d2f0ee36a4d47"
+    },
+    {
+      "path": "artifacts\\integration-browser\\geometry-rounded-label.png",
+      "sha256": "7fef02ee6765e5af1cd8752c83470267cbb29f59cda9730f263d3490f37576d5"
+    },
+    {
+      "path": "artifacts\\integration-browser\\report.json",
+      "sha256": "3f0fdcb23def99620181af569922db6d3beb40c87cfb13a06897ac70b826c696"
+    },
+    {
+      "path": "artifacts\\integration-browser\\terrain-request-after-cancel.json",
+      "sha256": "fdfb4e221b25524bef2d2069937236269c381b40f52c8a56e1d18d8961c28ac9"
+    },
+    {
+      "path": "artifacts\\integration-browser\\terrain-request-left.json",
+      "sha256": "99995eddc7b9d941c2cdf30f172c25a90cf5f43a830b47f09deeaef59dfed65f"
+    },
+    {
+      "path": "artifacts\\integration-browser\\terrain-request-live-delivery.png",
+      "sha256": "b2aaca21a6c5318b52f44bf23f1832b8c26821d858813fd836a23be23d325fe5"
+    },
+    {
+      "path": "artifacts\\integration-browser\\terrain-request-missing.json",
+      "sha256": "1239610fa6845d45e62c6030f348696b1d6a361e3ea4366c96a7765714ae5504"
+    },
+    {
+      "path": "artifacts\\integration-browser\\terrain-request-missing.png",
+      "sha256": "d0b29cb9504371458eb24a289654d8172fb807e442bfbb02859297f5ea64d63e"
+    },
+    {
+      "path": "artifacts\\integration-browser\\terrain-request-mobile-320.png",
+      "sha256": "cd539d67cc3f87406b54c13c83d9d54b0595d3cb35ab2ca06b3f773af9bbc18d"
+    },
+    {
+      "path": "artifacts\\integration-browser\\terrain-request-mobile-390.png",
+      "sha256": "dd76d58394194db328b1e91f9fcd180ae26c3028e3e7053247212856b97a6a54"
+    },
+    {
+      "path": "artifacts\\integration-browser\\terrain-request-off-centre.png",
+      "sha256": "ab3c06c6358e6788a05f06f73e4f89a6263764bbacaf666e6b8dadc3ddaf043d"
+    },
+    {
+      "path": "artifacts\\integration-browser\\terrain-request-reverse.json",
+      "sha256": "fdfb4e221b25524bef2d2069937236269c381b40f52c8a56e1d18d8961c28ac9"
+    },
+    {
+      "path": "artifacts\\integration-browser\\terrain-request-right.json",
+      "sha256": "c6d9d138e86627a7272f0888efe2a701babbfc824d242dc0c1bd7e7812b24cc5"
+    },
+    {
+      "path": "artifacts\\integration-browser\\terrain-request-steer.json",
+      "sha256": "a70a380925801e8e2b676eaff995efc5a26e765ceaff23bd528361be0392534f"
+    },
+    {
+      "path": "artifacts\\integration-browser\\terrain-request-step.png",
+      "sha256": "766522d9ba83245791066297b2860c49dbf207a9f0b8562a426b358c9cfe9a72"
+    },
+    {
+      "path": "artifacts\\integration-browser\\terrain-request-straight.json",
+      "sha256": "93c5e4f1d105ba3ebddf7840d12c8046245a507fdf0295d80f31f3056bd53506"
+    },
+    {
+      "path": "artifacts\\integration-browser\\terrain-request-transverse.png",
+      "sha256": "8269beaac903799aaa8c5782614ec21ca2298dfcec237a4cd87870265e96d29b"
+    }
+  ],
+  "limits": [
+    "No full attestation or hosted run.",
+    "Prior rider UI evidence retained; 12/22 strict replay comparisons still fail.",
+    "Eight moving crouches fail unchanged transient tracking budget.",
+    "User requested merge with remaining work in follow-up PRs; no normal gate changed."
+  ]
+}

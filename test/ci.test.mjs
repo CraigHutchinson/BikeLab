@@ -24,10 +24,12 @@ test('newest status wins and unrelated contexts cannot authorize a merge', () =>
     {context: 'ci/full', state: 'success'}], 'ci/full'), false);
 });
 
-test('weekly full skips an already verified head; explicit requests can rerun it', () => {
+test('full is deliberate, deduplicates successful exact heads and supports explicit reruns', () => {
   assert.equal(fullRequested('schedule', {}, true), false);
-  assert.equal(fullRequested('schedule', {}, false), true);
+  assert.equal(fullRequested('schedule', {}, false), false);
   assert.equal(fullRequested('workflow_dispatch', {}, true), true);
+  assert.equal(fullRequested('push', {ref: 'refs/tags/v1.0'}, true), false);
+  assert.equal(fullRequested('push', {ref: 'refs/tags/ordinary'}, false), false);
   assert.equal(fullRequested('push', {ref: 'refs/heads/main'}, false), false);
   assert.equal(fullRequested('push', {ref: 'refs/tags/v1.0'}, false), true);
   assert.equal(fullRequested('push', {ref: 'refs/tags/milestone/rider'}, false), true);
@@ -38,6 +40,9 @@ test('full PR jobs require an explicit label and cannot execute forks with write
     head: {repo: {full_name: 'a/b'}}, labels: []}};
   assert.equal(fullRequested('pull_request', event, false), false);
   event.pull_request.labels = [{name: 'ci:full'}];
+  assert.equal(fullRequested('pull_request', event, false), true);
+  assert.equal(fullRequested('pull_request', event, true), false);
+  event.action = 'synchronize';
   assert.equal(fullRequested('pull_request', event, false), true);
   event.pull_request.labels = [{name: 'ci:release'}];
   assert.equal(fullRequested('pull_request', event, false), true);

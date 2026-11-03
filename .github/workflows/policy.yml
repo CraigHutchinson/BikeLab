@@ -1,9 +1,8 @@
-# Quota hold through 2026-10-31: remove the literal false guards only on/after 1 November.
 name: PR policy
 on:
   pull_request_target:
     branches: [main]
-    types: [opened, synchronize, reopened, labeled, unlabeled]
+    types: [labeled, unlabeled]
     paths-ignore: ['**/*.md', 'docs/**', 'LICENSE*', '**/provenance.json']
   workflow_run:
     workflows: [Smoke]
@@ -12,13 +11,16 @@ on:
 permissions:
   contents: read
 concurrency:
-  group: policy-${{ github.event.pull_request.head.sha || github.event.workflow_run.head_sha || github.event.sha }}
+  group: policy-${{ ((github.event_name == 'status' && github.event.context != 'local-ci/full') || (github.event_name == 'pull_request_target' && !contains(fromJSON('["ci:full","ci:release","ci:local-verified"]'), github.event.label.name)) || (github.event_name == 'workflow_run' && github.event.workflow_run.event != 'pull_request')) && format('ignored-{0}', github.run_id) || github.event.pull_request.head.sha || github.event.workflow_run.head_sha || github.event.sha }}
   cancel-in-progress: true
 jobs:
   policy:
     if: >-
-      false && vars.BIKELAB_HOSTED_CI_ENABLED == 'true' &&
-      (github.event_name != 'status' || github.event.context == 'local-ci/full')
+      vars.CI_MODE != 'off' && vars.BIKELAB_HOSTED_CI_ENABLED != 'false' &&
+      (github.event_name != 'workflow_run' || github.event.workflow_run.event == 'pull_request') &&
+      (github.event_name != 'status' || github.event.context == 'local-ci/full') &&
+      (github.event_name != 'pull_request_target' ||
+       contains(fromJSON('["ci:full","ci:release","ci:local-verified"]'), github.event.label.name))
     runs-on: ubuntu-24.04
     timeout-minutes: 3
     permissions:

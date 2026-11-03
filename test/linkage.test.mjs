@@ -3,8 +3,56 @@ import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
 import {runRig,rigRecord,validate,setupFromRecord,MODEL,DEFAULTS,G} from '../dist/bike-rig.js';
-import {ANNOTATION,GEOMETRY_KEYS,GEOMETRY,PHOTO_GEOMETRY,REFERENCE_GEOMETRY,geometryFor,shockLength,shockCompressionJacobian,verticalMotionRatio,rearRise,strokeAngle,linkageDiagnostics} from '../dist/linkage.js';
+import {ANNOTATION,GEOMETRY_KEYS,GEOMETRY,PHOTO_GEOMETRY,REFERENCE_GEOMETRY,geometryFor,geometryLabel,shockLength,shockCompressionJacobian,verticalMotionRatio,rearRise,strokeAngle,linkageDiagnostics} from '../dist/linkage.js';
 const close=(a,b,tol=1e-12)=>assert.ok(Math.abs(a-b)<tol,`${a} != ${b}`);
+
+function adjacentFloat(value,direction){
+  if(value===0)return direction*Number.MIN_VALUE;
+  const view=new DataView(new ArrayBuffer(8));view.setFloat64(0,value);
+  view.setBigUint64(0,view.getBigUint64(0)+BigInt(value>0?direction:-direction));
+  return view.getFloat64(0);
+}
+
+test('photo labels survive derived-coordinate rounding without snapping geometry',()=>{
+  const label='Annotated layout · estimated geometry';
+  // Independently reconstructed pixel differences and a different norm evaluation
+  // order emulate a consumer that does not use V8's exact intermediate rounding.
+  const scale=.210/Math.sqrt((.099*2670)**2+(.024*1558)**2);
+  const reconstructed={...PHOTO_GEOMETRY,shockArmX:-.026*2670*scale,shockArmZ:.155*1558*scale,
+    shockFrameX:.040+.073*2670*scale,shockFrameZ:-.235+.179*1558*scale};
+  assert.equal(geometryLabel(reconstructed),label);
+  for(const key of ['shockArmX','shockArmZ','shockFrameX','shockFrameZ'])for(const direction of [-1,1]){
+    const value=adjacentFloat(PHOTO_GEOMETRY[key],direction),p={...PHOTO_GEOMETRY,[key]:value};
+    assert.notEqual(value,PHOTO_GEOMETRY[key]);const before=JSON.stringify(p);
+    assert.equal(geometryLabel(p),label,key);assert.equal(geometryLabel(JSON.parse(before)),label,key);
+    assert.equal(JSON.stringify(p),before);assert.equal(geometryFor(p)[key],value,key);
+    assert.equal(geometryLabel({...p,[key]:PHOTO_GEOMETRY[key]+direction*1e-15}),label,key);
+    assert.equal(geometryLabel({...p,[key]:PHOTO_GEOMETRY[key]+direction*1e-14}),'Custom geometry · uncalibrated',key);
+  }
+});
+
+test('authored changes, near-preset custom inputs and invalid coordinates are not photo provenance',()=>{
+  assert.equal(geometryLabel(PHOTO_GEOMETRY),'Annotated layout · estimated geometry');
+  assert.equal(geometryLabel(REFERENCE_GEOMETRY),'Original reference geometry');
+  for(const key of ['pivotX','pivotZ','shockTravel'])for(const direction of [-1,1])
+    assert.equal(geometryLabel({...PHOTO_GEOMETRY,[key]:adjacentFloat(PHOTO_GEOMETRY[key],direction)}),'Custom geometry · uncalibrated',key);
+  for(const key of GEOMETRY_KEYS){
+    assert.equal(geometryLabel({...REFERENCE_GEOMETRY,[key]:adjacentFloat(REFERENCE_GEOMETRY[key],1)}),'Custom geometry · uncalibrated',key);
+    for(const value of [NaN,Infinity,-Infinity,undefined,String(PHOTO_GEOMETRY[key])])
+      assert.equal(geometryLabel({...PHOTO_GEOMETRY,[key]:value}),'Custom geometry · uncalibrated',key);
+  }
+});
+
+test('rounded photo inputs retain exact saved coordinates, diagnostic labels and replay',async()=>{
+  const p={...PHOTO_GEOMETRY,duration:2};
+  for(const key of ['shockArmX','shockArmZ','shockFrameX','shockFrameZ'])p[key]=adjacentFloat(p[key],-1);
+  const run=await runRig(p),record=rigRecord(run),saved=JSON.parse(JSON.stringify(record));
+  const restored=setupFromRecord(saved),replay=await runRig(restored);
+  assert.equal(linkageDiagnostics(run).label,'Annotated layout · estimated geometry');
+  assert.equal(linkageDiagnostics(replay).label,'Annotated layout · estimated geometry');
+  for(const key of GEOMETRY_KEYS)assert.equal(restored[key],p[key]);
+  assert.deepEqual(rigRecord(replay),record);
+});
 
 test('annotations set high arm eye and 210 mm short shock without moving axle/BB datums',()=>{
   const g=GEOMETRY;close(shockLength(0),.210);close(g.shockTravel,.055);

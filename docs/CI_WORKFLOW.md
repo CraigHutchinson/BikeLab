@@ -2,13 +2,11 @@
 
 Adopted 2026-10-28 from [CraigHutchinson/.github CI strategy](https://github.com/CraigHutchinson/.github/blob/main/docs/ci-strategy.md), source blob `40526a967ab0ef3fedbff3a35b24f053050c0ef0`.
 
-## Rider-branch reconciliation — 2026-11-03
+## Workstream integration — 2026-11-03
 
-The policy below is received from upstream main `05cf1200f9cf28bcbe7738b3905d4b258ba333ae`, document blob `e12e3caee2b3a82296f4cd926d2799668ee9ceb7`. **This stacked rider branch still contains the pre-resumption workflow guards and policy implementation.** This documentation update does not modify workflows or repository settings. Reconcile the complete upstream workflow, `scripts/ci-policy.mjs` and test changes at the stack root before integration; do not copy the stale guards back to main.
+This integration receives upstream main `05cf120` and its complete workflow, policy implementation and tests. The old literal pause guards are removed by that existing upstream change; routine smoke, deliberate full requests, emergency off settings and separately verified Pages retain their upstream semantics.
 
-Current shared strategy blob `3693b6f3c1a484aaaed353978253d48ccf624ebc` additionally describes `CI_MODE` and `ci:skip`. BikeLab's JavaScript/WASM adaptation deliberately has no weekly full schedule and does not implement `ci:skip`; C++ reusable callers are not appropriate substitutes for its consumed Node/WASM checks. #56 remains open for this explicit adaptation and operational receiving, not because the entire local-first infrastructure is missing.
-
-Actual repository variable values were not read or changed. PR54's receipt reports initial smoke skipped by gates; that is not a current successful hosted check. The present catalogue update is documentation-only and uses `[skip ci]`; it requests no runner, label, release or deployment. See [complete consolidation](ISSUE_WORK_PLAN.md#current-upstream-reconciliation).
+The user explicitly requested this experimental workstream be merged with remaining work in follow-up PRs. This is a one-time acceptance of the documented missing full attestation and known replay/tracking failures, not a successful full result or a change to the normal policy below. Repository variables, protection rules and check statuses are not altered. See [integration receipt and follow-up gates](WORKSTREAM_INTEGRATION.md).
 
 ## Minimal hosted-CI resumption, 2026-11-01
 

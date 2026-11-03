@@ -35,10 +35,10 @@ function cut(frame){const ctx=context('cut');if(!ctx)return;const {c,w,h}=ctx,cr
 function draw(){const frame=record?.frames[index];top(frame);cut(frame);if(!frame){for(const id of ['time','counts','cache'])$(id).textContent='—';$('detail').textContent='Receive terrain to inspect accepted intervals.';return;}
   const r=frame.response;$('scrub').value=index;$('time').textContent=`${frame.time.toFixed(2)} s · ${frame.tick}`;
   $('counts').textContent=`${r.ids?.length||0} / ${r.lower?.length||0}`;$('cache').textContent=`${frame.cache.hits} / ${frame.cache.loads}`;
-  $('detail').textContent=frame.accepted?`Accepted swept interval. ${frame.cache.bytes.toLocaleString()} source bytes; ${r.features.length} explicit features. ${r.optionalClipped?'Optional lookahead clipped.':''}`:`Movement held: ${r.status} — ${r.reason}. Last accepted endpoint is unchanged.`;
+  $('detail').textContent=frame.accepted?`Accepted swept interval. ${frame.cache.bytes.toLocaleString()} source bytes; ${r.features.length} explicit features. ${r.optionalClipped?'Optional lookahead clipped. ':''}${frame.cache.prefetch?`Lookahead at delivery: ${frame.cache.prefetch.queued} queued, ${frame.cache.prefetch.active} loading; ${frame.cache.prefetch.failed} failed, ${frame.cache.prefetch.discarded} discarded.`:''}`:`Movement held: ${r.status} — ${r.reason}. Last accepted endpoint is unchanged.`;
 }
 async function calculate(){if(receiving)return;busy(true);pause();const id=++ticket;record=null;index=0;controls(false);$('cancel').disabled=false;$('error').textContent='';$('status').textContent='RECEIVING';draw();
-  try{const ms=Number($('latency').value),name=$('track').value;const value=await replay(name,{delay:()=>new Promise(resolve=>setTimeout(resolve,ms)),cancelled:()=>id!==ticket,onWait:i=>{if(id===ticket)$('status').textContent=`WAITING · interval ${i}`;}});
+  try{const ms=Number($('latency').value),name=$('track').value;const frames=[];record={track:name,frames};const value=await replay(name,{delay:()=>new Promise(resolve=>setTimeout(resolve,ms)),cancelled:()=>id!==ticket,onFrame:frame=>{if(id!==ticket)return;frames.push(frame);index=frames.length-1;$('scrub').max=index;draw();},onWait:i=>{if(id===ticket)$('status').textContent=`WAITING · interval ${i}`;}});
     if(id!==ticket)return;record=value;$('scrub').max=record.frames.length-1;controls(true);$('status').textContent=record.frames.at(-1).accepted?'READY':'MISSING DATA';index=record.frames.length-1;draw();
   }catch(e){if(id===ticket){$('status').textContent='FAILED';$('error').textContent=e.message;}}finally{busy(false);if(id===ticket)$('cancel').disabled=true;}}
 $('calculate').onclick=calculate;
@@ -51,5 +51,5 @@ $('play').onclick=()=>{if(playing){pause();return;}if(index===record.frames.leng
 $('save').onclick=()=>{const blob=new Blob([JSON.stringify(record)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='terrain-request-'+record.track+'.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);};
 $('load').onchange=async()=>{const file=$('load').files[0];if(!file||receiving)return;busy(true);cancel();const id=ticket;$('error').textContent='';try{if(file.size>16*1024*1024)throw Error('Record exceeds 16 MiB');const value=await verifyReplay(JSON.parse(await file.text()));if(id!==ticket)return;record=value;index=0;$('track').value=record.track;$('scrub').max=record.frames.length-1;controls(true);$('status').textContent='VERIFIED';draw();}catch(e){if(id===ticket){$('status').textContent='REJECTED';$('error').textContent=e.message;}}finally{busy(false);$('load').value='';}};
 new ResizeObserver(draw).observe($('rig'));new ResizeObserver(draw).observe($('cut'));
-window.addEventListener('pagehide',()=>{pause();if(!record)cancel();});window.addEventListener('pageshow',draw);
+window.addEventListener('pagehide',()=>{pause();if(receiving)cancel();});window.addEventListener('pageshow',draw);
 calculate();

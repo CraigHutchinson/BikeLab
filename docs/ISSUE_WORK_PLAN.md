@@ -1,5 +1,7 @@
 # GitHub feedback and delivery plan — 2026-11-03
 
+**Integration update:** PR60, PR61 and the complete PR62–69 rider stack are assembled with current main for the user-requested experimental merge. [Integration receipt and follow-up PR boundaries](WORKSTREAM_INTEGRATION.md) supersede the pre-integration inventory below. Integrated tests pass 349/349; geometry/terrain browser gates pass. Rider replay/tracking failures remain explicit. Current main CI policy is preserved.
+
 ## Current upstream reconciliation
 
 This is the current ordering and delivery inventory. The detailed issue reasoning and dated checkpoints below preserve history; they do not override this section. Live GitHub review covered **25 issues (all open), 51 PRs (39 merged, 12 open drafts)**, all open-PR changed-file lists and inline review threads, the correction comment on #52, current main CI policy, and PR54's correction/spin plans. No inline review threads were returned; this is not an approval. The compact [catalogue receipt](evidence/upstream-catalogue-2026-11-03.json) records exact heads and source blobs.
