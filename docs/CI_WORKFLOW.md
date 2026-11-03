@@ -1,5 +1,11 @@
 # Local-first verification and hosted CI
 
+## Operational review — 2026-11-03
+
+The [two-week review](PROGRESS_REVIEW_2026_11_03.md) checks actual hosted results as well as policy source. PR81 head 75fe98a has successful [smoke run 41668721424](https://github.com/CraigHutchinson/BikeLab/actions/runs/41668721424); its full run is skipped. PR54 head 7a8000c has passing Ubuntu/Windows unit jobs, two macOS legacy-hash failures and cancelled browser receiving in [full run 41706182290](https://github.com/CraigHutchinson/BikeLab/actions/runs/41706182290). Published ci/full and ci/policy correctly report failure. A successful reporting job is not a successful full suite.
+
+Routine smoke is therefore received for the cited PR81 head; the earlier resumption paragraph remains its historical local receipt. Full attestation remains absent for the integrated rider checkpoint. Resolve #54's differences and finish its software gate before merge; do not extend #80's experimental exception automatically. These observations do not establish repository variable/ruleset values or complete Actions history.
+
 Adopted 2026-10-28 from [CraigHutchinson/.github CI strategy](https://github.com/CraigHutchinson/.github/blob/main/docs/ci-strategy.md), source blob `40526a967ab0ef3fedbff3a35b24f053050c0ef0`.
 
 ## Workstream integration — 2026-11-03

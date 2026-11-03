@@ -1,5 +1,9 @@
 # Connected MTB simulation: current state and remaining gaps
 
+**Status update, 2026-11-03:** this document's detailed audit below describes the 24 October snapshot. Use the [two-week review](PROGRESS_REVIEW_2026_11_03.md), [updated D1–D12 inventory](DYNAMICS_DELIVERY_PLAN.md) and [current issue plan](ISSUE_WORK_PLAN.md#current-upstream-reconciliation) for present status/order. Portable rider definitions, bounded unbound observation, separate chassis, active task/effort/controller/crouch experiments and geometry/terrain fixes have since reached main. Maintained supported motion, live actor lifecycle, continuous stepping, calibration and real-time fidelity remain unqualified; production rider replay and crouch transient screens still fail. This update does not retroactively change the measurements or findings below.
+
+## Historical audit — 24 October 2026
+
 Reviewed 2026-10-24 against main `3130c89c7607da7729f9aa9b706aac88d4cbb7be` (merged PR26), tree `f699f2f0e956b5389ba6d6ce91e34fe9fb810350`. This is a source/evidence review, not new dynamics, calibration or a performance experiment. GPT-6.1 Sol independently reviewed execution, state, dataset and performance gaps. The existing [D1–D12 delivery plan](DYNAMICS_DELIVERY_PLAN.md) remains the requirement inventory; this review updates its status and next priorities.
 
 **Assessment:** BikeLab has a connected, inspectable planar bike/rider experiment with substantial numerical verification. It can generate reproducible experimental trajectories within declared model limits. It is not yet a calibrated MTB reference, a continuous riding simulation or a real-time game engine. More detailed standalone stations do not close the missing connections by themselves. The user additionally requires an [independent, detachable rider reusable across bikes](RIDER_OWNERSHIP.md); this is an architectural requirement for subsequent integration.
