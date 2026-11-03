@@ -1,5 +1,7 @@
 # Delivery and validation plan
 
+**Replay diagnostic update:** [identical-input target controls](RIDER_REPLAY_DIAGNOSTIC.md) isolate host-derived target displacement differences in both 0.1 s target cases. XML and inspected native arrays match; substituting only Node target q in the diagnostic browser makes strict comparison pass. Production remains unchanged and all original failures remain open. Next specify versioned target identity and extend the diagnosis to longer/controller records before reference-rate feedback.
+
 **Integration update:** PR60, PR61 and the complete PR62–69 rider stack are assembled with current main for the user-requested experimental merge. [Integration receipt and follow-up PR boundaries](WORKSTREAM_INTEGRATION.md) supersede the pre-integration inventory below. Integrated tests pass 349/349; geometry/terrain browser gates pass. Rider replay/tracking failures remain explicit. Current main CI policy is preserved.
 
 ## Current execution order — 2026-11-03
