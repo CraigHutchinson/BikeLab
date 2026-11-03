@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
-import {createHash} from 'node:crypto';
+import {legacySignalDiagnostic} from '../scripts/legacy-replay-diagnostic.mjs';
 import {runRig,rigRecord,validate,setupFromRecord,MODEL,DEFAULTS,G} from '../dist/bike-rig.js';
 import {ANNOTATION,GEOMETRY_KEYS,GEOMETRY,PHOTO_GEOMETRY,REFERENCE_GEOMETRY,geometryFor,geometryLabel,shockLength,shockCompressionJacobian,verticalMotionRatio,rearRise,strokeAngle,linkageDiagnostics} from '../dist/linkage.js';
 const close=(a,b,tol=1e-12)=>assert.ok(Math.abs(a-b)<tol,`${a} != ${b}`);
@@ -98,6 +98,6 @@ test('configuration diagnostics agree with independent static axle moment and su
 test('v0.4 historical recordings preserve every channel and summary exactly in all four variants',async()=>{
   const baseline=JSON.parse(await readFile(new URL('../docs/evidence/iteration-11-legacy-baseline.json',import.meta.url),'utf8'));
   for(const old of baseline){const p=setupFromRecord(old);for(const key of GEOMETRY_KEYS)assert.equal(p[key],REFERENCE_GEOMETRY[key]);
-    const r=await runRig(p),hash=createHash('sha256').update(JSON.stringify(Object.fromEntries(Object.entries(rigRecord(r).signals).filter(([k])=>!k.startsWith('guide')&&!k.startsWith('fixture')&&!k.startsWith('pivot')&&!['heaveVelocity','pitchVelocity','forkVelocity','rearAngularVelocity','riderBufferForce','riderLowerForce','riderUpperForce','riderBufferEnergy','riderBufferDissipation','riderTotalForce'].includes(k))))).digest('hex');assert.equal(hash,old.signalsHash);assert.deepEqual(Object.fromEntries(Object.keys(old.summary).map(k=>[k,r.summary[k]])),old.summary);
+    const r=await runRig(p),record=rigRecord(r),signals=Object.fromEntries(Object.entries(record.signals).filter(([k])=>!k.startsWith('guide')&&!k.startsWith('fixture')&&!k.startsWith('pivot')&&!['heaveVelocity','pitchVelocity','forkVelocity','rearAngularVelocity','riderBufferForce','riderLowerForce','riderUpperForce','riderBufferEnergy','riderBufferDissipation','riderTotalForce'].includes(k))),hash=await legacySignalDiagnostic(record,signals,old.signalsHash,'v04-'+p.bike+'-'+p.rider);assert.equal(hash,old.signalsHash);assert.deepEqual(Object.fromEntries(Object.keys(old.summary).map(k=>[k,r.summary[k]])),old.summary);
   }
 });

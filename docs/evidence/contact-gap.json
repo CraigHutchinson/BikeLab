@@ -1,0 +1,1182 @@
+{
+  "date": "2026-11-01",
+  "baselineRemote": "882088dbf75020e447fd7afbc50343a853689d21",
+  "study": {
+    "model": "bikelab-prescribed-capsule-gap-0.1",
+    "nativeVersion": "3.16.0",
+    "parameters": {
+      "span": 0.04,
+      "radius": 0.008,
+      "penetration": 0.0001,
+      "nodeMass": 0.015625,
+      "contactTime": 0.0005,
+      "impedance": 0.99,
+      "velocity": 0.01
+    },
+    "scope": "Prescribed synthetic two-vertex capsule; no trajectory, calibrated material, complete bike or general terrain qualification. Mesh/plane contact representations differ.",
+    "models": [
+      {
+        "kind": "mesh",
+        "xml": "<mujoco><option timestep=\".000001953125\" gravity=\"0 0 0\" integrator=\"RK4\" solver=\"Newton\" iterations=\"100\" tolerance=\"1e-10\" ccd_tolerance=\"1e-12\" ccd_iterations=\"100\"><flag autoreset=\"disable\"/></option><asset><mesh name=\"ground\" vertex=\"-3 -.1 -1 5 -.1 -1 5 -.1 0 -3 -.1 0 -3 .1 -1 5 .1 -1 5 .1 0 -3 .1 0\"/></asset><worldbody><geom type=\"mesh\" mesh=\"ground\" condim=\"1\" friction=\"0 0 0\" solref=\".0005 1\" solimp=\".99 .99 .001\"/><body name=\"node0\" pos=\"-0.02 0 .0079\"><joint type=\"slide\" axis=\"1 0 0\"/><joint type=\"slide\" axis=\"0 0 1\"/><inertial pos=\"0 0 0\" mass=\".015625\" diaginertia=\".0000005 .0000005 .0000005\"/></body><body name=\"node1\" pos=\"0.02 0 .0079\"><joint type=\"slide\" axis=\"1 0 0\"/><joint type=\"slide\" axis=\"0 0 1\"/><inertial pos=\"0 0 0\" mass=\".015625\" diaginertia=\".0000005 .0000005 .0000005\"/></body></worldbody><deformable><flex dim=\"1\" radius=\".008\" body=\"node0 node1\" element=\"0 1\"><contact condim=\"1\" friction=\"0 0 0\" solref=\".0005 1\" solimp=\".99 .99 .001\" selfcollide=\"none\"/></flex></deformable></mujoco>",
+        "xmlSha256": "95e28fe18b187bb33546e33777b4d3e16ef8b4de415235a9215e1099716f7f4b"
+      },
+      {
+        "kind": "plane",
+        "xml": "<mujoco><option timestep=\".000001953125\" gravity=\"0 0 0\" integrator=\"RK4\" solver=\"Newton\" iterations=\"100\" tolerance=\"1e-10\" ccd_tolerance=\"1e-12\" ccd_iterations=\"100\"><flag autoreset=\"disable\"/></option><worldbody><geom type=\"plane\" size=\"0 0 .1\" condim=\"1\" friction=\"0 0 0\" solref=\".0005 1\" solimp=\".99 .99 .001\"/><body name=\"node0\" pos=\"-0.02 0 .0079\"><joint type=\"slide\" axis=\"1 0 0\"/><joint type=\"slide\" axis=\"0 0 1\"/><inertial pos=\"0 0 0\" mass=\".015625\" diaginertia=\".0000005 .0000005 .0000005\"/></body><body name=\"node1\" pos=\"0.02 0 .0079\"><joint type=\"slide\" axis=\"1 0 0\"/><joint type=\"slide\" axis=\"0 0 1\"/><inertial pos=\"0 0 0\" mass=\".015625\" diaginertia=\".0000005 .0000005 .0000005\"/></body></worldbody><deformable><flex dim=\"1\" radius=\".008\" body=\"node0 node1\" element=\"0 1\"><contact condim=\"1\" friction=\"0 0 0\" solref=\".0005 1\" solimp=\".99 .99 .001\" selfcollide=\"none\"/></flex></deformable></mujoco>",
+        "xmlSha256": "317f25365913d3676ff4bd890a9db160b1f4c3fadb657ba407aaf90e2f0ae1a7"
+      }
+    ],
+    "samples": [
+      {
+        "kind": "mesh",
+        "delta": -0.0001,
+        "positions": [
+          -0.02,
+          0,
+          0.00795,
+          0.02,
+          0,
+          0.007850000000000001
+        ],
+        "analyticGap": -0.0001499999999999991,
+        "contacts": [
+          {
+            "element": 0,
+            "vertex": -1,
+            "gap": -0.00014999999996523686,
+            "point": [
+              0.019999999883361836,
+              1.376916859916642e-09,
+              -7.499999998123062e-05
+            ],
+            "normal": [
+              -9.714451467721489e-13,
+              -1.1316599288282529e-12,
+              1
+            ],
+            "weights": [
+              0.16265730515621918,
+              0.8373426948437808
+            ],
+            "rowVelocity": -0.006746853896875615,
+            "weightedVelocity": -0.006746853896875615,
+            "exactGapDerivative": -0.01,
+            "derivativeMismatch": 0.003253146103124385,
+            "force": 13.414150262070352
+          }
+        ],
+        "forces": [
+          -2.119605426129428e-12,
+          2.1819095325889553,
+          -1.0911505744031164e-11,
+          11.232240729481397
+        ],
+        "generalizedPower": -0.09050331196892443,
+        "rowPower": -0.09050331196892442,
+        "powerDifference": -1.3877787807814457e-17,
+        "finiteDifference": -0.009999999994736442,
+        "finiteDifferenceTime": 1e-07
+      },
+      {
+        "kind": "mesh",
+        "delta": -1e-06,
+        "positions": [
+          -0.02,
+          0,
+          0.007900500000000001,
+          0.02,
+          0,
+          0.0078995
+        ],
+        "analyticGap": -0.0001004999999999999,
+        "contacts": [
+          {
+            "element": 0,
+            "vertex": -1,
+            "gap": -0.00010049999986987108,
+            "point": [
+              0.02000000023315656,
+              2.54051067550547e-08,
+              -5.0249999933547767e-05
+            ],
+            "normal": [
+              1.2082651092100172e-12,
+              -1.3590434268483559e-12,
+              1
+            ],
+            "weights": [
+              0.16313110361252728,
+              0.8368688963874729
+            ],
+            "rowVelocity": -0.006737377927749455,
+            "weightedVelocity": -0.006737377927749456,
+            "exactGapDerivative": -0.01,
+            "derivativeMismatch": 0.0032626220722505456,
+            "force": 9.185161583683687
+          }
+        ],
+        "forces": [
+          1.8104469753832987e-12,
+          1.4983855460057087,
+          9.287663288637924e-12,
+          7.686776037677977
+        ],
+        "generalizedPower": -0.06188390491672268,
+        "rowPower": -0.0618839049167227,
+        "powerDifference": 2.0816681711721685e-17,
+        "finiteDifference": -0.010000000007679106,
+        "finiteDifferenceTime": 1e-07
+      },
+      {
+        "kind": "mesh",
+        "delta": -1e-08,
+        "positions": [
+          -0.02,
+          0,
+          0.007900005000000002,
+          0.02,
+          0,
+          0.007899995
+        ],
+        "analyticGap": -0.00010000500000000023,
+        "contacts": [
+          {
+            "element": 0,
+            "vertex": -1,
+            "gap": -0.00010000499986951908,
+            "point": [
+              0.02000000023219363,
+              2.544969459863507e-08,
+              -5.0002499933371746e-05
+            ],
+            "normal": [
+              -2.5325696497481718e-12,
+              -1.1178535272697932e-12,
+              1
+            ],
+            "weights": [
+              0.1631358384114877,
+              0.8368641615885122
+            ],
+            "rowVelocity": -0.006737283231770245,
+            "weightedVelocity": -0.006737283231770245,
+            "exactGapDerivative": -0.01,
+            "derivativeMismatch": 0.0032627167682297556,
+            "force": 9.142834569427363
+          }
+        ],
+        "forces": [
+          -3.777388371068054e-12,
+          1.491523982941066,
+          -1.9377476972132078e-11,
+          7.651310586486296
+        ],
+        "generalizedPower": -0.061597866035452295,
+        "rowPower": -0.061597866035452295,
+        "powerDifference": 0,
+        "finiteDifference": -0.010000001759817578,
+        "finiteDifferenceTime": 1e-07
+      },
+      {
+        "kind": "mesh",
+        "delta": -1e-10,
+        "positions": [
+          -0.02,
+          0,
+          0.007900000050000001,
+          0.02,
+          0,
+          0.00789999995
+        ],
+        "analyticGap": -0.00010000005000000006,
+        "contacts": [
+          {
+            "element": 0,
+            "vertex": -1,
+            "gap": -0.00010000004996523172,
+            "point": [
+              0.02000000000268424,
+              1.409444563616136e-09,
+              -5.000002498122809e-05
+            ],
+            "normal": [
+              -2.9490284356716803e-12,
+              -1.161297149708156e-12,
+              1
+            ],
+            "weights": [
+              0.1631358865128081,
+              0.8368641134871919
+            ],
+            "rowVelocity": -0.006737282269743837,
+            "weightedVelocity": -0.006737282269743837,
+            "exactGapDerivative": -0.01,
+            "derivativeMismatch": 0.003262717730256163,
+            "force": 9.142411315077647
+          }
+        ],
+        "forces": [
+          -4.398344310672876e-12,
+          1.4914553747499197,
+          -2.256288662809763e-11,
+          7.650955940327727
+        ],
+        "generalizedPower": -0.06159500565577808,
+        "rowPower": -0.061595005655778065,
+        "powerDifference": -1.3877787807814457e-17,
+        "finiteDifference": -0.010000000061685926,
+        "finiteDifferenceTime": 1e-09
+      },
+      {
+        "kind": "mesh",
+        "delta": 0,
+        "positions": [
+          -0.02,
+          0,
+          0.0079,
+          0.02,
+          0,
+          0.0079
+        ],
+        "analyticGap": -9.99999999999994e-05,
+        "contacts": [
+          {
+            "element": 0,
+            "vertex": -1,
+            "gap": -9.999999996475307e-05,
+            "point": [
+              0.004975124263665151,
+              1.5290478121649444e-09,
+              -4.9999999980988754e-05
+            ],
+            "normal": [
+              3.1658703447735452e-12,
+              -1.2527655179178773e-12,
+              1
+            ],
+            "weights": [
+              0.3934073785930858,
+              0.6065926214069142
+            ],
+            "rowVelocity": -0.0021318524281382836,
+            "weightedVelocity": -0.0021318524281382844,
+            "exactGapDerivative": null,
+            "derivativeMismatch": null,
+            "force": 12.101005298139855
+          }
+        ],
+        "forces": [
+          1.5071520790429015e-11,
+          4.7606247726822435,
+          2.3238693024899504e-11,
+          7.340380525457611
+        ],
+        "generalizedPower": -0.02579755752775368,
+        "rowPower": -0.025797557527753683,
+        "powerDifference": 3.469446951953614e-18,
+        "finiteDifference": null,
+        "finiteDifferenceTime": null
+      },
+      {
+        "kind": "mesh",
+        "delta": 1e-10,
+        "positions": [
+          -0.02,
+          0,
+          0.00789999995,
+          0.02,
+          0,
+          0.007900000050000001
+        ],
+        "analyticGap": -0.00010000005000000006,
+        "contacts": [
+          {
+            "element": 0,
+            "vertex": -1,
+            "gap": -0.00010000004996396228,
+            "point": [
+              -0.020000000114545502,
+              1.7259232507010186e-09,
+              -5.000002498059337e-05
+            ],
+            "normal": [
+              -4.475584331840894e-12,
+              -1.2322456113684089e-12,
+              1
+            ],
+            "weights": [
+              0.8368641138544829,
+              0.16313588614551713
+            ],
+            "rowVelocity": 0.006737282277089658,
+            "weightedVelocity": 0.006737282277089658,
+            "exactGapDerivative": 0.01,
+            "derivativeMismatch": -0.003262717722910342,
+            "force": 7.988269559954491
+          }
+        ],
+        "forces": [
+          -2.991971148071236e-11,
+          6.685096126522055,
+          -5.832462600341515e-12,
+          1.3031734334324363
+        ],
+        "generalizedPower": 0.05381922693089619,
+        "rowPower": 0.05381922693089619,
+        "powerDifference": 0,
+        "finiteDifference": 0.010000000312407678,
+        "finiteDifferenceTime": 1e-09
+      },
+      {
+        "kind": "mesh",
+        "delta": 1e-08,
+        "positions": [
+          -0.02,
+          0,
+          0.007899995,
+          0.02,
+          0,
+          0.007900005000000002
+        ],
+        "analyticGap": -0.00010000500000000023,
+        "contacts": [
+          {
+            "element": 0,
+            "vertex": -1,
+            "gap": -0.00010000499996404116,
+            "point": [
+              -0.02000000010836417,
+              1.4788045453049875e-09,
+              -5.0002499980632796e-05
+            ],
+            "normal": [
+              -5.5508375832426375e-12,
+              -1.1343218191695954e-12,
+              1
+            ],
+            "weights": [
+              0.8368641611818248,
+              0.16313583881817512
+            ],
+            "rowVelocity": 0.0067372832236364975,
+            "weightedVelocity": 0.0067372832236364975,
+            "exactGapDerivative": 0.01,
+            "derivativeMismatch": -0.0032627167763635027,
+            "force": 7.988692771828548
+          }
+        ],
+        "forces": [
+          -3.710985087012283e-11,
+          6.685450675435605,
+          -7.23408520872187e-12,
+          1.3032420963929425
+        ],
+        "generalizedPower": 0.05382208579042662,
+        "rowPower": 0.053822085790426626,
+        "powerDifference": -6.938893903907228e-18,
+        "finiteDifference": 0.010000000153368773,
+        "finiteDifferenceTime": 1e-07
+      },
+      {
+        "kind": "mesh",
+        "delta": 1e-06,
+        "positions": [
+          -0.02,
+          0,
+          0.0078995,
+          0.02,
+          0,
+          0.007900500000000001
+        ],
+        "analyticGap": -0.0001004999999999999,
+        "contacts": [
+          {
+            "element": 0,
+            "vertex": -1,
+            "gap": -0.00010049999996142703,
+            "point": [
+              -0.01999999949022471,
+              5.263526912972856e-09,
+              -5.024999997932574e-05
+            ],
+            "normal": [
+              1.588005570657914e-12,
+              6.896898448924839e-13,
+              1
+            ],
+            "weights": [
+              0.8368688939481159,
+              0.16313110605188413
+            ],
+            "rowVelocity": 0.006737377878962317,
+            "weightedVelocity": 0.006737377878962317,
+            "exactGapDerivative": 0.01,
+            "derivativeMismatch": -0.003262622121037683,
+            "force": 8.031013587476119
+          }
+        ],
+        "forces": [
+          1.0672835307539868e-11,
+          6.72090545823343,
+          2.080459007401609e-12,
+          1.3101081292426895
+        ],
+        "generalizedPower": 0.0541079732899074,
+        "rowPower": 0.05410797328990741,
+        "powerDifference": -6.938893903907228e-18,
+        "finiteDifference": 0.010000000520574495,
+        "finiteDifferenceTime": 1e-07
+      },
+      {
+        "kind": "mesh",
+        "delta": 0.0001,
+        "positions": [
+          -0.02,
+          0,
+          0.007850000000000001,
+          0.02,
+          0,
+          0.00795
+        ],
+        "analyticGap": -0.0001499999999999991,
+        "contacts": [
+          {
+            "element": 0,
+            "vertex": -1,
+            "gap": -0.0001499999999602651,
+            "point": [
+              -0.02000000011406957,
+              2.2072622043303633e-09,
+              -7.499999997874475e-05
+            ],
+            "normal": [
+              -4.163336343447203e-12,
+              -1.3609297502584778e-12,
+              1
+            ],
+            "weights": [
+              0.8373426955989826,
+              0.16265730440101756
+            ],
+            "rowVelocity": 0.0067468539119796495,
+            "weightedVelocity": 0.0067468539119796495,
+            "exactGapDerivative": 0.01,
+            "derivativeMismatch": -0.0032531460880203507,
+            "force": 12.259379863802055
+          }
+        ],
+        "forces": [
+          -4.2737905648822964e-11,
+          10.2653021815279,
+          -8.30201608626896e-12,
+          1.9940776822741564
+        ],
+        "generalizedPower": 0.08271224499253745,
+        "rowPower": 0.08271224499253743,
+        "powerDifference": 1.3877787807814457e-17,
+        "finiteDifference": 0.009999999993381189,
+        "finiteDifferenceTime": 1e-07
+      },
+      {
+        "kind": "plane",
+        "delta": -0.0001,
+        "positions": [
+          -0.02,
+          0,
+          0.00795,
+          0.02,
+          0,
+          0.007850000000000001
+        ],
+        "analyticGap": -0.0001499999999999991,
+        "contacts": [
+          {
+            "element": -1,
+            "vertex": 0,
+            "gap": -4.99999999999997e-05,
+            "point": [
+              -0.02,
+              0,
+              -2.499999999999898e-05
+            ],
+            "normal": [
+              0,
+              0,
+              1
+            ],
+            "weights": [
+              1,
+              0
+            ],
+            "rowVelocity": 0.01,
+            "weightedVelocity": 0.01,
+            "exactGapDerivative": 0.01,
+            "derivativeMismatch": 0,
+            "force": 2.4999999999999805
+          },
+          {
+            "element": -1,
+            "vertex": 1,
+            "gap": -0.0001499999999999991,
+            "point": [
+              0.02,
+              0,
+              -7.500000000000041e-05
+            ],
+            "normal": [
+              0,
+              0,
+              1
+            ],
+            "weights": [
+              0,
+              1
+            ],
+            "rowVelocity": -0.01,
+            "weightedVelocity": -0.01,
+            "exactGapDerivative": -0.01,
+            "derivativeMismatch": 0,
+            "force": 9.999999999999746
+          }
+        ],
+        "forces": [
+          0,
+          2.4999999999999805,
+          0,
+          9.999999999999746
+        ],
+        "generalizedPower": -0.07499999999999767,
+        "rowPower": -0.07499999999999767,
+        "powerDifference": 0,
+        "finiteDifference": -0.009999999994736442,
+        "finiteDifferenceTime": 1e-07
+      },
+      {
+        "kind": "plane",
+        "delta": -1e-06,
+        "positions": [
+          -0.02,
+          0,
+          0.007900500000000001,
+          0.02,
+          0,
+          0.0078995
+        ],
+        "analyticGap": -0.0001004999999999999,
+        "contacts": [
+          {
+            "element": -1,
+            "vertex": 0,
+            "gap": -9.94999999999989e-05,
+            "point": [
+              -0.02,
+              0,
+              -4.974999999999945e-05
+            ],
+            "normal": [
+              0,
+              0,
+              1
+            ],
+            "weights": [
+              1,
+              0
+            ],
+            "rowVelocity": 0.01,
+            "weightedVelocity": 0.01,
+            "exactGapDerivative": 0.01,
+            "derivativeMismatch": 0,
+            "force": 5.59374999999989
+          },
+          {
+            "element": -1,
+            "vertex": 1,
+            "gap": -0.0001004999999999999,
+            "point": [
+              0.02,
+              0,
+              -5.024999999999995e-05
+            ],
+            "normal": [
+              0,
+              0,
+              1
+            ],
+            "weights": [
+              0,
+              1
+            ],
+            "rowVelocity": -0.01,
+            "weightedVelocity": -0.01,
+            "exactGapDerivative": -0.01,
+            "derivativeMismatch": 0,
+            "force": 6.906250000000101
+          }
+        ],
+        "forces": [
+          0,
+          5.59374999999989,
+          0,
+          6.906250000000101
+        ],
+        "generalizedPower": -0.013125000000002114,
+        "rowPower": -0.013125000000002114,
+        "powerDifference": 0,
+        "finiteDifference": -0.010000000003410059,
+        "finiteDifferenceTime": 1e-07
+      },
+      {
+        "kind": "plane",
+        "delta": -1e-08,
+        "positions": [
+          -0.02,
+          0,
+          0.007900005000000002,
+          0.02,
+          0,
+          0.007899995
+        ],
+        "analyticGap": -0.00010000500000000023,
+        "contacts": [
+          {
+            "element": -1,
+            "vertex": 0,
+            "gap": -9.999499999999856e-05,
+            "point": [
+              -0.02,
+              0,
+              -4.999749999999928e-05
+            ],
+            "normal": [
+              0,
+              0,
+              1
+            ],
+            "weights": [
+              1,
+              0
+            ],
+            "rowVelocity": 0.01,
+            "weightedVelocity": 0.01,
+            "exactGapDerivative": 0.01,
+            "derivativeMismatch": 0,
+            "force": 5.62468749999995
+          },
+          {
+            "element": -1,
+            "vertex": 1,
+            "gap": -0.00010000500000000023,
+            "point": [
+              0.02,
+              0,
+              -5.0002500000000116e-05
+            ],
+            "normal": [
+              0,
+              0,
+              1
+            ],
+            "weights": [
+              0,
+              1
+            ],
+            "rowVelocity": -0.01,
+            "weightedVelocity": -0.01,
+            "exactGapDerivative": -0.01,
+            "derivativeMismatch": 0,
+            "force": 6.8753124999999535
+          }
+        ],
+        "forces": [
+          0,
+          5.62468749999995,
+          0,
+          6.8753124999999535
+        ],
+        "generalizedPower": -0.012506250000000045,
+        "rowPower": -0.012506250000000045,
+        "powerDifference": 0,
+        "finiteDifference": -0.010000000003410059,
+        "finiteDifferenceTime": 1e-07
+      },
+      {
+        "kind": "plane",
+        "delta": -1e-10,
+        "positions": [
+          -0.02,
+          0,
+          0.007900000050000001,
+          0.02,
+          0,
+          0.00789999995
+        ],
+        "analyticGap": -0.00010000005000000006,
+        "contacts": [
+          {
+            "element": -1,
+            "vertex": 0,
+            "gap": -9.999994999999873e-05,
+            "point": [
+              -0.02,
+              0,
+              -4.9999974999999364e-05
+            ],
+            "normal": [
+              0,
+              0,
+              1
+            ],
+            "weights": [
+              1,
+              0
+            ],
+            "rowVelocity": 0.01,
+            "weightedVelocity": 0.01,
+            "exactGapDerivative": 0.01,
+            "derivativeMismatch": 0,
+            "force": 5.624996874999872
+          },
+          {
+            "element": -1,
+            "vertex": 1,
+            "gap": -0.00010000005000000006,
+            "point": [
+              0.02,
+              0,
+              -5.000002500000003e-05
+            ],
+            "normal": [
+              0,
+              0,
+              1
+            ],
+            "weights": [
+              0,
+              1
+            ],
+            "rowVelocity": -0.01,
+            "weightedVelocity": -0.01,
+            "exactGapDerivative": -0.01,
+            "derivativeMismatch": 0,
+            "force": 6.875003124999943
+          }
+        ],
+        "forces": [
+          0,
+          5.624996874999872,
+          0,
+          6.875003124999943
+        ],
+        "generalizedPower": -0.01250006250000072,
+        "rowPower": -0.01250006250000072,
+        "powerDifference": 0,
+        "finiteDifference": -0.009999999960041972,
+        "finiteDifferenceTime": 1e-09
+      },
+      {
+        "kind": "plane",
+        "delta": 0,
+        "positions": [
+          -0.02,
+          0,
+          0.0079,
+          0.02,
+          0,
+          0.0079
+        ],
+        "analyticGap": -9.99999999999994e-05,
+        "contacts": [
+          {
+            "element": -1,
+            "vertex": 0,
+            "gap": -9.99999999999994e-05,
+            "point": [
+              -0.02,
+              0,
+              -4.99999999999997e-05
+            ],
+            "normal": [
+              0,
+              0,
+              1
+            ],
+            "weights": [
+              1,
+              0
+            ],
+            "rowVelocity": 0.01,
+            "weightedVelocity": 0.01,
+            "exactGapDerivative": 0.01,
+            "derivativeMismatch": 0,
+            "force": 5.624999999999979
+          },
+          {
+            "element": -1,
+            "vertex": 1,
+            "gap": -9.99999999999994e-05,
+            "point": [
+              0.02,
+              0,
+              -4.99999999999997e-05
+            ],
+            "normal": [
+              0,
+              0,
+              1
+            ],
+            "weights": [
+              0,
+              1
+            ],
+            "rowVelocity": -0.01,
+            "weightedVelocity": -0.01,
+            "exactGapDerivative": -0.01,
+            "derivativeMismatch": 0,
+            "force": 6.8749999999999245
+          }
+        ],
+        "forces": [
+          0,
+          5.624999999999979,
+          0,
+          6.8749999999999245
+        ],
+        "generalizedPower": -0.012499999999999456,
+        "rowPower": -0.012499999999999456,
+        "powerDifference": 0,
+        "finiteDifference": null,
+        "finiteDifferenceTime": null
+      },
+      {
+        "kind": "plane",
+        "delta": 1e-10,
+        "positions": [
+          -0.02,
+          0,
+          0.00789999995,
+          0.02,
+          0,
+          0.007900000050000001
+        ],
+        "analyticGap": -0.00010000005000000006,
+        "contacts": [
+          {
+            "element": -1,
+            "vertex": 0,
+            "gap": -0.00010000005000000006,
+            "point": [
+              -0.02,
+              0,
+              -5.000002500000003e-05
+            ],
+            "normal": [
+              0,
+              0,
+              1
+            ],
+            "weights": [
+              1,
+              0
+            ],
+            "rowVelocity": 0.01,
+            "weightedVelocity": 0.01,
+            "exactGapDerivative": 0.01,
+            "derivativeMismatch": 0,
+            "force": 5.625003124999997
+          },
+          {
+            "element": -1,
+            "vertex": 1,
+            "gap": -9.999994999999873e-05,
+            "point": [
+              0.02,
+              0,
+              -4.9999974999999364e-05
+            ],
+            "normal": [
+              0,
+              0,
+              1
+            ],
+            "weights": [
+              0,
+              1
+            ],
+            "rowVelocity": -0.01,
+            "weightedVelocity": -0.01,
+            "exactGapDerivative": -0.01,
+            "derivativeMismatch": 0,
+            "force": 6.874996874999818
+          }
+        ],
+        "forces": [
+          0,
+          5.625003124999997,
+          0,
+          6.874996874999818
+        ],
+        "generalizedPower": -0.012499937499998205,
+        "rowPower": -0.012499937499998205,
+        "powerDifference": 0,
+        "finiteDifference": 0.009999999960041972,
+        "finiteDifferenceTime": 1e-09
+      },
+      {
+        "kind": "plane",
+        "delta": 1e-08,
+        "positions": [
+          -0.02,
+          0,
+          0.007899995,
+          0.02,
+          0,
+          0.007900005000000002
+        ],
+        "analyticGap": -0.00010000500000000023,
+        "contacts": [
+          {
+            "element": -1,
+            "vertex": 0,
+            "gap": -0.00010000500000000023,
+            "point": [
+              -0.02,
+              0,
+              -5.0002500000000116e-05
+            ],
+            "normal": [
+              0,
+              0,
+              1
+            ],
+            "weights": [
+              1,
+              0
+            ],
+            "rowVelocity": 0.01,
+            "weightedVelocity": 0.01,
+            "exactGapDerivative": 0.01,
+            "derivativeMismatch": 0,
+            "force": 5.625312500000096
+          },
+          {
+            "element": -1,
+            "vertex": 1,
+            "gap": -9.999499999999856e-05,
+            "point": [
+              0.02,
+              0,
+              -4.999749999999928e-05
+            ],
+            "normal": [
+              0,
+              0,
+              1
+            ],
+            "weights": [
+              0,
+              1
+            ],
+            "rowVelocity": -0.01,
+            "weightedVelocity": -0.01,
+            "exactGapDerivative": -0.01,
+            "derivativeMismatch": 0,
+            "force": 6.874687499999983
+          }
+        ],
+        "forces": [
+          0,
+          5.625312500000096,
+          0,
+          6.874687499999983
+        ],
+        "generalizedPower": -0.012493749999998874,
+        "rowPower": -0.012493749999998874,
+        "powerDifference": 0,
+        "finiteDifference": 0.010000000003410059,
+        "finiteDifferenceTime": 1e-07
+      },
+      {
+        "kind": "plane",
+        "delta": 1e-06,
+        "positions": [
+          -0.02,
+          0,
+          0.0078995,
+          0.02,
+          0,
+          0.007900500000000001
+        ],
+        "analyticGap": -0.0001004999999999999,
+        "contacts": [
+          {
+            "element": -1,
+            "vertex": 0,
+            "gap": -0.0001004999999999999,
+            "point": [
+              -0.02,
+              0,
+              -5.024999999999995e-05
+            ],
+            "normal": [
+              0,
+              0,
+              1
+            ],
+            "weights": [
+              1,
+              0
+            ],
+            "rowVelocity": 0.01,
+            "weightedVelocity": 0.01,
+            "exactGapDerivative": 0.01,
+            "derivativeMismatch": 0,
+            "force": 5.65624999999998
+          },
+          {
+            "element": -1,
+            "vertex": 1,
+            "gap": -9.94999999999989e-05,
+            "point": [
+              0.02,
+              0,
+              -4.974999999999945e-05
+            ],
+            "normal": [
+              0,
+              0,
+              1
+            ],
+            "weights": [
+              0,
+              1
+            ],
+            "rowVelocity": -0.01,
+            "weightedVelocity": -0.01,
+            "exactGapDerivative": -0.01,
+            "derivativeMismatch": 0,
+            "force": 6.8437500000000115
+          }
+        ],
+        "forces": [
+          0,
+          5.65624999999998,
+          0,
+          6.8437500000000115
+        ],
+        "generalizedPower": -0.01187500000000033,
+        "rowPower": -0.01187500000000033,
+        "powerDifference": 0,
+        "finiteDifference": 0.010000000003410059,
+        "finiteDifferenceTime": 1e-07
+      },
+      {
+        "kind": "plane",
+        "delta": 0.0001,
+        "positions": [
+          -0.02,
+          0,
+          0.007850000000000001,
+          0.02,
+          0,
+          0.00795
+        ],
+        "analyticGap": -0.0001499999999999991,
+        "contacts": [
+          {
+            "element": -1,
+            "vertex": 0,
+            "gap": -0.0001499999999999991,
+            "point": [
+              -0.02,
+              0,
+              -7.500000000000041e-05
+            ],
+            "normal": [
+              0,
+              0,
+              1
+            ],
+            "weights": [
+              1,
+              0
+            ],
+            "rowVelocity": 0.01,
+            "weightedVelocity": 0.01,
+            "exactGapDerivative": 0.01,
+            "derivativeMismatch": 0,
+            "force": 8.750000000000064
+          },
+          {
+            "element": -1,
+            "vertex": 1,
+            "gap": -4.99999999999997e-05,
+            "point": [
+              0.02,
+              0,
+              -2.499999999999898e-05
+            ],
+            "normal": [
+              0,
+              0,
+              1
+            ],
+            "weights": [
+              0,
+              1
+            ],
+            "rowVelocity": -0.01,
+            "weightedVelocity": -0.01,
+            "exactGapDerivative": -0.01,
+            "derivativeMismatch": 0,
+            "force": 3.749999999999971
+          }
+        ],
+        "forces": [
+          0,
+          8.750000000000064,
+          0,
+          3.749999999999971
+        ],
+        "generalizedPower": 0.05000000000000093,
+        "rowPower": 0.05000000000000093,
+        "powerDifference": 0,
+        "finiteDifference": 0.009999999994736442,
+        "finiteDifferenceTime": 1e-07
+      }
+    ],
+    "sourcesSha256": {
+      "scripts/contact-gap.mjs": "9c93d41c2e99f5dcd85368987b20c23a2f33ba32dfb7b7c679b031a56ddcadb2",
+      "dist/casing-rk4-observer.js": "2a15beada33db32a7d514760257e73b8ff683ba180cfea2cf0016a83b545402b",
+      "dist/moving-wheel.js": "45b1068fabf5413dfc90bfd2ee47f46600deb093b756d7c8d1bdc8ad24411e35",
+      "dist/vendor/mujoco-3.16.0/mujoco.js": "5d5d89ddd0857a6518c628fa502d42f99d6dd67ca240182f1068cd30a45465ac",
+      "dist/vendor/mujoco-3.16.0/mujoco.wasm": "e05ac96db7f45bd46e76fed6e3469bf9204329e093344d742a18bca2cc0e230e"
+    }
+  },
+  "validation": {
+    "command": "node --test --test-isolation=none test/contact-gap.test.mjs",
+    "passed": 3,
+    "failed": 0,
+    "skipped": 0,
+    "testSourceSha256": "b76382243242c887113a4f1925e07150bd8b2244970ef24ce8f2d8e9a5ab0824",
+    "logSha256": "746b7dcdfc7e8cc0f9884f83a3b676e83aede5e6f67077a05417ca74034d916b",
+    "browserReceiving": false,
+    "performanceMeasured": false,
+    "integrationCommand": "node --test --test-isolation=none test/casing-loaded.test.mjs test/contact-gap.test.mjs",
+    "integrationPassed": 10,
+    "integrationLogSha256": "c8abdd9d03b1074c67372110f8c9e160c9b7afa71b8dfaa43650d4054c362101",
+    "latestRegression": {
+      "command": "node --test --test-isolation=none test/tyre-fixture-plane.test.mjs test/flat-vertex-contact.test.mjs test/contact-gap.test.mjs test/tyre-fixture-rk4.test.mjs test/tyre-fixture-ui.test.mjs",
+      "passed": 17,
+      "failed": 0,
+      "logSha256": "e077aa2a04c208df9e18a946849db50f48833c2d47c24eec9eba3f1a2a9ee411",
+      "addedCoverage": "Independent reconstruction of all nodal constraint-force components from contact normals, forces and endpoint weights.",
+      "testSourceSha256": "09d80cbc2d204e401f2355f8bef180e72f50531838791898227bef9c5ca43489"
+    }
+  },
+  "visual": {
+    "path": "docs/evidence/contact-gap.svg",
+    "sha256": "0fc6ecfabf08f0e090c42a017d8afb212fbe4d4739becb21d1e01b4dc06012e7",
+    "scriptSha256": "51ceb665577eb963c7fddfdadb1c0bb5f3902fc93c35da39f402bb43e1b9e269",
+    "actualInspection": "Final PNG inspected: signed symlog height axes, mesh gap-rate mismatch, undefined equal-height minimum derivative and two exact plane row velocities."
+  }
+}

@@ -1,5 +1,7 @@
 # BikeLab workstream handoff — 2026-11-03
 
+**Subsequent delivery decision, 3 November:** after reviewing the known failed macOS hashes and cancelled browser job, the user explicitly requested the merges. The [checkpoint decision](MERGE_CHECKPOINT_2026_11_03.md) supersedes the earlier wait-before-merge disposition for PR54 only; missing software receiving remains follow-up work, not a pass. PR46 is to be closed as superseded after its preserved evidence and replacement reach main. Dated catalogue counts below describe the review snapshot.
+
 Main **1dedf06** contains the complete #60/#61/#62–69 workstream through #80 and target replay diagnosis through #81. The [two-week review](PROGRESS_REVIEW_2026_11_03.md) consolidates progress, all 30 open issues and the two remaining PRs; the [issue plan](ISSUE_WORK_PLAN.md#current-upstream-reconciliation) is authoritative for current work.
 
 Next tasks:

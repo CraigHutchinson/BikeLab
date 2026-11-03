@@ -1,5 +1,7 @@
 # Local-first verification and hosted CI
 
+**Subsequent delivery decision, 3 November:** after reviewing the known failed macOS hashes and cancelled browser job, the user explicitly requested the merges. The [checkpoint decision](MERGE_CHECKPOINT_2026_11_03.md) supersedes the earlier wait-before-merge disposition for PR54 only; missing software receiving remains follow-up work, not a pass. PR46 is to be closed as superseded after its preserved evidence and replacement reach main. Dated catalogue counts below describe the review snapshot.
+
 ## Operational review — 2026-11-03
 
 The [two-week review](PROGRESS_REVIEW_2026_11_03.md) checks actual hosted results as well as policy source. PR81 head 75fe98a has successful [smoke run 41668721424](https://github.com/CraigHutchinson/BikeLab/actions/runs/41668721424); its full run is skipped. PR54 head 7a8000c has passing Ubuntu/Windows unit jobs, two macOS legacy-hash failures and cancelled browser receiving in [full run 41706182290](https://github.com/CraigHutchinson/BikeLab/actions/runs/41706182290). Published ci/full and ci/policy correctly report failure. A successful reporting job is not a successful full suite.
@@ -74,7 +76,7 @@ Before a critical version, request one full run on the intended SHA and verify t
 
 ## Resumption evidence
 
-The four policy tests pass locally. Vendor hashes pass. The quick command reports failure honestly: 45 of 46 in-process tests pass and the reference CLI test is blocked by `spawnSync node EPERM` in this execution environment. No quick/full attestation was published. All four workflow documents parse as YAML; actionlint was unavailable (the attempted download did not complete), so this is not an actionlint or hosted execution claim. A GPT-6.1 Sol review identified the ignored-event concurrency hazard; the workflows now isolate those events. The first normal smoke run is the hosted receiving gate for this infrastructure change. No full matrix or deployment was requested.
+The four policy tests pass locally. Vendor hashes pass. The quick command reports failure honestly: 45 of 46 in-process tests pass and the reference CLI test is blocked by `spawnSync node EPERM` in this execution environment. No quick/full attestation was published. All four workflow documents parse as YAML; actionlint was unavailable (the attempted download did not complete), so this is not an actionlint or hosted execution claim. A GPT-6.1 Sol review identified the ignored-event concurrency hazard; the workflows now isolate those events. Main `05cf120` and draft PR54 `e011843` contain the restoration. Their initial smoke jobs were skipped without a runner, so repository gates still prevent hosted receiving. The connector cannot read or change Actions variables; an enabled repository needs `CI_MODE` unset/full (smoke for routine-only operation) and `BIKELAB_HOSTED_CI_ENABLED` unset/true. The first successful normal smoke run remains the hosted receiving gate. No full matrix or deployment was requested.
 
 ## Adoption evidence
 

@@ -1,0 +1,20 @@
+{
+  "date": "2026-11-03",
+  "command": "node --test --test-isolation=none test/casing-entry.test.mjs test/casing-translate.test.mjs",
+  "tests": {
+    "passed": 16,
+    "failed": 0,
+    "skipped": 0
+  },
+  "logSha256": "52f44d3fc098c102882c5e9e7f5ff2d2597ce2563fa30f3a5c7c00da830507af",
+  "sourcesSha256": {
+    "scripts/casing-entry.mjs": "eff5e20a4714975d0122e8dd7ed74106115949a5928e0eea46b143583d7638d7",
+    "scripts/casing-entry-receive.mjs": "1e2dfa119868a11688254990d4cae8f3a6f559d45c8a09c76c2ba6431c1f07a9",
+    "scripts/casing-contact-step.mjs": "874715dacb48326d79f8b192c8acc4a9764d40426e9e40cd8c7655dfd0bb1be7",
+    "scripts/casing-translate.mjs": "d347bbc8770c8112bcb8da9a765dd6fd4ae1541dc0c84325a9c529ea7ae30420",
+    "test/casing-entry.test.mjs": "715156fe8059a1a4c4a622a5712d0c69287f739513ff8ad3b1a5fae343ffc4aa",
+    "test/casing-translate.test.mjs": "03f0b198ec5858a47d6f55f9872a260bc16ef9d06d25ab7ae5b1eb874570be2e"
+  },
+  "scope": "Focused tests only. Native-stage comparison, independent physical guards, analytic first contact, unchanged refinement budgets, observational trace/replay, interior-substep rollback and tighter Newton receiving. No full local/browser/performance attestation.",
+  "extendedStudy": "casing-entry.json: six 20 ms cases, four passing refinements, entry/recontact and explicit momentum/coverage gates received. Study source 9d473d5; final analysis sources recorded separately."
+}

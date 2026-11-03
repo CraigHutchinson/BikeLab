@@ -1,0 +1,25 @@
+{
+  "date": "2026-11-02",
+  "normalOracle": "bikelab-flat-normal-oracle-0.1",
+  "baselineRemote": "2fc6bec63bc19a01b74d320f88f1c05955be773a",
+  "primarySourceCommit": "a892750516336d8358949f4518fcc4fbbd85beae",
+  "command": "node --test --test-isolation=none test/casing-translate.test.mjs",
+  "node": "v24.19.0",
+  "tests": {
+    "passed": 8,
+    "failed": 0,
+    "skipped": 0,
+    "logSha256": "3956b43182092d2e56b9fa6d3a03c3d8c45d5567e90010e4a84082550d597c4a"
+  },
+  "sourceSha256": {
+    "scripts/casing-translate.mjs": "a6814664beca1004688bb9fae175951b3920e366e81cd853a606d2b8ed4e01cb",
+    "test/casing-translate.test.mjs": "03f0b198ec5858a47d6f55f9872a260bc16ef9d06d25ab7ae5b1eb874570be2e"
+  },
+  "budgets": {
+    "normalForce_N": 1e-07,
+    "referenceAcceleration_m_s2": 1e-07,
+    "regularizer_kg_inverse": 1e-12
+  },
+  "scope": "Focused receiving: full translating-hub analytic and rollback controls, source-derived normal force/reference/regularizer, configured contact time and impedance, absent/excluded fast-closing vertices and active compressive/force-free rows. Not a complete local suite, independent collision detection, browser, physical calibration or performance attestation.",
+  "extendedStudy": "casing-normal-20ms.json: 24 completed cases and 16 passing refinements; unchanged measured physics sources."
+}

@@ -2,7 +2,7 @@ import {momentumClosure} from '../scripts/rig-momentum-reference.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
-import {createHash} from 'node:crypto';
+import {legacySignalDiagnostic} from '../scripts/legacy-replay-diagnostic.mjs';
 import {runRig,rigRecord,validate,setupFromRecord,DEFAULTS,MODEL,RIDER_BUFFER_KEYS,getRuntime,modelXML,G} from '../dist/bike-rig.js';
 import {travelBuffer} from '../dist/travel-buffer.js';
 import {createLoadObserver,interfaceWrench} from '../dist/rig-loads.js';
@@ -60,7 +60,7 @@ test('new stop schema, weak-stop termination, dormant controls and historical ch
   for(const p of [{riderBuffer:'rigid'},{riderBufferWidth:.03,riderTravel:.02},{riderBufferDamping:-1},{riderBufferStiffness:NaN}])assert.throws(()=>validate(p));
   const missing={...DEFAULTS};delete missing.riderBuffer;assert.throws(()=>setupFromRecord({model:MODEL,params:missing}),/Incomplete/);
   const old=JSON.parse(await readFile(new URL('../docs/evidence/iteration-12-legacy-baseline.json',import.meta.url),'utf8'));
-  for(const b of old){const r=rigRecord(await runRig(setupFromRecord(b)));assert.equal(r.params.riderBuffer,'none');const signals=Object.fromEntries(b.signalKeys.map(k=>[k,r.signals[k]]));assert.equal(createHash('sha256').update(JSON.stringify(signals)).digest('hex'),b.signalsHash);for(const [k,v] of Object.entries(b.summary))assert.equal(r.summary[k],v);}
+  for(const b of old){const r=rigRecord(await runRig(setupFromRecord(b)));assert.equal(r.params.riderBuffer,'none');const signals=Object.fromEntries(b.signalKeys.map(k=>[k,r.signals[k]]));assert.equal(await legacySignalDiagnostic(r,signals,b.signalsHash,'v05-'+r.params.bike+'-'+r.params.rider),b.signalsHash);for(const [k,v] of Object.entries(b.summary))assert.equal(r.summary[k],v);}
   const a=await runRig({duration:2}),b=await runRig({duration:2,riderBuffer:'progressive'});assert.deepEqual(a.signals,b.signals);assert.deepEqual(a.summary,b.summary);
   const weak=await runRig({...preset,riderBufferWidth:.002,riderBufferStiffness:50000,riderBufferDamping:0});assert.equal(weak.status,'terminated');assert.equal(weak.termination.reason,'Rider travel limit');assert.ok(weak.signals.riderCompression.every(v=>Math.abs(v)<=weak.params.riderTravel));
   const fine=await runRig(preset),sparse=await runRig({...preset,sampleDt:.01});assert.deepEqual(fine.summary,sparse.summary);for(const k of Object.keys(sparse.signals))for(let i=0;i<sparse.signals.time.length;i++)assert.equal(sparse.signals[k][i],fine.signals[k][i*2]);

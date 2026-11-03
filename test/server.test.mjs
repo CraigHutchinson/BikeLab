@@ -2,8 +2,22 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import http from 'node:http';
 import { once } from 'node:events';
-import {readdir} from 'node:fs/promises';
+import {readdir,readFile} from 'node:fs/promises';
 import { createPreviewServer } from '../server.mjs';
+// Exercise the registered production handler even on hosts where binding a
+// loopback socket is forbidden. The real HTTP test below remains mandatory.
+test('preview handler serves every packaged top-level asset without binding a socket',async()=>{
+  const server=createPreviewServer(),[serve]=server.listeners('request');
+  const get=(url,method='GET')=>new Promise((resolve,reject)=>{
+    const response={};serve({url,method},{writeHead(status,headers){Object.assign(response,{status,headers});},end(body){resolve({...response,body});}}).catch(reject);
+  });
+  for(const entry of await readdir(new URL('../dist/',import.meta.url),{withFileTypes:true}))if(entry.isFile()){
+    const response=await get('/'+entry.name);assert.equal(response.status,200,entry.name);assert.deepEqual(response.body,await readFile(new URL('../dist/'+entry.name,import.meta.url)),entry.name);
+    if(entry.name.endsWith('.js'))assert.match(response.headers['Content-Type'],/javascript/,entry.name);
+  }
+  assert.equal((await get('/casing-rk4-observer.js?reload=1','HEAD')).body,undefined);
+  assert.equal((await get('/AGENTS.md')).status,404);assert.equal((await get('/','POST')).status,405);
+});
 test('loopback server serves only assets and survives malformed requests',async()=>{
   const server=createPreviewServer();server.listen(0,'127.0.0.1');await once(server,'listening');
   const port=server.address().port;

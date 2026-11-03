@@ -16,7 +16,7 @@ The [current system review](docs/MTB_SYSTEM_REVIEW.md) separates these capabilit
 
 The [unbound rider probe](docs/RIDER_UNBOUND.md) adds a separate 0.02 s authored free-flight panel in Trail bike and `node scripts/rider-posture.mjs --unbound`. It displays the rider's own native skeleton/COM, signed conservation diagnostics and guarded accepted prefix. Hosted browser/headless agreement and desktop/mobile captures are received. It has no bike, ground, live release or continuation.
 
-The Pages workflow runs the complete test suite on Windows and Linux with Node 24, plus Chromium interaction and browser/headless agreement checks. Successful main pushes publish the tested revision automatically. Pull requests run the tests without deploying; workflow_dispatch can redeploy main. Official actions are pinned to commit revisions. See [deployment notes](docs/DEPLOYMENT.md).
+Verification follows the [local-first CI workflow](docs/CI_WORKFLOW.md): quick checks for routine changes, full local or explicitly requested hosted receiving, and separate manual Pages deployment of an exact hosted-verified main commit. Hosted workflows are paused through 31 October 2026 and resume only by deliberate maintainer action. Skipped checks do not qualify a release. See [deployment notes](docs/DEPLOYMENT.md).
 
 ## Run the laboratory
 
