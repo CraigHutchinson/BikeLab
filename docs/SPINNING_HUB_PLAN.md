@@ -4,7 +4,7 @@ The [translating diagnostic](CASING_TRANSLATE.md) now passes the 20 ms ladder: 2
 
 ## Translating contact entry and recontact — received 2026-11-03
 
-The [completed contact activity](CASING_ENTRY.md) now passes six 20 ms runs, four refinements and 16 focused tests. It required a separately identified bounded substep policy and tighter native Newton accuracy; the original fixed-step entry failure remains saved. The sequence below records the receiving design that was exercised. Cross-check the new policy against the loaded release set before spin.
+The [completed contact activity](CASING_ENTRY.md) now passes six 20 ms runs, four refinements and 16 focused tests. It required a separately identified bounded substep policy and tighter native Newton accuracy; the original fixed-step entry failure remains saved. The sequence below records the receiving design that was exercised. The [loaded release cross-check](CASING_CONTACT_LOADED.md) now passes all 24 runs and 16 refinements with 20 combined focused tests. The next increment is the prescribed-state gap-acceleration isolation below.
 
 Original receiving design:
 
@@ -95,6 +95,25 @@ Analytic point-contact mobility remains `A_ij=delta_ij/m_i`: a node point force 
 The current stage observer rejects hinges. Native scalar hinge and slide positions both use ordinary addition, so a precisely admitted one-hinge topology is plausible; version it, update indexing/angular ledgers, and preserve full stage/warm-start/rollback checks. No ball/free-joint generalization is implied.
 
 Connected-bike buffers remain a separate gate. The current trail model samples progressive buffer forces/Jacobians into `qfrc_applied`; native RK4 holds them without a supported callback. The WASM exposes `mj_resetCallbacks`, but no JS control/passive setter has been established. Recomputing buffers only in an observer would cease to reconstruct native `mj_step`. Receive an explicit stage policy for continuous buffers, and retain exact held torque work `tau_held*Deltaq` and accepted command ownership for rider/drive controls.
+
+### Prescribed-state gap-acceleration isolation
+
+GPT-6.1 Sol's additional primary-source review on 2026-11-03 confirms the coupled inverse and native row equation above. The inverse returns **coordinate** accelerations; reconstruct world acceleration with the convective term. The predicted exact point mobility `1/m_i` remains distinct from native's approximate diagonal `2/(3m_i)`.
+
+After the loaded contact-policy cross-check, begin with a separately identified test-only zero-material prescribed-state probe. Hold world node positions and velocities fixed, vary zero/positive/negative hub spin, and set `udot_i=Rᵀ(v_i-V)-omega*t_i`. Include relative rates that exercise the Coriolis term. With nonzero edge damping, those changed relative rates could change physical damping, confounding this isolation; zero material is an explicit test control, not a production change.
+
+At each admitted state, compare independently reconstructed mass/inverse/bias, actual contact Jacobian and gap rate, `J*qacc`, physical gap acceleration, native force and regularization. For `c=convective_i,z`, `p=(R*f_i)_z/m_i-g` and `r=regularizer_i`, a positive-force row must satisfy:
+
+```text
+J*qacc_smooth = p-c
+N_native = (aref-p+c)/(1/m_i+r)
+gap_acceleration = p+N_native/m_i
+gap_acceleration+r*N_native-aref = c
+```
+
+For a law defined using physical gap acceleration, the row target would instead need `aref-c`, evaluated before each constraint solve. This is a prospective model decision, not an implemented correction. Native agreement alone cannot close that decision. Check zero-force/excluded rows separately from positive-force rows; the equality above is not a unilateral complementarity condition for inactive rows.
+
+Primary source: the [reference correction traversal](https://github.com/google-deepmind/mujoco/blob/a892750516336d8358949f4518fcc4fbbd85beae/src/engine/engine_core_constraint.c#L860) applies to equality constraints, with connect/weld handling; the [frictionless diagonal approximation](https://github.com/google-deepmind/mujoco/blob/a892750516336d8358949f4518fcc4fbbd85beae/src/engine/engine_core_constraint.c#L1674) uses body inverse weight. This review ran no new spinning dynamics or performance experiment.
 
 ## Pinned primary references
 

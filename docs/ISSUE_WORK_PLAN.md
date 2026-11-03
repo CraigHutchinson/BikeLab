@@ -126,3 +126,5 @@ The next physical change must identify whether it changes **the material/contact
 
 All issues remain open. This plan consolidates them without declaring a fix, accepting the port's quantitative claims as local evidence, or changing any issue text. Later implementation PRs should name their issue, source baseline, receiving cases and exact validation receipts. Close an issue only after its actual acceptance scope is received; metadata delivery alone does not close an issue whose requested mechanics remain outstanding.
 
+
+2026-11-03 numerical receiving update: the bounded contact-substep/native-accuracy policy now passes both synthetic first-entry/recontact controls and the [24-case loaded release cross-check](CASING_CONTACT_LOADED.md), including all 16 original-budget refinements and 20 combined focused tests. This supports the translating flat-vertex diagnostic only. It does not close the mesh witness/distribution, sharp-terrain, rotating physical-gap law or game-tier issues above. Next isolate the rotating-coordinate contact response under matched world states, then receive spin and both connected bikes.

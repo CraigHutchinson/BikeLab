@@ -39,7 +39,7 @@ node scripts/casing-entry-receive.mjs artifacts/casing-entry-substeps
 MPLCONFIGDIR=/tmp/bikelab-matplotlib XDG_CACHE_HOME=/tmp/bikelab-plot-cache python scripts/plot-casing-entry.py artifacts/casing-entry-substeps
 ```
 
-This contact-entry/recontact activity is complete. Before extending the corrected path, cross-check the new substep/solver policy against the supplied loaded-wheel release set, then receive spin and connected bikes under the [broader correction plan](CASING_FIX_PLAN.md) and [spinning-hub plan](SPINNING_HUB_PLAN.md). Long-idle rider stability, physical calibration/failure, faceted/layered terrain, product browser receiving, eventual 3D dynamics and measured game performance remain separate gates.
+This contact-entry/recontact activity is complete. The [loaded release cross-check](CASING_CONTACT_LOADED.md) now passes all 24 runs and 16 refinements with 20 combined focused tests. Next receive spin and connected bikes under the [broader correction plan](CASING_FIX_PLAN.md) and [spinning-hub plan](SPINNING_HUB_PLAN.md). Long-idle rider stability, physical calibration/failure, faceted/layered terrain, product browser receiving, eventual 3D dynamics and measured game performance remain separate gates.
 
 ## Low-force Newton stopping
 
