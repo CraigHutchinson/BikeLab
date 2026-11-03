@@ -1,0 +1,370 @@
+{
+  "scope": "Identical serialized input; diagnostic only. Strict replay budgets unchanged.",
+  "success": false,
+  "inputSha256": "630a836c1875a86e742006dcc1e120ed66961aa83a2c44ee9bdafee4fdc9cb46",
+  "sourceRecordSha256": "ea0801405de2b6fa69796bf49f702b2ed7d1b35e6728afa78b24e8bb18f8b231",
+  "node": "v24.22.0",
+  "platform": "win32",
+  "errors": [],
+  "playwright": "1.62.1",
+  "browser": "157.0.4341.36",
+  "xml": {
+    "equal": true,
+    "browserSha256": "ae241e922e84a74b8dc49df1ac1da77dcf930f6f26aebc3b8ffe3f9a6f421197",
+    "nodeSha256": "ae241e922e84a74b8dc49df1ac1da77dcf930f6f26aebc3b8ffe3f9a6f421197"
+  },
+  "comparisons": {
+    "initialAngles": {
+      "tolerance": 1e-09,
+      "numericLeaves": 4,
+      "differingNumbers": 2,
+      "outsideBudget": 0,
+      "structuralDifferences": 0,
+      "firstExact": {
+        "path": "record.0",
+        "actual": 1.4792200037917314,
+        "expected": 1.4792200037917318,
+        "absolute": 4.440892098500626e-16,
+        "normalized": 3.002184994197716e-16
+      },
+      "firstOutsideBudget": null,
+      "firstStructural": null,
+      "maxAbsolute": {
+        "path": "record.1",
+        "actual": 1.6922412012942731,
+        "expected": 1.6922412012942722,
+        "absolute": 8.881784197001252e-16,
+        "normalized": 5.248533241129114e-16
+      },
+      "maxNormalized": {
+        "path": "record.1",
+        "actual": 1.6922412012942731,
+        "expected": 1.6922412012942722,
+        "absolute": 8.881784197001252e-16,
+        "normalized": 5.248533241129114e-16
+      }
+    },
+    "targetAngles": {
+      "tolerance": 1e-09,
+      "numericLeaves": 172,
+      "differingNumbers": 50,
+      "outsideBudget": 0,
+      "structuralDifferences": 0,
+      "firstExact": {
+        "path": "record.0.0",
+        "actual": 1.4792200037917314,
+        "expected": 1.4792200037917318,
+        "absolute": 4.440892098500626e-16,
+        "normalized": 3.002184994197716e-16
+      },
+      "firstOutsideBudget": null,
+      "firstStructural": null,
+      "maxAbsolute": {
+        "path": "record.6.3",
+        "actual": -1.1360629302570995,
+        "expected": -1.1360629302570984,
+        "absolute": 1.1102230246251565e-15,
+        "normalized": 9.772548641948083e-16
+      },
+      "maxNormalized": {
+        "path": "record.6.3",
+        "actual": -1.1360629302570995,
+        "expected": -1.1360629302570984,
+        "absolute": 1.1102230246251565e-15,
+        "normalized": 9.772548641948083e-16
+      }
+    },
+    "targetDeltas": {
+      "tolerance": 1e-09,
+      "numericLeaves": 172,
+      "differingNumbers": 14,
+      "outsideBudget": 0,
+      "structuralDifferences": 0,
+      "firstExact": {
+        "path": "record.2.1",
+        "actual": 0.000381346510581,
+        "expected": 0.000381346510582,
+        "absolute": 9.999596636833807e-16,
+        "normalized": 9.999596636833807e-16
+      },
+      "firstOutsideBudget": null,
+      "firstStructural": null,
+      "maxAbsolute": {
+        "path": "record.12.1",
+        "actual": 0.00418980407126,
+        "expected": 0.00418980407127,
+        "absolute": 1.0000680839006293e-14,
+        "normalized": 1.0000680839006293e-14
+      },
+      "maxNormalized": {
+        "path": "record.12.1",
+        "actual": 0.00418980407126,
+        "expected": 0.00418980407127,
+        "absolute": 1.0000680839006293e-14,
+        "normalized": 1.0000680839006293e-14
+      }
+    },
+    "nativeAttributes": {
+      "tolerance": 1e-09,
+      "numericLeaves": 4253,
+      "differingNumbers": 0,
+      "outsideBudget": 0,
+      "structuralDifferences": 0,
+      "firstExact": null,
+      "firstOutsideBudget": null,
+      "firstStructural": null,
+      "maxAbsolute": {
+        "path": "record.qpos0.0",
+        "actual": 0,
+        "expected": 0,
+        "absolute": 0,
+        "normalized": 0
+      },
+      "maxNormalized": {
+        "path": "record.qpos0.0",
+        "actual": 0,
+        "expected": 0,
+        "absolute": 0,
+        "normalized": 0
+      }
+    },
+    "initialFrame": {
+      "tolerance": 1e-09,
+      "numericLeaves": 639,
+      "differingNumbers": 10,
+      "outsideBudget": 0,
+      "structuralDifferences": 0,
+      "firstExact": {
+        "path": "record.articulated.passiveLoads.0",
+        "actual": 0,
+        "expected": -5.3290705182007514e-14,
+        "absolute": 5.3290705182007514e-14,
+        "normalized": 5.3290705182007514e-14
+      },
+      "firstOutsideBudget": null,
+      "firstStructural": null,
+      "maxAbsolute": {
+        "path": "record.articulated.passiveLoads.5",
+        "actual": 0,
+        "expected": 7.993605777301127e-14,
+        "absolute": 7.993605777301127e-14,
+        "normalized": 7.993605777301127e-14
+      },
+      "maxNormalized": {
+        "path": "record.articulated.passiveLoads.5",
+        "actual": 0,
+        "expected": 7.993605777301127e-14,
+        "absolute": 7.993605777301127e-14,
+        "normalized": 7.993605777301127e-14
+      }
+    },
+    "frames": {
+      "tolerance": 1e-09,
+      "numericLeaves": 78201,
+      "differingNumbers": 61797,
+      "outsideBudget": 5627,
+      "structuralDifferences": 0,
+      "firstExact": {
+        "path": "record.0.articulated.passiveLoads.0",
+        "actual": 0,
+        "expected": -5.3290705182007514e-14,
+        "absolute": 5.3290705182007514e-14,
+        "normalized": 5.3290705182007514e-14
+      },
+      "firstOutsideBudget": {
+        "path": "record.1.wheels.0.ground.0",
+        "actual": 1.411908487347624e-08,
+        "expected": 6.804295321627407e-09,
+        "absolute": 7.314789551848833e-09,
+        "normalized": 7.314789551848833e-09
+      },
+      "firstStructural": null,
+      "maxAbsolute": {
+        "path": "record.21.active.maxSlideAcceleration",
+        "actual": 260.257409306076,
+        "expected": 260.2573697020625,
+        "absolute": 3.96040135228759e-05,
+        "normalized": 1.5217249589594255e-07
+      },
+      "maxNormalized": {
+        "path": "record.34.wheels.1.bearing.0",
+        "actual": -0.9480688908720867,
+        "expected": -0.9480698106353279,
+        "absolute": 9.197632412361045e-07,
+        "normalized": 9.197632412361045e-07
+      }
+    },
+    "completeRecord": {
+      "tolerance": 1e-09,
+      "numericLeaves": 79634,
+      "differingNumbers": 62349,
+      "outsideBudget": 5678,
+      "structuralDifferences": 0,
+      "firstExact": {
+        "path": "record.finalState.joints.0.position",
+        "actual": 0.03150201998883376,
+        "expected": 0.031502019988684286,
+        "absolute": 1.494707135840656e-13,
+        "normalized": 1.494707135840656e-13
+      },
+      "firstOutsideBudget": {
+        "path": "record.finalState.joints.1.velocity",
+        "actual": 0.027273388320761684,
+        "expected": 0.027273385326845735,
+        "absolute": 2.993915948490411e-09,
+        "normalized": 2.993915948490411e-09
+      },
+      "firstStructural": null,
+      "maxAbsolute": {
+        "path": "record.frames.21.active.maxSlideAcceleration",
+        "actual": 260.257409306076,
+        "expected": 260.2573697020625,
+        "absolute": 3.96040135228759e-05,
+        "normalized": 1.5217249589594255e-07
+      },
+      "maxNormalized": {
+        "path": "record.frames.34.wheels.1.bearing.0",
+        "actual": -0.9480688908720867,
+        "expected": -0.9480698106353279,
+        "absolute": 9.197632412361045e-07,
+        "normalized": 9.197632412361045e-07
+      }
+    },
+    "archivedBrowserVersusCurrent": {
+      "tolerance": 1e-09,
+      "numericLeaves": 79634,
+      "differingNumbers": 0,
+      "outsideBudget": 0,
+      "structuralDifferences": 0,
+      "firstExact": null,
+      "firstOutsideBudget": null,
+      "firstStructural": null,
+      "maxAbsolute": {
+        "path": "record.scenario.bike.pivotX",
+        "actual": 0.04,
+        "expected": 0.04,
+        "absolute": 0,
+        "normalized": 0
+      },
+      "maxNormalized": {
+        "path": "record.scenario.bike.pivotX",
+        "actual": 0.04,
+        "expected": 0.04,
+        "absolute": 0,
+        "normalized": 0
+      }
+    }
+  },
+  "firstSavedFailure": {
+    "index": 1,
+    "time": 0.010000000000000007,
+    "comparison": {
+      "tolerance": 1e-09,
+      "numericLeaves": 683,
+      "differingNumbers": 561,
+      "outsideBudget": 6,
+      "structuralDifferences": 0,
+      "firstExact": {
+        "path": "record.frame.0",
+        "actual": -0.5001667323605735,
+        "expected": -0.5001667323605754,
+        "absolute": 1.887379141862766e-15,
+        "normalized": 1.887379141862766e-15
+      },
+      "firstOutsideBudget": {
+        "path": "record.wheels.0.ground.0",
+        "actual": 1.411908487347624e-08,
+        "expected": 6.804295321627407e-09,
+        "absolute": 7.314789551848833e-09,
+        "normalized": 7.314789551848833e-09
+      },
+      "firstStructural": null,
+      "maxAbsolute": {
+        "path": "record.wheels.0.ground.0",
+        "actual": 1.411908487347624e-08,
+        "expected": 6.804295321627407e-09,
+        "absolute": 7.314789551848833e-09,
+        "normalized": 7.314789551848833e-09
+      },
+      "maxNormalized": {
+        "path": "record.wheels.0.ground.0",
+        "actual": 1.411908487347624e-08,
+        "expected": 6.804295321627407e-09,
+        "absolute": 7.314789551848833e-09,
+        "normalized": 7.314789551848833e-09
+      }
+    }
+  },
+  "nodeTargetDeltaControl": {
+    "scope": "Browser compiler receives only Node target q values; serialized input and production files unchanged.",
+    "xmlEqual": true,
+    "compiledDeltas": {
+      "tolerance": 1e-09,
+      "numericLeaves": 172,
+      "differingNumbers": 0,
+      "outsideBudget": 0,
+      "structuralDifferences": 0,
+      "firstExact": null,
+      "firstOutsideBudget": null,
+      "firstStructural": null,
+      "maxAbsolute": {
+        "path": "record.0.0",
+        "actual": 0,
+        "expected": 0,
+        "absolute": 0,
+        "normalized": 0
+      },
+      "maxNormalized": {
+        "path": "record.0.0",
+        "actual": 0,
+        "expected": 0,
+        "absolute": 0,
+        "normalized": 0
+      }
+    },
+    "completeRecord": {
+      "tolerance": 1e-09,
+      "numericLeaves": 79634,
+      "differingNumbers": 62322,
+      "outsideBudget": 5208,
+      "structuralDifferences": 0,
+      "firstExact": {
+        "path": "record.finalState.joints.0.position",
+        "actual": 0.03150201998890034,
+        "expected": 0.031502019988684286,
+        "absolute": 2.1605633948595937e-13,
+        "normalized": 2.1605633948595937e-13
+      },
+      "firstOutsideBudget": {
+        "path": "record.finalState.joints.2.velocity",
+        "actual": -0.004447215926621378,
+        "expected": -0.004447214232573925,
+        "absolute": 1.6940474526633276e-09,
+        "normalized": 1.6940474526633276e-09
+      },
+      "firstStructural": null,
+      "maxAbsolute": {
+        "path": "record.frames.21.active.maxSlideAcceleration",
+        "actual": 260.2574093060758,
+        "expected": 260.2573697020625,
+        "absolute": 3.960401329550223e-05,
+        "normalized": 1.521724950222932e-07
+      },
+      "maxNormalized": {
+        "path": "record.frames.53.wheels.0.ground.0",
+        "actual": -6.588440366883663e-08,
+        "expected": -7.159625099728562e-07,
+        "absolute": 6.500781063040195e-07,
+        "normalized": 6.500781063040195e-07
+      }
+    },
+    "strictFailure": "record.finalState.joints.2.velocity: -0.004447215926621378 vs -0.004447214232573925"
+  },
+  "reviewedSource": "69b9621ef9609ed2a3ed6d7be10b661fb9c742bd",
+  "artifactHashes": {
+    "browser-node-target-deltas.json": "68400326ee3432ebee84daf6b212383726d9083cd396ec8781cef383cd5b3f9e",
+    "browser.json": "2af6739bafd04df55277912a443e81fc7b8b43859276d8a23a7186903ff345f2",
+    "node.json": "c75052b10d5669047a201de67d61c8b57ea9c2b884123fb8889f1d2ca2160972",
+    "report.json": "78697fee021beb3228876eb3cbbe4e546fc1ccd9c0f7343fe534dac5290c3ea9"
+  }
+}
