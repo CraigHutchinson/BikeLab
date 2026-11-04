@@ -1,6 +1,8 @@
 # Contact entry, recontact and spinning-hub receiving — 2026-11-02
 
-The [translating diagnostic](CASING_TRANSLATE.md) now passes the 20 ms ladder: 24 completed cases, 16 refinements, independent normal-law checks and complete separation. No case recontacts. This document preserves GPT-6.1 Sol's read-only source research for the next increment; spinning implementation or receiving is not claimed.
+**Spinning contact update, 4 November:** the [prescribed-state isolation](SPINNING_GAP.md) passes 36 matched-world-state controls and four focused tests. Native normal force varies with spin because the coordinate row omits the convective contribution to physical gap acceleration. A versioned target/stage correction and trajectory receiving remain next; production physics and all existing replay/tracking budgets are unchanged. Legacy macOS artifact comparison and browser receiving remain pending.
+
+The [translating diagnostic](CASING_TRANSLATE.md) now passes the 20 ms ladder: 24 completed cases, 16 refinements, independent normal-law checks and complete separation. No case recontacts. This document preserves GPT-6.1 Sol's read-only source research for the next increment; spinning trajectory implementation or receiving is not claimed.
 
 ## Translating contact entry and recontact — received 2026-11-03
 

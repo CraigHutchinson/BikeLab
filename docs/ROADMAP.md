@@ -1,5 +1,7 @@
 # Delivery and validation plan
 
+**Spinning contact update, 4 November:** the [prescribed-state isolation](SPINNING_GAP.md) passes 36 matched-world-state controls and four focused tests. Native normal force varies with spin because the coordinate row omits the convective contribution to physical gap acceleration. A versioned target/stage correction and trajectory receiving remain next; production physics and all existing replay/tracking budgets are unchanged. Legacy macOS artifact comparison and browser receiving remain pending.
+
 **Subsequent delivery decision, 3 November:** after reviewing the known failed macOS hashes and cancelled browser job, the user explicitly requested the merges. The [checkpoint decision](MERGE_CHECKPOINT_2026_11_03.md) supersedes the earlier wait-before-merge disposition for PR54 only; missing software receiving remains follow-up work, not a pass. PR46 is to be closed as superseded after its preserved evidence and replacement reach main. Dated catalogue counts below describe the review snapshot.
 
 ## Current execution order — 2026-11-03
