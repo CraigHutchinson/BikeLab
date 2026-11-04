@@ -1,5 +1,7 @@
 # BikeLab workstream handoff — 2026-11-03
 
+The tracked [spinning-contact working plan](working/SPINNING_CONTACT.md) preserves provisional decisions, blocked checks and the next implementation sequence for draft PR90. Push updates to it with draft changes.
+
 **Spinning contact update, 4 November:** the [prescribed-state isolation](SPINNING_GAP.md) passes 36 matched-world-state controls and four focused tests. Native normal force varies with spin because the coordinate row omits the convective contribution to physical gap acceleration. A versioned target/stage correction and trajectory receiving remain next; production physics and all existing replay/tracking budgets are unchanged. Legacy macOS artifact comparison and browser receiving remain pending.
 
 Latest delivery: PR54 merged at 69b9621; PR46 closed as superseded with original evidence preserved. Longer full-suspension controller replay still fails after target-table substitution (5,208 leaves outside budget). Next isolate compiled passive laws and identical-state controller effort; see [diagnostic update](RIDER_REPLAY_DIAGNOSTIC.md#longer-controller-receiving--3-november-2026). Earlier merge-readiness entries below are historical.

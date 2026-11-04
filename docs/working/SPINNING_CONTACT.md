@@ -1,0 +1,45 @@
+# Spinning contact working plan — 4 November 2026
+
+This is a tracked, provisional continuation plan for [draft PR90](https://github.com/CraigHutchinson/BikeLab/pull/90). Commit and push changes to this plan alongside draft implementation checkpoints. It supplements the [received diagnostic](../SPINNING_GAP.md) and [broader spin plan](../SPINNING_HUB_PLAN.md); it is not evidence that pending work passed.
+
+## Saved checkpoint
+
+- Base main: `3b8081e9fc70b025eecc1d7c246be52cace820b9`. PR54 has merged and PR46 is closed as superseded; preserve their historical evidence and accepted limitations.
+- Diagnostic source: `f2cd86e751be369e9f8d1e436951580d5a5805cb`; evidence/plot/plan checkpoint: `47fc35e5cabec634ad4dc4f88d5c2e5d73dd6e50` on `codex/spinning-gap-isolation`.
+- Thirty-six prescribed states and four focused tests pass. The complete local in-process suite is 409/422, with the same thirteen environment-blocked subprocess/loopback checks as preceding main. This is not full attestation.
+- [Full report](../evidence/spinning-gap.json), [test receipt](../evidence/spinning-gap-tests.json), inspected SVG, runner and plotting script are tracked. Ignored raw logs/PNG duplicate or support the published evidence; they are not the sole copy of the plan or numerical result.
+- GPT-6.1 Sol reviewed signs, mass/inertia, inverse, bias and row law. Its regime-admission and second-contact finite-difference findings were addressed. Production physics, existing assertions and budgets are unchanged.
+
+## Established finding
+
+The zero-material, flat-vertex probe keeps world node positions and translational velocities fixed while varying spin. Native normal force changes with the convective contribution to physical gap acceleration. The independent mass, bias, Jacobian, mobility, force, power and finite-difference checks explain that change. Positive-force rows satisfy `physical_gap_acceleration + regularizer*force - aref = convective_z`. Inactive rows retain their separate unilateral/admission conditions.
+
+This isolates a mechanism in the pinned solver. It does not select a universal tyre contact law, correct production stepping, qualify a spinning trajectory, or establish stable bike/rider support.
+
+## Next implementation increment
+
+1. Re-read remote main, PR90 and reviews before editing. Preserve concurrent rider work and existing evidence identities. Use small commits and push this working plan with them.
+2. Inspect the pinned native call order and actual WASM exports for reference construction and constraint solving. Record which stage hooks are available; do not assume a JavaScript callback exists.
+3. First test the proposed `aref - convective_z` target as an explicitly identified prescribed-state intervention. Re-solve from identical native state, preserving row identity and regularization. Require invariant physical normal response across matched spin signs/orientations, independent force/work checks and unchanged absent/excluded/zero-force admission. Keep the unmodified baseline alongside it.
+4. Only after that control passes, specify a separately versioned stage policy. The correction must precede every affected constraint solve, including every RK stage. An observer-only correction or a once-per-macro-step patch is insufficient. Record stage/rollback and native-state ownership before implementing trajectories.
+5. Receive zero-spin recovery, exact zero-material ballistic and supported centrifugal controls, then loaded spin with linear/angular momentum, work and refinement. Preserve node rotational inertia, physical axle torque, accepted-state rollback and every travel/rim/casing/domain limit.
+6. Feed the qualified mechanism into both bikes, keeping continuous buffer forces distinct from held rider/drive commands. Physically specified rest/braking, 10 s rest and eventual 60 s active-rider idle/recovery remain independent gates.
+
+The target adjustment and stage architecture are **proposals**, not implemented fixes. No integration timestep, force budget, comparison tolerance or production model identity is to be changed merely to make an existing case pass.
+
+## Pending delivery and parallel work
+
+- PR90 is draft. Routine smoke is requested through the existing workflow; no additional full matrix or deployment was requested. Record actual remote results before calling any check passed.
+- Legacy macOS diagnosis remains unresolved. Full run [41706182290](https://github.com/CraigHutchinson/BikeLab/actions/runs/41706182290) contains macOS artifact `13266925433` and Linux artifact `13265558819`. The connector returned download references, but the network-enabled shell download was cancelled; no local cross-platform comparison was completed. Use fresh authorized artifact access and the tracked `compare-legacy-replay.py`; do not change historical hashes to hide the failure. These CI artifacts have finite retention.
+- The separate longer rider controller diagnosis still fails after target-table substitution. Follow [its latest evidence and passive-law/identical-state effort gate](../RIDER_REPLAY_DIAGNOSTIC.md#longer-controller-receiving--3-november-2026). Do not conflate it with the legacy macOS rig failure or this spinning contact control.
+- Browser receiving, calibrated material/failure and pressure loss, layered/faceted terrain qualification, live rider ownership, persistent execution, supported crouch/pump/wheelie/hop/endo, 3D lateral/turning physics and measured game/reference-data fidelity remain in the main plan.
+
+## Reproduction
+
+```sh
+node scripts/spinning-gap.mjs artifacts/spinning-gap
+python scripts/plot-spinning-gap.py artifacts/spinning-gap
+node --test test/spinning-gap.test.mjs
+```
+
+When subprocess isolation is unavailable, `node --test --test-isolation=none` gives an exploratory complete-suite result, not a substitute for required HTTP/browser/platform coverage. Keep its failures explicit. A plotting cache can use a writable `MPLCONFIGDIR`; rendering the saved evidence does not rerun the physics.
