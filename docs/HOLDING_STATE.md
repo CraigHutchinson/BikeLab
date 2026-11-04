@@ -1,5 +1,11 @@
 # BikeLab workstream handoff — 2026-11-03
 
+Latest checkpoint: PR90 spinning native-stage pilot has 432/432 local Node passes, exact 576-step native parity and six ballistic controls. See [tracked next implementation](working/SPINNING_CONTACT.md#delivery-receiving--4-november-2026). Corrected-stage/loaded dynamics, scientific visualization, browser and macOS gates remain open.
+
+The tracked [spinning-contact working plan](working/SPINNING_CONTACT.md) preserves provisional decisions, blocked checks and the next implementation sequence for draft PR90. Push updates to it with draft changes.
+
+**Spinning contact update, 4 November:** the [physical-gap target intervention](SPINNING_GAP_TARGET.md) passes 48 prescribed states, 1,248 native constraint re-solves and eight combined focused tests. It removes the matched-state spin-dependent normal response while preserving native state, coefficients, admission and reversible controls. The full local in-process suite is 413/426 with the same thirteen environment-blocked checks; no full attestation. A separately versioned RK stage driver and trajectory receiving remain next. Production physics, existing budgets, legacy macOS diagnosis and browser receiving are unchanged.
+
 Latest delivery: PR54 merged at 69b9621; PR46 closed as superseded with original evidence preserved. Longer full-suspension controller replay still fails after target-table substitution (5,208 leaves outside budget). Next isolate compiled passive laws and identical-state controller effort; see [diagnostic update](RIDER_REPLAY_DIAGNOSTIC.md#longer-controller-receiving--3-november-2026). Earlier merge-readiness entries below are historical.
 
 **Subsequent delivery decision, 3 November:** after reviewing the known failed macOS hashes and cancelled browser job, the user explicitly requested the merges. The [checkpoint decision](MERGE_CHECKPOINT_2026_11_03.md) supersedes the earlier wait-before-merge disposition for PR54 only; missing software receiving remains follow-up work, not a pass. PR46 is to be closed as superseded after its preserved evidence and replacement reach main. Dated catalogue counts below describe the review snapshot.

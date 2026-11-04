@@ -1,0 +1,90 @@
+{
+  "source": "83c80605b5937c9e9f47003b3c1a4c4fae022cab",
+  "node": "v24.22.0",
+  "platform": "Windows",
+  "unit": {
+    "pass": 432,
+    "fail": 0,
+    "skip": 0,
+    "fullBrowserAttestation": false
+  },
+  "nativeParity": {
+    "cases": 36,
+    "steps": 576,
+    "maxima": {
+      "position": 0,
+      "velocity": 0,
+      "warmstart": 0,
+      "acceleration": 0,
+      "force": 0,
+      "angle": 0,
+      "angularVelocity": 0,
+      "angularAcceleration": 0,
+      "angularWarmstart": 0,
+      "torque": 0,
+      "time": 0,
+      "power": 0,
+      "jacobian": 0,
+      "jacobianLength": 0,
+      "regularizer": 0
+    }
+  },
+  "ballistic": {
+    "cases": 6,
+    "steps": 768,
+    "errors": [
+      {
+        "position": 3.3306690738754696e-16,
+        "velocity": 5.9396931817445875e-15,
+        "angle": 2.168404344971009e-19,
+        "angularVelocity": 0
+      },
+      {
+        "position": 1.1102230246251565e-16,
+        "velocity": 2.220446049250313e-16,
+        "angle": 2.4964492238218627e-24,
+        "angularVelocity": 4.115979172348546e-20
+      },
+      {
+        "position": 3.3306690738754696e-16,
+        "velocity": 4.884981308350689e-15,
+        "angle": 2.168404344971009e-19,
+        "angularVelocity": 0
+      },
+      {
+        "position": 3.3306690738754696e-16,
+        "velocity": 5.551115123125783e-15,
+        "angle": 4.996003610813204e-16,
+        "angularVelocity": 0
+      },
+      {
+        "position": 5.551115123125783e-16,
+        "velocity": 2.220446049250313e-16,
+        "angle": 0,
+        "angularVelocity": 1.5693844701808924e-19
+      },
+      {
+        "position": 3.3306690738754696e-16,
+        "velocity": 5.10702591327572e-15,
+        "angle": 4.996003610813204e-16,
+        "angularVelocity": 0
+      }
+    ]
+  },
+  "sourcesSha256": {
+    "scripts/spinning-rk4-stage.mjs": "4157856e31f5114f6c28213170d96e3c0e57e883eb4330036e2aaf9b60a70b2b",
+    "test/spinning-rk4-stage.test.mjs": "fcc5a1fd14b197d7224a95e37f1d2b1313dc38cf056d28000171411ae650a0c9",
+    "docs/evidence/spinning-gap.json": "6dd3a9773888dcfe19514bed51b40c6075bd840c93a970ccf68d55324514035e",
+    "scripts/spinning-gap.mjs": "991d86c46664ea45098501ad579f2ec44ef60e31dcb68a497530dcacef363279",
+    "dist/moving-wheel.js": "45b1068fabf5413dfc90bfd2ee47f46600deb093b756d7c8d1bdc8ad24411e35",
+    "dist/flat-vertex-contact.js": "773259b2ba85bf9ac1f8a05476b0542433a1c02df39ef6b0d789c3d61775bd9d",
+    "dist/casing-rk4-observer.js": "2a15beada33db32a7d514760257e73b8ff683ba180cfea2cf0016a83b545402b",
+    "dist/vendor/mujoco-3.16.0/mujoco.js": "5d5d89ddd0857a6518c628fa502d42f99d6dd67ca240182f1068cd30a45465ac",
+    "dist/vendor/mujoco-3.16.0/mujoco.wasm": "e05ac96db7f45bd46e76fed6e3469bf9204329e093344d742a18bca2cc0e230e"
+  },
+  "artifacts": {
+    "artifacts/pr90-receiving-tests.log": "d00f89dba01119acfa484f8116b39e7a68069bdbc0f31dd01aaf0d509b27ebe1",
+    "artifacts/spinning-rk4-stage-received/report.json": "a5735dc30ff637e3d588cf62850725a8b002340e17157b9c4c82f58cfb9eec1f",
+    "artifacts/spinning-rk4-stage-received.log": "631aab76f9346996bcf009e78ef6620658da7b755ca75aa380be4063e1522f82"
+  }
+}

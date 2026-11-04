@@ -6,6 +6,8 @@ Develop end-user experiments and physical foundations together. Each slice needs
 
 Before editing, inspect current repository status and the roadmap/evidence documents. Coordinate overlapping work; do not run hardware performance experiments concurrently with unrelated workloads.
 
+User instruction, 2026-11-04: keep new temporary and working plans in tracked documentation and commit/push them with draft changes. A draft checkpoint must preserve current findings, provisional decisions, blocked checks and concrete next steps for another session. Do not leave the only resumable plan in local scratch files or conversation history; label hypotheses and unverified work explicitly. Keep credentials and expiring signed download URLs out of those plans.
+
 Use SI internally. Record parameter provenance and uncertainty. Treat illustrative values and simplified models as uncalibrated. Derive geometry-dependent behaviour where the mechanism is explicitly represented; do not count the same effect twice.
 
 Read actual primary references before implementing numerical algorithms or externally sourced models. Map signs, axes, units and force conventions explicitly. Keep numerical correctness, convergence, physical calibration, native rendering/input checks and participant feedback as separate evidence.
