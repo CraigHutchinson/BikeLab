@@ -22,12 +22,12 @@ const hash=x=>createHash('sha256').update(x).digest('hex');
 const arrays=['qpos','qvel','qacc','qacc_warmstart','qfrc_constraint','qfrc_passive','qfrc_smooth','qacc_smooth','qfrc_bias','qfrc_applied','xfrc_applied','flexvert_xpos','efc_J','efc_R','efc_aref','efc_force','efc_pos','efc_vel'];
 export const capture=d=>Object.fromEntries(arrays.map(k=>[k,Array.from(d[k])]).concat([['time',d.time],['ncon',d.ncon],['nefc',d.nefc],['warnings',nativeWarnings(d)]]));
 
-function admit(mj,m){
+function admit(mj,m,h=H){
  assert.equal(m.nq,NV);assert.equal(m.nv,NV);assert.equal(m.njnt,NV);
  for(const k of ['na','nu','neq','ntendon','nmocap','nplugin','nhistory','nsensor','nuserdata'])assert.equal(m[k],0,k);
  assert.equal(m.nflex,1);assert.equal(m.nflexvert,p.nodes);assert.equal(m.ngeom,1);
  assert.equal(m.opt.integrator,mj.mjtIntegrator.mjINT_RK4.value);assert.equal(m.opt.solver,mj.mjtSolver.mjSOL_NEWTON.value);assert.equal(m.opt.jacobian,mj.mjtJacobian.mjJAC_DENSE.value);
- assert.equal(m.opt.timestep,H);assert.equal(m.opt.enableflags,0);assert.equal(m.opt.disableflags,mj.mjtDisableBit.mjDSBL_AUTORESET.value);assert.equal(m.opt.iterations,100);assert.equal(m.opt.tolerance,1e-20);
+ assert.equal(m.opt.timestep,h);assert.equal(m.opt.enableflags,0);assert.equal(m.opt.disableflags,mj.mjtDisableBit.mjDSBL_AUTORESET.value);assert.equal(m.opt.iterations,100);assert.equal(m.opt.tolerance,1e-20);
  assert.deepEqual(Array.from(m.opt.gravity),[0,0,-p.gravity]);
  for(const k of ['jnt_stiffness','dof_damping','dof_frictionloss','dof_armature','flex_edgestiffness','flex_edgedamping'])assert.ok(m[k].every(x=>x===0),k);
  for(let j=0;j<NV;j++){
@@ -53,8 +53,9 @@ function guard(mj,m,d,hub,previous,out){
 }
 
 export function createSpinningStageDriver(mj,input,options={}){
- assert.ok(options&&Object.getPrototypeOf(options)===Object.prototype&&Object.keys(options).every(k=>['excluded','onCheckpoint','targetPolicy'].includes(k)),'Unknown options');
- const {excluded=false,onCheckpoint,targetPolicy='native'}=options;
+ assert.ok(options&&Object.getPrototypeOf(options)===Object.prototype&&Object.keys(options).every(k=>['excluded','onCheckpoint','targetPolicy','stepDivisor'].includes(k)),'Unknown options');
+ const {excluded=false,onCheckpoint,targetPolicy='native',stepDivisor=1}=options;
+ assert.ok([1,2,4].includes(stepDivisor),'Unsupported step divisor');const h=H/stepDivisor;
  assert.ok(['native','physical-gap-0.1'].includes(targetPolicy),'Unknown target policy');
  if(targetPolicy!=='native')assert.equal(typeof mj.mj_fwdConstraint,'function','Missing native constraint solve');
  assert.ok(input&&Object.keys(input).length===4&&Object.keys(input).every(k=>['q','v','warmstart','time'].includes(k)),'Unknown state fields');
@@ -66,11 +67,11 @@ export function createSpinningStageDriver(mj,input,options={}){
  // supply arbitrary topology or mutate options through this driver.
  const m=mj.MjModel.from_xml_string(spinningGapXML(excluded));let accepted,trial,observation;
  try{
-  admit(mj,m);accepted=new mj.MjData(m);trial=new mj.MjData(m);observation=new mj.MjData(m);
+  m.opt.timestep=h;admit(mj,m,h);accepted=new mj.MjData(m);trial=new mj.MjData(m);observation=new mj.MjData(m);
   const spec=mj.mjtState.mjSTATE_INTEGRATION.value,hub=mj.mj_name2id(m,mj.mjtObj.mjOBJ_BODY.value,'hub');
   const q=new Float64Array(NV),v=new Float64Array(NV),warm=new Float64Array(NV),vel=Array.from({length:4},()=>new Float64Array(NV)),acc=Array.from({length:4},()=>new Float64Array(NV));
-  const previous=new Float64Array(3*p.nodes),limits={},stageTrace=Array.from({length:4},()=>({time:0,rows:0,contacts:0,contactPower:0,verticalForce:0}));
-  let disposed=false,stepping=false,steps=0,slot=0,contactWork=0,verticalImpulse=0,lastStages=[];
+  const previous=new Float64Array(3*p.nodes),limits={},stageTrace=Array.from({length:4},()=>({time:0,rows:0,contacts:0,contactPower:0,verticalForce:0,nativeTargets:new Float64Array(p.nodes),targets:new Float64Array(p.nodes),force:new Float64Array(p.nodes),acceleration:new Float64Array(NV)}));
+  let disposed=false,stepping=false,steps=0,slot=0,contactWork=0,verticalImpulse=0,angularImpulse=0,lastStages=[];
   accepted.qpos.set(input.q);accepted.qvel.set(input.v);accepted.qacc_warmstart.set(input.warmstart);accepted.time=input.time;
   mj.mj_forward(m,accepted);correctTargets(accepted);guard(mj,m,accepted,hub,null,limits);
   function correctTargets(d){
@@ -93,19 +94,22 @@ export function createSpinningStageDriver(mj,input,options={}){
   function observe(source,previous=null){
    mj.mj_resetData(m,observation);mj.mj_copyState(m,source,observation,spec);mj.mj_forward(m,observation);correctTargets(observation);guard(mj,m,observation,hub,previous,limits);return observation;
   }
-  function snapshot(){assert.ok(!disposed,'Driver disposed');return {...capture(accepted),targetPolicy,steps,slot,contactWork,verticalImpulse,lastStages:structuredClone(lastStages)};}
+  function snapshot(){assert.ok(!disposed,'Driver disposed');return {...capture(accepted),targetPolicy,steps,slot,contactWork,verticalImpulse,angularImpulse,lastStages:structuredClone(lastStages)};}
   return {
    snapshot,
    observe(){assert.ok(!disposed&&!stepping,'Driver unavailable');return capture(observe(accepted));},
    step(){
     assert.ok(!disposed&&!stepping,'Driver unavailable');stepping=true;
     try{
-     admit(mj,m);mj.mj_resetData(m,trial);mj.mj_copyState(m,accepted,trial,spec);
+     admit(mj,m,h);mj.mj_resetData(m,trial);mj.mj_copyState(m,accepted,trial,spec);
      q.set(accepted.qpos);v.set(accepted.qvel);warm.set(accepted.qacc_warmstart);const time=accepted.time;
-     assert.ok(time+H>time,'Timestep cannot advance time');let work=0,impulse=0;
+     assert.ok(time+h>time,'Timestep cannot advance time');let work=0,impulse=0,momentImpulse=0;
      for(let stage=0;stage<4;stage++){
-      if(stage){for(let j=0;j<NV;j++){trial.qpos[j]=q[j]+H*(C[stage]*vel[stage-1][j]);trial.qvel[j]=v[j]+H*(C[stage]*acc[stage-1][j]);}trial.time=time+C[stage]*H;}
+      if(stage){for(let j=0;j<NV;j++){trial.qpos[j]=q[j]+h*(C[stage]*vel[stage-1][j]);trial.qvel[j]=v[j]+h*(C[stage]*acc[stage-1][j]);}trial.time=time+C[stage]*h;}
       if(stage)mj.mj_forwardSkip(m,trial,mj.mjtStage.mjSTAGE_NONE.value,1);else mj.mj_forward(m,trial);
+      const trace=stageTrace[stage];
+      assert.ok(trial.nefc<=p.nodes,'Stage row capacity');
+      trace.nativeTargets.fill(0);trace.nativeTargets.set(trial.efc_aref);
       correctTargets(trial);
       guard(mj,m,trial,hub,stage?previous:null,limits);if(!stage)previous.set(trial.flexvert_xpos);
       let power=0,force=0;for(let j=0;j<NV;j++){
@@ -115,20 +119,25 @@ export function createSpinningStageDriver(mj,input,options={}){
       let rowPower=0;for(let row=0;row<trial.nefc;row++){force+=trial.efc_force[row];rowPower+=trial.efc_force[row]*trial.efc_vel[row];}
       assert.ok(Math.abs(power-rowPower)<=BUDGETS.power,'Stage contact power mismatch');
       assert.ok(Number.isFinite(power)&&Number.isFinite(force));
-      Object.assign(stageTrace[stage],{time:trial.time,rows:trial.nefc,contacts:trial.ncon,contactPower:power,verticalForce:force});
-      work+=H*B[stage]*power;impulse+=H*B[stage]*force;
+      let moment=p.gravity*p.hubMass*(.125+trial.qpos[0]);
+      for(let i=0;i<p.nodes;i++)moment+=p.gravity*(p.tyreMass/p.nodes)*trial.flexvert_xpos[3*i];
+      const contacts=trial.contact;
+      try{for(let i=0;i<contacts.size();i++){const c=contacts.get(i);try{if(c.efc_address>=0){const side=c.flex[0]===0?0:1;moment-=trial.flexvert_xpos[3*c.vert[side]]*trial.efc_force[c.efc_address];}}finally{c.delete();}}}finally{contacts.delete();}
+      trace.targets.fill(0);trace.targets.set(trial.efc_aref);trace.force.fill(0);trace.force.set(trial.efc_force);trace.acceleration.set(trial.qacc);
+      Object.assign(trace,{angularRate:moment,time:trial.time,rows:trial.nefc,contacts:trial.ncon,contactPower:power,verticalForce:force});
+      work+=h*B[stage]*power;impulse+=h*B[stage]*force;momentImpulse+=h*B[stage]*moment;
       onCheckpoint?.(stage);
      }
      // Preserve fourth-stage qacc/force/contact caches. Only q/v/time advance;
      // native mj_advance stores F[3], not the weighted acceleration, as warmstart.
      for(let j=0;j<NV;j++){
       let dq=0,dv=0;for(let s=0;s<4;s++){dq+=B[s]*vel[s][j];dv+=B[s]*acc[s][j];}
-      trial.qpos[j]=q[j]+H*dq;trial.qvel[j]=v[j]+H*dv;trial.qacc_warmstart[j]=acc[3][j];
+      trial.qpos[j]=q[j]+h*dq;trial.qvel[j]=v[j]+h*dv;trial.qacc_warmstart[j]=acc[3][j];
      }
-     trial.time=time+H;
+     trial.time=time+h;
      observe(trial,previous);onCheckpoint?.(4); // endpoint checked in separate native data
      const committedTrace=structuredClone(stageTrace); // allocate before commit
-     const old=accepted;accepted=trial;trial=old;steps++;slot=1-slot;contactWork+=work;verticalImpulse+=impulse;lastStages=committedTrace;
+     const old=accepted;accepted=trial;trial=old;steps++;slot=1-slot;contactWork+=work;verticalImpulse+=impulse;angularImpulse+=momentImpulse;lastStages=committedTrace;
     }finally{stepping=false;}
    },
    dispose(){assert.ok(!stepping,'Cannot dispose during step');if(!disposed){disposed=true;observation.delete();trial.delete();accepted.delete();m.delete();}}

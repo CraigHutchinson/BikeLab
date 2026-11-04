@@ -7,6 +7,20 @@ const baseline=JSON.parse(await readFile(new URL('../docs/evidence/spinning-gap.
 const input=s=>({q:[...s.q],v:[...s.v],warmstart:s.v.map(()=>.125),time:0});
 const policy={targetPolicy:'physical-gap-0.1'};
 
+test('refined clocks and angular impulse agree with independent free-flight gravity moment',async()=>{
+ const mj=await getRuntime(),source=baseline.samples.find(s=>s.name==='separated-closing'&&s.angle===.1&&s.omega===10),p=baseline.parameters.wheel;
+ const massX=p.hubMass*source.hubPosition[0]+baseline.parameters.nodeMass*source.worldOffsets.reduce((sum,r)=>sum+source.hubPosition[0]+r[0],0);
+ const momentumX=p.hubMass*source.hubVelocity[0]+p.tyreMass*source.nodeVelocity[0];
+ for(const stepDivisor of [1,2,4]){
+  const a=createSpinningStageDriver(mj,input(source),{...policy,stepDivisor});
+  try{for(let i=0;i<128*stepDivisor;i++)a.step();const state=a.snapshot(),t=state.time;
+   assert.ok(Math.abs(t-.00025)<1e-15);assert.ok(Math.abs(state.angularImpulse-p.gravity*(massX*t+.5*momentumX*t*t))<1e-12);
+   assert.equal(state.lastStages.length,4);assert.ok(state.lastStages.every(s=>s.rows===0&&s.targets.every(x=>x===0)&&s.force.every(x=>x===0)));
+  }finally{a.dispose();}
+ }
+ assert.throws(()=>createSpinningStageDriver(mj,input(source),{...policy,stepDivisor:3}),/Unsupported step divisor/);
+});
+
 test('corrected initialization reproduces independently audited prescribed-state force and acceleration',async()=>{
  const mj=await getRuntime(),reference=JSON.parse(await readFile(new URL('../docs/evidence/spinning-gap-target.json',import.meta.url)));
  for(const sample of reference.samples){

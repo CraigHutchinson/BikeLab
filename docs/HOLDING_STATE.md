@@ -1,5 +1,7 @@
 # BikeLab workstream handoff — 2026-11-03
 
+Latest PR91 receiving: 437/437 local Node tests pass; all 108 short corrected trajectories complete, but 12/72 refinement comparisons fail at excluded-closing states. Preserve the failed screen and next isolate contact-row transitions at RK stage resolution. [Details and remaining gates](working/SPINNING_CONTACT.md#short-corrected-trajectories--4-november-2026).
+
 Current implementation: corrected physical-gap-0.1 RK4 diagnostic stages are implemented with 436/436 local Node passes. Next is loaded-trajectory stage traces, independent work/momentum and timestep refinement; see [working plan](working/SPINNING_CONTACT.md#corrected-stage-pilot--4-november-2026). Production mechanics remain unchanged.
 
 Latest checkpoint: PR90 spinning native-stage pilot has 432/432 local Node passes, exact 576-step native parity and six ballistic controls. See [tracked next implementation](working/SPINNING_CONTACT.md#delivery-receiving--4-november-2026). Corrected-stage/loaded dynamics, scientific visualization, browser and macOS gates remain open.
