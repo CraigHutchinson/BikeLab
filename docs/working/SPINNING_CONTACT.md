@@ -67,3 +67,10 @@ node --test test/spinning-gap.test.mjs test/spinning-gap-target.test.mjs
 ```
 
 When subprocess isolation is unavailable, `node --test --test-isolation=none` gives an exploratory complete-suite result, not a substitute for required HTTP/browser/platform coverage. Keep its failures explicit. A plotting cache can use a writable `MPLCONFIGDIR`; rendering the saved evidence does not rerun the physics.
+
+
+## Delivery receiving — 4 November 2026
+
+On clean source 83c8060, the complete host Windows Node suite passes **432/432**, no skips/failures. The stage CLI regenerated all 36 native-parity cases / 576 steps with zero differences in every checked channel, plus six independent ballistic cases / 768 steps. [Compact source-bound receipt](../evidence/spinning-rk4-stage-receiving.json) preserves source and raw-artifact hashes. Production files and budgets are unchanged. This supersedes the pending complete-Node result above, not missing browser/macOS qualification. Scientific stage visualization remains pending; no screenshot claim is made.
+
+The user requests pickup and merge of this bounded checkpoint. PR90 smoke passed at 83c8060; full was skipped. This local Node result is not full-local/browser attestation. Continue in a fresh PR with a separately versioned corrected target before each native stage solve, retaining the native-parity control, accepted/trial transaction and endpoint-observation separation. First receive corrected ballistic controls, then loaded spin with work/momentum and refinement. Do not broaden the production model or tune frozen budgets.

@@ -1,5 +1,7 @@
 # BikeLab workstream handoff — 2026-11-03
 
+Latest checkpoint: PR90 spinning native-stage pilot has 432/432 local Node passes, exact 576-step native parity and six ballistic controls. See [tracked next implementation](working/SPINNING_CONTACT.md#delivery-receiving--4-november-2026). Corrected-stage/loaded dynamics, scientific visualization, browser and macOS gates remain open.
+
 The tracked [spinning-contact working plan](working/SPINNING_CONTACT.md) preserves provisional decisions, blocked checks and the next implementation sequence for draft PR90. Push updates to it with draft changes.
 
 **Spinning contact update, 4 November:** the [physical-gap target intervention](SPINNING_GAP_TARGET.md) passes 48 prescribed states, 1,248 native constraint re-solves and eight combined focused tests. It removes the matched-state spin-dependent normal response while preserving native state, coefficients, admission and reversible controls. The full local in-process suite is 413/426 with the same thirteen environment-blocked checks; no full attestation. A separately versioned RK stage driver and trajectory receiving remain next. Production physics, existing budgets, legacy macOS diagnosis and browser receiving are unchanged.
