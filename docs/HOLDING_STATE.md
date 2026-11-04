@@ -1,5 +1,7 @@
 # BikeLab workstream handoff — 2026-11-03
 
+Current implementation: corrected physical-gap-0.1 RK4 diagnostic stages are implemented with 436/436 local Node passes. Next is loaded-trajectory stage traces, independent work/momentum and timestep refinement; see [working plan](working/SPINNING_CONTACT.md#corrected-stage-pilot--4-november-2026). Production mechanics remain unchanged.
+
 Latest checkpoint: PR90 spinning native-stage pilot has 432/432 local Node passes, exact 576-step native parity and six ballistic controls. See [tracked next implementation](working/SPINNING_CONTACT.md#delivery-receiving--4-november-2026). Corrected-stage/loaded dynamics, scientific visualization, browser and macOS gates remain open.
 
 The tracked [spinning-contact working plan](working/SPINNING_CONTACT.md) preserves provisional decisions, blocked checks and the next implementation sequence for draft PR90. Push updates to it with draft changes.

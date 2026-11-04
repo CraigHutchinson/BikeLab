@@ -1,0 +1,23 @@
+{
+  "scope": "Diagnostic physical-gap-0.1 stage policy; no production dynamics changes",
+  "base": "f90e895388443168d14f9bdbb5975712d8a2c411",
+  "tests": {
+    "pass": 436,
+    "fail": 0,
+    "skip": 0,
+    "coverage": "Complete local Windows Node suite; no browser/full attestation",
+    "dirtySourceDuringRun": true
+  },
+  "sourceSha256": {
+    "scripts/spinning-rk4-stage.mjs": "799880e518b131e306bffad2486905e4821c173e2ef579905c995b8964cde8b8",
+    "test/spinning-physical-stage.test.mjs": "e5a30a72d10afff660f0c6cacc2dcae9cf47d30099d8572f24a80340a267ae08",
+    "test/spinning-rk4-stage.test.mjs": "fcc5a1fd14b197d7224a95e37f1d2b1313dc38cf056d28000171411ae650a0c9"
+  },
+  "logSha256": "b76153fb545bfbb6dc58bd4bb0bca2d1e6732f8b2a4714f9768e66439a0c17bb",
+  "remaining": [
+    "Loaded trajectory force/work/momentum/refinement",
+    "Per-stage corrected scientific report and visualization",
+    "Browser receiving",
+    "Legacy macOS and rider replay qualification"
+  ]
+}

@@ -53,8 +53,10 @@ function guard(mj,m,d,hub,previous,out){
 }
 
 export function createSpinningStageDriver(mj,input,options={}){
- assert.ok(options&&Object.getPrototypeOf(options)===Object.prototype&&Object.keys(options).every(k=>['excluded','onCheckpoint'].includes(k)),'Unknown options');
- const {excluded=false,onCheckpoint}=options;
+ assert.ok(options&&Object.getPrototypeOf(options)===Object.prototype&&Object.keys(options).every(k=>['excluded','onCheckpoint','targetPolicy'].includes(k)),'Unknown options');
+ const {excluded=false,onCheckpoint,targetPolicy='native'}=options;
+ assert.ok(['native','physical-gap-0.1'].includes(targetPolicy),'Unknown target policy');
+ if(targetPolicy!=='native')assert.equal(typeof mj.mj_fwdConstraint,'function','Missing native constraint solve');
  assert.ok(input&&Object.keys(input).length===4&&Object.keys(input).every(k=>['q','v','warmstart','time'].includes(k)),'Unknown state fields');
  assert.equal(typeof excluded,'boolean');assert.ok(onCheckpoint===undefined||typeof onCheckpoint==='function');
  for(const k of ['q','v','warmstart'])assert.ok(Array.isArray(input?.[k])&&input[k].length===NV&&input[k].every(Number.isFinite),'Invalid '+k);
@@ -70,11 +72,28 @@ export function createSpinningStageDriver(mj,input,options={}){
   const previous=new Float64Array(3*p.nodes),limits={},stageTrace=Array.from({length:4},()=>({time:0,rows:0,contacts:0,contactPower:0,verticalForce:0}));
   let disposed=false,stepping=false,steps=0,slot=0,contactWork=0,verticalImpulse=0,lastStages=[];
   accepted.qpos.set(input.q);accepted.qvel.set(input.v);accepted.qacc_warmstart.set(input.warmstart);accepted.time=input.time;
-  mj.mj_forward(m,accepted);guard(mj,m,accepted,hub,null,limits);
-  function observe(source,previous=null){
-   mj.mj_resetData(m,observation);mj.mj_copyState(m,source,observation,spec);mj.mj_forward(m,observation);guard(mj,m,observation,hub,previous,limits);return observation;
+  mj.mj_forward(m,accepted);correctTargets(accepted);guard(mj,m,accepted,hub,null,limits);
+  function correctTargets(d){
+   if(targetPolicy==='native')return;
+   // Received prescribed-state law: physical normal acceleration is J*qacc
+   // plus convective acceleration. Rebuild native references before each call.
+   checkFlatVertexContacts(mj,m,d,0,p.nodes);
+   const omega=d.qvel[2],R=d.xmat,rx=R[9*hub+6],rz=R[9*hub+8],z=d.xpos[3*hub+2],contacts=d.contact;
+   let rows=0;
+   try{for(let i=0;i<contacts.size();i++){
+    const c=contacts.get(i);try{if(c.efc_address>=0){
+     const side=c.flex[0]===0?0:1,node=c.vert[side],u=3+2*node;
+     const convective=2*omega*(rx*d.qvel[u+1]-rz*d.qvel[u])-omega**2*(d.flexvert_xpos[3*node+2]-z);
+     assert.ok(Number.isFinite(convective));d.efc_aref[c.efc_address]-=convective;rows++;
+    }}finally{c.delete();}
+   }}finally{contacts.delete();}
+   assert.equal(rows,d.nefc,'Unsupported corrected rows');
+   mj.mj_fwdConstraint(m,d);
   }
-  function snapshot(){assert.ok(!disposed,'Driver disposed');return {...capture(accepted),steps,slot,contactWork,verticalImpulse,lastStages:structuredClone(lastStages)};}
+  function observe(source,previous=null){
+   mj.mj_resetData(m,observation);mj.mj_copyState(m,source,observation,spec);mj.mj_forward(m,observation);correctTargets(observation);guard(mj,m,observation,hub,previous,limits);return observation;
+  }
+  function snapshot(){assert.ok(!disposed,'Driver disposed');return {...capture(accepted),targetPolicy,steps,slot,contactWork,verticalImpulse,lastStages:structuredClone(lastStages)};}
   return {
    snapshot,
    observe(){assert.ok(!disposed&&!stepping,'Driver unavailable');return capture(observe(accepted));},
@@ -87,6 +106,7 @@ export function createSpinningStageDriver(mj,input,options={}){
      for(let stage=0;stage<4;stage++){
       if(stage){for(let j=0;j<NV;j++){trial.qpos[j]=q[j]+H*(C[stage]*vel[stage-1][j]);trial.qvel[j]=v[j]+H*(C[stage]*acc[stage-1][j]);}trial.time=time+C[stage]*H;}
       if(stage)mj.mj_forwardSkip(m,trial,mj.mjtStage.mjSTAGE_NONE.value,1);else mj.mj_forward(m,trial);
+      correctTargets(trial);
       guard(mj,m,trial,hub,stage?previous:null,limits);if(!stage)previous.set(trial.flexvert_xpos);
       let power=0,force=0;for(let j=0;j<NV;j++){
        assert.equal(trial.qacc_warmstart[j],warm[j],'Stage changed incoming warmstart');
