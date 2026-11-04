@@ -1,0 +1,55 @@
+{
+  "format": "bikelab-spinning-gap-target-tests-0.1",
+  "sourceCommit": "728b68d4891796f8640cc2c65d651249458252e7",
+  "sourceTree": "79bd722ffa7908c1fbc615e2b32a2e3beb4d8cf1",
+  "baseMain": "3b8081e9fc70b025eecc1d7c246be52cace820b9",
+  "command": "node --test --test-isolation=none",
+  "runtime": {
+    "node": "24.19.0",
+    "platform": "linux",
+    "architecture": "x64"
+  },
+  "counts": {
+    "tests": 426,
+    "pass": 413,
+    "fail": 13,
+    "cancelled": 0,
+    "skipped": 0,
+    "todo": 0
+  },
+  "exitCode": 1,
+  "failedTests": [
+    "scenario CLI rejects invalid inputs without overwriting evidence",
+    "footprint CLI replays records and separates unsupported from invalid input",
+    "moving-wheel CLI shares mechanics and distinguishes completed, terminated and invalid input",
+    "all rider CLI modes export canonical replay; malformed specifications and option combinations fail cleanly",
+    "unbound CLI distinguishes accepted prefix, initial rejection and invalid input",
+    "portable rider CLI exports examples, canonical scenarios and provenance receipts with clean rejection",
+    "headless task tool receives saved inputs and rejects unsupported input without a report",
+    "loopback server serves only assets and survives malformed requests",
+    "solver CLI distinguishes unmet numerical gates, successful trial and invalid input",
+    "suspension CLI preserves evidence, verifies exports, and signals a travel limit with exit 2",
+    "reference CLI reports complete configuration and distinct unsupported/invalid exits",
+    "terrain CLI reports reproducible geometry and distinguishes unavailable from invalid",
+    "wheel-limit CLI distinguishes boundary, clear, incompatible and invalid records"
+  ],
+  "logSha256": "1547cf2b4a87ea28c75c1327a200be2c3e13e217f0b164adede4431792d4100c",
+  "reportSha256": "675f9ff1670a89cb3553d311bf433df4612f8b1dec6f533c182d33a93d2bbb8e",
+  "reportSourcesSha256": {
+    "scripts/spinning-gap-target.mjs": "8a9b84017b6d59b4957a72b7452dfeef06c46da2ced23b636e34c11eea1be627",
+    "scripts/spinning-gap.mjs": "991d86c46664ea45098501ad579f2ec44ef60e31dcb68a497530dcacef363279",
+    "docs/evidence/spinning-gap.json": "6dd3a9773888dcfe19514bed51b40c6075bd840c93a970ccf68d55324514035e",
+    "dist/moving-wheel.js": "45b1068fabf5413dfc90bfd2ee47f46600deb093b756d7c8d1bdc8ad24411e35",
+    "dist/flat-vertex-contact.js": "773259b2ba85bf9ac1f8a05476b0542433a1c02df39ef6b0d789c3d61775bd9d",
+    "dist/casing-rk4-observer.js": "2a15beada33db32a7d514760257e73b8ff683ba180cfea2cf0016a83b545402b",
+    "dist/vendor/mujoco-3.16.0/mujoco.js": "5d5d89ddd0857a6518c628fa502d42f99d6dd67ca240182f1068cd30a45465ac",
+    "dist/vendor/mujoco-3.16.0/mujoco.wasm": "e05ac96db7f45bd46e76fed6e3469bf9204329e093344d742a18bca2cc0e230e"
+  },
+  "scope": "Eight combined focused diagnostic tests pass; 48 prescribed states and 1248 constraint re-solves pass. The complete in-process suite fails on the same 13 subprocess/loopback checks as preceding main and the baseline diagnostic. No skips, full-local attestation, new browser receiving or performance claim. Committed report is compact serialization of the complete raw report.",
+  "rawReportSha256": "ca09df7027a4944a604f30b02cdf4b54513755171c4427c882ea13889705f2f9",
+  "focusedTests": {
+    "tests": 8,
+    "pass": 8,
+    "fail": 0
+  }
+}

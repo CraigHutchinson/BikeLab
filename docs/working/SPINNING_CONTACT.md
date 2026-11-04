@@ -22,7 +22,7 @@ The diagnostic-only `spinning-gap-target.mjs` now re-solves the 36 original stat
 
 Four new focused tests pass alongside the four baseline tests. The implementation verifies unchanged physical state, contact identities, full mass matrix, smooth dynamics, Jacobian and regularization. Five explicitly reseeded warm-start modes and repeated/restored target sequences pass; this is seed/order independence, not trajectory warm-start ownership. Deliberately missing/no-op solve APIs, state edits and coefficient edits fail closed. The WASM does not expose `qM`; exact mass snapshots use the available `mj_fullM` API.
 
-The full suite, committed result/plot and final receiving note are pending at this code checkpoint. Next save those results, then begin the separate RK stage pilot below. Continue pushing this plan with each draft increment.
+Source checkpoint `728b68d4891796f8640cc2c65d651249458252e7` receives the [complete report, inspected plot and result](../SPINNING_GAP_TARGET.md). The full in-process suite is **413/426**, with exactly the same thirteen environment-blocked checks as the baseline; [test receipt](../evidence/spinning-gap-target-tests.json) records counts and hashes. No full attestation. Next begin the separate RK stage pilot below, pushing this plan with each draft increment.
 
 ### Received source/API boundary and next stage pilot
 
@@ -30,7 +30,7 @@ The full suite, committed result/plot and final receiving note are pending at th
 
 GPT-6.1 Sol's pinned-source review found an important endpoint contract: native RK4 leaves `qacc` at the fourth-stage acceleration and `mj_advance` copies it into `qacc_warmstart`; the weighted acceleration is passed separately for state advancement. All four stage solves retain the incoming warm-start. No endpoint forward is performed, so force/contact caches describe stage four, not the accepted endpoint. Preserve this distinction explicitly.
 
-The next proposed pilot is a separately versioned, restricted scalar slide/hinge RK4 driver. Build four stage states explicitly, use native forward evaluation and target re-solve at each stage, and record target/force/acceleration/power. First receive uncorrected parity against native RK4, including endpoint and warm-start state, and transactional rollback. Then receive corrected contact-free ballistic controls before loaded trajectories. Use separate data for endpoint observation. Stage implementation and trajectory receiving are still **pending**.
+The next proposed pilot is a separately versioned, restricted scalar slide/hinge RK4 driver. Build four stage states explicitly, use native forward evaluation and target re-solve at each stage, and record target/force/acceleration/power. First receive uncorrected parity against native RK4, including endpoint and warm-start state, and transactional rollback. Then receive corrected contact-free ballistic controls before loaded trajectories. Use separate data for endpoint observation. The actual WASM does not expose `mj_copyData`. Proposed rollback therefore uses separate accepted/trial `MjData` slots, with only explicitly admitted integration inputs copied into reset trial data; failed trials never mutate the accepted slot. Admit only the exact scalar slide/hinge topology and zero-input, no-actuator/history/plugin/sleep probe. Receive state ownership and failure paths before extending that contract. Stage implementation and trajectory receiving are still **pending**.
 
 ## Next implementation increment
 
@@ -53,9 +53,9 @@ The prescribed-state target adjustment is implemented only in the separate diagn
 ## Reproduction
 
 ```sh
-node scripts/spinning-gap.mjs artifacts/spinning-gap
-python scripts/plot-spinning-gap.py artifacts/spinning-gap
-node --test test/spinning-gap.test.mjs
+node scripts/spinning-gap-target.mjs artifacts/spinning-gap-target
+python scripts/plot-spinning-gap-target.py artifacts/spinning-gap-target
+node --test test/spinning-gap.test.mjs test/spinning-gap-target.test.mjs
 ```
 
 When subprocess isolation is unavailable, `node --test --test-isolation=none` gives an exploratory complete-suite result, not a substitute for required HTTP/browser/platform coverage. Keep its failures explicit. A plotting cache can use a writable `MPLCONFIGDIR`; rendering the saved evidence does not rerun the physics.

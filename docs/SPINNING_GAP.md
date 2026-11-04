@@ -1,5 +1,7 @@
 # Prescribed spinning-gap isolation — 4 November 2026
 
+The subsequent [physical-gap target intervention](SPINNING_GAP_TARGET.md) receives 48 prescribed states and reversible native re-solves. This baseline and its source identity remain unchanged.
+
 The planned prescribed-state probe now reproduces a spin-dependent native normal force with **identical world node positions and translational velocities**. The independent convective acceleration accounts for that difference. This is a source-backed diagnosis of the pinned row law, not a corrected production contact law or a spinning trajectory result.
 
 ![Matched world state, normal force and physical acceleration residual](evidence/spinning-gap.svg)

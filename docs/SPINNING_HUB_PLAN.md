@@ -1,6 +1,6 @@
 # Contact entry, recontact and spinning-hub receiving — 2026-11-02
 
-**Spinning contact update, 4 November:** the [prescribed-state isolation](SPINNING_GAP.md) passes 36 matched-world-state controls and four focused tests. Native normal force varies with spin because the coordinate row omits the convective contribution to physical gap acceleration. A versioned target/stage correction and trajectory receiving remain next; production physics and all existing replay/tracking budgets are unchanged. Legacy macOS artifact comparison and browser receiving remain pending.
+**Spinning contact update, 4 November:** the [physical-gap target intervention](SPINNING_GAP_TARGET.md) passes 48 prescribed states, 1,248 native constraint re-solves and eight combined focused tests. It removes the matched-state spin-dependent normal response while preserving native state, coefficients, admission and reversible controls. The full local in-process suite is 413/426 with the same thirteen environment-blocked checks; no full attestation. A separately versioned RK stage driver and trajectory receiving remain next. Production physics, existing budgets, legacy macOS diagnosis and browser receiving are unchanged.
 
 The [translating diagnostic](CASING_TRANSLATE.md) now passes the 20 ms ladder: 24 completed cases, 16 refinements, independent normal-law checks and complete separation. No case recontacts. This document preserves GPT-6.1 Sol's read-only source research for the next increment; spinning trajectory implementation or receiving is not claimed.
 
