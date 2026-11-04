@@ -1,0 +1,2165 @@
+{
+  "success": false,
+  "scope": "0.25 ms corrected zero-material flat contact only; linear/angle/work refinement and independent balance screens, not calibrated tyre qualification",
+  "sourceHashes": {
+    "scripts/spinning-rk4-stage.mjs": "4359c928518ee2a464ee106488a19b5b9da06c643b01334241617db1f3566de1",
+    "scripts/spinning-physical-trajectory.mjs": "14bf76a2ea1f7dd6ee77b2629d12154b394d28a65074f74f5b9bf8572988658f",
+    "docs/evidence/spinning-gap.json": "6dd3a9773888dcfe19514bed51b40c6075bd840c93a970ccf68d55324514035e"
+  },
+  "unchanged": true,
+  "budgets": {
+    "position": 1e-07,
+    "velocity": 0.0001,
+    "momentum": 1e-05,
+    "angularMomentum": 1e-05,
+    "angle": 1e-12,
+    "angularVelocity": 1e-09,
+    "work": 1e-06
+  },
+  "units": {
+    "position": "m",
+    "velocity": "m/s",
+    "angle": "rad",
+    "angularVelocity": "rad/s",
+    "momentum": "N s",
+    "angularMomentum": "N m s",
+    "work": "J"
+  },
+  "cases": [
+    {
+      "name": "loaded-common",
+      "angle": 0,
+      "omega": -10,
+      "comparisons": [
+        {
+          "error": {
+            "position": 1.823323122259607e-16,
+            "velocity": 4.64780991471514e-13,
+            "angle": 1.214306433183765e-17,
+            "angularVelocity": 0,
+            "work": 9.659279127417764e-15
+          },
+          "pass": true
+        },
+        {
+          "error": {
+            "position": 1.1306195779950401e-17,
+            "velocity": 2.868538739875248e-14,
+            "angle": 2.1467203015212988e-17,
+            "angularVelocity": 0,
+            "work": 6.021184527534029e-16
+          },
+          "pass": true
+        }
+      ],
+      "runs": [
+        {
+          "divisor": 1,
+          "errors": {
+            "momentum": 6.661338147750939e-16,
+            "angularMomentum": 5.585809592645319e-16,
+            "work": 1.357860899458066e-14
+          },
+          "failure": null,
+          "steps": 128
+        },
+        {
+          "divisor": 2,
+          "errors": {
+            "momentum": 7.771561172376096e-16,
+            "angularMomentum": 7.086074348822136e-16,
+            "work": 5.361257770196415e-15
+          },
+          "failure": null,
+          "steps": 256
+        },
+        {
+          "divisor": 4,
+          "errors": {
+            "momentum": 8.881784197001252e-16,
+            "angularMomentum": 8.158621347953421e-16,
+            "work": 5.7048092514050755e-15
+          },
+          "failure": null,
+          "steps": 512
+        }
+      ]
+    },
+    {
+      "name": "loaded-common",
+      "angle": 0,
+      "omega": 0,
+      "comparisons": [
+        {
+          "error": {
+            "position": 1.963964472821711e-16,
+            "velocity": 5.082878562490123e-13,
+            "angle": 5.360046262240027e-23,
+            "angularVelocity": 3.4157168781948566e-19,
+            "work": 1.0090174952081393e-14
+          },
+          "pass": true
+        },
+        {
+          "error": {
+            "position": 1.2185415979200365e-17,
+            "velocity": 3.1835645231126364e-14,
+            "angle": 3.4824445038040875e-24,
+            "angularVelocity": 2.5067266256653357e-20,
+            "work": 6.295487677172862e-16
+          },
+          "pass": true
+        }
+      ],
+      "runs": [
+        {
+          "divisor": 1,
+          "errors": {
+            "momentum": 1.929879867024198e-17,
+            "angularMomentum": 9.661596609561451e-17,
+            "work": 1.1665195448051086e-14
+          },
+          "failure": null,
+          "steps": 128
+        },
+        {
+          "divisor": 2,
+          "errors": {
+            "momentum": 3.252606517456513e-17,
+            "angularMomentum": 9.627715291671279e-17,
+            "work": 3.612351574550782e-15
+          },
+          "failure": null,
+          "steps": 256
+        },
+        {
+          "divisor": 4,
+          "errors": {
+            "momentum": 1.2706849461530112e-16,
+            "angularMomentum": 1.5907956375793564e-16,
+            "work": 3.0214004041739795e-15
+          },
+          "failure": null,
+          "steps": 512
+        }
+      ]
+    },
+    {
+      "name": "loaded-common",
+      "angle": 0,
+      "omega": 10,
+      "comparisons": [
+        {
+          "error": {
+            "position": 1.8233739442364422e-16,
+            "velocity": 4.647671136837062e-13,
+            "angle": 1.214306433183765e-17,
+            "angularVelocity": 0,
+            "work": 9.659319784999232e-15
+          },
+          "pass": true
+        },
+        {
+          "error": {
+            "position": 1.1301113582266875e-17,
+            "velocity": 2.8699265186560297e-14,
+            "angle": 2.1467203015212988e-17,
+            "angularVelocity": 0,
+            "work": 6.0208457143551275e-16
+          },
+          "pass": true
+        }
+      ],
+      "runs": [
+        {
+          "divisor": 1,
+          "errors": {
+            "momentum": 6.661338147750939e-16,
+            "angularMomentum": 4.766152750246277e-16,
+            "work": 1.3578622547107816e-14
+          },
+          "failure": null,
+          "steps": 128
+        },
+        {
+          "divisor": 2,
+          "errors": {
+            "momentum": 7.216449660063518e-16,
+            "angularMomentum": 6.146342115820325e-16,
+            "work": 5.361244217669259e-15
+          },
+          "failure": null,
+          "steps": 256
+        },
+        {
+          "divisor": 4,
+          "errors": {
+            "momentum": 7.771561172376096e-16,
+            "angularMomentum": 7.335711899036923e-16,
+            "work": 5.7048092514050755e-15
+          },
+          "failure": null,
+          "steps": 512
+        }
+      ]
+    },
+    {
+      "name": "loaded-common",
+      "angle": 0.1,
+      "omega": -10,
+      "comparisons": [
+        {
+          "error": {
+            "position": 1.8192912454306764e-16,
+            "velocity": 4.621303340002214e-13,
+            "angle": 1.7763568394002505e-15,
+            "angularVelocity": 0,
+            "work": 9.658181372718122e-15
+          },
+          "pass": true
+        },
+        {
+          "error": {
+            "position": 8.326672684688674e-17,
+            "velocity": 2.603472992745992e-14,
+            "angle": 3.552713678800501e-15,
+            "angularVelocity": 0,
+            "work": 5.970769126513453e-16
+          },
+          "pass": true
+        }
+      ],
+      "runs": [
+        {
+          "divisor": 1,
+          "errors": {
+            "momentum": 6.661338147750939e-16,
+            "angularMomentum": 3.7990444123892075e-16,
+            "work": 1.3626713689721126e-14
+          },
+          "failure": null,
+          "steps": 128
+        },
+        {
+          "divisor": 2,
+          "errors": {
+            "momentum": 7.216449660063518e-16,
+            "angularMomentum": 8.482797797526587e-16,
+            "work": 6.9637492387114586e-15
+          },
+          "failure": null,
+          "steps": 256
+        },
+        {
+          "divisor": 4,
+          "errors": {
+            "momentum": 8.326672684688674e-16,
+            "angularMomentum": 7.076587579812887e-16,
+            "work": 7.86504311656687e-15
+          },
+          "failure": null,
+          "steps": 512
+        }
+      ]
+    },
+    {
+      "name": "loaded-common",
+      "angle": 0.1,
+      "omega": 0,
+      "comparisons": [
+        {
+          "error": {
+            "position": 1.953732314818879e-16,
+            "velocity": 5.071498776487715e-13,
+            "angle": 0,
+            "angularVelocity": 7.077161685964637e-19,
+            "work": 1.0092831247403983e-14
+          },
+          "pass": true
+        },
+        {
+          "error": {
+            "position": 1.3183898417423734e-16,
+            "velocity": 3.783084956410221e-14,
+            "angle": 0,
+            "angularVelocity": 8.956902758304548e-20,
+            "work": 6.416782795219678e-16
+          },
+          "pass": true
+        }
+      ],
+      "runs": [
+        {
+          "divisor": 1,
+          "errors": {
+            "momentum": 1.1926223897340549e-17,
+            "angularMomentum": 9.047667129391535e-17,
+            "work": 1.171385579680495e-14
+          },
+          "failure": null,
+          "steps": 128
+        },
+        {
+          "divisor": 2,
+          "errors": {
+            "momentum": 3.469446951953614e-17,
+            "angularMomentum": 9.676504389433127e-17,
+            "work": 3.654100134455052e-15
+          },
+          "failure": null,
+          "steps": 256
+        },
+        {
+          "divisor": 4,
+          "errors": {
+            "momentum": 1.222980050563649e-16,
+            "angularMomentum": 1.8393489856216583e-16,
+            "work": 3.0482344079429957e-15
+          },
+          "failure": null,
+          "steps": 512
+        }
+      ]
+    },
+    {
+      "name": "loaded-common",
+      "angle": 0.1,
+      "omega": 10,
+      "comparisons": [
+        {
+          "error": {
+            "position": 1.8236280541206185e-16,
+            "velocity": 4.587996649263459e-13,
+            "angle": 1.7763568394002505e-15,
+            "angularVelocity": 0,
+            "work": 9.652990754817348e-15
+          },
+          "pass": true
+        },
+        {
+          "error": {
+            "position": 6.938893903907228e-17,
+            "velocity": 3.008704396734174e-14,
+            "angle": 3.552713678800501e-15,
+            "angularVelocity": 0,
+            "work": 6.027960791112064e-16
+          },
+          "pass": true
+        }
+      ],
+      "runs": [
+        {
+          "divisor": 1,
+          "errors": {
+            "momentum": 7.771561172376096e-16,
+            "angularMomentum": 5.25512793003724e-16,
+            "work": 1.3623054507388987e-14
+          },
+          "failure": null,
+          "steps": 128
+        },
+        {
+          "divisor": 2,
+          "errors": {
+            "momentum": 7.771561172376096e-16,
+            "angularMomentum": 9.05850915111639e-16,
+            "work": 8.820675852054538e-15
+          },
+          "failure": null,
+          "steps": 256
+        },
+        {
+          "divisor": 4,
+          "errors": {
+            "momentum": 8.881784197001252e-16,
+            "angularMomentum": 6.488950002325744e-16,
+            "work": 6.660155689756572e-15
+          },
+          "failure": null,
+          "steps": 512
+        }
+      ]
+    },
+    {
+      "name": "loaded-shear",
+      "angle": 0,
+      "omega": -10,
+      "comparisons": [
+        {
+          "error": {
+            "position": 1.839298163644823e-16,
+            "velocity": 4.698325062335584e-13,
+            "angle": 1.214306433183765e-17,
+            "angularVelocity": 0,
+            "work": 9.708400262094935e-15
+          },
+          "pass": true
+        },
+        {
+          "error": {
+            "position": 1.1414615997198951e-17,
+            "velocity": 2.906008766956347e-14,
+            "angle": 2.1467203015212988e-17,
+            "angularVelocity": 0,
+            "work": 6.051000087277381e-16
+          },
+          "pass": true
+        }
+      ],
+      "runs": [
+        {
+          "divisor": 1,
+          "errors": {
+            "momentum": 8.881784197001252e-16,
+            "angularMomentum": 5.399326818977812e-16,
+            "work": 1.126269216777942e-14
+          },
+          "failure": null,
+          "steps": 128
+        },
+        {
+          "divisor": 2,
+          "errors": {
+            "momentum": 6.661338147750939e-16,
+            "angularMomentum": 5.642188105614565e-16,
+            "work": 6.327647824114213e-15
+          },
+          "failure": null,
+          "steps": 256
+        },
+        {
+          "divisor": 4,
+          "errors": {
+            "momentum": 5.551115123125783e-16,
+            "angularMomentum": 5.701006073471904e-16,
+            "work": 6.602377878358462e-15
+          },
+          "failure": null,
+          "steps": 512
+        }
+      ]
+    },
+    {
+      "name": "loaded-shear",
+      "angle": 0,
+      "omega": 0,
+      "comparisons": [
+        {
+          "error": {
+            "position": 1.963981413480656e-16,
+            "velocity": 5.082878562490123e-13,
+            "angle": 1.5879648068389574e-22,
+            "angularVelocity": 1.1072306153793001e-18,
+            "work": 1.0090181728344971e-14
+          },
+          "pass": true
+        },
+        {
+          "error": {
+            "position": 1.2185415979200365e-17,
+            "velocity": 3.1835645231126364e-14,
+            "angle": 2.408441260438708e-24,
+            "angularVelocity": 3.480379400396203e-20,
+            "work": 6.295284389265521e-16
+          },
+          "pass": true
+        }
+      ],
+      "runs": [
+        {
+          "divisor": 1,
+          "errors": {
+            "momentum": 2.0599841277224584e-17,
+            "angularMomentum": 1.8962695996771473e-16,
+            "work": 1.1665202224314664e-14
+          },
+          "failure": null,
+          "steps": 128
+        },
+        {
+          "divisor": 2,
+          "errors": {
+            "momentum": 3.252606517456513e-17,
+            "angularMomentum": 1.890306487728477e-16,
+            "work": 6.515594270714575e-15
+          },
+          "failure": null,
+          "steps": 256
+        },
+        {
+          "divisor": 4,
+          "errors": {
+            "momentum": 1.249000902703301e-16,
+            "angularMomentum": 1.870790848623738e-16,
+            "work": 6.6809672892706104e-15
+          },
+          "failure": null,
+          "steps": 512
+        }
+      ]
+    },
+    {
+      "name": "loaded-shear",
+      "angle": 0,
+      "omega": 10,
+      "comparisons": [
+        {
+          "error": {
+            "position": 1.8073311402154457e-16,
+            "velocity": 4.597988656485086e-13,
+            "angle": 1.214306433183765e-17,
+            "angularVelocity": 0,
+            "work": 9.610191874058482e-15
+          },
+          "pass": true
+        },
+        {
+          "error": {
+            "position": 1.1194387430912833e-17,
+            "velocity": 2.853273173286652e-14,
+            "angle": 2.1467203015212988e-17,
+            "angularVelocity": 0,
+            "work": 5.988590699723684e-16
+          },
+          "pass": true
+        }
+      ],
+      "runs": [
+        {
+          "divisor": 1,
+          "errors": {
+            "momentum": 9.992007221626409e-16,
+            "angularMomentum": 7.317280462104669e-16,
+            "work": 1.1159733618974765e-14
+          },
+          "failure": null,
+          "steps": 128
+        },
+        {
+          "divisor": 2,
+          "errors": {
+            "momentum": 6.661338147750939e-16,
+            "angularMomentum": 1.1098977639734109e-15,
+            "work": 6.136902780656123e-15
+          },
+          "failure": null,
+          "steps": 256
+        },
+        {
+          "divisor": 4,
+          "errors": {
+            "momentum": 5.551115123125783e-16,
+            "angularMomentum": 1.1419901482789818e-15,
+            "work": 6.714687670900804e-15
+          },
+          "failure": null,
+          "steps": 512
+        }
+      ]
+    },
+    {
+      "name": "loaded-shear",
+      "angle": 0.1,
+      "omega": -10,
+      "comparisons": [
+        {
+          "error": {
+            "position": 1.7954387976359953e-16,
+            "velocity": 4.667932707036471e-13,
+            "angle": 1.7763568394002505e-15,
+            "angularVelocity": 0,
+            "work": 9.708386709567779e-15
+          },
+          "pass": true
+        },
+        {
+          "error": {
+            "position": 1.942890293094024e-16,
+            "velocity": 2.858824288409778e-14,
+            "angle": 3.552713678800501e-15,
+            "angularVelocity": 0,
+            "work": 6.022065441799174e-16
+          },
+          "pass": true
+        }
+      ],
+      "runs": [
+        {
+          "divisor": 1,
+          "errors": {
+            "momentum": 6.661338147750939e-16,
+            "angularMomentum": 6.570536215805278e-16,
+            "work": 1.1319219758547383e-14
+          },
+          "failure": null,
+          "steps": 128
+        },
+        {
+          "divisor": 2,
+          "errors": {
+            "momentum": 6.661338147750939e-16,
+            "angularMomentum": 7.2327126926508e-16,
+            "work": 5.745042892883181e-15
+          },
+          "failure": null,
+          "steps": 256
+        },
+        {
+          "divisor": 4,
+          "errors": {
+            "momentum": 8.881784197001252e-16,
+            "angularMomentum": 7.687264453465348e-16,
+            "work": 6.594859203637049e-15
+          },
+          "failure": null,
+          "steps": 512
+        }
+      ]
+    },
+    {
+      "name": "loaded-shear",
+      "angle": 0.1,
+      "omega": 0,
+      "comparisons": [
+        {
+          "error": {
+            "position": 8.881784197001252e-16,
+            "velocity": 5.049155538117134e-13,
+            "angle": 0,
+            "angularVelocity": 5.698646981656727e-19,
+            "work": 1.008863674024918e-14
+          },
+          "pass": true
+        },
+        {
+          "error": {
+            "position": 1.7763568394002505e-15,
+            "velocity": 2.9101721032986916e-14,
+            "angle": 0,
+            "angularVelocity": 5.092823731903766e-20,
+            "work": 6.245749902510089e-16
+          },
+          "pass": true
+        }
+      ],
+      "runs": [
+        {
+          "divisor": 1,
+          "errors": {
+            "momentum": 1.8648277366750676e-17,
+            "angularMomentum": 1.86726719156316e-16,
+            "work": 8.651455265744939e-15
+          },
+          "failure": null,
+          "steps": 128
+        },
+        {
+          "divisor": 2,
+          "errors": {
+            "momentum": 3.187554387107383e-17,
+            "angularMomentum": 2.19225679276569e-16,
+            "work": 1.0065289124091062e-14
+          },
+          "failure": null,
+          "steps": 256
+        },
+        {
+          "divisor": 4,
+          "errors": {
+            "momentum": 1.2533377113932431e-16,
+            "angularMomentum": 1.984089975648473e-16,
+            "work": 9.076878873757502e-15
+          },
+          "failure": null,
+          "steps": 512
+        }
+      ]
+    },
+    {
+      "name": "loaded-shear",
+      "angle": 0.1,
+      "omega": 10,
+      "comparisons": [
+        {
+          "error": {
+            "position": 1.8062808193608504e-16,
+            "velocity": 4.55580018154933e-13,
+            "angle": 1.7763568394002505e-15,
+            "angularVelocity": 0,
+            "work": 9.605814407787072e-15
+          },
+          "pass": true
+        },
+        {
+          "error": {
+            "position": 1.249000902703301e-16,
+            "velocity": 2.5646151868841116e-14,
+            "angle": 3.552713678800501e-15,
+            "angularVelocity": 0,
+            "work": 5.94447722383068e-16
+          },
+          "pass": true
+        }
+      ],
+      "runs": [
+        {
+          "divisor": 1,
+          "errors": {
+            "momentum": 3.7968760080442365e-16,
+            "angularMomentum": 8.211747254405211e-16,
+            "work": 1.1210840198880301e-14
+          },
+          "failure": null,
+          "steps": 128
+        },
+        {
+          "divisor": 2,
+          "errors": {
+            "momentum": 8.881784197001252e-16,
+            "angularMomentum": 8.478460988836645e-16,
+            "work": 6.5181726390060174e-15
+          },
+          "failure": null,
+          "steps": 256
+        },
+        {
+          "divisor": 4,
+          "errors": {
+            "momentum": 7.771561172376096e-16,
+            "angularMomentum": 8.956594146902752e-16,
+            "work": 5.7200677029169145e-15
+          },
+          "failure": null,
+          "steps": 512
+        }
+      ]
+    },
+    {
+      "name": "loaded-deformed",
+      "angle": 0,
+      "omega": -10,
+      "comparisons": [
+        {
+          "error": {
+            "position": 2.5066754227864863e-16,
+            "velocity": 6.564748744608551e-13,
+            "angle": 1.214306433183765e-17,
+            "angularVelocity": 0,
+            "work": 2.7997542435473366e-14
+          },
+          "pass": true
+        },
+        {
+          "error": {
+            "position": 2.7755575615628914e-17,
+            "velocity": 4.5852210917018965e-14,
+            "angle": 2.1467203015212988e-17,
+            "angularVelocity": 0,
+            "work": 1.7595517057267251e-15
+          },
+          "pass": true
+        }
+      ],
+      "runs": [
+        {
+          "divisor": 1,
+          "errors": {
+            "momentum": 8.881784197001252e-16,
+            "angularMomentum": 4.765610649160035e-16,
+            "work": 2.7229412301321698e-14
+          },
+          "failure": null,
+          "steps": 128
+        },
+        {
+          "divisor": 2,
+          "errors": {
+            "momentum": 6.661338147750939e-16,
+            "angularMomentum": 5.625111921397918e-16,
+            "work": 7.483246191965546e-15
+          },
+          "failure": null,
+          "steps": 256
+        },
+        {
+          "divisor": 4,
+          "errors": {
+            "momentum": 5.551115123125783e-16,
+            "angularMomentum": 5.901074196822185e-16,
+            "work": 8.313770678836097e-15
+          },
+          "failure": null,
+          "steps": 512
+        }
+      ]
+    },
+    {
+      "name": "loaded-deformed",
+      "angle": 0,
+      "omega": 0,
+      "comparisons": [
+        {
+          "error": {
+            "position": 2.671474153004283e-16,
+            "velocity": 6.93500812332104e-13,
+            "angle": 5.2909338769777447e-23,
+            "angularVelocity": 2.885193391894748e-19,
+            "work": 2.889976127330718e-14
+          },
+          "pass": true
+        },
+        {
+          "error": {
+            "position": 1.1102230246251565e-16,
+            "velocity": 4.2049697057677804e-14,
+            "angle": 7.364952351192754e-23,
+            "angularVelocity": 3.427410580924263e-19,
+            "work": 1.7998027113802495e-15
+          },
+          "pass": true
+        }
+      ],
+      "runs": [
+        {
+          "divisor": 1,
+          "errors": {
+            "momentum": 1.3010426069826053e-17,
+            "angularMomentum": 1.9884267843384151e-16,
+            "work": 2.817589369284723e-14
+          },
+          "failure": null,
+          "steps": 128
+        },
+        {
+          "divisor": 2,
+          "errors": {
+            "momentum": 2.862293735361732e-17,
+            "angularMomentum": 1.9792449471901785e-16,
+            "work": 7.830883971869998e-15
+          },
+          "failure": null,
+          "steps": 256
+        },
+        {
+          "divisor": 4,
+          "errors": {
+            "momentum": 1.196959198423997e-16,
+            "angularMomentum": 1.9535120862525929e-16,
+            "work": 8.08995069285362e-15
+          },
+          "failure": null,
+          "steps": 512
+        }
+      ]
+    },
+    {
+      "name": "loaded-deformed",
+      "angle": 0,
+      "omega": 10,
+      "comparisons": [
+        {
+          "error": {
+            "position": 2.5240226575462543e-16,
+            "velocity": 6.45483666517066e-13,
+            "angle": 1.214306433183765e-17,
+            "angularVelocity": 0,
+            "work": 2.7764384758280358e-14
+          },
+          "pass": true
+        },
+        {
+          "error": {
+            "position": 1.1275702593849246e-17,
+            "velocity": 3.697042672001771e-14,
+            "angle": 2.1467203015212988e-17,
+            "angularVelocity": 0,
+            "work": 1.7218756802328539e-15
+          },
+          "pass": true
+        }
+      ],
+      "runs": [
+        {
+          "divisor": 1,
+          "errors": {
+            "momentum": 9.992007221626409e-16,
+            "angularMomentum": 7.476183843009576e-16,
+            "work": 2.6984301295177038e-14
+          },
+          "failure": null,
+          "steps": 128
+        },
+        {
+          "divisor": 2,
+          "errors": {
+            "momentum": 6.661338147750939e-16,
+            "angularMomentum": 1.0020196478111032e-15,
+            "work": 6.968004732238464e-15
+          },
+          "failure": null,
+          "steps": 256
+        },
+        {
+          "divisor": 4,
+          "errors": {
+            "momentum": 7.771561172376096e-16,
+            "angularMomentum": 1.180845243635431e-15,
+            "work": 8.30765848908871e-15
+          },
+          "failure": null,
+          "steps": 512
+        }
+      ]
+    },
+    {
+      "name": "loaded-deformed",
+      "angle": 0.1,
+      "omega": -10,
+      "comparisons": [
+        {
+          "error": {
+            "position": 2.5890747878953846e-16,
+            "velocity": 6.074030167724231e-13,
+            "angle": 1.7763568394002505e-15,
+            "angularVelocity": 0,
+            "work": 2.787711467916454e-14
+          },
+          "pass": true
+        },
+        {
+          "error": {
+            "position": 1.942890293094024e-16,
+            "velocity": 1.2212453270876722e-13,
+            "angle": 3.552713678800501e-15,
+            "angularVelocity": 0,
+            "work": 1.9627311928505087e-15
+          },
+          "pass": true
+        }
+      ],
+      "runs": [
+        {
+          "divisor": 1,
+          "errors": {
+            "momentum": 6.661338147750939e-16,
+            "angularMomentum": 6.424778786241758e-16,
+            "work": 2.7208541409501352e-14
+          },
+          "failure": null,
+          "steps": 128
+        },
+        {
+          "divisor": 2,
+          "errors": {
+            "momentum": 6.101889826748419e-16,
+            "angularMomentum": 6.997440821221446e-16,
+            "work": 6.742507621020424e-15
+          },
+          "failure": null,
+          "steps": 256
+        },
+        {
+          "divisor": 4,
+          "errors": {
+            "momentum": 6.661338147750939e-16,
+            "angularMomentum": 8.433907055811068e-16,
+            "work": 8.402502462258668e-15
+          },
+          "failure": null,
+          "steps": 512
+        }
+      ]
+    },
+    {
+      "name": "loaded-deformed",
+      "angle": 0.1,
+      "omega": 0,
+      "comparisons": [
+        {
+          "error": {
+            "position": 8.881784197001252e-16,
+            "velocity": 6.922518114294007e-13,
+            "angle": 0,
+            "angularVelocity": 8.353862763264103e-19,
+            "work": 2.890409808199712e-14
+          },
+          "pass": true
+        },
+        {
+          "error": {
+            "position": 1.7763568394002505e-15,
+            "velocity": 4.266031972122164e-14,
+            "angle": 0,
+            "angularVelocity": 1.8338007632363241e-19,
+            "work": 1.7940835449203885e-15
+          },
+          "pass": true
+        }
+      ],
+      "runs": [
+        {
+          "divisor": 1,
+          "errors": {
+            "momentum": 1.214306433183765e-17,
+            "angularMomentum": 1.6600829326647581e-16,
+            "work": 2.316294942308894e-14
+          },
+          "failure": null,
+          "steps": 128
+        },
+        {
+          "divisor": 2,
+          "errors": {
+            "momentum": 3.0357660829594124e-17,
+            "angularMomentum": 2.082345797529972e-16,
+            "work": 1.0336742854895331e-14
+          },
+          "failure": null,
+          "steps": 256
+        },
+        {
+          "divisor": 4,
+          "errors": {
+            "momentum": 1.214306433183765e-16,
+            "angularMomentum": 2.0731131384049e-16,
+            "work": 9.791750527566245e-15
+          },
+          "failure": null,
+          "steps": 512
+        }
+      ]
+    },
+    {
+      "name": "loaded-deformed",
+      "angle": 0.1,
+      "omega": 10,
+      "comparisons": [
+        {
+          "error": {
+            "position": 2.454633718507182e-16,
+            "velocity": 6.801226248853709e-13,
+            "angle": 1.7763568394002505e-15,
+            "angularVelocity": 0,
+            "work": 2.785963191913321e-14
+          },
+          "pass": true
+        },
+        {
+          "error": {
+            "position": 1.1796119636642288e-16,
+            "velocity": 4.04121180963557e-14,
+            "angle": 3.552713678800501e-15,
+            "angularVelocity": 0,
+            "work": 1.5141425439846312e-15
+          },
+          "pass": true
+        }
+      ],
+      "runs": [
+        {
+          "divisor": 1,
+          "errors": {
+            "momentum": 4.440892098500626e-16,
+            "angularMomentum": 9.84442020089682e-16,
+            "work": 2.702501308675387e-14
+          },
+          "failure": null,
+          "steps": 128
+        },
+        {
+          "divisor": 2,
+          "errors": {
+            "momentum": 8.881784197001252e-16,
+            "angularMomentum": 9.079108992393614e-16,
+            "work": 6.982682119148487e-15
+          },
+          "failure": null,
+          "steps": 256
+        },
+        {
+          "divisor": 4,
+          "errors": {
+            "momentum": 5.551115123125783e-16,
+            "angularMomentum": 8.857389648120328e-16,
+            "work": 5.747911369959058e-15
+          },
+          "failure": null,
+          "steps": 512
+        }
+      ]
+    },
+    {
+      "name": "unloading",
+      "angle": 0,
+      "omega": -10,
+      "comparisons": [
+        {
+          "error": {
+            "position": 1.734723475976807e-18,
+            "velocity": 9.769962616701378e-15,
+            "angle": 1.214306433183765e-17,
+            "angularVelocity": 0,
+            "work": 0
+          },
+          "pass": true
+        },
+        {
+          "error": {
+            "position": 2.6020852139652106e-18,
+            "velocity": 1.2434497875801753e-14,
+            "angle": 2.1467203015212988e-17,
+            "angularVelocity": 0,
+            "work": 0
+          },
+          "pass": true
+        }
+      ],
+      "runs": [
+        {
+          "divisor": 1,
+          "errors": {
+            "momentum": 7.441963711940502e-16,
+            "angularMomentum": 7.027527431507918e-16,
+            "work": 3.552713678800501e-15
+          },
+          "failure": null,
+          "steps": 128
+        },
+        {
+          "divisor": 2,
+          "errors": {
+            "momentum": 7.401848231558539e-16,
+            "angularMomentum": 6.314393452555578e-16,
+            "work": 3.552713678800501e-15
+          },
+          "failure": null,
+          "steps": 256
+        },
+        {
+          "divisor": 4,
+          "errors": {
+            "momentum": 1.160530005428484e-15,
+            "angularMomentum": 1.2199442844806896e-15,
+            "work": 3.552713678800501e-15
+          },
+          "failure": null,
+          "steps": 512
+        }
+      ]
+    },
+    {
+      "name": "unloading",
+      "angle": 0,
+      "omega": 0,
+      "comparisons": [
+        {
+          "error": {
+            "position": 1.3552527156068805e-19,
+            "velocity": 9.107298248878237e-18,
+            "angle": 7.721586632126921e-24,
+            "angularVelocity": 8.48616730340004e-20,
+            "work": 0
+          },
+          "pass": true
+        },
+        {
+          "error": {
+            "position": 6.2341624917916505e-19,
+            "velocity": 2.0816681711721685e-17,
+            "angle": 7.632497899561552e-24,
+            "angularVelocity": 5.748486652952882e-20,
+            "work": 0
+          },
+          "pass": true
+        }
+      ],
+      "runs": [
+        {
+          "divisor": 1,
+          "errors": {
+            "momentum": 9.0053832446646e-16,
+            "angularMomentum": 7.784571598445922e-17,
+            "work": 5.329070518200751e-15
+          },
+          "failure": null,
+          "steps": 128
+        },
+        {
+          "divisor": 2,
+          "errors": {
+            "momentum": 9.009720053354542e-16,
+            "angularMomentum": 1.0126448291014611e-16,
+            "work": 5.329070518200751e-15
+          },
+          "failure": null,
+          "steps": 256
+        },
+        {
+          "divisor": 4,
+          "errors": {
+            "momentum": 9.957312752106873e-16,
+            "angularMomentum": 1.0126448291014611e-16,
+            "work": 5.329070518200751e-15
+          },
+          "failure": null,
+          "steps": 512
+        }
+      ]
+    },
+    {
+      "name": "unloading",
+      "angle": 0,
+      "omega": 10,
+      "comparisons": [
+        {
+          "error": {
+            "position": 2.3852447794681098e-18,
+            "velocity": 8.881784197001252e-15,
+            "angle": 1.214306433183765e-17,
+            "angularVelocity": 0,
+            "work": 0
+          },
+          "pass": true
+        },
+        {
+          "error": {
+            "position": 2.168404344971009e-18,
+            "velocity": 1.687538997430238e-14,
+            "angle": 2.1467203015212988e-17,
+            "angularVelocity": 0,
+            "work": 0
+          },
+          "pass": true
+        }
+      ],
+      "runs": [
+        {
+          "divisor": 1,
+          "errors": {
+            "momentum": 9.124645483638005e-16,
+            "angularMomentum": 7.027527431507918e-16,
+            "work": 3.552713678800501e-15
+          },
+          "failure": null,
+          "steps": 128
+        },
+        {
+          "divisor": 2,
+          "errors": {
+            "momentum": 1.1258355359089478e-15,
+            "angularMomentum": 6.105820059623679e-16,
+            "work": 3.552713678800501e-15
+          },
+          "failure": null,
+          "steps": 256
+        },
+        {
+          "divisor": 4,
+          "errors": {
+            "momentum": 1.1310397063368782e-15,
+            "angularMomentum": 8.05995895025724e-16,
+            "work": 3.552713678800501e-15
+          },
+          "failure": null,
+          "steps": 512
+        }
+      ]
+    },
+    {
+      "name": "unloading",
+      "angle": 0.1,
+      "omega": -10,
+      "comparisons": [
+        {
+          "error": {
+            "position": 1.1102230246251565e-16,
+            "velocity": 1.1546319456101628e-14,
+            "angle": 1.7763568394002505e-15,
+            "angularVelocity": 0,
+            "work": 0
+          },
+          "pass": true
+        },
+        {
+          "error": {
+            "position": 1.1796119636642288e-16,
+            "velocity": 1.0658141036401503e-14,
+            "angle": 3.552713678800501e-15,
+            "angularVelocity": 0,
+            "work": 0
+          },
+          "pass": true
+        }
+      ],
+      "runs": [
+        {
+          "divisor": 1,
+          "errors": {
+            "momentum": 6.661338147750939e-16,
+            "angularMomentum": 6.136584296267955e-16,
+            "work": 3.552713678800501e-15
+          },
+          "failure": null,
+          "steps": 128
+        },
+        {
+          "divisor": 2,
+          "errors": {
+            "momentum": 1.5543122344752192e-15,
+            "angularMomentum": 1.1556510956522992e-15,
+            "work": 3.552713678800501e-15
+          },
+          "failure": null,
+          "steps": 256
+        },
+        {
+          "divisor": 4,
+          "errors": {
+            "momentum": 2.9976021664879227e-15,
+            "angularMomentum": 1.4194374842180224e-15,
+            "work": 3.552713678800501e-15
+          },
+          "failure": null,
+          "steps": 512
+        }
+      ]
+    },
+    {
+      "name": "unloading",
+      "angle": 0.1,
+      "omega": 0,
+      "comparisons": [
+        {
+          "error": {
+            "position": 2.220446049250313e-16,
+            "velocity": 9.107298248878237e-18,
+            "angle": 0,
+            "angularVelocity": 8.230340242591103e-20,
+            "work": 0
+          },
+          "pass": true
+        },
+        {
+          "error": {
+            "position": 1.7763568394002505e-15,
+            "velocity": 2.0816681711721685e-17,
+            "angle": 0,
+            "angularVelocity": 3.54353048777377e-20,
+            "work": 0
+          },
+          "pass": true
+        }
+      ],
+      "runs": [
+        {
+          "divisor": 1,
+          "errors": {
+            "momentum": 9.0053832446646e-16,
+            "angularMomentum": 1.5569143196891844e-16,
+            "work": 7.105427357601002e-15
+          },
+          "failure": null,
+          "steps": 128
+        },
+        {
+          "divisor": 2,
+          "errors": {
+            "momentum": 9.332812300755222e-16,
+            "angularMomentum": 1.6761765586625899e-16,
+            "work": 5.329070518200751e-15
+          },
+          "failure": null,
+          "steps": 256
+        },
+        {
+          "divisor": 4,
+          "errors": {
+            "momentum": 9.957312752106873e-16,
+            "angularMomentum": 6.82505267579625e-17,
+            "work": 5.329070518200751e-15
+          },
+          "failure": null,
+          "steps": 512
+        }
+      ]
+    },
+    {
+      "name": "unloading",
+      "angle": 0.1,
+      "omega": 10,
+      "comparisons": [
+        {
+          "error": {
+            "position": 1.1796119636642288e-16,
+            "velocity": 1.0658141036401503e-14,
+            "angle": 1.7763568394002505e-15,
+            "angularVelocity": 0,
+            "work": 0
+          },
+          "pass": true
+        },
+        {
+          "error": {
+            "position": 9.71445146547012e-17,
+            "velocity": 1.687538997430238e-14,
+            "angle": 3.552713678800501e-15,
+            "angularVelocity": 0,
+            "work": 0
+          },
+          "pass": true
+        }
+      ],
+      "runs": [
+        {
+          "divisor": 1,
+          "errors": {
+            "momentum": 9.75781955236954e-16,
+            "angularMomentum": 8.537007906150862e-16,
+            "work": 3.552713678800501e-15
+          },
+          "failure": null,
+          "steps": 128
+        },
+        {
+          "divisor": 2,
+          "errors": {
+            "momentum": 1.6653345369377348e-15,
+            "angularMomentum": 1.0651202142497596e-15,
+            "work": 7.105427357601002e-15
+          },
+          "failure": null,
+          "steps": 256
+        },
+        {
+          "divisor": 4,
+          "errors": {
+            "momentum": 2.3314683517128287e-15,
+            "angularMomentum": 1.601149768326593e-15,
+            "work": 3.552713678800501e-15
+          },
+          "failure": null,
+          "steps": 512
+        }
+      ]
+    },
+    {
+      "name": "separated-closing",
+      "angle": 0,
+      "omega": -10,
+      "comparisons": [
+        {
+          "error": {
+            "position": 2.6020852139652106e-18,
+            "velocity": 8.881784197001252e-15,
+            "angle": 1.214306433183765e-17,
+            "angularVelocity": 0,
+            "work": 0
+          },
+          "pass": true
+        },
+        {
+          "error": {
+            "position": 2.6020852139652106e-18,
+            "velocity": 1.687538997430238e-14,
+            "angle": 2.1467203015212988e-17,
+            "angularVelocity": 0,
+            "work": 0
+          },
+          "pass": true
+        }
+      ],
+      "runs": [
+        {
+          "divisor": 1,
+          "errors": {
+            "momentum": 8.636754506019528e-16,
+            "angularMomentum": 4.2565777291780904e-16,
+            "work": 3.552713678800501e-15
+          },
+          "failure": null,
+          "steps": 128
+        },
+        {
+          "divisor": 2,
+          "errors": {
+            "momentum": 1.132774429812855e-15,
+            "angularMomentum": 4.844215306665234e-16,
+            "work": 3.552713678800501e-15
+          },
+          "failure": null,
+          "steps": 256
+        },
+        {
+          "divisor": 4,
+          "errors": {
+            "momentum": 1.0096090630185017e-15,
+            "angularMomentum": 6.845652517073475e-16,
+            "work": 3.552713678800501e-15
+          },
+          "failure": null,
+          "steps": 512
+        }
+      ]
+    },
+    {
+      "name": "separated-closing",
+      "angle": 0,
+      "omega": 0,
+      "comparisons": [
+        {
+          "error": {
+            "position": 2.6020852139652106e-18,
+            "velocity": 1.0842021724855044e-17,
+            "angle": 2.717481964993303e-24,
+            "angularVelocity": 5.374308168008216e-20,
+            "work": 0
+          },
+          "pass": true
+        },
+        {
+          "error": {
+            "position": 2.6020852139652106e-18,
+            "velocity": 2.168404344971009e-17,
+            "angle": 2.3601534616330042e-24,
+            "angularVelocity": 2.742282137857002e-20,
+            "work": 0
+          },
+          "pass": true
+        }
+      ],
+      "runs": [
+        {
+          "divisor": 1,
+          "errors": {
+            "momentum": 1.0347625534201654e-15,
+            "angularMomentum": 2.35380291646603e-16,
+            "work": 3.552713678800501e-15
+          },
+          "failure": null,
+          "steps": 128
+        },
+        {
+          "divisor": 2,
+          "errors": {
+            "momentum": 1.0347625534201654e-15,
+            "angularMomentum": 2.3548871186385156e-16,
+            "work": 3.552713678800501e-15
+          },
+          "failure": null,
+          "steps": 256
+        },
+        {
+          "divisor": 4,
+          "errors": {
+            "momentum": 1.0347625534201654e-15,
+            "angularMomentum": 2.3548871186385156e-16,
+            "work": 3.552713678800501e-15
+          },
+          "failure": null,
+          "steps": 512
+        }
+      ]
+    },
+    {
+      "name": "separated-closing",
+      "angle": 0,
+      "omega": 10,
+      "comparisons": [
+        {
+          "error": {
+            "position": 2.6020852139652106e-18,
+            "velocity": 9.769962616701378e-15,
+            "angle": 1.214306433183765e-17,
+            "angularVelocity": 0,
+            "work": 0
+          },
+          "pass": true
+        },
+        {
+          "error": {
+            "position": 2.6020852139652106e-18,
+            "velocity": 1.2434497875801753e-14,
+            "angle": 2.1467203015212988e-17,
+            "angularVelocity": 0,
+            "work": 0
+          },
+          "pass": true
+        }
+      ],
+      "runs": [
+        {
+          "divisor": 1,
+          "errors": {
+            "momentum": 7.494005416219807e-16,
+            "angularMomentum": 1.2561837420960176e-15,
+            "work": 3.552713678800501e-15
+          },
+          "failure": null,
+          "steps": 128
+        },
+        {
+          "divisor": 2,
+          "errors": {
+            "momentum": 7.586162600881075e-16,
+            "angularMomentum": 1.27675647831893e-15,
+            "work": 3.552713678800501e-15
+          },
+          "failure": null,
+          "steps": 256
+        },
+        {
+          "divisor": 4,
+          "errors": {
+            "momentum": 1.4918621893400541e-15,
+            "angularMomentum": 1.1092472426699196e-15,
+            "work": 3.552713678800501e-15
+          },
+          "failure": null,
+          "steps": 512
+        }
+      ]
+    },
+    {
+      "name": "separated-closing",
+      "angle": 0.1,
+      "omega": -10,
+      "comparisons": [
+        {
+          "error": {
+            "position": 1.0755285551056204e-16,
+            "velocity": 8.881784197001252e-15,
+            "angle": 1.7763568394002505e-15,
+            "angularVelocity": 0,
+            "work": 0
+          },
+          "pass": true
+        },
+        {
+          "error": {
+            "position": 1.0408340855860843e-16,
+            "velocity": 1.2434497875801753e-14,
+            "angle": 3.552713678800501e-15,
+            "angularVelocity": 0,
+            "work": 0
+          },
+          "pass": true
+        }
+      ],
+      "runs": [
+        {
+          "divisor": 1,
+          "errors": {
+            "momentum": 9.272096979096034e-16,
+            "angularMomentum": 4.1947782053464167e-16,
+            "work": 3.552713678800501e-15
+          },
+          "failure": null,
+          "steps": 128
+        },
+        {
+          "divisor": 2,
+          "errors": {
+            "momentum": 1.6653345369377348e-15,
+            "angularMomentum": 4.590511998303626e-16,
+            "work": 3.552713678800501e-15
+          },
+          "failure": null,
+          "steps": 256
+        },
+        {
+          "divisor": 4,
+          "errors": {
+            "momentum": 1.7763568394002505e-15,
+            "angularMomentum": 8.729995892853282e-16,
+            "work": 7.105427357601002e-15
+          },
+          "failure": null,
+          "steps": 512
+        }
+      ]
+    },
+    {
+      "name": "separated-closing",
+      "angle": 0.1,
+      "omega": 0,
+      "comparisons": [
+        {
+          "error": {
+            "position": 8.881784197001252e-16,
+            "velocity": 1.0842021724855044e-17,
+            "angle": 0,
+            "angularVelocity": 8.98225635284401e-20,
+            "work": 0
+          },
+          "pass": true
+        },
+        {
+          "error": {
+            "position": 8.881784197001252e-16,
+            "velocity": 2.168404344971009e-17,
+            "angle": 0,
+            "angularVelocity": 1.1666452263395924e-19,
+            "work": 0
+          },
+          "pass": true
+        }
+      ],
+      "runs": [
+        {
+          "divisor": 1,
+          "errors": {
+            "momentum": 1.0390993621101074e-15,
+            "angularMomentum": 2.638948087829718e-16,
+            "work": 5.329070518200751e-15
+          },
+          "failure": null,
+          "steps": 128
+        },
+        {
+          "divisor": 2,
+          "errors": {
+            "momentum": 1.0390993621101074e-15,
+            "angularMomentum": 2.203098814490545e-16,
+            "work": 5.329070518200751e-15
+          },
+          "failure": null,
+          "steps": 256
+        },
+        {
+          "divisor": 4,
+          "errors": {
+            "momentum": 1.141448047192739e-15,
+            "angularMomentum": 3.5540147214074835e-16,
+            "work": 5.329070518200751e-15
+          },
+          "failure": null,
+          "steps": 512
+        }
+      ]
+    },
+    {
+      "name": "separated-closing",
+      "angle": 0.1,
+      "omega": 10,
+      "comparisons": [
+        {
+          "error": {
+            "position": 1.0408340855860843e-16,
+            "velocity": 8.881784197001252e-15,
+            "angle": 1.7763568394002505e-15,
+            "angularVelocity": 0,
+            "work": 0
+          },
+          "pass": true
+        },
+        {
+          "error": {
+            "position": 1.5265566588595902e-16,
+            "velocity": 1.0658141036401503e-14,
+            "angle": 3.552713678800501e-15,
+            "angularVelocity": 0,
+            "work": 0
+          },
+          "pass": true
+        }
+      ],
+      "runs": [
+        {
+          "divisor": 1,
+          "errors": {
+            "momentum": 1.1102230246251565e-15,
+            "angularMomentum": 1.4782283470210489e-15,
+            "work": 3.552713678800501e-15
+          },
+          "failure": null,
+          "steps": 128
+        },
+        {
+          "divisor": 2,
+          "errors": {
+            "momentum": 8.881784197001252e-16,
+            "angularMomentum": 1.5952950765951712e-15,
+            "work": 3.552713678800501e-15
+          },
+          "failure": null,
+          "steps": 256
+        },
+        {
+          "divisor": 4,
+          "errors": {
+            "momentum": 2.4424906541753444e-15,
+            "angularMomentum": 1.4064812682568206e-15,
+            "work": 3.552713678800501e-15
+          },
+          "failure": null,
+          "steps": 512
+        }
+      ]
+    },
+    {
+      "name": "excluded-closing",
+      "angle": 0,
+      "omega": -10,
+      "comparisons": [
+        {
+          "error": {
+            "position": 9.713570443985512e-08,
+            "velocity": 0.0006495972693905117,
+            "angle": 1.214306433183765e-17,
+            "angularVelocity": 0,
+            "work": 2.0141791450972626e-05
+          },
+          "pass": false
+        },
+        {
+          "error": {
+            "position": 4.8567850653973704e-08,
+            "velocity": 0.0003247986455247043,
+            "angle": 2.1467203015212988e-17,
+            "angularVelocity": 0,
+            "work": 1.0071248896060587e-05
+          },
+          "pass": false
+        }
+      ],
+      "runs": [
+        {
+          "divisor": 1,
+          "errors": {
+            "momentum": 8.213915658750182e-16,
+            "angularMomentum": 4.96158019183679e-16,
+            "work": 2.762872694170304e-08
+          },
+          "failure": null,
+          "steps": 128
+        },
+        {
+          "divisor": 2,
+          "errors": {
+            "momentum": 1.0096090630185017e-15,
+            "angularMomentum": 4.2891037943526555e-16,
+            "work": 6.802551083193165e-09
+          },
+          "failure": null,
+          "steps": 256
+        },
+        {
+          "divisor": 4,
+          "errors": {
+            "momentum": 9.020562075079397e-16,
+            "angularMomentum": 7.28583859910259e-16,
+            "work": 1.6875399081600628e-09
+          },
+          "failure": null,
+          "steps": 512
+        }
+      ]
+    },
+    {
+      "name": "excluded-closing",
+      "angle": 0,
+      "omega": 0,
+      "comparisons": [
+        {
+          "error": {
+            "position": 9.71360079772153e-08,
+            "velocity": 0.0006495972753424173,
+            "angle": 2.2643894140579876e-23,
+            "angularVelocity": 1.3686197663833432e-19,
+            "work": 2.014179145545965e-05
+          },
+          "pass": false
+        },
+        {
+          "error": {
+            "position": 4.856800242821033e-08,
+            "velocity": 0.00032479864850132323,
+            "angle": 2.4943616661695387e-23,
+            "angularVelocity": 1.243269069388462e-19,
+            "work": 1.0071248896333128e-05
+          },
+          "pass": false
+        }
+      ],
+      "runs": [
+        {
+          "divisor": 1,
+          "errors": {
+            "momentum": 9.384854005034526e-16,
+            "angularMomentum": 2.445960101127298e-16,
+            "work": 2.7628723415010215e-08
+          },
+          "failure": null,
+          "steps": 128
+        },
+        {
+          "divisor": 2,
+          "errors": {
+            "momentum": 9.593020822151743e-16,
+            "angularMomentum": 2.224782857940255e-16,
+            "work": 6.802549135098701e-09
+          },
+          "failure": null,
+          "steps": 256
+        },
+        {
+          "divisor": 4,
+          "errors": {
+            "momentum": 9.8879238130678e-16,
+            "angularMomentum": 2.5630539357557325e-16,
+            "work": 1.687538516911835e-09
+          },
+          "failure": null,
+          "steps": 512
+        }
+      ]
+    },
+    {
+      "name": "excluded-closing",
+      "angle": 0,
+      "omega": 10,
+      "comparisons": [
+        {
+          "error": {
+            "position": 9.713570444305352e-08,
+            "velocity": 0.0006495972693904006,
+            "angle": 1.214306433183765e-17,
+            "angularVelocity": 0,
+            "work": 2.014179144981814e-05
+          },
+          "pass": false
+        },
+        {
+          "error": {
+            "position": 4.856785065421765e-08,
+            "velocity": 0.0003247986455249263,
+            "angle": 2.1467203015212988e-17,
+            "angularVelocity": 0,
+            "work": 1.007124889598865e-05
+          },
+          "pass": false
+        }
+      ],
+      "runs": [
+        {
+          "divisor": 1,
+          "errors": {
+            "momentum": 8.708311849403572e-16,
+            "angularMomentum": 1.005922775632051e-15,
+            "work": 2.7628727628653538e-08
+          },
+          "failure": null,
+          "steps": 128
+        },
+        {
+          "divisor": 2,
+          "errors": {
+            "momentum": 7.586162600881075e-16,
+            "angularMomentum": 1.0139458717084437e-15,
+            "work": 6.802547670992087e-09
+          },
+          "failure": null,
+          "steps": 256
+        },
+        {
+          "divisor": 4,
+          "errors": {
+            "momentum": 1.4190038033490282e-15,
+            "angularMomentum": 1.2337136520712555e-15,
+            "work": 1.6875363450380432e-09
+          },
+          "failure": null,
+          "steps": 512
+        }
+      ]
+    },
+    {
+      "name": "excluded-closing",
+      "angle": 0.1,
+      "omega": -10,
+      "comparisons": [
+        {
+          "error": {
+            "position": 9.667467403191334e-08,
+            "velocity": 0.0006463608602078619,
+            "angle": 1.7763568394002505e-15,
+            "angularVelocity": 0,
+            "work": 2.01417914509755e-05
+          },
+          "pass": false
+        },
+        {
+          "error": {
+            "position": 4.833733545936761e-08,
+            "velocity": 0.0003231804408760919,
+            "angle": 3.552713678800501e-15,
+            "angularVelocity": 0,
+            "work": 1.007124889606281e-05
+          },
+          "pass": false
+        }
+      ],
+      "runs": [
+        {
+          "divisor": 1,
+          "errors": {
+            "momentum": 8.777700788442644e-16,
+            "angularMomentum": 4.971947875111182e-16,
+            "work": 2.762872407073569e-08
+          },
+          "failure": null,
+          "steps": 128
+        },
+        {
+          "divisor": 2,
+          "errors": {
+            "momentum": 1.6653345369377348e-15,
+            "angularMomentum": 6.578938782642041e-16,
+            "work": 6.80255082645409e-09
+          },
+          "failure": null,
+          "steps": 256
+        },
+        {
+          "divisor": 4,
+          "errors": {
+            "momentum": 1.9984014443252818e-15,
+            "angularMomentum": 7.251144129583054e-16,
+            "work": 1.6875381942532686e-09
+          },
+          "failure": null,
+          "steps": 512
+        }
+      ]
+    },
+    {
+      "name": "excluded-closing",
+      "angle": 0.1,
+      "omega": 0,
+      "comparisons": [
+        {
+          "error": {
+            "position": 9.665073253729319e-08,
+            "velocity": 0.0006463519947189633,
+            "angle": 0,
+            "angularVelocity": 2.150491715425164e-19,
+            "work": 2.0141791455455124e-05
+          },
+          "pass": false
+        },
+        {
+          "error": {
+            "position": 4.832536471574382e-08,
+            "velocity": 0.0003231760081352508,
+            "angle": 0,
+            "angularVelocity": 3.7782973928169964e-19,
+            "work": 1.0071248896333779e-05
+          },
+          "pass": false
+        }
+      ],
+      "runs": [
+        {
+          "divisor": 1,
+          "errors": {
+            "momentum": 9.939965517347105e-16,
+            "angularMomentum": 2.1098574276567916e-16,
+            "work": 2.76287240273676e-08
+          },
+          "failure": null,
+          "steps": 128
+        },
+        {
+          "divisor": 2,
+          "errors": {
+            "momentum": 1.0182826803983858e-15,
+            "angularMomentum": 2.1021324871778324e-16,
+            "work": 6.8025445953273644e-09
+          },
+          "failure": null,
+          "steps": 256
+        },
+        {
+          "divisor": 4,
+          "errors": {
+            "momentum": 1.106753577673203e-15,
+            "angularMomentum": 3.445594504158933e-16,
+            "work": 1.6875347490924453e-09
+          },
+          "failure": null,
+          "steps": 512
+        }
+      ]
+    },
+    {
+      "name": "excluded-closing",
+      "angle": 0.1,
+      "omega": 10,
+      "comparisons": [
+        {
+          "error": {
+            "position": 9.662618699981564e-08,
+            "velocity": 0.0006463431173855394,
+            "angle": 1.7763568394002505e-15,
+            "angularVelocity": 0,
+            "work": 2.0141791449829064e-05
+          },
+          "pass": false
+        },
+        {
+          "error": {
+            "position": 4.831309193833143e-08,
+            "velocity": 0.0003231715694721471,
+            "angle": 3.552713678800501e-15,
+            "angularVelocity": 0,
+            "work": 1.0071248895985262e-05
+          },
+          "pass": false
+        }
+      ],
+      "runs": [
+        {
+          "divisor": 1,
+          "errors": {
+            "momentum": 1.1102230246251565e-15,
+            "angularMomentum": 1.0610002459943146e-15,
+            "work": 2.7628727366710293e-08
+          },
+          "failure": null,
+          "steps": 128
+        },
+        {
+          "divisor": 2,
+          "errors": {
+            "momentum": 8.881784197001252e-16,
+            "angularMomentum": 1.3773704399255848e-15,
+            "work": 6.802547330986286e-09
+          },
+          "failure": null,
+          "steps": 256
+        },
+        {
+          "divisor": 4,
+          "errors": {
+            "momentum": 2.55351295663786e-15,
+            "angularMomentum": 1.3149949336897782e-15,
+            "work": 1.6875382462949728e-09
+          },
+          "failure": null,
+          "steps": 512
+        }
+      ]
+    }
+  ],
+  "verification": {
+    "nodePass": 437,
+    "nodeFail": 0,
+    "nodeSkip": 0,
+    "scope": "working-tree Windows Node suite, no browser/full attestation"
+  },
+  "artifacts": {
+    "artifacts/spinning-physical-trajectory/report.json": "dbe0ebe6fdd3c39e2d841335e31ccc2abe2bc98a643885c5f742327c3a7197f7",
+    "artifacts/spinning-physical-trajectory.log": "1aa30de639d1f6d791e2d687c352dfcfe81ecd4771386d7095470ca6135b9b3f",
+    "artifacts/physical-trajectory-suite.log": "04b14f3a6adc019b0ac603153cb98d49785fac20c95b425a9122b4b1e0f60683"
+  }
+}
