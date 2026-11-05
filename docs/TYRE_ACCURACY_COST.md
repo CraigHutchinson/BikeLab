@@ -33,6 +33,8 @@ Measure complete simulated-time cost, solver steps, allocations and worst admitt
 
 ## Current limits and next consumer
 
+The [first scalar screen](TYRE_CANDIDATE_SCREEN.md) now records anchored-linear, anchored-three-halves and derived-asymptote errors against the reference. It has no production casing or equilibrium receiver; retain that distinction when selecting the next implementation. Windows receiving of the static reference passes 453/453 at `6774f81` ([receipt](evidence/tyre-static-windows.json)); the older Linux and browser failures retain their source-specific scope.
+
 PR96's strip kernel and Cartesian mapping pass analytic/Node checks but lack free-casing prestress, transverse geometry and material response. Neither is a production foundation replacement. PR91's contact-transition refinement failures remain independent and must be resolved for loaded dynamic acceptance. #95 stays open.
 
 The [constant-pressure static reference](TYRE_STATIC_REFERENCE.md) now implements the CLI, full report and inspected scientific plot. It passes 21 focused checks and 200 load solves; complete Linux in-process Node receiving is 440/453 with the same thirteen environment-blocked checks ([receipt](evidence/tyre-static-reference-tests.json)), not a full pass. Published Figure 4 dimensions are inconsistent, so exact figure reproduction remains unavailable and the reconstruction is explicitly labelled. The two load estimates differ by L/Re, exposing model bias rather than a numerical error. Next concrete deliverable: compare reduced casing candidates using load, footprint, local shape, realizable prestress and measured inputs, before optimizing the production law.
