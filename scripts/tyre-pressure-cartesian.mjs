@@ -1,0 +1,13 @@
+import {mkdir,readFile,writeFile} from 'node:fs/promises';
+import {createHash} from 'node:crypto';
+import {resolve,join} from 'node:path';
+import {createRadialPressureDiagnostic} from './lib/tyre-pressure-cartesian.mjs';
+import {FIXTURE} from './lib/tyre-pressure-checks.mjs';
+if(process.argv.length>3)throw Error('Usage: node scripts/tyre-pressure-cartesian.mjs [output-directory]');
+const configuration=structuredClone(FIXTURE),referenceRadii=[.35,.35,.35],hub=[.12,-.04],positions=[[.46,-.04],[.12,.29],[-.084,-.312]];
+const sources=['scripts/lib/tyre-pressure.mjs','scripts/lib/tyre-pressure-cartesian.mjs','scripts/lib/tyre-pressure-checks.mjs','scripts/tyre-pressure-cartesian.mjs','test/tyre-pressure-cartesian.test.mjs','scripts/plot-tyre-pressure-cartesian.py'];
+const sourcesSha256=Object.fromEntries(await Promise.all(sources.map(async p=>[p,createHash('sha256').update(await readFile(new URL('../'+p,import.meta.url))).digest('hex')])));
+const state=createRadialPressureDiagnostic(configuration,referenceRadii).evaluate(hub,positions);
+const output=resolve(process.argv[2]??'artifacts/tyre-pressure-cartesian');await mkdir(output,{recursive:true});
+await writeFile(join(output,'report.json'),JSON.stringify({scope:'Illustrative prescribed radial geometry; no free inflation, casing or insert',configuration,referenceRadii,hub,positions,state,sourcesSha256},null,2)+'\n');
+console.log(JSON.stringify({output,energy:state.pressure.energy,hubForce:state.hubForce}));

@@ -28,6 +28,12 @@ This couples increasing effective area and pressure through the same geometry. F
 
 Keep casing elasticity and any insert as separately specified potentials/losses. A later progressive insert must consume real declared clearance and have nonnegative dissipated work; its parameters and engagement range need evidence. Do not turn indicative comment ranges into physical breaking thresholds.
 
+## Current receiving checkpoint — Cartesian mapping, 5 November
+
+The [radial Cartesian diagnostic](../TYRE_PRESSURE_CARTESIAN.md) now derives node forces and the hub reaction from the same pressure energy using current geometry. Four focused checks pass; the complete Windows Node suite passes **445/445**, zero failures/skips/cancellations (102.142 s; local log `artifacts/pr96-cartesian-node-suite.log`). The original nine pressure checks are included. The source-hashed three-strip report and inspected geometry/force plot are tracked. During the suite only plot scaling changed; numerical source and tests remained fixed.
+
+This closes the diagnostic coordinate/sign/work mapping gate, not the production geometry/prestress gate. The radial strip surrogate has no reference inflation force or circumferential stiffness. Next specify closed casing geometry, rim attachment and stress-free material data, then solve/receive pressurized equilibrium before replacing the native Cartesian foundation. Insert energy/clearance/loss and physical calibration follow. Keep #95 open and PR91 separate. Full browser/native receiving and the ordinary full merge attestation remain pending; 445 Node passes are not that attestation.
+
 ## Receiving and delivery gates
 
 1. Independent volume integral/gradient, pressure relation, force/energy finite differences, ambient/gauge convention, `n=1` and nearby exponents, multi-node coupling, mesh weighting, compression/unloading work and deterministic replay. Reject nonfinite input and unsupported geometry/volume before evaluating singular laws.
