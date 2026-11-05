@@ -1,0 +1,24 @@
+{
+  "base": "e3c3431820645b23b015801c21cc282a8a234922",
+  "node": "v24.22.0",
+  "command": "node --test",
+  "platform": "Windows",
+  "tests": 462,
+  "passed": 462,
+  "failed": 0,
+  "skipped": 0,
+  "cancelled": 0,
+  "durationMs": 119064.777,
+  "sourcesSha256": {
+    "scripts/lib/tyre-meridian.mjs": "b7a6f429b01c82d574581b228cbf248d3e5449fcb4c0a72fd653ab4b36e66e42",
+    "scripts/lib/tyre-meridian-fixture.mjs": "6713e174afa69ef89e8276cc86481bf297f7e441b577e2a139dd0a94c1a349d1",
+    "scripts/lib/tyre-inflation.mjs": "693611ae30bf86543c190a3910948b9e8f7171a61ff1923d397542232e91b3cd",
+    "scripts/tyre-meridian.mjs": "7a30a04739f922fb875d2bc5346ad84527ab4550261f7c64dd8eaeaafc145b7a",
+    "test/tyre-meridian.test.mjs": "f1104e126d482b8de5355b4f74dd13178e2abbec9e78d24e57bf16aed2c99986",
+    "scripts/plot-tyre-meridian.py": "559cf3bb286eeb2feda66b2d6ea439377a25cf17ea2b3bcefd0095723df0c0d8"
+  },
+  "log": "tyre-meridian-node.txt",
+  "logSha256": "5cec08891ce0c3c6bdbd0cfd0ab8f36822c29a34f294bdac816814805e3e0c60",
+  "scope": "Numerical module, fixture and tests fixed during full Node run. CLI bracket corrected after initial domain rejection; CLI then passed internal checks. Plot and docs prepared concurrently. Not full/browser attestation; production/browser paths unchanged.",
+  "sourceNormalization": "Plot script CRLF normalized to LF after receiving; diagnostic rerun verifies final source hashes. No numerical changes."
+}
