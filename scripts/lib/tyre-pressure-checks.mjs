@@ -65,9 +65,12 @@ export function pressureChecks(api){
   {name:'compression and unloading close the work cycle without residual pressure or energy',run(){
    const config=configuration(),c=createPressureChamber(config),maximum=[.005,.01,.02],end=c.evaluate(maximum);
    const power=t=>{const r=c.evaluate(maximum.map(d=>d*t*t));return r.nodes.reduce((sum,node,i)=>sum+node.resistingForce*2*maximum[i]*t,0);};
-   const loading=simpson(power,0,1),unloading=simpson(power,1,0);near(loading,end.energy,2e-8);near(loading+unloading,0,1e-10);
+   const loading=simpson(power,0,1),current=[...maximum];let unloading=0;
+   // Return one strip at a time, along a different path through shared pressure.
+   for(const i of [2,0,1]){unloading+=simpson(t=>{const q=[...current];q[i]=maximum[i]*(1-t)**2;return c.evaluate(q).nodes[i].resistingForce*(-2*maximum[i]*(1-t));},0,1);current[i]=0;}
+   near(loading,end.energy,2e-8);near(loading+unloading,0,1e-10);
    const initial=c.evaluate([0,0,0]);near(initial.energy,0,0);near(initial.gaugePressure,config.initialGaugePressure,0);require(initial.nodes.every(n=>n.generalizedForce===0),'Residual force');
-   return {loading,unloading,energy:end.energy,workError:loading-end.energy};
+   return {loading,unloading,unloadingPath:[2,0,1],energy:end.energy,workError:loading-end.energy,closedLoopWork:loading+unloading};
   }},
   {name:'arc weighting preserves uniform response under nonuniform subdivision and repeated evaluation owns data',run(){
    const config=configuration(),one=createPressureChamber({...config,arcLengths:[.12]}),many=createPressureChamber({...config,arcLengths:[.02,.03,.07]});
@@ -91,8 +94,11 @@ export function pressureChecks(api){
    expectThrow(()=>c.evaluate([0,0]));expectThrow(()=>c.evaluate([NaN,0,0]),'compression-domain');expectThrow(()=>c.evaluate([-.001,0,0]),'compression-domain');expectThrow(()=>c.evaluate([.03001,0,0]),'compression-domain');
    expectThrow(()=>circularSegment(.03,Number.MIN_VALUE),'compression-resolution');
    const small=createPressureChamber({...config,referenceVolume:1e-6,arcLengths:[.12]});expectThrow(()=>small.evaluate([.03]),'volume-domain');
+   const weighted=createPressureChamber({...config,arcLengths:[1e-6]});expectThrow(()=>weighted.evaluate([1e-212]),'volume-resolution');
+   expectThrow(()=>createPressureChamber({...config,initialGaugePressure:0}).evaluate([1e-120,1e-120,1e-120]),'energy-resolution');
+   expectThrow(()=>createPressureChamber({...config,[Symbol('hidden')]:1}));let getterCalls=0;const accessor={...config};Object.defineProperty(accessor,'referenceVolume',{get(){getterCalls++;return .007;}});expectThrow(()=>createPressureChamber(accessor));require(getterCalls===0,'Configuration accessor ran');
    const edge=c.evaluate([.03,.03,.03]);require(edge.tangentDefined&&edge.nodes.every(n=>n.areaStiffness===0),'Half-section boundary');
-   return {rejections:12,halfSectionPressure:edge.gaugePressure};
+   return {rejections:16,halfSectionPressure:edge.gaugePressure};
   }}
  ];
 }

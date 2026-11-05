@@ -39,11 +39,11 @@ Only **0 <= delta <= a** is admitted. The circular chord has a singular area slo
 
 Force and energy at zero compression are zero because this is a constrained strip surrogate. A freely inflated tyre needs casing prestress and a consistent geometry adapter. Internal gas acts outward on a casing; do not apply these signed compression-coordinate forces directly to the moving model's Cartesian slides.
 
-Expansion, excess compression, gas volume below the declared fraction, unresolvable tiny volume, malformed settings and nonfinite values fail closed. Reference pressure is not burst pressure. Rim strike, pinch, bead release, casing/rim/spoke damage, inserts and pressure loss remain unsupported. Existing production guards are unchanged.
+Expansion, excess compression, gas volume below the declared fraction, unresolvable weighted volume/work, malformed settings and nonfinite values fail closed. Reference pressure is not burst pressure. Rim strike, pinch, bead release, casing/rim/spoke damage, inserts and pressure loss remain unsupported. Existing production guards are unchanged.
 
 ## Evidence and references
 
-Nine shared check definitions cover independent geometry quadrature, pressure and ambient-work integration, n=1 and nearby exponents, energy/volume finite differences, cross-node tangent/symmetry, compounded response, compression/unloading work, subdivision, replay/ownership, tiny compression and rejection. The diagnostic also builds 123 complete states at initial gauge pressures 120, 160 and 200 kPa; all inputs are illustrative.
+Nine shared check definitions cover independent geometry quadrature, pressure and ambient-work integration, n=1 and nearby exponents, energy/volume finite differences, cross-node tangent/symmetry, compounded response, compression/unloading work along different multi-node paths, subdivision, replay/ownership, tiny compression and rejection. The diagnostic also builds 123 complete states at initial gauge pressures 120, 160 and 200 kPa; all inputs are illustrative.
 
 These checks and samples passed in the **functions JavaScript V8 runtime** while the execution workspace was unavailable. The Node test adapter, CLI, full suite and scientific plot have **not yet been run** for this kernel. This is partial receiving only; no browser, calibration, performance or production integration claim.
 
