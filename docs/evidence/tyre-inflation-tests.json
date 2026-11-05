@@ -1,0 +1,21 @@
+{
+  "base": "1be4f7818a7790ad745c70c29e80509d9395b8a4",
+  "node": "v24.22.0",
+  "command": "node --test",
+  "platform": "Windows",
+  "tests": 457,
+  "passed": 457,
+  "failed": 0,
+  "skipped": 0,
+  "cancelled": 0,
+  "durationMs": 120607.6512,
+  "sourcesSha256": {
+    "scripts/lib/tyre-inflation.mjs": "693611ae30bf86543c190a3910948b9e8f7171a61ff1923d397542232e91b3cd",
+    "scripts/tyre-inflation.mjs": "19d92f3ede2e90f871851c9b5d0827359b437cbc312a5f3e393038080056bde0",
+    "test/tyre-inflation.test.mjs": "8bf595d9b6e37ee0e35ca286c9f56074012beae1996d78c7da3e0e89653a42fc",
+    "scripts/plot-tyre-inflation.py": "cc327c07b3fe776a279378e462af6f19dc99bbe3ba312d88f5227604a46e0344"
+  },
+  "log": "tyre-inflation-node.txt",
+  "logSha256": "df64163c9c8425de322e3273ae4ce4ea589a97d6f7bd3508ae4284ce80fd900a",
+  "scope": "Complete Node suite with new inflation diagnostic and tests. Numerical source/tests fixed during run; plot zoom and docs prepared concurrently. Not browser/full attestation. Existing production/browser paths unchanged."
+}
