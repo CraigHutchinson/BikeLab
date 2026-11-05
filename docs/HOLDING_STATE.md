@@ -1,5 +1,7 @@
 # BikeLab workstream handoff — 2026-11-04
 
+PR96 receiving update, 5 November: 441/441 local Node suite, nine pressure checks and 123 CLI states pass; scientific plot rendered, legend repaired and image inspected. [Pressure working plan](working/TYRE_PRESSURE.md#receiving-update--5-november) now starts at Cartesian geometry/prestress and casing/insert integration. #95 stays open. This is separate from PR91 and not full browser/platform acceptance.
+
 **Pressure/material update, 5 November:** [draft PR96](https://github.com/CraigHutchinson/BikeLab/pull/96) implements the [prescribed pressure/energy kernel](TYRE_PRESSURE_KERNEL.md) for user-priority #95. Shared volume geometry compounds changing area and pressure; nine V8 checks and 123 states pass with source-bound evidence. Smoke passes on source5200268; full is skipped. The execution workspace is unavailable, so Node/full-suite, plot, casing-prestress/insert and production integration remain pending. PR91 retains corrected-stage ownership.
 
 The tracked [spinning-contact working plan](working/SPINNING_CONTACT.md) preserves provisional decisions, blocked checks and the next implementation sequence for merged PR90 and its follow-up. Push updates to it with draft changes.

@@ -23,7 +23,8 @@ for index, (curve, color) in enumerate(zip(report['curves'], ['#286b98', '#387f5
     axes[2].plot(depth, force, color=color)
     axes[2].plot(depth, [initial*a for a in area], '--', color=color, alpha=.65)
 axes[0].set(title='Sealed chamber pressure', ylabel='Gauge pressure (kPa)')
-axes[0].legend(title='Initial pressure')
+handles, labels = axes[0].get_legend_handles_labels()
+fig.legend(handles, labels, title='Initial gauge pressure', loc='outside lower center', ncol=3)
 axes[1].set(title='Changing effective area', ylabel='Effective area (cm²)')
 axes[2].set(title='Combined force', ylabel='Resisting force (N)')
 axes[2].text(.03, .95, 'Solid: pressure × area\nDashed: initial pressure × area', va='top', transform=axes[2].transAxes, fontsize=9)
@@ -33,3 +34,6 @@ for ax in axes:
 fig.suptitle('Illustrative strip chamber · geometry and gas pressure compound', fontsize=13)
 fig.savefig(source.parent / 'tyre-pressure.svg', metadata={'Date': None})
 fig.savefig(source.parent / 'tyre-pressure.png', dpi=160)
+
+svg = source.parent / 'tyre-pressure.svg'
+svg.write_text('\n'.join(line.rstrip() for line in svg.read_text().splitlines()) + '\n')

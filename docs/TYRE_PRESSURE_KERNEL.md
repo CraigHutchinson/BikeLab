@@ -68,3 +68,16 @@ node --test
 The CLI reports progress through all checks and curve samples. When subprocess isolation is blocked, the complete in-process suite is exploratory and must retain its blocked checks.
 
 Next: receive Node/plot artifacts, then unloaded prestress and a Cartesian geometry/force adapter, separately specified casing/insert energy and loss, static load-deflection at several pressures, impact refinement and evidence-based failure criteria. [Tracked working plan](working/TYRE_PRESSURE.md) preserves scope, current blockers and next actions.
+
+
+## Node and plot receiving — 5 November 2026
+
+Source a363aaed receives **9/9 focused Node tests, all 123 CLI curve states and 441/441 complete local Windows Node tests**, no skips/failures. This suite covers PR96 alone, not integration with PR91, and is not full-local/browser attestation. Only plotting/docs/evidence changed during receiving; kernel, checks and Node adapter stayed unchanged. [Receipt](evidence/tyre-pressure-node-receiving.json) retains runtime/source and artifact hashes. The complete Node report is [lossless gzip/Base64](evidence/tyre-pressure-node.json.gz.b64), verified by exact decode/decompression.
+
+![Illustrative pressure/area/force](evidence/tyre-pressure.svg)
+
+The saved-data plot rendered successfully and was visually inspected for pressure/area/force units, 120/160/200 kPa labels, solid versus initial-pressure-only dashed curves, illustrative provenance and clipping. Its original legend obscured the upper pressure curve; the legend now sits outside the axes, and the regenerated PNG was inspected. No product-browser or measured-tyre evidence follows from this scientific plot.
+
+Node is not bit-identical to the archived V8 execution: 102 of 4,929 curve numbers differ, with maximum normalized difference 2.44e-15 and no values outside the unchanged 1e-9 comparison budget. Across checks plus curves, two finite-difference energy-gradient error diagnostics differ by more than that generic comparison budget (maximum 1.34e-8 N); both runtimes pass the unchanged **2e-6 N derivative check**. Preserve the actual errors rather than claiming exact replay or changing either tolerance.
+
+Node and plot receiving are complete for this bounded prescribed chamber. **#95 stays open.** Next derive the Cartesian geometry/volume gradient and unloaded casing prestress contract, with equal/opposite force and work ownership, before any production replacement. Casing and insert potentials/losses remain separate; then receive measured pressure/load-deflection, impact/refinement and supported failure criteria. PR91's contact-transition failures remain independent.
