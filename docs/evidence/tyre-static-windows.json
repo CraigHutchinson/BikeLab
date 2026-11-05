@@ -1,0 +1,28 @@
+{
+  "sourceCommit": "6774f816b7831bc4d34b93d59b7253a697d760c5",
+  "sourceTree": "8b38cfcd7ab203c22a6be1f61026f077d7494439",
+  "node": "v24.22.0",
+  "platform": "Windows-11-10.0.26220-SP0",
+  "command": "node --test",
+  "tests": 453,
+  "passed": 453,
+  "failed": 0,
+  "skipped": 0,
+  "cancelled": 0,
+  "durationMs": 119549.799,
+  "sourcesSha256": {
+    "scripts/lib/tyre-pressure.mjs": "3894a116bc5877514b599d59334e16b158fea8d9f94bb3fcc945581e0ad54064",
+    "scripts/lib/tyre-pressure-cartesian.mjs": "141c0c56b1280e75dc50d2ad5ed21c7573f7d2c7d00be8c35d7cec6375c848b7",
+    "scripts/lib/tyre-static-reference.mjs": "c3f2a20513d0f1ff4a873e462773a53961ff5675b919506a3fe047797f7f87a9",
+    "test/tyre-pressure.test.mjs": "82f9cf9c68370d1208c7e0408b2b0f80d125886bb84de830db242c40a81ebadb",
+    "test/tyre-pressure-cartesian.test.mjs": "c3e9a38dbe41fc5c3ac824503e84d4da70578d79ce68d82765e3bee1caf7587c",
+    "test/tyre-static-reference.test.mjs": "e59c3e5b4e98db7dca115a518815ded7b2924da76896754235187a01a55efc63"
+  },
+  "scope": "Windows complete Node receiving for upstream 6774f81. New offline candidate screen/docs were prepared during run; tested physics/test sources unchanged. Candidate CLI ran separately with internal assertions. Not full local/browser attestation; existing Edge failure unchanged.",
+  "rawLocalLogSha256": "6375cbdabf8ffac6a7f5a74ae7b74afb9d2c741e597997271c935f05c3363a25",
+  "log": {
+    "path": "tyre-static-windows.log",
+    "sha256": "edff1093dd0fd561ab4fc3cc023caea2dff7cef2cc652ed718ad08551e7d46b6",
+    "normalization": "CRLF normalized to LF by Git; all log lines retained"
+  }
+}

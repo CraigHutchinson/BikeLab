@@ -1,0 +1,126 @@
+{
+  "scope": "Illustrative prescribed radial geometry; no free inflation, casing or insert",
+  "configuration": {
+    "referenceVolume": 0.007,
+    "ambientPressure": 101325,
+    "initialGaugePressure": 160000,
+    "exponent": 1.2,
+    "minVolumeFraction": 0.5,
+    "sectionRadius": 0.03,
+    "arcLengths": [
+      0.02,
+      0.03,
+      0.04
+    ],
+    "provenance": {
+      "kind": "illustrative",
+      "reference": "Prescribed chamber control; no measured tyre"
+    }
+  },
+  "referenceRadii": [
+    0.35,
+    0.35,
+    0.35
+  ],
+  "hub": [
+    0.12,
+    -0.04
+  ],
+  "positions": [
+    [
+      0.46,
+      -0.04
+    ],
+    [
+      0.12,
+      0.29
+    ],
+    [
+      -0.084,
+      -0.312
+    ]
+  ],
+  "state": {
+    "model": "bikelab-radial-strip-map-0.1",
+    "pressure": {
+      "model": "bikelab-prescribed-strip-pressure-0.1",
+      "volume": 0.006956664484625367,
+      "volumeLoss": 0.000043335515374633016,
+      "absolutePressure": 263279.6775188472,
+      "gaugePressure": 161954.67751884722,
+      "pressureIncrease": 1954.6775188472218,
+      "energy": 6.975939499585955,
+      "coupling": 45414812.47526781,
+      "nodes": [
+        {
+          "compression": 0.009999999999999953,
+          "arcLength": 0.02,
+          "width": 0.04472135954999571,
+          "volumeLoss": 0.000006194964160223545,
+          "effectiveArea": 0.0008944271909999143,
+          "volumeGradient": -0.0008944271909999143,
+          "areaDerivative": 0.035777087639996784,
+          "resistingForce": 144.8566672824795,
+          "generalizedForce": -144.8566672824795,
+          "areaStiffness": 5794.266691299214
+        },
+        {
+          "compression": 0.020000000000000018,
+          "arcLength": 0.03,
+          "width": 0.05656854249492381,
+          "volumeLoss": 0.000024750622893962377,
+          "effectiveArea": 0.0016970562748477142,
+          "volumeGradient": -0.0016970562748477142,
+          "areaDerivative": 0.02121320343559638,
+          "resistingForce": 274.8462017242977,
+          "generalizedForce": -274.8462017242977,
+          "areaStiffness": 3435.5775215537133
+        },
+        {
+          "compression": 0.009999999999999953,
+          "arcLength": 0.04,
+          "width": 0.04472135954999571,
+          "volumeLoss": 0.00001238992832044709,
+          "effectiveArea": 0.0017888543819998286,
+          "volumeGradient": -0.0017888543819998286,
+          "areaDerivative": 0.07155417527999357,
+          "resistingForce": 289.713334564959,
+          "generalizedForce": -289.713334564959,
+          "areaStiffness": 11588.533382598427
+        }
+      ],
+      "tangentDefined": true
+    },
+    "compression": [
+      0.009999999999999953,
+      0.020000000000000018,
+      0.009999999999999953
+    ],
+    "nodeForces": [
+      [
+        144.8566672824795,
+        0
+      ],
+      [
+        0,
+        274.8462017242977
+      ],
+      [
+        -173.8280007389754,
+        -231.7706676519672
+      ]
+    ],
+    "hubForce": [
+      28.9713334564959,
+      -43.07553407233053
+    ]
+  },
+  "sourcesSha256": {
+    "scripts/lib/tyre-pressure.mjs": "3894a116bc5877514b599d59334e16b158fea8d9f94bb3fcc945581e0ad54064",
+    "scripts/lib/tyre-pressure-cartesian.mjs": "141c0c56b1280e75dc50d2ad5ed21c7573f7d2c7d00be8c35d7cec6375c848b7",
+    "scripts/lib/tyre-pressure-checks.mjs": "5c3f09008134fe3ce3efb96f67ecf83b2fa0635789b056cc6e24bfbd6601f8e8",
+    "scripts/tyre-pressure-cartesian.mjs": "d41bf828acd509353fb5cb94eddf8eb0741c6e6938082588cf4fe331ae0e2ed4",
+    "test/tyre-pressure-cartesian.test.mjs": "c3e9a38dbe41fc5c3ac824503e84d4da70578d79ce68d82765e3bee1caf7587c",
+    "scripts/plot-tyre-pressure-cartesian.py": "e4d591ec200293f3b33178ca72be03b8bf98446d12a0c98bd75a23d65c41e2bb"
+  }
+}

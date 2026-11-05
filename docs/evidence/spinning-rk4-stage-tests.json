@@ -1,0 +1,57 @@
+{
+  "format": "bikelab-spinning-rk4-stage-tests-0.1",
+  "sourceCommit": "83c80605b5937c9e9f47003b3c1a4c4fae022cab",
+  "sourceTree": "244fd85018f3840b3b07955794f4a7a06aee29d1",
+  "baseMain": "3b8081e9fc70b025eecc1d7c246be52cace820b9",
+  "command": "node --test --test-isolation=none",
+  "runtime": {
+    "node": "24.19.0",
+    "platform": "linux",
+    "architecture": "x64"
+  },
+  "counts": {
+    "tests": 432,
+    "pass": 419,
+    "fail": 13,
+    "cancelled": 0,
+    "skipped": 0,
+    "todo": 0
+  },
+  "exitCode": 1,
+  "failedTests": [
+    "scenario CLI rejects invalid inputs without overwriting evidence",
+    "footprint CLI replays records and separates unsupported from invalid input",
+    "moving-wheel CLI shares mechanics and distinguishes completed, terminated and invalid input",
+    "all rider CLI modes export canonical replay; malformed specifications and option combinations fail cleanly",
+    "unbound CLI distinguishes accepted prefix, initial rejection and invalid input",
+    "portable rider CLI exports examples, canonical scenarios and provenance receipts with clean rejection",
+    "headless task tool receives saved inputs and rejects unsupported input without a report",
+    "loopback server serves only assets and survives malformed requests",
+    "solver CLI distinguishes unmet numerical gates, successful trial and invalid input",
+    "suspension CLI preserves evidence, verifies exports, and signals a travel limit with exit 2",
+    "reference CLI reports complete configuration and distinct unsupported/invalid exits",
+    "terrain CLI reports reproducible geometry and distinguishes unavailable from invalid",
+    "wheel-limit CLI distinguishes boundary, clear, incompatible and invalid records"
+  ],
+  "logSha256": "85c1a40a2d1de7d8f1ebf0b385f9d97df01c02e856527149a0a326473a0ef378",
+  "reportSha256": "a5735dc30ff637e3d588cf62850725a8b002340e17157b9c4c82f58cfb9eec1f",
+  "reportSourcesSha256": {
+    "scripts/spinning-rk4-stage.mjs": "4157856e31f5114f6c28213170d96e3c0e57e883eb4330036e2aaf9b60a70b2b",
+    "test/spinning-rk4-stage.test.mjs": "fcc5a1fd14b197d7224a95e37f1d2b1313dc38cf056d28000171411ae650a0c9",
+    "docs/evidence/spinning-gap.json": "6dd3a9773888dcfe19514bed51b40c6075bd840c93a970ccf68d55324514035e",
+    "scripts/spinning-gap.mjs": "991d86c46664ea45098501ad579f2ec44ef60e31dcb68a497530dcacef363279",
+    "dist/moving-wheel.js": "45b1068fabf5413dfc90bfd2ee47f46600deb093b756d7c8d1bdc8ad24411e35",
+    "dist/flat-vertex-contact.js": "773259b2ba85bf9ac1f8a05476b0542433a1c02df39ef6b0d789c3d61775bd9d",
+    "dist/casing-rk4-observer.js": "2a15beada33db32a7d514760257e73b8ff683ba180cfea2cf0016a83b545402b",
+    "dist/vendor/mujoco-3.16.0/mujoco.js": "5d5d89ddd0857a6518c628fa502d42f99d6dd67ca240182f1068cd30a45465ac",
+    "dist/vendor/mujoco-3.16.0/mujoco.wasm": "e05ac96db7f45bd46e76fed6e3469bf9204329e093344d742a18bca2cc0e230e"
+  },
+  "scope": "Six new stage tests and all 14 combined focused tests pass. Complete Linux in-process suite:419/432, same13 environment-blocked checks. No full attestation. Remote Windows receipt records432/432 and identical complete stage-report bytes; retained separately. Native-target parity only:36cases/576steps, six ballistic controls/768steps. No corrected stage, browser or performance qualification.",
+  "focusedTests": {
+    "tests": 14,
+    "pass": 14,
+    "fail": 0
+  },
+  "compressedReportSha256": "0588236c613ca6e0b20db2910eed7c2ffc61561c8f58a525f4b8ee6c8be4f067",
+  "encodedReportSha256": "ea3c224cb81524d8e6cdbbede98b9ca9db41b7354aa77802d0359a725e94f830"
+}

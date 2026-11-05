@@ -1,0 +1,26 @@
+{
+  "sourceCommit": "81ecef5f35f8fc4c764c4e37ad9f8320283a3512",
+  "equivalentPublishedCommit": "2f98cc47d53ef1f1257e9d3109845d88fce5b7b8",
+  "sourceTree": "f3cc799986758103c694c14ee4a6864cdf27034a",
+  "nodeTests": {
+    "passed": 445,
+    "failed": 0,
+    "skipped": 0
+  },
+  "browser": "157.0.4341.36",
+  "fullSuccess": false,
+  "failure": "AssertionError [ERR_ASSERTION]: report.frames.1.wheels.0.ground.0: 3.651187963082947e-9 vs -2.2847596946318216e-8\n    at walk (file:///C:/Users/craig/.codex/visualizations/2026/10/27/01a17de1-8b2b-7413-a83e-4925203a12a0/bikelab-integration/scripts/trail-bike-browser-check.mjs:9:489)\n    at walk (file:///C:/Users/craig/.codex/visualizations/2026/10/27/01a17de1-8b2b-7413-a83e-4925203a12a0/bikelab-integration/scripts/trail-bike-browser-check.mjs:9:681)\n    at walk (file:///C:/Users/craig/.codex/visualizations/2026/10/27/01a17de1-8b2b-7413-a83e-4925203a12a0/bikelab-integration/scripts/trail-bike-browser-check.mjs:9:681)\n    at walk (file:///C:/Users/craig/.codex/visualizations/2026/10/27/01a17de1-8b2b-7413-a83e-4925203a12a0/bikelab-integration/scripts/trail-bike-browser-check.mjs:9:681)\n    at walk (file:///C:/Users/craig/.codex/visualizations/2026/10/27/01a17de1-8b2b-7413-a83e-4925203a12a0/bikelab-integration/scripts/trail-bike-browser-check.mjs:9:681)\n    at walk (file:///C:/Users/craig/.codex/visualizations/2026/10/27/01a17de1-8b2b-7413-a83e-4925203a12a0/bikelab-integration/scripts/trail-bike-browser-check.mjs:9:681)\n    at walk (file:///C:/Users/craig/.codex/visualizations/2026/10/27/01a17de1-8b2b-7413-a83e-4925203a12a0/bikelab-integration/scripts/trail-bike-browser-check.mjs:9:681)\n    at save (file:///C:/Users/craig/.codex/visualizations/2026/10/27/01a17de1-8b2b-7413-a83e-4925203a12a0/bikelab-integration/scripts/trail-bike-browser-check.mjs:9:741)\n    at async checkTrailBike (file:///C:/Users/craig/.codex/visualizations/2026/10/27/01a17de1-8b2b-7413-a83e-4925203a12a0/bikelab-integration/scripts/trail-bike-browser-check.mjs:69:15)\n    at async file:///C:/Users/craig/.codex/visualizations/2026/10/27/01a17de1-8b2b-7413-a83e-4925203a12a0/bikelab-integration/scripts/browser-check.mjs:337:3",
+  "archive": {
+    "path": "pr96-full-local-failure.json.gz.b64",
+    "jsonSha256": "1a7096ef9b7e0e25f5f1ef1d514bf5f2cc71029f41e16a6b4ecb16d1cf7b2bc6",
+    "gzipSha256": "7a4f13d195128deab53ebc68422c142a2c1f9d6a9f7e82365a2af20d77efb895",
+    "filesSha256": {
+      "artifacts/ci/full.json": "69cebbb732404f6a5a2cc8334bf75cd7a0f1a08c7c888b295126865141844f4b",
+      "artifacts/pr96-full-browser/report.json": "20f3dc0e667264840ea48fc147aeee824301134ef8d7fe20636a7560c797393c",
+      "artifacts/pr96-full-browser/trail-bike/full-articulated-standing.json": "7282f776a5800b62936bfdf8b899a06f8fc47999cbdd5ae2d36cbfff8754bf3e",
+      "artifacts/rider-idle/review.json": "58266a95a40ce3e028e2940edf5a27ffe23e91f53e4ee160b472818c827bba83",
+      "artifacts/pr96-full-local.log": "e255fa0945701cf3599864d840b6d46557dd50685ab60764cd0d366f98c2ac64"
+    }
+  },
+  "scope": "Failed Windows/Edge local full attempt; not hosted Chromium or exact published-head attestation. Production dist and browser test source unchanged from main f90e895. Other screenshots remain local; hardtail-square inspected."
+}

@@ -1,0 +1,1371 @@
+{
+  "model": "bikelab-scalar-tyre-candidate-screen-0.1",
+  "scope": "Offline scalar load screen against an approximate constant-pressure reference; no casing equilibrium, calibration, timing or production selection",
+  "anchorFraction": 0.1,
+  "heldOutCount": 36,
+  "summary": {
+    "linearAtAnchor": {
+      "maxAbsRelativeError": 2.040277647782271,
+      "rmsRelativeError": 0.9665482440564217
+    },
+    "threeHalvesAtAnchor": {
+      "maxAbsRelativeError": 0.23534773212822876,
+      "rmsRelativeError": 0.112715556859279
+    },
+    "derivedSmallLoad": {
+      "maxAbsRelativeError": 0.2911519038687582,
+      "rmsRelativeError": 0.14434754200354372
+    }
+  },
+  "rows": [
+    {
+      "name": "illustrative-mtb",
+      "configuration": {
+        "rimRadius": 0.311,
+        "rimWidth": 0.03,
+        "sectionRadius": 0.03,
+        "gaugePressure": 120000,
+        "provenance": {
+          "kind": "illustrative",
+          "reference": "Scalar candidate screen, no measured tyre or fitted casing"
+        }
+      },
+      "fraction": 0.01,
+      "deflection": 0.0005598076211353317,
+      "anchorFraction": 0.1,
+      "reference": {
+        "stressLoad": 3.4992840352886225,
+        "footprintLoad": 4.1291637367265315,
+        "footprintArea": 0.00003440969780605443,
+        "centreWidth": 0.0012716765275498365
+      },
+      "candidates": {
+        "linearAtAnchor": 10.633078259820339,
+        "threeHalvesAtAnchor": 3.3624745839851924,
+        "derivedSmallLoad": 3.514367127499732
+      },
+      "relativeErrors": {
+        "linearAtAnchor": 2.0386439490452273,
+        "threeHalvesAtAnchor": -0.03909641227284542,
+        "derivedSmallLoad": 0.0043103366457263115
+      }
+    },
+    {
+      "name": "illustrative-mtb",
+      "configuration": {
+        "rimRadius": 0.311,
+        "rimWidth": 0.03,
+        "sectionRadius": 0.03,
+        "gaugePressure": 120000,
+        "provenance": {
+          "kind": "illustrative",
+          "reference": "Scalar candidate screen, no measured tyre or fitted casing"
+        }
+      },
+      "fraction": 0.025,
+      "deflection": 0.0013995190528383293,
+      "anchorFraction": 0.1,
+      "reference": {
+        "stressLoad": 13.742535097764442,
+        "footprintLoad": 16.216225091799316,
+        "footprintArea": 0.00013513520909832764,
+        "centreWidth": 0.003152979275202448
+      },
+      "candidates": {
+        "linearAtAnchor": 26.582695649550846,
+        "threeHalvesAtAnchor": 13.291347824775423,
+        "derivedSmallLoad": 13.89175582115315
+      },
+      "relativeErrors": {
+        "linearAtAnchor": 0.934337111780429,
+        "threeHalvesAtAnchor": -0.0328314441097855,
+        "derivedSmallLoad": 0.010858311245134313
+      }
+    },
+    {
+      "name": "illustrative-mtb",
+      "configuration": {
+        "rimRadius": 0.311,
+        "rimWidth": 0.03,
+        "sectionRadius": 0.03,
+        "gaugePressure": 120000,
+        "provenance": {
+          "kind": "illustrative",
+          "reference": "Scalar candidate screen, no measured tyre or fitted casing"
+        }
+      },
+      "fraction": 0.05,
+      "deflection": 0.0027990381056766586,
+      "anchorFraction": 0.1,
+      "reference": {
+        "stressLoad": 38.44608275666986,
+        "footprintLoad": 45.36647186598936,
+        "footprintArea": 0.000378053932216578,
+        "centreWidth": 0.006218385285526502
+      },
+      "candidates": {
+        "linearAtAnchor": 53.16539129910169,
+        "threeHalvesAtAnchor": 37.59360871203108,
+        "derivedSmallLoad": 39.29181897490036
+      },
+      "relativeErrors": {
+        "linearAtAnchor": 0.38285587209475164,
+        "threeHalvesAtAnchor": -0.022173235438164116,
+        "derivedSmallLoad": 0.02199798152605744
+      }
+    },
+    {
+      "name": "illustrative-mtb",
+      "configuration": {
+        "rimRadius": 0.311,
+        "rimWidth": 0.03,
+        "sectionRadius": 0.03,
+        "gaugePressure": 120000,
+        "provenance": {
+          "kind": "illustrative",
+          "reference": "Scalar candidate screen, no measured tyre or fitted casing"
+        }
+      },
+      "fraction": 0.1,
+      "deflection": 0.005598076211353317,
+      "anchorFraction": 0.1,
+      "reference": {
+        "stressLoad": 106.33078259820338,
+        "footprintLoad": 125.47058403220936,
+        "footprintArea": 0.0010455882002684113,
+        "centreWidth": 0.012084856626657182
+      },
+      "candidates": {
+        "linearAtAnchor": 106.33078259820338,
+        "threeHalvesAtAnchor": 106.33078259820338,
+        "derivedSmallLoad": 111.1340465692252
+      },
+      "relativeErrors": {
+        "linearAtAnchor": 0,
+        "threeHalvesAtAnchor": 0,
+        "derivedSmallLoad": 0.0451728450939002
+      }
+    },
+    {
+      "name": "illustrative-mtb",
+      "configuration": {
+        "rimRadius": 0.311,
+        "rimWidth": 0.03,
+        "sectionRadius": 0.03,
+        "gaugePressure": 120000,
+        "provenance": {
+          "kind": "illustrative",
+          "reference": "Scalar candidate screen, no measured tyre or fitted casing"
+        }
+      },
+      "fraction": 0.2,
+      "deflection": 0.011196152422706634,
+      "anchorFraction": 0.1,
+      "reference": {
+        "stressLoad": 286.92762609126635,
+        "footprintLoad": 338.57530191125363,
+        "footprintArea": 0.0028214608492604467,
+        "centreWidth": 0.022746848037986413
+      },
+      "candidates": {
+        "linearAtAnchor": 212.66156519640677,
+        "threeHalvesAtAnchor": 300.7488696962486,
+        "derivedSmallLoad": 314.33455179920287
+      },
+      "relativeErrors": {
+        "linearAtAnchor": -0.2588320333826514,
+        "threeHalvesAtAnchor": 0.0481697903867437,
+        "derivedSmallLoad": 0.09551860195999004
+      }
+    },
+    {
+      "name": "illustrative-mtb",
+      "configuration": {
+        "rimRadius": 0.311,
+        "rimWidth": 0.03,
+        "sectionRadius": 0.03,
+        "gaugePressure": 120000,
+        "provenance": {
+          "kind": "illustrative",
+          "reference": "Scalar candidate screen, no measured tyre or fitted casing"
+        }
+      },
+      "fraction": 0.35,
+      "deflection": 0.019593266739736607,
+      "anchorFraction": 0.1,
+      "reference": {
+        "stressLoad": 614.9699989848118,
+        "footprintLoad": 725.6661058019453,
+        "footprintArea": 0.006047217548349544,
+        "centreWidth": 0.03598272911662592
+      },
+      "candidates": {
+        "linearAtAnchor": 372.15773909371177,
+        "threeHalvesAtAnchor": 696.2433767625379,
+        "derivedSmallLoad": 727.6946709686861
+      },
+      "relativeErrors": {
+        "linearAtAnchor": -0.394835943691453,
+        "threeHalvesAtAnchor": 0.13215828074847813,
+        "derivedSmallLoad": 0.18330109138650563
+      }
+    },
+    {
+      "name": "illustrative-mtb",
+      "configuration": {
+        "rimRadius": 0.311,
+        "rimWidth": 0.03,
+        "sectionRadius": 0.03,
+        "gaugePressure": 120000,
+        "provenance": {
+          "kind": "illustrative",
+          "reference": "Scalar candidate screen, no measured tyre or fitted casing"
+        }
+      },
+      "fraction": 0.5,
+      "deflection": 0.027990381056766583,
+      "anchorFraction": 0.1,
+      "reference": {
+        "stressLoad": 962.3317055057933,
+        "footprintLoad": 1135.5537707155377,
+        "footprintArea": 0.009462948089296147,
+        "centreWidth": 0.04570597692331327
+      },
+      "candidates": {
+        "linearAtAnchor": 531.6539129910169,
+        "threeHalvesAtAnchor": 1188.8142899516722,
+        "derivedSmallLoad": 1242.516413717074
+      },
+      "relativeErrors": {
+        "linearAtAnchor": -0.44753569902221585,
+        "threeHalvesAtAnchor": 0.23534773212822876,
+        "derivedSmallLoad": 0.2911519038687582
+      }
+    },
+    {
+      "name": "illustrative-mtb",
+      "configuration": {
+        "rimRadius": 0.311,
+        "rimWidth": 0.03,
+        "sectionRadius": 0.03,
+        "gaugePressure": 160000,
+        "provenance": {
+          "kind": "illustrative",
+          "reference": "Scalar candidate screen, no measured tyre or fitted casing"
+        }
+      },
+      "fraction": 0.01,
+      "deflection": 0.0005598076211353317,
+      "anchorFraction": 0.1,
+      "reference": {
+        "stressLoad": 4.665712047051497,
+        "footprintLoad": 5.505551648968709,
+        "footprintArea": 0.00003440969780605443,
+        "centreWidth": 0.0012716765275498365
+      },
+      "candidates": {
+        "linearAtAnchor": 14.177437679760452,
+        "threeHalvesAtAnchor": 4.48329944531359,
+        "derivedSmallLoad": 4.6858228366663095
+      },
+      "relativeErrors": {
+        "linearAtAnchor": 2.0386439490452273,
+        "threeHalvesAtAnchor": -0.03909641227284542,
+        "derivedSmallLoad": 0.004310336645726248
+      }
+    },
+    {
+      "name": "illustrative-mtb",
+      "configuration": {
+        "rimRadius": 0.311,
+        "rimWidth": 0.03,
+        "sectionRadius": 0.03,
+        "gaugePressure": 160000,
+        "provenance": {
+          "kind": "illustrative",
+          "reference": "Scalar candidate screen, no measured tyre or fitted casing"
+        }
+      },
+      "fraction": 0.025,
+      "deflection": 0.0013995190528383293,
+      "anchorFraction": 0.1,
+      "reference": {
+        "stressLoad": 18.32338013035259,
+        "footprintLoad": 21.62163345573242,
+        "footprintArea": 0.00013513520909832764,
+        "centreWidth": 0.003152979275202448
+      },
+      "candidates": {
+        "linearAtAnchor": 35.44359419940113,
+        "threeHalvesAtAnchor": 17.721797099700566,
+        "derivedSmallLoad": 18.52234109487087
+      },
+      "relativeErrors": {
+        "linearAtAnchor": 0.9343371117804292,
+        "threeHalvesAtAnchor": -0.032831444109785377,
+        "derivedSmallLoad": 0.010858311245134507
+      }
+    },
+    {
+      "name": "illustrative-mtb",
+      "configuration": {
+        "rimRadius": 0.311,
+        "rimWidth": 0.03,
+        "sectionRadius": 0.03,
+        "gaugePressure": 160000,
+        "provenance": {
+          "kind": "illustrative",
+          "reference": "Scalar candidate screen, no measured tyre or fitted casing"
+        }
+      },
+      "fraction": 0.05,
+      "deflection": 0.0027990381056766586,
+      "anchorFraction": 0.1,
+      "reference": {
+        "stressLoad": 51.26144367555982,
+        "footprintLoad": 60.48862915465248,
+        "footprintArea": 0.000378053932216578,
+        "centreWidth": 0.006218385285526502
+      },
+      "candidates": {
+        "linearAtAnchor": 70.88718839880227,
+        "threeHalvesAtAnchor": 50.12481161604144,
+        "derivedSmallLoad": 52.38909196653382
+      },
+      "relativeErrors": {
+        "linearAtAnchor": 0.3828558720947517,
+        "threeHalvesAtAnchor": -0.022173235438164112,
+        "derivedSmallLoad": 0.021997981526057482
+      }
+    },
+    {
+      "name": "illustrative-mtb",
+      "configuration": {
+        "rimRadius": 0.311,
+        "rimWidth": 0.03,
+        "sectionRadius": 0.03,
+        "gaugePressure": 160000,
+        "provenance": {
+          "kind": "illustrative",
+          "reference": "Scalar candidate screen, no measured tyre or fitted casing"
+        }
+      },
+      "fraction": 0.1,
+      "deflection": 0.005598076211353317,
+      "anchorFraction": 0.1,
+      "reference": {
+        "stressLoad": 141.77437679760453,
+        "footprintLoad": 167.2941120429458,
+        "footprintArea": 0.0010455882002684113,
+        "centreWidth": 0.012084856626657182
+      },
+      "candidates": {
+        "linearAtAnchor": 141.77437679760453,
+        "threeHalvesAtAnchor": 141.77437679760453,
+        "derivedSmallLoad": 148.17872875896697
+      },
+      "relativeErrors": {
+        "linearAtAnchor": 0,
+        "threeHalvesAtAnchor": 0,
+        "derivedSmallLoad": 0.04517284509390026
+      }
+    },
+    {
+      "name": "illustrative-mtb",
+      "configuration": {
+        "rimRadius": 0.311,
+        "rimWidth": 0.03,
+        "sectionRadius": 0.03,
+        "gaugePressure": 160000,
+        "provenance": {
+          "kind": "illustrative",
+          "reference": "Scalar candidate screen, no measured tyre or fitted casing"
+        }
+      },
+      "fraction": 0.2,
+      "deflection": 0.011196152422706634,
+      "anchorFraction": 0.1,
+      "reference": {
+        "stressLoad": 382.5701681216884,
+        "footprintLoad": 451.43373588167145,
+        "footprintArea": 0.0028214608492604467,
+        "centreWidth": 0.022746848037986413
+      },
+      "candidates": {
+        "linearAtAnchor": 283.54875359520906,
+        "threeHalvesAtAnchor": 400.99849292833153,
+        "derivedSmallLoad": 419.11273573227055
+      },
+      "relativeErrors": {
+        "linearAtAnchor": -0.25883203338265126,
+        "threeHalvesAtAnchor": 0.0481697903867439,
+        "derivedSmallLoad": 0.09551860195999029
+      }
+    },
+    {
+      "name": "illustrative-mtb",
+      "configuration": {
+        "rimRadius": 0.311,
+        "rimWidth": 0.03,
+        "sectionRadius": 0.03,
+        "gaugePressure": 160000,
+        "provenance": {
+          "kind": "illustrative",
+          "reference": "Scalar candidate screen, no measured tyre or fitted casing"
+        }
+      },
+      "fraction": 0.35,
+      "deflection": 0.019593266739736607,
+      "anchorFraction": 0.1,
+      "reference": {
+        "stressLoad": 819.9599986464157,
+        "footprintLoad": 967.554807735927,
+        "footprintArea": 0.006047217548349544,
+        "centreWidth": 0.03598272911662592
+      },
+      "candidates": {
+        "linearAtAnchor": 496.21031879161575,
+        "threeHalvesAtAnchor": 928.3245023500506,
+        "derivedSmallLoad": 970.2595612915815
+      },
+      "relativeErrors": {
+        "linearAtAnchor": -0.39483594369145286,
+        "threeHalvesAtAnchor": 0.13215828074847832,
+        "derivedSmallLoad": 0.18330109138650577
+      }
+    },
+    {
+      "name": "illustrative-mtb",
+      "configuration": {
+        "rimRadius": 0.311,
+        "rimWidth": 0.03,
+        "sectionRadius": 0.03,
+        "gaugePressure": 160000,
+        "provenance": {
+          "kind": "illustrative",
+          "reference": "Scalar candidate screen, no measured tyre or fitted casing"
+        }
+      },
+      "fraction": 0.5,
+      "deflection": 0.027990381056766583,
+      "anchorFraction": 0.1,
+      "reference": {
+        "stressLoad": 1283.108940674391,
+        "footprintLoad": 1514.0716942873835,
+        "footprintArea": 0.009462948089296147,
+        "centreWidth": 0.04570597692331327
+      },
+      "candidates": {
+        "linearAtAnchor": 708.8718839880225,
+        "threeHalvesAtAnchor": 1585.085719935563,
+        "derivedSmallLoad": 1656.6885516227655
+      },
+      "relativeErrors": {
+        "linearAtAnchor": -0.44753569902221585,
+        "threeHalvesAtAnchor": 0.23534773212822874,
+        "derivedSmallLoad": 0.29115190386875817
+      }
+    },
+    {
+      "name": "illustrative-mtb",
+      "configuration": {
+        "rimRadius": 0.311,
+        "rimWidth": 0.03,
+        "sectionRadius": 0.03,
+        "gaugePressure": 200000,
+        "provenance": {
+          "kind": "illustrative",
+          "reference": "Scalar candidate screen, no measured tyre or fitted casing"
+        }
+      },
+      "fraction": 0.01,
+      "deflection": 0.0005598076211353317,
+      "anchorFraction": 0.1,
+      "reference": {
+        "stressLoad": 5.832140058814371,
+        "footprintLoad": 6.881939561210886,
+        "footprintArea": 0.00003440969780605443,
+        "centreWidth": 0.0012716765275498365
+      },
+      "candidates": {
+        "linearAtAnchor": 17.721797099700563,
+        "threeHalvesAtAnchor": 5.604124306641986,
+        "derivedSmallLoad": 5.857278545832886
+      },
+      "relativeErrors": {
+        "linearAtAnchor": 2.038643949045227,
+        "threeHalvesAtAnchor": -0.039096412272845646,
+        "derivedSmallLoad": 0.00431033664572621
+      }
+    },
+    {
+      "name": "illustrative-mtb",
+      "configuration": {
+        "rimRadius": 0.311,
+        "rimWidth": 0.03,
+        "sectionRadius": 0.03,
+        "gaugePressure": 200000,
+        "provenance": {
+          "kind": "illustrative",
+          "reference": "Scalar candidate screen, no measured tyre or fitted casing"
+        }
+      },
+      "fraction": 0.025,
+      "deflection": 0.0013995190528383293,
+      "anchorFraction": 0.1,
+      "reference": {
+        "stressLoad": 22.904225162940737,
+        "footprintLoad": 27.027041819665527,
+        "footprintArea": 0.00013513520909832764,
+        "centreWidth": 0.003152979275202448
+      },
+      "candidates": {
+        "linearAtAnchor": 44.30449274925141,
+        "threeHalvesAtAnchor": 22.152246374625705,
+        "derivedSmallLoad": 23.152926368588584
+      },
+      "relativeErrors": {
+        "linearAtAnchor": 0.9343371117804289,
+        "threeHalvesAtAnchor": -0.03283144410978553,
+        "derivedSmallLoad": 0.010858311245134313
+      }
+    },
+    {
+      "name": "illustrative-mtb",
+      "configuration": {
+        "rimRadius": 0.311,
+        "rimWidth": 0.03,
+        "sectionRadius": 0.03,
+        "gaugePressure": 200000,
+        "provenance": {
+          "kind": "illustrative",
+          "reference": "Scalar candidate screen, no measured tyre or fitted casing"
+        }
+      },
+      "fraction": 0.05,
+      "deflection": 0.0027990381056766586,
+      "anchorFraction": 0.1,
+      "reference": {
+        "stressLoad": 64.07680459444977,
+        "footprintLoad": 75.6107864433156,
+        "footprintArea": 0.000378053932216578,
+        "centreWidth": 0.006218385285526502
+      },
+      "candidates": {
+        "linearAtAnchor": 88.60898549850282,
+        "threeHalvesAtAnchor": 62.65601452005179,
+        "derivedSmallLoad": 65.48636495816726
+      },
+      "relativeErrors": {
+        "linearAtAnchor": 0.3828558720947516,
+        "threeHalvesAtAnchor": -0.022173235438164223,
+        "derivedSmallLoad": 0.02199798152605729
+      }
+    },
+    {
+      "name": "illustrative-mtb",
+      "configuration": {
+        "rimRadius": 0.311,
+        "rimWidth": 0.03,
+        "sectionRadius": 0.03,
+        "gaugePressure": 200000,
+        "provenance": {
+          "kind": "illustrative",
+          "reference": "Scalar candidate screen, no measured tyre or fitted casing"
+        }
+      },
+      "fraction": 0.1,
+      "deflection": 0.005598076211353317,
+      "anchorFraction": 0.1,
+      "reference": {
+        "stressLoad": 177.21797099700564,
+        "footprintLoad": 209.11764005368227,
+        "footprintArea": 0.0010455882002684113,
+        "centreWidth": 0.012084856626657182
+      },
+      "candidates": {
+        "linearAtAnchor": 177.21797099700564,
+        "threeHalvesAtAnchor": 177.21797099700564,
+        "derivedSmallLoad": 185.22341094870868
+      },
+      "relativeErrors": {
+        "linearAtAnchor": 0,
+        "threeHalvesAtAnchor": 0,
+        "derivedSmallLoad": 0.04517284509390023
+      }
+    },
+    {
+      "name": "illustrative-mtb",
+      "configuration": {
+        "rimRadius": 0.311,
+        "rimWidth": 0.03,
+        "sectionRadius": 0.03,
+        "gaugePressure": 200000,
+        "provenance": {
+          "kind": "illustrative",
+          "reference": "Scalar candidate screen, no measured tyre or fitted casing"
+        }
+      },
+      "fraction": 0.2,
+      "deflection": 0.011196152422706634,
+      "anchorFraction": 0.1,
+      "reference": {
+        "stressLoad": 478.21271015211056,
+        "footprintLoad": 564.2921698520894,
+        "footprintArea": 0.0028214608492604467,
+        "centreWidth": 0.022746848037986413
+      },
+      "candidates": {
+        "linearAtAnchor": 354.4359419940113,
+        "threeHalvesAtAnchor": 501.2481161604143,
+        "derivedSmallLoad": 523.8909196653381
+      },
+      "relativeErrors": {
+        "linearAtAnchor": -0.2588320333826514,
+        "threeHalvesAtAnchor": 0.048169790386743655,
+        "derivedSmallLoad": 0.09551860195998996
+      }
+    },
+    {
+      "name": "illustrative-mtb",
+      "configuration": {
+        "rimRadius": 0.311,
+        "rimWidth": 0.03,
+        "sectionRadius": 0.03,
+        "gaugePressure": 200000,
+        "provenance": {
+          "kind": "illustrative",
+          "reference": "Scalar candidate screen, no measured tyre or fitted casing"
+        }
+      },
+      "fraction": 0.35,
+      "deflection": 0.019593266739736607,
+      "anchorFraction": 0.1,
+      "reference": {
+        "stressLoad": 1024.9499983080198,
+        "footprintLoad": 1209.443509669909,
+        "footprintArea": 0.006047217548349544,
+        "centreWidth": 0.03598272911662592
+      },
+      "candidates": {
+        "linearAtAnchor": 620.2628984895196,
+        "threeHalvesAtAnchor": 1160.405627937563,
+        "derivedSmallLoad": 1212.8244516144766
+      },
+      "relativeErrors": {
+        "linearAtAnchor": -0.3948359436914531,
+        "threeHalvesAtAnchor": 0.13215828074847785,
+        "derivedSmallLoad": 0.18330109138650538
+      }
+    },
+    {
+      "name": "illustrative-mtb",
+      "configuration": {
+        "rimRadius": 0.311,
+        "rimWidth": 0.03,
+        "sectionRadius": 0.03,
+        "gaugePressure": 200000,
+        "provenance": {
+          "kind": "illustrative",
+          "reference": "Scalar candidate screen, no measured tyre or fitted casing"
+        }
+      },
+      "fraction": 0.5,
+      "deflection": 0.027990381056766583,
+      "anchorFraction": 0.1,
+      "reference": {
+        "stressLoad": 1603.8861758429887,
+        "footprintLoad": 1892.5896178592295,
+        "footprintArea": 0.009462948089296147,
+        "centreWidth": 0.04570597692331327
+      },
+      "candidates": {
+        "linearAtAnchor": 886.0898549850281,
+        "threeHalvesAtAnchor": 1981.3571499194534,
+        "derivedSmallLoad": 2070.8606895284565
+      },
+      "relativeErrors": {
+        "linearAtAnchor": -0.4475356990222159,
+        "threeHalvesAtAnchor": 0.23534773212822863,
+        "derivedSmallLoad": 0.29115190386875806
+      }
+    },
+    {
+      "name": "illustrative-narrow",
+      "configuration": {
+        "rimRadius": 0.31,
+        "rimWidth": 0.024,
+        "sectionRadius": 0.02,
+        "gaugePressure": 120000,
+        "provenance": {
+          "kind": "illustrative",
+          "reference": "Scalar candidate screen, no measured tyre or fitted casing"
+        }
+      },
+      "fraction": 0.01,
+      "deflection": 0.00036,
+      "anchorFraction": 0.1,
+      "reference": {
+        "stressLoad": 2.006126061324062,
+        "footprintLoad": 2.2390955394133076,
+        "footprintArea": 0.0000186591294951109,
+        "centreWidth": 0.0008856403804292957
+      },
+      "candidates": {
+        "linearAtAnchor": 6.09918022287703,
+        "threeHalvesAtAnchor": 1.9287301364144827,
+        "derivedSmallLoad": 2.014673066318899
+      },
+      "relativeErrors": {
+        "linearAtAnchor": 2.040277647782271,
+        "threeHalvesAtAnchor": -0.038579791370885845,
+        "derivedSmallLoad": 0.004260452600469169
+      }
+    },
+    {
+      "name": "illustrative-narrow",
+      "configuration": {
+        "rimRadius": 0.31,
+        "rimWidth": 0.024,
+        "sectionRadius": 0.02,
+        "gaugePressure": 120000,
+        "provenance": {
+          "kind": "illustrative",
+          "reference": "Scalar candidate screen, no measured tyre or fitted casing"
+        }
+      },
+      "fraction": 0.025,
+      "deflection": 0.0009000000000000002,
+      "anchorFraction": 0.1,
+      "reference": {
+        "stressLoad": 7.879157489312547,
+        "footprintLoad": 8.794156423555293,
+        "footprintArea": 0.00007328463686296078,
+        "centreWidth": 0.0021961581010089964
+      },
+      "candidates": {
+        "linearAtAnchor": 15.247950557192578,
+        "threeHalvesAtAnchor": 7.623975278596288,
+        "derivedSmallLoad": 7.963694537703979
+      },
+      "relativeErrors": {
+        "linearAtAnchor": 0.935226015963663,
+        "threeHalvesAtAnchor": -0.032386992018168644,
+        "derivedSmallLoad": 0.010729198966526571
+      }
+    },
+    {
+      "name": "illustrative-narrow",
+      "configuration": {
+        "rimRadius": 0.31,
+        "rimWidth": 0.024,
+        "sectionRadius": 0.02,
+        "gaugePressure": 120000,
+        "provenance": {
+          "kind": "illustrative",
+          "reference": "Scalar candidate screen, no measured tyre or fitted casing"
+        }
+      },
+      "fraction": 0.05,
+      "deflection": 0.0018000000000000004,
+      "anchorFraction": 0.1,
+      "reference": {
+        "stressLoad": 22.045796936787777,
+        "footprintLoad": 24.60595400041474,
+        "footprintArea": 0.00020504961667012285,
+        "centreWidth": 0.004332390647299539
+      },
+      "candidates": {
+        "linearAtAnchor": 30.495901114385155,
+        "threeHalvesAtAnchor": 21.563858476376133,
+        "derivedSmallLoad": 22.524729643635006
+      },
+      "relativeErrors": {
+        "linearAtAnchor": 0.38329774159793273,
+        "threeHalvesAtAnchor": -0.02186078651606532,
+        "derivedSmallLoad": 0.021724445172949688
+      }
+    },
+    {
+      "name": "illustrative-narrow",
+      "configuration": {
+        "rimRadius": 0.31,
+        "rimWidth": 0.024,
+        "sectionRadius": 0.02,
+        "gaugePressure": 120000,
+        "provenance": {
+          "kind": "illustrative",
+          "reference": "Scalar candidate screen, no measured tyre or fitted casing"
+        }
+      },
+      "fraction": 0.1,
+      "deflection": 0.0036000000000000008,
+      "anchorFraction": 0.1,
+      "reference": {
+        "stressLoad": 60.991802228770304,
+        "footprintLoad": 68.07472119727265,
+        "footprintArea": 0.0005672893433106054,
+        "centreWidth": 0.008424135229368647
+      },
+      "candidates": {
+        "linearAtAnchor": 60.99180222877031,
+        "threeHalvesAtAnchor": 60.991802228770304,
+        "derivedSmallLoad": 63.709556301631835
+      },
+      "relativeErrors": {
+        "linearAtAnchor": 1.1649807183840383e-16,
+        "threeHalvesAtAnchor": 0,
+        "derivedSmallLoad": 0.044559333771900675
+      }
+    },
+    {
+      "name": "illustrative-narrow",
+      "configuration": {
+        "rimRadius": 0.31,
+        "rimWidth": 0.024,
+        "sectionRadius": 0.02,
+        "gaugePressure": 120000,
+        "provenance": {
+          "kind": "illustrative",
+          "reference": "Scalar candidate screen, no measured tyre or fitted casing"
+        }
+      },
+      "fraction": 0.2,
+      "deflection": 0.0072000000000000015,
+      "anchorFraction": 0.1,
+      "reference": {
+        "stressLoad": 164.71815371420655,
+        "footprintLoad": 183.84671350037246,
+        "footprintArea": 0.0015320559458364372,
+        "centreWidth": 0.015876785310549257
+      },
+      "candidates": {
+        "linearAtAnchor": 121.98360445754062,
+        "threeHalvesAtAnchor": 172.51086781100906,
+        "derivedSmallLoad": 180.19783714908004
+      },
+      "relativeErrors": {
+        "linearAtAnchor": -0.25944043381406706,
+        "threeHalvesAtAnchor": 0.047309382245281986,
+        "derivedSmallLoad": 0.09397679057119256
+      }
+    },
+    {
+      "name": "illustrative-narrow",
+      "configuration": {
+        "rimRadius": 0.31,
+        "rimWidth": 0.024,
+        "sectionRadius": 0.02,
+        "gaugePressure": 120000,
+        "provenance": {
+          "kind": "illustrative",
+          "reference": "Scalar candidate screen, no measured tyre or fitted casing"
+        }
+      },
+      "fraction": 0.35,
+      "deflection": 0.0126,
+      "anchorFraction": 0.1,
+      "reference": {
+        "stressLoad": 353.68301410686894,
+        "footprintLoad": 394.755880261215,
+        "footprintArea": 0.003289632335510125,
+        "centreWidth": 0.025181518411050156
+      },
+      "candidates": {
+        "linearAtAnchor": 213.47130780069602,
+        "threeHalvesAtAnchor": 399.36824784838393,
+        "derivedSmallLoad": 417.1638309021592
+      },
+      "relativeErrors": {
+        "linearAtAnchor": -0.3964332487389584,
+        "threeHalvesAtAnchor": 0.129169996633513,
+        "derivedSmallLoad": 0.17948505939872159
+      }
+    },
+    {
+      "name": "illustrative-narrow",
+      "configuration": {
+        "rimRadius": 0.31,
+        "rimWidth": 0.024,
+        "sectionRadius": 0.02,
+        "gaugePressure": 120000,
+        "provenance": {
+          "kind": "illustrative",
+          "reference": "Scalar candidate screen, no measured tyre or fitted casing"
+        }
+      },
+      "fraction": 0.5,
+      "deflection": 0.018000000000000002,
+      "anchorFraction": 0.1,
+      "reference": {
+        "stressLoad": 555.04068720034,
+        "footprintLoad": 619.4970250687666,
+        "footprintArea": 0.0051624752089063876,
+        "centreWidth": 0.03211480162376521
+      },
+      "candidates": {
+        "linearAtAnchor": 304.9590111438515,
+        "threeHalvesAtAnchor": 681.9090792687678,
+        "derivedSmallLoad": 712.2944935339942
+      },
+      "relativeErrors": {
+        "linearAtAnchor": -0.45056458350452855,
+        "threeHalvesAtAnchor": 0.22857494052978322,
+        "derivedSmallLoad": 0.2833194213686428
+      }
+    },
+    {
+      "name": "illustrative-narrow",
+      "configuration": {
+        "rimRadius": 0.31,
+        "rimWidth": 0.024,
+        "sectionRadius": 0.02,
+        "gaugePressure": 160000,
+        "provenance": {
+          "kind": "illustrative",
+          "reference": "Scalar candidate screen, no measured tyre or fitted casing"
+        }
+      },
+      "fraction": 0.01,
+      "deflection": 0.00036,
+      "anchorFraction": 0.1,
+      "reference": {
+        "stressLoad": 2.6748347484320827,
+        "footprintLoad": 2.985460719217744,
+        "footprintArea": 0.0000186591294951109,
+        "centreWidth": 0.0008856403804292957
+      },
+      "candidates": {
+        "linearAtAnchor": 8.132240297169371,
+        "threeHalvesAtAnchor": 2.5716401818859764,
+        "derivedSmallLoad": 2.6862307550918656
+      },
+      "relativeErrors": {
+        "linearAtAnchor": 2.0402776477822693,
+        "threeHalvesAtAnchor": -0.03857979137088607,
+        "derivedSmallLoad": 0.004260452600469224
+      }
+    },
+    {
+      "name": "illustrative-narrow",
+      "configuration": {
+        "rimRadius": 0.31,
+        "rimWidth": 0.024,
+        "sectionRadius": 0.02,
+        "gaugePressure": 160000,
+        "provenance": {
+          "kind": "illustrative",
+          "reference": "Scalar candidate screen, no measured tyre or fitted casing"
+        }
+      },
+      "fraction": 0.025,
+      "deflection": 0.0009000000000000002,
+      "anchorFraction": 0.1,
+      "reference": {
+        "stressLoad": 10.505543319083396,
+        "footprintLoad": 11.725541898073724,
+        "footprintArea": 0.00007328463686296078,
+        "centreWidth": 0.0021961581010089964
+      },
+      "candidates": {
+        "linearAtAnchor": 20.330600742923433,
+        "threeHalvesAtAnchor": 10.165300371461717,
+        "derivedSmallLoad": 10.618259383605306
+      },
+      "relativeErrors": {
+        "linearAtAnchor": 0.9352260159636627,
+        "threeHalvesAtAnchor": -0.032386992018168644,
+        "derivedSmallLoad": 0.010729198966526628
+      }
+    },
+    {
+      "name": "illustrative-narrow",
+      "configuration": {
+        "rimRadius": 0.31,
+        "rimWidth": 0.024,
+        "sectionRadius": 0.02,
+        "gaugePressure": 160000,
+        "provenance": {
+          "kind": "illustrative",
+          "reference": "Scalar candidate screen, no measured tyre or fitted casing"
+        }
+      },
+      "fraction": 0.05,
+      "deflection": 0.0018000000000000004,
+      "anchorFraction": 0.1,
+      "reference": {
+        "stressLoad": 29.394395915717034,
+        "footprintLoad": 32.80793866721966,
+        "footprintArea": 0.00020504961667012285,
+        "centreWidth": 0.004332390647299539
+      },
+      "candidates": {
+        "linearAtAnchor": 40.66120148584687,
+        "threeHalvesAtAnchor": 28.751811301834845,
+        "derivedSmallLoad": 30.03297285818001
+      },
+      "relativeErrors": {
+        "linearAtAnchor": 0.3832977415979326,
+        "threeHalvesAtAnchor": -0.021860786516065198,
+        "derivedSmallLoad": 0.02172444517294985
+      }
+    },
+    {
+      "name": "illustrative-narrow",
+      "configuration": {
+        "rimRadius": 0.31,
+        "rimWidth": 0.024,
+        "sectionRadius": 0.02,
+        "gaugePressure": 160000,
+        "provenance": {
+          "kind": "illustrative",
+          "reference": "Scalar candidate screen, no measured tyre or fitted casing"
+        }
+      },
+      "fraction": 0.1,
+      "deflection": 0.0036000000000000008,
+      "anchorFraction": 0.1,
+      "reference": {
+        "stressLoad": 81.32240297169373,
+        "footprintLoad": 90.76629492969687,
+        "footprintArea": 0.0005672893433106054,
+        "centreWidth": 0.008424135229368647
+      },
+      "candidates": {
+        "linearAtAnchor": 81.32240297169373,
+        "threeHalvesAtAnchor": 81.32240297169373,
+        "derivedSmallLoad": 84.94607506884245
+      },
+      "relativeErrors": {
+        "linearAtAnchor": 0,
+        "threeHalvesAtAnchor": 0,
+        "derivedSmallLoad": 0.04455933377190073
+      }
+    },
+    {
+      "name": "illustrative-narrow",
+      "configuration": {
+        "rimRadius": 0.31,
+        "rimWidth": 0.024,
+        "sectionRadius": 0.02,
+        "gaugePressure": 160000,
+        "provenance": {
+          "kind": "illustrative",
+          "reference": "Scalar candidate screen, no measured tyre or fitted casing"
+        }
+      },
+      "fraction": 0.2,
+      "deflection": 0.0072000000000000015,
+      "anchorFraction": 0.1,
+      "reference": {
+        "stressLoad": 219.6242049522754,
+        "footprintLoad": 245.12895133382995,
+        "footprintArea": 0.0015320559458364372,
+        "centreWidth": 0.015876785310549257
+      },
+      "candidates": {
+        "linearAtAnchor": 162.64480594338747,
+        "threeHalvesAtAnchor": 230.01449041467876,
+        "derivedSmallLoad": 240.26378286544008
+      },
+      "relativeErrors": {
+        "linearAtAnchor": -0.2594404338140672,
+        "threeHalvesAtAnchor": 0.047309382245282076,
+        "derivedSmallLoad": 0.0939767905711927
+      }
+    },
+    {
+      "name": "illustrative-narrow",
+      "configuration": {
+        "rimRadius": 0.31,
+        "rimWidth": 0.024,
+        "sectionRadius": 0.02,
+        "gaugePressure": 160000,
+        "provenance": {
+          "kind": "illustrative",
+          "reference": "Scalar candidate screen, no measured tyre or fitted casing"
+        }
+      },
+      "fraction": 0.35,
+      "deflection": 0.0126,
+      "anchorFraction": 0.1,
+      "reference": {
+        "stressLoad": 471.5773521424919,
+        "footprintLoad": 526.34117368162,
+        "footprintArea": 0.003289632335510125,
+        "centreWidth": 0.025181518411050156
+      },
+      "candidates": {
+        "linearAtAnchor": 284.628410400928,
+        "threeHalvesAtAnchor": 532.4909971311786,
+        "derivedSmallLoad": 556.2184412028789
+      },
+      "relativeErrors": {
+        "linearAtAnchor": -0.3964332487389585,
+        "threeHalvesAtAnchor": 0.129169996633513,
+        "derivedSmallLoad": 0.17948505939872159
+      }
+    },
+    {
+      "name": "illustrative-narrow",
+      "configuration": {
+        "rimRadius": 0.31,
+        "rimWidth": 0.024,
+        "sectionRadius": 0.02,
+        "gaugePressure": 160000,
+        "provenance": {
+          "kind": "illustrative",
+          "reference": "Scalar candidate screen, no measured tyre or fitted casing"
+        }
+      },
+      "fraction": 0.5,
+      "deflection": 0.018000000000000002,
+      "anchorFraction": 0.1,
+      "reference": {
+        "stressLoad": 740.0542496004533,
+        "footprintLoad": 825.996033425022,
+        "footprintArea": 0.0051624752089063876,
+        "centreWidth": 0.03211480162376521
+      },
+      "candidates": {
+        "linearAtAnchor": 406.6120148584686,
+        "threeHalvesAtAnchor": 909.2121056916903,
+        "derivedSmallLoad": 949.7259913786592
+      },
+      "relativeErrors": {
+        "linearAtAnchor": -0.4505645835045286,
+        "threeHalvesAtAnchor": 0.2285749405297833,
+        "derivedSmallLoad": 0.28331942136864313
+      }
+    },
+    {
+      "name": "illustrative-narrow",
+      "configuration": {
+        "rimRadius": 0.31,
+        "rimWidth": 0.024,
+        "sectionRadius": 0.02,
+        "gaugePressure": 200000,
+        "provenance": {
+          "kind": "illustrative",
+          "reference": "Scalar candidate screen, no measured tyre or fitted casing"
+        }
+      },
+      "fraction": 0.01,
+      "deflection": 0.00036,
+      "anchorFraction": 0.1,
+      "reference": {
+        "stressLoad": 3.3435434355401035,
+        "footprintLoad": 3.7318258990221795,
+        "footprintArea": 0.0000186591294951109,
+        "centreWidth": 0.0008856403804292957
+      },
+      "candidates": {
+        "linearAtAnchor": 10.165300371461715,
+        "threeHalvesAtAnchor": 3.2145502273574706,
+        "derivedSmallLoad": 3.3577884438648313
+      },
+      "relativeErrors": {
+        "linearAtAnchor": 2.0402776477822697,
+        "threeHalvesAtAnchor": -0.03857979137088606,
+        "derivedSmallLoad": 0.004260452600468991
+      }
+    },
+    {
+      "name": "illustrative-narrow",
+      "configuration": {
+        "rimRadius": 0.31,
+        "rimWidth": 0.024,
+        "sectionRadius": 0.02,
+        "gaugePressure": 200000,
+        "provenance": {
+          "kind": "illustrative",
+          "reference": "Scalar candidate screen, no measured tyre or fitted casing"
+        }
+      },
+      "fraction": 0.025,
+      "deflection": 0.0009000000000000002,
+      "anchorFraction": 0.1,
+      "reference": {
+        "stressLoad": 13.131929148854246,
+        "footprintLoad": 14.656927372592156,
+        "footprintArea": 0.00007328463686296078,
+        "centreWidth": 0.0021961581010089964
+      },
+      "candidates": {
+        "linearAtAnchor": 25.413250928654293,
+        "threeHalvesAtAnchor": 12.706625464327146,
+        "derivedSmallLoad": 13.27282422950663
+      },
+      "relativeErrors": {
+        "linearAtAnchor": 0.9352260159636626,
+        "threeHalvesAtAnchor": -0.032386992018168706,
+        "derivedSmallLoad": 0.01072919896652639
+      }
+    },
+    {
+      "name": "illustrative-narrow",
+      "configuration": {
+        "rimRadius": 0.31,
+        "rimWidth": 0.024,
+        "sectionRadius": 0.02,
+        "gaugePressure": 200000,
+        "provenance": {
+          "kind": "illustrative",
+          "reference": "Scalar candidate screen, no measured tyre or fitted casing"
+        }
+      },
+      "fraction": 0.05,
+      "deflection": 0.0018000000000000004,
+      "anchorFraction": 0.1,
+      "reference": {
+        "stressLoad": 36.742994894646294,
+        "footprintLoad": 41.00992333402457,
+        "footprintArea": 0.00020504961667012285,
+        "centreWidth": 0.004332390647299539
+      },
+      "candidates": {
+        "linearAtAnchor": 50.826501857308585,
+        "threeHalvesAtAnchor": 35.93976412729355,
+        "derivedSmallLoad": 37.54121607272501
+      },
+      "relativeErrors": {
+        "linearAtAnchor": 0.38329774159793256,
+        "threeHalvesAtAnchor": -0.021860786516065416,
+        "derivedSmallLoad": 0.021724445172949657
+      }
+    },
+    {
+      "name": "illustrative-narrow",
+      "configuration": {
+        "rimRadius": 0.31,
+        "rimWidth": 0.024,
+        "sectionRadius": 0.02,
+        "gaugePressure": 200000,
+        "provenance": {
+          "kind": "illustrative",
+          "reference": "Scalar candidate screen, no measured tyre or fitted casing"
+        }
+      },
+      "fraction": 0.1,
+      "deflection": 0.0036000000000000008,
+      "anchorFraction": 0.1,
+      "reference": {
+        "stressLoad": 101.65300371461717,
+        "footprintLoad": 113.45786866212109,
+        "footprintArea": 0.0005672893433106054,
+        "centreWidth": 0.008424135229368647
+      },
+      "candidates": {
+        "linearAtAnchor": 101.65300371461717,
+        "threeHalvesAtAnchor": 101.65300371461717,
+        "derivedSmallLoad": 106.18259383605304
+      },
+      "relativeErrors": {
+        "linearAtAnchor": 0,
+        "threeHalvesAtAnchor": 0,
+        "derivedSmallLoad": 0.04455933377190056
+      }
+    },
+    {
+      "name": "illustrative-narrow",
+      "configuration": {
+        "rimRadius": 0.31,
+        "rimWidth": 0.024,
+        "sectionRadius": 0.02,
+        "gaugePressure": 200000,
+        "provenance": {
+          "kind": "illustrative",
+          "reference": "Scalar candidate screen, no measured tyre or fitted casing"
+        }
+      },
+      "fraction": 0.2,
+      "deflection": 0.0072000000000000015,
+      "anchorFraction": 0.1,
+      "reference": {
+        "stressLoad": 274.53025619034423,
+        "footprintLoad": 306.41118916728743,
+        "footprintArea": 0.0015320559458364372,
+        "centreWidth": 0.015876785310549257
+      },
+      "candidates": {
+        "linearAtAnchor": 203.30600742923434,
+        "threeHalvesAtAnchor": 287.5181130183484,
+        "derivedSmallLoad": 300.32972858180005
+      },
+      "relativeErrors": {
+        "linearAtAnchor": -0.2594404338140671,
+        "threeHalvesAtAnchor": 0.047309382245281924,
+        "derivedSmallLoad": 0.09397679057119257
+      }
+    },
+    {
+      "name": "illustrative-narrow",
+      "configuration": {
+        "rimRadius": 0.31,
+        "rimWidth": 0.024,
+        "sectionRadius": 0.02,
+        "gaugePressure": 200000,
+        "provenance": {
+          "kind": "illustrative",
+          "reference": "Scalar candidate screen, no measured tyre or fitted casing"
+        }
+      },
+      "fraction": 0.35,
+      "deflection": 0.0126,
+      "anchorFraction": 0.1,
+      "reference": {
+        "stressLoad": 589.471690178115,
+        "footprintLoad": 657.9264671020251,
+        "footprintArea": 0.003289632335510125,
+        "centreWidth": 0.025181518411050156
+      },
+      "candidates": {
+        "linearAtAnchor": 355.78551300116004,
+        "threeHalvesAtAnchor": 665.6137464139731,
+        "derivedSmallLoad": 695.2730515035986
+      },
+      "relativeErrors": {
+        "linearAtAnchor": -0.39643324873895847,
+        "threeHalvesAtAnchor": 0.1291699966335127,
+        "derivedSmallLoad": 0.17948505939872136
+      }
+    },
+    {
+      "name": "illustrative-narrow",
+      "configuration": {
+        "rimRadius": 0.31,
+        "rimWidth": 0.024,
+        "sectionRadius": 0.02,
+        "gaugePressure": 200000,
+        "provenance": {
+          "kind": "illustrative",
+          "reference": "Scalar candidate screen, no measured tyre or fitted casing"
+        }
+      },
+      "fraction": 0.5,
+      "deflection": 0.018000000000000002,
+      "anchorFraction": 0.1,
+      "reference": {
+        "stressLoad": 925.0678120005666,
+        "footprintLoad": 1032.4950417812775,
+        "footprintArea": 0.0051624752089063876,
+        "centreWidth": 0.03211480162376521
+      },
+      "candidates": {
+        "linearAtAnchor": 508.2650185730858,
+        "threeHalvesAtAnchor": 1136.515132114613,
+        "derivedSmallLoad": 1187.1574892233236
+      },
+      "relativeErrors": {
+        "linearAtAnchor": -0.45056458350452855,
+        "threeHalvesAtAnchor": 0.22857494052978333,
+        "derivedSmallLoad": 0.28331942136864285
+      }
+    }
+  ],
+  "sourcesSha256": {
+    "scripts/tyre-candidate-screen.mjs": "91b2def509f120dd6fb7b75c3790aebb217c1fe4b9449c5190a6fa779635d6d9",
+    "scripts/lib/tyre-static-reference.mjs": "c3f2a20513d0f1ff4a873e462773a53961ff5675b919506a3fe047797f7f87a9",
+    "scripts/plot-tyre-candidate-screen.py": "68a78772e7ae7cc090870c8b112bf78f0ce23de7d0f65d23bc3a1c0a2badf222"
+  }
+}

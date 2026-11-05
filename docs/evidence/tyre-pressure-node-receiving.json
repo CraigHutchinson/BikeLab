@@ -1,0 +1,75 @@
+{
+  "source": "a363aaed31c201b8462b8310aec5523817bc4e2c",
+  "node": "v24.22.0",
+  "platform": "Windows",
+  "focused": {
+    "pass": 9,
+    "fail": 0
+  },
+  "nodeSuite": {
+    "pass": 441,
+    "fail": 0,
+    "skip": 0,
+    "coverage": "complete Node suite on PR96; not combined PR91 or full browser attestation"
+  },
+  "curves": 123,
+  "archive": {
+    "path": "tyre-pressure-node.json.gz.b64",
+    "rawSha256": "70a1c150ac97956f5827fcf92bf51d38a743f8e2674659712923a90c60bf583c",
+    "gzipSha256": "2a86aea39a38d9fec3cbb05c3f7c289883753b09d24095c8aab53ef322cdae1a",
+    "decodedExact": true
+  },
+  "v8Comparison": {
+    "tolerance": 1e-09,
+    "numericLeaves": 5016,
+    "differingNumbers": 115,
+    "outsideBudget": 2,
+    "structuralDifferences": 0,
+    "firstExact": {
+      "path": "record.checks.1.result.0.energy",
+      "actual": 7.164243316892757,
+      "expected": 7.164243316892755,
+      "absolute": 2.6645352591003757e-15,
+      "normalized": 3.7192137972444333e-16
+    },
+    "firstOutsideBudget": {
+      "path": "record.checks.2.result.1.energyGradientError",
+      "actual": 7.432845450239256e-09,
+      "expected": 2.99195335173863e-09,
+      "absolute": 4.440892098500626e-09,
+      "normalized": 4.440892098500626e-09
+    },
+    "firstStructural": null,
+    "maxAbsolute": {
+      "path": "record.checks.2.result.2.energyGradientError",
+      "actual": -9.262635103368666e-10,
+      "expected": -1.4248939805838745e-08,
+      "absolute": 1.3322676295501878e-08,
+      "normalized": 1.3322676295501878e-08
+    },
+    "maxNormalized": {
+      "path": "record.checks.2.result.2.energyGradientError",
+      "actual": -9.262635103368666e-10,
+      "expected": -1.4248939805838745e-08,
+      "absolute": 1.3322676295501878e-08,
+      "normalized": 1.3322676295501878e-08
+    }
+  },
+  "plot": {
+    "inspected": true,
+    "legendFixed": "Moved outside axes to avoid obscuring high-pressure curve",
+    "scriptSha256": "79e470eaf4ba2454e7b2de51869157778f322ddcc1537f6376e0bc2af6650708"
+  },
+  "artifacts": {
+    "artifacts/pr96-node-suite.log": "a945e7e5f31ca543118f7fa37e9ba44ecea29dbe09b50afe95ec9b9cc77427a6",
+    "artifacts/tyre-pressure/tyre-pressure.png": "43b2bf51f3a6c543e7b858b17c8ae1d4a458910665d62ecf8e8c0cec5e52f244",
+    "artifacts/tyre-pressure/tyre-pressure.svg": "8d23dd41a120a879c951414953b40a737de9f50ae7d4c057512c2878b48a97e0"
+  },
+  "remaining": [
+    "Production Cartesian casing/prestress adapter",
+    "Separately specified casing/insert energy and loss",
+    "Browser receiving",
+    "Calibration and impact/failure criteria"
+  ],
+  "issue95": "open"
+}
