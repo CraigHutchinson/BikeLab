@@ -1,6 +1,6 @@
 # Spinning contact working plan — 4 November 2026
 
-This is a tracked, provisional continuation plan for [draft PR90](https://github.com/CraigHutchinson/BikeLab/pull/90). Commit and push changes to this plan alongside draft implementation checkpoints. It supplements the [received diagnostic](../SPINNING_GAP.md) and [broader spin plan](../SPINNING_HUB_PLAN.md); it is not evidence that pending work passed.
+This is a tracked, provisional continuation plan for [merged PR90](https://github.com/CraigHutchinson/BikeLab/pull/90). Commit and push changes to this plan alongside draft implementation checkpoints. It supplements the [received diagnostic](../SPINNING_GAP.md) and [broader spin plan](../SPINNING_HUB_PLAN.md); it is not evidence that pending work passed.
 
 ## Saved checkpoint
 
@@ -36,9 +36,9 @@ The next proposed pilot is a separately versioned, restricted scalar slide/hinge
 
 `scripts/spinning-rk4-stage.mjs` implements a private exact-XML scalar driver, with no production changes. All 36 starting regimes match native RK4 over 16 consecutive steps (576 steps), including nonzero incoming warm-start. It retains fourth-stage caches and acceleration/warm-start while advancing endpoint q/v/time. Six independent free-flight controls check all node/hub positions and velocities, constant spin, zero contact work/impulse over 128 steps each (0.25 ms). This is short native-target parity and transaction receiving, not corrected loaded dynamics. Starting regimes are not asserted to persist throughout each run.
 
-Six focused tests cover the matrix, accepted-slot/cache/ledger preservation at every stage and endpoint, retry identity, observation/output ownership, independent ballistics, warning/warm-start/nonfinite rejection, unavailable copying and physical limits. GPT-6.1 Sol reviewed the driver; its baseline-input hash finding is fixed by retaining original bytes and including them in the CLI start/end hashes. Private exact XML is part of admission; arbitrary models/options and callbacks remain unsupported. The throwing checkpoint hook is diagnostic only.
+Six focused tests cover the matrix, accepted-slot/cache/ledger preservation at every stage and endpoint, retry identity, observation/output ownership, independent ballistics, warning/warm-start/nonfinite rejection, unavailable copying and physical limits. GPT-6.1 Sol reviewed the driver; its baseline-input hash finding is fixed by retaining original bytes and including them in the CLI start/end hashes. Private exact XML is part of admission; arbitrary models/options and external native callbacks remain unsupported. The throwing checkpoint hook is diagnostic only.
 
-The source checkpoint is ready for publication; complete-suite results, scientific visualization and source-bound report are pending. Next receive that evidence, then add the physical-gap target before **every** stage solve in a new identified policy. Preserve this native parity control and all original budget values.
+Source checkpoint `83c80605b5937c9e9f47003b3c1a4c4fae022cab` is pushed (tree `244fd85018f3840b3b07955794f4a7a06aee29d1`). All 14 combined focused tests pass. Linux complete in-process receiving is **419/432**, with the same thirteen environment-blocked checks. The [complete report, lossless compressed copy and inspected scientific plot](../SPINNING_RK4_STAGE.md) are received. Preserve the separate upstream Windows432/432 receipt below. Neither is browser/full attestation. Next receive that evidence, then add the physical-gap target before **every** stage solve in a new identified policy. Preserve this native parity control and all original budget values.
 
 ## Next implementation increment
 
@@ -51,9 +51,19 @@ The source checkpoint is ready for publication; complete-suite results, scientif
 
 The prescribed-state target adjustment is implemented only in the separate diagnostic. The native-target scalar stage pilot is implemented; the corrected-stage architecture remains pending and is not a production fix. No integration timestep, force budget, comparison tolerance or production model identity is to be changed merely to make an existing case pass.
 
+## Corrected-stage implementation notes — pending
+
+Keep the received native-policy driver/control intact. A new physical-target policy must be explicitly identified and admitted; the driver currently rejects a `target` option. Avoid changing the original target runner merely to export helpers, since its evidence is bound to source hashes.
+
+The exposed full-forward API constructs references and performs a native solve. A practical first policy can retain that full forward, then derive the fresh convective correction and re-solve before using stage acceleration. This would perform a preliminary native solve plus the physical-target solve at each stage; count that cost explicitly, and integrate/record only the final corrected forces. It must not apply one correction per macro-step, repeatedly subtract from an already corrected target, or double-count the preliminary solve in work/impulse. Manual decomposition of native forward is a later optimization requiring separate parity.
+
+Receive all 48 prescribed targets against the new helper, then zero-spin and absent-contact recovery. At each stage preserve immutable native target, row/vertex identity, gap/velocity, regularizer, correction, final force, physical acceleration and power. Check exact compiled mobility and smooth/bias terms against the independent coupled inverse; use original physical target in complementarity. Keep endpoint observations under the same named policy, in their separate data slot. Repeat stage/endpoint failure and retry tests with a corrected solve failure.
+
+Loaded trajectories need a separately declared horizon/initial state and timestep ladder. Keep original native failure visible; derive the work/momentum/impulse expectations independently and enforce every existing rim, casing, domain and motion guard. Source-bound complete inputs/results, visual consumer, focused/full receiving and tracked plan must accompany that increment. Long rest or a joined bike/rider simulation is not inferred from short zero-material controls.
+
 ## Pending delivery and parallel work
 
-- PR90 is draft. Routine smoke is requested through the existing workflow; no additional full matrix or deployment was requested. Record actual remote results before calling any check passed.
+- PR90 is merged at main f90e895. Smoke passed on source83c8060; full was deliberately skipped. PR91 separately owns corrected stages. This session now picks up user-priority [#95 pressure/material work](TYRE_PRESSURE.md).
 - Legacy macOS diagnosis remains unresolved. Full run [41706182290](https://github.com/CraigHutchinson/BikeLab/actions/runs/41706182290) contains macOS artifact `13266925433` and Linux artifact `13265558819`. The connector returned download references, but the network-enabled shell download was cancelled; no local cross-platform comparison was completed. Use fresh authorized artifact access and the tracked `compare-legacy-replay.py`; do not change historical hashes to hide the failure. These CI artifacts have finite retention.
 - The separate longer rider controller diagnosis still fails after target-table substitution. Follow [its latest evidence and passive-law/identical-state effort gate](../RIDER_REPLAY_DIAGNOSTIC.md#longer-controller-receiving--3-november-2026). Do not conflate it with the legacy macOS rig failure or this spinning contact control.
 - Browser receiving, calibrated material/failure and pressure loss, layered/faceted terrain qualification, live rider ownership, persistent execution, supported crouch/pump/wheelie/hop/endo, 3D lateral/turning physics and measured game/reference-data fidelity remain in the main plan.
@@ -68,9 +78,13 @@ node --test test/spinning-gap.test.mjs test/spinning-gap-target.test.mjs
 
 When subprocess isolation is unavailable, `node --test --test-isolation=none` gives an exploratory complete-suite result, not a substitute for required HTTP/browser/platform coverage. Keep its failures explicit. A plotting cache can use a writable `MPLCONFIGDIR`; rendering the saved evidence does not rerun the physics.
 
-
 ## Delivery receiving — 4 November 2026
+
 
 On clean source 83c8060, the complete host Windows Node suite passes **432/432**, no skips/failures. The stage CLI regenerated all 36 native-parity cases / 576 steps with zero differences in every checked channel, plus six independent ballistic cases / 768 steps. [Compact source-bound receipt](../evidence/spinning-rk4-stage-receiving.json) preserves source and raw-artifact hashes. Production files and budgets are unchanged. This supersedes the pending complete-Node result above, not missing browser/macOS qualification. Scientific stage visualization remains pending; no screenshot claim is made.
 
 The user requests pickup and merge of this bounded checkpoint. PR90 smoke passed at 83c8060; full was skipped. This local Node result is not full-local/browser attestation. Continue in a fresh PR with a separately versioned corrected target before each native stage solve, retaining the native-parity control, accepted/trial transaction and endpoint-observation separation. First receive corrected ballistic controls, then loaded spin with work/momentum and refinement. Do not broaden the production model or tune frozen budgets.
+
+## Current continuation — after PR90 merge
+
+Main f90e895 includes the upstream Windows receipt above. The local Linux source83c8060 run is419/432 with the same thirteen blocked subprocess/loopback checks; its report bytes exactly match the upstream Windows report hash. [Complete evidence and inspected visualization](../SPINNING_RK4_STAGE.md) now close the archival/plot task. PR91 independently implements corrected stages. User priority moves this session to [issue95](TYRE_PRESSURE.md); the earlier next-stage notes remain design context for that parallel stream.

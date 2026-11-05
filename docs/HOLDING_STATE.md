@@ -1,10 +1,12 @@
-# BikeLab workstream handoff — 2026-11-03
+# BikeLab workstream handoff — 2026-11-04
 
-Latest checkpoint: PR90 spinning native-stage pilot has 432/432 local Node passes, exact 576-step native parity and six ballistic controls. See [tracked next implementation](working/SPINNING_CONTACT.md#delivery-receiving--4-november-2026). Corrected-stage/loaded dynamics, scientific visualization, browser and macOS gates remain open.
+The tracked [spinning-contact working plan](working/SPINNING_CONTACT.md) preserves provisional decisions, blocked checks and the next implementation sequence for merged PR90 and its follow-up. Push updates to it with draft changes.
 
-The tracked [spinning-contact working plan](working/SPINNING_CONTACT.md) preserves provisional decisions, blocked checks and the next implementation sequence for draft PR90. Push updates to it with draft changes.
+**Spinning contact update, 4 November:** PR90 is merged. The [native-stage evidence](SPINNING_RK4_STAGE.md) records 576 exact-parity steps, six independent ballistic controls and all 14 focused tests. Linux in-process receiving is 419/432 with thirteen environment-blocked checks; the preserved upstream Windows receipt passes 432/432 and has identical report bytes. Scientific visualization is received; browser/macOS follow-ups remain. PR91 owns corrected stages. User-priority [issue 95 pressure/material work](working/TYRE_PRESSURE.md) is next.
 
-**Spinning contact update, 4 November:** the [physical-gap target intervention](SPINNING_GAP_TARGET.md) passes 48 prescribed states, 1,248 native constraint re-solves and eight combined focused tests. It removes the matched-state spin-dependent normal response while preserving native state, coefficients, admission and reversible controls. The full local in-process suite is 413/426 with the same thirteen environment-blocked checks; no full attestation. A separately versioned RK stage driver and trajectory receiving remain next. Production physics, existing budgets, legacy macOS diagnosis and browser receiving are unchanged.
+Current next task: implement issue #95's pressure/material diagnostic with coupled area/pressure and energy checks. PR91 separately owns the physical-target stage policy. Preserve its work; qualify loaded trajectories before connected/rest use. The [live issue plan](ISSUE_WORK_PLAN.md#current-upstream-reconciliation) includes #86–89: anchor push/pull reporting, airborne brake-tap momentum, continuous target streaming and reference-rate damping. These remain separate from the unresolved passive-law/identical-state rider replay gate.
+
+## Historical delivery context
 
 Latest delivery: PR54 merged at 69b9621; PR46 closed as superseded with original evidence preserved. Longer full-suspension controller replay still fails after target-table substitution (5,208 leaves outside budget). Next isolate compiled passive laws and identical-state controller effort; see [diagnostic update](RIDER_REPLAY_DIAGNOSTIC.md#longer-controller-receiving--3-november-2026). Earlier merge-readiness entries below are historical.
 
