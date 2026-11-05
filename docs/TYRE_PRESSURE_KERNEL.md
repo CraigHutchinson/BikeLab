@@ -45,7 +45,9 @@ Expansion, excess compression, gas volume below the declared fraction, unresolva
 
 Nine shared check definitions cover independent geometry quadrature, pressure and ambient-work integration, n=1 and nearby exponents, energy/volume finite differences, cross-node tangent/symmetry, compounded response, compression/unloading work along different multi-node paths, subdivision, replay/ownership, tiny compression and rejection. The diagnostic also builds 123 complete states at initial gauge pressures 120, 160 and 200 kPa; all inputs are illustrative.
 
-These checks and samples passed in the **functions JavaScript V8 runtime** while the execution workspace was unavailable. The Node test adapter, CLI, full suite and scientific plot have **not yet been run** for this kernel. This is partial receiving only; no browser, calibration, performance or production integration claim.
+[Complete source-bound evidence](evidence/tyre-pressure-v8.json) retains all nine results and 123 states, with exact repeatability and remote Git blob identities. The checked source is `5200268457175c02cca16e3ae37ce7949909275d`.
+
+These checks and samples passed in the **functions JavaScript V8 runtime** while the execution workspace was unavailable. The Node test adapter, CLI, full suite and scientific plot have **not yet been run** for this kernel. Hosted smoke passed at `5200268`; full was deliberately skipped. This is partial receiving only; no browser, calibration, performance or production integration claim.
 
 Primary sources read before implementation:
 - [NASA, isentropic compression](https://www1.grc.nasa.gov/beginners-guide-to-aeronautics/isentrophic-compression/): absolute-pressure compression relation and adiabatic assumptions. It does not establish n=1.2 as an MTB impact value.
