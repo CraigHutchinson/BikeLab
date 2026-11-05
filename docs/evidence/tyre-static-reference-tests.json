@@ -1,0 +1,106 @@
+{
+  "format": "bikelab-static-reference-receiving-0.1",
+  "date": "2026-11-05",
+  "sourceCommit": "628f3792fbdbcec8c2fd9cdce5209db8a41c43b5",
+  "sourceTree": "b688bf8cf115290064d93e6f87e424d7ec125dd0",
+  "localSyntheticCommit": "e03e13d5cac1b9cb964d85a7f9a6c9b3e579a926",
+  "baseMain": "f90e895388443168d14f9bdbb5975712d8a2c411",
+  "runtime": {
+    "node": "v24.19.0",
+    "platform": "linux",
+    "architecture": "x86_64",
+    "matplotlib": "3.10.8"
+  },
+  "fullNode": {
+    "command": "node --test --test-isolation=none",
+    "counts": {
+      "tests": 453,
+      "pass": 440,
+      "fail": 13,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0
+    },
+    "exitCode": 1,
+    "durationMs": 666731.67406,
+    "failedTests": [
+      "scenario CLI rejects invalid inputs without overwriting evidence",
+      "footprint CLI replays records and separates unsupported from invalid input",
+      "moving-wheel CLI shares mechanics and distinguishes completed, terminated and invalid input",
+      "all rider CLI modes export canonical replay; malformed specifications and option combinations fail cleanly",
+      "unbound CLI distinguishes accepted prefix, initial rejection and invalid input",
+      "portable rider CLI exports examples, canonical scenarios and provenance receipts with clean rejection",
+      "headless task tool receives saved inputs and rejects unsupported input without a report",
+      "loopback server serves only assets and survives malformed requests",
+      "solver CLI distinguishes unmet numerical gates, successful trial and invalid input",
+      "suspension CLI preserves evidence, verifies exports, and signals a travel limit with exit 2",
+      "reference CLI reports complete configuration and distinct unsupported/invalid exits",
+      "terrain CLI reports reproducible geometry and distinguishes unavailable from invalid",
+      "wheel-limit CLI distinguishes boundary, clear, incompatible and invalid records"
+    ],
+    "failureDisposition": "All thirteen names match the previously archived Linux environment-blocked set. Eleven failures expose spawnSync EPERM, one exposes listen EPERM, and rider-task fails parsing empty subprocess output. A trivial spawnSync control returns status 0 plus error EPERM with empty output in this sandbox. No full pass or attestation.",
+    "sourceChangedDuringRun": false,
+    "documentationChangedDuringRun": true,
+    "logSha256": "d2e489eaf765b346ff49706917e8c542892477ddfb0d9086973b576544b1f35e"
+  },
+  "focused": {
+    "command": "node --test --test-isolation=none test/tyre-pressure.test.mjs test/tyre-pressure-cartesian.test.mjs test/tyre-static-reference.test.mjs",
+    "tests": 21,
+    "pass": 21,
+    "fail": 0,
+    "newStaticTests": 8,
+    "logSha256": "db7b3f81e8a79544c97d734e5a388b228749a9092df57eeb05c9bcb76b93d20e"
+  },
+  "study": {
+    "summary": {
+      "loadSolves": 200,
+      "curveStates": 124,
+      "refinementGroups": 6,
+      "asymptoteGroups": 2,
+      "profiles": 3
+    },
+    "reportSha256": "2b11438110ebaa26668c77fba0db9dba4b6d6fa97821410dc92574baa74722f2",
+    "compressedReportSha256": "4470e068c31aecfd5b27629e67f9889997a7976c718e5bc818e470977bd6c8b7",
+    "encodedReportSha256": "3ac27081e3e46697e1341898d496229ae44f0043d097e5bd18b0e8d8f8500dfa",
+    "reportArchive": "tyre-static-reference.json.gz.b64",
+    "sourceSha256": {
+      "scripts/lib/tyre-static-reference.mjs": "c3f2a20513d0f1ff4a873e462773a53961ff5675b919506a3fe047797f7f87a9",
+      "scripts/tyre-static-reference.mjs": "41a41239fa0facf4d177483fcd79d35064051f23fb6cf5387c7305d7bf3948b4",
+      "scripts/plot-tyre-static-reference.py": "5aa3fefbb1865fcb601ab8d673f8646b359b267d0b51560970a8ec78743b69be",
+      "test/tyre-static-reference.test.mjs": "e59c3e5b4e98db7dca115a518815ded7b2924da76896754235187a01a55efc63"
+    },
+    "maxDefaultQuadratureErrorN": 4.90789489049348e-07,
+    "maxDefaultRootErrorN": 5.002220859751105e-12,
+    "physicalValidation": false,
+    "exactPublishedFigureReproduction": false
+  },
+  "visual": {
+    "svg": "tyre-static-reference.svg",
+    "svgSha256": "feae0738d0dceea6f7b036fd14891b017bb9877dd91f35bb084da6bc7fb4585e",
+    "inspectedPngSha256": "c95de9f35bdbab44edb776ff2876926cc2bac4bc435eafcef3c52b9e3d07432c",
+    "inspection": "Actual PNG inspected after moving footprint legend clear of axis label; three scientific panels received. No browser/UI claim."
+  },
+  "logs": {
+    "archive": "tyre-static-reference-logs.json.gz.b64",
+    "rawSha256": "6900a9a89165455799782ed0904dac62cc30f5beabb5705c87e17db57b657072",
+    "encodedSha256": "0093b164b533b4e64b028d12d884fc07cc31aa3f3de9b36b9790fe855d79b2d3",
+    "membersSha256": {
+      "artifacts/tyre-static-reference-focused.log": "db7b3f81e8a79544c97d734e5a388b228749a9092df57eeb05c9bcb76b93d20e",
+      "artifacts/tyre-static-reference-run.log": "6cf9377e5c0b328b77408cd5d8ce4048968ca7c39f33c47ccc5ea60eeb20c46f",
+      "artifacts/tyre-static-reference-node.log": "d2e489eaf765b346ff49706917e8c542892477ddfb0d9086973b576544b1f35e"
+    }
+  },
+  "hosted": {
+    "sourceCommit": "628f3792fbdbcec8c2fd9cdce5209db8a41c43b5",
+    "smoke": {
+      "run": 42060966038,
+      "conclusion": "success"
+    },
+    "full": {
+      "run": 42060965865,
+      "conclusion": "skipped"
+    },
+    "requestedFullMatrix": false
+  },
+  "scope": "Offline constant-gauge-pressure reference only. Numerical checks and convergence do not establish physical calibration, prestressed production casing, dynamic impact/failure or runtime cost. Existing Edge replay failure is retained separately in pr96-full-local-failure.json. PR96 stays draft and issue95 open."
+}
