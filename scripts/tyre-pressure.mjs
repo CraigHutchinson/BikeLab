@@ -1,0 +1,15 @@
+import assert from 'node:assert/strict';
+import {readFile,writeFile,mkdir} from 'node:fs/promises';
+import {createHash} from 'node:crypto';
+import {resolve,join} from 'node:path';
+import * as api from './lib/tyre-pressure.mjs';
+import {pressureReport} from './lib/tyre-pressure-checks.mjs';
+assert.ok(process.argv.length<=3,'Usage: node scripts/tyre-pressure.mjs [output-directory]');
+const dir=resolve(process.argv[2]??'artifacts/tyre-pressure');
+const sources=['scripts/lib/tyre-pressure.mjs','scripts/lib/tyre-pressure-checks.mjs','scripts/tyre-pressure.mjs','test/tyre-pressure.test.mjs'];
+const hashes=async()=>Object.fromEntries(await Promise.all(sources.map(async path=>[path,createHash('sha256').update(await readFile(new URL('../'+path,import.meta.url))).digest('hex')]))),sourcesSha256=await hashes();
+const report=pressureReport(api,(n,total)=>console.log('pressure receiving '+n+'/'+total));
+assert.deepEqual(await hashes(),sourcesSha256,'Sources changed during run');
+await mkdir(dir,{recursive:true});
+await writeFile(join(dir,'report.json'),JSON.stringify({...report,sourcesSha256},null,2)+'\n');
+console.log(JSON.stringify({checks:report.checks.length,curves:report.curves.length,samples:report.curves.reduce((s,c)=>s+c.samples.length,0)}));

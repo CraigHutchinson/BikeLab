@@ -43,3 +43,11 @@ Coordinate #92–94 with this work: keep physical stop and quality-envelope sema
 The PR90 source-bound full report, inspected visualization and Linux 419/432 receipt (same thirteen environment-blocked checks) are being archived alongside this plan. Preserve the upstream Windows 432/432 receipt and identical report hash. The pressure implementation and its receiving remain **pending** at this documentation checkpoint.
 
 Publication recovery, 5 November: the binary blob upload stalled twice and remote lookup confirmed that blob was absent. The complete report is now lossless gzip encoded as Base64 text, with raw/compressed/encoded hashes. Decode/decompress is verified byte-for-byte; the plot reader supports this archive directly. No numerical records were dropped.
+
+## Kernel checkpoint — 5 November 2026
+
+Implemented `scripts/lib/tyre-pressure.mjs` as a separately versioned prescribed strip-chamber law, with same-volume pressure/force/energy, stable small-deformation and n→1 limits, signed generalized force and rank-one cross-node tangent. The area tangent at first engagement is explicitly singular when gauge pressure is positive. Zero force at the unloaded strip is not inflated-casing prestress.
+
+Nine focused checks and all 123 curve samples pass in the available functions JavaScript V8 runtime. The exact same check definitions are wired to a Node test adapter and CLI; **Node execution, the complete suite, plot rendering and browser receiving remain pending because the execution workspace is unavailable**. No wall-time/performance result is claimed. The independent checks cover quadrature, force/volume/energy gradients, combined pressure/area growth, cross-node symmetry, cycle work, subdivision, ownership/replay, near-zero limits and rejection.
+
+Next restore the workspace, fetch this draft, run the nine Node checks/CLI and required full suite, render/inspect the scientific plot, and receive source-bound artifacts. Then define a geometry/prestress adapter and the separately specified casing/insert potentials and loss. PR91 remains the owner of stage-policy changes. #95 is not closed by this kernel.
