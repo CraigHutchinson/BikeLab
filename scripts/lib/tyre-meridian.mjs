@@ -1,4 +1,4 @@
-// Offline axisymmetric polygon membrane. No equilibrium solver or production path.
+// Offline axisymmetric polygon membrane; no production path.
 export const MODEL='bikelab-meridian-energy-0.1';
 const cross=(a,b,c,d)=>a*d-b*c;
 function geometry(points,L){
@@ -48,5 +48,27 @@ export function createMeridianDiagnostic(input){
   return {model:MODEL,volume:g.volume,volumeGradient:g.gradient,materialEnergy,potential,materialForces,pressureForces,forces,strains,
    compressiveSegments:strains.filter(s=>s.meridionalStressResultant<0||s.hoopStressResultant<0).length,
    beadLoads,supportForces:beadLoads.map(f=>f.map(x=>-x)),maxFreeResidual:Math.max(...forces.slice(1,-1).map(f=>Math.hypot(...f)))};
+ },tangentBands(points){
+  // Reuse the force evaluator's geometry/strain admission. Fixed beads are omitted.
+  this.evaluate(points);
+  const n=2*(points.length-2),bands=new Float64Array(4*n);
+  for(let i=0;i<segments.length;i++){
+   const [x,z]=points[i],[u,v]=points[i+1],s=segments[i],dx=u-x,dz=v-z,l=Math.hypot(dx,dz),t=[dx/l,dz/l];
+   const em=l/s.length-1,eh=(L+(z+v)/2)/s.radius-1,Nm=Cm*em+Cc*eh;
+   const gm=[-t[0]/s.length,-t[1]/s.length,t[0]/s.length,t[1]/s.length],gh=[0,1/(2*s.radius),0,1/(2*s.radius)];
+   const dc=[v,-u,-z,x],dw=[0,1/6,0,1/6],w=L/2+(z+v)/6;
+   for(let a=0;a<4;a++)for(let b=0;b<=a;b++){
+    const row=2*(i-1)+a,col=2*(i-1)+b;if(row<0||row>=n||col<0||col>=n)continue;
+    const aa=a%2,bb=b%2,sign=(a<2?-1:1)*(b<2?-1:1);
+    const hm=sign*((aa===bb?1:0)-t[aa]*t[bb])/(l*s.length);
+    const hc=(a===3&&b===0)?1:(a===2&&b===1)?-1:0;
+    const material=s.area*(Cm*gm[a]*gm[b]+Cc*(gm[a]*gh[b]+gh[a]*gm[b])+Ch*gh[a]*gh[b]+Nm*hm);
+    const pressure=-2*Math.PI*p*(w*hc+dc[a]*dw[b]+dw[a]*dc[b]);
+    bands[4*row+row-col]+=material+pressure;
+   }
+  }
+  // Rim closure joins the two constrained beads and contributes no free entries.
+  if(!bands.every(Number.isFinite))throw RangeError('Nonfinite tangent');
+  return bands;
  }});
 }

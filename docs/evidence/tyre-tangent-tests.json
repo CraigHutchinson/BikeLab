@@ -1,0 +1,28 @@
+{
+  "scope": "Complete local Windows Node suite, not browser/full attestation",
+  "tests": 471,
+  "pass": 471,
+  "fail": 0,
+  "skipped": 0,
+  "cancelled": 0,
+  "durationMs": 121050.9397,
+  "baseMain": "2137c8d98f91badd6deada44247e5f6a16ce8566",
+  "sourcesSha256": {
+    "scripts/lib/tyre-meridian.mjs": "bd8fcaa2d3442188d61f658f23cad30dc4cf22cce95c36b1a3186109017a9710",
+    "scripts/lib/tyre-banded.mjs": "6313d0be8dd302a0e3036dc2dba9d1df54cd957061e98b5b66c8031b0b484f10",
+    "scripts/lib/tyre-equilibrium.mjs": "b7a95292cefc0cef1a20fde3e43e8bf82519909dff773308c4cfcf6b3bc9dc58",
+    "scripts/lib/tyre-meridian-fixture.mjs": "6713e174afa69ef89e8276cc86481bf297f7e441b577e2a139dd0a94c1a349d1",
+    "scripts/lib/tyre-inflation.mjs": "693611ae30bf86543c190a3910948b9e8f7171a61ff1923d397542232e91b3cd",
+    "scripts/tyre-tangent.mjs": "2daafa6c87a17e481db7c1ef9c013a474f01bcbf3c97c37eb1ec22912094e0c3",
+    "scripts/plot-tyre-tangent.py": "a64ee0c931b15a93426a472f21ace2d51fc3e3274207936de60eb5628c8bf265",
+    "test/tyre-tangent.test.mjs": "27c5bff89c8aa8fe5f23beabd2cb3d01b02e6468bd0d96149c0594390299c69e"
+  },
+  "logSha256": "e9e4591b304b5e1e7325b323a4c1d9565c8b95d1df1d77b5220e01e08245a46f",
+  "log": "tyre-tangent-node.txt",
+  "limits": [
+    "Existing rider browser replay failure unchanged",
+    "PR91 contact refinement failures unchanged",
+    "Offline uncalibrated constant-pressure model",
+    "Line endings normalized for publication; numerical source unchanged during full run"
+  ]
+}
