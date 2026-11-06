@@ -1,13 +1,11 @@
 // Prescribed compression diagnostic only; not an inflated free casing.
 // Force and pressure share one volume law. See docs/TYRE_PRESSURE_KERNEL.md.
 export const MODEL='bikelab-prescribed-strip-pressure-0.1';
-export class PressureDomainError extends RangeError {
- constructor(code,message){super(message);this.name='PressureDomainError';this.code=code;}
-}
+import {polytropicState as gas,PressureDomainError} from './tyre-gas.mjs';
+export {PressureDomainError} from './tyre-gas.mjs';
 const plain=x=>x!==null&&typeof x==='object'&&Object.getPrototypeOf(x)===Object.prototype;
 const finite=(x,lo,hi,name)=>{if(!Number.isFinite(x)||x<lo||x>hi)throw TypeError(name+' outside diagnostic range');};
 const exactKeys=(x,keys,name)=>{if(!plain(x)||Reflect.ownKeys(x).length!==keys.length||Reflect.ownKeys(x).some(k=>typeof k!=='string'||!keys.includes(k)||!Object.hasOwn(Object.getOwnPropertyDescriptor(x,k),'value')||!Object.getOwnPropertyDescriptor(x,k).enumerable))throw TypeError('Invalid '+name+' fields');};
-const exprel=x=>x===0?1:Math.expm1(x)/x;
 
 // Circular-segment area. The small-angle series avoids cancellation near zero.
 export function circularSegment(radius,compression){
@@ -20,20 +18,6 @@ export function circularSegment(radius,compression){
  return {area,width:2*halfWidth,widthDerivative:compression===0?null:2*(1-x)/root};
 }
 
-function gas(config,loss){
- const {referenceVolume:V0,initialGaugePressure:pg0,ambientPressure:pa,exponent:n,minVolumeFraction}=config,z=loss/V0;
- if(!Number.isFinite(z)||z<0||z>1-minVolumeFraction)throw new PressureDomainError('volume-domain','Volume outside the declared sealed-chamber envelope');
- if(loss>0&&z===0)throw new PressureDomainError('volume-resolution','Relative volume loss is below numeric resolution');
- const logRatio=-Math.log1p(-z),P0=pg0+pa;
- const pressureIncrease=P0*Math.expm1(n*logRatio),gaugePressure=pg0+pressureIncrease,absolutePressure=pa+gaugePressure;
- // Integral of pressure above ambient. This is a mechanical potential for the
- // prescribed polytropic path, not a full heat-transfer/internal-energy model.
- const excess=z<1e-4?z*z*n*(1/2+z*(n+1)*(1/6+z*(n+2)*(1/24+z*(n+3)*(1/120+z*(n+4)/720)))):logRatio*exprel((n-1)*logRatio)-z;
- const energy=pg0*loss+P0*V0*excess,volume=V0-loss,coupling=n*absolutePressure/volume;
- if(loss>0&&energy===0)throw new PressureDomainError('energy-resolution','Compression work is below numeric resolution');
- if(![volume,absolutePressure,gaugePressure,energy,coupling].every(Number.isFinite)||energy<0)throw new PressureDomainError('nonfinite-result','Pressure state is not numerically admissible');
- return {volume,volumeLoss:loss,absolutePressure,gaugePressure,pressureIncrease,energy,coupling};
-}
 
 export function createPressureChamber(input){
  const keys=['referenceVolume','ambientPressure','initialGaugePressure','exponent','minVolumeFraction','sectionRadius','arcLengths','provenance'];

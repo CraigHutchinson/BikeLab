@@ -1,4 +1,5 @@
 // Offline axisymmetric polygon membrane; no production path.
+import {createSealedGas} from './tyre-gas.mjs';
 export const MODEL='bikelab-meridian-energy-0.1';
 const cross=(a,b,c,d)=>a*d-b*c;
 function geometry(points,L){
@@ -20,10 +21,17 @@ function geometry(points,L){
 }
 export function createMeridianDiagnostic(input){
  const keys=['rimRadius','restPoints','meridionalRigidity','hoopRigidity','couplingRigidity','gaugePressure','provenance'];
+ if(input&&Object.hasOwn(input,'gas'))keys.push('gas');
  if(!input||Object.getPrototypeOf(input)!==Object.prototype||Reflect.ownKeys(input).length!==keys.length||Reflect.ownKeys(input).some(k=>!keys.includes(k)||!Object.hasOwn(Object.getOwnPropertyDescriptor(input,k),'value')))throw TypeError('Invalid configuration fields');
  const {rimRadius:L,meridionalRigidity:Cm,hoopRigidity:Ch,couplingRigidity:Cc,gaugePressure:p}=input;
  if(![L,Cm,Ch,Cc,p].every(Number.isFinite)||L<.15||L>.45||Cm<=0||Ch<=0||Math.max(Cm,Ch)>1e8||Cc*Cc>=Cm*Ch||p<0||p>1e6)throw RangeError('Invalid geometry/pressure or non-positive-definite material');
  if(typeof input.provenance!=='string'||!input.provenance.trim()||input.provenance.length>2000)throw TypeError('Explicit provenance required');
+ let chamber=null;
+ if(Object.hasOwn(input,'gas')){
+  const g=input.gas,fields=['referenceVolume','ambientPressure','exponent','minVolumeFraction','maxVolumeFraction'];
+  if(!g||Object.getPrototypeOf(g)!==Object.prototype||Reflect.ownKeys(g).length!==fields.length||Reflect.ownKeys(g).some(k=>!fields.includes(k)||!Object.hasOwn(Object.getOwnPropertyDescriptor(g,k),'value')))throw TypeError('Invalid spatial gas configuration');
+  chamber=createSealedGas({...g,initialGaugePressure:p,provenance:input.provenance});
+ }
  const restGeometry=geometry(input.restPoints,L),rest=input.restPoints.map(p=>[...p]);
  if(rest[0][1]!==0||rest.at(-1)[1]!==0||rest[0][0]<=rest.at(-1)[0])throw RangeError('Rest beads must close on rim plane');
  const segments=rest.slice(1).map((b,i)=>{const a=rest[i],length=Math.hypot(b[0]-a[0],b[1]-a[1]),radius=L+(a[1]+b[1])/2;return {length,radius,area:2*Math.PI*radius*length};});
@@ -41,16 +49,20 @@ export function createMeridianDiagnostic(input){
    materialForces[i][1]+=radial-hoop;materialForces[j][1]-=radial+hoop;
    strains.push({meridional:em,hoop:eh,meridionalStressResultant:Nm,hoopStressResultant:Nh});
   }
-  const pressureForces=g.gradient.map(v=>v.map(x=>p*x)),forces=materialForces.map((v,i)=>v.map((x,j)=>x+pressureForces[i][j]));
-  const potential=materialEnergy-p*(g.volume-restGeometry.volume);
+  const gasState=chamber?.evaluate(g.volume),pressure=gasState?.gaugePressure??p;
+  const pressureForces=g.gradient.map(v=>v.map(x=>pressure*x)),forces=materialForces.map((v,i)=>v.map((x,j)=>x+pressureForces[i][j]));
+  const potential=materialEnergy+(gasState?.energy??(-p*(g.volume-restGeometry.volume)));
   if(!Number.isFinite(potential)||forces.some(f=>!f.every(Number.isFinite)))throw RangeError('Nonfinite energy/force');
   const beadLoads=[forces[0],forces.at(-1)].map(f=>[...f]);
-  return {model:MODEL,volume:g.volume,volumeGradient:g.gradient,materialEnergy,potential,materialForces,pressureForces,forces,strains,
+  return {model:chamber?'bikelab-sealed-meridian-0.1':MODEL,...(gasState?{gas:gasState}:{}),volume:g.volume,volumeGradient:g.gradient,materialEnergy,potential,materialForces,pressureForces,forces,strains,
    compressiveSegments:strains.filter(s=>s.meridionalStressResultant<0||s.hoopStressResultant<0).length,
    beadLoads,supportForces:beadLoads.map(f=>f.map(x=>-x)),maxFreeResidual:Math.max(...forces.slice(1,-1).map(f=>Math.hypot(...f)))};
  },tangentBands(points){
+  if(chamber)throw TypeError('Sealed gas requires tangentParts including global rank-one coupling');
+  return this.tangentParts(points).bands;
+ },tangentParts(points){
   // Reuse the force evaluator's geometry/strain admission. Fixed beads are omitted.
-  this.evaluate(points);
+  const state=this.evaluate(points),pressureValue=state.gas?.gaugePressure??p;
   const n=2*(points.length-2),bands=new Float64Array(4*n);
   for(let i=0;i<segments.length;i++){
    const [x,z]=points[i],[u,v]=points[i+1],s=segments[i],dx=u-x,dz=v-z,l=Math.hypot(dx,dz),t=[dx/l,dz/l];
@@ -63,12 +75,12 @@ export function createMeridianDiagnostic(input){
     const hm=sign*((aa===bb?1:0)-t[aa]*t[bb])/(l*s.length);
     const hc=(a===3&&b===0)?1:(a===2&&b===1)?-1:0;
     const material=s.area*(Cm*gm[a]*gm[b]+Cc*(gm[a]*gh[b]+gh[a]*gm[b])+Ch*gh[a]*gh[b]+Nm*hm);
-    const pressure=-2*Math.PI*p*(w*hc+dc[a]*dw[b]+dw[a]*dc[b]);
+    const pressure=-2*Math.PI*pressureValue*(w*hc+dc[a]*dw[b]+dw[a]*dc[b]);
     bands[4*row+row-col]+=material+pressure;
    }
   }
   // Rim closure joins the two constrained beads and contributes no free entries.
   if(!bands.every(Number.isFinite))throw RangeError('Nonfinite tangent');
-  return bands;
+  return {bands,rankOne:chamber?{coefficient:state.gas.coupling,vector:state.volumeGradient.slice(1,-1).flat()}:null};
  }});
 }

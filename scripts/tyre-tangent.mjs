@@ -22,7 +22,7 @@ for(const segments of [16,32,64])for(const gaugePressure of [80000,160000,240000
  cases.push({segments,configuration,timings,maxCoordinateDifference,volumeDifference:Math.abs(a.state.volume-b.state.volume),tangentEntries:{dense:n*n,banded:bands.length},stability,results});
  console.log(JSON.stringify({segments,gaugePressure,maxCoordinateDifference,converged:methods.every(m=>results[m].converged)}));
 }
-const paths=['scripts/lib/tyre-meridian.mjs','scripts/lib/tyre-banded.mjs','scripts/lib/tyre-equilibrium.mjs','scripts/lib/tyre-meridian-fixture.mjs','scripts/lib/tyre-inflation.mjs','scripts/tyre-tangent.mjs','scripts/plot-tyre-tangent.py','test/tyre-tangent.test.mjs'];
+const paths=['scripts/lib/tyre-gas.mjs','scripts/lib/tyre-meridian.mjs','scripts/lib/tyre-banded.mjs','scripts/lib/tyre-equilibrium.mjs','scripts/lib/tyre-meridian-fixture.mjs','scripts/lib/tyre-inflation.mjs','scripts/tyre-tangent.mjs','scripts/plot-tyre-tangent.py','test/tyre-tangent.test.mjs'];
 const sourcesSha256=Object.fromEntries(await Promise.all(paths.map(async p=>[p,createHash('sha256').update(await readFile(new URL('../'+p,import.meta.url))).digest('hex')])));
 const dir=resolve(process.argv[2]??'artifacts/tyre-tangent');await mkdir(dir,{recursive:true});
 await writeFile(join(dir,'report.json'),JSON.stringify({model:'bikelab-analytic-tangent-0.1',scope:'Offline constant-pressure reference; descriptive warm local timings, not production or calibrated performance',runtime:{node:process.version,platform:process.platform,arch:process.arch},budgets:BUDGETS,sourcesSha256,cases},null,2)+'\n');

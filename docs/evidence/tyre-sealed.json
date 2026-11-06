@@ -1,0 +1,3445 @@
+{
+  "model": "bikelab-sealed-equilibrium-0.1",
+  "scope": "Uncalibrated axisymmetric sealed gas; not a localized ground footprint or production wheel",
+  "budgets": {
+    "force": 0.00001,
+    "forcePerArea": 0.01,
+    "step": 1e-7,
+    "armijo": 0.0001,
+    "maxIterations": 80
+  },
+  "sourcesSha256": {
+    "scripts/lib/tyre-gas.mjs": "a3f1a60f8f1039c31285c1c51cae925a40781a37471fb471904594b635ac424e",
+    "scripts/lib/tyre-pressure.mjs": "f2b8aaad0ff2fd74a36df147178c0ab62c394f6795f0486ba6157c0a6189fc1e",
+    "scripts/lib/tyre-meridian.mjs": "dc8431991700645a0688a580e9da5419de21af4c1ade06be96c80eba5d253714",
+    "scripts/lib/tyre-equilibrium.mjs": "0e6725650165a5cdba55e585e9a59ebf7f70fbab5d5197c2c38449af1a7fd0e9",
+    "scripts/lib/tyre-banded.mjs": "988f9d572b5aadb64f4d48e8ed9e4a519b1286b6137a86b495ba3f8dba133c2e",
+    "scripts/lib/tyre-meridian-fixture.mjs": "8610247689576494a9300712dd66bc44d06bbf1079f2897a5f8eddf8eea1249d",
+    "scripts/lib/tyre-inflation.mjs": "693611ae30bf86543c190a3910948b9e8f7171a61ff1923d397542232e91b3cd",
+    "scripts/tyre-sealed.mjs": "d17da72c87fca84f0a36a7c68a22ee11413e970c819dbeae72d2ae0d6e956c42",
+    "scripts/plot-tyre-sealed.py": "fc44a1b6e2185a38436e5364e0f8c51e3f892d43453fdadf6763c2a68e9d95b1",
+    "test/tyre-sealed.test.mjs": "1134d4c96652221c5888825b1d1aa73eed462c98af11717a9c17d3e274f2c530"
+  },
+  "gasConfiguration": {
+    "referenceVolume": 0.005,
+    "initialGaugePressure": 160000,
+    "ambientPressure": 101325,
+    "exponent": 1.2,
+    "minVolumeFraction": 0.5,
+    "maxVolumeFraction": 1.5,
+    "provenance": "Illustrative reversible path control, not measured"
+  },
+  "curves": [
+    {
+      "exponent": 1,
+      "states": [
+        {
+          "volume": 0.004,
+          "volumeLoss": 0.001,
+          "absolutePressure": 326656.25,
+          "gaugePressure": 225331.25,
+          "pressureIncrease": 65331.25,
+          "energy": 190.23994273592933,
+          "coupling": 81664062.5
+        },
+        {
+          "volume": 0.004025,
+          "volumeLoss": 0.0009750000000000002,
+          "absolutePressure": 324627.3291925466,
+          "gaugePressure": 223302.3291925466,
+          "pressureIncrease": 63302.329192546604,
+          "energy": 184.63207566800452,
+          "coupling": 80652752.59442152
+        },
+        {
+          "volume": 0.004050000000000001,
+          "volumeLoss": 0.0009499999999999995,
+          "absolutePressure": 322623.4567901234,
+          "gaugePressure": 221298.45679012343,
+          "pressureIncrease": 61298.45679012342,
+          "energy": 179.07461754281448,
+          "coupling": 79660112.78768478
+        },
+        {
+          "volume": 0.0040750000000000005,
+          "volumeLoss": 0.0009249999999999996,
+          "absolutePressure": 320644.17177914106,
+          "gaugePressure": 219319.17177914106,
+          "pressureIncrease": 59319.17177914106,
+          "energy": 173.5669479366925,
+          "coupling": 78685686.32616958
+        },
+        {
+          "volume": 0.0041,
+          "volumeLoss": 0.0008999999999999998,
+          "absolutePressure": 318689.02439024387,
+          "gaugePressure": 217364.02439024387,
+          "pressureIncrease": 57364.02439024388,
+          "energy": 168.1084578100351,
+          "coupling": 77729030.33908387
+        },
+        {
+          "volume": 0.004125,
+          "volumeLoss": 0.0008749999999999999,
+          "absolutePressure": 316757.57575757575,
+          "gaugePressure": 215432.57575757575,
+          "pressureIncrease": 55432.57575757575,
+          "energy": 162.69854923048226,
+          "coupling": 76789715.33516987
+        },
+        {
+          "volume": 0.00415,
+          "volumeLoss": 0.0008500000000000001,
+          "absolutePressure": 314849.3975903614,
+          "gaugePressure": 213524.39759036145,
+          "pressureIncrease": 53524.39759036145,
+          "energy": 157.33663510446013,
+          "coupling": 75867324.72056901
+        },
+        {
+          "volume": 0.004175000000000001,
+          "volumeLoss": 0.0008249999999999993,
+          "absolutePressure": 312964.07185628737,
+          "gaugePressure": 211639.07185628737,
+          "pressureIncrease": 51639.07185628738,
+          "energy": 152.02213891678565,
+          "coupling": 74961454.33683528
+        },
+        {
+          "volume": 0.004200000000000001,
+          "volumeLoss": 0.0007999999999999995,
+          "absolutePressure": 311101.1904761904,
+          "gaugePressure": 209776.19047619044,
+          "pressureIncrease": 49776.19047619044,
+          "energy": 146.75449447804513,
+          "coupling": 74071712.01814057
+        },
+        {
+          "volume": 0.0042250000000000005,
+          "volumeLoss": 0.0007749999999999996,
+          "absolutePressure": 309260.3550295858,
+          "gaugePressure": 207935.35502958577,
+          "pressureIncrease": 47935.35502958577,
+          "energy": 141.53314567946748,
+          "coupling": 73197717.16676585
+        },
+        {
+          "volume": 0.00425,
+          "volumeLoss": 0.0007499999999999998,
+          "absolutePressure": 307441.1764705882,
+          "gaugePressure": 206116.17647058822,
+          "pressureIncrease": 46116.17647058822,
+          "energy": 136.35754625503012,
+          "coupling": 72339100.34602074
+        },
+        {
+          "volume": 0.004275,
+          "volumeLoss": 0.000725,
+          "absolutePressure": 305643.2748538012,
+          "gaugePressure": 204318.27485380118,
+          "pressureIncrease": 44318.274853801166,
+          "energy": 131.22715955054048,
+          "coupling": 71495502.88977805
+        },
+        {
+          "volume": 0.004300000000000001,
+          "volumeLoss": 0.0006999999999999992,
+          "absolutePressure": 303866.2790697674,
+          "gaugePressure": 202541.2790697674,
+          "pressureIncrease": 42541.279069767384,
+          "energy": 126.14145829945019,
+          "coupling": 70666576.52785286
+        },
+        {
+          "volume": 0.004325,
+          "volumeLoss": 0.0006750000000000003,
+          "absolutePressure": 302109.8265895954,
+          "gaugePressure": 200784.82658959538,
+          "pressureIncrease": 40784.82658959538,
+          "energy": 121.09992440516805,
+          "coupling": 69851983.02649605
+        },
+        {
+          "volume": 0.004350000000000001,
+          "volumeLoss": 0.0006499999999999995,
+          "absolutePressure": 300373.5632183908,
+          "gaugePressure": 199048.56321839077,
+          "pressureIncrease": 39048.563218390766,
+          "energy": 116.10204872964432,
+          "coupling": 69051393.84330823
+        },
+        {
+          "volume": 0.004375,
+          "volumeLoss": 0.0006249999999999997,
+          "absolutePressure": 298657.14285714284,
+          "gaugePressure": 197332.14285714284,
+          "pressureIncrease": 37332.14285714283,
+          "energy": 111.1473308880168,
+          "coupling": 68264489.79591836
+        },
+        {
+          "volume": 0.0044,
+          "volumeLoss": 0.0005999999999999998,
+          "absolutePressure": 296960.2272727273,
+          "gaugePressure": 195635.22727272726,
+          "pressureIncrease": 35635.227272727265,
+          "energy": 106.23527904910331,
+          "coupling": 67490960.74380165
+        },
+        {
+          "volume": 0.004425,
+          "volumeLoss": 0.000575,
+          "absolutePressure": 295282.4858757062,
+          "gaugePressure": 193957.4858757062,
+          "pressureIncrease": 33957.4858757062,
+          "energy": 101.36540974154892,
+          "coupling": 66730505.282645464
+        },
+        {
+          "volume": 0.00445,
+          "volumeLoss": 0.0005500000000000001,
+          "absolutePressure": 293623.595505618,
+          "gaugePressure": 192298.595505618,
+          "pressureIncrease": 32298.59550561799,
+          "energy": 96.5372476654327,
+          "coupling": 65982830.45070068
+        },
+        {
+          "volume": 0.004475,
+          "volumeLoss": 0.0005250000000000003,
+          "absolutePressure": 291983.24022346374,
+          "gaugePressure": 190658.2402234637,
+          "pressureIncrease": 30658.240223463705,
+          "energy": 91.75032550915199,
+          "coupling": 65247651.446584076
+        },
+        {
+          "volume": 0.0045000000000000005,
+          "volumeLoss": 0.0004999999999999996,
+          "absolutePressure": 290361.11111111107,
+          "gaugePressure": 189036.11111111107,
+          "pressureIncrease": 29036.11111111108,
+          "energy": 87.0041837714072,
+          "coupling": 64524691.35802467
+        },
+        {
+          "volume": 0.004525,
+          "volumeLoss": 0.00047499999999999973,
+          "absolutePressure": 288756.90607734805,
+          "gaugePressure": 187431.90607734805,
+          "pressureIncrease": 27431.906077348052,
+          "energy": 82.29837058811881,
+          "coupling": 63813680.901071385
+        },
+        {
+          "volume": 0.00455,
+          "volumeLoss": 0.0004499999999999999,
+          "absolutePressure": 287170.3296703297,
+          "gaugePressure": 185845.32967032967,
+          "pressureIncrease": 25845.32967032966,
+          "energy": 77.63244156411068,
+          "coupling": 63114358.16930322
+        },
+        {
+          "volume": 0.004575,
+          "volumeLoss": 0.00042500000000000003,
+          "absolutePressure": 285601.0928961749,
+          "gaugePressure": 184276.09289617487,
+          "pressureIncrease": 24276.092896174865,
+          "energy": 73.00595960940679,
+          "coupling": 62426468.39260653
+        },
+        {
+          "volume": 0.0046,
+          "volumeLoss": 0.0004000000000000002,
+          "absolutePressure": 284048.9130434783,
+          "gaugePressure": 182723.91304347827,
+          "pressureIncrease": 22723.91304347827,
+          "energy": 68.41849477998763,
+          "coupling": 61749763.70510397
+        },
+        {
+          "volume": 0.004625000000000001,
+          "volumeLoss": 0.00037499999999999947,
+          "absolutePressure": 282513.5135135135,
+          "gaugePressure": 181188.5135135135,
+          "pressureIncrease": 21188.513513513477,
+          "energy": 63.86962412286216,
+          "coupling": 61084002.92184075
+        },
+        {
+          "volume": 0.0046500000000000005,
+          "volumeLoss": 0.0003499999999999996,
+          "absolutePressure": 280994.623655914,
+          "gaugePressure": 179669.62365591395,
+          "pressureIncrease": 19669.623655913954,
+          "energy": 59.35893152531677,
+          "coupling": 60428951.323852465
+        },
+        {
+          "volume": 0.004675,
+          "volumeLoss": 0.00032499999999999977,
+          "absolutePressure": 279491.97860962566,
+          "gaugePressure": 178166.97860962566,
+          "pressureIncrease": 18166.97860962565,
+          "energy": 54.88600756820413,
+          "coupling": 59784380.45125682
+        },
+        {
+          "volume": 0.0047,
+          "volumeLoss": 0.0002999999999999999,
+          "absolutePressure": 278005.3191489362,
+          "gaugePressure": 176680.31914893616,
+          "pressureIncrease": 16680.319148936167,
+          "energy": 50.45044938314602,
+          "coupling": 59150067.904028974
+        },
+        {
+          "volume": 0.004725,
+          "volumeLoss": 0.00027500000000000007,
+          "absolutePressure": 276534.39153439156,
+          "gaugePressure": 175209.39153439153,
+          "pressureIncrease": 15209.39153439154,
+          "energy": 46.051860513523216,
+          "coupling": 58525797.15013578
+        },
+        {
+          "volume": 0.004750000000000001,
+          "volumeLoss": 0.00024999999999999935,
+          "absolutePressure": 275078.947368421,
+          "gaugePressure": 173753.947368421,
+          "pressureIncrease": 13753.947368421015,
+          "energy": 41.6898507791331,
+          "coupling": 57911357.34072021
+        },
+        {
+          "volume": 0.004775000000000001,
+          "volumeLoss": 0.0002249999999999995,
+          "absolutePressure": 273638.7434554973,
+          "gaugePressure": 172313.74345549734,
+          "pressureIncrease": 12313.743455497353,
+          "energy": 37.36403614440058,
+          "coupling": 57306543.13204131
+        },
+        {
+          "volume": 0.0048000000000000004,
+          "volumeLoss": 0.00019999999999999966,
+          "absolutePressure": 272213.5416666666,
+          "gaugePressure": 170888.54166666666,
+          "pressureIncrease": 10888.541666666648,
+          "energy": 33.07403859002831,
+          "coupling": 56711154.51388887
+        },
+        {
+          "volume": 0.004825,
+          "volumeLoss": 0.0001749999999999998,
+          "absolutePressure": 270803.10880829016,
+          "gaugePressure": 169478.10880829016,
+          "pressureIncrease": 9478.108808290144,
+          "energy": 28.819485987982304,
+          "coupling": 56124996.64420521
+        },
+        {
+          "volume": 0.00485,
+          "volumeLoss": 0.00014999999999999996,
+          "absolutePressure": 269407.21649484534,
+          "gaugePressure": 168082.21649484537,
+          "pressureIncrease": 8082.216494845359,
+          "energy": 24.600011979707297,
+          "coupling": 55547879.689658836
+        },
+        {
+          "volume": 0.004875000000000001,
+          "volumeLoss": 0.00012499999999999924,
+          "absolutePressure": 268025.641025641,
+          "gaugePressure": 166700.64102564097,
+          "pressureIncrease": 6700.641025640984,
+          "energy": 20.415255857472633,
+          "coupling": 54979618.67192635
+        },
+        {
+          "volume": 0.0049,
+          "volumeLoss": 0.00010000000000000026,
+          "absolutePressure": 266658.16326530615,
+          "gaugePressure": 165333.16326530612,
+          "pressureIncrease": 5333.163265306137,
+          "energy": 16.26486244875389,
+          "coupling": 54420033.31945024
+        },
+        {
+          "volume": 0.0049250000000000006,
+          "volumeLoss": 0.00007499999999999955,
+          "absolutePressure": 265304.5685279188,
+          "gaugePressure": 163979.56852791875,
+          "pressureIncrease": 3979.5685279187574,
+          "energy": 12.148482003554117,
+          "coupling": 53868947.92445051
+        },
+        {
+          "volume": 0.00495,
+          "volumeLoss": 0.0000499999999999997,
+          "absolutePressure": 263964.64646464644,
+          "gaugePressure": 162639.64646464644,
+          "pressureIncrease": 2639.6464646464487,
+          "energy": 8.06577008458127,
+          "coupling": 53326191.20497908
+        },
+        {
+          "volume": 0.004975,
+          "volumeLoss": 0.00002499999999999985,
+          "absolutePressure": 262638.19095477386,
+          "gaugePressure": 161313.19095477386,
+          "pressureIncrease": 1313.1909547738614,
+          "energy": 4.016387460188524,
+          "coupling": 52791596.17181384
+        },
+        {
+          "volume": 0.005,
+          "volumeLoss": 0,
+          "absolutePressure": 261325,
+          "gaugePressure": 160000,
+          "pressureIncrease": 0,
+          "energy": 0,
+          "coupling": 52265000
+        },
+        {
+          "volume": 0.005025000000000001,
+          "volumeLoss": -0.000025000000000000716,
+          "absolutePressure": 260024.8756218905,
+          "gaugePressure": 158699.8756218905,
+          "pressureIncrease": -1300.1243781094897,
+          "energy": -3.983721426861543,
+          "coupling": 51746243.90485382
+        },
+        {
+          "volume": 0.00505,
+          "volumeLoss": -0.0000499999999999997,
+          "absolutePressure": 258737.62376237626,
+          "gaugePressure": 157412.62376237626,
+          "pressureIncrease": -2587.376237623747,
+          "energy": -7.935101051020698,
+          "coupling": 51235173.02225272
+        },
+        {
+          "volume": 0.0050750000000000005,
+          "volumeLoss": -0.00007500000000000041,
+          "absolutePressure": 257463.0541871921,
+          "gaugePressure": 156138.0541871921,
+          "pressureIncrease": -3861.9458128079027,
+          "energy": -11.854458299647014,
+          "coupling": 50731636.29304277
+        },
+        {
+          "volume": 0.0051,
+          "volumeLoss": -0.00010000000000000026,
+          "absolutePressure": 256200.98039215684,
+          "gaugePressure": 154875.98039215684,
+          "pressureIncrease": -5124.019607843151,
+          "energy": -15.742107890870859,
+          "coupling": 50235486.351403296
+        },
+        {
+          "volume": 0.005125000000000001,
+          "volumeLoss": -0.00012500000000000098,
+          "absolutePressure": 254951.21951219506,
+          "gaugePressure": 153626.21951219506,
+          "pressureIncrease": -6373.780487804926,
+          "energy": -19.59835992589431,
+          "coupling": 49746579.41701366
+        },
+        {
+          "volume": 0.00515,
+          "volumeLoss": -0.00014999999999999996,
+          "absolutePressure": 253713.59223300972,
+          "gaugePressure": 152388.59223300972,
+          "pressureIncrease": -7611.407766990289,
+          "energy": -23.423519978857946,
+          "coupling": 49264775.19087567
+        },
+        {
+          "volume": 0.005175000000000001,
+          "volumeLoss": -0.00017500000000000068,
+          "absolutePressure": 252487.92270531398,
+          "gaugePressure": 151162.92270531398,
+          "pressureIncrease": -8837.077294686022,
+          "energy": -27.217889184534542,
+          "coupling": 48789936.754650034
+        },
+        {
+          "volume": 0.005200000000000001,
+          "volumeLoss": -0.00020000000000000052,
+          "absolutePressure": 251274.03846153844,
+          "gaugePressure": 149949.03846153844,
+          "pressureIncrease": -10050.961538461564,
+          "energy": -30.981764323906255,
+          "coupling": 48321930.47337277
+        },
+        {
+          "volume": 0.005225,
+          "volumeLoss": -0.0002249999999999995,
+          "absolutePressure": 250071.77033492824,
+          "gaugePressure": 148746.77033492824,
+          "pressureIncrease": -11253.229665071747,
+          "energy": -34.71543790769268,
+          "coupling": 47860625.90142167
+        },
+        {
+          "volume": 0.00525,
+          "volumeLoss": -0.0002500000000000002,
+          "absolutePressure": 248880.95238095237,
+          "gaugePressure": 147555.95238095237,
+          "pressureIncrease": -12444.047619047631,
+          "energy": -38.419198257884126,
+          "coupling": 47405895.69160997
+        },
+        {
+          "volume": 0.005275000000000001,
+          "volumeLoss": -0.00027500000000000094,
+          "absolutePressure": 247701.42180094784,
+          "gaugePressure": 146376.42180094784,
+          "pressureIncrease": -13623.578199052177,
+          "energy": -42.093329587337095,
+          "coupling": 46957615.50728868
+        },
+        {
+          "volume": 0.0053,
+          "volumeLoss": -0.0002999999999999999,
+          "absolutePressure": 246533.01886792452,
+          "gaugePressure": 145208.01886792452,
+          "pressureIncrease": -14791.981132075469,
+          "energy": -45.73811207748984,
+          "coupling": 46515663.937344246
+        },
+        {
+          "volume": 0.005325,
+          "volumeLoss": -0.00032499999999999977,
+          "absolutePressure": 245375.5868544601,
+          "gaugePressure": 144050.5868544601,
+          "pressureIncrease": -15949.413145539893,
+          "energy": -49.353821954249135,
+          "coupling": 46079922.413983114
+        },
+        {
+          "volume": 0.005350000000000001,
+          "volumeLoss": -0.0003500000000000005,
+          "absolutePressure": 244228.9719626168,
+          "gaugePressure": 142903.9719626168,
+          "pressureIncrease": -17096.0280373832,
+          "energy": -52.94073156209834,
+          "coupling": 45650275.1331994
+        },
+        {
+          "volume": 0.005375000000000001,
+          "volumeLoss": -0.0003750000000000012,
+          "absolutePressure": 243093.0232558139,
+          "gaugePressure": 141768.0232558139,
+          "pressureIncrease": -18231.9767441861,
+          "energy": -56.49910943647915,
+          "coupling": 45226608.97782583
+        },
+        {
+          "volume": 0.0054,
+          "volumeLoss": -0.0004000000000000002,
+          "absolutePressure": 241967.59259259258,
+          "gaugePressure": 140642.59259259258,
+          "pressureIncrease": -19357.407407407412,
+          "energy": -60.0292203744937,
+          "coupling": 44808813.4430727
+        },
+        {
+          "volume": 0.005425,
+          "volumeLoss": -0.00042500000000000003,
+          "absolutePressure": 240852.53456221198,
+          "gaugePressure": 139527.53456221198,
+          "pressureIncrease": -20472.465437788018,
+          "energy": -63.53132550397453,
+          "coupling": 44396780.564463034
+        },
+        {
+          "volume": 0.005450000000000001,
+          "volumeLoss": -0.00045000000000000075,
+          "absolutePressure": 239747.70642201832,
+          "gaugePressure": 138422.70642201832,
+          "pressureIncrease": -21577.293577981683,
+          "energy": -67.0056823509651,
+          "coupling": 43990404.84807675
+        },
+        {
+          "volume": 0.005475,
+          "volumeLoss": -0.00047499999999999973,
+          "absolutePressure": 238652.9680365297,
+          "gaugePressure": 137327.9680365297,
+          "pressureIncrease": -22672.03196347031,
+          "energy": -70.45254490565692,
+          "coupling": 43589583.20301913
+        },
+        {
+          "volume": 0.0055000000000000005,
+          "volumeLoss": -0.0005000000000000004,
+          "absolutePressure": 237568.1818181818,
+          "gaugePressure": 136243.1818181818,
+          "pressureIncrease": -23756.818181818202,
+          "energy": -73.87216368682603,
+          "coupling": 43194214.87603305
+        },
+        {
+          "volume": 0.005525,
+          "volumeLoss": -0.0005250000000000003,
+          "absolutePressure": 236493.21266968324,
+          "gaugePressure": 135168.21266968324,
+          "pressureIncrease": -24831.787330316754,
+          "energy": -77.2647858048054,
+          "coupling": 42804201.38817796
+        },
+        {
+          "volume": 0.00555,
+          "volumeLoss": -0.0005500000000000001,
+          "absolutePressure": 235427.92792792793,
+          "gaugePressure": 134102.92792792793,
+          "pressureIncrease": -25897.07207207208,
+          "energy": -80.63065502303874,
+          "coupling": 42419446.47350053
+        },
+        {
+          "volume": 0.005575,
+          "volumeLoss": -0.000575,
+          "absolutePressure": 234372.19730941704,
+          "gaugePressure": 133047.19730941704,
+          "pressureIncrease": -26952.802690582957,
+          "energy": -83.97001181824926,
+          "coupling": 42039856.01962637
+        },
+        {
+          "volume": 0.005600000000000001,
+          "volumeLoss": -0.0006000000000000007,
+          "absolutePressure": 233325.89285714284,
+          "gaugePressure": 132000.89285714284,
+          "pressureIncrease": -27999.10714285717,
+          "energy": -87.28309343926313,
+          "coupling": 41665338.01020407
+        },
+        {
+          "volume": 0.005625,
+          "volumeLoss": -0.0006249999999999997,
+          "absolutePressure": 232288.8888888889,
+          "gaugePressure": 130963.8888888889,
+          "pressureIncrease": -29036.111111111095,
+          "energy": -90.57013396452197,
+          "coupling": 41295802.469135806
+        },
+        {
+          "volume": 0.0056500000000000005,
+          "volumeLoss": -0.0006500000000000004,
+          "absolutePressure": 231261.06194690266,
+          "gaugePressure": 129936.06194690264,
+          "pressureIncrease": -30063.93805309736,
+          "energy": -93.83136435832216,
+          "coupling": 40931161.40653144
+        },
+        {
+          "volume": 0.005675,
+          "volumeLoss": -0.0006750000000000003,
+          "absolutePressure": 230242.29074889867,
+          "gaugePressure": 128917.29074889867,
+          "pressureIncrease": -31082.709251101332,
+          "energy": -97.06701252580939,
+          "coupling": 40571328.76632576
+        },
+        {
+          "volume": 0.005700000000000001,
+          "volumeLoss": -0.000700000000000001,
+          "absolutePressure": 229232.45614035084,
+          "gaugePressure": 127907.45614035084,
+          "pressureIncrease": -32092.54385964916,
+          "energy": -100.27730336676788,
+          "coupling": 40216220.37550014
+        },
+        {
+          "volume": 0.005725,
+          "volumeLoss": -0.000725,
+          "absolutePressure": 228231.44104803493,
+          "gaugePressure": 126906.44104803493,
+          "pressureIncrease": -33093.55895196506,
+          "energy": -103.46245882822993,
+          "coupling": 39865753.894853264
+        },
+        {
+          "volume": 0.005750000000000001,
+          "volumeLoss": -0.0007500000000000007,
+          "absolutePressure": 227239.1304347826,
+          "gaugePressure": 125914.13043478258,
+          "pressureIncrease": -34085.86956521742,
+          "energy": -106.62269795594183,
+          "coupling": 39519848.771266535
+        },
+        {
+          "volume": 0.005775000000000001,
+          "volumeLoss": -0.0007750000000000005,
+          "absolutePressure": 226255.41125541122,
+          "gaugePressure": 124930.41125541122,
+          "pressureIncrease": -35069.58874458877,
+          "energy": -109.75823694471012,
+          "coupling": 39178426.191413194
+        },
+        {
+          "volume": 0.0058000000000000005,
+          "volumeLoss": -0.0008000000000000004,
+          "absolutePressure": 225280.1724137931,
+          "gaugePressure": 123955.17241379309,
+          "pressureIncrease": -36044.82758620691,
+          "energy": -112.86928918766387,
+          "coupling": 38841409.036860876
+        },
+        {
+          "volume": 0.005825,
+          "volumeLoss": -0.0008250000000000002,
+          "absolutePressure": 224313.30472103006,
+          "gaugePressure": 122988.30472103004,
+          "pressureIncrease": -37011.69527896996,
+          "energy": -115.95606532445508,
+          "coupling": 38508721.84052018
+        },
+        {
+          "volume": 0.00585,
+          "volumeLoss": -0.0008500000000000001,
+          "absolutePressure": 223354.70085470084,
+          "gaugePressure": 122029.70085470084,
+          "pressureIncrease": -37970.29914529915,
+          "energy": -119.01877328842819,
+          "coupling": 38180290.744393304
+        },
+        {
+          "volume": 0.005875,
+          "volumeLoss": -0.0008749999999999999,
+          "absolutePressure": 222404.25531914894,
+          "gaugePressure": 121079.25531914894,
+          "pressureIncrease": -38920.744680851065,
+          "energy": -122.05761835278324,
+          "coupling": 37856043.45857854
+        },
+        {
+          "volume": 0.005900000000000001,
+          "volumeLoss": -0.0009000000000000006,
+          "absolutePressure": 221461.86440677964,
+          "gaugePressure": 120136.86440677964,
+          "pressureIncrease": -39863.135593220366,
+          "energy": -125.0728031757594,
+          "coupling": 37535909.22148807
+        },
+        {
+          "volume": 0.005925000000000001,
+          "volumeLoss": -0.0009250000000000005,
+          "absolutePressure": 220527.42616033752,
+          "gaugePressure": 119202.42616033753,
+          "pressureIncrease": -40797.573839662466,
+          "energy": -128.06452784486243,
+          "coupling": 37219818.761238396
+        },
+        {
+          "volume": 0.0059499999999999996,
+          "volumeLoss": -0.0009499999999999995,
+          "absolutePressure": 219600.84033613448,
+          "gaugePressure": 118275.84033613447,
+          "pressureIncrease": -41724.15966386553,
+          "energy": -131.03298992016215,
+          "coupling": 36907704.25817387
+        },
+        {
+          "volume": 0.005975,
+          "volumeLoss": -0.0009750000000000002,
+          "absolutePressure": 218682.00836820083,
+          "gaugePressure": 117357.00836820083,
+          "pressureIncrease": -42642.99163179917,
+          "energy": -133.97838447668173,
+          "coupling": 36599499.30848549
+        },
+        {
+          "volume": 0.006000000000000001,
+          "volumeLoss": -0.0010000000000000009,
+          "absolutePressure": 217770.8333333333,
+          "gaugePressure": 116445.8333333333,
+          "pressureIncrease": -43554.1666666667,
+          "energy": -136.90090414590108,
+          "coupling": 36295138.88888888
+        }
+      ]
+    },
+    {
+      "exponent": 1.2,
+      "states": [
+        {
+          "volume": 0.004,
+          "volumeLoss": 0.001,
+          "absolutePressure": 341564.6951011431,
+          "gaugePressure": 240239.6951011431,
+          "pressureIncrease": 80239.6951011431,
+          "energy": 196.84390202286193,
+          "coupling": 102469408.53034292
+        },
+        {
+          "volume": 0.004025,
+          "volumeLoss": 0.0009750000000000002,
+          "absolutePressure": 339020.4551701574,
+          "gaugePressure": 237695.45517015742,
+          "pressureIncrease": 77695.45517015741,
+          "energy": 190.86978529941769,
+          "coupling": 101074421.41718979
+        },
+        {
+          "volume": 0.004050000000000001,
+          "volumeLoss": 0.0009499999999999995,
+          "absolutePressure": 336510.745260205,
+          "gaugePressure": 235185.745260205,
+          "pressureIncrease": 75185.74526020499,
+          "energy": 184.95884151915197,
+          "coupling": 99706887.48450518
+        },
+        {
+          "volume": 0.0040750000000000005,
+          "volumeLoss": 0.0009249999999999996,
+          "absolutePressure": 334034.8878987314,
+          "gaugePressure": 232709.88789873137,
+          "pressureIncrease": 72709.88789873137,
+          "energy": 179.11021593665245,
+          "coupling": 98366101.95790862
+        },
+        {
+          "volume": 0.0041,
+          "volumeLoss": 0.0008999999999999998,
+          "absolutePressure": 331592.2229524595,
+          "gaugePressure": 230267.22295245947,
+          "pressureIncrease": 70267.22295245946,
+          "energy": 173.3230705254196,
+          "coupling": 97051382.3275491
+        },
+        {
+          "volume": 0.004125,
+          "volumeLoss": 0.0008749999999999999,
+          "absolutePressure": 329182.107081273,
+          "gaugePressure": 227857.107081273,
+          "pressureIncrease": 67857.10708127299,
+          "energy": 167.5965835512552,
+          "coupling": 95762067.51455213
+        },
+        {
+          "volume": 0.00415,
+          "volumeLoss": 0.0008500000000000001,
+          "absolutePressure": 326803.9132124842,
+          "gaugePressure": 225478.91321248419,
+          "pressureIncrease": 65478.91321248418,
+          "energy": 161.92994915904683,
+          "coupling": 94497517.0734894
+        },
+        {
+          "volume": 0.004175000000000001,
+          "volumeLoss": 0.0008249999999999993,
+          "absolutePressure": 324457.03003460827,
+          "gaugePressure": 223132.03003460827,
+          "pressureIncrease": 63132.03003460827,
+          "energy": 156.32237697244878,
+          "coupling": 93257110.42910895
+        },
+        {
+          "volume": 0.004200000000000001,
+          "volumeLoss": 0.0007999999999999995,
+          "absolutePressure": 322140.8615098088,
+          "gaugePressure": 220815.8615098088,
+          "pressureIncrease": 60815.8615098088,
+          "energy": 150.7730917059857,
+          "coupling": 92040246.14565964
+        },
+        {
+          "volume": 0.0042250000000000005,
+          "volumeLoss": 0.0007749999999999996,
+          "absolutePressure": 319854.82640421856,
+          "gaugePressure": 218529.82640421856,
+          "pressureIncrease": 58529.82640421855,
+          "energy": 145.28133278911758,
+          "coupling": 90846341.22723366
+        },
+        {
+          "volume": 0.00425,
+          "volumeLoss": 0.0007499999999999998,
+          "absolutePressure": 317598.35783538036,
+          "gaugePressure": 216273.35783538036,
+          "pressureIncrease": 56273.357835380375,
+          "energy": 139.84635400183333,
+          "coupling": 89674830.4476368
+        },
+        {
+          "volume": 0.004275,
+          "volumeLoss": 0.000725,
+          "absolutePressure": 315370.9028360866,
+          "gaugePressure": 214045.90283608658,
+          "pressureIncrease": 54045.90283608656,
+          "energy": 134.4674231213505,
+          "coupling": 88525165.70837517
+        },
+        {
+          "volume": 0.004300000000000001,
+          "volumeLoss": 0.0006999999999999992,
+          "absolutePressure": 313171.9219339312,
+          "gaugePressure": 211846.92193393118,
+          "pressureIncrease": 51846.921933931175,
+          "energy": 129.14382157952159,
+          "coupling": 87396815.42342263
+        },
+        {
+          "volume": 0.004325,
+          "volumeLoss": 0.0006750000000000003,
+          "absolutePressure": 311000.888745922,
+          "gaugePressure": 209675.888745922,
+          "pressureIncrease": 49675.888745922,
+          "energy": 123.87484413056298,
+          "coupling": 86289263.92950436
+        },
+        {
+          "volume": 0.004350000000000001,
+          "volumeLoss": 0.0006499999999999995,
+          "absolutePressure": 308857.289587528,
+          "gaugePressure": 207532.28958752798,
+          "pressureIncrease": 47532.289587527965,
+          "energy": 118.65979852873419,
+          "coupling": 85202010.92069736
+        },
+        {
+          "volume": 0.004375,
+          "volumeLoss": 0.0006249999999999997,
+          "absolutePressure": 306740.6230955712,
+          "gaugePressure": 205415.6230955712,
+          "pressureIncrease": 45415.6230955712,
+          "energy": 113.49800521562062,
+          "coupling": 84134570.90621379
+        },
+        {
+          "volume": 0.0044,
+          "volumeLoss": 0.0005999999999999998,
+          "absolutePressure": 304650.3998643942,
+          "gaugePressure": 203325.39986439422,
+          "pressureIncrease": 43325.3998643942,
+          "energy": 108.38879701667278,
+          "coupling": 83086472.69028933
+        },
+        {
+          "volume": 0.004425,
+          "volumeLoss": 0.000575,
+          "absolutePressure": 302586.1420947654,
+          "gaugePressure": 201261.14209476538,
+          "pressureIncrease": 41261.14209476538,
+          "energy": 103.33151884668422,
+          "coupling": 82057258.87315671
+        },
+        {
+          "volume": 0.00445,
+          "volumeLoss": 0.0005500000000000001,
+          "absolutePressure": 300547.38325500634,
+          "gaugePressure": 199222.38325500634,
+          "pressureIncrease": 39222.38325500635,
+          "energy": 98.32552742389102,
+          "coupling": 81046485.37213653
+        },
+        {
+          "volume": 0.004475,
+          "volumeLoss": 0.0005250000000000003,
+          "absolutePressure": 298533.6677538501,
+          "gaugePressure": 197208.66775385014,
+          "pressureIncrease": 37208.66775385014,
+          "energy": 93.37019099239653,
+          "coupling": 80053720.9619263
+        },
+        {
+          "volume": 0.0045000000000000005,
+          "volumeLoss": 0.0004999999999999996,
+          "absolutePressure": 296544.5506245614,
+          "gaugePressure": 195219.5506245614,
+          "pressureIncrease": 35219.5506245614,
+          "energy": 88.46488905263233,
+          "coupling": 79078546.83321635
+        },
+        {
+          "volume": 0.004525,
+          "volumeLoss": 0.00047499999999999973,
+          "absolutePressure": 294579.59721987095,
+          "gaugePressure": 193254.59721987095,
+          "pressureIncrease": 33254.597219870964,
+          "energy": 83.60901209958101,
+          "coupling": 78120556.16880554
+        },
+        {
+          "volume": 0.00455,
+          "volumeLoss": 0.0004499999999999999,
+          "absolutePressure": 292638.3829172964,
+          "gaugePressure": 191313.38291729637,
+          "pressureIncrease": 31313.382917296385,
+          "energy": 78.80196136849314,
+          "coupling": 77179353.73642981
+        },
+        {
+          "volume": 0.004575,
+          "volumeLoss": 0.00042500000000000003,
+          "absolutePressure": 290720.4928344414,
+          "gaugePressure": 189395.49283444142,
+          "pressureIncrease": 29395.49283444142,
+          "energy": 74.04314858784744,
+          "coupling": 76254555.4975584
+        },
+        {
+          "volume": 0.0046,
+          "volumeLoss": 0.0004000000000000002,
+          "absolutePressure": 288825.5215538829,
+          "gaugePressure": 187500.52155388292,
+          "pressureIncrease": 27500.52155388292,
+          "energy": 69.33199573930699,
+          "coupling": 75345788.23144771
+        },
+        {
+          "volume": 0.004625000000000001,
+          "volumeLoss": 0.00037499999999999947,
+          "absolutePressure": 286953.0728572729,
+          "gaugePressure": 185628.07285727293,
+          "pressureIncrease": 25628.07285727292,
+          "energy": 64.66793482443722,
+          "coupling": 74452689.1737789
+        },
+        {
+          "volume": 0.0046500000000000005,
+          "volumeLoss": 0.0003499999999999996,
+          "absolutePressure": 285102.75946829934,
+          "gaugePressure": 183777.75946829937,
+          "pressureIncrease": 23777.759468299362,
+          "energy": 60.050407637960845,
+          "coupling": 73574905.66923854
+        },
+        {
+          "volume": 0.004675,
+          "volumeLoss": 0.00032499999999999977,
+          "absolutePressure": 283274.2028041638,
+          "gaugePressure": 181949.20280416383,
+          "pressureIncrease": 21949.202804163822,
+          "energy": 55.478865547329825,
+          "coupling": 72712094.83743241
+        },
+        {
+          "volume": 0.0047,
+          "volumeLoss": 0.0002999999999999999,
+          "absolutePressure": 281467.0327352515,
+          "gaugePressure": 180142.03273525144,
+          "pressureIncrease": 20142.03273525145,
+          "energy": 50.95276927840916,
+          "coupling": 71863923.25155357
+        },
+        {
+          "volume": 0.004725,
+          "volumeLoss": 0.00027500000000000007,
+          "absolutePressure": 279680.88735268015,
+          "gaugePressure": 178355.88735268015,
+          "pressureIncrease": 18355.88735268016,
+          "energy": 46.47158870706865,
+          "coupling": 71030066.6292521
+        },
+        {
+          "volume": 0.004750000000000001,
+          "volumeLoss": 0.00024999999999999935,
+          "absolutePressure": 277915.41274343117,
+          "gaugePressure": 176590.41274343117,
+          "pressureIncrease": 16590.412743431163,
+          "energy": 42.03480265649108,
+          "coupling": 70210209.5351826
+        },
+        {
+          "volume": 0.004775000000000001,
+          "volumeLoss": 0.0002249999999999995,
+          "absolutePressure": 276170.26277277526,
+          "gaugePressure": 174845.26277277528,
+          "pressureIncrease": 14845.262772775282,
+          "energy": 37.64189870001064,
+          "coupling": 69404045.09472886
+        },
+        {
+          "volume": 0.0048000000000000004,
+          "volumeLoss": 0.00019999999999999966,
+          "absolutePressure": 274445.09887372085,
+          "gaugePressure": 173120.09887372085,
+          "pressureIncrease": 13120.098873720855,
+          "energy": 33.29237296930104,
+          "coupling": 68611274.7184302
+        },
+        {
+          "volume": 0.004825,
+          "volumeLoss": 0.0001749999999999998,
+          "absolutePressure": 272739.5898432225,
+          "gaugePressure": 171414.58984322252,
+          "pressureIncrease": 11414.589843222531,
+          "energy": 28.985729967743882,
+          "coupling": 67831607.83665636
+        },
+        {
+          "volume": 0.00485,
+          "volumeLoss": 0.00014999999999999996,
+          "absolutePressure": 271053.41164489934,
+          "gaugePressure": 169728.41164489934,
+          "pressureIncrease": 9728.41164489935,
+          "energy": 24.721482388809306,
+          "coupling": 67064761.644098796
+        },
+        {
+          "volume": 0.004875000000000001,
+          "volumeLoss": 0.00012499999999999924,
+          "absolutePressure": 269386.2472180221,
+          "gaugePressure": 168061.2472180221,
+          "pressureIncrease": 8061.24721802209,
+          "energy": 20.499150939289542,
+          "coupling": 66310460.853666976
+        },
+        {
+          "volume": 0.0049,
+          "volumeLoss": 0.00010000000000000026,
+          "absolutePressure": 267737.78629254014,
+          "gaugePressure": 166412.78629254014,
+          "pressureIncrease": 6412.786292540136,
+          "energy": 16.31826416723297,
+          "coupling": 65568437.459397584
+        },
+        {
+          "volume": 0.0049250000000000006,
+          "volumeLoss": 0.00007499999999999955,
+          "absolutePressure": 266107.7252099259,
+          "gaugePressure": 164782.72520992593,
+          "pressureIncrease": 4782.725209925936,
+          "energy": 12.178358294426843,
+          "coupling": 64838430.508002244
+        },
+        {
+          "volume": 0.00495,
+          "volumeLoss": 0.0000499999999999997,
+          "absolutePressure": 264495.76674962795,
+          "gaugePressure": 163170.76674962795,
+          "pressureIncrease": 3170.7667496279446,
+          "energy": 8.07897705329206,
+          "coupling": 64120185.87869768
+        },
+        {
+          "volume": 0.004975,
+          "volumeLoss": 0.00002499999999999985,
+          "absolutePressure": 262901.6199609264,
+          "gaugePressure": 161576.61996092641,
+          "pressureIncrease": 1576.6199609264254,
+          "energy": 4.019671528045052,
+          "coupling": 63413456.070977226
+        },
+        {
+          "volume": 0.005,
+          "volumeLoss": 0,
+          "absolutePressure": 261325,
+          "gaugePressure": 160000,
+          "pressureIncrease": 0,
+          "energy": 0,
+          "coupling": 62718000
+        },
+        {
+          "volume": 0.005025000000000001,
+          "volumeLoss": -0.000025000000000000716,
+          "absolutePressure": 259765.6279720151,
+          "gaugePressure": 158440.6279720151,
+          "pressureIncrease": -1559.3720279849047,
+          "energy": -3.980472203119726,
+          "coupling": 62033582.79928717
+        },
+        {
+          "volume": 0.00505,
+          "volumeLoss": -0.0000499999999999997,
+          "absolutePressure": 258223.23077806013,
+          "gaugePressure": 156898.23077806013,
+          "pressureIncrease": -3101.769221939878,
+          "energy": -7.9221728539823495,
+          "coupling": 61359975.630430125
+        },
+        {
+          "volume": 0.0050750000000000005,
+          "volumeLoss": -0.00007500000000000041,
+          "absolutePressure": 256697.5409667514,
+          "gaugePressure": 155372.5409667514,
+          "pressureIncrease": -4627.459033248604,
+          "energy": -11.825522968682758,
+          "coupling": 60696955.49952742
+        },
+        {
+          "volume": 0.0051,
+          "volumeLoss": -0.00010000000000000026,
+          "absolutePressure": 255188.29659034818,
+          "gaugePressure": 153863.29659034818,
+          "pressureIncrease": -6136.703409651817,
+          "energy": -15.690936946120996,
+          "coupling": 60044305.08008192
+        },
+        {
+          "volume": 0.005125000000000001,
+          "volumeLoss": -0.00012500000000000098,
+          "absolutePressure": 253695.24106521587,
+          "gaugePressure": 152370.24106521587,
+          "pressureIncrease": -7629.758934784126,
+          "energy": -19.518822703841874,
+          "coupling": 59401812.54209931
+        },
+        {
+          "volume": 0.00515,
+          "volumeLoss": -0.00014999999999999996,
+          "absolutePressure": 252218.12303648793,
+          "gaugePressure": 150893.12303648793,
+          "pressureIncrease": -9106.876963512073,
+          "energy": -23.30958181043594,
+          "coupling": 58769271.387142815
+        },
+        {
+          "volume": 0.005175000000000001,
+          "volumeLoss": -0.00017500000000000068,
+          "absolutePressure": 250756.6962467783,
+          "gaugePressure": 149431.6962467783,
+          "pressureIncrease": -10568.303753221713,
+          "energy": -27.06360961461091,
+          "coupling": 58146480.289108
+        },
+        {
+          "volume": 0.005200000000000001,
+          "volumeLoss": -0.00020000000000000052,
+          "absolutePressure": 249310.71940880665,
+          "gaugePressure": 147985.71940880665,
+          "pressureIncrease": -12014.28059119336,
+          "energy": -30.781295371026633,
+          "coupling": 57533242.94049383
+        },
+        {
+          "volume": 0.005225,
+          "volumeLoss": -0.0002249999999999995,
+          "absolutePressure": 247879.9560817992,
+          "gaugePressure": 146554.9560817992,
+          "pressureIncrease": -13445.043918200789,
+          "energy": -34.46302236299629,
+          "coupling": 56929367.90395388
+        },
+        {
+          "volume": 0.00525,
+          "volumeLoss": -0.0002500000000000002,
+          "absolutePressure": 246464.17455153744,
+          "gaugePressure": 145139.17455153744,
+          "pressureIncrease": -14860.825448462574,
+          "energy": -38.109168022142285,
+          "coupling": 56334668.46892284
+        },
+        {
+          "volume": 0.005275000000000001,
+          "volumeLoss": -0.00027500000000000094,
+          "absolutePressure": 245063.14771392994,
+          "gaugePressure": 143738.14771392994,
+          "pressureIncrease": -16261.852286070054,
+          "energy": -41.720104045096406,
+          "coupling": 55748962.51312149
+        },
+        {
+          "volume": 0.0053,
+          "volumeLoss": -0.0002999999999999999,
+          "absolutePressure": 243676.6529619874,
+          "gaugePressure": 142351.6529619874,
+          "pressureIncrease": -17648.347038012602,
+          "energy": -45.296196507334,
+          "coupling": 55172072.36875186
+        },
+        {
+          "volume": 0.005325,
+          "volumeLoss": -0.00032499999999999977,
+          "absolutePressure": 242304.4720760855,
+          "gaugePressure": 140979.4720760855,
+          "pressureIncrease": -19020.52792391449,
+          "energy": -48.837805974223606,
+          "coupling": 54603824.69320237
+        },
+        {
+          "volume": 0.005350000000000001,
+          "volumeLoss": -0.0003500000000000005,
+          "absolutePressure": 240946.39111740666,
+          "gaugePressure": 139621.39111740666,
+          "pressureIncrease": -20378.608882593355,
+          "energy": -52.34528760937162,
+          "coupling": 54044050.34409121
+        },
+        {
+          "volume": 0.005375000000000001,
+          "volumeLoss": -0.0003750000000000012,
+          "absolutePressure": 239602.2003244523,
+          "gaugePressure": 138277.2003244523,
+          "pressureIncrease": -21722.799675547692,
+          "energy": -55.81899128034282,
+          "coupling": 53492584.25848236
+        },
+        {
+          "volume": 0.0054,
+          "volumeLoss": -0.0004000000000000002,
+          "absolutePressure": 238271.69401252476,
+          "gaugePressure": 136946.69401252476,
+          "pressureIncrease": -23053.305987475225,
+          "energy": -59.259261661830855,
+          "coupling": 52949265.33611661
+        },
+        {
+          "volume": 0.005425,
+          "volumeLoss": -0.00042500000000000003,
+          "absolutePressure": 236954.67047607916,
+          "gaugePressure": 135629.67047607916,
+          "pressureIncrease": -24370.329523920827,
+          "energy": -62.66643833635236,
+          "coupling": 52413936.32650598
+        },
+        {
+          "volume": 0.005450000000000001,
+          "volumeLoss": -0.00045000000000000075,
+          "absolutePressure": 235650.93189385196,
+          "gaugePressure": 134325.93189385196,
+          "pressureIncrease": -25674.06810614805,
+          "energy": -66.04085589253343,
+          "coupling": 51886443.719747216
+        },
+        {
+          "volume": 0.005475,
+          "volumeLoss": -0.00047499999999999973,
+          "absolutePressure": 234360.28423667367,
+          "gaugePressure": 133035.28423667367,
+          "pressureIncrease": -26964.71576332633,
+          "energy": -69.38284402105862,
+          "coupling": 51366637.640914775
+        },
+        {
+          "volume": 0.0055000000000000005,
+          "volumeLoss": -0.0005000000000000004,
+          "absolutePressure": 233082.5371778782,
+          "gaugePressure": 131757.5371778782,
+          "pressureIncrease": -28242.462822121815,
+          "energy": -72.69272760834937,
+          "coupling": 50854371.747900695
+        },
+        {
+          "volume": 0.005525,
+          "volumeLoss": -0.0005250000000000003,
+          "absolutePressure": 231817.5040062251,
+          "gaugePressure": 130492.50400622509,
+          "pressureIncrease": -29507.495993774904,
+          "energy": -75.97082682803142,
+          "coupling": 50349503.13257377
+        },
+        {
+          "volume": 0.00555,
+          "volumeLoss": -0.0005500000000000001,
+          "absolutePressure": 230565.00154125196,
+          "gaugePressure": 129240.00154125194,
+          "pressureIncrease": -30759.998458748054,
+          "energy": -79.21745723025846,
+          "coupling": 49851892.22513555
+        },
+        {
+          "volume": 0.005575,
+          "volumeLoss": -0.000575,
+          "absolutePressure": 229324.85005097947,
+          "gaugePressure": 127999.85005097947,
+          "pressureIncrease": -32000.14994902054,
+          "energy": -82.43292982894754,
+          "coupling": 49361402.70155611
+        },
+        {
+          "volume": 0.005600000000000001,
+          "volumeLoss": -0.0006000000000000007,
+          "absolutePressure": 228096.8731718933,
+          "gaugePressure": 126771.8731718933,
+          "pressureIncrease": -33228.1268281067,
+          "energy": -85.61755118698672,
+          "coupling": 48877901.39397713
+        },
+        {
+          "volume": 0.005625,
+          "volumeLoss": -0.0006249999999999997,
+          "absolutePressure": 226880.89783113002,
+          "gaugePressure": 125555.89783113002,
+          "pressureIncrease": -34444.10216886998,
+          "energy": -88.77162349946855,
+          "coupling": 48401258.203974396
+        },
+        {
+          "volume": 0.0056500000000000005,
+          "volumeLoss": -0.0006500000000000004,
+          "absolutePressure": 225676.7541707962,
+          "gaugePressure": 124351.75417079618,
+          "pressureIncrease": -35648.24582920382,
+          "energy": -91.89544467500754,
+          "coupling": 47931346.018576175
+        },
+        {
+          "volume": 0.005675,
+          "volumeLoss": -0.0006750000000000003,
+          "absolutePressure": 224484.2754743546,
+          "gaugePressure": 123159.2754743546,
+          "pressureIncrease": -36840.724525645404,
+          "energy": -94.98930841518826,
+          "coupling": 47468040.628938414
+        },
+        {
+          "volume": 0.005700000000000001,
+          "volumeLoss": -0.000700000000000001,
+          "absolutePressure": 223303.29809501045,
+          "gaugePressure": 121978.29809501045,
+          "pressureIncrease": -38021.701904989546,
+          "energy": -98.05350429220118,
+          "coupling": 47011220.65158114
+        },
+        {
+          "volume": 0.005725,
+          "volumeLoss": -0.000725,
+          "absolutePressure": 222133.6613860363,
+          "gaugePressure": 120808.66138603631,
+          "pressureIncrease": -39191.338613963686,
+          "energy": -101.08831782471066,
+          "coupling": 46560767.45209494
+        },
+        {
+          "volume": 0.005750000000000001,
+          "volumeLoss": -0.0007500000000000007,
+          "absolutePressure": 220975.20763297367,
+          "gaugePressure": 119650.20763297367,
+          "pressureIncrease": -40349.792367026326,
+          "energy": -104.0940305520061,
+          "coupling": 46116565.07122928
+        },
+        {
+          "volume": 0.005775000000000001,
+          "volumeLoss": -0.0007750000000000005,
+          "absolutePressure": 219827.7819876544,
+          "gaugePressure": 118502.7819876544,
+          "pressureIncrease": -41497.21801234561,
+          "energy": -107.070920106479,
+          "coupling": 45678500.153278835
+        },
+        {
+          "volume": 0.0058000000000000005,
+          "volumeLoss": -0.0008000000000000004,
+          "absolutePressure": 218691.23240398362,
+          "gaugePressure": 117366.23240398362,
+          "pressureIncrease": -42633.76759601638,
+          "energy": -110.01926028447492,
+          "coupling": 45246461.87668626
+        },
+        {
+          "volume": 0.005825,
+          "volumeLoss": -0.0008250000000000002,
+          "absolutePressure": 217565.4095754314,
+          "gaugePressure": 116240.4095754314,
+          "pressureIncrease": -43759.590424568596,
+          "energy": -112.93932111556009,
+          "coupling": 44820341.88678415
+        },
+        {
+          "volume": 0.00585,
+          "volumeLoss": -0.0008500000000000001,
+          "absolutePressure": 216450.16687417962,
+          "gaugePressure": 115125.16687417962,
+          "pressureIncrease": -44874.83312582039,
+          "energy": -115.83136893024636,
+          "coupling": 44400034.230600946
+        },
+        {
+          "volume": 0.005875,
+          "volumeLoss": -0.0008749999999999999,
+          "absolutePressure": 215345.3602918735,
+          "gaugePressure": 114020.36029187353,
+          "pressureIncrease": -45979.63970812647,
+          "energy": -118.69566642621531,
+          "coupling": 43985435.29365927
+        },
+        {
+          "volume": 0.005900000000000001,
+          "volumeLoss": -0.0009000000000000006,
+          "absolutePressure": 214250.84838192945,
+          "gaugePressure": 112925.84838192945,
+          "pressureIncrease": -47074.15161807055,
+          "energy": -121.53247273308054,
+          "coupling": 43576443.73869751
+        },
+        {
+          "volume": 0.005925000000000001,
+          "volumeLoss": -0.0009250000000000005,
+          "absolutePressure": 213166.492203351,
+          "gaugePressure": 111841.49220335101,
+          "pressureIncrease": -48158.50779664899,
+          "energy": -124.34204347572589,
+          "coupling": 43172960.44624829
+        },
+        {
+          "volume": 0.0059499999999999996,
+          "volumeLoss": -0.0009499999999999995,
+          "absolutePressure": 212092.1552660081,
+          "gaugePressure": 110767.15526600812,
+          "pressureIncrease": -49232.84473399188,
+          "energy": -127.12463083625894,
+          "coupling": 42774888.45701004
+        },
+        {
+          "volume": 0.005975,
+          "volumeLoss": -0.0009750000000000002,
+          "absolutePressure": 211027.7034773351,
+          "gaugePressure": 109702.7034773351,
+          "pressureIncrease": -50297.296522664896,
+          "energy": -129.8804836146136,
+          "coupling": 42382132.91595014
+        },
+        {
+          "volume": 0.006000000000000001,
+          "volumeLoss": -0.0010000000000000009,
+          "absolutePressure": 209973.0050904054,
+          "gaugePressure": 108648.00509040542,
+          "pressureIncrease": -51351.99490959458,
+          "energy": -132.60984728783626,
+          "coupling": 41994601.01808107
+        }
+      ]
+    },
+    {
+      "exponent": 1.4,
+      "states": [
+        {
+          "volume": 0.004,
+          "volumeLoss": 0.001,
+          "absolutePressure": 357153.5549665339,
+          "gaugePressure": 255828.5549665339,
+          "pressureIncrease": 95828.5549665339,
+          "energy": 203.6480496653392,
+          "coupling": 125003744.23828685
+        },
+        {
+          "volume": 0.004025,
+          "volumeLoss": 0.0009750000000000002,
+          "absolutePressure": 354051.7346757619,
+          "gaugePressure": 252726.7346757619,
+          "pressureIncrease": 92726.73467576188,
+          "energy": 197.2912051748537,
+          "coupling": 123148429.45243892
+        },
+        {
+          "volume": 0.004050000000000001,
+          "volumeLoss": 0.0009499999999999995,
+          "absolutePressure": 350995.8104169852,
+          "gaugePressure": 249670.8104169852,
+          "pressureIncrease": 89670.8104169852,
+          "energy": 191.01133047197567,
+          "coupling": 121331885.0824146
+        },
+        {
+          "volume": 0.0040750000000000005,
+          "volumeLoss": 0.0009249999999999996,
+          "absolutePressure": 347984.8260281917,
+          "gaugePressure": 246659.82602819175,
+          "pressureIncrease": 86659.82602819175,
+          "energy": 184.8072901622038,
+          "coupling": 119553069.06490019
+        },
+        {
+          "volume": 0.0041,
+          "volumeLoss": 0.0008999999999999998,
+          "absolutePressure": 345017.8509690766,
+          "gaugePressure": 243692.8509690766,
+          "pressureIncrease": 83692.8509690766,
+          "energy": 178.67797243303568,
+          "coupling": 117810973.5016359
+        },
+        {
+          "volume": 0.004125,
+          "volumeLoss": 0.0008749999999999999,
+          "absolutePressure": 342093.9794835358,
+          "gaugePressure": 240768.9794835358,
+          "pressureIncrease": 80768.97948353582,
+          "energy": 172.6222884239634,
+          "coupling": 116104623.33986668
+        },
+        {
+          "volume": 0.00415,
+          "volumeLoss": 0.0008500000000000001,
+          "absolutePressure": 339212.3297944097,
+          "gaugePressure": 237887.32979440966,
+          "pressureIncrease": 77887.32979440966,
+          "energy": 166.63917161700013,
+          "coupling": 114433075.1113671
+        },
+        {
+          "volume": 0.004175000000000001,
+          "volumeLoss": 0.0008249999999999993,
+          "absolutePressure": 336372.04332904896,
+          "gaugePressure": 235047.04332904896,
+          "pressureIncrease": 75047.04332904897,
+          "energy": 160.72757724694924,
+          "coupling": 112795415.72710621
+        },
+        {
+          "volume": 0.004200000000000001,
+          "volumeLoss": 0.0007999999999999995,
+          "absolutePressure": 333572.2839743489,
+          "gaugePressure": 232247.28397434892,
+          "pressureIncrease": 72247.28397434892,
+          "energy": 154.88648173066417,
+          "coupling": 111190761.32478295
+        },
+        {
+          "volume": 0.0042250000000000005,
+          "volumeLoss": 0.0007749999999999996,
+          "absolutePressure": 330812.23735995986,
+          "gaugePressure": 229487.23735995986,
+          "pressureIncrease": 69487.23735995985,
+          "energy": 149.11488211457643,
+          "coupling": 109618256.1666139
+        },
+        {
+          "volume": 0.00425,
+          "volumeLoss": 0.0007499999999999998,
+          "absolutePressure": 328091.1101684522,
+          "gaugePressure": 226766.1101684522,
+          "pressureIncrease": 66766.11016845221,
+          "energy": 143.411795539805,
+          "coupling": 108077071.58490188
+        },
+        {
+          "volume": 0.004275,
+          "volumeLoss": 0.000725,
+          "absolutePressure": 325408.12947126885,
+          "gaugePressure": 224083.12947126888,
+          "pressureIncrease": 64083.12947126889,
+          "energy": 137.7762587241864,
+          "coupling": 106566404.9730471
+        },
+        {
+          "volume": 0.004300000000000001,
+          "volumeLoss": 0.0006999999999999992,
+          "absolutePressure": 322762.5420893576,
+          "gaugePressure": 221437.54208935762,
+          "pressureIncrease": 61437.54208935761,
+          "energy": 132.20732746059502,
+          "coupling": 105085478.81979083
+        },
+        {
+          "volume": 0.004325,
+          "volumeLoss": 0.0006750000000000003,
+          "absolutePressure": 320153.61397742905,
+          "gaugePressure": 218828.61397742905,
+          "pressureIncrease": 58828.61397742906,
+          "energy": 126.7040761309515,
+          "coupling": 103633539.78460132
+        },
+        {
+          "volume": 0.004350000000000001,
+          "volumeLoss": 0.0006499999999999995,
+          "absolutePressure": 317580.6296308355,
+          "gaugePressure": 216255.6296308355,
+          "pressureIncrease": 56255.6296308355,
+          "energy": 121.2655972353366,
+          "coupling": 102209857.8122229
+        },
+        {
+          "volume": 0.004375,
+          "volumeLoss": 0.0006249999999999997,
+          "absolutePressure": 315042.89151411795,
+          "gaugePressure": 213717.89151411795,
+          "pressureIncrease": 53717.89151411793,
+          "energy": 115.8910009356651,
+          "coupling": 100813725.28451774
+        },
+        {
+          "volume": 0.0044,
+          "volumeLoss": 0.0005999999999999998,
+          "absolutePressure": 312539.7195103073,
+          "gaugePressure": 211214.7195103073,
+          "pressureIncrease": 51214.71951030729,
+          "energy": 110.57941461338025,
+          "coupling": 99444456.20782503
+        },
+        {
+          "volume": 0.004425,
+          "volumeLoss": 0.000575,
+          "absolutePressure": 310070.4503901169,
+          "gaugePressure": 208745.45039011686,
+          "pressureIncrease": 48745.45039011686,
+          "energy": 105.32998244066789,
+          "coupling": 98101385.43416128
+        },
+        {
+          "volume": 0.00445,
+          "volumeLoss": 0.0005500000000000001,
+          "absolutePressure": 307634.4373001978,
+          "gaugePressure": 206309.43730019778,
+          "pressureIncrease": 46309.437300197766,
+          "energy": 100.14186496470012,
+          "coupling": 96783867.91466896
+        },
+        {
+          "volume": 0.004475,
+          "volumeLoss": 0.0005250000000000003,
+          "absolutePressure": 305231.04926967085,
+          "gaugePressure": 203906.04926967082,
+          "pressureIncrease": 43906.04926967083,
+          "energy": 95.01423870444218,
+          "coupling": 95491277.98380764
+        },
+        {
+          "volume": 0.0045000000000000005,
+          "volumeLoss": 0.0004999999999999996,
+          "absolutePressure": 302859.6707341845,
+          "gaugePressure": 201534.6707341845,
+          "pressureIncrease": 41534.670734184496,
+          "energy": 89.94629575957596,
+          "coupling": 94223008.67285739
+        },
+        {
+          "volume": 0.004525,
+          "volumeLoss": 0.00047499999999999973,
+          "absolutePressure": 300519.70107678324,
+          "gaugePressure": 199194.70107678324,
+          "pressureIncrease": 39194.70107678324,
+          "energy": 84.93724343111064,
+          "coupling": 92978471.05138044
+        },
+        {
+          "volume": 0.00455,
+          "volumeLoss": 0.0004499999999999999,
+          "absolutePressure": 298210.5541849026,
+          "gaugePressure": 196885.5541849026,
+          "pressureIncrease": 36885.554184902605,
+          "energy": 79.98630385326729,
+          "coupling": 91757093.59535463
+        },
+        {
+          "volume": 0.004575,
+          "volumeLoss": 0.00042500000000000003,
+          "absolutePressure": 295931.65802284115,
+          "gaugePressure": 194606.65802284115,
+          "pressureIncrease": 34606.65802284114,
+          "energy": 75.09271363624555,
+          "coupling": 90558321.58076014
+        },
+        {
+          "volume": 0.0046,
+          "volumeLoss": 0.0004000000000000002,
+          "absolutePressure": 293682.45421908615,
+          "gaugePressure": 192357.45421908615,
+          "pressureIncrease": 32357.454219086143,
+          "energy": 70.25572351949057,
+          "coupling": 89381616.501461
+        },
+        {
+          "volume": 0.004625000000000001,
+          "volumeLoss": 0.00037499999999999947,
+          "absolutePressure": 291462.3976679003,
+          "gaugePressure": 190137.39766790028,
+          "pressureIncrease": 30137.39766790027,
+          "energy": 65.47459803509736,
+          "coupling": 88226455.51028332
+        },
+        {
+          "volume": 0.0046500000000000005,
+          "volumeLoss": 0.0003499999999999996,
+          "absolutePressure": 289270.9561446025,
+          "gaugePressure": 187945.95614460247,
+          "pressureIncrease": 27945.956144602475,
+          "energy": 60.74861518100414,
+          "coupling": 87092330.8822459
+        },
+        {
+          "volume": 0.004675,
+          "volumeLoss": 0.00032499999999999977,
+          "absolutePressure": 287107.60993400094,
+          "gaugePressure": 185782.60993400094,
+          "pressureIncrease": 25782.60993400094,
+          "energy": 56.077066103636234,
+          "coupling": 85978749.49895215
+        },
+        {
+          "volume": 0.0047,
+          "volumeLoss": 0.0002999999999999999,
+          "absolutePressure": 284971.8514714623,
+          "gaugePressure": 183646.8514714623,
+          "pressureIncrease": 23646.851471462294,
+          "energy": 51.45925478968206,
+          "coupling": 84885232.35320152
+        },
+        {
+          "volume": 0.004725,
+          "volumeLoss": 0.00027500000000000007,
+          "absolutePressure": 282863.1849961218,
+          "gaugePressure": 181538.1849961218,
+          "pressureIncrease": 21538.18499612179,
+          "energy": 46.89449776668857,
+          "coupling": 83811314.07292497
+        },
+        {
+          "volume": 0.004750000000000001,
+          "volumeLoss": 0.00024999999999999935,
+          "absolutePressure": 280781.12621576246,
+          "gaugePressure": 179456.12621576246,
+          "pressureIncrease": 19456.12621576246,
+          "energy": 42.38212381217977,
+          "coupling": 82756542.46359313
+        },
+        {
+          "volume": 0.004775000000000001,
+          "volumeLoss": 0.0002249999999999995,
+          "absolutePressure": 278725.201982912,
+          "gaugePressure": 177400.20198291203,
+          "pressureIncrease": 17400.201982912036,
+          "energy": 37.921473671012876,
+          "coupling": 81720478.06828833
+        },
+        {
+          "volume": 0.0048000000000000004,
+          "volumeLoss": 0.00019999999999999966,
+          "absolutePressure": 276694.94998172455,
+          "gaugePressure": 175369.94998172455,
+          "pressureIncrease": 15369.949981724538,
+          "energy": 33.511899780694726,
+          "coupling": 80702693.74466965
+        },
+        {
+          "volume": 0.004825,
+          "volumeLoss": 0.0001749999999999998,
+          "absolutePressure": 274689.91842523497,
+          "gaugePressure": 173364.918425235,
+          "pressureIncrease": 13364.918425234991,
+          "energy": 29.15276600439725,
+          "coupling": 79702774.25809926
+        },
+        {
+          "volume": 0.00485,
+          "volumeLoss": 0.00014999999999999996,
+          "absolutePressure": 272709.66576259094,
+          "gaugePressure": 171384.66576259094,
+          "pressureIncrease": 11384.665762590957,
+          "energy": 24.843447371415376,
+          "coupling": 78720315.89023243
+        },
+        {
+          "volume": 0.004875000000000001,
+          "volumeLoss": 0.00012499999999999924,
+          "absolutePressure": 270753.7603958829,
+          "gaugePressure": 169428.76039588288,
+          "pressureIncrease": 9428.760395882875,
+          "energy": 20.583329824823135,
+          "coupling": 77754926.06240737
+        },
+        {
+          "volume": 0.0049,
+          "volumeLoss": 0.00010000000000000026,
+          "absolutePressure": 268821.78040621174,
+          "gaugePressure": 167496.78040621176,
+          "pressureIncrease": 7496.780406211771,
+          "energy": 16.371809976094013,
+          "coupling": 76806222.97320335
+        },
+        {
+          "volume": 0.0049250000000000006,
+          "volumeLoss": 0.00007499999999999955,
+          "absolutePressure": 266913.31328864605,
+          "gaugePressure": 165588.31328864608,
+          "pressureIncrease": 5588.313288646078,
+          "energy": 12.208294866455194,
+          "coupling": 75873835.24956435
+        },
+        {
+          "volume": 0.00495,
+          "volumeLoss": 0.0000499999999999997,
+          "absolutePressure": 265027.9556957385,
+          "gaugePressure": 163702.9556957385,
+          "pressureIncrease": 3702.9556957384852,
+          "energy": 8.092201734763991,
+          "coupling": 74957401.61091593
+        },
+        {
+          "volume": 0.004975,
+          "volumeLoss": 0.00002499999999999985,
+          "absolutePressure": 263165.3131892815,
+          "gaugePressure": 161840.31318928153,
+          "pressureIncrease": 1840.3131892815195,
+          "energy": 4.022957791689016,
+          "coupling": 74056570.54572745
+        },
+        {
+          "volume": 0.005,
+          "volumeLoss": 0,
+          "absolutePressure": 261325,
+          "gaugePressure": 160000,
+          "pressureIncrease": 0,
+          "energy": 0,
+          "coupling": 73171000
+        },
+        {
+          "volume": 0.005025000000000001,
+          "volumeLoss": -0.000025000000000000716,
+          "absolutePressure": 259506.63879488697,
+          "gaugePressure": 158181.63879488697,
+          "pressureIncrease": -1818.3612051130285,
+          "energy": -3.9772251392318867,
+          "coupling": 72300357.07718243
+        },
+        {
+          "volume": 0.00505,
+          "volumeLoss": -0.0000499999999999997,
+          "absolutePressure": 257709.86045190427,
+          "gaugePressure": 156384.86045190427,
+          "pressureIncrease": -3615.139548095723,
+          "energy": -7.909261794708735,
+          "coupling": 71444317.74904276
+        },
+        {
+          "volume": 0.0050750000000000005,
+          "volumeLoss": -0.00007500000000000041,
+          "absolutePressure": 255934.30384177814,
+          "gaugePressure": 154609.30384177814,
+          "pressureIncrease": -5390.696158221863,
+          "energy": -11.796645007439572,
+          "coupling": 70602566.57704222
+        },
+        {
+          "volume": 0.0051,
+          "volumeLoss": -0.00010000000000000026,
+          "absolutePressure": 254179.61561663516,
+          "gaugePressure": 152854.61561663516,
+          "pressureIncrease": -7145.38438336484,
+          "energy": -15.639900887901513,
+          "coupling": 69774796.44378218
+        },
+        {
+          "volume": 0.005125000000000001,
+          "volumeLoss": -0.00012500000000000098,
+          "absolutePressure": 252445.45000522895,
+          "gaugePressure": 151120.45000522895,
+          "pressureIncrease": -8879.549994771041,
+          "energy": -19.439546808003257,
+          "coupling": 68960708.2941113
+        },
+        {
+          "volume": 0.00515,
+          "volumeLoss": -0.00014999999999999996,
+          "absolutePressure": 250731.4686145238,
+          "gaugePressure": 149406.4686145238,
+          "pressureIncrease": -10593.531385476206,
+          "energy": -23.196091588006198,
+          "coupling": 68160010.88550161
+        },
+        {
+          "volume": 0.005175000000000001,
+          "volumeLoss": -0.00017500000000000068,
+          "absolutePressure": 249037.34023740556,
+          "gaugePressure": 147712.34023740556,
+          "pressureIncrease": -12287.659762594445,
+          "energy": -26.91003567856516,
+          "coupling": 67372420.54731743
+        },
+        {
+          "volume": 0.005200000000000001,
+          "volumeLoss": -0.00020000000000000052,
+          "absolutePressure": 247362.74066630515,
+          "gaugePressure": 146037.74066630515,
+          "pressureIncrease": -13962.259333694858,
+          "energy": -30.581871338032766,
+          "coupling": 66597660.94862061
+        },
+        {
+          "volume": 0.005225,
+          "volumeLoss": -0.0002249999999999995,
+          "absolutePressure": 245707.3525125222,
+          "gaugePressure": 144382.3525125222,
+          "pressureIncrease": -15617.64748747781,
+          "energy": -34.212082805179264,
+          "coupling": 65835462.874168634
+        },
+        {
+          "volume": 0.00525,
+          "volumeLoss": -0.0002500000000000002,
+          "absolutePressure": 244070.8650310504,
+          "gaugePressure": 142745.8650310504,
+          "pressureIncrease": -17254.134968949595,
+          "energy": -37.80114646746331,
+          "coupling": 65085564.0082801
+        },
+        {
+          "volume": 0.005275000000000001,
+          "volumeLoss": -0.00027500000000000094,
+          "absolutePressure": 242452.9739507117,
+          "gaugePressure": 141127.9739507117,
+          "pressureIncrease": -18872.02604928832,
+          "energy": -41.349531024989076,
+          "coupling": 64347708.72625522
+        },
+        {
+          "volume": 0.0053,
+          "volumeLoss": -0.0002999999999999999,
+          "absolutePressure": 240853.38130941262,
+          "gaugePressure": 139528.38130941262,
+          "pressureIncrease": -20471.618690587384,
+          "energy": -44.857697650282866,
+          "coupling": 63621647.893052384
+        },
+        {
+          "volume": 0.005325,
+          "volumeLoss": -0.00032499999999999977,
+          "absolutePressure": 239271.79529434643,
+          "gaugePressure": 137946.79529434643,
+          "pressureIncrease": -22053.20470565356,
+          "energy": -48.32610014401323,
+          "coupling": 62907138.668936156
+        },
+        {
+          "volume": 0.005350000000000001,
+          "volumeLoss": -0.0003500000000000005,
+          "absolutePressure": 237707.9300869701,
+          "gaugePressure": 136382.9300869701,
+          "pressureIncrease": -23617.069913029896,
+          "energy": -51.75518508677453,
+          "coupling": 62203944.32182394
+        },
+        {
+          "volume": 0.005375000000000001,
+          "volumeLoss": -0.0003750000000000012,
+          "absolutePressure": 236161.50571259126,
+          "gaugePressure": 134836.50571259126,
+          "pressureIncrease": -25163.49428740875,
+          "energy": -55.14539198705431,
+          "coupling": 61511834.04607026
+        },
+        {
+          "volume": 0.0054,
+          "volumeLoss": -0.0004000000000000002,
+          "absolutePressure": 234632.24789440772,
+          "gaugePressure": 133307.24789440772,
+          "pressureIncrease": -26692.752105592284,
+          "energy": -58.49715342549576,
+          "coupling": 60830582.787439026
+        },
+        {
+          "volume": 0.005425,
+          "volumeLoss": -0.00042500000000000003,
+          "absolutePressure": 233119.88791184765,
+          "gaugePressure": 131794.88791184765,
+          "pressureIncrease": -28205.112088152353,
+          "energy": -61.8108951955663,
+          "coupling": 60159971.07402519
+        },
+        {
+          "volume": 0.005450000000000001,
+          "volumeLoss": -0.00045000000000000075,
+          "absolutePressure": 231624.1624630653,
+          "gaugePressure": 130299.16246306528,
+          "pressureIncrease": -29700.837536934716,
+          "energy": -65.08703644073505,
+          "coupling": 59499784.852897495
+        },
+        {
+          "volume": 0.005475,
+          "volumeLoss": -0.00047499999999999973,
+          "absolutePressure": 230144.81353145104,
+          "gaugePressure": 128819.81353145104,
+          "pressureIncrease": -31180.186468548953,
+          "energy": -68.32598978826394,
+          "coupling": 58849815.33224318
+        },
+        {
+          "volume": 0.0055000000000000005,
+          "volumeLoss": -0.0005000000000000004,
+          "absolutePressure": 228681.5882560209,
+          "gaugePressure": 127356.58825602093,
+          "pressureIncrease": -32643.411743979075,
+          "energy": -71.52816147971205,
+          "coupling": 58209858.82880532
+        },
+        {
+          "volume": 0.005525,
+          "volumeLoss": -0.0005250000000000003,
+          "absolutePressure": 227234.23880555702,
+          "gaugePressure": 125909.23880555702,
+          "pressureIncrease": -34090.761194442974,
+          "energy": -74.69395149824336,
+          "coupling": 57579716.62041263
+        },
+        {
+          "volume": 0.00555,
+          "volumeLoss": -0.0005500000000000001,
+          "absolutePressure": 225802.5222563721,
+          "gaugePressure": 124477.52225637209,
+          "pressureIncrease": -35522.477743627904,
+          "energy": -77.8237536928371,
+          "coupling": 56959194.80340917
+        },
+        {
+          "volume": 0.005575,
+          "volumeLoss": -0.000575,
+          "absolutePressure": 224386.20047357964,
+          "gaugePressure": 123061.20047357964,
+          "pressureIncrease": -36938.799526420364,
+          "energy": -80.9179558994838,
+          "coupling": 56348104.15480026
+        },
+        {
+          "volume": 0.005600000000000001,
+          "volumeLoss": -0.0006000000000000007,
+          "absolutePressure": 222985.03999575303,
+          "gaugePressure": 121660.03999575303,
+          "pressureIncrease": -38339.960004246976,
+          "energy": -83.97694005945725,
+          "coupling": 55746259.99893825
+        },
+        {
+          "volume": 0.005625,
+          "volumeLoss": -0.0006249999999999997,
+          "absolutePressure": 221598.81192286278,
+          "gaugePressure": 120273.81192286278,
+          "pressureIncrease": -39726.18807713722,
+          "energy": -87.0010823347425,
+          "coupling": 55153482.07857917
+        },
+        {
+          "volume": 0.0056500000000000005,
+          "volumeLoss": -0.0006500000000000004,
+          "absolutePressure": 220227.2918073837,
+          "gaugePressure": 118902.2918073837,
+          "pressureIncrease": -41097.70819261629,
+          "energy": -89.99075322070478,
+          "coupling": 54569594.43014816
+        },
+        {
+          "volume": 0.005675,
+          "volumeLoss": -0.0006750000000000003,
+          "absolutePressure": 218870.25954847076,
+          "gaugePressure": 117545.25954847076,
+          "pressureIncrease": -42454.740451529244,
+          "energy": -92.94631765607107,
+          "coupling": 53994425.263058856
+        },
+        {
+          "volume": 0.005700000000000001,
+          "volumeLoss": -0.000700000000000001,
+          "absolutePressure": 217527.49928910122,
+          "gaugePressure": 116202.49928910122,
+          "pressureIncrease": -43797.50071089877,
+          "energy": -95.86813513030694,
+          "coupling": 53427806.84293713
+        },
+        {
+          "volume": 0.005725,
+          "volumeLoss": -0.000725,
+          "absolutePressure": 216198.79931609047,
+          "gaugePressure": 114873.79931609047,
+          "pressureIncrease": -45126.20068390953,
+          "energy": -98.75655978845512,
+          "coupling": 52869575.37860727
+        },
+        {
+          "volume": 0.005750000000000001,
+          "volumeLoss": -0.0007500000000000007,
+          "absolutePressure": 214883.9519628861,
+          "gaugePressure": 113558.95196288609,
+          "pressureIncrease": -46441.04803711391,
+          "energy": -101.61194053351207,
+          "coupling": 52319570.91270269
+        },
+        {
+          "volume": 0.005775000000000001,
+          "volumeLoss": -0.0007750000000000005,
+          "absolutePressure": 213582.75351505415,
+          "gaugePressure": 112257.75351505415,
+          "pressureIncrease": -47742.24648494585,
+          "energy": -104.43462112640537,
+          "coupling": 51777637.2157707
+        },
+        {
+          "volume": 0.0058000000000000005,
+          "volumeLoss": -0.0008000000000000004,
+          "absolutePressure": 212295.0041183694,
+          "gaugePressure": 110970.0041183694,
+          "pressureIncrease": -49029.9958816306,
+          "energy": -107.2249402836436,
+          "coupling": 51243621.683744326
+        },
+        {
+          "volume": 0.005825,
+          "volumeLoss": -0.0008250000000000002,
+          "absolutePressure": 211020.50768942843,
+          "gaugePressure": 109695.50768942843,
+          "pressureIncrease": -50304.49231057157,
+          "energy": -109.98323177269846,
+          "coupling": 50717375.23866091
+        },
+        {
+          "volume": 0.00585,
+          "volumeLoss": -0.0008500000000000001,
+          "absolutePressure": 209759.07182870538,
+          "gaugePressure": 108434.07182870539,
+          "pressureIncrease": -51565.92817129461,
+          "energy": -112.70982450518372,
+          "coupling": 50198752.232510686
+        },
+        {
+          "volume": 0.005875,
+          "volumeLoss": -0.0008749999999999999,
+          "absolutePressure": 208510.50773597346,
+          "gaugePressure": 107185.50773597344,
+          "pressureIncrease": -52814.49226402656,
+          "energy": -115.40504262789005,
+          "coupling": 49687610.35410431
+        },
+        {
+          "volume": 0.005900000000000001,
+          "volumeLoss": -0.0009000000000000006,
+          "absolutePressure": 207274.63012801798,
+          "gaugePressure": 105949.63012801799,
+          "pressureIncrease": -54050.36987198201,
+          "energy": -118.0692056117343,
+          "coupling": 49183810.53885171
+        },
+        {
+          "volume": 0.005925000000000001,
+          "volumeLoss": -0.0009250000000000005,
+          "absolutePressure": 206051.2571585702,
+          "gaugePressure": 104726.2571585702,
+          "pressureIncrease": -55273.74284142981,
+          "energy": -120.70262833867898,
+          "coupling": 48687216.881349914
+        },
+        {
+          "volume": 0.0059499999999999996,
+          "volumeLoss": -0.0009499999999999995,
+          "absolutePressure": 204840.2103403914,
+          "gaugePressure": 103515.21034039141,
+          "pressureIncrease": -56484.789659608585,
+          "energy": -123.30562118667804,
+          "coupling": 48197696.55068034
+        },
+        {
+          "volume": 0.005975,
+          "volumeLoss": -0.0009750000000000002,
+          "absolutePressure": 203641.31446944264,
+          "gaugePressure": 102316.31446944263,
+          "pressureIncrease": -57683.68553055737,
+          "energy": -125.87849011270063,
+          "coupling": 47715119.70832128
+        },
+        {
+          "volume": 0.006000000000000001,
+          "volumeLoss": -0.0010000000000000009,
+          "absolutePressure": 202454.3975510744,
+          "gaugePressure": 101129.39755107439,
+          "pressureIncrease": -58870.60244892561,
+          "energy": -128.4215367338837,
+          "coupling": 47239359.42858402
+        }
+      ]
+    }
+  ],
+  "cases": [
+    {
+      "segments": 16,
+      "initialGaugePressure": 80000,
+      "exponent": 1,
+      "difference": 2.0929438737660178e-15,
+      "stability": {
+        "classification": "positive-with-refinement-margin",
+        "scope": "Fixed-bead finite-dimensional axisymmetric tangent only",
+        "steps": [
+          1e-7,
+          5e-8
+        ],
+        "differenceInf": 0.01540016071521677,
+        "asymmetryInf": [
+          0.015677337826801793,
+          0.006190823411746964
+        ],
+        "matrixInf": 241706809.65522176,
+        "unshiftedPositiveDefinite": [
+          true,
+          true
+        ],
+        "eigenvalueLowerBound": 7337.670682067866,
+        "conditionBound": 32940.53659915753,
+        "errorEstimate": 0.031077498542018564
+      },
+      "results": {
+        "finite-difference": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 6.644465065002182e-7,
+            "maxForcePerArea": 0.000038403721253418926
+          },
+          "iterations": 5,
+          "gas": {
+            "volume": 0.0047335103047116776,
+            "volumeLoss": -0.00008825100848439647,
+            "absolutePressure": 177944.39806120103,
+            "gaugePressure": 76619.39806120103,
+            "pressureIncrease": -3380.6019387989686,
+            "energy": -6.909974133128701,
+            "coupling": 37592481.39463801
+          },
+          "compressiveSegments": 0
+        },
+        "analytic-banded": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 6.564531666106887e-7,
+            "maxForcePerArea": 0.00003794172168837008
+          },
+          "iterations": 5,
+          "gas": {
+            "volume": 0.004733510304711654,
+            "volumeLoss": -0.00008825100848437305,
+            "absolutePressure": 177944.3980612019,
+            "gaugePressure": 76619.39806120191,
+            "pressureIncrease": -3380.6019387980878,
+            "energy": -6.909974133126906,
+            "coupling": 37592481.39463838
+          },
+          "compressiveSegments": 0
+        }
+      }
+    },
+    {
+      "segments": 16,
+      "initialGaugePressure": 80000,
+      "exponent": 1.4,
+      "difference": 2.2343238370581275e-15,
+      "stability": {
+        "classification": "positive-with-refinement-margin",
+        "scope": "Fixed-bead finite-dimensional axisymmetric tangent only",
+        "steps": [
+          1e-7,
+          5e-8
+        ],
+        "differenceInf": 0.01926592628842627,
+        "asymmetryInf": [
+          0.015132571083086077,
+          0.004170955105109897
+        ],
+        "matrixInf": 241739503.00091714,
+        "unshiftedPositiveDefinite": [
+          true,
+          true
+        ],
+        "eigenvalueLowerBound": 7232.364038492903,
+        "conditionBound": 33424.686826368794,
+        "errorEstimate": 0.03439849737151235
+      },
+      "results": {
+        "finite-difference": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 4.970190560767867e-7,
+            "maxForcePerArea": 0.000028726738872851665
+          },
+          "iterations": 5,
+          "gas": {
+            "volume": 0.004732063602953988,
+            "volumeLoss": -0.00008680430672670676,
+            "absolutePressure": 176685.46715554484,
+            "gaugePressure": 75360.46715554483,
+            "pressureIncrease": -4639.532844455176,
+            "energy": -6.741487597755994,
+            "coupling": 52273104.24639024
+          },
+          "compressiveSegments": 0
+        },
+        "analytic-banded": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 4.884209487154795e-7,
+            "maxForcePerArea": 0.00002822978491917699
+          },
+          "iterations": 5,
+          "gas": {
+            "volume": 0.004732063602953965,
+            "volumeLoss": -0.0000868043067266842,
+            "absolutePressure": 176685.467155546,
+            "gaugePressure": 75360.46715554601,
+            "pressureIncrease": -4639.532844453997,
+            "energy": -6.741487597754295,
+            "coupling": 52273104.24639083
+          },
+          "compressiveSegments": 0
+        }
+      }
+    },
+    {
+      "segments": 16,
+      "initialGaugePressure": 160000,
+      "exponent": 1,
+      "difference": 1.0408340855860843e-17,
+      "stability": {
+        "classification": "positive-with-refinement-margin",
+        "scope": "Fixed-bead finite-dimensional axisymmetric tangent only",
+        "steps": [
+          1e-7,
+          5e-8
+        ],
+        "differenceInf": 0.015593583411828149,
+        "asymmetryInf": [
+          0.0150755846489119,
+          0.0076318033097777516
+        ],
+        "matrixInf": 241399043.77361962,
+        "unshiftedPositiveDefinite": [
+          true,
+          true
+        ],
+        "eigenvalueLowerBound": 13412.159427395156,
+        "conditionBound": 17998.521795121767,
+        "errorEstimate": 0.03066916806074005
+      },
+      "results": {
+        "finite-difference": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 3.6286017689861456e-10,
+            "maxForcePerArea": 1.94930387636455e-8
+          },
+          "iterations": 5,
+          "gas": {
+            "volume": 0.004819638902464566,
+            "volumeLoss": -0.00017437960623728488,
+            "absolutePressure": 251869.98655974912,
+            "gaugePressure": 150544.98655974912,
+            "pressureIncrease": -9455.01344025088,
+            "energy": -27.066230053490827,
+            "coupling": 52259099.00240724
+          },
+          "compressiveSegments": 0
+        },
+        "analytic-banded": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 2.639012395066378e-10,
+            "maxForcePerArea": 1.4176912813759439e-8
+          },
+          "iterations": 5,
+          "gas": {
+            "volume": 0.004819638902464566,
+            "volumeLoss": -0.00017437960623728488,
+            "absolutePressure": 251869.98655974912,
+            "gaugePressure": 150544.98655974912,
+            "pressureIncrease": -9455.01344025088,
+            "energy": -27.066230053490827,
+            "coupling": 52259099.00240724
+          },
+          "compressiveSegments": 0
+        }
+      }
+    },
+    {
+      "segments": 16,
+      "initialGaugePressure": 160000,
+      "exponent": 1.4,
+      "difference": 8.673617379884035e-18,
+      "stability": {
+        "classification": "positive-with-refinement-margin",
+        "scope": "Fixed-bead finite-dimensional axisymmetric tangent only",
+        "steps": [
+          1e-7,
+          5e-8
+        ],
+        "differenceInf": 0.016710340057215944,
+        "asymmetryInf": [
+          0.01578512881678762,
+          0.005254330051684519
+        ],
+        "matrixInf": 241451960.90228593,
+        "unshiftedPositiveDefinite": [
+          true,
+          true
+        ],
+        "eigenvalueLowerBound": 13137.611748765297,
+        "conditionBound": 18378.679894005705,
+        "errorEstimate": 0.032495468874003564
+      },
+      "results": {
+        "finite-difference": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 2.841109364468456e-10,
+            "maxForcePerArea": 1.4674690316450549e-8
+          },
+          "iterations": 5,
+          "gas": {
+            "volume": 0.004815630066323673,
+            "volumeLoss": -0.0001703707700963916,
+            "absolutePressure": 248473.76484669594,
+            "gaugePressure": 147148.76484669594,
+            "pressureIncrease": -12851.23515330406,
+            "energy": -26.148813965501166,
+            "coupling": 72236294.31546816
+          },
+          "compressiveSegments": 0
+        },
+        "analytic-banded": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 3.825655841816481e-10,
+            "maxForcePerArea": 1.9759997780472663e-8
+          },
+          "iterations": 5,
+          "gas": {
+            "volume": 0.004815630066323673,
+            "volumeLoss": -0.0001703707700963916,
+            "absolutePressure": 248473.76484669594,
+            "gaugePressure": 147148.76484669594,
+            "pressureIncrease": -12851.23515330406,
+            "energy": -26.148813965501166,
+            "coupling": 72236294.31546816
+          },
+          "compressiveSegments": 0
+        }
+      }
+    },
+    {
+      "segments": 16,
+      "initialGaugePressure": 240000,
+      "exponent": 1,
+      "difference": 8.673617379884035e-18,
+      "stability": {
+        "classification": "positive-with-refinement-margin",
+        "scope": "Fixed-bead finite-dimensional axisymmetric tangent only",
+        "steps": [
+          1e-7,
+          5e-8
+        ],
+        "differenceInf": 0.015685722589296347,
+        "asymmetryInf": [
+          0.014982787810367881,
+          0.0072759557915560436
+        ],
+        "matrixInf": 241103789.42334628,
+        "unshiftedPositiveDefinite": [
+          true,
+          true
+        ],
+        "eigenvalueLowerBound": 19085.585525924867,
+        "conditionBound": 12632.768803233383,
+        "errorEstimate": 0.03066851039966423
+      },
+      "results": {
+        "finite-difference": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 3.518586873605907e-10,
+            "maxForcePerArea": 1.8489796095840792e-8
+          },
+          "iterations": 5,
+          "gas": {
+            "volume": 0.0049050859980637965,
+            "volumeLoss": -0.00025982670183651545,
+            "absolutePressure": 323244.71577269887,
+            "gaugePressure": 221919.71577269884,
+            "pressureIncrease": -18080.284227301163,
+            "energy": -59.966929577655435,
+            "coupling": 65899907.95274425
+          },
+          "compressiveSegments": 0
+        },
+        "analytic-banded": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 3.6036776538388665e-10,
+            "maxForcePerArea": 1.9359145111587004e-8
+          },
+          "iterations": 5,
+          "gas": {
+            "volume": 0.004905085998063795,
+            "volumeLoss": -0.0002598267018365137,
+            "absolutePressure": 323244.715772699,
+            "gaugePressure": 221919.71577269895,
+            "pressureIncrease": -18080.284227301046,
+            "energy": -59.966929577655044,
+            "coupling": 65899907.9527443
+          },
+          "compressiveSegments": 0
+        }
+      }
+    },
+    {
+      "segments": 16,
+      "initialGaugePressure": 240000,
+      "exponent": 1.4,
+      "difference": 1.5612511283791264e-17,
+      "stability": {
+        "classification": "positive-with-refinement-margin",
+        "scope": "Fixed-bead finite-dimensional axisymmetric tangent only",
+        "steps": [
+          1e-7,
+          5e-8
+        ],
+        "differenceInf": 0.01253795358206844,
+        "asymmetryInf": [
+          0.015659510316254455,
+          0.005506990972207859
+        ],
+        "matrixInf": 241179546.40239054,
+        "unshiftedPositiveDefinite": [
+          true,
+          true
+        ],
+        "eigenvalueLowerBound": 18594.19869088185,
+        "conditionBound": 12970.687815692709,
+        "errorEstimate": 0.028197463898322894
+      },
+      "results": {
+        "finite-difference": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 5.292612555352254e-10,
+            "maxForcePerArea": 2.781211050857533e-8
+          },
+          "iterations": 5,
+          "gas": {
+            "volume": 0.004897482816977924,
+            "volumeLoss": -0.00025222352075064333,
+            "absolutePressure": 316971.31031884847,
+            "gaugePressure": 215646.31031884847,
+            "pressureIncrease": -24353.689681151525,
+            "energy": -57.39741056803825,
+            "coupling": 90609778.74348469
+          },
+          "compressiveSegments": 0
+        },
+        "analytic-banded": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 2.865562386375151e-10,
+            "maxForcePerArea": 1.5393951233414775e-8
+          },
+          "iterations": 5,
+          "gas": {
+            "volume": 0.004897482816977925,
+            "volumeLoss": -0.0002522235207506442,
+            "absolutePressure": 316971.31031884835,
+            "gaugePressure": 215646.31031884838,
+            "pressureIncrease": -24353.689681151613,
+            "energy": -57.39741056803843,
+            "coupling": 90609778.74348463
+          },
+          "compressiveSegments": 0
+        }
+      }
+    },
+    {
+      "segments": 32,
+      "initialGaugePressure": 80000,
+      "exponent": 1,
+      "difference": 1.0408340855860843e-17,
+      "stability": {
+        "classification": "positive-with-refinement-margin",
+        "scope": "Fixed-bead finite-dimensional axisymmetric tangent only",
+        "steps": [
+          1e-7,
+          5e-8
+        ],
+        "differenceInf": 0.09065396499045164,
+        "asymmetryInf": [
+          0.12892451280549722,
+          0.031830636210088414
+        ],
+        "matrixInf": 493820806.14125556,
+        "unshiftedPositiveDefinite": [
+          true,
+          true
+        ],
+        "eigenvalueLowerBound": 3667.0430208439175,
+        "conditionBound": 134664.57942661655,
+        "errorEstimate": 0.21957847779594886
+      },
+      "results": {
+        "finite-difference": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 4.890790920114323e-10,
+            "maxForcePerArea": 4.974593379387393e-8
+          },
+          "iterations": 5,
+          "gas": {
+            "volume": 0.004787047862129139,
+            "volumeLoss": -0.00009028189076587968,
+            "absolutePressure": 177905.27988969343,
+            "gaugePressure": 76580.27988969343,
+            "pressureIncrease": -3419.7201103065795,
+            "energy": -7.0672021572612636,
+            "coupling": 37163881.58495795
+          },
+          "compressiveSegments": 0
+        },
+        "analytic-banded": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 7.947645256498125e-10,
+            "maxForcePerArea": 8.121865906547556e-8
+          },
+          "iterations": 5,
+          "gas": {
+            "volume": 0.004787047862129139,
+            "volumeLoss": -0.00009028189076587968,
+            "absolutePressure": 177905.27988969343,
+            "gaugePressure": 76580.27988969343,
+            "pressureIncrease": -3419.7201103065795,
+            "energy": -7.0672021572612636,
+            "coupling": 37163881.58495795
+          },
+          "compressiveSegments": 0
+        }
+      }
+    },
+    {
+      "segments": 32,
+      "initialGaugePressure": 80000,
+      "exponent": 1.4,
+      "difference": 1.0408340855860843e-17,
+      "stability": {
+        "classification": "positive-with-refinement-margin",
+        "scope": "Fixed-bead finite-dimensional axisymmetric tangent only",
+        "steps": [
+          1e-7,
+          5e-8
+        ],
+        "differenceInf": 0.08717708249173484,
+        "asymmetryInf": [
+          0.1267179126807605,
+          0.030842029410450778
+        ],
+        "matrixInf": 493848287.74706024,
+        "unshiftedPositiveDefinite": [
+          true,
+          true
+        ],
+        "eigenvalueLowerBound": 3614.075200460849,
+        "conditionBound": 136645.82510183717,
+        "errorEstimate": 0.21389499517249533
+      },
+      "results": {
+        "finite-difference": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 5.551061145717044e-10,
+            "maxForcePerArea": 5.6727461794671654e-8
+          },
+          "iterations": 5,
+          "gas": {
+            "volume": 0.004785551607439427,
+            "volumeLoss": -0.00008878563607616751,
+            "absolutePressure": 176632.80660465988,
+            "gaugePressure": 75307.80660465988,
+            "pressureIncrease": -4692.193395340123,
+            "energy": -6.892990884521117,
+            "coupling": 51673443.21647332
+          },
+          "compressiveSegments": 0
+        },
+        "analytic-banded": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 6.379266705716819e-10,
+            "maxForcePerArea": 6.519106866725514e-8
+          },
+          "iterations": 5,
+          "gas": {
+            "volume": 0.004785551607439428,
+            "volumeLoss": -0.00008878563607616838,
+            "absolutePressure": 176632.80660465983,
+            "gaugePressure": 75307.80660465983,
+            "pressureIncrease": -4692.193395340168,
+            "energy": -6.8929908845211845,
+            "coupling": 51673443.21647329
+          },
+          "compressiveSegments": 0
+        }
+      }
+    },
+    {
+      "segments": 32,
+      "initialGaugePressure": 160000,
+      "exponent": 1,
+      "difference": 1.3877787807814457e-17,
+      "stability": {
+        "classification": "positive-with-refinement-margin",
+        "scope": "Fixed-bead finite-dimensional axisymmetric tangent only",
+        "steps": [
+          1e-7,
+          5e-8
+        ],
+        "differenceInf": 0.08977811237605238,
+        "asymmetryInf": [
+          0.12191069755726858,
+          0.02894823669521429
+        ],
+        "matrixInf": 493126322.7255808,
+        "unshiftedPositiveDefinite": [
+          true,
+          true
+        ],
+        "eigenvalueLowerBound": 6687.067086737319,
+        "conditionBound": 73743.28929697961,
+        "errorEstimate": 0.21168880993332095
+      },
+      "results": {
+        "finite-difference": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 8.332986671996841e-10,
+            "maxForcePerArea": 8.920560436664384e-8
+          },
+          "iterations": 5,
+          "gas": {
+            "volume": 0.0048751133971983215,
+            "volumeLoss": -0.00017834742583506223,
+            "absolutePressure": 251764.885750528,
+            "gaugePressure": 150439.885750528,
+            "pressureIncrease": -9560.114249472024,
+            "energy": -27.672486945268396,
+            "coupling": 51642877.86520304
+          },
+          "compressiveSegments": 0
+        },
+        "analytic-banded": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 7.371589936715245e-10,
+            "maxForcePerArea": 7.891373901479852e-8
+          },
+          "iterations": 5,
+          "gas": {
+            "volume": 0.004875113397198321,
+            "volumeLoss": -0.00017834742583506136,
+            "absolutePressure": 251764.88575052802,
+            "gaugePressure": 150439.88575052802,
+            "pressureIncrease": -9560.114249471979,
+            "energy": -27.672486945268265,
+            "coupling": 51642877.86520305
+          },
+          "compressiveSegments": 0
+        }
+      }
+    },
+    {
+      "segments": 32,
+      "initialGaugePressure": 160000,
+      "exponent": 1.4,
+      "difference": 6.938893903907228e-18,
+      "stability": {
+        "classification": "positive-with-refinement-margin",
+        "scope": "Fixed-bead finite-dimensional axisymmetric tangent only",
+        "steps": [
+          1e-7,
+          5e-8
+        ],
+        "differenceInf": 0.08900344182620756,
+        "asymmetryInf": [
+          0.12272495340221212,
+          0.03201802980584034
+        ],
+        "matrixInf": 493181904.95072746,
+        "unshiftedPositiveDefinite": [
+          true,
+          true
+        ],
+        "eigenvalueLowerBound": 6549.092633138358,
+        "conditionBound": 75305.37932159194,
+        "errorEstimate": 0.21172839522841969
+      },
+      "results": {
+        "finite-difference": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 5.966866214008065e-10,
+            "maxForcePerArea": 6.31309948211356e-8
+          },
+          "iterations": 5,
+          "gas": {
+            "volume": 0.004870969441850797,
+            "volumeLoss": -0.00017420347048753733,
+            "absolutePressure": 248334.97055157757,
+            "gaugePressure": 147009.97055157757,
+            "pressureIncrease": -12990.02944842243,
+            "energy": -26.724619769980073,
+            "coupling": 71375721.59354518
+          },
+          "compressiveSegments": 0
+        },
+        "analytic-banded": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 8.431350761331689e-10,
+            "maxForcePerArea": 8.920588164004864e-8
+          },
+          "iterations": 5,
+          "gas": {
+            "volume": 0.004870969441850797,
+            "volumeLoss": -0.00017420347048753733,
+            "absolutePressure": 248334.97055157757,
+            "gaugePressure": 147009.97055157757,
+            "pressureIncrease": -12990.02944842243,
+            "energy": -26.724619769980073,
+            "coupling": 71375721.59354518
+          },
+          "compressiveSegments": 0
+        }
+      }
+    },
+    {
+      "segments": 32,
+      "initialGaugePressure": 240000,
+      "exponent": 1,
+      "difference": 1.734723475976807e-17,
+      "stability": {
+        "classification": "positive-with-refinement-margin",
+        "scope": "Fixed-bead finite-dimensional axisymmetric tangent only",
+        "steps": [
+          1e-7,
+          5e-8
+        ],
+        "differenceInf": 0.08784644911520445,
+        "asymmetryInf": [
+          0.11829889705495589,
+          0.02995917486077815
+        ],
+        "matrixInf": 492436524.0562201,
+        "unshiftedPositiveDefinite": [
+          true,
+          true
+        ],
+        "eigenvalueLowerBound": 9506.75376051892,
+        "conditionBound": 51798.59881311796,
+        "errorEstimate": 0.20614534617016034
+      },
+      "results": {
+        "finite-difference": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 4.657821332811011e-10,
+            "maxForcePerArea": 4.928095986954351e-8
+          },
+          "iterations": 5,
+          "gas": {
+            "volume": 0.004962477110531313,
+            "volumeLoss": -0.0002657111391680539,
+            "absolutePressure": 323049.075989375,
+            "gaugePressure": 221724.07598937504,
+            "pressureIncrease": -18275.924010624956,
+            "energy": -61.298080228942624,
+            "coupling": 65098350.842526585
+          },
+          "compressiveSegments": 0
+        },
+        "analytic-banded": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 6.731382204984567e-10,
+            "maxForcePerArea": 6.979355478290069e-8
+          },
+          "iterations": 5,
+          "gas": {
+            "volume": 0.004962477110531313,
+            "volumeLoss": -0.0002657111391680539,
+            "absolutePressure": 323049.075989375,
+            "gaugePressure": 221724.07598937504,
+            "pressureIncrease": -18275.924010624956,
+            "energy": -61.298080228942624,
+            "coupling": 65098350.842526585
+          },
+          "compressiveSegments": 0
+        }
+      }
+    },
+    {
+      "segments": 32,
+      "initialGaugePressure": 240000,
+      "exponent": 1.4,
+      "difference": 1.3877787807814457e-17,
+      "stability": {
+        "classification": "positive-with-refinement-margin",
+        "scope": "Fixed-bead finite-dimensional axisymmetric tangent only",
+        "steps": [
+          1e-7,
+          5e-8
+        ],
+        "differenceInf": 0.08805992903307924,
+        "asymmetryInf": [
+          0.11704158916654706,
+          0.028790619733626954
+        ],
+        "matrixInf": 492527177.05165106,
+        "unshiftedPositiveDefinite": [
+          true,
+          true
+        ],
+        "eigenvalueLowerBound": 9259.944558874087,
+        "conditionBound": 53188.99847835992,
+        "errorEstimate": 0.2051015181996263
+      },
+      "results": {
+        "finite-difference": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 8.309910610167201e-10,
+            "maxForcePerArea": 8.616034326237483e-8
+          },
+          "iterations": 5,
+          "gas": {
+            "volume": 0.004954620292552721,
+            "volumeLoss": -0.0002578543211894614,
+            "absolutePressure": 316717.4996858919,
+            "gaugePressure": 215392.4996858919,
+            "pressureIncrease": -24607.500314108085,
+            "energy": -58.64464646868901,
+            "coupling": 89493134.3632385
+          },
+          "compressiveSegments": 0
+        },
+        "analytic-banded": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 6.04657985086247e-10,
+            "maxForcePerArea": 6.63911272372925e-8
+          },
+          "iterations": 5,
+          "gas": {
+            "volume": 0.004954620292552719,
+            "volumeLoss": -0.00025785432118945965,
+            "absolutePressure": 316717.4996858921,
+            "gaugePressure": 215392.49968589208,
+            "pressureIncrease": -24607.500314107932,
+            "energy": -58.64464646868865,
+            "coupling": 89493134.36323857
+          },
+          "compressiveSegments": 0
+        }
+      }
+    },
+    {
+      "segments": 64,
+      "initialGaugePressure": 80000,
+      "exponent": 1,
+      "difference": 1.3877787807814457e-17,
+      "stability": {
+        "classification": "positive-with-refinement-margin",
+        "scope": "Fixed-bead finite-dimensional axisymmetric tangent only",
+        "steps": [
+          1e-7,
+          5e-8
+        ],
+        "differenceInf": 0.6707027624968305,
+        "asymmetryInf": [
+          1.0326950204710101,
+          0.25070495898989975
+        ],
+        "matrixInf": 995563160.22073,
+        "unshiftedPositiveDefinite": [
+          true,
+          true
+        ],
+        "eigenvalueLowerBound": 1833.353637593291,
+        "conditionBound": 543028.4369619171,
+        "errorEstimate": 1.7033977829678406
+      },
+      "results": {
+        "finite-difference": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 1.7442123239220435e-9,
+            "maxForcePerArea": 3.6131117177560405e-7
+          },
+          "iterations": 8,
+          "gas": {
+            "volume": 0.004800500338010599,
+            "volumeLoss": -0.0000907950405232387,
+            "absolutePressure": 177895.48024921108,
+            "gaugePressure": 76570.48024921108,
+            "pressureIncrease": -3429.5197507889247,
+            "energy": -7.106920593609996,
+            "coupling": 37057695.59906618
+          },
+          "compressiveSegments": 0
+        },
+        "analytic-banded": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 1.6627592845026508e-9,
+            "maxForcePerArea": 3.4602642991932334e-7
+          },
+          "iterations": 7,
+          "gas": {
+            "volume": 0.004800500338010599,
+            "volumeLoss": -0.0000907950405232387,
+            "absolutePressure": 177895.48024921108,
+            "gaugePressure": 76570.48024921108,
+            "pressureIncrease": -3429.5197507889247,
+            "energy": -7.106920593609996,
+            "coupling": 37057695.59906618
+          },
+          "compressiveSegments": 0
+        }
+      }
+    },
+    {
+      "segments": 64,
+      "initialGaugePressure": 80000,
+      "exponent": 1.4,
+      "difference": 1.0408340855860843e-17,
+      "stability": {
+        "classification": "positive-with-refinement-margin",
+        "scope": "Fixed-bead finite-dimensional axisymmetric tangent only",
+        "steps": [
+          1e-7,
+          5e-8
+        ],
+        "differenceInf": 0.670853506314188,
+        "asymmetryInf": [
+          1.0335207624887062,
+          0.25146401521442385
+        ],
+        "matrixInf": 995603532.1048689,
+        "unshiftedPositiveDefinite": [
+          true,
+          true
+        ],
+        "eigenvalueLowerBound": 1806.8302328534155,
+        "conditionBound": 551022.1790635934,
+        "errorEstimate": 1.7043742688028942
+      },
+      "results": {
+        "finite-difference": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 1.224908861849695e-9,
+            "maxForcePerArea": 2.5169403376359694e-7
+          },
+          "iterations": 7,
+          "gas": {
+            "volume": 0.004798991484444609,
+            "volumeLoss": -0.00008928618695724921,
+            "absolutePressure": 176619.61789274408,
+            "gaugePressure": 75294.61789274408,
+            "pressureIncrease": -4705.382107255916,
+            "energy": -6.9312541409466135,
+            "coupling": 51524880.97787449
+          },
+          "compressiveSegments": 0
+        },
+        "analytic-banded": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 1.2775276094095042e-9,
+            "maxForcePerArea": 2.685809245302326e-7
+          },
+          "iterations": 7,
+          "gas": {
+            "volume": 0.004798991484444609,
+            "volumeLoss": -0.00008928618695724921,
+            "absolutePressure": 176619.61789274408,
+            "gaugePressure": 75294.61789274408,
+            "pressureIncrease": -4705.382107255916,
+            "energy": -6.9312541409466135,
+            "coupling": 51524880.97787449
+          },
+          "compressiveSegments": 0
+        }
+      }
+    },
+    {
+      "segments": 64,
+      "initialGaugePressure": 160000,
+      "exponent": 1,
+      "difference": 1.3877787807814457e-17,
+      "stability": {
+        "classification": "positive-with-refinement-margin",
+        "scope": "Fixed-bead finite-dimensional axisymmetric tangent only",
+        "steps": [
+          1e-7,
+          5e-8
+        ],
+        "differenceInf": 0.650092871626839,
+        "asymmetryInf": [
+          1.0025878926699079,
+          0.24603676483093295
+        ],
+        "matrixInf": 993859683.679546,
+        "unshiftedPositiveDefinite": [
+          true,
+          true
+        ],
+        "eigenvalueLowerBound": 3341.2429749940547,
+        "conditionBound": 297452.08328685357,
+        "errorEstimate": 1.652680764296747
+      },
+      "results": {
+        "finite-difference": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 1.770618510954291e-9,
+            "maxForcePerArea": 3.7874914772839953e-7
+          },
+          "iterations": 6,
+          "gas": {
+            "volume": 0.004889055091717578,
+            "volumeLoss": -0.0001793497942302177,
+            "absolutePressure": 251738.56988252996,
+            "gaugePressure": 150413.56988252996,
+            "pressureIncrease": -9586.430117470043,
+            "energy": -27.825595851613798,
+            "coupling": 51490229.7396881
+          },
+          "compressiveSegments": 0
+        },
+        "analytic-banded": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 1.9460653733508693e-9,
+            "maxForcePerArea": 4.031247519317245e-7
+          },
+          "iterations": 6,
+          "gas": {
+            "volume": 0.004889055091717578,
+            "volumeLoss": -0.0001793497942302177,
+            "absolutePressure": 251738.56988252996,
+            "gaugePressure": 150413.56988252996,
+            "pressureIncrease": -9586.430117470043,
+            "energy": -27.825595851613798,
+            "coupling": 51490229.7396881
+          },
+          "compressiveSegments": 0
+        }
+      }
+    },
+    {
+      "segments": 64,
+      "initialGaugePressure": 160000,
+      "exponent": 1.4,
+      "difference": 6.938893903907228e-18,
+      "stability": {
+        "classification": "positive-with-refinement-margin",
+        "scope": "Fixed-bead finite-dimensional axisymmetric tangent only",
+        "steps": [
+          1e-7,
+          5e-8
+        ],
+        "differenceInf": 0.6541081361376655,
+        "asymmetryInf": [
+          1.0041045868615583,
+          0.24372673678089996
+        ],
+        "matrixInf": 993953293.6754736,
+        "unshiftedPositiveDefinite": [
+          true,
+          true
+        ],
+        "eigenvalueLowerBound": 3272.167945683298,
+        "conditionBound": 303759.8650725475,
+        "errorEstimate": 1.6582127229992238
+      },
+      "results": {
+        "finite-difference": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 1.8005445582390153e-9,
+            "maxForcePerArea": 3.729803162430827e-7
+          },
+          "iterations": 6,
+          "gas": {
+            "volume": 0.00488487679705721,
+            "volumeLoss": -0.0001751714995698499,
+            "absolutePressure": 248300.2313501261,
+            "gaugePressure": 146975.2313501261,
+            "pressureIncrease": -13024.768649873906,
+            "energy": -26.8699929053754,
+            "coupling": 71162557.0781218
+          },
+          "compressiveSegments": 0
+        },
+        "analytic-banded": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 1.3713463113393656e-9,
+            "maxForcePerArea": 2.8538229960191004e-7
+          },
+          "iterations": 6,
+          "gas": {
+            "volume": 0.00488487679705721,
+            "volumeLoss": -0.0001751714995698499,
+            "absolutePressure": 248300.2313501261,
+            "gaugePressure": 146975.2313501261,
+            "pressureIncrease": -13024.768649873906,
+            "energy": -26.8699929053754,
+            "coupling": 71162557.0781218
+          },
+          "compressiveSegments": 0
+        }
+      }
+    },
+    {
+      "segments": 64,
+      "initialGaugePressure": 240000,
+      "exponent": 1,
+      "difference": 2.0816681711721685e-17,
+      "stability": {
+        "classification": "positive-with-refinement-margin",
+        "scope": "Fixed-bead finite-dimensional axisymmetric tangent only",
+        "steps": [
+          1e-7,
+          5e-8
+        ],
+        "differenceInf": 0.6349483414987844,
+        "asymmetryInf": [
+          0.9739543482633053,
+          0.23824647013771028
+        ],
+        "matrixInf": 992233662.9378254,
+        "unshiftedPositiveDefinite": [
+          true,
+          true
+        ],
+        "eigenvalueLowerBound": 4748.984969542065,
+        "conditionBound": 208935.9451128152,
+        "errorEstimate": 1.6089026897620897
+      },
+      "results": {
+        "finite-difference": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 6.416064497767782e-8,
+            "maxForcePerArea": 0.000015010429794113002
+          },
+          "iterations": 6,
+          "gas": {
+            "volume": 0.004976902856453141,
+            "volumeLoss": -0.00026719755896578105,
+            "absolutePressure": 323000.1081054873,
+            "gaugePressure": 221675.1081054873,
+            "pressureIncrease": -18324.89189451269,
+            "energy": -61.63420328646703,
+            "coupling": 64899821.72078758
+          },
+          "compressiveSegments": 0
+        },
+        "analytic-banded": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 6.408869557599306e-8,
+            "maxForcePerArea": 0.000014993597178993668
+          },
+          "iterations": 6,
+          "gas": {
+            "volume": 0.004976902856453139,
+            "volumeLoss": -0.0002671975589657793,
+            "absolutePressure": 323000.1081054874,
+            "gaugePressure": 221675.10810548742,
+            "pressureIncrease": -18324.891894512577,
+            "energy": -61.63420328646665,
+            "coupling": 64899821.72078762
+          },
+          "compressiveSegments": 0
+        }
+      }
+    },
+    {
+      "segments": 64,
+      "initialGaugePressure": 240000,
+      "exponent": 1.4,
+      "difference": 2.5153490401663703e-17,
+      "stability": {
+        "classification": "positive-with-refinement-margin",
+        "scope": "Fixed-bead finite-dimensional axisymmetric tangent only",
+        "steps": [
+          1e-7,
+          5e-8
+        ],
+        "differenceInf": 0.63615930507558,
+        "asymmetryInf": [
+          0.9772961676690102,
+          0.23874795966821694
+        ],
+        "matrixInf": 992397274.7367544,
+        "unshiftedPositiveDefinite": [
+          true,
+          true
+        ],
+        "eigenvalueLowerBound": 4625.440703857661,
+        "conditionBound": 214551.93964741257,
+        "errorEstimate": 1.6134554727445902
+      },
+      "results": {
+        "finite-difference": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 4.9457048988433444e-8,
+            "maxForcePerArea": 0.000011570512764065392
+          },
+          "iterations": 6,
+          "gas": {
+            "volume": 0.004968981596324982,
+            "volumeLoss": -0.0002592762988376223,
+            "absolutePressure": 316654.00193540787,
+            "gaugePressure": 215329.00193540784,
+            "pressureIncrease": -24670.99806459217,
+            "energy": -58.959460633218775,
+            "coupling": 89216591.79366726
+          },
+          "compressiveSegments": 0
+        },
+        "analytic-banded": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 4.912466113515594e-8,
+            "maxForcePerArea": 0.000011492750382814776
+          },
+          "iterations": 6,
+          "gas": {
+            "volume": 0.0049689815963249815,
+            "volumeLoss": -0.00025927629883762144,
+            "absolutePressure": 316654.00193540787,
+            "gaugePressure": 215329.0019354079,
+            "pressureIncrease": -24670.998064592095,
+            "energy": -58.95946063321859,
+            "coupling": 89216591.79366727
+          },
+          "compressiveSegments": 0
+        }
+      }
+    }
+  ],
+  "archiveSha256": "909867df6c2be42e476ff6cb4cd3d1ec542a5ad65373a48007573722ee1486e6"
+}
