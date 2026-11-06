@@ -1,0 +1,25 @@
+{
+  "base": "8e7137e3f0479961b55b0129b6aed5a106557fbd",
+  "date": "2026-11-06",
+  "node": "v24.22.0",
+  "command": "node --test",
+  "platform": "Windows",
+  "tests": 467,
+  "passed": 467,
+  "failed": 0,
+  "skipped": 0,
+  "cancelled": 0,
+  "durationMs": 119366.3693,
+  "sourcesSha256": {
+    "scripts/lib/tyre-equilibrium.mjs": "f8548133fe75db349d016d91f3d03e82027f996bcdaf204291616a49abb0325f",
+    "scripts/lib/tyre-meridian.mjs": "b7a6f429b01c82d574581b228cbf248d3e5449fcb4c0a72fd653ab4b36e66e42",
+    "scripts/lib/tyre-meridian-fixture.mjs": "6713e174afa69ef89e8276cc86481bf297f7e441b577e2a139dd0a94c1a349d1",
+    "scripts/lib/tyre-inflation.mjs": "693611ae30bf86543c190a3910948b9e8f7171a61ff1923d397542232e91b3cd",
+    "scripts/tyre-equilibrium.mjs": "7527f743bd9892ded1ca4d240f9b358575d38e2fee2007aadfe66c258f74e5e9",
+    "scripts/plot-tyre-equilibrium.py": "b62cbf03ac1d123cf80078095f4a67819f278e59dd176fbfe79101505951a1cc",
+    "test/tyre-equilibrium.test.mjs": "d7c197513997cf400ce393cc38734ba08e1aed7bd33b226e366862ba0a95de25"
+  },
+  "log": "tyre-equilibrium-node.txt",
+  "logSha256": "8e95b71c3e241d1a88526607789387228bf83c6a6415074e2b04806988ad1bf9",
+  "scope": "Complete Node run with solver/tests fixed; documentation prepared concurrently. Nine CLI equilibrium/stability cases pass and plot inspected. Not full/browser attestation; unchanged production/browser paths."
+}
