@@ -1,5 +1,6 @@
 // Offline dense Newton diagnostic; deliberately not an integration-loop solver.
 import {createMeridianDiagnostic} from './tyre-meridian.mjs';
+import {bandNorm,factorBand,solveBand} from './tyre-banded.mjs';
 export const BUDGETS=Object.freeze({force:1e-5,forcePerArea:.01,step:1e-7,armijo:1e-4,maxIterations:80});
 const clone=q=>q.map(p=>[...p]);
 const free=s=>s.forces.slice(1,-1).flat();
@@ -44,8 +45,9 @@ export function inspectEquilibriumTangent(configuration,points){
  return {...report,eigenvalueLowerBound,conditionBound:b.matrixInf*inverseInf,errorEstimate,classification:eigenvalueLowerBound>10*errorEstimate+1e-10*b.matrixInf?'positive-with-refinement-margin':'indeterminate'};
 }
 export function solveMeridianEquilibrium(configuration,initial=configuration.restPoints,options={}){
- if(!options||Object.getPrototypeOf(options)!==Object.prototype||Reflect.ownKeys(options).some(k=>!['maxIterations','maxBacktracks'].includes(k)||!Object.hasOwn(Object.getOwnPropertyDescriptor(options,k),'value')))throw TypeError('Invalid solver options');
- const {maxIterations=BUDGETS.maxIterations,maxBacktracks=32}=options;
+ if(!options||Object.getPrototypeOf(options)!==Object.prototype||Reflect.ownKeys(options).some(k=>!['maxIterations','maxBacktracks','tangent'].includes(k)||!Object.hasOwn(Object.getOwnPropertyDescriptor(options,k),'value')))throw TypeError('Invalid solver options');
+ const {maxIterations=BUDGETS.maxIterations,maxBacktracks=32,tangent:method='finite-difference'}=options;
+ if(!['finite-difference','analytic-banded'].includes(method))throw RangeError('Invalid tangent method');
  if(!Number.isInteger(maxIterations)||maxIterations<0||maxIterations>200||!Number.isInteger(maxBacktracks)||maxBacktracks<0||maxBacktracks>40)throw RangeError('Invalid iteration limits');
  const model=createMeridianDiagnostic(configuration);let q=clone(initial),state=model.evaluate(q);
  if(q.length>65)throw RangeError('Dense diagnostic supports at most 64 segments');
@@ -56,10 +58,10 @@ export function solveMeridianEquilibrium(configuration,initial=configuration.res
  for(let iteration=0;iteration<=maxIterations;iteration++){
   const metric=metrics();if(metric.maxForce<=BUDGETS.force&&metric.maxForcePerArea<=BUDGETS.forcePerArea)return finish(true,'residual-converged');
   if(iteration===maxIterations)return finish(false,'iteration-limit');
-  let t;try{t=tangent(model,q,BUDGETS.step);}catch(e){if(!(e instanceof RangeError))throw e;return finish(false,'finite-difference-domain');}
+  let t;try{if(method==='analytic-banded'){const bands=model.tangentBands(q);t={bands,matrixInf:bandNorm(bands)};}else t=tangent(model,q,BUDGETS.step);}catch(e){if(!(e instanceof RangeError))throw e;return finish(false,method==='finite-difference'?'finite-difference-domain':'analytic-tangent-domain');}
   let shift=0,F=free(state),direction=null;
   for(let trial=0;trial<12;trial++){
-   const f=factor(t.matrix,shift);if(f){const d=linearSolve(f,F);if(d.every(Number.isFinite)&&dot(F,d)>0){direction=d;break;}}
+   const f=t.bands?factorBand(t.bands,shift):factor(t.matrix,shift);if(f){const d=t.bands?solveBand(f,F):linearSolve(f,F);if(d.every(Number.isFinite)&&dot(F,d)>0){direction=d;break;}}
    shift=shift===0?Math.max(1,t.matrixInf)*1e-6:shift*10;
   }
   if(!direction)return finish(false,'no-descent-direction');
