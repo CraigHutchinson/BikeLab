@@ -1,7 +1,7 @@
 import {sectionGeometry} from './tyre-inflation.mjs';
-export function circularMeridian(height,segments=16){
+export function circularMeridian(height,segments=16,{rimRadius=.311,halfWidth=.015}={}){
  if(!Number.isInteger(segments)||segments<4||segments>256)throw RangeError('Invalid fixture resolution');
- const b=.015,g=sectionGeometry(.311,b,height);
+ const b=halfWidth,g=sectionGeometry(rimRadius,b,height);
  return Array.from({length:segments+1},(_,i)=>{
   if(i===0)return [b,0];if(i===segments)return [-b,0];
   const a=-g.phi+(Math.PI+2*g.phi)*i/segments;

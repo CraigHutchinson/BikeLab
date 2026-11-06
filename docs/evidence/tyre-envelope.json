@@ -1,0 +1,4631 @@
+{
+  "model": "bikelab-equilibrium-envelope-0.1",
+  "scope": "Illustrative constant-pressure grid; no physical validation or continuous-envelope proof",
+  "sourcesSha256": {
+    "scripts/lib/tyre-envelope.mjs": "17709306624f94844f9f7ef1ae54430e52b7ac3dfae32e4fa4ec43021e4589a1",
+    "scripts/lib/tyre-meridian-fixture.mjs": "8610247689576494a9300712dd66bc44d06bbf1079f2897a5f8eddf8eea1249d",
+    "scripts/lib/tyre-inflation.mjs": "693611ae30bf86543c190a3910948b9e8f7171a61ff1923d397542232e91b3cd",
+    "scripts/lib/tyre-equilibrium.mjs": "b7a95292cefc0cef1a20fde3e43e8bf82519909dff773308c4cfcf6b3bc9dc58",
+    "scripts/lib/tyre-meridian.mjs": "bd8fcaa2d3442188d61f658f23cad30dc4cf22cce95c36b1a3186109017a9710",
+    "scripts/lib/tyre-banded.mjs": "6313d0be8dd302a0e3036dc2dba9d1df54cd957061e98b5b66c8031b0b484f10",
+    "scripts/tyre-envelope.mjs": "45bf1409be01cb09a36539d0841a7d0ef31a683cff67c1fc2ce56a5389894803",
+    "scripts/plot-tyre-envelope.py": "2f37b5414506f7e3722adc3a63b530294ed565feaea4eed519f76110d7de69c5",
+    "test/tyre-envelope.test.mjs": "bf57144636aa71080081c364e66feaec3e1b59fa904305b57543bd2dc1648323"
+  },
+  "archiveSha256": "8223c9a8ece59c2e5c499b81a4d7bc4d02dd19d9cd83cc8cbcdb7b05814e3fc3",
+  "cases": 108,
+  "accepted": 72,
+  "maxCoordinateDifference": 9.332812300755222e-16,
+  "pairs": [
+    {
+      "id": "compact/negative-coupling/16/40000/asymmetric",
+      "difference": 3.1800698280203257e-16
+    },
+    {
+      "id": "compact/negative-coupling/16/160000/asymmetric",
+      "difference": 2.362367487375513e-16
+    },
+    {
+      "id": "compact/negative-coupling/16/320000/asymmetric",
+      "difference": 2.688821387764051e-17
+    },
+    {
+      "id": "compact/negative-coupling/32/40000/asymmetric",
+      "difference": 8.522427449947995e-12
+    },
+    {
+      "id": "compact/negative-coupling/32/160000/asymmetric",
+      "difference": 1.717376241217039e-16
+    },
+    {
+      "id": "compact/negative-coupling/32/320000/asymmetric",
+      "difference": 1.3398353607141367e-12
+    },
+    {
+      "id": "compact/reference/16/40000/asymmetric",
+      "difference": 1.3877787807814457e-17
+    },
+    {
+      "id": "compact/reference/16/160000/asymmetric",
+      "difference": 8.02995321715771e-17
+    },
+    {
+      "id": "compact/reference/16/320000/asymmetric",
+      "difference": 9.410954280460772e-17
+    },
+    {
+      "id": "compact/reference/32/40000/asymmetric",
+      "difference": 2.931682674400804e-16
+    },
+    {
+      "id": "compact/reference/32/160000/asymmetric",
+      "difference": 6.938893903907228e-18
+    },
+    {
+      "id": "compact/reference/32/320000/asymmetric",
+      "difference": 9.273509893052453e-18
+    },
+    {
+      "id": "compact/hoop-dominant/16/40000/asymmetric",
+      "difference": 4.425869393198667e-13
+    },
+    {
+      "id": "compact/hoop-dominant/16/160000/asymmetric",
+      "difference": 7.861344730108705e-18
+    },
+    {
+      "id": "compact/hoop-dominant/16/320000/asymmetric",
+      "difference": 1.3877787807814457e-17
+    },
+    {
+      "id": "compact/hoop-dominant/32/40000/asymmetric",
+      "difference": 7.933757817379927e-15
+    },
+    {
+      "id": "compact/hoop-dominant/32/160000/asymmetric",
+      "difference": 1.214306433183765e-17
+    },
+    {
+      "id": "compact/hoop-dominant/32/320000/asymmetric",
+      "difference": 1.6076766654049557e-13
+    },
+    {
+      "id": "reference/negative-coupling/16/40000/asymmetric",
+      "difference": 1.3896074298870726e-15
+    },
+    {
+      "id": "reference/negative-coupling/16/160000/asymmetric",
+      "difference": 1.274027638282802e-16
+    },
+    {
+      "id": "reference/negative-coupling/16/320000/asymmetric",
+      "difference": 4.2291538083636546e-17
+    },
+    {
+      "id": "reference/negative-coupling/32/40000/asymmetric",
+      "difference": 5.673369760095248e-14
+    },
+    {
+      "id": "reference/negative-coupling/32/160000/asymmetric",
+      "difference": 2.0469737016526324e-16
+    },
+    {
+      "id": "reference/negative-coupling/32/320000/asymmetric",
+      "difference": 1.162403506782539e-13
+    },
+    {
+      "id": "reference/reference/16/40000/asymmetric",
+      "difference": 1.0460382560140147e-15
+    },
+    {
+      "id": "reference/reference/16/160000/asymmetric",
+      "difference": 8.500145032286355e-17
+    },
+    {
+      "id": "reference/reference/16/320000/asymmetric",
+      "difference": 7.541055188349081e-17
+    },
+    {
+      "id": "reference/reference/32/40000/asymmetric",
+      "difference": 1.8316432660537363e-12
+    },
+    {
+      "id": "reference/reference/32/160000/asymmetric",
+      "difference": 7.806255641895632e-18
+    },
+    {
+      "id": "reference/reference/32/320000/asymmetric",
+      "difference": 8.413408858487514e-17
+    },
+    {
+      "id": "reference/hoop-dominant/16/40000/asymmetric",
+      "difference": 1.3877787807814457e-17
+    },
+    {
+      "id": "reference/hoop-dominant/16/160000/asymmetric",
+      "difference": 1.3877787807814457e-17
+    },
+    {
+      "id": "reference/hoop-dominant/16/320000/asymmetric",
+      "difference": 3.122502256758253e-17
+    },
+    {
+      "id": "reference/hoop-dominant/32/40000/asymmetric",
+      "difference": 5.396845730726296e-12
+    },
+    {
+      "id": "reference/hoop-dominant/32/160000/asymmetric",
+      "difference": 1.734723475976807e-17
+    },
+    {
+      "id": "reference/hoop-dominant/32/320000/asymmetric",
+      "difference": 2.7755575615628914e-17
+    },
+    {
+      "id": "wide/negative-coupling/16/40000/asymmetric",
+      "difference": 2.971928259043466e-14
+    },
+    {
+      "id": "wide/negative-coupling/16/160000/asymmetric",
+      "difference": 2.42861286636753e-17
+    },
+    {
+      "id": "wide/negative-coupling/16/320000/asymmetric",
+      "difference": 2.2551405187698492e-17
+    },
+    {
+      "id": "wide/negative-coupling/32/40000/asymmetric",
+      "difference": 5.655198531684391e-15
+    },
+    {
+      "id": "wide/negative-coupling/32/160000/asymmetric",
+      "difference": 7.768438670119338e-14
+    },
+    {
+      "id": "wide/negative-coupling/32/320000/asymmetric",
+      "difference": 6.096327895555186e-14
+    },
+    {
+      "id": "wide/reference/16/40000/asymmetric",
+      "difference": 3.849656704524307e-12
+    },
+    {
+      "id": "wide/reference/16/160000/asymmetric",
+      "difference": 2.782254304770515e-17
+    },
+    {
+      "id": "wide/reference/16/320000/asymmetric",
+      "difference": 5.3949188922511337e-17
+    },
+    {
+      "id": "wide/reference/32/40000/asymmetric",
+      "difference": 4.321484603020925e-13
+    },
+    {
+      "id": "wide/reference/32/160000/asymmetric",
+      "difference": 4.810910005469246e-16
+    },
+    {
+      "id": "wide/reference/32/320000/asymmetric",
+      "difference": 1.266306152545736e-15
+    },
+    {
+      "id": "wide/hoop-dominant/16/40000/asymmetric",
+      "difference": 7.216449660063518e-16
+    },
+    {
+      "id": "wide/hoop-dominant/16/160000/asymmetric",
+      "difference": 1.3877787807814457e-17
+    },
+    {
+      "id": "wide/hoop-dominant/16/320000/asymmetric",
+      "difference": 1.3877787807814457e-17
+    },
+    {
+      "id": "wide/hoop-dominant/32/40000/asymmetric",
+      "difference": 6.434525735058946e-14
+    },
+    {
+      "id": "wide/hoop-dominant/32/160000/asymmetric",
+      "difference": 1.0093622824617734e-13
+    },
+    {
+      "id": "wide/hoop-dominant/32/320000/asymmetric",
+      "difference": 7.632783294297951e-17
+    }
+  ],
+  "rows": [
+    {
+      "id": "compact/negative-coupling/16/40000/rest",
+      "geometry": "compact",
+      "material": "negative-coupling",
+      "segments": 16,
+      "start": "rest",
+      "pressure": 40000,
+      "accepted": false,
+      "rejections": [
+        "compressive-resultants"
+      ],
+      "coordinateDifference": 7.982308939752216e-18,
+      "stability": "positive-with-refinement-margin",
+      "methods": {
+        "finite-difference": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 1.0727308394283633e-10,
+            "maxForcePerArea": 1.2147694510458145e-8
+          },
+          "iterations": 6,
+          "compressiveSegments": 6,
+          "minMeridionalResultant": 725.8919959434473,
+          "minHoopResultant": -88.70011526575851,
+          "volume": 0.0014798103896506629
+        },
+        "analytic-banded": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 1.1368985393551789e-10,
+            "maxForcePerArea": 1.4186918738995748e-8
+          },
+          "iterations": 6,
+          "compressiveSegments": 6,
+          "minMeridionalResultant": 725.8919959434695,
+          "minHoopResultant": -88.70011526575851,
+          "volume": 0.0014798103896506629
+        }
+      }
+    },
+    {
+      "id": "compact/negative-coupling/16/40000/asymmetric",
+      "geometry": "compact",
+      "material": "negative-coupling",
+      "segments": 16,
+      "start": "asymmetric",
+      "pressure": 40000,
+      "accepted": false,
+      "rejections": [
+        "compressive-resultants"
+      ],
+      "coordinateDifference": 6.938893903907228e-18,
+      "stability": "positive-with-refinement-margin",
+      "methods": {
+        "finite-difference": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 1.4370494378632613e-10,
+            "maxForcePerArea": 1.6273269049383254e-8
+          },
+          "iterations": 5,
+          "compressiveSegments": 6,
+          "minMeridionalResultant": 725.8919959434406,
+          "minHoopResultant": -88.70011526576847,
+          "volume": 0.0014798103896506629
+        },
+        "analytic-banded": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 8.224117156024564e-11,
+            "maxForcePerArea": 1.0519713941304272e-8
+          },
+          "iterations": 5,
+          "compressiveSegments": 6,
+          "minMeridionalResultant": 725.8919959434185,
+          "minHoopResultant": -88.70011526576515,
+          "volume": 0.0014798103896506629
+        }
+      }
+    },
+    {
+      "id": "compact/negative-coupling/16/160000/rest",
+      "geometry": "compact",
+      "material": "negative-coupling",
+      "segments": 16,
+      "start": "rest",
+      "pressure": 160000,
+      "accepted": false,
+      "rejections": [
+        "compressive-resultants"
+      ],
+      "coordinateDifference": 6.938893903907228e-18,
+      "stability": "positive-with-refinement-margin",
+      "methods": {
+        "finite-difference": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 6.861262027639245e-11,
+            "maxForcePerArea": 8.108985747801272e-9
+          },
+          "iterations": 5,
+          "compressiveSegments": 16,
+          "minMeridionalResultant": 2974.881727606438,
+          "minHoopResultant": -470.77111221262794,
+          "volume": 0.0015448188531590292
+        },
+        "analytic-banded": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 8.74535410325762e-11,
+            "maxForcePerArea": 1.0618612639129835e-8
+          },
+          "iterations": 5,
+          "compressiveSegments": 16,
+          "minMeridionalResultant": 2974.881727606438,
+          "minHoopResultant": -470.77111221262794,
+          "volume": 0.0015448188531590294
+        }
+      }
+    },
+    {
+      "id": "compact/negative-coupling/16/160000/asymmetric",
+      "geometry": "compact",
+      "material": "negative-coupling",
+      "segments": 16,
+      "start": "asymmetric",
+      "pressure": 160000,
+      "accepted": false,
+      "rejections": [
+        "compressive-resultants"
+      ],
+      "coordinateDifference": 1.2084805484307657e-17,
+      "stability": "positive-with-refinement-margin",
+      "methods": {
+        "finite-difference": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 1.9434946959554797e-10,
+            "maxForcePerArea": 2.4859821254998546e-8
+          },
+          "iterations": 5,
+          "compressiveSegments": 16,
+          "minMeridionalResultant": 2974.8817276064347,
+          "minHoopResultant": -470.77111221263795,
+          "volume": 0.0015448188531590303
+        },
+        "analytic-banded": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 1.6345273448957814e-10,
+            "maxForcePerArea": 1.8509525525867173e-8
+          },
+          "iterations": 5,
+          "compressiveSegments": 16,
+          "minMeridionalResultant": 2974.88172760646,
+          "minHoopResultant": -470.77111221264124,
+          "volume": 0.0015448188531590303
+        }
+      }
+    },
+    {
+      "id": "compact/negative-coupling/16/320000/rest",
+      "geometry": "compact",
+      "material": "negative-coupling",
+      "segments": 16,
+      "start": "rest",
+      "pressure": 320000,
+      "accepted": false,
+      "rejections": [
+        "compressive-resultants"
+      ],
+      "coordinateDifference": 6.938893903907228e-18,
+      "stability": "positive-with-refinement-margin",
+      "methods": {
+        "finite-difference": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 1.2138794643827552e-10,
+            "maxForcePerArea": 1.3746073445318332e-8
+          },
+          "iterations": 5,
+          "compressiveSegments": 16,
+          "minMeridionalResultant": 6137.178077578071,
+          "minHoopResultant": -1015.7717071828575,
+          "volume": 0.0016385633545420658
+        },
+        "analytic-banded": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 9.149014927071233e-11,
+            "maxForcePerArea": 1.0237813790214562e-8
+          },
+          "iterations": 5,
+          "compressiveSegments": 16,
+          "minMeridionalResultant": 6137.178077578071,
+          "minHoopResultant": -1015.7717071828575,
+          "volume": 0.0016385633545420654
+        }
+      }
+    },
+    {
+      "id": "compact/negative-coupling/16/320000/asymmetric",
+      "geometry": "compact",
+      "material": "negative-coupling",
+      "segments": 16,
+      "start": "asymmetric",
+      "pressure": 320000,
+      "accepted": false,
+      "rejections": [
+        "compressive-resultants"
+      ],
+      "coordinateDifference": 7.323979204383647e-18,
+      "stability": "positive-with-refinement-margin",
+      "methods": {
+        "finite-difference": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 9.361750415355427e-11,
+            "maxForcePerArea": 1.0475866338274085e-8
+          },
+          "iterations": 5,
+          "compressiveSegments": 16,
+          "minMeridionalResultant": 6137.178077578071,
+          "minHoopResultant": -1015.7717071828644,
+          "volume": 0.0016385633545420656
+        },
+        "analytic-banded": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 1.1783222554486403e-10,
+            "maxForcePerArea": 1.3926007106651297e-8
+          },
+          "iterations": 5,
+          "compressiveSegments": 16,
+          "minMeridionalResultant": 6137.178077578071,
+          "minHoopResultant": -1015.7717071828644,
+          "volume": 0.0016385633545420656
+        }
+      }
+    },
+    {
+      "id": "compact/negative-coupling/32/40000/rest",
+      "geometry": "compact",
+      "material": "negative-coupling",
+      "segments": 32,
+      "start": "rest",
+      "pressure": 40000,
+      "accepted": false,
+      "rejections": [
+        "compressive-resultants"
+      ],
+      "coordinateDifference": 1.3265024920065251e-17,
+      "stability": "positive-with-refinement-margin",
+      "methods": {
+        "finite-difference": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 6.476342243210956e-10,
+            "maxForcePerArea": 1.6711126639955431e-7
+          },
+          "iterations": 5,
+          "compressiveSegments": 14,
+          "minMeridionalResultant": 732.7131383021058,
+          "minHoopResultant": -105.18106107545111,
+          "volume": 0.0014969681396899044
+        },
+        "analytic-banded": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 5.392722553470052e-10,
+            "maxForcePerArea": 1.3915025818725316e-7
+          },
+          "iterations": 5,
+          "compressiveSegments": 14,
+          "minMeridionalResultant": 732.7131383021058,
+          "minHoopResultant": -105.18106107544776,
+          "volume": 0.0014969681396899042
+        }
+      }
+    },
+    {
+      "id": "compact/negative-coupling/32/40000/asymmetric",
+      "geometry": "compact",
+      "material": "negative-coupling",
+      "segments": 32,
+      "start": "asymmetric",
+      "pressure": 40000,
+      "accepted": false,
+      "rejections": [
+        "compressive-resultants"
+      ],
+      "coordinateDifference": 5.447031714567174e-16,
+      "stability": "positive-with-refinement-margin",
+      "methods": {
+        "finite-difference": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 0.0000037207690979054236,
+            "maxForcePerArea": 0.0009600827327850179
+          },
+          "iterations": 5,
+          "compressiveSegments": 14,
+          "minMeridionalResultant": 732.713138308354,
+          "minHoopResultant": -105.18106117721638,
+          "volume": 0.0014969681396948117
+        },
+        "analytic-banded": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 0.0000037209379441568923,
+            "maxForcePerArea": 0.0009601263007588064
+          },
+          "iterations": 5,
+          "compressiveSegments": 14,
+          "minMeridionalResultant": 732.7131383083663,
+          "minHoopResultant": -105.18106117722968,
+          "volume": 0.0014969681396948117
+        }
+      }
+    },
+    {
+      "id": "compact/negative-coupling/32/160000/rest",
+      "geometry": "compact",
+      "material": "negative-coupling",
+      "segments": 32,
+      "start": "rest",
+      "pressure": 160000,
+      "accepted": false,
+      "rejections": [
+        "compressive-resultants"
+      ],
+      "coordinateDifference": 1.6046192152785466e-17,
+      "stability": "positive-with-refinement-margin",
+      "methods": {
+        "finite-difference": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 1.1960952823333484e-9,
+            "maxForcePerArea": 3.0863254265907627e-7
+          },
+          "iterations": 6,
+          "compressiveSegments": 32,
+          "minMeridionalResultant": 3003.7153480588145,
+          "minHoopResultant": -501.76071165466965,
+          "volume": 0.0015635496610809437
+        },
+        "analytic-banded": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 1.1748014355594367e-9,
+            "maxForcePerArea": 3.031380187947195e-7
+          },
+          "iterations": 6,
+          "compressiveSegments": 32,
+          "minMeridionalResultant": 3003.7153480588586,
+          "minHoopResultant": -501.76071165467295,
+          "volume": 0.001563549661080944
+        }
+      }
+    },
+    {
+      "id": "compact/negative-coupling/32/160000/asymmetric",
+      "geometry": "compact",
+      "material": "negative-coupling",
+      "segments": 32,
+      "start": "asymmetric",
+      "pressure": 160000,
+      "accepted": false,
+      "rejections": [
+        "compressive-resultants"
+      ],
+      "coordinateDifference": 3.0357660829594124e-17,
+      "stability": "positive-with-refinement-margin",
+      "methods": {
+        "finite-difference": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 1.9604127442225838e-10,
+            "maxForcePerArea": 4.4588145160897963e-8
+          },
+          "iterations": 7,
+          "compressiveSegments": 32,
+          "minMeridionalResultant": 3003.715348058874,
+          "minHoopResultant": -501.76071165450975,
+          "volume": 0.001563549661080942
+        },
+        "analytic-banded": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 2.5174345224489354e-10,
+            "maxForcePerArea": 5.7257195583332037e-8
+          },
+          "iterations": 7,
+          "compressiveSegments": 32,
+          "minMeridionalResultant": 3003.7153480588518,
+          "minHoopResultant": -501.76071165450975,
+          "volume": 0.0015635496610809422
+        }
+      }
+    },
+    {
+      "id": "compact/negative-coupling/32/320000/rest",
+      "geometry": "compact",
+      "material": "negative-coupling",
+      "segments": 32,
+      "start": "rest",
+      "pressure": 320000,
+      "accepted": false,
+      "rejections": [
+        "compressive-resultants"
+      ],
+      "coordinateDifference": 2.2551405187698492e-17,
+      "stability": "positive-with-refinement-margin",
+      "methods": {
+        "finite-difference": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 0.0000016585414707377756,
+            "maxForcePerArea": 0.0004279591089271299
+          },
+          "iterations": 5,
+          "compressiveSegments": 32,
+          "minMeridionalResultant": 6199.268984031513,
+          "minHoopResultant": -1064.8618660001375,
+          "volume": 0.00165965945890304
+        },
+        "analytic-banded": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 0.0000016586818008609983,
+            "maxForcePerArea": 0.00042799531878714823
+          },
+          "iterations": 5,
+          "compressiveSegments": 32,
+          "minMeridionalResultant": 6199.268984031513,
+          "minHoopResultant": -1064.8618660001741,
+          "volume": 0.0016596594589030405
+        }
+      }
+    },
+    {
+      "id": "compact/negative-coupling/32/320000/asymmetric",
+      "geometry": "compact",
+      "material": "negative-coupling",
+      "segments": 32,
+      "start": "asymmetric",
+      "pressure": 320000,
+      "accepted": false,
+      "rejections": [
+        "compressive-resultants"
+      ],
+      "coordinateDifference": 2.671474153004283e-16,
+      "stability": "positive-with-refinement-margin",
+      "methods": {
+        "finite-difference": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 0.000003364562007955926,
+            "maxForcePerArea": 0.0008589175631551599
+          },
+          "iterations": 6,
+          "compressiveSegments": 32,
+          "minMeridionalResultant": 6199.268984377212,
+          "minHoopResultant": -1064.8618664444487,
+          "volume": 0.0016596594589245338
+        },
+        "analytic-banded": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 0.0000033645959158349996,
+            "maxForcePerArea": 0.0008589262192812163
+          },
+          "iterations": 6,
+          "compressiveSegments": 32,
+          "minMeridionalResultant": 6199.268984377145,
+          "minHoopResultant": -1064.8618664444386,
+          "volume": 0.0016596594589245335
+        }
+      }
+    },
+    {
+      "id": "compact/reference/16/40000/rest",
+      "geometry": "compact",
+      "material": "reference",
+      "segments": 16,
+      "start": "rest",
+      "pressure": 40000,
+      "accepted": true,
+      "rejections": [],
+      "coordinateDifference": 8.673617379884035e-18,
+      "stability": "positive-with-refinement-margin",
+      "methods": {
+        "finite-difference": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 1.8161103651794698e-10,
+            "maxForcePerArea": 2.1463708875058868e-8
+          },
+          "iterations": 5,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 721.2948462979041,
+          "minHoopResultant": 115.00976705103305,
+          "volume": 0.0014679982798907548
+        },
+        "analytic-banded": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 2.3072115789641053e-10,
+            "maxForcePerArea": 2.612705853332502e-8
+          },
+          "iterations": 5,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 721.2948462979041,
+          "minHoopResultant": 115.0097670510286,
+          "volume": 0.001467998279890755
+        }
+      }
+    },
+    {
+      "id": "compact/reference/16/40000/asymmetric",
+      "geometry": "compact",
+      "material": "reference",
+      "segments": 16,
+      "start": "asymmetric",
+      "pressure": 40000,
+      "accepted": true,
+      "rejections": [],
+      "coordinateDifference": 6.938893903907228e-18,
+      "stability": "positive-with-refinement-margin",
+      "methods": {
+        "finite-difference": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 2.1512865745561403e-10,
+            "maxForcePerArea": 2.4361350631145995e-8
+          },
+          "iterations": 5,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 721.2948462979041,
+          "minHoopResultant": 115.00976705103305,
+          "volume": 0.0014679982798907545
+        },
+        "analytic-banded": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 2.3030863684855425e-10,
+            "maxForcePerArea": 2.608034430190454e-8
+          },
+          "iterations": 5,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 721.2948462979485,
+          "minHoopResultant": 115.00976705103305,
+          "volume": 0.0014679982798907545
+        }
+      }
+    },
+    {
+      "id": "compact/reference/16/160000/rest",
+      "geometry": "compact",
+      "material": "reference",
+      "segments": 16,
+      "start": "rest",
+      "pressure": 160000,
+      "accepted": true,
+      "rejections": [],
+      "coordinateDifference": 8.673617379884035e-18,
+      "stability": "positive-with-refinement-margin",
+      "methods": {
+        "finite-difference": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 1.2896237201599223e-10,
+            "maxForcePerArea": 1.4372261623726409e-8
+          },
+          "iterations": 5,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 2920.692471249935,
+          "minHoopResultant": 382.2696998846586,
+          "volume": 0.0014983261703253752
+        },
+        "analytic-banded": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 3.079668998152855e-10,
+            "maxForcePerArea": 3.487443150494773e-8
+          },
+          "iterations": 5,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 2920.6924712500236,
+          "minHoopResultant": 382.26969988463645,
+          "volume": 0.0014983261703253752
+        }
+      }
+    },
+    {
+      "id": "compact/reference/16/160000/asymmetric",
+      "geometry": "compact",
+      "material": "reference",
+      "segments": 16,
+      "start": "asymmetric",
+      "pressure": 160000,
+      "accepted": true,
+      "rejections": [],
+      "coordinateDifference": 6.938893903907228e-18,
+      "stability": "positive-with-refinement-margin",
+      "methods": {
+        "finite-difference": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 2.3986273974050154e-10,
+            "maxForcePerArea": 2.9043882823400983e-8
+          },
+          "iterations": 5,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 2920.692471249975,
+          "minHoopResultant": 382.26969988463645,
+          "volume": 0.0014983261703253757
+        },
+        "analytic-banded": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 1.8181198466654506e-10,
+            "maxForcePerArea": 2.135695494254578e-8
+          },
+          "iterations": 5,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 2920.692471250019,
+          "minHoopResultant": 382.26969988463645,
+          "volume": 0.0014983261703253757
+        }
+      }
+    },
+    {
+      "id": "compact/reference/16/320000/rest",
+      "geometry": "compact",
+      "material": "reference",
+      "segments": 16,
+      "start": "rest",
+      "pressure": 320000,
+      "accepted": true,
+      "rejections": [],
+      "coordinateDifference": 3.469446951953614e-18,
+      "stability": "positive-with-refinement-margin",
+      "methods": {
+        "finite-difference": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 2.4623575878057675e-10,
+            "maxForcePerArea": 2.989795621219266e-8
+          },
+          "iterations": 5,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 5927.8343842830145,
+          "minHoopResultant": 737.7216466534709,
+          "volume": 0.0015402287377531603
+        },
+        "analytic-banded": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 3.2006566180280077e-10,
+            "maxForcePerArea": 3.6930593203891214e-8
+          },
+          "iterations": 5,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 5927.8343842830145,
+          "minHoopResultant": 737.7216466534709,
+          "volume": 0.00154022873775316
+        }
+      }
+    },
+    {
+      "id": "compact/reference/16/320000/asymmetric",
+      "geometry": "compact",
+      "material": "reference",
+      "segments": 16,
+      "start": "asymmetric",
+      "pressure": 320000,
+      "accepted": true,
+      "rejections": [],
+      "coordinateDifference": 1.734723475976807e-17,
+      "stability": "positive-with-refinement-margin",
+      "methods": {
+        "finite-difference": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 2.5066604578630216e-10,
+            "maxForcePerArea": 2.892295822931948e-8
+          },
+          "iterations": 5,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 5927.834384283059,
+          "minHoopResultant": 737.7216466534442,
+          "volume": 0.0015402287377531605
+        },
+        "analytic-banded": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 2.275171313991024e-10,
+            "maxForcePerArea": 2.8390986030461387e-8
+          },
+          "iterations": 5,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 5927.834384283059,
+          "minHoopResultant": 737.7216466534487,
+          "volume": 0.00154022873775316
+        }
+      }
+    },
+    {
+      "id": "compact/reference/32/40000/rest",
+      "geometry": "compact",
+      "material": "reference",
+      "segments": 32,
+      "start": "rest",
+      "pressure": 40000,
+      "accepted": true,
+      "rejections": [],
+      "coordinateDifference": 1.734723475976807e-17,
+      "stability": "positive-with-refinement-margin",
+      "methods": {
+        "finite-difference": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 3.6415261152901093e-9,
+            "maxForcePerArea": 9.29621962595682e-7
+          },
+          "iterations": 6,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 728.0683828840572,
+          "minHoopResultant": 103.0634626809368,
+          "volume": 0.0014848485915303514
+        },
+        "analytic-banded": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 3.6980196247666762e-9,
+            "maxForcePerArea": 9.446611136954054e-7
+          },
+          "iterations": 6,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 728.0683828840572,
+          "minHoopResultant": 103.06346268091015,
+          "volume": 0.0014848485915303514
+        }
+      }
+    },
+    {
+      "id": "compact/reference/32/40000/asymmetric",
+      "geometry": "compact",
+      "material": "reference",
+      "segments": 32,
+      "start": "asymmetric",
+      "pressure": 40000,
+      "accepted": true,
+      "rejections": [],
+      "coordinateDifference": 1.734723475976807e-17,
+      "stability": "positive-with-refinement-margin",
+      "methods": {
+        "finite-difference": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 4.91773078830147e-10,
+            "maxForcePerArea": 1.1185016772473454e-7
+          },
+          "iterations": 5,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 728.0683828841328,
+          "minHoopResultant": 103.06346268094124,
+          "volume": 0.0014848485915303483
+        },
+        "analytic-banded": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 3.071387699862456e-10,
+            "maxForcePerArea": 7.232873962902417e-8
+          },
+          "iterations": 5,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 728.0683828840884,
+          "minHoopResultant": 103.06346268094569,
+          "volume": 0.0014848485915303483
+        }
+      }
+    },
+    {
+      "id": "compact/reference/32/160000/rest",
+      "geometry": "compact",
+      "material": "reference",
+      "segments": 32,
+      "start": "rest",
+      "pressure": 160000,
+      "accepted": true,
+      "rejections": [],
+      "coordinateDifference": 1.734723475976807e-17,
+      "stability": "positive-with-refinement-margin",
+      "methods": {
+        "finite-difference": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 4.392716416026991e-10,
+            "maxForcePerArea": 9.834492749994316e-8
+          },
+          "iterations": 5,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 2948.492728129777,
+          "minHoopResultant": 365.86097219524663,
+          "volume": 0.0015158985418626798
+        },
+        "analytic-banded": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 3.06691422015796e-10,
+            "maxForcePerArea": 7.047949670132375e-8
+          },
+          "iterations": 5,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 2948.4927281297323,
+          "minHoopResultant": 365.8609721952422,
+          "volume": 0.00151589854186268
+        }
+      }
+    },
+    {
+      "id": "compact/reference/32/160000/asymmetric",
+      "geometry": "compact",
+      "material": "reference",
+      "segments": 32,
+      "start": "asymmetric",
+      "pressure": 160000,
+      "accepted": true,
+      "rejections": [],
+      "coordinateDifference": 1.0860396798992828e-17,
+      "stability": "positive-with-refinement-margin",
+      "methods": {
+        "finite-difference": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 4.376061610648904e-10,
+            "maxForcePerArea": 9.797205671286992e-8
+          },
+          "iterations": 7,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 2948.4927281297323,
+          "minHoopResultant": 365.8609721952422,
+          "volume": 0.0015158985418626803
+        },
+        "analytic-banded": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 3.968179629322831e-10,
+            "maxForcePerArea": 8.884032133935672e-8
+          },
+          "iterations": 7,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 2948.4927281297323,
+          "minHoopResultant": 365.8609721952377,
+          "volume": 0.00151589854186268
+        }
+      }
+    },
+    {
+      "id": "compact/reference/32/320000/rest",
+      "geometry": "compact",
+      "material": "reference",
+      "segments": 32,
+      "start": "rest",
+      "pressure": 320000,
+      "accepted": true,
+      "rejections": [],
+      "coordinateDifference": 6.938893903907228e-18,
+      "stability": "positive-with-refinement-margin",
+      "methods": {
+        "finite-difference": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 3.2314151249156855e-10,
+            "maxForcePerArea": 7.513233318596008e-8
+          },
+          "iterations": 5,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 5985.38694896925,
+          "minHoopResultant": 719.2758341537652,
+          "volume": 0.0015588154377358548
+        },
+        "analytic-banded": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 4.821498664537126e-10,
+            "maxForcePerArea": 1.1671240326381591e-7
+          },
+          "iterations": 5,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 5985.386948969338,
+          "minHoopResultant": 719.2758341537652,
+          "volume": 0.0015588154377358546
+        }
+      }
+    },
+    {
+      "id": "compact/reference/32/320000/asymmetric",
+      "geometry": "compact",
+      "material": "reference",
+      "segments": 32,
+      "start": "asymmetric",
+      "pressure": 320000,
+      "accepted": true,
+      "rejections": [],
+      "coordinateDifference": 1.7431073638030634e-17,
+      "stability": "positive-with-refinement-margin",
+      "methods": {
+        "finite-difference": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 7.129177952802311e-10,
+            "maxForcePerArea": 1.596093220005005e-7
+          },
+          "iterations": 7,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 5985.386948969294,
+          "minHoopResultant": 719.2758341537608,
+          "volume": 0.001558815437735855
+        },
+        "analytic-banded": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 5.347649153431714e-10,
+            "maxForcePerArea": 1.20566633158616e-7
+          },
+          "iterations": 7,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 5985.38694896925,
+          "minHoopResultant": 719.2758341537608,
+          "volume": 0.0015588154377358548
+        }
+      }
+    },
+    {
+      "id": "compact/hoop-dominant/16/40000/rest",
+      "geometry": "compact",
+      "material": "hoop-dominant",
+      "segments": 16,
+      "start": "rest",
+      "pressure": 40000,
+      "accepted": true,
+      "rejections": [],
+      "coordinateDifference": 6.938893903907228e-18,
+      "stability": "positive-with-refinement-margin",
+      "methods": {
+        "finite-difference": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 1.383565903128251e-10,
+            "maxForcePerArea": 1.63516801200945e-8
+          },
+          "iterations": 5,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 719.9633105849479,
+          "minHoopResultant": 64.57678104627718,
+          "volume": 0.0014712660719166022
+        },
+        "analytic-banded": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 9.821654663376382e-11,
+            "maxForcePerArea": 1.0990502513873206e-8
+          },
+          "iterations": 5,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 719.9633105849479,
+          "minHoopResultant": 64.57678104627718,
+          "volume": 0.0014712660719166017
+        }
+      }
+    },
+    {
+      "id": "compact/hoop-dominant/16/40000/asymmetric",
+      "geometry": "compact",
+      "material": "hoop-dominant",
+      "segments": 16,
+      "start": "asymmetric",
+      "pressure": 40000,
+      "accepted": true,
+      "rejections": [],
+      "coordinateDifference": 9.332812300755222e-16,
+      "stability": "positive-with-refinement-margin",
+      "methods": {
+        "finite-difference": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 0.0000018469892750077834,
+            "maxForcePerArea": 0.00023047867377148576
+          },
+          "iterations": 4,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 719.9633105959058,
+          "minHoopResultant": 64.57678103780395,
+          "volume": 0.0014712660719204379
+        },
+        "analytic-banded": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 0.0000018469979385459663,
+            "maxForcePerArea": 0.00023047975486102838
+          },
+          "iterations": 4,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 719.9633105958725,
+          "minHoopResultant": 64.57678103780395,
+          "volume": 0.0014712660719204379
+        }
+      }
+    },
+    {
+      "id": "compact/hoop-dominant/16/160000/rest",
+      "geometry": "compact",
+      "material": "hoop-dominant",
+      "segments": 16,
+      "start": "rest",
+      "pressure": 160000,
+      "accepted": true,
+      "rejections": [],
+      "coordinateDifference": 3.469446951953614e-18,
+      "stability": "positive-with-refinement-margin",
+      "methods": {
+        "finite-difference": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 1.0662789056650173e-10,
+            "maxForcePerArea": 1.2074632268301852e-8
+          },
+          "iterations": 5,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 2926.9242233214923,
+          "minHoopResultant": 121.93570865207448,
+          "volume": 0.001512367178166675
+        },
+        "analytic-banded": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 1.0635554055246294e-10,
+            "maxForcePerArea": 1.2043791122985053e-8
+          },
+          "iterations": 5,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 2926.9242233214923,
+          "minHoopResultant": 121.93570865207448,
+          "volume": 0.0015123671781666747
+        }
+      }
+    },
+    {
+      "id": "compact/hoop-dominant/16/160000/asymmetric",
+      "geometry": "compact",
+      "material": "hoop-dominant",
+      "segments": 16,
+      "start": "asymmetric",
+      "pressure": 160000,
+      "accepted": true,
+      "rejections": [],
+      "coordinateDifference": 6.938893903907228e-18,
+      "stability": "positive-with-refinement-margin",
+      "methods": {
+        "finite-difference": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 8.183922532393614e-11,
+            "maxForcePerArea": 1.0212401539292698e-8
+          },
+          "iterations": 5,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 2926.9242233214923,
+          "minHoopResultant": 121.93570865207448,
+          "volume": 0.0015123671781666745
+        },
+        "analytic-banded": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 1.8160087215256905e-10,
+            "maxForcePerArea": 2.095391269767164e-8
+          },
+          "iterations": 5,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 2926.9242233215255,
+          "minHoopResultant": 121.93570865207448,
+          "volume": 0.0015123671781666747
+        }
+      }
+    },
+    {
+      "id": "compact/hoop-dominant/16/320000/rest",
+      "geometry": "compact",
+      "material": "hoop-dominant",
+      "segments": 16,
+      "start": "rest",
+      "pressure": 320000,
+      "accepted": true,
+      "rejections": [],
+      "coordinateDifference": 3.598403873042532e-18,
+      "stability": "positive-with-refinement-margin",
+      "methods": {
+        "finite-difference": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 2.001364996707086e-10,
+            "maxForcePerArea": 2.2663626037708686e-8
+          },
+          "iterations": 5,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 5972.52079382059,
+          "minHoopResultant": 167.27774038796994,
+          "volume": 0.0015698387602609202
+        },
+        "analytic-banded": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 1.2306152516889457e-10,
+            "maxForcePerArea": 1.3770673558429269e-8
+          },
+          "iterations": 5,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 5972.52079382059,
+          "minHoopResultant": 167.27774038796994,
+          "volume": 0.0015698387602609205
+        }
+      }
+    },
+    {
+      "id": "compact/hoop-dominant/16/320000/asymmetric",
+      "geometry": "compact",
+      "material": "hoop-dominant",
+      "segments": 16,
+      "start": "asymmetric",
+      "pressure": 320000,
+      "accepted": true,
+      "rejections": [],
+      "coordinateDifference": 8.673617379884035e-18,
+      "stability": "positive-with-refinement-margin",
+      "methods": {
+        "finite-difference": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 1.6555224901391363e-10,
+            "maxForcePerArea": 2.0101361054787787e-8
+          },
+          "iterations": 5,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 5972.520793820524,
+          "minHoopResultant": 167.27774038796994,
+          "volume": 0.0015698387602609202
+        },
+        "analytic-banded": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 1.9390815770100726e-10,
+            "maxForcePerArea": 2.2373981796847724e-8
+          },
+          "iterations": 5,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 5972.52079382059,
+          "minHoopResultant": 167.27774038796994,
+          "volume": 0.0015698387602609205
+        }
+      }
+    },
+    {
+      "id": "compact/hoop-dominant/32/40000/rest",
+      "geometry": "compact",
+      "material": "hoop-dominant",
+      "segments": 32,
+      "start": "rest",
+      "pressure": 40000,
+      "accepted": true,
+      "rejections": [],
+      "coordinateDifference": 3.3393426912553537e-17,
+      "stability": "positive-with-refinement-margin",
+      "methods": {
+        "finite-difference": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 1.4320552456203456e-8,
+            "maxForcePerArea": 0.000003695180962689367
+          },
+          "iterations": 6,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 726.7615051575582,
+          "minHoopResultant": 40.10455951330982,
+          "volume": 0.001488188103657872
+        },
+        "analytic-banded": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 1.4450094011593167e-8,
+            "maxForcePerArea": 0.0000037286070117763124
+          },
+          "iterations": 6,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 726.7615051575582,
+          "minHoopResultant": 40.10455951330982,
+          "volume": 0.0014881881036578725
+        }
+      }
+    },
+    {
+      "id": "compact/hoop-dominant/32/40000/asymmetric",
+      "geometry": "compact",
+      "material": "hoop-dominant",
+      "segments": 32,
+      "start": "asymmetric",
+      "pressure": 40000,
+      "accepted": true,
+      "rejections": [],
+      "coordinateDifference": 1.3877787807814457e-17,
+      "stability": "positive-with-refinement-margin",
+      "methods": {
+        "finite-difference": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 5.7551968480911e-10,
+            "maxForcePerArea": 1.48503305962779e-7
+          },
+          "iterations": 5,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 726.7615051576581,
+          "minHoopResultant": 40.10455950856695,
+          "volume": 0.0014881881036578508
+        },
+        "analytic-banded": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 6.066387695084532e-10,
+            "maxForcePerArea": 1.5653306945891554e-7
+          },
+          "iterations": 5,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 726.7615051576581,
+          "minHoopResultant": 40.10455950856695,
+          "volume": 0.0014881881036578502
+        }
+      }
+    },
+    {
+      "id": "compact/hoop-dominant/32/160000/rest",
+      "geometry": "compact",
+      "material": "hoop-dominant",
+      "segments": 32,
+      "start": "rest",
+      "pressure": 160000,
+      "accepted": true,
+      "rejections": [],
+      "coordinateDifference": 6.938893903907228e-18,
+      "stability": "positive-with-refinement-margin",
+      "methods": {
+        "finite-difference": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 3.651124433311574e-10,
+            "maxForcePerArea": 8.231725147582787e-8
+          },
+          "iterations": 5,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 2954.9614628333165,
+          "minHoopResultant": 70.59555526689465,
+          "volume": 0.0015302717937742735
+        },
+        "analytic-banded": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 4.824804599812759e-10,
+            "maxForcePerArea": 1.0801859570054765e-7
+          },
+          "iterations": 5,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 2954.9614628332833,
+          "minHoopResultant": 70.59555526689465,
+          "volume": 0.0015302717937742735
+        }
+      }
+    },
+    {
+      "id": "compact/hoop-dominant/32/160000/asymmetric",
+      "geometry": "compact",
+      "material": "hoop-dominant",
+      "segments": 32,
+      "start": "asymmetric",
+      "pressure": 160000,
+      "accepted": true,
+      "rejections": [],
+      "coordinateDifference": 1.214306433183765e-17,
+      "stability": "positive-with-refinement-margin",
+      "methods": {
+        "finite-difference": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 3.64246245538492e-10,
+            "maxForcePerArea": 8.212196089390162e-8
+          },
+          "iterations": 7,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 2954.9614628333165,
+          "minHoopResultant": 70.59555526689465,
+          "volume": 0.001530271793774273
+        },
+        "analytic-banded": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 4.352174668691629e-10,
+            "maxForcePerArea": 9.743727154749648e-8
+          },
+          "iterations": 7,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 2954.9614628333165,
+          "minHoopResultant": 70.59555526689465,
+          "volume": 0.0015302717937742735
+        }
+      }
+    },
+    {
+      "id": "compact/hoop-dominant/32/320000/rest",
+      "geometry": "compact",
+      "material": "hoop-dominant",
+      "segments": 32,
+      "start": "rest",
+      "pressure": 320000,
+      "accepted": true,
+      "rejections": [],
+      "coordinateDifference": 1.0408340855860843e-17,
+      "stability": "positive-with-refinement-margin",
+      "methods": {
+        "finite-difference": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 3.1898387368066694e-10,
+            "maxForcePerArea": 7.511816742099895e-8
+          },
+          "iterations": 5,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 6031.268879325913,
+          "minHoopResultant": 91.60307535672985,
+          "volume": 0.0015891484461334965
+        },
+        "analytic-banded": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 3.2085690611898195e-10,
+            "maxForcePerArea": 7.555925167602046e-8
+          },
+          "iterations": 5,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 6031.268879325913,
+          "minHoopResultant": 91.60307535672985,
+          "volume": 0.0015891484461334965
+        }
+      }
+    },
+    {
+      "id": "compact/hoop-dominant/32/320000/asymmetric",
+      "geometry": "compact",
+      "material": "hoop-dominant",
+      "segments": 32,
+      "start": "asymmetric",
+      "pressure": 320000,
+      "accepted": true,
+      "rejections": [],
+      "coordinateDifference": 1.491862189340054e-16,
+      "stability": "positive-with-refinement-margin",
+      "methods": {
+        "finite-difference": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 5.972597422431815e-7,
+            "maxForcePerArea": 0.00015247062802384005
+          },
+          "iterations": 6,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 6031.268879380103,
+          "minHoopResultant": 91.60307534820333,
+          "volume": 0.0015891484461360496
+        },
+        "analytic-banded": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 5.971712082250235e-7,
+            "maxForcePerArea": 0.0001524480267393481
+          },
+          "iterations": 6,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 6031.26887938007,
+          "minHoopResultant": 91.60307534820333,
+          "volume": 0.0015891484461360496
+        }
+      }
+    },
+    {
+      "id": "reference/negative-coupling/16/40000/rest",
+      "geometry": "reference",
+      "material": "negative-coupling",
+      "segments": 16,
+      "start": "rest",
+      "pressure": 40000,
+      "accepted": false,
+      "rejections": [
+        "compressive-resultants"
+      ],
+      "coordinateDifference": 6.938893903907228e-18,
+      "stability": "positive-with-refinement-margin",
+      "methods": {
+        "finite-difference": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 1.5434397412550556e-9,
+            "maxForcePerArea": 8.920782789094056e-8
+          },
+          "iterations": 6,
+          "compressiveSegments": 10,
+          "minMeridionalResultant": 1052.1303591983112,
+          "minHoopResultant": -147.22582109049085,
+          "volume": 0.004743554793390914
+        },
+        "analytic-banded": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 1.5028976152065967e-9,
+            "maxForcePerArea": 8.68645715225884e-8
+          },
+          "iterations": 6,
+          "compressiveSegments": 10,
+          "minMeridionalResultant": 1052.1303591983335,
+          "minHoopResultant": -147.22582109048756,
+          "volume": 0.004743554793390913
+        }
+      }
+    },
+    {
+      "id": "reference/negative-coupling/16/40000/asymmetric",
+      "geometry": "reference",
+      "material": "negative-coupling",
+      "segments": 16,
+      "start": "asymmetric",
+      "pressure": 40000,
+      "accepted": false,
+      "rejections": [
+        "compressive-resultants"
+      ],
+      "coordinateDifference": 1.3877787807814457e-17,
+      "stability": "positive-with-refinement-margin",
+      "methods": {
+        "finite-difference": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 4.0215810544223683e-10,
+            "maxForcePerArea": 2.3243959641770874e-8
+          },
+          "iterations": 5,
+          "compressiveSegments": 10,
+          "minMeridionalResultant": 1052.1303591983221,
+          "minHoopResultant": -147.2258210904942,
+          "volume": 0.004743554793390907
+        },
+        "analytic-banded": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 5.21261691795361e-10,
+            "maxForcePerArea": 3.012791626708333e-8
+          },
+          "iterations": 5,
+          "compressiveSegments": 10,
+          "minMeridionalResultant": 1052.1303591983221,
+          "minHoopResultant": -147.22582109049085,
+          "volume": 0.004743554793390907
+        }
+      }
+    },
+    {
+      "id": "reference/negative-coupling/16/160000/rest",
+      "geometry": "reference",
+      "material": "negative-coupling",
+      "segments": 16,
+      "start": "rest",
+      "pressure": 160000,
+      "accepted": false,
+      "rejections": [
+        "compressive-resultants"
+      ],
+      "coordinateDifference": 1.214306433183765e-17,
+      "stability": "positive-with-refinement-margin",
+      "methods": {
+        "finite-difference": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 2.026562831792938e-10,
+            "maxForcePerArea": 1.0649370011677584e-8
+          },
+          "iterations": 5,
+          "compressiveSegments": 16,
+          "minMeridionalResultant": 4348.688427989656,
+          "minHoopResultant": -707.5857981925327,
+          "volume": 0.005044642560982508
+        },
+        "analytic-banded": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 1.4241217591512816e-10,
+            "maxForcePerArea": 7.355769563053676e-9
+          },
+          "iterations": 5,
+          "compressiveSegments": 16,
+          "minMeridionalResultant": 4348.688427989656,
+          "minHoopResultant": -707.585798192536,
+          "volume": 0.005044642560982507
+        }
+      }
+    },
+    {
+      "id": "reference/negative-coupling/16/160000/asymmetric",
+      "geometry": "reference",
+      "material": "negative-coupling",
+      "segments": 16,
+      "start": "asymmetric",
+      "pressure": 160000,
+      "accepted": false,
+      "rejections": [
+        "compressive-resultants"
+      ],
+      "coordinateDifference": 6.938893903907228e-18,
+      "stability": "positive-with-refinement-margin",
+      "methods": {
+        "finite-difference": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 1.5415868123024562e-10,
+            "maxForcePerArea": 8.910073218601643e-9
+          },
+          "iterations": 5,
+          "compressiveSegments": 16,
+          "minMeridionalResultant": 4348.688427989656,
+          "minHoopResultant": -707.585798192546,
+          "volume": 0.005044642560982508
+        },
+        "analytic-banded": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 1.9985357102861242e-10,
+            "maxForcePerArea": 1.1551149352428224e-8
+          },
+          "iterations": 5,
+          "compressiveSegments": 16,
+          "minMeridionalResultant": 4348.688427989656,
+          "minHoopResultant": -707.5857981925493,
+          "volume": 0.005044642560982509
+        }
+      }
+    },
+    {
+      "id": "reference/negative-coupling/16/320000/rest",
+      "geometry": "reference",
+      "material": "negative-coupling",
+      "segments": 16,
+      "start": "rest",
+      "pressure": 320000,
+      "accepted": false,
+      "rejections": [
+        "compressive-resultants"
+      ],
+      "coordinateDifference": 1.0408340855860843e-17,
+      "stability": "positive-with-refinement-margin",
+      "methods": {
+        "finite-difference": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 1.863776345046579e-10,
+            "maxForcePerArea": 1.0012304147365699e-8
+          },
+          "iterations": 5,
+          "compressiveSegments": 16,
+          "minMeridionalResultant": 9090.548080583505,
+          "minHoopResultant": -1518.0090548048252,
+          "volume": 0.005494287829822325
+        },
+        "analytic-banded": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 1.8554040218161086e-10,
+            "maxForcePerArea": 9.967327588442031e-9
+          },
+          "iterations": 5,
+          "compressiveSegments": 16,
+          "minMeridionalResultant": 9090.548080583505,
+          "minHoopResultant": -1518.0090548048354,
+          "volume": 0.005494287829822323
+        }
+      }
+    },
+    {
+      "id": "reference/negative-coupling/16/320000/asymmetric",
+      "geometry": "reference",
+      "material": "negative-coupling",
+      "segments": 16,
+      "start": "asymmetric",
+      "pressure": 320000,
+      "accepted": false,
+      "rejections": [
+        "compressive-resultants"
+      ],
+      "coordinateDifference": 1.5612511283791264e-17,
+      "stability": "positive-with-refinement-margin",
+      "methods": {
+        "finite-difference": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 1.8507714382338213e-10,
+            "maxForcePerArea": 1.0697100477222176e-8
+          },
+          "iterations": 5,
+          "compressiveSegments": 16,
+          "minMeridionalResultant": 9090.548080583527,
+          "minHoopResultant": -1518.0090548048386,
+          "volume": 0.005494287829822325
+        },
+        "analytic-banded": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 1.9139407887108427e-10,
+            "maxForcePerArea": 1.106220708907826e-8
+          },
+          "iterations": 5,
+          "compressiveSegments": 16,
+          "minMeridionalResultant": 9090.548080583527,
+          "minHoopResultant": -1518.009054804832,
+          "volume": 0.005494287829822324
+        }
+      }
+    },
+    {
+      "id": "reference/negative-coupling/32/40000/rest",
+      "geometry": "reference",
+      "material": "negative-coupling",
+      "segments": 32,
+      "start": "rest",
+      "pressure": 40000,
+      "accepted": false,
+      "rejections": [
+        "compressive-resultants"
+      ],
+      "coordinateDifference": 5.551115123125783e-17,
+      "stability": "positive-with-refinement-margin",
+      "methods": {
+        "finite-difference": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 3.658533076387865e-7,
+            "maxForcePerArea": 0.00004262507777614078
+          },
+          "iterations": 5,
+          "compressiveSegments": 20,
+          "minMeridionalResultant": 1061.8722751212008,
+          "minHoopResultant": -163.72466594234191,
+          "volume": 0.004797448912586328
+        },
+        "analytic-banded": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 3.6577557131054585e-7,
+            "maxForcePerArea": 0.00004261602082088542
+          },
+          "iterations": 5,
+          "compressiveSegments": 20,
+          "minMeridionalResultant": 1061.8722751211562,
+          "minHoopResultant": -163.72466594233526,
+          "volume": 0.004797448912586328
+        }
+      }
+    },
+    {
+      "id": "reference/negative-coupling/32/40000/asymmetric",
+      "geometry": "reference",
+      "material": "negative-coupling",
+      "segments": 32,
+      "start": "asymmetric",
+      "pressure": 40000,
+      "accepted": false,
+      "rejections": [
+        "compressive-resultants"
+      ],
+      "coordinateDifference": 1.8214596497756474e-17,
+      "stability": "positive-with-refinement-margin",
+      "methods": {
+        "finite-difference": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 4.1576599790861193e-10,
+            "maxForcePerArea": 4.398912279808213e-8
+          },
+          "iterations": 6,
+          "compressiveSegments": 20,
+          "minMeridionalResultant": 1061.8722751217613,
+          "minHoopResultant": -163.72466591935364,
+          "volume": 0.004797448912585224
+        },
+        "analytic-banded": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 5.122954995994679e-10,
+            "maxForcePerArea": 5.4202194874385316e-8
+          },
+          "iterations": 6,
+          "compressiveSegments": 20,
+          "minMeridionalResultant": 1061.872275121739,
+          "minHoopResultant": -163.72466591935364,
+          "volume": 0.004797448912585224
+        }
+      }
+    },
+    {
+      "id": "reference/negative-coupling/32/160000/rest",
+      "geometry": "reference",
+      "material": "negative-coupling",
+      "segments": 32,
+      "start": "rest",
+      "pressure": 160000,
+      "accepted": false,
+      "rejections": [
+        "compressive-resultants"
+      ],
+      "coordinateDifference": 6.938893903907228e-18,
+      "stability": "positive-with-refinement-margin",
+      "methods": {
+        "finite-difference": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 2.0624730369001193e-9,
+            "maxForcePerArea": 2.4029596500425494e-7
+          },
+          "iterations": 6,
+          "compressiveSegments": 32,
+          "minMeridionalResultant": 4390.812493069037,
+          "minHoopResultant": -742.1394809322423,
+          "volume": 0.0051057488043214265
+        },
+        "analytic-banded": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 1.9864198180910957e-9,
+            "maxForcePerArea": 2.314351065695376e-7
+          },
+          "iterations": 6,
+          "compressiveSegments": 32,
+          "minMeridionalResultant": 4390.8124930690155,
+          "minHoopResultant": -742.139480932239,
+          "volume": 0.005105748804321426
+        }
+      }
+    },
+    {
+      "id": "reference/negative-coupling/32/160000/asymmetric",
+      "geometry": "reference",
+      "material": "negative-coupling",
+      "segments": 32,
+      "start": "asymmetric",
+      "pressure": 160000,
+      "accepted": false,
+      "rejections": [
+        "compressive-resultants"
+      ],
+      "coordinateDifference": 1.0408340855860843e-17,
+      "stability": "positive-with-refinement-margin",
+      "methods": {
+        "finite-difference": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 4.724965611840235e-10,
+            "maxForcePerArea": 5.0581313712195624e-8
+          },
+          "iterations": 7,
+          "compressiveSegments": 32,
+          "minMeridionalResultant": 4390.812493069008,
+          "minHoopResultant": -742.1394809320825,
+          "volume": 0.00510574880432142
+        },
+        "analytic-banded": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 2.9958229192359583e-10,
+            "maxForcePerArea": 3.28939773420873e-8
+          },
+          "iterations": 7,
+          "compressiveSegments": 32,
+          "minMeridionalResultant": 4390.812493069008,
+          "minHoopResultant": -742.1394809320858,
+          "volume": 0.005105748804321418
+        }
+      }
+    },
+    {
+      "id": "reference/negative-coupling/32/320000/rest",
+      "geometry": "reference",
+      "material": "negative-coupling",
+      "segments": 32,
+      "start": "rest",
+      "pressure": 320000,
+      "accepted": false,
+      "rejections": [
+        "compressive-resultants"
+      ],
+      "coordinateDifference": 1.3877787807814457e-17,
+      "stability": "positive-with-refinement-margin",
+      "methods": {
+        "finite-difference": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 5.309527325278004e-10,
+            "maxForcePerArea": 5.5051217560294236e-8
+          },
+          "iterations": 6,
+          "compressiveSegments": 32,
+          "minMeridionalResultant": 9184.27453972087,
+          "minHoopResultant": -1577.8407816184836,
+          "volume": 0.005566876863117506
+        },
+        "analytic-banded": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 3.1369855330123814e-10,
+            "maxForcePerArea": 3.6548597357304655e-8
+          },
+          "iterations": 6,
+          "compressiveSegments": 32,
+          "minMeridionalResultant": 9184.274539720845,
+          "minHoopResultant": -1577.8407816184904,
+          "volume": 0.005566876863117505
+        }
+      }
+    },
+    {
+      "id": "reference/negative-coupling/32/320000/asymmetric",
+      "geometry": "reference",
+      "material": "negative-coupling",
+      "segments": 32,
+      "start": "asymmetric",
+      "pressure": 320000,
+      "accepted": false,
+      "rejections": [
+        "compressive-resultants"
+      ],
+      "coordinateDifference": 1.1275702593849246e-17,
+      "stability": "positive-with-refinement-margin",
+      "methods": {
+        "finite-difference": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 0.0000016785053879892157,
+            "maxForcePerArea": 0.00019556040964197226
+          },
+          "iterations": 6,
+          "compressiveSegments": 32,
+          "minMeridionalResultant": 9184.274539719392,
+          "minHoopResultant": -1577.8407817338914,
+          "volume": 0.005566876863120781
+        },
+        "analytic-banded": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 0.000001678447520013209,
+            "maxForcePerArea": 0.00019555366752176578
+          },
+          "iterations": 6,
+          "compressiveSegments": 32,
+          "minMeridionalResultant": 9184.274539719348,
+          "minHoopResultant": -1577.840781733888,
+          "volume": 0.00556687686312078
+        }
+      }
+    },
+    {
+      "id": "reference/reference/16/40000/rest",
+      "geometry": "reference",
+      "material": "reference",
+      "segments": 16,
+      "start": "rest",
+      "pressure": 40000,
+      "accepted": true,
+      "rejections": [],
+      "coordinateDifference": 2.6473037365508932e-17,
+      "stability": "positive-with-refinement-margin",
+      "methods": {
+        "finite-difference": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 2.8100055803529717e-9,
+            "maxForcePerArea": 1.6241288045419463e-7
+          },
+          "iterations": 5,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 1043.6883044084232,
+          "minHoopResultant": 149.65796979217848,
+          "volume": 0.00469167662790799
+        },
+        "analytic-banded": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 2.8112190444533092e-9,
+            "maxForcePerArea": 1.624830163290988e-7
+          },
+          "iterations": 5,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 1043.6883044083788,
+          "minHoopResultant": 149.65796979217848,
+          "volume": 0.004691676627907989
+        }
+      }
+    },
+    {
+      "id": "reference/reference/16/40000/asymmetric",
+      "geometry": "reference",
+      "material": "reference",
+      "segments": 16,
+      "start": "asymmetric",
+      "pressure": 40000,
+      "accepted": true,
+      "rejections": [],
+      "coordinateDifference": 3.2959746043559335e-17,
+      "stability": "positive-with-refinement-margin",
+      "methods": {
+        "finite-difference": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 2.0073610119520058e-10,
+            "maxForcePerArea": 1.1338100109204493e-8
+          },
+          "iterations": 6,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 1043.6883044084677,
+          "minHoopResultant": 149.6579697918765,
+          "volume": 0.0046916766279079805
+        },
+        "analytic-banded": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 3.714902865773553e-10,
+            "maxForcePerArea": 1.9187944608081222e-8
+          },
+          "iterations": 5,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 1043.6883044084677,
+          "minHoopResultant": 149.65796979188093,
+          "volume": 0.00469167662790798
+        }
+      }
+    },
+    {
+      "id": "reference/reference/16/160000/rest",
+      "geometry": "reference",
+      "material": "reference",
+      "segments": 16,
+      "start": "rest",
+      "pressure": 160000,
+      "accepted": true,
+      "rejections": [],
+      "coordinateDifference": 1.0408340855860843e-17,
+      "stability": "positive-with-refinement-margin",
+      "methods": {
+        "finite-difference": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 4.719076956714908e-10,
+            "maxForcePerArea": 2.4374631186450437e-8
+          },
+          "iterations": 5,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 4242.501501997986,
+          "minHoopResultant": 526.1250309454457,
+          "volume": 0.004830826351624424
+        },
+        "analytic-banded": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 3.935903998345915e-10,
+            "maxForcePerArea": 2.0682752763083103e-8
+          },
+          "iterations": 5,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 4242.501501997986,
+          "minHoopResultant": 526.1250309454413,
+          "volume": 0.004830826351624424
+        }
+      }
+    },
+    {
+      "id": "reference/reference/16/160000/asymmetric",
+      "geometry": "reference",
+      "material": "reference",
+      "segments": 16,
+      "start": "asymmetric",
+      "pressure": 160000,
+      "accepted": true,
+      "rejections": [],
+      "coordinateDifference": 2.2671311531535377e-17,
+      "stability": "positive-with-refinement-margin",
+      "methods": {
+        "finite-difference": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 3.068881794762358e-10,
+            "maxForcePerArea": 1.64861937448328e-8
+          },
+          "iterations": 5,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 4242.501501997986,
+          "minHoopResultant": 526.1250309454413,
+          "volume": 0.004830826351624423
+        },
+        "analytic-banded": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 4.425632344753279e-10,
+            "maxForcePerArea": 2.3774728763918086e-8
+          },
+          "iterations": 5,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 4242.501501997986,
+          "minHoopResultant": 526.1250309454413,
+          "volume": 0.004830826351624423
+        }
+      }
+    },
+    {
+      "id": "reference/reference/16/320000/rest",
+      "geometry": "reference",
+      "material": "reference",
+      "segments": 16,
+      "start": "rest",
+      "pressure": 320000,
+      "accepted": true,
+      "rejections": [],
+      "coordinateDifference": 1.3877787807814457e-17,
+      "stability": "positive-with-refinement-margin",
+      "methods": {
+        "finite-difference": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 2.1905421094834297e-10,
+            "maxForcePerArea": 1.1767706949415124e-8
+          },
+          "iterations": 5,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 8661.48877909229,
+          "minHoopResultant": 1040.2361843509843,
+          "volume": 0.005026360822119224
+        },
+        "analytic-banded": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 2.2178818991433962e-10,
+            "maxForcePerArea": 1.1914577731485138e-8
+          },
+          "iterations": 5,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 8661.48877909229,
+          "minHoopResultant": 1040.2361843509843,
+          "volume": 0.005026360822119224
+        }
+      }
+    },
+    {
+      "id": "reference/reference/16/320000/asymmetric",
+      "geometry": "reference",
+      "material": "reference",
+      "segments": 16,
+      "start": "asymmetric",
+      "pressure": 320000,
+      "accepted": true,
+      "rejections": [],
+      "coordinateDifference": 2.2551405187698492e-17,
+      "stability": "positive-with-refinement-margin",
+      "methods": {
+        "finite-difference": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 5.324363775145516e-10,
+            "maxForcePerArea": 2.8602761082173106e-8
+          },
+          "iterations": 5,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 8661.48877909229,
+          "minHoopResultant": 1040.23618435098,
+          "volume": 0.005026360822119225
+        },
+        "analytic-banded": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 2.2302332660190337e-10,
+            "maxForcePerArea": 1.2890316352091309e-8
+          },
+          "iterations": 5,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 8661.48877909229,
+          "minHoopResultant": 1040.2361843509843,
+          "volume": 0.005026360822119226
+        }
+      }
+    },
+    {
+      "id": "reference/reference/32/40000/rest",
+      "geometry": "reference",
+      "material": "reference",
+      "segments": 32,
+      "start": "rest",
+      "pressure": 40000,
+      "accepted": true,
+      "rejections": [],
+      "coordinateDifference": 1.734723475976807e-17,
+      "stability": "positive-with-refinement-margin",
+      "methods": {
+        "finite-difference": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 4.1347261393189795e-10,
+            "maxForcePerArea": 4.3279439923315256e-8
+          },
+          "iterations": 8,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 1053.3234902623656,
+          "minHoopResultant": 138.41237608583688,
+          "volume": 0.004744288925061802
+        },
+        "analytic-banded": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 5.53723589751942e-10,
+            "maxForcePerArea": 5.858539444860296e-8
+          },
+          "iterations": 7,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 1053.3234902623212,
+          "minHoopResultant": 138.41237608583688,
+          "volume": 0.004744288925061801
+        }
+      }
+    },
+    {
+      "id": "reference/reference/32/40000/asymmetric",
+      "geometry": "reference",
+      "material": "reference",
+      "segments": 32,
+      "start": "asymmetric",
+      "pressure": 40000,
+      "accepted": true,
+      "rejections": [],
+      "coordinateDifference": 1.214306433183765e-16,
+      "stability": "positive-with-refinement-margin",
+      "methods": {
+        "finite-difference": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 0.000001099390514170089,
+            "maxForcePerArea": 0.0001280885130581319
+          },
+          "iterations": 5,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 1053.3234902699062,
+          "minHoopResultant": 138.41237593477553,
+          "volume": 0.00474428892506191
+        },
+        "analytic-banded": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 0.0000010995494790109964,
+            "maxForcePerArea": 0.0001281070338383623
+          },
+          "iterations": 5,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 1053.3234902698618,
+          "minHoopResultant": 138.4123759347622,
+          "volume": 0.004744288925061911
+        }
+      }
+    },
+    {
+      "id": "reference/reference/32/160000/rest",
+      "geometry": "reference",
+      "material": "reference",
+      "segments": 32,
+      "start": "rest",
+      "pressure": 160000,
+      "accepted": true,
+      "rejections": [],
+      "coordinateDifference": 6.938893903907228e-18,
+      "stability": "positive-with-refinement-margin",
+      "methods": {
+        "finite-difference": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 6.573501546591063e-10,
+            "maxForcePerArea": 6.954935425237369e-8
+          },
+          "iterations": 5,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 4282.493927689419,
+          "minHoopResultant": 511.87644847941806,
+          "volume": 0.0048866922747155695
+        },
+        "analytic-banded": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 7.3468850279859e-10,
+            "maxForcePerArea": 7.507936388999733e-8
+          },
+          "iterations": 5,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 4282.493927689464,
+          "minHoopResultant": 511.87644847941806,
+          "volume": 0.004886692274715569
+        }
+      }
+    },
+    {
+      "id": "reference/reference/32/160000/asymmetric",
+      "geometry": "reference",
+      "material": "reference",
+      "segments": 32,
+      "start": "asymmetric",
+      "pressure": 160000,
+      "accepted": true,
+      "rejections": [],
+      "coordinateDifference": 1.214306433183765e-17,
+      "stability": "positive-with-refinement-margin",
+      "methods": {
+        "finite-difference": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 7.831760746892917e-10,
+            "maxForcePerArea": 8.286206350525037e-8
+          },
+          "iterations": 7,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 4282.493927689464,
+          "minHoopResultant": 511.8764484794225,
+          "volume": 0.0048866922747155695
+        },
+        "analytic-banded": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 1.1734400071575347e-9,
+            "maxForcePerArea": 1.2415300152173904e-7
+          },
+          "iterations": 7,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 4282.493927689464,
+          "minHoopResultant": 511.8764484794092,
+          "volume": 0.0048866922747155695
+        }
+      }
+    },
+    {
+      "id": "reference/reference/32/320000/rest",
+      "geometry": "reference",
+      "material": "reference",
+      "segments": 32,
+      "start": "rest",
+      "pressure": 320000,
+      "accepted": true,
+      "rejections": [],
+      "coordinateDifference": 6.938893903907228e-18,
+      "stability": "positive-with-refinement-margin",
+      "methods": {
+        "finite-difference": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 6.635692993105969e-10,
+            "maxForcePerArea": 6.945782297736314e-8
+          },
+          "iterations": 5,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 8745.511034870504,
+          "minHoopResultant": 1024.4217397231203,
+          "volume": 0.005086933431279587
+        },
+        "analytic-banded": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 6.635692993105969e-10,
+            "maxForcePerArea": 6.945782297736314e-8
+          },
+          "iterations": 5,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 8745.511034870504,
+          "minHoopResultant": 1024.4217397231337,
+          "volume": 0.005086933431279588
+        }
+      }
+    },
+    {
+      "id": "reference/reference/32/320000/asymmetric",
+      "geometry": "reference",
+      "material": "reference",
+      "segments": 32,
+      "start": "asymmetric",
+      "pressure": 320000,
+      "accepted": true,
+      "rejections": [],
+      "coordinateDifference": 2.4784368497937427e-17,
+      "stability": "positive-with-refinement-margin",
+      "methods": {
+        "finite-difference": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 8.798911181023695e-10,
+            "maxForcePerArea": 9.049883096836899e-8
+          },
+          "iterations": 9,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 8745.511034870551,
+          "minHoopResultant": 1024.4217397231425,
+          "volume": 0.0050869334312795885
+        },
+        "analytic-banded": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 9.668275188551208e-10,
+            "maxForcePerArea": 1.0024438866784794e-7
+          },
+          "iterations": 9,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 8745.511034870551,
+          "minHoopResultant": 1024.421739723138,
+          "volume": 0.00508693343127959
+        }
+      }
+    },
+    {
+      "id": "reference/hoop-dominant/16/40000/rest",
+      "geometry": "reference",
+      "material": "hoop-dominant",
+      "segments": 16,
+      "start": "rest",
+      "pressure": 40000,
+      "accepted": true,
+      "rejections": [],
+      "coordinateDifference": 1.5612511283791264e-17,
+      "stability": "positive-with-refinement-margin",
+      "methods": {
+        "finite-difference": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 2.415026952120928e-10,
+            "maxForcePerArea": 1.2690707239782974e-8
+          },
+          "iterations": 5,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 1042.548369282581,
+          "minHoopResultant": 69.55154020182874,
+          "volume": 0.004707006355530128
+        },
+        "analytic-banded": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 1.9456928574525336e-10,
+            "maxForcePerArea": 1.071556790537047e-8
+          },
+          "iterations": 5,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 1042.548369282581,
+          "minHoopResultant": 69.55154020182874,
+          "volume": 0.004707006355530129
+        }
+      }
+    },
+    {
+      "id": "reference/hoop-dominant/16/40000/asymmetric",
+      "geometry": "reference",
+      "material": "hoop-dominant",
+      "segments": 16,
+      "start": "asymmetric",
+      "pressure": 40000,
+      "accepted": true,
+      "rejections": [],
+      "coordinateDifference": 2.310435227501877e-17,
+      "stability": "positive-with-refinement-margin",
+      "methods": {
+        "finite-difference": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 1.9571916062574422e-10,
+            "maxForcePerArea": 1.0778895281617884e-8
+          },
+          "iterations": 5,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 1042.548369282581,
+          "minHoopResultant": 69.55154020182874,
+          "volume": 0.004707006355530128
+        },
+        "analytic-banded": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 3.0768006837773774e-10,
+            "maxForcePerArea": 1.5892065882625274e-8
+          },
+          "iterations": 5,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 1042.548369282581,
+          "minHoopResultant": 69.55154020182874,
+          "volume": 0.004707006355530128
+        }
+      }
+    },
+    {
+      "id": "reference/hoop-dominant/16/160000/rest",
+      "geometry": "reference",
+      "material": "hoop-dominant",
+      "segments": 16,
+      "start": "rest",
+      "pressure": 160000,
+      "accepted": true,
+      "rejections": [],
+      "coordinateDifference": 1.734723475976807e-17,
+      "stability": "positive-with-refinement-margin",
+      "methods": {
+        "finite-difference": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 2.3006455282664054e-10,
+            "maxForcePerArea": 1.2670408533340161e-8
+          },
+          "iterations": 5,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 4262.723386139233,
+          "minHoopResultant": 125.52791725736867,
+          "volume": 0.004896231554849387
+        },
+        "analytic-banded": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 1.9343620836757654e-10,
+            "maxForcePerArea": 9.882562168274056e-9
+          },
+          "iterations": 5,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 4262.723386139233,
+          "minHoopResultant": 125.52791725736867,
+          "volume": 0.004896231554849388
+        }
+      }
+    },
+    {
+      "id": "reference/hoop-dominant/16/160000/asymmetric",
+      "geometry": "reference",
+      "material": "hoop-dominant",
+      "segments": 16,
+      "start": "asymmetric",
+      "pressure": 160000,
+      "accepted": true,
+      "rejections": [],
+      "coordinateDifference": 7.330764179207507e-18,
+      "stability": "positive-with-refinement-margin",
+      "methods": {
+        "finite-difference": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 2.097850866943736e-10,
+            "maxForcePerArea": 1.1269764739465325e-8
+          },
+          "iterations": 5,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 4262.723386139267,
+          "minHoopResultant": 125.52791725736867,
+          "volume": 0.004896231554849387
+        },
+        "analytic-banded": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 2.3006455282664054e-10,
+            "maxForcePerArea": 1.2670408533340161e-8
+          },
+          "iterations": 5,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 4262.723386139267,
+          "minHoopResultant": 125.52791725736867,
+          "volume": 0.004896231554849388
+        }
+      }
+    },
+    {
+      "id": "reference/hoop-dominant/16/320000/rest",
+      "geometry": "reference",
+      "material": "hoop-dominant",
+      "segments": 16,
+      "start": "rest",
+      "pressure": 320000,
+      "accepted": true,
+      "rejections": [],
+      "coordinateDifference": 2.2194531709311955e-17,
+      "stability": "positive-with-refinement-margin",
+      "methods": {
+        "finite-difference": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 3.4361571651456686e-10,
+            "maxForcePerArea": 1.8056636831505937e-8
+          },
+          "iterations": 5,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 8768.9528975315,
+          "minHoopResultant": 178.84562810294824,
+          "volume": 0.005167035436386118
+        },
+        "analytic-banded": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 2.379058911176466e-10,
+            "maxForcePerArea": 1.2501699047881097e-8
+          },
+          "iterations": 5,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 8768.9528975315,
+          "minHoopResultant": 178.84562810294824,
+          "volume": 0.005167035436386118
+        }
+      }
+    },
+    {
+      "id": "reference/hoop-dominant/16/320000/asymmetric",
+      "geometry": "reference",
+      "material": "hoop-dominant",
+      "segments": 16,
+      "start": "asymmetric",
+      "pressure": 320000,
+      "accepted": true,
+      "rejections": [],
+      "coordinateDifference": 3.2959746043559335e-17,
+      "stability": "positive-with-refinement-margin",
+      "methods": {
+        "finite-difference": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 3.139378399034694e-10,
+            "maxForcePerArea": 1.6864905195488896e-8
+          },
+          "iterations": 5,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 8768.9528975315,
+          "minHoopResultant": 178.84562810294824,
+          "volume": 0.005167035436386118
+        },
+        "analytic-banded": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 2.1473948030845835e-10,
+            "maxForcePerArea": 1.1091566595964967e-8
+          },
+          "iterations": 5,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 8768.952897531468,
+          "minHoopResultant": 178.84562810294824,
+          "volume": 0.005167035436386117
+        }
+      }
+    },
+    {
+      "id": "reference/hoop-dominant/32/40000/rest",
+      "geometry": "reference",
+      "material": "hoop-dominant",
+      "segments": 32,
+      "start": "rest",
+      "pressure": 40000,
+      "accepted": true,
+      "rejections": [],
+      "coordinateDifference": 1.3877787807814457e-17,
+      "stability": "positive-with-refinement-margin",
+      "methods": {
+        "finite-difference": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 7.951397952701566e-10,
+            "maxForcePerArea": 8.3229708184978e-8
+          },
+          "iterations": 6,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 1052.209168815732,
+          "minHoopResultant": 42.432529885836345,
+          "volume": 0.004759961868902051
+        },
+        "analytic-banded": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 5.394605466986286e-10,
+            "maxForcePerArea": 6.222312826756535e-8
+          },
+          "iterations": 6,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 1052.209168815732,
+          "minHoopResultant": 42.432529885836345,
+          "volume": 0.00475996186890205
+        }
+      }
+    },
+    {
+      "id": "reference/hoop-dominant/32/40000/asymmetric",
+      "geometry": "reference",
+      "material": "hoop-dominant",
+      "segments": 32,
+      "start": "asymmetric",
+      "pressure": 40000,
+      "accepted": true,
+      "rejections": [],
+      "coordinateDifference": 2.632442874794805e-16,
+      "stability": "positive-with-refinement-margin",
+      "methods": {
+        "finite-difference": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 0.000006935284266713172,
+            "maxForcePerArea": 0.0008080206604559727
+          },
+          "iterations": 5,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 1052.2091688499047,
+          "minHoopResultant": 42.43252781250817,
+          "volume": 0.004759961868905608
+        },
+        "analytic-banded": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 0.000006935916487847606,
+            "maxForcePerArea": 0.0008080943196916944
+          },
+          "iterations": 5,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 1052.2091688499047,
+          "minHoopResultant": 42.4325278123483,
+          "volume": 0.004759961868905608
+        }
+      }
+    },
+    {
+      "id": "reference/hoop-dominant/32/160000/rest",
+      "geometry": "reference",
+      "material": "hoop-dominant",
+      "segments": 32,
+      "start": "rest",
+      "pressure": 160000,
+      "accepted": true,
+      "rejections": [],
+      "coordinateDifference": 6.938893903907228e-18,
+      "stability": "positive-with-refinement-margin",
+      "methods": {
+        "finite-difference": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 4.948094724515149e-10,
+            "maxForcePerArea": 5.05656210719134e-8
+          },
+          "iterations": 5,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 4303.2618429056365,
+          "minHoopResultant": 70.3217053972871,
+          "volume": 0.004953639194281355
+        },
+        "analytic-banded": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 8.83817189777045e-10,
+            "maxForcePerArea": 9.351015496150328e-8
+          },
+          "iterations": 5,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 4303.26184290567,
+          "minHoopResultant": 70.3217053972871,
+          "volume": 0.004953639194281355
+        }
+      }
+    },
+    {
+      "id": "reference/hoop-dominant/32/160000/asymmetric",
+      "geometry": "reference",
+      "material": "hoop-dominant",
+      "segments": 32,
+      "start": "asymmetric",
+      "pressure": 160000,
+      "accepted": true,
+      "rejections": [],
+      "coordinateDifference": 6.938893903907228e-18,
+      "stability": "positive-with-refinement-margin",
+      "methods": {
+        "finite-difference": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 8.827556816990975e-10,
+            "maxForcePerArea": 9.339784464890707e-8
+          },
+          "iterations": 7,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 4303.26184290567,
+          "minHoopResultant": 70.3217053972871,
+          "volume": 0.004953639194281357
+        },
+        "analytic-banded": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 6.755692135338501e-10,
+            "maxForcePerArea": 7.071389060847295e-8
+          },
+          "iterations": 7,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 4303.26184290567,
+          "minHoopResultant": 70.3217053972871,
+          "volume": 0.004953639194281355
+        }
+      }
+    },
+    {
+      "id": "reference/hoop-dominant/32/320000/rest",
+      "geometry": "reference",
+      "material": "hoop-dominant",
+      "segments": 32,
+      "start": "rest",
+      "pressure": 320000,
+      "accepted": true,
+      "rejections": [],
+      "coordinateDifference": 6.938893903907228e-18,
+      "stability": "positive-with-refinement-margin",
+      "methods": {
+        "finite-difference": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 4.983261238088068e-10,
+            "maxForcePerArea": 5.216131567338606e-8
+          },
+          "iterations": 6,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 8855.667002855838,
+          "minHoopResultant": 93.71385085511719,
+          "volume": 0.005231063669908415
+        },
+        "analytic-banded": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 5.930515815230896e-10,
+            "maxForcePerArea": 6.348687071364754e-8
+          },
+          "iterations": 6,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 8855.667002855838,
+          "minHoopResultant": 93.71385085511719,
+          "volume": 0.0052310636699084145
+        }
+      }
+    },
+    {
+      "id": "reference/hoop-dominant/32/320000/asymmetric",
+      "geometry": "reference",
+      "material": "hoop-dominant",
+      "segments": 32,
+      "start": "asymmetric",
+      "pressure": 320000,
+      "accepted": true,
+      "rejections": [],
+      "coordinateDifference": 3.382710778154774e-17,
+      "stability": "positive-with-refinement-margin",
+      "methods": {
+        "finite-difference": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 4.0611587963975663e-10,
+            "maxForcePerArea": 4.347518352321374e-8
+          },
+          "iterations": 8,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 8855.667002855838,
+          "minHoopResultant": 93.71385085511719,
+          "volume": 0.005231063669908417
+        },
+        "analytic-banded": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 6.824313965774912e-10,
+            "maxForcePerArea": 7.220301481198202e-8
+          },
+          "iterations": 8,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 8855.667002855838,
+          "minHoopResultant": 93.71385085511719,
+          "volume": 0.005231063669908416
+        }
+      }
+    },
+    {
+      "id": "wide/negative-coupling/16/40000/rest",
+      "geometry": "wide",
+      "material": "negative-coupling",
+      "segments": 16,
+      "start": "rest",
+      "pressure": 40000,
+      "accepted": false,
+      "rejections": [
+        "compressive-resultants"
+      ],
+      "coordinateDifference": 1.3877787807814457e-17,
+      "stability": "positive-with-refinement-margin",
+      "methods": {
+        "finite-difference": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 4.122868389158452e-8,
+            "maxForcePerArea": 0.0000015896744929854784
+          },
+          "iterations": 6,
+          "compressiveSegments": 12,
+          "minMeridionalResultant": 1442.985241025141,
+          "minHoopResultant": -217.63074032381644,
+          "volume": 0.010066059196468318
+        },
+        "analytic-banded": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 4.1133487855712515e-8,
+            "maxForcePerArea": 0.0000015860039729548852
+          },
+          "iterations": 6,
+          "compressiveSegments": 12,
+          "minMeridionalResultant": 1442.985241025163,
+          "minHoopResultant": -217.63074032381644,
+          "volume": 0.010066059196468316
+        }
+      }
+    },
+    {
+      "id": "wide/negative-coupling/16/40000/asymmetric",
+      "geometry": "wide",
+      "material": "negative-coupling",
+      "segments": 16,
+      "start": "asymmetric",
+      "pressure": 40000,
+      "accepted": false,
+      "rejections": [
+        "compressive-resultants"
+      ],
+      "coordinateDifference": 6.938893903907228e-18,
+      "stability": "positive-with-refinement-margin",
+      "methods": {
+        "finite-difference": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 2.3737237285885396e-10,
+            "maxForcePerArea": 8.086118222704918e-9
+          },
+          "iterations": 7,
+          "compressiveSegments": 12,
+          "minMeridionalResultant": 1442.9852410257404,
+          "minHoopResultant": -217.63074032312034,
+          "volume": 0.010066059196467893
+        },
+        "analytic-banded": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 1.5349088326405544e-10,
+            "maxForcePerArea": 5.7600988722180415e-9
+          },
+          "iterations": 7,
+          "compressiveSegments": 12,
+          "minMeridionalResultant": 1442.9852410257404,
+          "minHoopResultant": -217.6307403231237,
+          "volume": 0.010066059196467893
+        }
+      }
+    },
+    {
+      "id": "wide/negative-coupling/16/160000/rest",
+      "geometry": "wide",
+      "material": "negative-coupling",
+      "segments": 16,
+      "start": "rest",
+      "pressure": 160000,
+      "accepted": false,
+      "rejections": [
+        "compressive-resultants"
+      ],
+      "coordinateDifference": 1.734723475976807e-17,
+      "stability": "positive-with-refinement-margin",
+      "methods": {
+        "finite-difference": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 1.5102131452089255e-10,
+            "maxForcePerArea": 5.823002553811903e-9
+          },
+          "iterations": 5,
+          "compressiveSegments": 16,
+          "minMeridionalResultant": 6023.483169220442,
+          "minHoopResultant": -1005.20234439764,
+          "volume": 0.010946348923126077
+        },
+        "analytic-banded": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 1.517194189486819e-10,
+            "maxForcePerArea": 5.823002553811903e-9
+          },
+          "iterations": 5,
+          "compressiveSegments": 16,
+          "minMeridionalResultant": 6023.483169220442,
+          "minHoopResultant": -1005.20234439764,
+          "volume": 0.010946348923126077
+        }
+      }
+    },
+    {
+      "id": "wide/negative-coupling/16/160000/asymmetric",
+      "geometry": "wide",
+      "material": "negative-coupling",
+      "segments": 16,
+      "start": "asymmetric",
+      "pressure": 160000,
+      "accepted": false,
+      "rejections": [
+        "compressive-resultants"
+      ],
+      "coordinateDifference": 1.3877787807814457e-17,
+      "stability": "positive-with-refinement-margin",
+      "methods": {
+        "finite-difference": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 1.572433225449516e-10,
+            "maxForcePerArea": 5.35651255668852e-9
+          },
+          "iterations": 5,
+          "compressiveSegments": 16,
+          "minMeridionalResultant": 6023.483169220442,
+          "minHoopResultant": -1005.2023443976332,
+          "volume": 0.010946348923126077
+        },
+        "analytic-banded": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 2.6697426514844173e-10,
+            "maxForcePerArea": 9.094510217891802e-9
+          },
+          "iterations": 5,
+          "compressiveSegments": 16,
+          "minMeridionalResultant": 6023.483169220442,
+          "minHoopResultant": -1005.2023443976366,
+          "volume": 0.010946348923126077
+        }
+      }
+    },
+    {
+      "id": "wide/negative-coupling/16/320000/rest",
+      "geometry": "wide",
+      "material": "negative-coupling",
+      "segments": 16,
+      "start": "rest",
+      "pressure": 320000,
+      "accepted": false,
+      "rejections": [
+        "compressive-resultants"
+      ],
+      "coordinateDifference": 1.3877787807814457e-17,
+      "stability": "positive-with-refinement-margin",
+      "methods": {
+        "finite-difference": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 2.7626640754832156e-10,
+            "maxForcePerArea": 9.411048158186628e-9
+          },
+          "iterations": 5,
+          "compressiveSegments": 16,
+          "minMeridionalResultant": 12780.369669479061,
+          "minHoopResultant": -2170.7722974684443,
+          "volume": 0.012311625152264005
+        },
+        "analytic-banded": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 2.808689869646873e-10,
+            "maxForcePerArea": 9.56783557553385e-9
+          },
+          "iterations": 5,
+          "compressiveSegments": 16,
+          "minMeridionalResultant": 12780.369669479085,
+          "minHoopResultant": -2170.7722974684407,
+          "volume": 0.012311625152264007
+        }
+      }
+    },
+    {
+      "id": "wide/negative-coupling/16/320000/asymmetric",
+      "geometry": "wide",
+      "material": "negative-coupling",
+      "segments": 16,
+      "start": "asymmetric",
+      "pressure": 320000,
+      "accepted": false,
+      "rejections": [
+        "compressive-resultants"
+      ],
+      "coordinateDifference": 1.5612511283791264e-17,
+      "stability": "positive-with-refinement-margin",
+      "methods": {
+        "finite-difference": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 2.880959955701759e-10,
+            "maxForcePerArea": 9.992710440180741e-9
+          },
+          "iterations": 5,
+          "compressiveSegments": 16,
+          "minMeridionalResultant": 12780.369669479061,
+          "minHoopResultant": -2170.7722974684443,
+          "volume": 0.012311625152264005
+        },
+        "analytic-banded": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 1.9196240529186713e-10,
+            "maxForcePerArea": 7.002662976475439e-9
+          },
+          "iterations": 5,
+          "compressiveSegments": 16,
+          "minMeridionalResultant": 12780.36966947904,
+          "minHoopResultant": -2170.7722974684475,
+          "volume": 0.012311625152264005
+        }
+      }
+    },
+    {
+      "id": "wide/negative-coupling/32/40000/rest",
+      "geometry": "wide",
+      "material": "negative-coupling",
+      "segments": 32,
+      "start": "rest",
+      "pressure": 40000,
+      "accepted": false,
+      "rejections": [
+        "compressive-resultants"
+      ],
+      "coordinateDifference": 1.8214596497756474e-17,
+      "stability": "positive-with-refinement-margin",
+      "methods": {
+        "finite-difference": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 4.519458887693973e-8,
+            "maxForcePerArea": 0.000003496494111759904
+          },
+          "iterations": 6,
+          "compressiveSegments": 22,
+          "minMeridionalResultant": 1454.6728267778728,
+          "minHoopResultant": -236.0587590870233,
+          "volume": 0.010166317789037756
+        },
+        "analytic-banded": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 4.49926213978695e-8,
+            "maxForcePerArea": 0.0000034887795523647806
+          },
+          "iterations": 6,
+          "compressiveSegments": 22,
+          "minMeridionalResultant": 1454.6728267778508,
+          "minHoopResultant": -236.05875908702666,
+          "volume": 0.010166317789037758
+        }
+      }
+    },
+    {
+      "id": "wide/negative-coupling/32/40000/asymmetric",
+      "geometry": "wide",
+      "material": "negative-coupling",
+      "segments": 32,
+      "start": "asymmetric",
+      "pressure": 40000,
+      "accepted": false,
+      "rejections": [
+        "compressive-resultants"
+      ],
+      "coordinateDifference": 1.3877787807814457e-17,
+      "stability": "positive-with-refinement-margin",
+      "methods": {
+        "finite-difference": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 3.384743989364304e-10,
+            "maxForcePerArea": 2.2813835624481355e-8
+          },
+          "iterations": 6,
+          "compressiveSegments": 22,
+          "minMeridionalResultant": 1454.672826777993,
+          "minHoopResultant": -236.0587590868601,
+          "volume": 0.010166317789037527
+        },
+        "analytic-banded": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 3.4557314962539213e-10,
+            "maxForcePerArea": 2.4787850014994507e-8
+          },
+          "iterations": 6,
+          "compressiveSegments": 22,
+          "minMeridionalResultant": 1454.672826777993,
+          "minHoopResultant": -236.0587590868601,
+          "volume": 0.010166317789037529
+        }
+      }
+    },
+    {
+      "id": "wide/negative-coupling/32/160000/rest",
+      "geometry": "wide",
+      "material": "negative-coupling",
+      "segments": 32,
+      "start": "rest",
+      "pressure": 160000,
+      "accepted": false,
+      "rejections": [
+        "compressive-resultants"
+      ],
+      "coordinateDifference": 1.3877787807814457e-17,
+      "stability": "positive-with-refinement-margin",
+      "methods": {
+        "finite-difference": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 4.83634054313329e-7,
+            "maxForcePerArea": 0.00003768910781649613
+          },
+          "iterations": 6,
+          "compressiveSegments": 32,
+          "minMeridionalResultant": 6075.687141421247,
+          "minHoopResultant": -1051.2695654857473,
+          "volume": 0.01106562992171928
+        },
+        "analytic-banded": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 4.836515948197445e-7,
+            "maxForcePerArea": 0.00003769047473024332
+          },
+          "iterations": 6,
+          "compressiveSegments": 32,
+          "minMeridionalResultant": 6075.687141421247,
+          "minHoopResultant": -1051.2695654857473,
+          "volume": 0.011065629921719281
+        }
+      }
+    },
+    {
+      "id": "wide/negative-coupling/32/160000/asymmetric",
+      "geometry": "wide",
+      "material": "negative-coupling",
+      "segments": 32,
+      "start": "asymmetric",
+      "pressure": 160000,
+      "accepted": false,
+      "rejections": [
+        "compressive-resultants"
+      ],
+      "coordinateDifference": 1.8214596497756474e-17,
+      "stability": "positive-with-refinement-margin",
+      "methods": {
+        "finite-difference": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 8.489406574216069e-9,
+            "maxForcePerArea": 6.533756969040575e-7
+          },
+          "iterations": 6,
+          "compressiveSegments": 32,
+          "minMeridionalResultant": 6075.687141416596,
+          "minHoopResultant": -1051.2695654561012,
+          "volume": 0.011065629921716336
+        },
+        "analytic-banded": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 8.688984525345632e-9,
+            "maxForcePerArea": 6.687359440268671e-7
+          },
+          "iterations": 6,
+          "compressiveSegments": 32,
+          "minMeridionalResultant": 6075.687141416614,
+          "minHoopResultant": -1051.2695654561044,
+          "volume": 0.011065629921716332
+        }
+      }
+    },
+    {
+      "id": "wide/negative-coupling/32/320000/rest",
+      "geometry": "wide",
+      "material": "negative-coupling",
+      "segments": 32,
+      "start": "rest",
+      "pressure": 320000,
+      "accepted": false,
+      "rejections": [
+        "compressive-resultants"
+      ],
+      "coordinateDifference": 1.3877787807814457e-17,
+      "stability": "positive-with-refinement-margin",
+      "methods": {
+        "finite-difference": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 5.08707631785896e-10,
+            "maxForcePerArea": 3.480833284331922e-8
+          },
+          "iterations": 6,
+          "compressiveSegments": 32,
+          "minMeridionalResultant": 12901.974321423299,
+          "minHoopResultant": -2257.8825303942954,
+          "volume": 0.012463297463924586
+        },
+        "analytic-banded": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 4.77768959195759e-10,
+            "maxForcePerArea": 3.241832027231563e-8
+          },
+          "iterations": 6,
+          "compressiveSegments": 32,
+          "minMeridionalResultant": 12901.974321423295,
+          "minHoopResultant": -2257.8825303942954,
+          "volume": 0.012463297463924588
+        }
+      }
+    },
+    {
+      "id": "wide/negative-coupling/32/320000/asymmetric",
+      "geometry": "wide",
+      "material": "negative-coupling",
+      "segments": 32,
+      "start": "asymmetric",
+      "pressure": 320000,
+      "accepted": false,
+      "rejections": [
+        "compressive-resultants"
+      ],
+      "coordinateDifference": 3.122502256758253e-17,
+      "stability": "positive-with-refinement-margin",
+      "methods": {
+        "finite-difference": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 3.507938714246689e-7,
+            "maxForcePerArea": 0.00002733700806131603
+          },
+          "iterations": 6,
+          "compressiveSegments": 32,
+          "minMeridionalResultant": 12901.974321424268,
+          "minHoopResultant": -2257.882530409513,
+          "volume": 0.01246329746392558
+        },
+        "analytic-banded": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 3.5070562206232754e-7,
+            "maxForcePerArea": 0.00002733013087865621
+          },
+          "iterations": 6,
+          "compressiveSegments": 32,
+          "minMeridionalResultant": 12901.974321424246,
+          "minHoopResultant": -2257.882530409513,
+          "volume": 0.012463297463925582
+        }
+      }
+    },
+    {
+      "id": "wide/reference/16/40000/rest",
+      "geometry": "wide",
+      "material": "reference",
+      "segments": 16,
+      "start": "rest",
+      "pressure": 40000,
+      "accepted": true,
+      "rejections": [],
+      "coordinateDifference": 2.0816681711721685e-17,
+      "stability": "positive-with-refinement-margin",
+      "methods": {
+        "finite-difference": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 2.573631480306167e-7,
+            "maxForcePerArea": 0.000009923276545391409
+          },
+          "iterations": 5,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 1426.8690064015032,
+          "minHoopResultant": 196.4267894379912,
+          "volume": 0.009918602759440133
+        },
+        "analytic-banded": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 2.5725159367904256e-7,
+            "maxForcePerArea": 0.000009918975289796025
+          },
+          "iterations": 5,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 1426.8690064015032,
+          "minHoopResultant": 196.42678943798677,
+          "volume": 0.009918602759440134
+        }
+      }
+    },
+    {
+      "id": "wide/reference/16/40000/asymmetric",
+      "geometry": "wide",
+      "material": "reference",
+      "segments": 16,
+      "start": "asymmetric",
+      "pressure": 40000,
+      "accepted": true,
+      "rejections": [],
+      "coordinateDifference": 6.765421556309548e-17,
+      "stability": "positive-with-refinement-margin",
+      "methods": {
+        "finite-difference": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 0.000009339229019798658,
+            "maxForcePerArea": 0.0003145513652581924
+          },
+          "iterations": 6,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 1426.869006308382,
+          "minHoopResultant": 196.4267893272753,
+          "volume": 0.009918602759459045
+        },
+        "analytic-banded": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 0.000009339118433105208,
+            "maxForcePerArea": 0.0003145476406257489
+          },
+          "iterations": 6,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 1426.8690063083377,
+          "minHoopResultant": 196.4267893272753,
+          "volume": 0.009918602759459045
+        }
+      }
+    },
+    {
+      "id": "wide/reference/16/160000/rest",
+      "geometry": "wide",
+      "material": "reference",
+      "segments": 16,
+      "start": "rest",
+      "pressure": 160000,
+      "accepted": true,
+      "rejections": [],
+      "coordinateDifference": 7.569858654169465e-18,
+      "stability": "positive-with-refinement-margin",
+      "methods": {
+        "finite-difference": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 3.462303105759099e-10,
+            "maxForcePerArea": 1.2009119503211436e-8
+          },
+          "iterations": 5,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 5826.8892292854525,
+          "minHoopResultant": 720.940134049366,
+          "volume": 0.010317899519688953
+        },
+        "analytic-banded": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 5.695550816048185e-10,
+            "maxForcePerArea": 2.0223502162063647e-8
+          },
+          "iterations": 5,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 5826.889229285496,
+          "minHoopResultant": 720.940134049366,
+          "volume": 0.010317899519688953
+        }
+      }
+    },
+    {
+      "id": "wide/reference/16/160000/asymmetric",
+      "geometry": "wide",
+      "material": "reference",
+      "segments": 16,
+      "start": "asymmetric",
+      "pressure": 160000,
+      "accepted": true,
+      "rejections": [],
+      "coordinateDifference": 2.0816681711721685e-17,
+      "stability": "positive-with-refinement-margin",
+      "methods": {
+        "finite-difference": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 4.251608672120119e-10,
+            "maxForcePerArea": 1.5096418230630067e-8
+          },
+          "iterations": 5,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 5826.8892292854525,
+          "minHoopResultant": 720.9401340493571,
+          "volume": 0.01031789951968895
+        },
+        "analytic-banded": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 3.1039896296273126e-10,
+            "maxForcePerArea": 1.1648435910186568e-8
+          },
+          "iterations": 5,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 5826.8892292854525,
+          "minHoopResultant": 720.9401340493616,
+          "volume": 0.01031789951968895
+        }
+      }
+    },
+    {
+      "id": "wide/reference/16/320000/rest",
+      "geometry": "wide",
+      "material": "reference",
+      "segments": 16,
+      "start": "rest",
+      "pressure": 320000,
+      "accepted": true,
+      "rejections": [],
+      "coordinateDifference": 1.3877787807814457e-17,
+      "stability": "positive-with-refinement-margin",
+      "methods": {
+        "finite-difference": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 5.740129383543959e-10,
+            "maxForcePerArea": 1.9553819279785438e-8
+          },
+          "iterations": 5,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 11971.535448670169,
+          "minHoopResultant": 1448.9145025503092,
+          "volume": 0.010888302889597488
+        },
+        "analytic-banded": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 5.828356843712808e-10,
+            "maxForcePerArea": 2.0215859705374206e-8
+          },
+          "iterations": 5,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 11971.535448670213,
+          "minHoopResultant": 1448.9145025503046,
+          "volume": 0.010888302889597488
+        }
+      }
+    },
+    {
+      "id": "wide/reference/16/320000/asymmetric",
+      "geometry": "wide",
+      "material": "reference",
+      "segments": 16,
+      "start": "asymmetric",
+      "pressure": 320000,
+      "accepted": true,
+      "rejections": [],
+      "coordinateDifference": 3.2959746043559335e-17,
+      "stability": "positive-with-refinement-margin",
+      "methods": {
+        "finite-difference": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 8.095652406329447e-10,
+            "maxForcePerArea": 2.757793658086345e-8
+          },
+          "iterations": 5,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 11971.535448670165,
+          "minHoopResultant": 1448.9145025503046,
+          "volume": 0.010888302889597487
+        },
+        "analytic-banded": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 4.319001269468249e-10,
+            "maxForcePerArea": 1.5755434111731822e-8
+          },
+          "iterations": 5,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 11971.535448670169,
+          "minHoopResultant": 1448.9145025503046,
+          "volume": 0.010888302889597487
+        }
+      }
+    },
+    {
+      "id": "wide/reference/32/40000/rest",
+      "geometry": "wide",
+      "material": "reference",
+      "segments": 32,
+      "start": "rest",
+      "pressure": 40000,
+      "accepted": true,
+      "rejections": [],
+      "coordinateDifference": 2.435054721032229e-17,
+      "stability": "positive-with-refinement-margin",
+      "methods": {
+        "finite-difference": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 7.034843502133362e-10,
+            "maxForcePerArea": 4.861712733382348e-8
+          },
+          "iterations": 6,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 1438.3919051463322,
+          "minHoopResultant": 185.1520284777397,
+          "volume": 0.010015657081132995
+        },
+        "analytic-banded": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 6.630788318664542e-10,
+            "maxForcePerArea": 4.4692808448167164e-8
+          },
+          "iterations": 6,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 1438.3919051463322,
+          "minHoopResultant": 185.15202847773526,
+          "volume": 0.010015657081132997
+        }
+      }
+    },
+    {
+      "id": "wide/reference/32/40000/asymmetric",
+      "geometry": "wide",
+      "material": "reference",
+      "segments": 32,
+      "start": "asymmetric",
+      "pressure": 40000,
+      "accepted": true,
+      "rejections": [],
+      "coordinateDifference": 5.551115123125783e-17,
+      "stability": "positive-with-refinement-margin",
+      "methods": {
+        "finite-difference": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 6.652728947522738e-7,
+            "maxForcePerArea": 0.00005184403710634217
+          },
+          "iterations": 5,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 1438.3919051456662,
+          "minHoopResultant": 185.15202847360524,
+          "volume": 0.010015657081133939
+        },
+        "analytic-banded": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 6.652920036646842e-7,
+            "maxForcePerArea": 0.000051845526244366405
+          },
+          "iterations": 5,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 1438.3919051456216,
+          "minHoopResultant": 185.15202847361414,
+          "volume": 0.010015657081133937
+        }
+      }
+    },
+    {
+      "id": "wide/reference/32/160000/rest",
+      "geometry": "wide",
+      "material": "reference",
+      "segments": 32,
+      "start": "rest",
+      "pressure": 160000,
+      "accepted": true,
+      "rejections": [],
+      "coordinateDifference": 1.3877787807814457e-17,
+      "stability": "positive-with-refinement-margin",
+      "methods": {
+        "finite-difference": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 1.0716620938266186e-9,
+            "maxForcePerArea": 7.5846318674144e-8
+          },
+          "iterations": 5,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 5875.451935562613,
+          "minHoopResultant": 704.8599709519632,
+          "volume": 0.010423288520917345
+        },
+        "analytic-banded": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 1.0668342079739301e-9,
+            "maxForcePerArea": 7.155862580410585e-8
+          },
+          "iterations": 5,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 5875.451935562613,
+          "minHoopResultant": 704.8599709519632,
+          "volume": 0.010423288520917347
+        }
+      }
+    },
+    {
+      "id": "wide/reference/32/160000/asymmetric",
+      "geometry": "wide",
+      "material": "reference",
+      "segments": 32,
+      "start": "asymmetric",
+      "pressure": 160000,
+      "accepted": true,
+      "rejections": [],
+      "coordinateDifference": 1.3877787807814457e-17,
+      "stability": "positive-with-refinement-margin",
+      "methods": {
+        "finite-difference": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 5.789451738708702e-9,
+            "maxForcePerArea": 4.455773240923506e-7
+          },
+          "iterations": 6,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 5875.45193556271,
+          "minHoopResultant": 704.8599709519943,
+          "volume": 0.010423288520917362
+        },
+        "analytic-banded": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 5.791705469046827e-9,
+            "maxForcePerArea": 4.4575077940014313e-7
+          },
+          "iterations": 6,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 5875.45193556271,
+          "minHoopResultant": 704.8599709519988,
+          "volume": 0.010423288520917364
+        }
+      }
+    },
+    {
+      "id": "wide/reference/32/320000/rest",
+      "geometry": "wide",
+      "material": "reference",
+      "segments": 32,
+      "start": "rest",
+      "pressure": 320000,
+      "accepted": true,
+      "rejections": [],
+      "coordinateDifference": 1.3877787807814457e-17,
+      "stability": "positive-with-refinement-margin",
+      "methods": {
+        "finite-difference": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 7.961450852096362e-10,
+            "maxForcePerArea": 5.564745848011663e-8
+          },
+          "iterations": 5,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 12075.613931068692,
+          "minHoopResultant": 1428.3127356607306,
+          "volume": 0.011006119046106072
+        },
+        "analytic-banded": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 8.012779945346002e-10,
+            "maxForcePerArea": 5.564745848011663e-8
+          },
+          "iterations": 5,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 12075.613931068692,
+          "minHoopResultant": 1428.3127356607306,
+          "volume": 0.011006119046106074
+        }
+      }
+    },
+    {
+      "id": "wide/reference/32/320000/asymmetric",
+      "geometry": "wide",
+      "material": "reference",
+      "segments": 32,
+      "start": "asymmetric",
+      "pressure": 320000,
+      "accepted": true,
+      "rejections": [],
+      "coordinateDifference": 1.734723475976807e-17,
+      "stability": "positive-with-refinement-margin",
+      "methods": {
+        "finite-difference": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 1.1636289843727289e-8,
+            "maxForcePerArea": 9.068041809564318e-7
+          },
+          "iterations": 6,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 12075.61393106894,
+          "minHoopResultant": 1428.3127356607795,
+          "volume": 0.011006119046106141
+        },
+        "analytic-banded": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 1.1328281219549687e-8,
+            "maxForcePerArea": 8.828013835075997e-7
+          },
+          "iterations": 6,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 12075.613931068943,
+          "minHoopResultant": 1428.3127356607706,
+          "volume": 0.011006119046106143
+        }
+      }
+    },
+    {
+      "id": "wide/hoop-dominant/16/40000/rest",
+      "geometry": "wide",
+      "material": "hoop-dominant",
+      "segments": 16,
+      "start": "rest",
+      "pressure": 40000,
+      "accepted": true,
+      "rejections": [],
+      "coordinateDifference": 1.3877787807814457e-17,
+      "stability": "positive-with-refinement-margin",
+      "methods": {
+        "finite-difference": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 5.66210638487258e-10,
+            "maxForcePerArea": 2.1831660016776325e-8
+          },
+          "iterations": 5,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 1424.68404936269,
+          "minHoopResultant": 76.57704338013716,
+          "volume": 0.009962272274779898
+        },
+        "analytic-banded": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 5.563701426431392e-10,
+            "maxForcePerArea": 2.1452235214304806e-8
+          },
+          "iterations": 5,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 1424.6840493626567,
+          "minHoopResultant": 76.57704338013716,
+          "volume": 0.009962272274779896
+        }
+      }
+    },
+    {
+      "id": "wide/hoop-dominant/16/40000/asymmetric",
+      "geometry": "wide",
+      "material": "hoop-dominant",
+      "segments": 16,
+      "start": "asymmetric",
+      "pressure": 40000,
+      "accepted": true,
+      "rejections": [],
+      "coordinateDifference": 1.6763768645838226e-17,
+      "stability": "positive-with-refinement-margin",
+      "methods": {
+        "finite-difference": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 1.8242907576777347e-9,
+            "maxForcePerArea": 7.034006937731507e-8
+          },
+          "iterations": 6,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 1424.6840493626567,
+          "minHoopResultant": 76.57704337992399,
+          "volume": 0.009962272274779903
+        },
+        "analytic-banded": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 1.8256158633911199e-9,
+            "maxForcePerArea": 7.039116212523341e-8
+          },
+          "iterations": 6,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 1424.6840493626567,
+          "minHoopResultant": 76.57704337992399,
+          "volume": 0.009962272274779901
+        }
+      }
+    },
+    {
+      "id": "wide/hoop-dominant/16/160000/rest",
+      "geometry": "wide",
+      "material": "hoop-dominant",
+      "segments": 16,
+      "start": "rest",
+      "pressure": 160000,
+      "accepted": true,
+      "rejections": [],
+      "coordinateDifference": 1.3877787807814457e-17,
+      "stability": "positive-with-refinement-margin",
+      "methods": {
+        "finite-difference": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 3.7054390094921575e-10,
+            "maxForcePerArea": 1.3517199122352262e-8
+          },
+          "iterations": 5,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 5862.57517266473,
+          "minHoopResultant": 153.12766392456822,
+          "volume": 0.010506891107643723
+        },
+        "analytic-banded": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 3.3590841994126865e-10,
+            "maxForcePerArea": 1.1651101113878915e-8
+          },
+          "iterations": 5,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 5862.575172664763,
+          "minHoopResultant": 153.12766392456822,
+          "volume": 0.010506891107643725
+        }
+      }
+    },
+    {
+      "id": "wide/hoop-dominant/16/160000/asymmetric",
+      "geometry": "wide",
+      "material": "hoop-dominant",
+      "segments": 16,
+      "start": "asymmetric",
+      "pressure": 160000,
+      "accepted": true,
+      "rejections": [],
+      "coordinateDifference": 1.3877787807814457e-17,
+      "stability": "positive-with-refinement-margin",
+      "methods": {
+        "finite-difference": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 4.261916821567504e-10,
+            "maxForcePerArea": 1.4782607663036984e-8
+          },
+          "iterations": 5,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 5862.575172664763,
+          "minHoopResultant": 153.12766392456822,
+          "volume": 0.010506891107643726
+        },
+        "analytic-banded": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 3.394164283911307e-10,
+            "maxForcePerArea": 1.1772777614768146e-8
+          },
+          "iterations": 5,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 5862.575172664763,
+          "minHoopResultant": 153.12766392456822,
+          "volume": 0.010506891107643725
+        }
+      }
+    },
+    {
+      "id": "wide/hoop-dominant/16/320000/rest",
+      "geometry": "wide",
+      "material": "hoop-dominant",
+      "segments": 16,
+      "start": "rest",
+      "pressure": 320000,
+      "accepted": true,
+      "rejections": [],
+      "coordinateDifference": 1.3877787807814457e-17,
+      "stability": "positive-with-refinement-margin",
+      "methods": {
+        "finite-difference": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 3.2428077912172723e-10,
+            "maxForcePerArea": 1.1829550700230454e-8
+          },
+          "iterations": 5,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 12166.678213568504,
+          "minHoopResultant": 242.15165454629428,
+          "volume": 0.011304429691343678
+        },
+        "analytic-banded": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 2.5921237234566924e-10,
+            "maxForcePerArea": 8.830100412827833e-9
+          },
+          "iterations": 5,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 12166.678213568539,
+          "minHoopResultant": 242.15165454629428,
+          "volume": 0.01130442969134368
+        }
+      }
+    },
+    {
+      "id": "wide/hoop-dominant/16/320000/asymmetric",
+      "geometry": "wide",
+      "material": "hoop-dominant",
+      "segments": 16,
+      "start": "asymmetric",
+      "pressure": 320000,
+      "accepted": true,
+      "rejections": [],
+      "coordinateDifference": 1.734723475976807e-17,
+      "stability": "positive-with-refinement-margin",
+      "methods": {
+        "finite-difference": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 3.266999776977236e-10,
+            "maxForcePerArea": 1.1917801481809869e-8
+          },
+          "iterations": 5,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 12166.678213568504,
+          "minHoopResultant": 242.15165454629428,
+          "volume": 0.011304429691343678
+        },
+        "analytic-banded": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 1.824007440157395e-10,
+            "maxForcePerArea": 6.328747767034626e-9
+          },
+          "iterations": 5,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 12166.678213568504,
+          "minHoopResultant": 242.15165454629428,
+          "volume": 0.011304429691343676
+        }
+      }
+    },
+    {
+      "id": "wide/hoop-dominant/32/40000/rest",
+      "geometry": "wide",
+      "material": "hoop-dominant",
+      "segments": 32,
+      "start": "rest",
+      "pressure": 40000,
+      "accepted": true,
+      "rejections": [],
+      "coordinateDifference": 6.938893903907228e-18,
+      "stability": "positive-with-refinement-margin",
+      "methods": {
+        "finite-difference": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 7.22428833721087e-10,
+            "maxForcePerArea": 4.99119507940618e-8
+          },
+          "iterations": 6,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 1436.2299337393636,
+          "minHoopResultant": 46.37999774956825,
+          "volume": 0.010060196199481864
+        },
+        "analytic-banded": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 6.8629033520963e-10,
+            "maxForcePerArea": 4.7969036854416e-8
+          },
+          "iterations": 6,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 1436.2299337393304,
+          "minHoopResultant": 46.37999774956825,
+          "volume": 0.010060196199481862
+        }
+      }
+    },
+    {
+      "id": "wide/hoop-dominant/32/40000/asymmetric",
+      "geometry": "wide",
+      "material": "hoop-dominant",
+      "segments": 32,
+      "start": "asymmetric",
+      "pressure": 40000,
+      "accepted": true,
+      "rejections": [],
+      "coordinateDifference": 2.7755575615628914e-17,
+      "stability": "positive-with-refinement-margin",
+      "methods": {
+        "finite-difference": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 1.1119945409477123e-7,
+            "maxForcePerArea": 0.000008665659866453785
+          },
+          "iterations": 5,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 1436.229933739097,
+          "minHoopResultant": 46.37999774834256,
+          "volume": 0.010060196199482086
+        },
+        "analytic-banded": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 1.1127880567464866e-7,
+            "maxForcePerArea": 0.000008671843654015346
+          },
+          "iterations": 5,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 1436.2299337391305,
+          "minHoopResultant": 46.37999774834256,
+          "volume": 0.010060196199482088
+        }
+      }
+    },
+    {
+      "id": "wide/hoop-dominant/32/160000/rest",
+      "geometry": "wide",
+      "material": "hoop-dominant",
+      "segments": 32,
+      "start": "rest",
+      "pressure": 160000,
+      "accepted": true,
+      "rejections": [],
+      "coordinateDifference": 6.938893903907228e-18,
+      "stability": "positive-with-refinement-margin",
+      "methods": {
+        "finite-difference": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 7.143235598642004e-10,
+            "maxForcePerArea": 5.055587266733592e-8
+          },
+          "iterations": 5,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 5912.05139113421,
+          "minHoopResultant": 82.77054351998103,
+          "volume": 0.010616271333784325
+        },
+        "analytic-banded": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 6.244697022809188e-10,
+            "maxForcePerArea": 4.272935550672299e-8
+          },
+          "iterations": 5,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 5912.05139113421,
+          "minHoopResultant": 82.77054351998103,
+          "volume": 0.010616271333784325
+        }
+      }
+    },
+    {
+      "id": "wide/hoop-dominant/32/160000/asymmetric",
+      "geometry": "wide",
+      "material": "hoop-dominant",
+      "segments": 32,
+      "start": "asymmetric",
+      "pressure": 160000,
+      "accepted": true,
+      "rejections": [],
+      "coordinateDifference": 5.551115123125783e-17,
+      "stability": "positive-with-refinement-margin",
+      "methods": {
+        "finite-difference": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 5.087825104143617e-7,
+            "maxForcePerArea": 0.00003964890131109605
+          },
+          "iterations": 6,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 5912.051391143669,
+          "minHoopResultant": 82.7705435179027,
+          "volume": 0.010616271333788745
+        },
+        "analytic-banded": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 5.087894082033435e-7,
+            "maxForcePerArea": 0.000039649438848745246
+          },
+          "iterations": 6,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 5912.051391143669,
+          "minHoopResultant": 82.7705435179027,
+          "volume": 0.010616271333788745
+        }
+      }
+    },
+    {
+      "id": "wide/hoop-dominant/32/320000/rest",
+      "geometry": "wide",
+      "material": "hoop-dominant",
+      "segments": 32,
+      "start": "rest",
+      "pressure": 320000,
+      "accepted": true,
+      "rejections": [],
+      "coordinateDifference": 3.122502256758253e-17,
+      "stability": "positive-with-refinement-margin",
+      "methods": {
+        "finite-difference": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 2.037934309126884e-9,
+            "maxForcePerArea": 1.5881413894369527e-7
+          },
+          "iterations": 6,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 12275.485118801143,
+          "minHoopResultant": 121.98777384385906,
+          "volume": 0.01143157772497182
+        },
+        "analytic-banded": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 2.110582446560486e-9,
+            "maxForcePerArea": 1.6447553408322938e-7
+          },
+          "iterations": 6,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 12275.485118801143,
+          "minHoopResultant": 121.98777384385906,
+          "volume": 0.01143157772497182
+        }
+      }
+    },
+    {
+      "id": "wide/hoop-dominant/32/320000/asymmetric",
+      "geometry": "wide",
+      "material": "hoop-dominant",
+      "segments": 32,
+      "start": "asymmetric",
+      "pressure": 320000,
+      "accepted": true,
+      "rejections": [],
+      "coordinateDifference": 4.359923507697261e-17,
+      "stability": "positive-with-refinement-margin",
+      "methods": {
+        "finite-difference": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 6.171935601719504e-10,
+            "maxForcePerArea": 4.427109402552569e-8
+          },
+          "iterations": 6,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 12275.485118801143,
+          "minHoopResultant": 121.98777384385906,
+          "volume": 0.011431577724971819
+        },
+        "analytic-banded": {
+          "converged": true,
+          "reason": "residual-converged",
+          "metrics": {
+            "maxForce": 6.576484746700584e-10,
+            "maxForcePerArea": 4.654472344662398e-8
+          },
+          "iterations": 6,
+          "compressiveSegments": 0,
+          "minMeridionalResultant": 12275.485118801043,
+          "minHoopResultant": 121.98777384385906,
+          "volume": 0.011431577724971817
+        }
+      }
+    }
+  ]
+}
