@@ -1,0 +1,38 @@
+{
+  "scope": "Complete Windows Node suite; failed material-envelope receiving retained separately",
+  "baseMain": "860411a8d267480b15160721305345245946cb1d",
+  "tests": 474,
+  "pass": 474,
+  "fail": 0,
+  "skipped": 0,
+  "cancelled": 0,
+  "durationMs": 120519.9594,
+  "sourcesSha256": {
+    "scripts/lib/tyre-envelope.mjs": "17709306624f94844f9f7ef1ae54430e52b7ac3dfae32e4fa4ec43021e4589a1",
+    "scripts/lib/tyre-meridian-fixture.mjs": "8610247689576494a9300712dd66bc44d06bbf1079f2897a5f8eddf8eea1249d",
+    "scripts/lib/tyre-inflation.mjs": "693611ae30bf86543c190a3910948b9e8f7171a61ff1923d397542232e91b3cd",
+    "scripts/lib/tyre-equilibrium.mjs": "b7a95292cefc0cef1a20fde3e43e8bf82519909dff773308c4cfcf6b3bc9dc58",
+    "scripts/lib/tyre-meridian.mjs": "bd8fcaa2d3442188d61f658f23cad30dc4cf22cce95c36b1a3186109017a9710",
+    "scripts/lib/tyre-banded.mjs": "6313d0be8dd302a0e3036dc2dba9d1df54cd957061e98b5b66c8031b0b484f10",
+    "scripts/tyre-envelope.mjs": "45bf1409be01cb09a36539d0841a7d0ef31a683cff67c1fc2ce56a5389894803",
+    "scripts/plot-tyre-envelope.py": "2f37b5414506f7e3722adc3a63b530294ed565feaea4eed519f76110d7de69c5",
+    "test/tyre-envelope.test.mjs": "bf57144636aa71080081c364e66feaec3e1b59fa904305b57543bd2dc1648323"
+  },
+  "nodeLog": "tyre-envelope-node.txt",
+  "nodeLogSha256": "6525a93b62c68703dc8255fff8640f7b42178dd0f3a4853fc1edf5bdecafc63f",
+  "sweep": {
+    "exitCode": 1,
+    "cases": 108,
+    "accepted": 72,
+    "rejected": 36,
+    "reason": "compressive-resultants",
+    "log": "tyre-envelope-cli.txt",
+    "logSha256": "59309ceff80ff1e3c2b357a9303e485d19ede4813f95451b788de8db3c4da685"
+  },
+  "limits": [
+    "Not browser/full attestation",
+    "Known rider browser and PR91 failures unchanged",
+    "No physical calibration or continuous parameter-envelope proof",
+    "Source line endings normalized for publication; no numerical source changes during full run"
+  ]
+}

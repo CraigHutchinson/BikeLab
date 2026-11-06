@@ -1,0 +1,10 @@
+12 cases; 0 accepted
+24 cases; 12 accepted
+36 cases; 24 accepted
+48 cases; 24 accepted
+60 cases; 36 accepted
+72 cases; 48 accepted
+84 cases; 48 accepted
+96 cases; 60 accepted
+108 cases; 72 accepted
+{"cases":108,"accepted":72,"maxCoordinateDifference":9.332812300755222e-16,"maxStartDifference":8.522427449947995e-12}
