@@ -14,7 +14,7 @@ const pairs=rows.filter(r=>r.start==='asymmetric').map(r=>{
  const a=r.results['analytic-banded'],b=rest.results['analytic-banded'];
  return {id:r.id,difference:a.converged&&b.converged?Math.max(...a.points.flatMap((p,i)=>p.map((v,k)=>Math.abs(v-b.points[i][k])))):null};
 });
-const paths=['scripts/lib/tyre-envelope.mjs','scripts/lib/tyre-meridian-fixture.mjs','scripts/lib/tyre-inflation.mjs','scripts/lib/tyre-equilibrium.mjs','scripts/lib/tyre-meridian.mjs','scripts/lib/tyre-banded.mjs','scripts/tyre-envelope.mjs','scripts/plot-tyre-envelope.py','test/tyre-envelope.test.mjs'];
+const paths=['scripts/lib/tyre-gas.mjs','scripts/lib/tyre-envelope.mjs','scripts/lib/tyre-meridian-fixture.mjs','scripts/lib/tyre-inflation.mjs','scripts/lib/tyre-equilibrium.mjs','scripts/lib/tyre-meridian.mjs','scripts/lib/tyre-banded.mjs','scripts/tyre-envelope.mjs','scripts/plot-tyre-envelope.py','test/tyre-envelope.test.mjs'];
 const sourcesSha256=Object.fromEntries(await Promise.all(paths.map(async p=>[p,createHash('sha256').update(await readFile(new URL('../'+p,import.meta.url))).digest('hex')])));
 const report={model:'bikelab-equilibrium-envelope-0.1',scope:'Illustrative constant-pressure grid; no physical validation or continuous-envelope proof',sourcesSha256,rows,pairs};
 const bytes=Buffer.from(JSON.stringify(report)+'\n');

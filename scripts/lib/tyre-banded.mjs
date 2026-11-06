@@ -23,3 +23,16 @@ export function solveBand(L,rhs){
  for(let i=n-1;i>=0;i--){let v=x[i];for(let j=i+1;j<Math.min(n,i+4);j++)v-=L[4*j+j-i]*x[j];x[i]=v/L[4*i];}
  return x;
 }
+// (B + c*g*g^T)x=rhs via two band solves; B must already factor as SPD.
+export function solveBandRankOne(L,rhs,{coefficient:c,vector:g},bands,shift=0){
+ const x=solveBand(L,rhs),y=solveBand(L,g);let gx=0,gy=0;
+ for(let i=0;i<x.length;i++){gx+=g[i]*x[i];gy+=g[i]*y[i];}
+ const denominator=1+c*gy;
+ if(!Number.isFinite(denominator)||denominator<1||!Number.isFinite(c)||c<0)return null;
+ const weight=c*gx/denominator;for(let i=0;i<x.length;i++)x[i]-=weight*y[i];
+ // Check the FULL shifted system, not just the Sherman-Morrison denominator.
+ let gd=0,maxX=0,maxRhs=0,sumG=0,maxG=0;for(let i=0;i<x.length;i++){gd+=g[i]*x[i];maxX=Math.max(maxX,Math.abs(x[i]));maxRhs=Math.max(maxRhs,Math.abs(rhs[i]));sumG+=Math.abs(g[i]);maxG=Math.max(maxG,Math.abs(g[i]));}
+ let residual=0;for(let i=0;i<x.length;i++){let value=shift*x[i]+c*g[i]*gd;for(let j=Math.max(0,i-3);j<Math.min(x.length,i+4);j++)value+=bands[4*Math.max(i,j)+Math.abs(i-j)]*x[j];residual=Math.max(residual,Math.abs(value-rhs[i]));}
+ const bound=1e-12+1e-10*((bandNorm(bands)+shift+c*sumG*maxG)*maxX+maxRhs);
+ return Number.isFinite(residual)&&Number.isFinite(bound)&&residual<=bound?x:null;
+}

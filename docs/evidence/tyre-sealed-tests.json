@@ -1,0 +1,33 @@
+{
+  "scope": "Complete Windows Node suite; no new browser/full attestation",
+  "baseMain": "c0aa17478c3064a2580e7e813638fe4ef6501132",
+  "tests": 479,
+  "pass": 479,
+  "fail": 0,
+  "skipped": 0,
+  "cancelled": 0,
+  "durationMs": 122400.6564,
+  "sourcesSha256": {
+    "scripts/lib/tyre-gas.mjs": "a3f1a60f8f1039c31285c1c51cae925a40781a37471fb471904594b635ac424e",
+    "scripts/lib/tyre-pressure.mjs": "f2b8aaad0ff2fd74a36df147178c0ab62c394f6795f0486ba6157c0a6189fc1e",
+    "scripts/lib/tyre-meridian.mjs": "dc8431991700645a0688a580e9da5419de21af4c1ade06be96c80eba5d253714",
+    "scripts/lib/tyre-equilibrium.mjs": "0e6725650165a5cdba55e585e9a59ebf7f70fbab5d5197c2c38449af1a7fd0e9",
+    "scripts/lib/tyre-banded.mjs": "988f9d572b5aadb64f4d48e8ed9e4a519b1286b6137a86b495ba3f8dba133c2e",
+    "scripts/lib/tyre-meridian-fixture.mjs": "8610247689576494a9300712dd66bc44d06bbf1079f2897a5f8eddf8eea1249d",
+    "scripts/lib/tyre-inflation.mjs": "693611ae30bf86543c190a3910948b9e8f7171a61ff1923d397542232e91b3cd",
+    "scripts/tyre-sealed.mjs": "d17da72c87fca84f0a36a7c68a22ee11413e970c819dbeae72d2ae0d6e956c42",
+    "scripts/plot-tyre-sealed.py": "fc44a1b6e2185a38436e5364e0f8c51e3f892d43453fdadf6763c2a68e9d95b1",
+    "test/tyre-sealed.test.mjs": "1134d4c96652221c5888825b1d1aa73eed462c98af11717a9c17d3e274f2c530"
+  },
+  "log": "tyre-sealed-node.txt",
+  "logSha256": "44fdac36084410de7b49d3ccd81b2f222d5818a2a958e126320604b8c347b9bb",
+  "sealedCases": 18,
+  "accepted": 18,
+  "limits": [
+    "Offline spatial cross-section, not production wheel",
+    "Explicitly uncalibrated per user direction",
+    "PR101 compression exclusions remain",
+    "Known rider browser and PR91 failures unchanged",
+    "Line endings normalized for publication; numerical source fixed during full suite"
+  ]
+}

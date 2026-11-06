@@ -15,7 +15,7 @@ for(const segments of [16,32,64]){
   console.log(JSON.stringify({segments,gaugePressure,converged:result.converged,reason:result.reason,metrics:result.metrics,stability:stability?.classification}));
  }
 }
-const paths=['scripts/lib/tyre-equilibrium.mjs','scripts/lib/tyre-meridian.mjs','scripts/lib/tyre-meridian-fixture.mjs','scripts/lib/tyre-inflation.mjs','scripts/tyre-equilibrium.mjs','scripts/plot-tyre-equilibrium.py','test/tyre-equilibrium.test.mjs'];
+const paths=['scripts/lib/tyre-banded.mjs','scripts/lib/tyre-gas.mjs','scripts/lib/tyre-equilibrium.mjs','scripts/lib/tyre-meridian.mjs','scripts/lib/tyre-meridian-fixture.mjs','scripts/lib/tyre-inflation.mjs','scripts/tyre-equilibrium.mjs','scripts/plot-tyre-equilibrium.py','test/tyre-equilibrium.test.mjs'];
 const sourcesSha256=Object.fromEntries(await Promise.all(paths.map(async p=>[p,createHash('sha256').update(await readFile(new URL('../'+p,import.meta.url))).digest('hex')])));
 const dir=resolve(process.argv[2]??'artifacts/tyre-equilibrium');await mkdir(dir,{recursive:true});
 await writeFile(join(dir,'report.json'),JSON.stringify({model:'bikelab-fixed-bead-equilibrium-0.1',scope:'Offline dense fixed-bead axisymmetric equilibrium; uncalibrated material, no loaded contact or azimuthal stability',budgets:BUDGETS,sourcesSha256,cases},null,2)+'\n');

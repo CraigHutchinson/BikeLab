@@ -23,7 +23,7 @@ for(const segments of [16,32,64]){
  const maxFreeForcePerReferenceArea=Math.max(...r.state.forces.slice(1,-1).map((f,i)=>Math.hypot(...f)/((areas[i]+areas[i+1])/2)));
  cases.push({segments,configuration,...r,maxFreeForcePerReferenceArea});
 }
-const paths=['scripts/lib/tyre-meridian.mjs','scripts/lib/tyre-meridian-fixture.mjs','scripts/lib/tyre-inflation.mjs','scripts/tyre-meridian.mjs','test/tyre-meridian.test.mjs','scripts/plot-tyre-meridian.py'];
+const paths=['scripts/lib/tyre-gas.mjs','scripts/lib/tyre-meridian.mjs','scripts/lib/tyre-meridian-fixture.mjs','scripts/lib/tyre-inflation.mjs','scripts/tyre-meridian.mjs','test/tyre-meridian.test.mjs','scripts/plot-tyre-meridian.py'];
 const sourcesSha256=Object.fromEntries(await Promise.all(paths.map(async p=>[p,createHash('sha256').update(await readFile(new URL('../'+p,import.meta.url))).digest('hex')])));
 const dir=resolve(process.argv[2]??'artifacts/tyre-meridian');await mkdir(dir,{recursive:true});
 await writeFile(join(dir,'report.json'),JSON.stringify({model:MODEL,scope:'Spatial axisymmetric energy/forces, circular-family stationary shapes with nonzero free-node residuals; NOT casing equilibrium or calibration',sourcesSha256,cases},null,2)+'\n');
