@@ -143,7 +143,7 @@ export async function spinningGapSweep(onProgress){
 
 async function main(){
  assert.ok(process.argv.length<=3,'Usage: node scripts/spinning-gap.mjs [output-directory]');const dir=resolve(process.argv[2]??'artifacts/spinning-gap');await mkdir(dir,{recursive:true});
- const sources=['scripts/spinning-gap.mjs','dist/moving-wheel.js','dist/flat-vertex-contact.js','dist/casing-rk4-observer.js','dist/vendor/mujoco-3.16.0/mujoco.js','dist/vendor/mujoco-3.16.0/mujoco.wasm'];
+ const sources=['scripts/spinning-gap.mjs','dist/wheel-ring.js','dist/sealed-casing.js','dist/sealed-casing-example.js','dist/tyre-gas.js','dist/moving-wheel.js','dist/flat-vertex-contact.js','dist/casing-rk4-observer.js','dist/vendor/mujoco-3.16.0/mujoco.js','dist/vendor/mujoco-3.16.0/mujoco.wasm'];
  const sourceHashes=async()=>Object.fromEntries(await Promise.all(sources.map(async p=>[p,hash(await readFile(new URL('../'+p,import.meta.url)))]))),sourcesSha256=await sourceHashes();
  const report=await spinningGapSweep((n,total)=>console.log('prescribed state',n+'/'+total));assert.deepEqual(await sourceHashes(),sourcesSha256,'Sources changed during probe');
  await writeFile(join(dir,'report.json'),JSON.stringify({...report,sourcesSha256},null,2)+'\n');console.log(JSON.stringify({model:MODEL,cases:report.samples.length,maxima:report.maxima},null,2));

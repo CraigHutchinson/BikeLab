@@ -1,0 +1,6 @@
+{
+  "scope": "All 36 prescribed spinning states regenerated; every non-source field exactly equals previous archive. Source pins refreshed only after that equality check.",
+  "previousReportSha256": "6dd3a9773888dcfe19514bed51b40c6075bd840c93a970ccf68d55324514035e",
+  "refreshedReportSha256": "fd66dd0d33fc0ef47a5edf25333f0df824a197a142b68119cc3e19b1d155d47f",
+  "allNonSourceFieldsEqual": true
+}
