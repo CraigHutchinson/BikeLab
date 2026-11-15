@@ -5,21 +5,7 @@ export const BUDGETS=Object.freeze({force:1e-5,forcePerArea:.01,step:1e-7,armijo
 const clone=q=>q.map(p=>[...p]);
 const free=s=>s.forces.slice(1,-1).flat();
 const dot=(a,b)=>a.reduce((s,x,i)=>s+x*b[i],0);
-const normInf=A=>Math.max(...A.map(row=>row.reduce((s,x)=>s+Math.abs(x),0)));
-function factor(A,shift=0){
- const n=A.length,L=Array.from({length:n},()=>new Float64Array(n)),scale=Math.max(1,normInf(A)+shift);let minPivot=Infinity;
- for(let i=0;i<n;i++)for(let j=0;j<=i;j++){
-  let value=A[i][j]+(i===j?shift:0);for(let k=0;k<j;k++)value-=L[i][k]*L[j][k];
-  if(i===j){if(!Number.isFinite(value)||value<=1e-12*scale)return null;minPivot=Math.min(minPivot,value);L[i][j]=Math.sqrt(value);}else L[i][j]=value/L[j][j];
- }
- return {L,minPivot,scale};
-}
-function linearSolve({L},rhs){
- const n=rhs.length,y=new Float64Array(n),x=new Float64Array(n);
- for(let i=0;i<n;i++){let v=rhs[i];for(let j=0;j<i;j++)v-=L[i][j]*y[j];y[i]=v/L[i][i];}
- for(let i=n-1;i>=0;i--){let v=y[i];for(let j=i+1;j<n;j++)v-=L[j][i]*x[j];x[i]=v/L[i][i];}
- return x;
-}
+import {normInf,factor,linearSolve} from './tyre-dense.mjs';
 function tangent(model,q,h){
  const n=2*(q.length-2),raw=Array.from({length:n},()=>new Float64Array(n));
  for(let j=0;j<n;j++){

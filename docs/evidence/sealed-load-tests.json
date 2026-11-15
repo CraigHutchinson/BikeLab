@@ -1,0 +1,32 @@
+{
+  "date": "2026-11-15",
+  "command": "node --test",
+  "node": "v24.22.0",
+  "platform": "Windows",
+  "tests": 491,
+  "pass": 491,
+  "fail": 0,
+  "skipped": 0,
+  "durationMs": 103438.9536,
+  "scope": "Complete local software tests; loaded physical/model receiving fails as recorded below. Focused Edge UI and existing worker comparison pass; no full-browser or hosted-full attestation.",
+  "modelReceiving": {
+    "completeCycles": true,
+    "convergence": true,
+    "localMaterialAndStability": false,
+    "reactionRefinement": false,
+    "complete": false
+  },
+  "sourcesSha256": {
+    "dist/sealed-casing.js": "47c10d740da0ea883e41cae176883902349425b3688423922964a6e610f5a8ad",
+    "dist/wheel-ring.js": "c0de0d124a02f1ecfacd899e73de714ce6a697d0badccd9020052c88fe55de60",
+    "dist/tyre-gas.js": "bb977230f4762d4f57059506149491934589be374c07107a4283c1e32bfb0089",
+    "scripts/lib/tyre-dense.mjs": "ce37478c657618654605b342eacb55ae38accf3b21e9e9c738a64cb7e2fdd329",
+    "scripts/lib/tyre-sealed-load.mjs": "75eed477cdf432b54ddcbf04a5bf0cfd3d74469d1ee2af93a39692ffcdec1889",
+    "scripts/lib/tyre-meridian-fixture.mjs": "8610247689576494a9300712dd66bc44d06bbf1079f2897a5f8eddf8eea1249d",
+    "scripts/lib/tyre-inflation.mjs": "693611ae30bf86543c190a3910948b9e8f7171a61ff1923d397542232e91b3cd",
+    "scripts/tyre-sealed-load.mjs": "e1f70836809448eca5e5c8b5858c07d184689b1d0da8bd5e66faa3083d130e57",
+    "scripts/plot-tyre-sealed-load.py": "3c7da98749fc1544911e26ca3ea28596801734f85aa32fcb97cfe5ddb4677986",
+    "test/tyre-sealed-load.test.mjs": "7a0db67e50c31689eb7ff7f72b817e088809466c2595ca6358467dc047c1e48a"
+  },
+  "plotSha256": "498d6cb79797e6a7d0cf64fd8d96b409fae6b2fd2945db686063d0ae1094daf1"
+}

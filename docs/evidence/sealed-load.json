@@ -1,0 +1,6206 @@
+{
+  "model": "bikelab-sealed-plane-equilibrium-0.1",
+  "scope": "Quasi-static zero-thickness swept surface against a plane. Mathematical continuation through rejected compression states is preserved diagnostically, not admitted motion. Active vertex span is not physical footprint width. No native contact or calibration claim.",
+  "budgets": {
+    "force": 0.00001,
+    "gap": 1e-12,
+    "differenceStep": 1e-7,
+    "maxIterations": 100,
+    "maxBacktracks": 32,
+    "armijo": 0.0001
+  },
+  "refinementBudget": "1 N + 5% of larger reaction; numerical receiving target, not measured physical error",
+  "receiving": {
+    "completeCycles": true,
+    "convergence": true,
+    "localMaterialAndStability": false,
+    "reactionRefinement": false,
+    "complete": false
+  },
+  "counts": {
+    "cases": 18,
+    "samples": 162,
+    "converged": 162,
+    "locallyAdmissible": 112,
+    "compressive": 50,
+    "refinementComparisons": 105,
+    "refinementFailures": 48
+  },
+  "maxKktForce": 0.000006068826564842311,
+  "comparisons": [
+    {
+      "axis": "nodes",
+      "coarse": [
+        32,
+        8
+      ],
+      "fine": [
+        64,
+        8
+      ],
+      "pressure": 120000,
+      "deflection": 0,
+      "reactionDifference": 7.645439836778678e-12,
+      "budget": 1.0000000000005784,
+      "passed": true,
+      "locallyAdmissible": true
+    },
+    {
+      "axis": "nodes",
+      "coarse": [
+        32,
+        8
+      ],
+      "fine": [
+        64,
+        8
+      ],
+      "pressure": 120000,
+      "deflection": 0.0010000000000000009,
+      "reactionDifference": 8.248609316635736,
+      "budget": 2.6726302484212,
+      "passed": false,
+      "locallyAdmissible": true
+    },
+    {
+      "axis": "nodes",
+      "coarse": [
+        32,
+        8
+      ],
+      "fine": [
+        64,
+        8
+      ],
+      "pressure": 120000,
+      "deflection": 0.0020000000000000018,
+      "reactionDifference": 308.84866912670077,
+      "budget": 19.80916407530934,
+      "passed": false,
+      "locallyAdmissible": false
+    },
+    {
+      "axis": "nodes",
+      "coarse": [
+        32,
+        8
+      ],
+      "fine": [
+        64,
+        8
+      ],
+      "pressure": 120000,
+      "deflection": 0.0030000000000000027,
+      "reactionDifference": 620.944018396647,
+      "budget": 37.169062785103165,
+      "passed": false,
+      "locallyAdmissible": false
+    },
+    {
+      "axis": "nodes",
+      "coarse": [
+        32,
+        8
+      ],
+      "fine": [
+        64,
+        8
+      ],
+      "pressure": 120000,
+      "deflection": 0.0040000000000000036,
+      "reactionDifference": 865.4644397178698,
+      "budget": 54.30909922286747,
+      "passed": false,
+      "locallyAdmissible": false
+    },
+    {
+      "axis": "segments",
+      "coarse": [
+        32,
+        8
+      ],
+      "fine": [
+        32,
+        16
+      ],
+      "pressure": 120000,
+      "deflection": 0,
+      "reactionDifference": 1.5120349416974932e-11,
+      "budget": 1.0000000000009521,
+      "passed": true,
+      "locallyAdmissible": true
+    },
+    {
+      "axis": "segments",
+      "coarse": [
+        32,
+        8
+      ],
+      "fine": [
+        32,
+        16
+      ],
+      "pressure": 120000,
+      "deflection": 0.0010000000000000009,
+      "reactionDifference": 1.1087185936900141,
+      "budget": 2.728066178105701,
+      "passed": true,
+      "locallyAdmissible": true
+    },
+    {
+      "axis": "segments",
+      "coarse": [
+        32,
+        8
+      ],
+      "fine": [
+        32,
+        16
+      ],
+      "pressure": 120000,
+      "deflection": 0.0020000000000000018,
+      "reactionDifference": 2.2410352793164634,
+      "budget": 4.478782382940125,
+      "passed": true,
+      "locallyAdmissible": true
+    },
+    {
+      "axis": "segments",
+      "coarse": [
+        32,
+        8
+      ],
+      "fine": [
+        32,
+        16
+      ],
+      "pressure": 120000,
+      "deflection": 0.0030000000000000027,
+      "reactionDifference": 3.4288762525743266,
+      "budget": 6.293305677899531,
+      "passed": true,
+      "locallyAdmissible": true
+    },
+    {
+      "axis": "segments",
+      "coarse": [
+        32,
+        8
+      ],
+      "fine": [
+        32,
+        16
+      ],
+      "pressure": 120000,
+      "deflection": 0.0040000000000000036,
+      "reactionDifference": 0.5420427446388203,
+      "budget": 11.035877236973972,
+      "passed": true,
+      "locallyAdmissible": true
+    },
+    {
+      "axis": "nodes",
+      "coarse": [
+        32,
+        8
+      ],
+      "fine": [
+        64,
+        8
+      ],
+      "pressure": 160000,
+      "deflection": 0,
+      "reactionDifference": 1.0459189070388675e-11,
+      "budget": 1.000000000000523,
+      "passed": true,
+      "locallyAdmissible": true
+    },
+    {
+      "axis": "nodes",
+      "coarse": [
+        32,
+        8
+      ],
+      "fine": [
+        64,
+        8
+      ],
+      "pressure": 160000,
+      "deflection": 0.0010000000000000009,
+      "reactionDifference": 9.676746717955183,
+      "budget": 2.9338004244345486,
+      "passed": false,
+      "locallyAdmissible": true
+    },
+    {
+      "axis": "nodes",
+      "coarse": [
+        32,
+        8
+      ],
+      "fine": [
+        64,
+        8
+      ],
+      "pressure": 160000,
+      "deflection": 0.0020000000000000018,
+      "reactionDifference": 301.69387863177576,
+      "budget": 19.964058611008966,
+      "passed": false,
+      "locallyAdmissible": true
+    },
+    {
+      "axis": "nodes",
+      "coarse": [
+        32,
+        8
+      ],
+      "fine": [
+        64,
+        8
+      ],
+      "pressure": 160000,
+      "deflection": 0.0030000000000000027,
+      "reactionDifference": 615.3064713657326,
+      "budget": 37.63687770283973,
+      "passed": false,
+      "locallyAdmissible": false
+    },
+    {
+      "axis": "nodes",
+      "coarse": [
+        32,
+        8
+      ],
+      "fine": [
+        64,
+        8
+      ],
+      "pressure": 160000,
+      "deflection": 0.0040000000000000036,
+      "reactionDifference": 895.8322056205782,
+      "budget": 55.07742826802405,
+      "passed": false,
+      "locallyAdmissible": false
+    },
+    {
+      "axis": "segments",
+      "coarse": [
+        32,
+        8
+      ],
+      "fine": [
+        32,
+        16
+      ],
+      "pressure": 160000,
+      "deflection": 0,
+      "reactionDifference": 1.0459189070388675e-11,
+      "budget": 1.000000000000523,
+      "passed": true,
+      "locallyAdmissible": true
+    },
+    {
+      "axis": "segments",
+      "coarse": [
+        32,
+        8
+      ],
+      "fine": [
+        32,
+        16
+      ],
+      "pressure": 160000,
+      "deflection": 0.0010000000000000009,
+      "reactionDifference": 1.270972575914243,
+      "budget": 2.997349053230261,
+      "passed": true,
+      "locallyAdmissible": true
+    },
+    {
+      "axis": "segments",
+      "coarse": [
+        32,
+        8
+      ],
+      "fine": [
+        32,
+        16
+      ],
+      "pressure": 160000,
+      "deflection": 0.0020000000000000018,
+      "reactionDifference": 2.55889315124665,
+      "budget": 5.007309336982511,
+      "passed": true,
+      "locallyAdmissible": true
+    },
+    {
+      "axis": "segments",
+      "coarse": [
+        32,
+        8
+      ],
+      "fine": [
+        32,
+        16
+      ],
+      "pressure": 160000,
+      "deflection": 0.0030000000000000027,
+      "reactionDifference": 3.8928941473151326,
+      "budget": 7.066198841918862,
+      "passed": true,
+      "locallyAdmissible": true
+    },
+    {
+      "axis": "segments",
+      "coarse": [
+        32,
+        8
+      ],
+      "fine": [
+        32,
+        16
+      ],
+      "pressure": 160000,
+      "deflection": 0.0040000000000000036,
+      "reactionDifference": 1.1858771769103669,
+      "budget": 10.285817986995141,
+      "passed": true,
+      "locallyAdmissible": true
+    },
+    {
+      "axis": "nodes",
+      "coarse": [
+        32,
+        8
+      ],
+      "fine": [
+        64,
+        8
+      ],
+      "pressure": 200000,
+      "deflection": 0,
+      "reactionDifference": 3.296918293926865e-12,
+      "budget": 1.0000000000004206,
+      "passed": true,
+      "locallyAdmissible": true
+    },
+    {
+      "axis": "nodes",
+      "coarse": [
+        32,
+        8
+      ],
+      "fine": [
+        64,
+        8
+      ],
+      "pressure": 200000,
+      "deflection": 0.0010000000000000009,
+      "reactionDifference": 10.898258137302264,
+      "budget": 3.1628105373498956,
+      "passed": false,
+      "locallyAdmissible": true
+    },
+    {
+      "axis": "nodes",
+      "coarse": [
+        32,
+        8
+      ],
+      "fine": [
+        64,
+        8
+      ],
+      "pressure": 200000,
+      "deflection": 0.0020000000000000018,
+      "reactionDifference": 295.5045442090707,
+      "budget": 20.105356462827327,
+      "passed": false,
+      "locallyAdmissible": true
+    },
+    {
+      "axis": "nodes",
+      "coarse": [
+        32,
+        8
+      ],
+      "fine": [
+        64,
+        8
+      ],
+      "pressure": 200000,
+      "deflection": 0.0030000000000000027,
+      "reactionDifference": 610.587356971866,
+      "budget": 38.06290649759395,
+      "passed": false,
+      "locallyAdmissible": false
+    },
+    {
+      "axis": "nodes",
+      "coarse": [
+        32,
+        8
+      ],
+      "fine": [
+        64,
+        8
+      ],
+      "pressure": 200000,
+      "deflection": 0.0040000000000000036,
+      "reactionDifference": 919.6185924887794,
+      "budget": 55.78158148080448,
+      "passed": false,
+      "locallyAdmissible": false
+    },
+    {
+      "axis": "segments",
+      "coarse": [
+        32,
+        8
+      ],
+      "fine": [
+        32,
+        16
+      ],
+      "pressure": 200000,
+      "deflection": 0,
+      "reactionDifference": 8.753886504564434e-12,
+      "budget": 1.0000000000008584,
+      "passed": true,
+      "locallyAdmissible": true
+    },
+    {
+      "axis": "segments",
+      "coarse": [
+        32,
+        8
+      ],
+      "fine": [
+        32,
+        16
+      ],
+      "pressure": 200000,
+      "deflection": 0.0010000000000000009,
+      "reactionDifference": 1.4161643551930183,
+      "budget": 3.2336187551095463,
+      "passed": true,
+      "locallyAdmissible": true
+    },
+    {
+      "axis": "segments",
+      "coarse": [
+        32,
+        8
+      ],
+      "fine": [
+        32,
+        16
+      ],
+      "pressure": 200000,
+      "deflection": 0.0020000000000000018,
+      "reactionDifference": 2.843661325350638,
+      "budget": 5.472312318641326,
+      "passed": true,
+      "locallyAdmissible": true
+    },
+    {
+      "axis": "segments",
+      "coarse": [
+        32,
+        8
+      ],
+      "fine": [
+        32,
+        16
+      ],
+      "pressure": 200000,
+      "deflection": 0.0030000000000000027,
+      "reactionDifference": 4.309392225325837,
+      "budget": 7.7490082602669395,
+      "passed": true,
+      "locallyAdmissible": true
+    },
+    {
+      "axis": "segments",
+      "coarse": [
+        32,
+        8
+      ],
+      "fine": [
+        32,
+        16
+      ],
+      "pressure": 200000,
+      "deflection": 0.0040000000000000036,
+      "reactionDifference": 5.835882762320352,
+      "budget": 10.092445994481528,
+      "passed": true,
+      "locallyAdmissible": true
+    },
+    {
+      "axis": "nodes",
+      "coarse": [
+        64,
+        8
+      ],
+      "fine": [
+        128,
+        8
+      ],
+      "pressure": 120000,
+      "deflection": 0,
+      "reactionDifference": 1.1567635738174431e-11,
+      "budget": 1.0000000000005784,
+      "passed": true,
+      "locallyAdmissible": true
+    },
+    {
+      "axis": "nodes",
+      "coarse": [
+        64,
+        8
+      ],
+      "fine": [
+        128,
+        8
+      ],
+      "pressure": 120000,
+      "deflection": 0.0010000000000000009,
+      "reactionDifference": 116.76615818106254,
+      "budget": 8.09850769164254,
+      "passed": false,
+      "locallyAdmissible": true
+    },
+    {
+      "axis": "nodes",
+      "coarse": [
+        64,
+        8
+      ],
+      "fine": [
+        128,
+        8
+      ],
+      "pressure": 120000,
+      "deflection": 0.0020000000000000018,
+      "reactionDifference": 71.99019668467588,
+      "budget": 23.408673909543136,
+      "passed": false,
+      "locallyAdmissible": false
+    },
+    {
+      "axis": "nodes",
+      "coarse": [
+        64,
+        8
+      ],
+      "fine": [
+        128,
+        8
+      ],
+      "pressure": 120000,
+      "deflection": 0.0030000000000000027,
+      "reactionDifference": 69.5473526709236,
+      "budget": 40.646430418649345,
+      "passed": false,
+      "locallyAdmissible": false
+    },
+    {
+      "axis": "nodes",
+      "coarse": [
+        64,
+        8
+      ],
+      "fine": [
+        128,
+        8
+      ],
+      "pressure": 120000,
+      "deflection": 0.0040000000000000036,
+      "reactionDifference": 205.60952998028324,
+      "budget": 64.58957572188163,
+      "passed": false,
+      "locallyAdmissible": false
+    },
+    {
+      "axis": "segments",
+      "coarse": [
+        64,
+        8
+      ],
+      "fine": [
+        64,
+        16
+      ],
+      "pressure": 120000,
+      "deflection": 0,
+      "reactionDifference": 1.1567635738174431e-11,
+      "budget": 1.0000000000005784,
+      "passed": true,
+      "locallyAdmissible": true
+    },
+    {
+      "axis": "segments",
+      "coarse": [
+        64,
+        8
+      ],
+      "fine": [
+        64,
+        16
+      ],
+      "pressure": 120000,
+      "deflection": 0.0010000000000000009,
+      "reactionDifference": 1.0214415105002956,
+      "budget": 2.311271858114428,
+      "passed": true,
+      "locallyAdmissible": true
+    },
+    {
+      "axis": "segments",
+      "coarse": [
+        64,
+        8
+      ],
+      "fine": [
+        64,
+        16
+      ],
+      "pressure": 120000,
+      "deflection": 0.0020000000000000018,
+      "reactionDifference": 3.4661226125946882,
+      "budget": 19.982470205939077,
+      "passed": true,
+      "locallyAdmissible": false
+    },
+    {
+      "axis": "segments",
+      "coarse": [
+        64,
+        8
+      ],
+      "fine": [
+        64,
+        16
+      ],
+      "pressure": 120000,
+      "deflection": 0.0030000000000000027,
+      "reactionDifference": 7.4035932766655606,
+      "budget": 37.53924244893644,
+      "passed": true,
+      "locallyAdmissible": false
+    },
+    {
+      "axis": "segments",
+      "coarse": [
+        64,
+        8
+      ],
+      "fine": [
+        64,
+        16
+      ],
+      "pressure": 120000,
+      "deflection": 0.0040000000000000036,
+      "reactionDifference": 11.41116075367745,
+      "budget": 54.87965726055134,
+      "passed": true,
+      "locallyAdmissible": false
+    },
+    {
+      "axis": "nodes",
+      "coarse": [
+        64,
+        8
+      ],
+      "fine": [
+        128,
+        8
+      ],
+      "pressure": 160000,
+      "deflection": 0,
+      "reactionDifference": 5.826450433232822e-13,
+      "budget": 1.000000000000029,
+      "passed": true,
+      "locallyAdmissible": true
+    },
+    {
+      "axis": "nodes",
+      "coarse": [
+        64,
+        8
+      ],
+      "fine": [
+        128,
+        8
+      ],
+      "pressure": 160000,
+      "deflection": 0.0010000000000000009,
+      "reactionDifference": 115.60538861488803,
+      "budget": 8.230232519281191,
+      "passed": false,
+      "locallyAdmissible": true
+    },
+    {
+      "axis": "nodes",
+      "coarse": [
+        64,
+        8
+      ],
+      "fine": [
+        128,
+        8
+      ],
+      "pressure": 160000,
+      "deflection": 0.0020000000000000018,
+      "reactionDifference": 72.29038853678986,
+      "budget": 23.57857803784846,
+      "passed": false,
+      "locallyAdmissible": false
+    },
+    {
+      "axis": "nodes",
+      "coarse": [
+        64,
+        8
+      ],
+      "fine": [
+        128,
+        8
+      ],
+      "pressure": 160000,
+      "deflection": 0.0030000000000000027,
+      "reactionDifference": 69.22381474465624,
+      "budget": 41.09806844007255,
+      "passed": false,
+      "locallyAdmissible": false
+    },
+    {
+      "axis": "nodes",
+      "coarse": [
+        64,
+        8
+      ],
+      "fine": [
+        128,
+        8
+      ],
+      "pressure": 160000,
+      "deflection": 0.0040000000000000036,
+      "reactionDifference": 199.1424034396009,
+      "budget": 65.0345484400041,
+      "passed": false,
+      "locallyAdmissible": false
+    },
+    {
+      "axis": "segments",
+      "coarse": [
+        64,
+        8
+      ],
+      "fine": [
+        64,
+        16
+      ],
+      "pressure": 160000,
+      "deflection": 0,
+      "reactionDifference": 7.958078640513122e-13,
+      "budget": 1.0000000000000397,
+      "passed": true,
+      "locallyAdmissible": true
+    },
+    {
+      "axis": "segments",
+      "coarse": [
+        64,
+        8
+      ],
+      "fine": [
+        64,
+        16
+      ],
+      "pressure": 160000,
+      "deflection": 0.0010000000000000009,
+      "reactionDifference": 1.176309562433147,
+      "budget": 2.508778566658447,
+      "passed": true,
+      "locallyAdmissible": true
+    },
+    {
+      "axis": "segments",
+      "coarse": [
+        64,
+        8
+      ],
+      "fine": [
+        64,
+        16
+      ],
+      "pressure": 160000,
+      "deflection": 0.0020000000000000018,
+      "reactionDifference": 3.534722007532366,
+      "budget": 20.140794711385585,
+      "passed": true,
+      "locallyAdmissible": true
+    },
+    {
+      "axis": "segments",
+      "coarse": [
+        64,
+        8
+      ],
+      "fine": [
+        64,
+        16
+      ],
+      "pressure": 160000,
+      "deflection": 0.0030000000000000027,
+      "reactionDifference": 7.6822640122502435,
+      "budget": 38.02099090345225,
+      "passed": true,
+      "locallyAdmissible": false
+    },
+    {
+      "axis": "segments",
+      "coarse": [
+        64,
+        8
+      ],
+      "fine": [
+        64,
+        16
+      ],
+      "pressure": 160000,
+      "deflection": 0.0040000000000000036,
+      "reactionDifference": 11.891185940711921,
+      "budget": 55.67198756505965,
+      "passed": true,
+      "locallyAdmissible": false
+    },
+    {
+      "axis": "nodes",
+      "coarse": [
+        64,
+        8
+      ],
+      "fine": [
+        128,
+        8
+      ],
+      "pressure": 200000,
+      "deflection": 0,
+      "reactionDifference": 5.115907697472721e-12,
+      "budget": 1.0000000000002558,
+      "passed": true,
+      "locallyAdmissible": true
+    },
+    {
+      "axis": "nodes",
+      "coarse": [
+        64,
+        8
+      ],
+      "fine": [
+        128,
+        8
+      ],
+      "pressure": 200000,
+      "deflection": 0.0010000000000000009,
+      "reactionDifference": 114.61746232858707,
+      "budget": 8.348770746914136,
+      "passed": false,
+      "locallyAdmissible": true
+    },
+    {
+      "axis": "nodes",
+      "coarse": [
+        64,
+        8
+      ],
+      "fine": [
+        128,
+        8
+      ],
+      "pressure": 200000,
+      "deflection": 0.0020000000000000018,
+      "reactionDifference": 72.58653292887192,
+      "budget": 23.734683109270925,
+      "passed": false,
+      "locallyAdmissible": false
+    },
+    {
+      "axis": "nodes",
+      "coarse": [
+        64,
+        8
+      ],
+      "fine": [
+        128,
+        8
+      ],
+      "pressure": 200000,
+      "deflection": 0.0030000000000000027,
+      "reactionDifference": 68.97551023428707,
+      "budget": 41.51168200930831,
+      "passed": false,
+      "locallyAdmissible": false
+    },
+    {
+      "axis": "nodes",
+      "coarse": [
+        64,
+        8
+      ],
+      "fine": [
+        128,
+        8
+      ],
+      "pressure": 200000,
+      "deflection": 0.0040000000000000036,
+      "reactionDifference": 193.28289615387212,
+      "budget": 65.4457262884981,
+      "passed": false,
+      "locallyAdmissible": false
+    },
+    {
+      "axis": "segments",
+      "coarse": [
+        64,
+        8
+      ],
+      "fine": [
+        64,
+        16
+      ],
+      "pressure": 200000,
+      "deflection": 0,
+      "reactionDifference": 5.115907697472721e-12,
+      "budget": 1.0000000000002558,
+      "passed": true,
+      "locallyAdmissible": true
+    },
+    {
+      "axis": "segments",
+      "coarse": [
+        64,
+        8
+      ],
+      "fine": [
+        64,
+        16
+      ],
+      "pressure": 200000,
+      "deflection": 0.0010000000000000009,
+      "reactionDifference": 1.3130028699694094,
+      "budget": 2.6835477739832525,
+      "passed": true,
+      "locallyAdmissible": true
+    },
+    {
+      "axis": "segments",
+      "coarse": [
+        64,
+        8
+      ],
+      "fine": [
+        64,
+        16
+      ],
+      "pressure": 200000,
+      "deflection": 0.0020000000000000018,
+      "reactionDifference": 3.591419605801832,
+      "budget": 20.28492744311742,
+      "passed": true,
+      "locallyAdmissible": true
+    },
+    {
+      "axis": "segments",
+      "coarse": [
+        64,
+        8
+      ],
+      "fine": [
+        64,
+        16
+      ],
+      "pressure": 200000,
+      "deflection": 0.0030000000000000027,
+      "reactionDifference": 7.924812135846651,
+      "budget": 38.45914710438628,
+      "passed": true,
+      "locallyAdmissible": false
+    },
+    {
+      "axis": "segments",
+      "coarse": [
+        64,
+        8
+      ],
+      "fine": [
+        64,
+        16
+      ],
+      "pressure": 200000,
+      "deflection": 0.0040000000000000036,
+      "reactionDifference": 12.313051940658852,
+      "budget": 56.397234077837425,
+      "passed": true,
+      "locallyAdmissible": false
+    },
+    {
+      "axis": "segments",
+      "coarse": [
+        128,
+        8
+      ],
+      "fine": [
+        128,
+        16
+      ],
+      "pressure": 120000,
+      "deflection": 0,
+      "reactionDifference": 1.4210854715202004e-13,
+      "budget": 1.000000000000007,
+      "passed": true,
+      "locallyAdmissible": true
+    },
+    {
+      "axis": "segments",
+      "coarse": [
+        128,
+        8
+      ],
+      "fine": [
+        128,
+        16
+      ],
+      "pressure": 120000,
+      "deflection": 0.0010000000000000009,
+      "reactionDifference": 1.6551964742735095,
+      "budget": 8.181267515356215,
+      "passed": true,
+      "locallyAdmissible": true
+    },
+    {
+      "axis": "segments",
+      "coarse": [
+        128,
+        8
+      ],
+      "fine": [
+        128,
+        16
+      ],
+      "pressure": 120000,
+      "deflection": 0.0020000000000000018,
+      "reactionDifference": 4.065291748355548,
+      "budget": 23.611938496960914,
+      "passed": true,
+      "locallyAdmissible": false
+    },
+    {
+      "axis": "segments",
+      "coarse": [
+        128,
+        8
+      ],
+      "fine": [
+        128,
+        16
+      ],
+      "pressure": 120000,
+      "deflection": 0.0030000000000000027,
+      "reactionDifference": 7.993262682566865,
+      "budget": 41.04609355277769,
+      "passed": true,
+      "locallyAdmissible": false
+    },
+    {
+      "axis": "segments",
+      "coarse": [
+        128,
+        8
+      ],
+      "fine": [
+        128,
+        16
+      ],
+      "pressure": 120000,
+      "deflection": 0.0040000000000000036,
+      "reactionDifference": 11.66148711821279,
+      "budget": 65.17265007779227,
+      "passed": true,
+      "locallyAdmissible": false
+    },
+    {
+      "axis": "segments",
+      "coarse": [
+        128,
+        8
+      ],
+      "fine": [
+        128,
+        16
+      ],
+      "pressure": 160000,
+      "deflection": 0,
+      "reactionDifference": 1.9610979506978765e-12,
+      "budget": 1.0000000000001272,
+      "passed": true,
+      "locallyAdmissible": true
+    },
+    {
+      "axis": "segments",
+      "coarse": [
+        128,
+        8
+      ],
+      "fine": [
+        128,
+        16
+      ],
+      "pressure": 160000,
+      "deflection": 0.0010000000000000009,
+      "reactionDifference": 1.75618059994639,
+      "budget": 8.318041549278512,
+      "passed": true,
+      "locallyAdmissible": true
+    },
+    {
+      "axis": "segments",
+      "coarse": [
+        128,
+        8
+      ],
+      "fine": [
+        128,
+        16
+      ],
+      "pressure": 160000,
+      "deflection": 0.0020000000000000018,
+      "reactionDifference": 4.143980601906833,
+      "budget": 23.7857770679438,
+      "passed": true,
+      "locallyAdmissible": false
+    },
+    {
+      "axis": "segments",
+      "coarse": [
+        128,
+        8
+      ],
+      "fine": [
+        128,
+        16
+      ],
+      "pressure": 160000,
+      "deflection": 0.0030000000000000027,
+      "reactionDifference": 8.27118408473632,
+      "budget": 41.511627644309364,
+      "passed": true,
+      "locallyAdmissible": false
+    },
+    {
+      "axis": "segments",
+      "coarse": [
+        128,
+        8
+      ],
+      "fine": [
+        128,
+        16
+      ],
+      "pressure": 160000,
+      "deflection": 0.0040000000000000036,
+      "reactionDifference": 11.792355205506283,
+      "budget": 65.62416620027942,
+      "passed": true,
+      "locallyAdmissible": false
+    },
+    {
+      "axis": "segments",
+      "coarse": [
+        128,
+        8
+      ],
+      "fine": [
+        128,
+        16
+      ],
+      "pressure": 200000,
+      "deflection": 0,
+      "reactionDifference": 5.684341886080802e-14,
+      "budget": 1.0000000000000029,
+      "passed": true,
+      "locallyAdmissible": true
+    },
+    {
+      "axis": "segments",
+      "coarse": [
+        128,
+        8
+      ],
+      "fine": [
+        128,
+        16
+      ],
+      "pressure": 200000,
+      "deflection": 0.0010000000000000009,
+      "reactionDifference": 1.844617305155964,
+      "budget": 8.441001612171934,
+      "passed": true,
+      "locallyAdmissible": true
+    },
+    {
+      "axis": "segments",
+      "coarse": [
+        128,
+        8
+      ],
+      "fine": [
+        128,
+        16
+      ],
+      "pressure": 200000,
+      "deflection": 0.0020000000000000018,
+      "reactionDifference": 4.2097790118766625,
+      "budget": 23.94517205986476,
+      "passed": true,
+      "locallyAdmissible": false
+    },
+    {
+      "axis": "segments",
+      "coarse": [
+        128,
+        8
+      ],
+      "fine": [
+        128,
+        16
+      ],
+      "pressure": 200000,
+      "deflection": 0.0030000000000000027,
+      "reactionDifference": 8.512694843179702,
+      "budget": 41.93731675146729,
+      "passed": true,
+      "locallyAdmissible": false
+    },
+    {
+      "axis": "segments",
+      "coarse": [
+        128,
+        8
+      ],
+      "fine": [
+        128,
+        16
+      ],
+      "pressure": 200000,
+      "deflection": 0.0040000000000000036,
+      "reactionDifference": 11.898188566061208,
+      "budget": 66.04063571680115,
+      "passed": true,
+      "locallyAdmissible": false
+    },
+    {
+      "axis": "nodes",
+      "coarse": [
+        32,
+        16
+      ],
+      "fine": [
+        64,
+        16
+      ],
+      "pressure": 120000,
+      "deflection": 0,
+      "reactionDifference": 1.9042545318370685e-11,
+      "budget": 1.0000000000009521,
+      "passed": true,
+      "locallyAdmissible": true
+    },
+    {
+      "axis": "nodes",
+      "coarse": [
+        32,
+        16
+      ],
+      "fine": [
+        64,
+        16
+      ],
+      "pressure": 120000,
+      "deflection": 0.0010000000000000009,
+      "reactionDifference": 8.335886399825455,
+      "budget": 2.728066178105701,
+      "passed": false,
+      "locallyAdmissible": true
+    },
+    {
+      "axis": "nodes",
+      "coarse": [
+        32,
+        16
+      ],
+      "fine": [
+        64,
+        16
+      ],
+      "pressure": 120000,
+      "deflection": 0.0020000000000000018,
+      "reactionDifference": 310.073756459979,
+      "budget": 19.982470205939077,
+      "passed": false,
+      "locallyAdmissible": false
+    },
+    {
+      "axis": "nodes",
+      "coarse": [
+        32,
+        16
+      ],
+      "fine": [
+        64,
+        16
+      ],
+      "pressure": 120000,
+      "deflection": 0.0030000000000000027,
+      "reactionDifference": 624.9187354207382,
+      "budget": 37.53924244893644,
+      "passed": false,
+      "locallyAdmissible": false
+    },
+    {
+      "axis": "nodes",
+      "coarse": [
+        32,
+        16
+      ],
+      "fine": [
+        64,
+        16
+      ],
+      "pressure": 120000,
+      "deflection": 0.0040000000000000036,
+      "reactionDifference": 877.4176432161861,
+      "budget": 54.87965726055134,
+      "passed": false,
+      "locallyAdmissible": false
+    },
+    {
+      "axis": "nodes",
+      "coarse": [
+        32,
+        16
+      ],
+      "fine": [
+        64,
+        16
+      ],
+      "pressure": 160000,
+      "deflection": 0,
+      "reactionDifference": 7.958078640513122e-13,
+      "budget": 1.0000000000000397,
+      "passed": true,
+      "locallyAdmissible": true
+    },
+    {
+      "axis": "nodes",
+      "coarse": [
+        32,
+        16
+      ],
+      "fine": [
+        64,
+        16
+      ],
+      "pressure": 160000,
+      "deflection": 0.0010000000000000009,
+      "reactionDifference": 9.771409731436279,
+      "budget": 2.997349053230261,
+      "passed": false,
+      "locallyAdmissible": true
+    },
+    {
+      "axis": "nodes",
+      "coarse": [
+        32,
+        16
+      ],
+      "fine": [
+        64,
+        16
+      ],
+      "pressure": 160000,
+      "deflection": 0.0020000000000000018,
+      "reactionDifference": 302.6697074880615,
+      "budget": 20.140794711385585,
+      "passed": false,
+      "locallyAdmissible": true
+    },
+    {
+      "axis": "nodes",
+      "coarse": [
+        32,
+        16
+      ],
+      "fine": [
+        64,
+        16
+      ],
+      "pressure": 160000,
+      "deflection": 0.0030000000000000027,
+      "reactionDifference": 619.0958412306677,
+      "budget": 38.02099090345225,
+      "passed": false,
+      "locallyAdmissible": false
+    },
+    {
+      "axis": "nodes",
+      "coarse": [
+        32,
+        16
+      ],
+      "fine": [
+        64,
+        16
+      ],
+      "pressure": 160000,
+      "deflection": 0.0040000000000000036,
+      "reactionDifference": 908.9092687382005,
+      "budget": 55.67198756505965,
+      "passed": false,
+      "locallyAdmissible": false
+    },
+    {
+      "axis": "nodes",
+      "coarse": [
+        32,
+        16
+      ],
+      "fine": [
+        64,
+        16
+      ],
+      "pressure": 200000,
+      "deflection": 0,
+      "reactionDifference": 1.716671249596402e-11,
+      "budget": 1.0000000000008584,
+      "passed": true,
+      "locallyAdmissible": true
+    },
+    {
+      "axis": "nodes",
+      "coarse": [
+        32,
+        16
+      ],
+      "fine": [
+        64,
+        16
+      ],
+      "pressure": 200000,
+      "deflection": 0.0010000000000000009,
+      "reactionDifference": 11.001419622525873,
+      "budget": 3.2336187551095463,
+      "passed": false,
+      "locallyAdmissible": true
+    },
+    {
+      "axis": "nodes",
+      "coarse": [
+        32,
+        16
+      ],
+      "fine": [
+        64,
+        16
+      ],
+      "pressure": 200000,
+      "deflection": 0.0020000000000000018,
+      "reactionDifference": 296.25230248952187,
+      "budget": 20.28492744311742,
+      "passed": false,
+      "locallyAdmissible": true
+    },
+    {
+      "axis": "nodes",
+      "coarse": [
+        32,
+        16
+      ],
+      "fine": [
+        64,
+        16
+      ],
+      "pressure": 200000,
+      "deflection": 0.0030000000000000027,
+      "reactionDifference": 614.2027768823868,
+      "budget": 38.45914710438628,
+      "passed": false,
+      "locallyAdmissible": false
+    },
+    {
+      "axis": "nodes",
+      "coarse": [
+        32,
+        16
+      ],
+      "fine": [
+        64,
+        16
+      ],
+      "pressure": 200000,
+      "deflection": 0.0040000000000000036,
+      "reactionDifference": 926.0957616671179,
+      "budget": 56.397234077837425,
+      "passed": false,
+      "locallyAdmissible": false
+    },
+    {
+      "axis": "nodes",
+      "coarse": [
+        64,
+        16
+      ],
+      "fine": [
+        128,
+        16
+      ],
+      "pressure": 120000,
+      "deflection": 0,
+      "reactionDifference": 1.4210854715202004e-13,
+      "budget": 1.000000000000007,
+      "passed": true,
+      "locallyAdmissible": true
+    },
+    {
+      "axis": "nodes",
+      "coarse": [
+        64,
+        16
+      ],
+      "fine": [
+        128,
+        16
+      ],
+      "pressure": 120000,
+      "deflection": 0.0010000000000000009,
+      "reactionDifference": 117.39991314483575,
+      "budget": 8.181267515356215,
+      "passed": false,
+      "locallyAdmissible": true
+    },
+    {
+      "axis": "nodes",
+      "coarse": [
+        64,
+        16
+      ],
+      "fine": [
+        128,
+        16
+      ],
+      "pressure": 120000,
+      "deflection": 0.0020000000000000018,
+      "reactionDifference": 72.58936582043674,
+      "budget": 23.611938496960914,
+      "passed": false,
+      "locallyAdmissible": false
+    },
+    {
+      "axis": "nodes",
+      "coarse": [
+        64,
+        16
+      ],
+      "fine": [
+        128,
+        16
+      ],
+      "pressure": 120000,
+      "deflection": 0.0030000000000000027,
+      "reactionDifference": 70.1370220768249,
+      "budget": 41.04609355277769,
+      "passed": false,
+      "locallyAdmissible": false
+    },
+    {
+      "axis": "nodes",
+      "coarse": [
+        64,
+        16
+      ],
+      "fine": [
+        128,
+        16
+      ],
+      "pressure": 120000,
+      "deflection": 0.0040000000000000036,
+      "reactionDifference": 205.85985634481858,
+      "budget": 65.17265007779227,
+      "passed": false,
+      "locallyAdmissible": false
+    },
+    {
+      "axis": "nodes",
+      "coarse": [
+        64,
+        16
+      ],
+      "fine": [
+        128,
+        16
+      ],
+      "pressure": 160000,
+      "deflection": 0,
+      "reactionDifference": 1.7479351299698465e-12,
+      "budget": 1.0000000000001272,
+      "passed": true,
+      "locallyAdmissible": true
+    },
+    {
+      "axis": "nodes",
+      "coarse": [
+        64,
+        16
+      ],
+      "fine": [
+        128,
+        16
+      ],
+      "pressure": 160000,
+      "deflection": 0.0010000000000000009,
+      "reactionDifference": 116.18525965240127,
+      "budget": 8.318041549278512,
+      "passed": false,
+      "locallyAdmissible": true
+    },
+    {
+      "axis": "nodes",
+      "coarse": [
+        64,
+        16
+      ],
+      "fine": [
+        128,
+        16
+      ],
+      "pressure": 160000,
+      "deflection": 0.0020000000000000018,
+      "reactionDifference": 72.89964713116433,
+      "budget": 23.7857770679438,
+      "passed": false,
+      "locallyAdmissible": false
+    },
+    {
+      "axis": "nodes",
+      "coarse": [
+        64,
+        16
+      ],
+      "fine": [
+        128,
+        16
+      ],
+      "pressure": 160000,
+      "deflection": 0.0030000000000000027,
+      "reactionDifference": 69.81273481714231,
+      "budget": 41.511627644309364,
+      "passed": false,
+      "locallyAdmissible": false
+    },
+    {
+      "axis": "nodes",
+      "coarse": [
+        64,
+        16
+      ],
+      "fine": [
+        128,
+        16
+      ],
+      "pressure": 160000,
+      "deflection": 0.0040000000000000036,
+      "reactionDifference": 199.04357270439527,
+      "budget": 65.62416620027942,
+      "passed": false,
+      "locallyAdmissible": false
+    },
+    {
+      "axis": "nodes",
+      "coarse": [
+        64,
+        16
+      ],
+      "fine": [
+        128,
+        16
+      ],
+      "pressure": 200000,
+      "deflection": 0,
+      "reactionDifference": 5.684341886080802e-14,
+      "budget": 1.0000000000000029,
+      "passed": true,
+      "locallyAdmissible": true
+    },
+    {
+      "axis": "nodes",
+      "coarse": [
+        64,
+        16
+      ],
+      "fine": [
+        128,
+        16
+      ],
+      "pressure": 200000,
+      "deflection": 0.0010000000000000009,
+      "reactionDifference": 115.14907676377362,
+      "budget": 8.441001612171934,
+      "passed": false,
+      "locallyAdmissible": true
+    },
+    {
+      "axis": "nodes",
+      "coarse": [
+        64,
+        16
+      ],
+      "fine": [
+        128,
+        16
+      ],
+      "pressure": 200000,
+      "deflection": 0.0020000000000000018,
+      "reactionDifference": 73.20489233494675,
+      "budget": 23.94517205986476,
+      "passed": false,
+      "locallyAdmissible": true
+    },
+    {
+      "axis": "nodes",
+      "coarse": [
+        64,
+        16
+      ],
+      "fine": [
+        128,
+        16
+      ],
+      "pressure": 200000,
+      "deflection": 0.0030000000000000027,
+      "reactionDifference": 69.56339294162012,
+      "budget": 41.93731675146729,
+      "passed": false,
+      "locallyAdmissible": false
+    },
+    {
+      "axis": "nodes",
+      "coarse": [
+        64,
+        16
+      ],
+      "fine": [
+        128,
+        16
+      ],
+      "pressure": 200000,
+      "deflection": 0.0040000000000000036,
+      "reactionDifference": 192.86803277927447,
+      "budget": 66.04063571680115,
+      "passed": false,
+      "locallyAdmissible": false
+    }
+  ],
+  "cases": [
+    {
+      "segments": 8,
+      "nodes": 32,
+      "pressure": 120000,
+      "configuration": {
+        "nodes": 32,
+        "rimRadius": 0.311,
+        "section": [
+          [
+            0.015,
+            0
+          ],
+          [
+            0.025614563473661152,
+            0.013451793826022998
+          ],
+          [
+            0.02610076627227638,
+            0.030580229881682915
+          ],
+          [
+            0.016266356932702248,
+            0.044612482295886026
+          ],
+          [
+            1.6685812638382689e-18,
+            0.05
+          ],
+          [
+            -0.016266356932702248,
+            0.044612482295886026
+          ],
+          [
+            -0.026100766272276376,
+            0.03058022988168292
+          ],
+          [
+            -0.025614563473661155,
+            0.013451793826023002
+          ],
+          [
+            -0.015,
+            0
+          ]
+        ],
+        "meridionalRigidity": 200000,
+        "hoopRigidity": 100000,
+        "couplingRigidity": 20000,
+        "gaugePressure": 120000,
+        "ambientPressure": 101325,
+        "exponent": 1.2,
+        "provenance": "Illustrative load diagnostic; no measured tyre data"
+      },
+      "states": [
+        {
+          "branch": "load",
+          "deflection": 0,
+          "reaction": 3.922195901395753e-12,
+          "materialReaction": -1.1368683772161603e-13,
+          "gasReaction": -1.7053025658242404e-13,
+          "pressure": 120000,
+          "volume": 0.004513250082549236,
+          "potential": 5.910747429306812,
+          "compression": 0,
+          "activeVertexSpan": 0,
+          "rimClearance": 0.051041460573413355,
+          "locallyAdmissible": true,
+          "admission": "admitted",
+          "converged": true,
+          "iterations": 0,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 1.3926637620897964e-11
+        },
+        {
+          "branch": "load",
+          "deflection": 0.0010000000000000009,
+          "reaction": 33.452604968424,
+          "materialReaction": 33.45260496845856,
+          "gasReaction": -8.526512829121202e-13,
+          "pressure": 120020.24646830773,
+          "volume": 0.004512906057123012,
+          "potential": 5.9274739291891825,
+          "compression": 0,
+          "activeVertexSpan": 0,
+          "rimClearance": 0.050041460573413354,
+          "locallyAdmissible": true,
+          "admission": "admitted",
+          "converged": true,
+          "iterations": 3,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 3.342393029015511e-11
+        },
+        {
+          "branch": "load",
+          "deflection": 0.0020000000000000018,
+          "reaction": 67.33461237948603,
+          "materialReaction": 67.3346123794438,
+          "gasReaction": -5.684341886080802e-14,
+          "pressure": 120048.4867349874,
+          "volume": 0.0045124262984305216,
+          "potential": 5.977796887601587,
+          "compression": 0,
+          "activeVertexSpan": 0,
+          "rimClearance": 0.049041460573413354,
+          "locallyAdmissible": true,
+          "admission": "admitted",
+          "converged": true,
+          "iterations": 3,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 3.907985046680551e-11
+        },
+        {
+          "branch": "load",
+          "deflection": 0.0030000000000000027,
+          "reaction": 102.43723730541629,
+          "materialReaction": 102.43723730537323,
+          "gasReaction": 0,
+          "pressure": 120084.69403799876,
+          "volume": 0.004511811356171312,
+          "potential": 6.062551621323593,
+          "compression": 0,
+          "activeVertexSpan": 0,
+          "rimClearance": 0.04804146057341335,
+          "locallyAdmissible": true,
+          "admission": "admitted",
+          "converged": true,
+          "iterations": 3,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 5.559286364587024e-11
+        },
+        {
+          "branch": "load",
+          "deflection": 0.0040000000000000036,
+          "reaction": 200.71754473947942,
+          "materialReaction": 200.71754342212722,
+          "gasReaction": 5.684341886080801e-13,
+          "pressure": 120153.42842619367,
+          "volume": 0.004510644483259538,
+          "potential": 6.186263789302289,
+          "compression": 0,
+          "activeVertexSpan": 0.14245206159486645,
+          "rimClearance": 0.04704146057341335,
+          "locallyAdmissible": true,
+          "admission": "admitted",
+          "converged": true,
+          "iterations": 3,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 4.764476102536719e-7
+        },
+        {
+          "branch": "unload",
+          "deflection": 0.0030000000000000027,
+          "reaction": 102.43723730548123,
+          "materialReaction": 102.43723730541808,
+          "gasReaction": 1.7053025658242404e-13,
+          "pressure": 120084.69403799882,
+          "volume": 0.004511811356171311,
+          "potential": 6.062551621323415,
+          "compression": 0,
+          "activeVertexSpan": 0,
+          "rimClearance": 0.04804146057341335,
+          "locallyAdmissible": true,
+          "admission": "admitted",
+          "converged": true,
+          "iterations": 4,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 3.3026026358129457e-11
+        },
+        {
+          "branch": "unload",
+          "deflection": 0.0020000000000000018,
+          "reaction": 67.33460224676156,
+          "materialReaction": 67.33457673384163,
+          "gasReaction": -5.684341886080802e-14,
+          "pressure": 120048.48669341642,
+          "volume": 0.004512426299136666,
+          "potential": 5.977796887600907,
+          "compression": 0,
+          "activeVertexSpan": 0,
+          "rimClearance": 0.049041460573413354,
+          "locallyAdmissible": true,
+          "admission": "admitted",
+          "converged": true,
+          "iterations": 3,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 0.000005918733108956076
+        },
+        {
+          "branch": "unload",
+          "deflection": 0.0010000000000000009,
+          "reaction": 33.45260494819274,
+          "materialReaction": 33.45260485809837,
+          "gasReaction": -1.1368683772161603e-13,
+          "pressure": 120020.24646816189,
+          "volume": 0.00451290605712549,
+          "potential": 5.927473929189118,
+          "compression": 0,
+          "activeVertexSpan": 0,
+          "rimClearance": 0.050041460573413354,
+          "locallyAdmissible": true,
+          "admission": "admitted",
+          "converged": true,
+          "iterations": 4,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 2.0375182430143468e-8
+        },
+        {
+          "branch": "unload",
+          "deflection": 0,
+          "reaction": 0,
+          "materialReaction": -9.02446117834188e-10,
+          "gasReaction": -2.8421709430404007e-13,
+          "pressure": 119999.999999998,
+          "volume": 0.004513250082549269,
+          "potential": 5.910747429305126,
+          "compression": 0,
+          "activeVertexSpan": 0,
+          "rimClearance": 0.051041460573413355,
+          "locallyAdmissible": true,
+          "admission": "admitted",
+          "converged": true,
+          "iterations": 3,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 3.3168134905281477e-10
+        }
+      ]
+    },
+    {
+      "segments": 8,
+      "nodes": 32,
+      "pressure": 160000,
+      "configuration": {
+        "nodes": 32,
+        "rimRadius": 0.311,
+        "section": [
+          [
+            0.015,
+            0
+          ],
+          [
+            0.025614563473661152,
+            0.013451793826022998
+          ],
+          [
+            0.02610076627227638,
+            0.030580229881682915
+          ],
+          [
+            0.016266356932702248,
+            0.044612482295886026
+          ],
+          [
+            1.6685812638382689e-18,
+            0.05
+          ],
+          [
+            -0.016266356932702248,
+            0.044612482295886026
+          ],
+          [
+            -0.026100766272276376,
+            0.03058022988168292
+          ],
+          [
+            -0.025614563473661155,
+            0.013451793826023002
+          ],
+          [
+            -0.015,
+            0
+          ]
+        ],
+        "meridionalRigidity": 200000,
+        "hoopRigidity": 100000,
+        "couplingRigidity": 20000,
+        "gaugePressure": 160000,
+        "ambientPressure": 101325,
+        "exponent": 1.2,
+        "provenance": "Illustrative load diagnostic; no measured tyre data"
+      },
+      "states": [
+        {
+          "branch": "load",
+          "deflection": 0,
+          "reaction": 1.0459189070388675e-11,
+          "materialReaction": 5.684341886080801e-13,
+          "gasReaction": 1.1368683772161603e-13,
+          "pressure": 160000,
+          "volume": 0.004546061962471139,
+          "potential": 10.504358954268554,
+          "compression": 0,
+          "activeVertexSpan": 0,
+          "rimClearance": 0.05138761370873374,
+          "locallyAdmissible": true,
+          "admission": "admitted",
+          "converged": true,
+          "iterations": 0,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 1.0402345651527867e-11
+        },
+        {
+          "branch": "load",
+          "deflection": 0.0010000000000000009,
+          "reaction": 38.67600848869097,
+          "materialReaction": 38.67600848871814,
+          "gasReaction": 9.663381206337363e-13,
+          "pressure": 160025.8186340478,
+          "volume": 0.0045456877079311925,
+          "potential": 10.523708566485979,
+          "compression": 0,
+          "activeVertexSpan": 0,
+          "rimClearance": 0.050387613708733736,
+          "locallyAdmissible": true,
+          "admission": "admitted",
+          "converged": true,
+          "iterations": 3,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 1.1880274541908875e-11
+        },
+        {
+          "branch": "load",
+          "deflection": 0.0020000000000000018,
+          "reaction": 77.58729358840355,
+          "materialReaction": 77.58729358830396,
+          "gasReaction": -2.2737367544323206e-13,
+          "pressure": 160059.58167059533,
+          "volume": 0.004545198397405932,
+          "potential": 10.581790201562278,
+          "compression": 0,
+          "activeVertexSpan": 0,
+          "rimClearance": 0.049387613708733735,
+          "locallyAdmissible": true,
+          "admission": "admitted",
+          "converged": true,
+          "iterations": 3,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 1.6996182239381596e-11
+        },
+        {
+          "branch": "load",
+          "deflection": 0.0030000000000000027,
+          "reaction": 117.4310826910621,
+          "materialReaction": 117.43108269099025,
+          "gasReaction": 2.2737367544323206e-13,
+          "pressure": 160101.35117352122,
+          "volume": 0.004544593213559528,
+          "potential": 10.679195130965349,
+          "compression": 0,
+          "activeVertexSpan": 0,
+          "rimClearance": 0.048387613708733734,
+          "locallyAdmissible": true,
+          "admission": "admitted",
+          "converged": true,
+          "iterations": 3,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 2.376054908381775e-11
+        },
+        {
+          "branch": "load",
+          "deflection": 0.0040000000000000036,
+          "reaction": 185.71635973990283,
+          "materialReaction": 185.71635970400058,
+          "gasReaction": -7.958078640513122e-13,
+          "pressure": 160164.0005099136,
+          "volume": 0.004543685841313498,
+          "potential": 10.817728465544425,
+          "compression": 0,
+          "activeVertexSpan": 0.14254503211597203,
+          "rimClearance": 0.04738761370873373,
+          "locallyAdmissible": true,
+          "admission": "admitted",
+          "converged": true,
+          "iterations": 3,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 1.2977920960111078e-8
+        },
+        {
+          "branch": "unload",
+          "deflection": 0.0030000000000000027,
+          "reaction": 117.4310826910932,
+          "materialReaction": 117.43108269104016,
+          "gasReaction": 6.252776074688882e-13,
+          "pressure": 160101.35117352134,
+          "volume": 0.004544593213559526,
+          "potential": 10.679195130965294,
+          "compression": 0,
+          "activeVertexSpan": 0,
+          "rimClearance": 0.048387613708733734,
+          "locallyAdmissible": true,
+          "admission": "admitted",
+          "converged": true,
+          "iterations": 4,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 1.2448708730516955e-11
+        },
+        {
+          "branch": "unload",
+          "deflection": 0.0020000000000000018,
+          "reaction": 77.5872846362289,
+          "materialReaction": 77.5872612957773,
+          "gasReaction": 1.1368683772161603e-13,
+          "pressure": 160059.58163409843,
+          "volume": 0.004545198397934801,
+          "potential": 10.58179020156332,
+          "compression": 0,
+          "activeVertexSpan": 0,
+          "rimClearance": 0.049387613708733735,
+          "locallyAdmissible": true,
+          "admission": "admitted",
+          "converged": true,
+          "iterations": 3,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 0.000004961374372669525
+        },
+        {
+          "branch": "unload",
+          "deflection": 0.0010000000000000009,
+          "reaction": 38.676008488451885,
+          "materialReaction": 38.676008485967145,
+          "gasReaction": 2.2737367544323206e-13,
+          "pressure": 160025.81863404386,
+          "volume": 0.00454568770793125,
+          "potential": 10.523708566485917,
+          "compression": 0,
+          "activeVertexSpan": 0,
+          "rimClearance": 0.050387613708733736,
+          "locallyAdmissible": true,
+          "admission": "admitted",
+          "converged": true,
+          "iterations": 4,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 6.118625606177375e-10
+        },
+        {
+          "branch": "unload",
+          "deflection": 0,
+          "reaction": 1.6768808563938364e-11,
+          "materialReaction": -1.8269474821863696e-10,
+          "gasReaction": -1.1368683772161603e-13,
+          "pressure": 159999.99999999953,
+          "volume": 0.004546061962471146,
+          "potential": 10.504358954268367,
+          "compression": 0,
+          "activeVertexSpan": 0,
+          "rimClearance": 0.05138761370873374,
+          "locallyAdmissible": true,
+          "admission": "admitted",
+          "converged": true,
+          "iterations": 3,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 6.150457920739427e-11
+        }
+      ]
+    },
+    {
+      "segments": 8,
+      "nodes": 32,
+      "pressure": 200000,
+      "configuration": {
+        "nodes": 32,
+        "rimRadius": 0.311,
+        "section": [
+          [
+            0.015,
+            0
+          ],
+          [
+            0.025614563473661152,
+            0.013451793826022998
+          ],
+          [
+            0.02610076627227638,
+            0.030580229881682915
+          ],
+          [
+            0.016266356932702248,
+            0.044612482295886026
+          ],
+          [
+            1.6685812638382689e-18,
+            0.05
+          ],
+          [
+            -0.016266356932702248,
+            0.044612482295886026
+          ],
+          [
+            -0.026100766272276376,
+            0.03058022988168292
+          ],
+          [
+            -0.025614563473661155,
+            0.013451793826023002
+          ],
+          [
+            -0.015,
+            0
+          ]
+        ],
+        "meridionalRigidity": 200000,
+        "hoopRigidity": 100000,
+        "couplingRigidity": 20000,
+        "gaugePressure": 200000,
+        "ambientPressure": 101325,
+        "exponent": 1.2,
+        "provenance": "Illustrative load diagnostic; no measured tyre data"
+      },
+      "states": [
+        {
+          "branch": "load",
+          "deflection": 0,
+          "reaction": 8.412825991399586e-12,
+          "materialReaction": -1.1368683772161603e-13,
+          "gasReaction": 3.410605131648481e-13,
+          "pressure": 200000,
+          "volume": 0.004578859201301222,
+          "potential": 16.407815979765665,
+          "compression": 0,
+          "activeVertexSpan": 0,
+          "rimClearance": 0.05173329978475816,
+          "locallyAdmissible": true,
+          "admission": "admitted",
+          "converged": true,
+          "iterations": 0,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 1.0345502232667059e-11
+        },
+        {
+          "branch": "load",
+          "deflection": 0.0010000000000000009,
+          "reaction": 43.25621074699791,
+          "materialReaction": 43.256210746986994,
+          "gasReaction": 1.1368683772161603e-13,
+          "pressure": 200031.7408399952,
+          "volume": 0.004578457301898519,
+          "potential": 16.429464598276777,
+          "compression": 0,
+          "activeVertexSpan": 0,
+          "rimClearance": 0.05073329978475816,
+          "locallyAdmissible": true,
+          "admission": "admitted",
+          "converged": true,
+          "iterations": 3,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 1.375610736431554e-11
+        },
+        {
+          "branch": "load",
+          "deflection": 0.0020000000000000018,
+          "reaction": 86.60258504747588,
+          "materialReaction": 86.60258504746639,
+          "gasReaction": 3.410605131648481e-13,
+          "pressure": 200071.46703304478,
+          "volume": 0.004577954402073733,
+          "potential": 16.494359095927482,
+          "compression": 0,
+          "activeVertexSpan": 0,
+          "rimClearance": 0.049733299784758156,
+          "locallyAdmissible": true,
+          "admission": "admitted",
+          "converged": true,
+          "iterations": 3,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 1.2505552149377763e-11
+        },
+        {
+          "branch": "load",
+          "deflection": 0.0030000000000000027,
+          "reaction": 130.67077298001294,
+          "materialReaction": 130.6707729799772,
+          "gasReaction": -4.547473508864641e-13,
+          "pressure": 200119.29194271704,
+          "volume": 0.004577349140569886,
+          "potential": 16.60291126818653,
+          "compression": 0,
+          "activeVertexSpan": 0,
+          "rimClearance": 0.048733299784758155,
+          "locallyAdmissible": true,
+          "admission": "admitted",
+          "converged": true,
+          "iterations": 3,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 1.9269918993813917e-11
+        },
+        {
+          "branch": "load",
+          "deflection": 0.0040000000000000036,
+          "reaction": 176.0130371273102,
+          "materialReaction": 176.01303712720392,
+          "gasReaction": 9.094947017729282e-13,
+          "pressure": 200175.18932679197,
+          "volume": 0.0045766419387026054,
+          "potential": 16.75612637457295,
+          "compression": 0,
+          "activeVertexSpan": 0,
+          "rimClearance": 0.047733299784758154,
+          "locallyAdmissible": true,
+          "admission": "admitted",
+          "converged": true,
+          "iterations": 3,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 1.7394086171407253e-11
+        },
+        {
+          "branch": "unload",
+          "deflection": 0.0030000000000000027,
+          "reaction": 130.67077298001885,
+          "materialReaction": 130.67077297999913,
+          "gasReaction": -4.547473508864641e-13,
+          "pressure": 200119.2919427172,
+          "volume": 0.004577349140569884,
+          "potential": 16.60291126818669,
+          "compression": 0,
+          "activeVertexSpan": 0,
+          "rimClearance": 0.048733299784758155,
+          "locallyAdmissible": true,
+          "admission": "admitted",
+          "converged": true,
+          "iterations": 4,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 1.2221335055073723e-11
+        },
+        {
+          "branch": "unload",
+          "deflection": 0.0020000000000000018,
+          "reaction": 86.6025773593775,
+          "materialReaction": 86.6025574106485,
+          "gasReaction": -9.094947017729282e-13,
+          "pressure": 200071.46700134594,
+          "volume": 0.004577954402474965,
+          "potential": 16.494359095927692,
+          "compression": 0,
+          "activeVertexSpan": 0,
+          "rimClearance": 0.049733299784758156,
+          "locallyAdmissible": true,
+          "admission": "admitted",
+          "converged": true,
+          "iterations": 3,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 0.0000040393533708993345
+        },
+        {
+          "branch": "unload",
+          "deflection": 0.0010000000000000009,
+          "reaction": 43.25621074701223,
+          "materialReaction": 43.256210746960505,
+          "gasReaction": -4.547473508864641e-13,
+          "pressure": 200031.74083999556,
+          "volume": 0.004578457301898515,
+          "potential": 16.42946459827736,
+          "compression": 0,
+          "activeVertexSpan": 0,
+          "rimClearance": 0.05073329978475816,
+          "locallyAdmissible": true,
+          "admission": "admitted",
+          "converged": true,
+          "iterations": 4,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 2.0463630789890885e-11
+        },
+        {
+          "branch": "unload",
+          "deflection": 0,
+          "reaction": 9.322320693172514e-12,
+          "materialReaction": -1.2244072422618046e-10,
+          "gasReaction": 9.094947017729282e-13,
+          "pressure": 199999.99999999994,
+          "volume": 0.0045788592013012224,
+          "potential": 16.407815979765914,
+          "compression": 0,
+          "activeVertexSpan": 0,
+          "rimClearance": 0.05173329978475816,
+          "locallyAdmissible": true,
+          "admission": "admitted",
+          "converged": true,
+          "iterations": 3,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 2.8620661396416835e-11
+        }
+      ]
+    },
+    {
+      "segments": 8,
+      "nodes": 64,
+      "pressure": 120000,
+      "configuration": {
+        "nodes": 64,
+        "rimRadius": 0.311,
+        "section": [
+          [
+            0.015,
+            0
+          ],
+          [
+            0.025614563473661152,
+            0.013451793826022998
+          ],
+          [
+            0.02610076627227638,
+            0.030580229881682915
+          ],
+          [
+            0.016266356932702248,
+            0.044612482295886026
+          ],
+          [
+            1.6685812638382689e-18,
+            0.05
+          ],
+          [
+            -0.016266356932702248,
+            0.044612482295886026
+          ],
+          [
+            -0.026100766272276376,
+            0.03058022988168292
+          ],
+          [
+            -0.025614563473661155,
+            0.013451793826023002
+          ],
+          [
+            -0.015,
+            0
+          ]
+        ],
+        "meridionalRigidity": 200000,
+        "hoopRigidity": 100000,
+        "couplingRigidity": 20000,
+        "gaugePressure": 120000,
+        "ambientPressure": 101325,
+        "exponent": 1.2,
+        "provenance": "Illustrative load diagnostic; no measured tyre data"
+      },
+      "states": [
+        {
+          "branch": "load",
+          "deflection": 0,
+          "reaction": 1.1567635738174431e-11,
+          "materialReaction": 2.842170943040401e-14,
+          "gasReaction": -1.1368683772161603e-13,
+          "pressure": 120000,
+          "volume": 0.0045355664756635515,
+          "potential": 5.968053835643871,
+          "compression": 0,
+          "activeVertexSpan": 0,
+          "rimClearance": 0.051046488667069456,
+          "locallyAdmissible": true,
+          "admission": "admitted",
+          "converged": true,
+          "iterations": 0,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 1.5404566511278972e-11
+        },
+        {
+          "branch": "load",
+          "deflection": 0.0010000000000000009,
+          "reaction": 25.20399565178826,
+          "materialReaction": 25.20399563526908,
+          "gasReaction": -5.684341886080802e-14,
+          "pressure": 120015.13190613371,
+          "volume": 0.004535308079394301,
+          "potential": 5.9805873444194875,
+          "compression": 0,
+          "activeVertexSpan": 0,
+          "rimClearance": 0.050046488667069455,
+          "locallyAdmissible": true,
+          "admission": "admitted",
+          "converged": true,
+          "iterations": 3,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 1.5606644865329145e-8
+        },
+        {
+          "branch": "load",
+          "deflection": 0.0020000000000000018,
+          "reaction": 376.1832815061868,
+          "materialReaction": 376.18328150228734,
+          "gasReaction": -1.1368683772161603e-13,
+          "pressure": 120185.79675777722,
+          "volume": 0.0045323960039166614,
+          "potential": 6.180554597368329,
+          "compression": 12,
+          "activeVertexSpan": 0.07128315996162005,
+          "rimClearance": 0.049046488667069454,
+          "locallyAdmissible": false,
+          "admission": "compressive-resultant",
+          "converged": true,
+          "iterations": 3,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 2.340243554499466e-9
+        },
+        {
+          "branch": "load",
+          "deflection": 0.0030000000000000027,
+          "reaction": 723.3812557020633,
+          "materialReaction": 723.381255695618,
+          "gasReaction": 1.9895196601282805e-13,
+          "pressure": 120363.88767185087,
+          "volume": 0.004529361599076384,
+          "potential": 6.730790504774027,
+          "compression": 16,
+          "activeVertexSpan": 0.07149635940281782,
+          "rimClearance": 0.048046488667069454,
+          "locallyAdmissible": false,
+          "admission": "compressive-resultant",
+          "converged": true,
+          "iterations": 3,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 5.195637697852362e-9
+        },
+        {
+          "branch": "load",
+          "deflection": 0.0040000000000000036,
+          "reaction": 1066.1819844573492,
+          "materialReaction": 1066.1819844039917,
+          "gasReaction": 4.263256414560601e-13,
+          "pressure": 120549.00404972027,
+          "volume": 0.004526212224082262,
+          "potential": 7.625856317932352,
+          "compression": 16,
+          "activeVertexSpan": 0.0717445946238973,
+          "rimClearance": 0.04704648866706945,
+          "locallyAdmissible": false,
+          "admission": "compressive-resultant",
+          "converged": true,
+          "iterations": 3,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 4.3499717605754995e-8
+        },
+        {
+          "branch": "unload",
+          "deflection": 0.0030000000000000027,
+          "reaction": 723.3812558562474,
+          "materialReaction": 723.3812555745949,
+          "gasReaction": 8.526512829121202e-14,
+          "pressure": 120363.88767162467,
+          "volume": 0.004529361599080235,
+          "potential": 6.7307905047752286,
+          "compression": 16,
+          "activeVertexSpan": 0.07149635940191917,
+          "rimClearance": 0.048046488667069454,
+          "locallyAdmissible": false,
+          "admission": "compressive-resultant",
+          "converged": true,
+          "iterations": 4,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 2.3252682979091333e-7
+        },
+        {
+          "branch": "unload",
+          "deflection": 0.0020000000000000018,
+          "reaction": 376.1832815044012,
+          "materialReaction": 376.18328150436537,
+          "gasReaction": -6.821210263296962e-13,
+          "pressure": 120185.79675778287,
+          "volume": 0.004532396003916565,
+          "potential": 6.18055459736871,
+          "compression": 12,
+          "activeVertexSpan": 0.07128315996163098,
+          "rimClearance": 0.049046488667069454,
+          "locallyAdmissible": false,
+          "admission": "compressive-resultant",
+          "converged": true,
+          "iterations": 4,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 2.6560087462712545e-11
+        },
+        {
+          "branch": "unload",
+          "deflection": 0.0010000000000000009,
+          "reaction": 25.203995652677605,
+          "materialReaction": 25.20399563746281,
+          "gasReaction": 2.8421709430404007e-13,
+          "pressure": 120015.13190613467,
+          "volume": 0.004535308079394285,
+          "potential": 5.980587344418567,
+          "compression": 0,
+          "activeVertexSpan": 0,
+          "rimClearance": 0.050046488667069455,
+          "locallyAdmissible": true,
+          "admission": "admitted",
+          "converged": true,
+          "iterations": 4,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 1.4539487835918408e-8
+        },
+        {
+          "branch": "unload",
+          "deflection": 0,
+          "reaction": 0,
+          "materialReaction": -0.000002819361242245577,
+          "gasReaction": -5.684341886080802e-14,
+          "pressure": 119999.99999731396,
+          "volume": 0.004535566475709422,
+          "potential": 5.968053835644849,
+          "compression": 0,
+          "activeVertexSpan": 0,
+          "rimClearance": 0.051046488667069456,
+          "locallyAdmissible": true,
+          "admission": "admitted",
+          "converged": true,
+          "iterations": 3,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 0.0000017300054580005053
+        }
+      ]
+    },
+    {
+      "segments": 8,
+      "nodes": 64,
+      "pressure": 160000,
+      "configuration": {
+        "nodes": 64,
+        "rimRadius": 0.311,
+        "section": [
+          [
+            0.015,
+            0
+          ],
+          [
+            0.025614563473661152,
+            0.013451793826022998
+          ],
+          [
+            0.02610076627227638,
+            0.030580229881682915
+          ],
+          [
+            0.016266356932702248,
+            0.044612482295886026
+          ],
+          [
+            1.6685812638382689e-18,
+            0.05
+          ],
+          [
+            -0.016266356932702248,
+            0.044612482295886026
+          ],
+          [
+            -0.026100766272276376,
+            0.03058022988168292
+          ],
+          [
+            -0.025614563473661155,
+            0.013451793826023002
+          ],
+          [
+            -0.015,
+            0
+          ]
+        ],
+        "meridionalRigidity": 200000,
+        "hoopRigidity": 100000,
+        "couplingRigidity": 20000,
+        "gaugePressure": 160000,
+        "ambientPressure": 101325,
+        "exponent": 1.2,
+        "provenance": "Illustrative load diagnostic; no measured tyre data"
+      },
+      "states": [
+        {
+          "branch": "load",
+          "deflection": 0,
+          "reaction": 0,
+          "materialReaction": 5.684341886080802e-14,
+          "gasReaction": 5.968558980384842e-13,
+          "pressure": 160000,
+          "volume": 0.004568696385000482,
+          "potential": 10.606188824358322,
+          "compression": 0,
+          "activeVertexSpan": 0,
+          "rimClearance": 0.05139430858723082,
+          "locallyAdmissible": true,
+          "admission": "admitted",
+          "converged": true,
+          "iterations": 0,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 1.7536194718559273e-11
+        },
+        {
+          "branch": "load",
+          "deflection": 0.0010000000000000009,
+          "reaction": 28.999261770735785,
+          "materialReaction": 28.99926176530178,
+          "gasReaction": 6.252776074688882e-13,
+          "pressure": 160019.2826310858,
+          "volume": 0.004568415475122624,
+          "potential": 10.620643311925257,
+          "compression": 0,
+          "activeVertexSpan": 0,
+          "rimClearance": 0.05039430858723082,
+          "locallyAdmissible": true,
+          "admission": "admitted",
+          "converged": true,
+          "iterations": 3,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 5.763947541481684e-9
+        },
+        {
+          "branch": "load",
+          "deflection": 0.0020000000000000018,
+          "reaction": 379.2811722201793,
+          "materialReaction": 379.28117221958894,
+          "gasReaction": -5.684341886080802e-14,
+          "pressure": 160217.34468373156,
+          "volume": 0.004565532299980013,
+          "potential": 10.820724226330189,
+          "compression": 0,
+          "activeVertexSpan": 0.07132665202539373,
+          "rimClearance": 0.04939430858723082,
+          "locallyAdmissible": true,
+          "admission": "admitted",
+          "converged": true,
+          "iterations": 3,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 2.3060664489094052e-10
+        },
+        {
+          "branch": "load",
+          "deflection": 0.0030000000000000027,
+          "reaction": 732.7375540567947,
+          "materialReaction": 732.737554054431,
+          "gasReaction": -5.684341886080801e-13,
+          "pressure": 160426.66365055137,
+          "volume": 0.00456248960614187,
+          "potential": 11.377194902770311,
+          "compression": 16,
+          "activeVertexSpan": 0.07151706146966133,
+          "rimClearance": 0.048394308587230817,
+          "locallyAdmissible": false,
+          "admission": "compressive-resultant",
+          "converged": true,
+          "iterations": 3,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 2.074386884487467e-9
+        },
+        {
+          "branch": "load",
+          "deflection": 0.0040000000000000036,
+          "reaction": 1081.548565360481,
+          "materialReaction": 1081.5485653464145,
+          "gasReaction": -6.252776074688882e-13,
+          "pressure": 160643.06113277836,
+          "volume": 0.004559348704013444,
+          "potential": 12.284654037467442,
+          "compression": 16,
+          "activeVertexSpan": 0.07174130364357098,
+          "rimClearance": 0.047394308587230816,
+          "locallyAdmissible": false,
+          "admission": "compressive-resultant",
+          "converged": true,
+          "iterations": 3,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 1.340616506695369e-8
+        },
+        {
+          "branch": "unload",
+          "deflection": 0.0030000000000000027,
+          "reaction": 732.7375540962765,
+          "materialReaction": 732.7375540190425,
+          "gasReaction": 5.684341886080801e-13,
+          "pressure": 160426.66365048251,
+          "volume": 0.00456248960614287,
+          "potential": 11.37719490277141,
+          "compression": 16,
+          "activeVertexSpan": 0.07151706146937095,
+          "rimClearance": 0.048394308587230817,
+          "locallyAdmissible": false,
+          "admission": "compressive-resultant",
+          "converged": true,
+          "iterations": 4,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 7.712858263175804e-8
+        },
+        {
+          "branch": "unload",
+          "deflection": 0.0020000000000000018,
+          "reaction": 379.28117221998235,
+          "materialReaction": 379.2811722199882,
+          "gasReaction": 1.9895196601282805e-13,
+          "pressure": 160217.34468373234,
+          "volume": 0.0045655322999800015,
+          "potential": 10.82072422632977,
+          "compression": 0,
+          "activeVertexSpan": 0.07132665202539497,
+          "rimClearance": 0.04939430858723082,
+          "locallyAdmissible": true,
+          "admission": "admitted",
+          "converged": true,
+          "iterations": 4,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 1.2533973858808167e-11
+        },
+        {
+          "branch": "unload",
+          "deflection": 0.0010000000000000009,
+          "reaction": 28.999261770653987,
+          "materialReaction": 28.999261765164306,
+          "gasReaction": 3.979039320256561e-13,
+          "pressure": 160019.28263108537,
+          "volume": 0.00456841547512263,
+          "potential": 10.62064331192463,
+          "compression": 0,
+          "activeVertexSpan": 0,
+          "rimClearance": 0.05039430858723082,
+          "locallyAdmissible": true,
+          "admission": "admitted",
+          "converged": true,
+          "iterations": 4,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 5.8749769493715576e-9
+        },
+        {
+          "branch": "unload",
+          "deflection": 0,
+          "reaction": 0,
+          "materialReaction": -6.878501324081299e-7,
+          "gasReaction": 5.400124791776761e-13,
+          "pressure": 159999.9999992447,
+          "volume": 0.004568696385011486,
+          "potential": 10.606188824360947,
+          "compression": 0,
+          "activeVertexSpan": 0,
+          "rimClearance": 0.05139430858723082,
+          "locallyAdmissible": true,
+          "admission": "admitted",
+          "converged": true,
+          "iterations": 3,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 5.290621984954669e-7
+        }
+      ]
+    },
+    {
+      "segments": 8,
+      "nodes": 64,
+      "pressure": 200000,
+      "configuration": {
+        "nodes": 64,
+        "rimRadius": 0.311,
+        "section": [
+          [
+            0.015,
+            0
+          ],
+          [
+            0.025614563473661152,
+            0.013451793826022998
+          ],
+          [
+            0.02610076627227638,
+            0.030580229881682915
+          ],
+          [
+            0.016266356932702248,
+            0.044612482295886026
+          ],
+          [
+            1.6685812638382689e-18,
+            0.05
+          ],
+          [
+            -0.016266356932702248,
+            0.044612482295886026
+          ],
+          [
+            -0.026100766272276376,
+            0.03058022988168292
+          ],
+          [
+            -0.025614563473661155,
+            0.013451793826023002
+          ],
+          [
+            -0.015,
+            0
+          ]
+        ],
+        "meridionalRigidity": 200000,
+        "hoopRigidity": 100000,
+        "couplingRigidity": 20000,
+        "gaugePressure": 200000,
+        "ambientPressure": 101325,
+        "exponent": 1.2,
+        "provenance": "Illustrative load diagnostic; no measured tyre data"
+      },
+      "states": [
+        {
+          "branch": "load",
+          "deflection": 0,
+          "reaction": 5.115907697472721e-12,
+          "materialReaction": 3.410605131648481e-13,
+          "gasReaction": 0,
+          "pressure": 200000,
+          "volume": 0.004601811473222834,
+          "potential": 16.566858194170674,
+          "compression": 0,
+          "activeVertexSpan": 0,
+          "rimClearance": 0.051741657293940646,
+          "locallyAdmissible": true,
+          "admission": "admitted",
+          "converged": true,
+          "iterations": 0,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 1.7990942069445737e-11
+        },
+        {
+          "branch": "load",
+          "deflection": 0.0010000000000000009,
+          "reaction": 32.357952609695644,
+          "materialReaction": 32.35795260737103,
+          "gasReaction": -6.252776074688882e-13,
+          "pressure": 200023.6888382672,
+          "volume": 0.00460151001656621,
+          "potential": 16.58301102826918,
+          "compression": 0,
+          "activeVertexSpan": 0,
+          "rimClearance": 0.050741657293940645,
+          "locallyAdmissible": true,
+          "admission": "admitted",
+          "converged": true,
+          "iterations": 3,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 2.573496971081113e-9
+        },
+        {
+          "branch": "load",
+          "deflection": 0.0020000000000000018,
+          "reaction": 382.10712925654656,
+          "materialReaction": 382.1071292564097,
+          "gasReaction": -1.1368683772161603e-12,
+          "pressure": 200248.21000483845,
+          "volume": 0.004598654987011539,
+          "potential": 16.783327971607488,
+          "compression": 0,
+          "activeVertexSpan": 0.07137162676561415,
+          "rimClearance": 0.049741657293940644,
+          "locallyAdmissible": true,
+          "admission": "admitted",
+          "converged": true,
+          "iterations": 3,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 8.0831341620069e-11
+        },
+        {
+          "branch": "load",
+          "deflection": 0.0030000000000000027,
+          "reaction": 741.258129951879,
+          "materialReaction": 741.2581299507759,
+          "gasReaction": -5.115907697472721e-13,
+          "pressure": 200488.43255728367,
+          "volume": 0.004595604609376443,
+          "potential": 17.34547395338069,
+          "compression": 12,
+          "activeVertexSpan": 0.07154078535212825,
+          "rimClearance": 0.04874165729394064,
+          "locallyAdmissible": false,
+          "admission": "compressive-resultant",
+          "converged": true,
+          "iterations": 3,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 1.0753922197181964e-9
+        },
+        {
+          "branch": "load",
+          "deflection": 0.0040000000000000036,
+          "reaction": 1095.6316296160896,
+          "materialReaction": 1095.6316296109533,
+          "gasReaction": -9.094947017729282e-13,
+          "pressure": 200735.78415187195,
+          "volume": 0.004592468353962888,
+          "potential": 18.26425406397904,
+          "compression": 16,
+          "activeVertexSpan": 0.07174263088680424,
+          "rimClearance": 0.04774165729394064,
+          "locallyAdmissible": false,
+          "admission": "compressive-resultant",
+          "converged": true,
+          "iterations": 3,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 5.313708584253618e-9
+        },
+        {
+          "branch": "unload",
+          "deflection": 0.0030000000000000027,
+          "reaction": 741.2581299630926,
+          "materialReaction": 741.2581299400292,
+          "gasReaction": -2.2737367544323206e-13,
+          "pressure": 200488.432557261,
+          "volume": 0.004595604609376731,
+          "potential": 17.345473953380846,
+          "compression": 12,
+          "activeVertexSpan": 0.07154078535203257,
+          "rimClearance": 0.04874165729394064,
+          "locallyAdmissible": false,
+          "admission": "compressive-resultant",
+          "converged": true,
+          "iterations": 4,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 2.6406333120121417e-8
+        },
+        {
+          "branch": "unload",
+          "deflection": 0.0020000000000000018,
+          "reaction": 382.10712925653746,
+          "materialReaction": 382.10712925649614,
+          "gasReaction": 1.7053025658242404e-13,
+          "pressure": 200248.21000483926,
+          "volume": 0.004598654987011529,
+          "potential": 16.78332797160885,
+          "compression": 0,
+          "activeVertexSpan": 0.07137162676561434,
+          "rimClearance": 0.049741657293940644,
+          "locallyAdmissible": true,
+          "admission": "admitted",
+          "converged": true,
+          "iterations": 4,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 1.659827830735594e-11
+        },
+        {
+          "branch": "unload",
+          "deflection": 0.0010000000000000009,
+          "reaction": 32.35795260954342,
+          "materialReaction": 32.357952607101595,
+          "gasReaction": 1.0231815394945443e-12,
+          "pressure": 200023.6888382671,
+          "volume": 0.004601510016566212,
+          "potential": 16.583011028269777,
+          "compression": 0,
+          "activeVertexSpan": 0,
+          "rimClearance": 0.050741657293940645,
+          "locallyAdmissible": true,
+          "admission": "admitted",
+          "converged": true,
+          "iterations": 4,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 2.8003839247503493e-9
+        },
+        {
+          "branch": "unload",
+          "deflection": 0,
+          "reaction": 0,
+          "materialReaction": -2.0419435031726607e-7,
+          "gasReaction": 1.1937117960769683e-12,
+          "pressure": 199999.99999974735,
+          "volume": 0.004601811473226049,
+          "potential": 16.566858194173538,
+          "compression": 0,
+          "activeVertexSpan": 0,
+          "rimClearance": 0.051741657293940646,
+          "locallyAdmissible": true,
+          "admission": "admitted",
+          "converged": true,
+          "iterations": 3,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 1.9386392580145184e-7
+        }
+      ]
+    },
+    {
+      "segments": 8,
+      "nodes": 128,
+      "pressure": 120000,
+      "configuration": {
+        "nodes": 128,
+        "rimRadius": 0.311,
+        "section": [
+          [
+            0.015,
+            0
+          ],
+          [
+            0.025614563473661152,
+            0.013451793826022998
+          ],
+          [
+            0.02610076627227638,
+            0.030580229881682915
+          ],
+          [
+            0.016266356932702248,
+            0.044612482295886026
+          ],
+          [
+            1.6685812638382689e-18,
+            0.05
+          ],
+          [
+            -0.016266356932702248,
+            0.044612482295886026
+          ],
+          [
+            -0.026100766272276376,
+            0.03058022988168292
+          ],
+          [
+            -0.025614563473661155,
+            0.013451793826023002
+          ],
+          [
+            -0.015,
+            0
+          ]
+        ],
+        "meridionalRigidity": 200000,
+        "hoopRigidity": 100000,
+        "couplingRigidity": 20000,
+        "gaugePressure": 120000,
+        "ambientPressure": 101325,
+        "exponent": 1.2,
+        "provenance": "Illustrative load diagnostic; no measured tyre data"
+      },
+      "states": [
+        {
+          "branch": "load",
+          "deflection": 0,
+          "reaction": 0,
+          "materialReaction": 2.4158453015843406e-13,
+          "gasReaction": 1.7053025658242404e-13,
+          "pressure": 120000,
+          "volume": 0.004541156389894309,
+          "potential": 5.982449608620843,
+          "compression": 0,
+          "activeVertexSpan": 0,
+          "rimClearance": 0.051047747948841316,
+          "locallyAdmissible": true,
+          "admission": "admitted",
+          "converged": true,
+          "iterations": 0,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 2.934541498689214e-11
+        },
+        {
+          "branch": "load",
+          "deflection": 0.0010000000000000009,
+          "reaction": 141.9701538328508,
+          "materialReaction": 141.9701538200873,
+          "gasReaction": 4.831690603168681e-13,
+          "pressure": 120070.31429118922,
+          "volume": 0.0045399544800672305,
+          "potential": 6.036962391035656,
+          "compression": 0,
+          "activeVertexSpan": 0.035598318271968604,
+          "rimClearance": 0.050047747948841315,
+          "locallyAdmissible": true,
+          "admission": "admitted",
+          "converged": true,
+          "iterations": 3,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 4.7790566171102e-8
+        },
+        {
+          "branch": "load",
+          "deflection": 0.0020000000000000018,
+          "reaction": 448.1734781908627,
+          "materialReaction": 448.17347818325027,
+          "gasReaction": -3.126388037344441e-13,
+          "pressure": 120221.82106803318,
+          "volume": 0.0045373670921588435,
+          "potential": 6.316220062130008,
+          "compression": 16,
+          "activeVertexSpan": 0.07130186153262921,
+          "rimClearance": 0.049047747948841314,
+          "locallyAdmissible": false,
+          "admission": "compressive-resultant",
+          "converged": true,
+          "iterations": 3,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 3.176380580782734e-8
+        },
+        {
+          "branch": "load",
+          "deflection": 0.0030000000000000027,
+          "reaction": 792.9286083729869,
+          "materialReaction": 792.9286083729997,
+          "gasReaction": -2.8421709430404007e-13,
+          "pressure": 120398.7155507879,
+          "volume": 0.0045343502423289194,
+          "potential": 6.93714407914302,
+          "compression": 32,
+          "activeVertexSpan": 0.07149908029142119,
+          "rimClearance": 0.04804774794884131,
+          "locallyAdmissible": false,
+          "admission": "compressive-resultant",
+          "converged": true,
+          "iterations": 4,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 3.009148485944024e-11
+        },
+        {
+          "branch": "load",
+          "deflection": 0.0040000000000000036,
+          "reaction": 1271.7915144376325,
+          "materialReaction": 1271.7915143860603,
+          "gasReaction": -3.836930773104541e-13,
+          "pressure": 120640.76224713745,
+          "volume": 0.0045302293955591195,
+          "potential": 7.960445327286251,
+          "compression": 44,
+          "activeVertexSpan": 0.10737238039842287,
+          "rimClearance": 0.04704774794884131,
+          "locallyAdmissible": false,
+          "admission": "compressive-resultant",
+          "converged": true,
+          "iterations": 3,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 1.753596059472784e-7
+        },
+        {
+          "branch": "unload",
+          "deflection": 0.0030000000000000027,
+          "reaction": 792.928608392521,
+          "materialReaction": 792.9286080271655,
+          "gasReaction": 6.252776074688882e-13,
+          "pressure": 120398.71555039825,
+          "volume": 0.00453435024233556,
+          "potential": 6.937144079141741,
+          "compression": 32,
+          "activeVertexSpan": 0.07149908028904145,
+          "rimClearance": 0.04804774794884131,
+          "locallyAdmissible": false,
+          "admission": "compressive-resultant",
+          "converged": true,
+          "iterations": 4,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 0.0000010079744576785288
+        },
+        {
+          "branch": "unload",
+          "deflection": 0.0020000000000000018,
+          "reaction": 448.17347821631716,
+          "materialReaction": 448.173478209299,
+          "gasReaction": -5.968558980384842e-13,
+          "pressure": 120221.82106804741,
+          "volume": 0.004537367092158601,
+          "potential": 6.316220062131347,
+          "compression": 16,
+          "activeVertexSpan": 0.07130186153267018,
+          "rimClearance": 0.049047747948841314,
+          "locallyAdmissible": false,
+          "admission": "compressive-resultant",
+          "converged": true,
+          "iterations": 4,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 1.4019173377732841e-8
+        },
+        {
+          "branch": "unload",
+          "deflection": 0.0010000000000000009,
+          "reaction": 141.97015384111484,
+          "materialReaction": 141.97015384103895,
+          "gasReaction": -7.105427357601002e-14,
+          "pressure": 120070.31429120552,
+          "volume": 0.004539954480066952,
+          "potential": 6.036962391035058,
+          "compression": 0,
+          "activeVertexSpan": 0.03559831827201432,
+          "rimClearance": 0.050047747948841315,
+          "locallyAdmissible": true,
+          "admission": "admitted",
+          "converged": true,
+          "iterations": 4,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 1.928226467384775e-10
+        },
+        {
+          "branch": "unload",
+          "deflection": 0,
+          "reaction": 0,
+          "materialReaction": -1.6414389847341226e-9,
+          "gasReaction": 3.836930773104541e-13,
+          "pressure": 120000.00000000071,
+          "volume": 0.004541156389894297,
+          "potential": 5.982449608626158,
+          "compression": 0,
+          "activeVertexSpan": 0,
+          "rimClearance": 0.051047747948841316,
+          "locallyAdmissible": true,
+          "admission": "admitted",
+          "converged": true,
+          "iterations": 3,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 4.9660711098908905e-9
+        }
+      ]
+    },
+    {
+      "segments": 8,
+      "nodes": 128,
+      "pressure": 160000,
+      "configuration": {
+        "nodes": 128,
+        "rimRadius": 0.311,
+        "section": [
+          [
+            0.015,
+            0
+          ],
+          [
+            0.025614563473661152,
+            0.013451793826022998
+          ],
+          [
+            0.02610076627227638,
+            0.030580229881682915
+          ],
+          [
+            0.016266356932702248,
+            0.044612482295886026
+          ],
+          [
+            1.6685812638382689e-18,
+            0.05
+          ],
+          [
+            -0.016266356932702248,
+            0.044612482295886026
+          ],
+          [
+            -0.026100766272276376,
+            0.03058022988168292
+          ],
+          [
+            -0.025614563473661155,
+            0.013451793826023002
+          ],
+          [
+            -0.015,
+            0
+          ]
+        ],
+        "meridionalRigidity": 200000,
+        "hoopRigidity": 100000,
+        "couplingRigidity": 20000,
+        "gaugePressure": 160000,
+        "ambientPressure": 101325,
+        "exponent": 1.2,
+        "provenance": "Illustrative load diagnostic; no measured tyre data"
+      },
+      "states": [
+        {
+          "branch": "load",
+          "deflection": 0,
+          "reaction": 5.826450433232822e-13,
+          "materialReaction": 1.4210854715202004e-14,
+          "gasReaction": 3.410605131648481e-13,
+          "pressure": 160000,
+          "volume": 0.004574366190303433,
+          "potential": 10.631769182878061,
+          "compression": 0,
+          "activeVertexSpan": 0,
+          "rimClearance": 0.05139598530783629,
+          "locallyAdmissible": true,
+          "admission": "admitted",
+          "converged": true,
+          "iterations": 0,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 2.738431703619426e-11
+        },
+        {
+          "branch": "load",
+          "deflection": 0.0010000000000000009,
+          "reaction": 144.6046503856238,
+          "materialReaction": 144.6046503819311,
+          "gasReaction": 1.0800249583553523e-12,
+          "pressure": 160082.99267579528,
+          "volume": 0.004573155920832712,
+          "potential": 10.687177637899978,
+          "compression": 0,
+          "activeVertexSpan": 0.03562461226740401,
+          "rimClearance": 0.05039598530783629,
+          "locallyAdmissible": true,
+          "admission": "admitted",
+          "converged": true,
+          "iterations": 3,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 1.4617764776403419e-8
+        },
+        {
+          "branch": "load",
+          "deflection": 0.0020000000000000018,
+          "reaction": 451.5715607569692,
+          "materialReaction": 451.57156075485744,
+          "gasReaction": -1.7053025658242404e-13,
+          "pressure": 160259.2994275911,
+          "volume": 0.004570587202815916,
+          "potential": 10.968301404154987,
+          "compression": 16,
+          "activeVertexSpan": 0.07134152736742247,
+          "rimClearance": 0.04939598530783629,
+          "locallyAdmissible": false,
+          "admission": "compressive-resultant",
+          "converged": true,
+          "iterations": 3,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 8.980695298532737e-9
+        },
+        {
+          "branch": "load",
+          "deflection": 0.0030000000000000027,
+          "reaction": 801.9613688014509,
+          "materialReaction": 801.9613675200771,
+          "gasReaction": 3.126388037344441e-13,
+          "pressure": 160466.93722038652,
+          "volume": 0.00456756607149957,
+          "potential": 11.595478002614671,
+          "compression": 32,
+          "activeVertexSpan": 0.07151603714928548,
+          "rimClearance": 0.04839598530783629,
+          "locallyAdmissible": false,
+          "admission": "compressive-resultant",
+          "converged": true,
+          "iterations": 3,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 0.000004454813231191679
+        },
+        {
+          "branch": "load",
+          "deflection": 0.0040000000000000036,
+          "reaction": 1280.690968800082,
+          "materialReaction": 1280.6909687858706,
+          "gasReaction": -2.984279490192421e-13,
+          "pressure": 160747.68255134104,
+          "volume": 0.004563488203489669,
+          "potential": 12.62506712888601,
+          "compression": 32,
+          "activeVertexSpan": 0.1073831901781471,
+          "rimClearance": 0.047395985307836286,
+          "locallyAdmissible": false,
+          "admission": "compressive-resultant",
+          "converged": true,
+          "iterations": 3,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 6.028731291962686e-8
+        },
+        {
+          "branch": "unload",
+          "deflection": 0.0030000000000000027,
+          "reaction": 801.9613698686762,
+          "materialReaction": 801.9613698087041,
+          "gasReaction": -1.0942358130705543e-12,
+          "pressure": 160466.9372221295,
+          "volume": 0.004567566071474228,
+          "potential": 11.595478002613525,
+          "compression": 32,
+          "activeVertexSpan": 0.07151603715670496,
+          "rimClearance": 0.04839598530783629,
+          "locallyAdmissible": false,
+          "admission": "compressive-resultant",
+          "converged": true,
+          "iterations": 4,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 2.0425774849286427e-7
+        },
+        {
+          "branch": "unload",
+          "deflection": 0.0020000000000000018,
+          "reaction": 451.5715607619146,
+          "materialReaction": 451.5715607607891,
+          "gasReaction": 3.836930773104541e-13,
+          "pressure": 160259.29942759543,
+          "volume": 0.004570587202815853,
+          "potential": 10.968301404155623,
+          "compression": 16,
+          "activeVertexSpan": 0.07134152736743576,
+          "rimClearance": 0.04939598530783629,
+          "locallyAdmissible": false,
+          "admission": "compressive-resultant",
+          "converged": true,
+          "iterations": 4,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 3.276987570188794e-9
+        },
+        {
+          "branch": "unload",
+          "deflection": 0.0010000000000000009,
+          "reaction": 144.60465038809082,
+          "materialReaction": 144.60465038811492,
+          "gasReaction": 7.815970093361102e-13,
+          "pressure": 160082.99267580116,
+          "volume": 0.004573155920832626,
+          "potential": 10.687177637900513,
+          "compression": 0,
+          "activeVertexSpan": 0.03562461226741871,
+          "rimClearance": 0.05039598530783629,
+          "locallyAdmissible": true,
+          "admission": "admitted",
+          "converged": true,
+          "iterations": 4,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 3.82982534574694e-11
+        },
+        {
+          "branch": "unload",
+          "deflection": 0,
+          "reaction": 2.7260682600172004e-10,
+          "materialReaction": -5.051958851254312e-11,
+          "gasReaction": -2.984279490192421e-13,
+          "pressure": 159999.9999999992,
+          "volume": 0.004574366190303444,
+          "potential": 10.631769182876468,
+          "compression": 0,
+          "activeVertexSpan": 0,
+          "rimClearance": 0.05139598530783629,
+          "locallyAdmissible": true,
+          "admission": "admitted",
+          "converged": true,
+          "iterations": 3,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 1.4587628882622994e-9
+        }
+      ]
+    },
+    {
+      "segments": 8,
+      "nodes": 128,
+      "pressure": 200000,
+      "configuration": {
+        "nodes": 128,
+        "rimRadius": 0.311,
+        "section": [
+          [
+            0.015,
+            0
+          ],
+          [
+            0.025614563473661152,
+            0.013451793826022998
+          ],
+          [
+            0.02610076627227638,
+            0.030580229881682915
+          ],
+          [
+            0.016266356932702248,
+            0.044612482295886026
+          ],
+          [
+            1.6685812638382689e-18,
+            0.05
+          ],
+          [
+            -0.016266356932702248,
+            0.044612482295886026
+          ],
+          [
+            -0.026100766272276376,
+            0.03058022988168292
+          ],
+          [
+            -0.025614563473661155,
+            0.013451793826023002
+          ],
+          [
+            -0.015,
+            0
+          ]
+        ],
+        "meridionalRigidity": 200000,
+        "hoopRigidity": 100000,
+        "couplingRigidity": 20000,
+        "gaugePressure": 200000,
+        "ambientPressure": 101325,
+        "exponent": 1.2,
+        "provenance": "Illustrative load diagnostic; no measured tyre data"
+      },
+      "states": [
+        {
+          "branch": "load",
+          "deflection": 0,
+          "reaction": 0,
+          "materialReaction": 5.684341886080802e-14,
+          "gasReaction": -8.242295734817162e-13,
+          "pressure": 200000,
+          "volume": 0.004607561124336903,
+          "potential": 16.606810661400896,
+          "compression": 0,
+          "activeVertexSpan": 0,
+          "rimClearance": 0.05174375041064022,
+          "locallyAdmissible": true,
+          "admission": "admitted",
+          "converged": true,
+          "iterations": 0,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 4.1310954657092225e-11
+        },
+        {
+          "branch": "load",
+          "deflection": 0.0010000000000000009,
+          "reaction": 146.9754149382827,
+          "materialReaction": 146.97541493690858,
+          "gasReaction": -2.2737367544323206e-13,
+          "pressure": 200095.54308505604,
+          "volume": 0.004606344020182874,
+          "potential": 16.663034904893827,
+          "compression": 0,
+          "activeVertexSpan": 0.03565113909003849,
+          "rimClearance": 0.05074375041064022,
+          "locallyAdmissible": true,
+          "admission": "admitted",
+          "converged": true,
+          "iterations": 3,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 5.457842178202554e-9
+        },
+        {
+          "branch": "load",
+          "deflection": 0.0020000000000000018,
+          "reaction": 454.6936621854185,
+          "materialReaction": 454.6936621847391,
+          "gasReaction": -1.5631940186722204e-12,
+          "pressure": 200295.94085888457,
+          "volume": 0.004603793489355024,
+          "potential": 16.945976152163286,
+          "compression": 8,
+          "activeVertexSpan": 0.0713828207543919,
+          "rimClearance": 0.04974375041064022,
+          "locallyAdmissible": false,
+          "admission": "compressive-resultant",
+          "converged": true,
+          "iterations": 3,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 2.8868569756923534e-9
+        },
+        {
+          "branch": "load",
+          "deflection": 0.0030000000000000027,
+          "reaction": 810.2336401861661,
+          "materialReaction": 810.2336397601682,
+          "gasReaction": -1.3073986337985843e-12,
+          "pressure": 200533.94377521912,
+          "volume": 0.0046007683780264,
+          "potential": 17.578875158211073,
+          "compression": 28,
+          "activeVertexSpan": 0.07153615761070366,
+          "rimClearance": 0.04874375041064022,
+          "locallyAdmissible": false,
+          "admission": "compressive-resultant",
+          "converged": true,
+          "iterations": 3,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 0.000001518432934943803
+        },
+        {
+          "branch": "load",
+          "deflection": 0.0040000000000000036,
+          "reaction": 1288.9145257699618,
+          "materialReaction": 1288.9145257658613,
+          "gasReaction": 7.105427357601002e-13,
+          "pressure": 200852.06054006764,
+          "volume": 0.004596731809750417,
+          "potential": 18.614571552301115,
+          "compression": 32,
+          "activeVertexSpan": 0.10740156244398139,
+          "rimClearance": 0.04774375041064022,
+          "locallyAdmissible": false,
+          "admission": "compressive-resultant",
+          "converged": true,
+          "iterations": 3,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 1.7836935484183414e-8
+        },
+        {
+          "branch": "unload",
+          "deflection": 0.0030000000000000027,
+          "reaction": 810.2336405347885,
+          "materialReaction": 810.2336405288958,
+          "gasReaction": -1.5347723092418164e-12,
+          "pressure": 200533.94377590474,
+          "volume": 0.004600768378017692,
+          "potential": 17.578875158211517,
+          "compression": 28,
+          "activeVertexSpan": 0.07153615761347856,
+          "rimClearance": 0.04874375041064022,
+          "locallyAdmissible": false,
+          "admission": "compressive-resultant",
+          "converged": true,
+          "iterations": 4,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 2.2418142009428266e-8
+        },
+        {
+          "branch": "unload",
+          "deflection": 0.0020000000000000018,
+          "reaction": 454.69366218658615,
+          "materialReaction": 454.69366218635804,
+          "gasReaction": -2.1032064978498966e-12,
+          "pressure": 200295.94085888655,
+          "volume": 0.0046037934893549985,
+          "potential": 16.94597615216475,
+          "compression": 8,
+          "activeVertexSpan": 0.07138282075439681,
+          "rimClearance": 0.04974375041064022,
+          "locallyAdmissible": false,
+          "admission": "compressive-resultant",
+          "converged": true,
+          "iterations": 4,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 7.953175895636377e-10
+        },
+        {
+          "branch": "unload",
+          "deflection": 0.0010000000000000009,
+          "reaction": 146.97541493920818,
+          "materialReaction": 146.9754149391893,
+          "gasReaction": -8.242295734817162e-13,
+          "pressure": 200095.54308505883,
+          "volume": 0.004606344020182838,
+          "potential": 16.663034904895017,
+          "compression": 0,
+          "activeVertexSpan": 0.03565113909004419,
+          "rimClearance": 0.05074375041064022,
+          "locallyAdmissible": true,
+          "admission": "admitted",
+          "converged": true,
+          "iterations": 4,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 4.121147867408581e-11
+        },
+        {
+          "branch": "unload",
+          "deflection": 0,
+          "reaction": 1.5640466699551325e-10,
+          "materialReaction": -1.5093917227204656e-9,
+          "gasReaction": -2.1316282072803006e-12,
+          "pressure": 199999.99999999756,
+          "volume": 0.0046075611243369344,
+          "potential": 16.60681066139941,
+          "compression": 0,
+          "activeVertexSpan": 0,
+          "rimClearance": 0.05174375041064022,
+          "locallyAdmissible": true,
+          "admission": "admitted",
+          "converged": true,
+          "iterations": 3,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 7.90720022791902e-9
+        }
+      ]
+    },
+    {
+      "segments": 16,
+      "nodes": 32,
+      "pressure": 120000,
+      "configuration": {
+        "nodes": 32,
+        "rimRadius": 0.311,
+        "section": [
+          [
+            0.015,
+            0
+          ],
+          [
+            0.021392133620176137,
+            0.0058698602145441404
+          ],
+          [
+            0.025614563473661152,
+            0.013451793826022998
+          ],
+          [
+            0.027239028307026122,
+            0.0219768008736233
+          ],
+          [
+            0.02610076627227638,
+            0.030580229881682915
+          ],
+          [
+            0.022315225948227296,
+            0.03838947540295273
+          ],
+          [
+            0.016266356932702248,
+            0.044612482295886026
+          ],
+          [
+            0.008567667635859425,
+            0.04861808016226653
+          ],
+          [
+            1.6685812638382689e-18,
+            0.05
+          ],
+          [
+            -0.008567667635859422,
+            0.04861808016226653
+          ],
+          [
+            -0.016266356932702248,
+            0.044612482295886026
+          ],
+          [
+            -0.022315225948227296,
+            0.038389475402952726
+          ],
+          [
+            -0.026100766272276376,
+            0.03058022988168292
+          ],
+          [
+            -0.027239028307026122,
+            0.021976800873623293
+          ],
+          [
+            -0.025614563473661155,
+            0.013451793826023002
+          ],
+          [
+            -0.021392133620176133,
+            0.00586986021454413
+          ],
+          [
+            -0.015,
+            0
+          ]
+        ],
+        "meridionalRigidity": 200000,
+        "hoopRigidity": 100000,
+        "couplingRigidity": 20000,
+        "gaugePressure": 120000,
+        "ambientPressure": 101325,
+        "exponent": 1.2,
+        "provenance": "Illustrative load diagnostic; no measured tyre data"
+      },
+      "states": [
+        {
+          "branch": "load",
+          "deflection": 0,
+          "reaction": 1.9042545318370685e-11,
+          "materialReaction": 1.1368683772161603e-13,
+          "gasReaction": 5.684341886080802e-14,
+          "pressure": 120000,
+          "volume": 0.00472243737746683,
+          "potential": 6.416509041921517,
+          "compression": 0,
+          "activeVertexSpan": 0,
+          "rimClearance": 0.05108068223079332,
+          "locallyAdmissible": true,
+          "admission": "admitted",
+          "converged": true,
+          "iterations": 0,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 1.9042545318370685e-11
+        },
+        {
+          "branch": "load",
+          "deflection": 0.0010000000000000009,
+          "reaction": 34.56132356211401,
+          "materialReaction": 34.56132356205893,
+          "gasReaction": 0,
+          "pressure": 120020.55128403692,
+          "volume": 0.004722071987611194,
+          "potential": 6.433789414297289,
+          "compression": 0,
+          "activeVertexSpan": 0,
+          "rimClearance": 0.050080682230793316,
+          "locallyAdmissible": true,
+          "admission": "admitted",
+          "converged": true,
+          "iterations": 3,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 2.9046987037872896e-11
+        },
+        {
+          "branch": "load",
+          "deflection": 0.0020000000000000018,
+          "reaction": 69.5756476588025,
+          "materialReaction": 69.57564765872661,
+          "gasReaction": 1.1368683772161603e-13,
+          "pressure": 120048.97497394115,
+          "volume": 0.004721566733451454,
+          "potential": 6.485783857725377,
+          "compression": 0,
+          "activeVertexSpan": 0,
+          "rimClearance": 0.049080682230793315,
+          "locallyAdmissible": true,
+          "admission": "admitted",
+          "converged": true,
+          "iterations": 3,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 3.745981302927248e-11
+        },
+        {
+          "branch": "load",
+          "deflection": 0.0030000000000000027,
+          "reaction": 105.86611355799062,
+          "materialReaction": 105.86611355787363,
+          "gasReaction": 2.8421709430404007e-13,
+          "pressure": 120085.26272777114,
+          "volume": 0.004720921861990456,
+          "potential": 6.573367765944715,
+          "compression": 0,
+          "activeVertexSpan": 0,
+          "rimClearance": 0.048080682230793315,
+          "locallyAdmissible": true,
+          "admission": "admitted",
+          "converged": true,
+          "iterations": 3,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 6.10214101470774e-11
+        },
+        {
+          "branch": "load",
+          "deflection": 0.0040000000000000036,
+          "reaction": 200.1755019948406,
+          "materialReaction": 200.1755011104516,
+          "gasReaction": -2.2737367544323206e-13,
+          "pressure": 120151.71147960395,
+          "volume": 0.004719741500079376,
+          "potential": 6.700624076480522,
+          "compression": 0,
+          "activeVertexSpan": 0.14244795885028533,
+          "rimClearance": 0.047080682230793314,
+          "locallyAdmissible": true,
+          "admission": "admitted",
+          "converged": true,
+          "iterations": 3,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 3.3654754361123196e-7
+        },
+        {
+          "branch": "unload",
+          "deflection": 0.0030000000000000027,
+          "reaction": 105.86611355806826,
+          "materialReaction": 105.86611355797123,
+          "gasReaction": 2.8421709430404007e-13,
+          "pressure": 120085.2627277715,
+          "volume": 0.00472092186199045,
+          "potential": 6.573367765945176,
+          "compression": 0,
+          "activeVertexSpan": 0,
+          "rimClearance": 0.048080682230793315,
+          "locallyAdmissible": true,
+          "admission": "admitted",
+          "converged": true,
+          "iterations": 4,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 3.2230218494078144e-11
+        },
+        {
+          "branch": "unload",
+          "deflection": 0.0020000000000000018,
+          "reaction": 69.5756373011975,
+          "materialReaction": 69.5756113244127,
+          "gasReaction": -6.252776074688882e-13,
+          "pressure": 120048.97493302039,
+          "volume": 0.004721566734178768,
+          "potential": 6.48578385772473,
+          "compression": 0,
+          "activeVertexSpan": 0,
+          "rimClearance": 0.049080682230793315,
+          "locallyAdmissible": true,
+          "admission": "admitted",
+          "converged": true,
+          "iterations": 3,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 0.000006068826564842311
+        },
+        {
+          "branch": "unload",
+          "deflection": 0.0010000000000000009,
+          "reaction": 34.561323541931245,
+          "materialReaction": 34.561323450503494,
+          "gasReaction": 2.8421709430404007e-13,
+          "pressure": 120020.55128389396,
+          "volume": 0.004722071987613735,
+          "potential": 6.433789414296702,
+          "compression": 0,
+          "activeVertexSpan": 0,
+          "rimClearance": 0.050080682230793316,
+          "locallyAdmissible": true,
+          "admission": "admitted",
+          "converged": true,
+          "iterations": 4,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 2.0474942630244186e-8
+        },
+        {
+          "branch": "unload",
+          "deflection": 0,
+          "reaction": 0,
+          "materialReaction": -9.784457688510884e-10,
+          "gasReaction": -1.7053025658242404e-13,
+          "pressure": 119999.99999999737,
+          "volume": 0.004722437377466877,
+          "potential": 6.416509041918699,
+          "compression": 0,
+          "activeVertexSpan": 0,
+          "rimClearance": 0.05108068223079332,
+          "locallyAdmissible": true,
+          "admission": "admitted",
+          "converged": true,
+          "iterations": 3,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 3.6487790566752665e-10
+        }
+      ]
+    },
+    {
+      "segments": 16,
+      "nodes": 32,
+      "pressure": 160000,
+      "configuration": {
+        "nodes": 32,
+        "rimRadius": 0.311,
+        "section": [
+          [
+            0.015,
+            0
+          ],
+          [
+            0.021392133620176137,
+            0.0058698602145441404
+          ],
+          [
+            0.025614563473661152,
+            0.013451793826022998
+          ],
+          [
+            0.027239028307026122,
+            0.0219768008736233
+          ],
+          [
+            0.02610076627227638,
+            0.030580229881682915
+          ],
+          [
+            0.022315225948227296,
+            0.03838947540295273
+          ],
+          [
+            0.016266356932702248,
+            0.044612482295886026
+          ],
+          [
+            0.008567667635859425,
+            0.04861808016226653
+          ],
+          [
+            1.6685812638382689e-18,
+            0.05
+          ],
+          [
+            -0.008567667635859422,
+            0.04861808016226653
+          ],
+          [
+            -0.016266356932702248,
+            0.044612482295886026
+          ],
+          [
+            -0.022315225948227296,
+            0.038389475402952726
+          ],
+          [
+            -0.026100766272276376,
+            0.03058022988168292
+          ],
+          [
+            -0.027239028307026122,
+            0.021976800873623293
+          ],
+          [
+            -0.025614563473661155,
+            0.013451793826023002
+          ],
+          [
+            -0.021392133620176133,
+            0.00586986021454413
+          ],
+          [
+            -0.015,
+            0
+          ]
+        ],
+        "meridionalRigidity": 200000,
+        "hoopRigidity": 100000,
+        "couplingRigidity": 20000,
+        "gaugePressure": 160000,
+        "ambientPressure": 101325,
+        "exponent": 1.2,
+        "provenance": "Illustrative load diagnostic; no measured tyre data"
+      },
+      "states": [
+        {
+          "branch": "load",
+          "deflection": 0,
+          "reaction": 0,
+          "materialReaction": 1.7053025658242404e-13,
+          "gasReaction": 1.7053025658242404e-13,
+          "pressure": 160000,
+          "volume": 0.004758061111313857,
+          "potential": 11.40378549202282,
+          "compression": 0,
+          "activeVertexSpan": 0,
+          "rimClearance": 0.051439898227049474,
+          "locallyAdmissible": true,
+          "admission": "admitted",
+          "converged": true,
+          "iterations": 0,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 1.6370904631912708e-11
+        },
+        {
+          "branch": "load",
+          "deflection": 0.0010000000000000009,
+          "reaction": 39.94698106460521,
+          "materialReaction": 39.946981064517956,
+          "gasReaction": -1.7053025658242404e-13,
+          "pressure": 160026.234928488,
+          "volume": 0.004757663088715161,
+          "potential": 11.423770505488585,
+          "compression": 0,
+          "activeVertexSpan": 0,
+          "rimClearance": 0.05043989822704947,
+          "locallyAdmissible": true,
+          "admission": "admitted",
+          "converged": true,
+          "iterations": 3,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 1.6484591469634324e-11
+        },
+        {
+          "branch": "load",
+          "deflection": 0.0020000000000000018,
+          "reaction": 80.1461867396502,
+          "materialReaction": 80.14618673961718,
+          "gasReaction": 1.1368683772161603e-13,
+          "pressure": 160060.29322157367,
+          "volume": 0.004757146483383172,
+          "potential": 11.483764375142346,
+          "compression": 0,
+          "activeVertexSpan": 0,
+          "rimClearance": 0.04943989822704947,
+          "locallyAdmissible": true,
+          "admission": "admitted",
+          "converged": true,
+          "iterations": 3,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 1.4097167877480388e-11
+        },
+        {
+          "branch": "load",
+          "deflection": 0.0030000000000000027,
+          "reaction": 121.32397683837723,
+          "materialReaction": 121.32397683834432,
+          "gasReaction": -2.2737367544323206e-13,
+          "pressure": 160102.25309931254,
+          "volume": 0.004756510194344016,
+          "potential": 11.584390278070199,
+          "compression": 0,
+          "activeVertexSpan": 0,
+          "rimClearance": 0.04843989822704947,
+          "locallyAdmissible": true,
+          "admission": "admitted",
+          "converged": true,
+          "iterations": 3,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 2.262368070660159e-11
+        },
+        {
+          "branch": "load",
+          "deflection": 0.0040000000000000036,
+          "reaction": 184.53048256299246,
+          "materialReaction": 184.53048255049345,
+          "gasReaction": 6.821210263296962e-13,
+          "pressure": 160161.79751588314,
+          "volume": 0.00475560757069941,
+          "potential": 11.72726884513191,
+          "compression": 0,
+          "activeVertexSpan": 0.14254678906090767,
+          "rimClearance": 0.04743989822704947,
+          "locallyAdmissible": true,
+          "admission": "admitted",
+          "converged": true,
+          "iterations": 3,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 5.138531378179323e-9
+        },
+        {
+          "branch": "unload",
+          "deflection": 0.0030000000000000027,
+          "reaction": 121.32397683840156,
+          "materialReaction": 121.32397683840173,
+          "gasReaction": 6.252776074688882e-13,
+          "pressure": 160102.25309931254,
+          "volume": 0.004756510194344016,
+          "potential": 11.584390278069998,
+          "compression": 0,
+          "activeVertexSpan": 0,
+          "rimClearance": 0.04843989822704947,
+          "locallyAdmissible": true,
+          "admission": "admitted",
+          "converged": true,
+          "iterations": 4,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 1.3983481039758772e-11
+        },
+        {
+          "branch": "unload",
+          "deflection": 0.0020000000000000018,
+          "reaction": 80.14617760754618,
+          "materialReaction": 80.14615407295418,
+          "gasReaction": 1.7053025658242404e-13,
+          "pressure": 160060.2931856755,
+          "volume": 0.0047571464839276205,
+          "potential": 11.483764375143311,
+          "compression": 0,
+          "activeVertexSpan": 0,
+          "rimClearance": 0.04943989822704947,
+          "locallyAdmissible": true,
+          "admission": "admitted",
+          "converged": true,
+          "iterations": 3,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 0.000005063071057520574
+        },
+        {
+          "branch": "unload",
+          "deflection": 0.0010000000000000009,
+          "reaction": 39.946981064414615,
+          "materialReaction": 39.94698106212792,
+          "gasReaction": -4.547473508864641e-13,
+          "pressure": 160026.23492848486,
+          "volume": 0.0047576630887152084,
+          "potential": 11.423770505489934,
+          "compression": 0,
+          "activeVertexSpan": 0,
+          "rimClearance": 0.05043989822704947,
+          "locallyAdmissible": true,
+          "admission": "admitted",
+          "converged": true,
+          "iterations": 4,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 5.852598405908793e-10
+        },
+        {
+          "branch": "unload",
+          "deflection": 0,
+          "reaction": 1.2732925824820995e-11,
+          "materialReaction": -1.963940121640917e-10,
+          "gasReaction": -2.2737367544323206e-13,
+          "pressure": 159999.9999999997,
+          "volume": 0.004758061111313861,
+          "potential": 11.403785492022287,
+          "compression": 0,
+          "activeVertexSpan": 0,
+          "rimClearance": 0.051439898227049474,
+          "locallyAdmissible": true,
+          "admission": "admitted",
+          "converged": true,
+          "iterations": 3,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 7.855760486563668e-11
+        }
+      ]
+    },
+    {
+      "segments": 16,
+      "nodes": 32,
+      "pressure": 200000,
+      "configuration": {
+        "nodes": 32,
+        "rimRadius": 0.311,
+        "section": [
+          [
+            0.015,
+            0
+          ],
+          [
+            0.021392133620176137,
+            0.0058698602145441404
+          ],
+          [
+            0.025614563473661152,
+            0.013451793826022998
+          ],
+          [
+            0.027239028307026122,
+            0.0219768008736233
+          ],
+          [
+            0.02610076627227638,
+            0.030580229881682915
+          ],
+          [
+            0.022315225948227296,
+            0.03838947540295273
+          ],
+          [
+            0.016266356932702248,
+            0.044612482295886026
+          ],
+          [
+            0.008567667635859425,
+            0.04861808016226653
+          ],
+          [
+            1.6685812638382689e-18,
+            0.05
+          ],
+          [
+            -0.008567667635859422,
+            0.04861808016226653
+          ],
+          [
+            -0.016266356932702248,
+            0.044612482295886026
+          ],
+          [
+            -0.022315225948227296,
+            0.038389475402952726
+          ],
+          [
+            -0.026100766272276376,
+            0.03058022988168292
+          ],
+          [
+            -0.027239028307026122,
+            0.021976800873623293
+          ],
+          [
+            -0.025614563473661155,
+            0.013451793826023002
+          ],
+          [
+            -0.021392133620176133,
+            0.00586986021454413
+          ],
+          [
+            -0.015,
+            0
+          ]
+        ],
+        "meridionalRigidity": 200000,
+        "hoopRigidity": 100000,
+        "couplingRigidity": 20000,
+        "gaugePressure": 200000,
+        "ambientPressure": 101325,
+        "exponent": 1.2,
+        "provenance": "Illustrative load diagnostic; no measured tyre data"
+      },
+      "states": [
+        {
+          "branch": "load",
+          "deflection": 0,
+          "reaction": 1.716671249596402e-11,
+          "materialReaction": -4.547473508864641e-13,
+          "gasReaction": 0,
+          "pressure": 200000,
+          "volume": 0.004793671940962654,
+          "potential": 17.813695062473066,
+          "compression": 0,
+          "activeVertexSpan": 0,
+          "rimClearance": 0.05179864479742874,
+          "locallyAdmissible": true,
+          "admission": "admitted",
+          "converged": true,
+          "iterations": 0,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 1.716671249596402e-11
+        },
+        {
+          "branch": "load",
+          "deflection": 0.0010000000000000009,
+          "reaction": 44.67237510219093,
+          "materialReaction": 44.67237510218365,
+          "gasReaction": 5.684341886080801e-13,
+          "pressure": 200032.2683690509,
+          "volume": 0.0047932441946411265,
+          "potential": 17.836052031043124,
+          "compression": 0,
+          "activeVertexSpan": 0,
+          "rimClearance": 0.05079864479742874,
+          "locallyAdmissible": true,
+          "admission": "admitted",
+          "converged": true,
+          "iterations": 3,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 1.6370904631912708e-11
+        },
+        {
+          "branch": "load",
+          "deflection": 0.0020000000000000018,
+          "reaction": 89.44624637282652,
+          "materialReaction": 89.44624637279094,
+          "gasReaction": 5.684341886080801e-13,
+          "pressure": 200072.3964809536,
+          "volume": 0.004792712377468201,
+          "potential": 17.903074318373363,
+          "compression": 0,
+          "activeVertexSpan": 0,
+          "rimClearance": 0.04979864479742874,
+          "locallyAdmissible": true,
+          "admission": "admitted",
+          "converged": true,
+          "iterations": 3,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 8.86757334228605e-12
+        },
+        {
+          "branch": "load",
+          "deflection": 0.0030000000000000027,
+          "reaction": 134.98016520533878,
+          "materialReaction": 134.98016520534838,
+          "gasReaction": -1.0231815394945443e-12,
+          "pressure": 200120.51300066255,
+          "volume": 0.004792074861186153,
+          "potential": 18.01519881775491,
+          "compression": 0,
+          "activeVertexSpan": 0,
+          "rimClearance": 0.048798644797428736,
+          "locallyAdmissible": true,
+          "admission": "admitted",
+          "converged": true,
+          "iterations": 3,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 1.0800249583553523e-11
+        },
+        {
+          "branch": "load",
+          "deflection": 0.0040000000000000036,
+          "reaction": 181.84891988963057,
+          "materialReaction": 181.84891988963955,
+          "gasReaction": 1.1368683772161603e-13,
+          "pressure": 200176.6061596869,
+          "volume": 0.0047913318944834745,
+          "potential": 18.17348069283569,
+          "compression": 0,
+          "activeVertexSpan": 0,
+          "rimClearance": 0.047798644797428735,
+          "locallyAdmissible": true,
+          "admission": "admitted",
+          "converged": true,
+          "iterations": 3,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 1.7621459846850485e-11
+        },
+        {
+          "branch": "unload",
+          "deflection": 0.0030000000000000027,
+          "reaction": 134.9801652053531,
+          "materialReaction": 134.98016520538897,
+          "gasReaction": 1.1368683772161603e-13,
+          "pressure": 200120.5130006626,
+          "volume": 0.004792074861186152,
+          "potential": 18.015198817754893,
+          "compression": 0,
+          "activeVertexSpan": 0,
+          "rimClearance": 0.048798644797428736,
+          "locallyAdmissible": true,
+          "admission": "admitted",
+          "converged": true,
+          "iterations": 4,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 7.901235221652314e-12
+        },
+        {
+          "branch": "unload",
+          "deflection": 0.0020000000000000018,
+          "reaction": 89.44623854753274,
+          "materialReaction": 89.44621855099001,
+          "gasReaction": -9.094947017729282e-13,
+          "pressure": 200072.396449812,
+          "volume": 0.00479271237788087,
+          "potential": 17.903074318374088,
+          "compression": 0,
+          "activeVertexSpan": 0,
+          "rimClearance": 0.04979864479742874,
+          "locallyAdmissible": true,
+          "admission": "admitted",
+          "converged": true,
+          "iterations": 3,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 0.000004103067226424173
+        },
+        {
+          "branch": "unload",
+          "deflection": 0.0010000000000000009,
+          "reaction": 44.67237510219195,
+          "materialReaction": 44.672375102160686,
+          "gasReaction": 3.410605131648481e-13,
+          "pressure": 200032.26836905102,
+          "volume": 0.004793244194641125,
+          "potential": 17.8360520310432,
+          "compression": 0,
+          "activeVertexSpan": 0,
+          "rimClearance": 0.05079864479742874,
+          "locallyAdmissible": true,
+          "admission": "admitted",
+          "converged": true,
+          "iterations": 4,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 1.0686562745831907e-11
+        },
+        {
+          "branch": "unload",
+          "deflection": 0,
+          "reaction": 8.640199666842818e-12,
+          "materialReaction": -4.615685611497611e-11,
+          "gasReaction": -3.410605131648481e-13,
+          "pressure": 199999.99999999962,
+          "volume": 0.00479367194096266,
+          "potential": 17.813695062472995,
+          "compression": 0,
+          "activeVertexSpan": 0,
+          "rimClearance": 0.05179864479742874,
+          "locallyAdmissible": true,
+          "admission": "admitted",
+          "converged": true,
+          "iterations": 3,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 2.887645678129047e-11
+        }
+      ]
+    },
+    {
+      "segments": 16,
+      "nodes": 64,
+      "pressure": 120000,
+      "configuration": {
+        "nodes": 64,
+        "rimRadius": 0.311,
+        "section": [
+          [
+            0.015,
+            0
+          ],
+          [
+            0.021392133620176137,
+            0.0058698602145441404
+          ],
+          [
+            0.025614563473661152,
+            0.013451793826022998
+          ],
+          [
+            0.027239028307026122,
+            0.0219768008736233
+          ],
+          [
+            0.02610076627227638,
+            0.030580229881682915
+          ],
+          [
+            0.022315225948227296,
+            0.03838947540295273
+          ],
+          [
+            0.016266356932702248,
+            0.044612482295886026
+          ],
+          [
+            0.008567667635859425,
+            0.04861808016226653
+          ],
+          [
+            1.6685812638382689e-18,
+            0.05
+          ],
+          [
+            -0.008567667635859422,
+            0.04861808016226653
+          ],
+          [
+            -0.016266356932702248,
+            0.044612482295886026
+          ],
+          [
+            -0.022315225948227296,
+            0.038389475402952726
+          ],
+          [
+            -0.026100766272276376,
+            0.03058022988168292
+          ],
+          [
+            -0.027239028307026122,
+            0.021976800873623293
+          ],
+          [
+            -0.025614563473661155,
+            0.013451793826023002
+          ],
+          [
+            -0.021392133620176133,
+            0.00586986021454413
+          ],
+          [
+            -0.015,
+            0
+          ]
+        ],
+        "meridionalRigidity": 200000,
+        "hoopRigidity": 100000,
+        "couplingRigidity": 20000,
+        "gaugePressure": 120000,
+        "ambientPressure": 101325,
+        "exponent": 1.2,
+        "provenance": "Illustrative load diagnostic; no measured tyre data"
+      },
+      "states": [
+        {
+          "branch": "load",
+          "deflection": 0,
+          "reaction": 0,
+          "materialReaction": 0,
+          "gasReaction": 5.684341886080802e-14,
+          "pressure": 120000,
+          "volume": 0.004745806940721474,
+          "potential": 6.478723874875581,
+          "compression": 0,
+          "activeVertexSpan": 0,
+          "rimClearance": 0.05108589996661861,
+          "locallyAdmissible": true,
+          "admission": "admitted",
+          "converged": true,
+          "iterations": 0,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 1.0487610779819079e-11
+        },
+        {
+          "branch": "load",
+          "deflection": 0.0010000000000000009,
+          "reaction": 26.225437162288557,
+          "materialReaction": 26.225437145633208,
+          "gasReaction": 1.4210854715202004e-13,
+          "pressure": 120015.4811691265,
+          "volume": 0.004745530326657088,
+          "potential": 6.491767160977172,
+          "compression": 0,
+          "activeVertexSpan": 0,
+          "rimClearance": 0.05008589996661861,
+          "locallyAdmissible": true,
+          "admission": "admitted",
+          "converged": true,
+          "iterations": 3,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 1.6875908670499484e-8
+        },
+        {
+          "branch": "load",
+          "deflection": 0.0020000000000000018,
+          "reaction": 379.6494041187815,
+          "materialReaction": 379.6494041156337,
+          "gasReaction": -3.126388037344441e-13,
+          "pressure": 120185.61645023183,
+          "volume": 0.004742492722705516,
+          "potential": 6.693253708592895,
+          "compression": 20,
+          "activeVertexSpan": 0.07128076168702638,
+          "rimClearance": 0.04908589996661861,
+          "locallyAdmissible": false,
+          "admission": "compressive-resultant",
+          "converged": true,
+          "iterations": 3,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 1.8539054735811078e-9
+        },
+        {
+          "branch": "load",
+          "deflection": 0.0030000000000000027,
+          "reaction": 730.7848489787289,
+          "materialReaction": 730.7848489715464,
+          "gasReaction": 4.263256414560601e-13,
+          "pressure": 120363.74774480476,
+          "volume": 0.004739316937731627,
+          "potential": 7.248921029260161,
+          "compression": 28,
+          "activeVertexSpan": 0.07148559919753841,
+          "rimClearance": 0.048085899966618606,
+          "locallyAdmissible": false,
+          "admission": "compressive-resultant",
+          "converged": true,
+          "iterations": 3,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 6.306031252734101e-9
+        },
+        {
+          "branch": "load",
+          "deflection": 0.0040000000000000036,
+          "reaction": 1077.5931452110267,
+          "materialReaction": 1077.5931451570204,
+          "gasReaction": -1.9895196601282805e-13,
+          "pressure": 120548.8379331579,
+          "volume": 0.004736022039477258,
+          "potential": 8.153386128436454,
+          "compression": 28,
+          "activeVertexSpan": 0.07172492485190554,
+          "rimClearance": 0.047085899966618605,
+          "locallyAdmissible": false,
+          "admission": "compressive-resultant",
+          "converged": true,
+          "iterations": 3,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 4.7359897337173607e-8
+        },
+        {
+          "branch": "unload",
+          "deflection": 0.0030000000000000027,
+          "reaction": 730.784849128086,
+          "materialReaction": 730.7848488562058,
+          "gasReaction": -5.400124791776761e-13,
+          "pressure": 120363.74774458625,
+          "volume": 0.00473931693773552,
+          "potential": 7.248921029257396,
+          "compression": 28,
+          "activeVertexSpan": 0.07148559919664574,
+          "rimClearance": 0.048085899966618606,
+          "locallyAdmissible": false,
+          "admission": "compressive-resultant",
+          "converged": true,
+          "iterations": 4,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 2.4332039316732335e-7
+        },
+        {
+          "branch": "unload",
+          "deflection": 0.0020000000000000018,
+          "reaction": 379.64940411736256,
+          "materialReaction": 379.6494041172802,
+          "gasReaction": -2.5579538487363607e-13,
+          "pressure": 120185.61645023698,
+          "volume": 0.004742492722705424,
+          "potential": 6.6932537085943,
+          "compression": 20,
+          "activeVertexSpan": 0.07128076168703512,
+          "rimClearance": 0.04908589996661861,
+          "locallyAdmissible": false,
+          "admission": "compressive-resultant",
+          "converged": true,
+          "iterations": 4,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 2.8691715669992846e-11
+        },
+        {
+          "branch": "unload",
+          "deflection": 0.0010000000000000009,
+          "reaction": 26.225437163379496,
+          "materialReaction": 26.225437148217793,
+          "gasReaction": 6.821210263296962e-13,
+          "pressure": 120015.48116912758,
+          "volume": 0.004745530326657069,
+          "potential": 6.491767160975724,
+          "compression": 0,
+          "activeVertexSpan": 0,
+          "rimClearance": 0.05008589996661861,
+          "locallyAdmissible": true,
+          "admission": "admitted",
+          "converged": true,
+          "iterations": 4,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 1.5499182381972787e-8
+        },
+        {
+          "branch": "unload",
+          "deflection": 0,
+          "reaction": 0,
+          "materialReaction": -0.0000027867070571119257,
+          "gasReaction": -2.8421709430404007e-13,
+          "pressure": 119999.99999732306,
+          "volume": 0.004745806940769308,
+          "potential": 6.478723874884749,
+          "compression": 0,
+          "activeVertexSpan": 0,
+          "rimClearance": 0.05108589996661861,
+          "locallyAdmissible": true,
+          "admission": "admitted",
+          "converged": true,
+          "iterations": 3,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 0.0000018477585612686198
+        }
+      ]
+    },
+    {
+      "segments": 16,
+      "nodes": 64,
+      "pressure": 160000,
+      "configuration": {
+        "nodes": 64,
+        "rimRadius": 0.311,
+        "section": [
+          [
+            0.015,
+            0
+          ],
+          [
+            0.021392133620176137,
+            0.0058698602145441404
+          ],
+          [
+            0.025614563473661152,
+            0.013451793826022998
+          ],
+          [
+            0.027239028307026122,
+            0.0219768008736233
+          ],
+          [
+            0.02610076627227638,
+            0.030580229881682915
+          ],
+          [
+            0.022315225948227296,
+            0.03838947540295273
+          ],
+          [
+            0.016266356932702248,
+            0.044612482295886026
+          ],
+          [
+            0.008567667635859425,
+            0.04861808016226653
+          ],
+          [
+            1.6685812638382689e-18,
+            0.05
+          ],
+          [
+            -0.008567667635859422,
+            0.04861808016226653
+          ],
+          [
+            -0.016266356932702248,
+            0.044612482295886026
+          ],
+          [
+            -0.022315225948227296,
+            0.038389475402952726
+          ],
+          [
+            -0.026100766272276376,
+            0.03058022988168292
+          ],
+          [
+            -0.027239028307026122,
+            0.021976800873623293
+          ],
+          [
+            -0.025614563473661155,
+            0.013451793826023002
+          ],
+          [
+            -0.021392133620176133,
+            0.00586986021454413
+          ],
+          [
+            -0.015,
+            0
+          ]
+        ],
+        "meridionalRigidity": 200000,
+        "hoopRigidity": 100000,
+        "couplingRigidity": 20000,
+        "gaugePressure": 160000,
+        "ambientPressure": 101325,
+        "exponent": 1.2,
+        "provenance": "Illustrative load diagnostic; no measured tyre data"
+      },
+      "states": [
+        {
+          "branch": "load",
+          "deflection": 0,
+          "reaction": 7.958078640513122e-13,
+          "materialReaction": -5.684341886080802e-14,
+          "gasReaction": 3.410605131648481e-13,
+          "pressure": 160000,
+          "volume": 0.004781776008243222,
+          "potential": 11.514346478008644,
+          "compression": 0,
+          "activeVertexSpan": 0,
+          "rimClearance": 0.05144684589894294,
+          "locallyAdmissible": true,
+          "admission": "admitted",
+          "converged": true,
+          "iterations": 0,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 1.4651391211373266e-11
+        },
+        {
+          "branch": "load",
+          "deflection": 0.0010000000000000009,
+          "reaction": 30.175571333168932,
+          "materialReaction": 30.17557132770432,
+          "gasReaction": 2.5579538487363607e-13,
+          "pressure": 160019.74622716304,
+          "volume": 0.004781474928822276,
+          "potential": 11.529389251560186,
+          "compression": 0,
+          "activeVertexSpan": 0,
+          "rimClearance": 0.05044684589894294,
+          "locallyAdmissible": true,
+          "admission": "admitted",
+          "converged": true,
+          "iterations": 3,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 6.150163045504087e-9
+        },
+        {
+          "branch": "load",
+          "deflection": 0.0020000000000000018,
+          "reaction": 382.8158942277117,
+          "materialReaction": 382.8158942273209,
+          "gasReaction": 3.694822225952521e-13,
+          "pressure": 160217.0481351413,
+          "volume": 0.004778468868366107,
+          "potential": 11.730991159364187,
+          "compression": 0,
+          "activeVertexSpan": 0.07132679981003756,
+          "rimClearance": 0.04944684589894294,
+          "locallyAdmissible": true,
+          "admission": "admitted",
+          "converged": true,
+          "iterations": 3,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 1.8843593352357857e-10
+        },
+        {
+          "branch": "load",
+          "deflection": 0.0030000000000000027,
+          "reaction": 740.4198180690449,
+          "materialReaction": 740.4198180664674,
+          "gasReaction": -4.831690603168681e-13,
+          "pressure": 160426.39611245302,
+          "volume": 0.004775283818538378,
+          "potential": 12.293067318910738,
+          "compression": 28,
+          "activeVertexSpan": 0.07150881626179821,
+          "rimClearance": 0.048446845898942936,
+          "locallyAdmissible": false,
+          "admission": "compressive-resultant",
+          "converged": true,
+          "iterations": 3,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 2.496740592050628e-9
+        },
+        {
+          "branch": "load",
+          "deflection": 0.0040000000000000036,
+          "reaction": 1093.439751301193,
+          "materialReaction": 1093.439751286951,
+          "gasReaction": -1.7053025658242404e-13,
+          "pressure": 160642.74022994956,
+          "volume": 0.004771997231660881,
+          "potential": 13.210306073952603,
+          "compression": 28,
+          "activeVertexSpan": 0.0717241305901071,
+          "rimClearance": 0.047446845898942935,
+          "locallyAdmissible": false,
+          "admission": "compressive-resultant",
+          "converged": true,
+          "iterations": 3,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 1.4486914778899518e-8
+        },
+        {
+          "branch": "unload",
+          "deflection": 0.0030000000000000027,
+          "reaction": 740.4198181057789,
+          "materialReaction": 740.4198180337746,
+          "gasReaction": -5.115907697472721e-13,
+          "pressure": 160426.3961123878,
+          "volume": 0.004775283818539369,
+          "potential": 12.293067318908994,
+          "compression": 28,
+          "activeVertexSpan": 0.07150881626152113,
+          "rimClearance": 0.048446845898942936,
+          "locallyAdmissible": false,
+          "admission": "compressive-resultant",
+          "converged": true,
+          "iterations": 4,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 7.771179610926993e-8
+        },
+        {
+          "branch": "unload",
+          "deflection": 0.0020000000000000018,
+          "reaction": 382.8158942275787,
+          "materialReaction": 382.8158942275528,
+          "gasReaction": 2.5579538487363607e-13,
+          "pressure": 160217.04813514175,
+          "volume": 0.0047784688683661,
+          "potential": 11.730991159363615,
+          "compression": 0,
+          "activeVertexSpan": 0.07132679981003848,
+          "rimClearance": 0.04944684589894294,
+          "locallyAdmissible": true,
+          "admission": "admitted",
+          "converged": true,
+          "iterations": 4,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 1.27613475342514e-11
+        },
+        {
+          "branch": "unload",
+          "deflection": 0.0010000000000000009,
+          "reaction": 30.17557133314159,
+          "materialReaction": 30.17557132774843,
+          "gasReaction": -1.0231815394945443e-12,
+          "pressure": 160019.74622716315,
+          "volume": 0.004781474928822274,
+          "potential": 11.529389251560476,
+          "compression": 0,
+          "activeVertexSpan": 0,
+          "rimClearance": 0.05044684589894294,
+          "locallyAdmissible": true,
+          "admission": "admitted",
+          "converged": true,
+          "iterations": 4,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 6.190347789924999e-9
+        },
+        {
+          "branch": "unload",
+          "deflection": 0,
+          "reaction": 0,
+          "materialReaction": -6.719322414028284e-7,
+          "gasReaction": 0,
+          "pressure": 159999.99999925576,
+          "volume": 0.00478177600825457,
+          "potential": 11.51434647801344,
+          "compression": 0,
+          "activeVertexSpan": 0,
+          "rimClearance": 0.05144684589894294,
+          "locallyAdmissible": true,
+          "admission": "admitted",
+          "converged": true,
+          "iterations": 3,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 5.663530089350388e-7
+        }
+      ]
+    },
+    {
+      "segments": 16,
+      "nodes": 64,
+      "pressure": 200000,
+      "configuration": {
+        "nodes": 64,
+        "rimRadius": 0.311,
+        "section": [
+          [
+            0.015,
+            0
+          ],
+          [
+            0.021392133620176137,
+            0.0058698602145441404
+          ],
+          [
+            0.025614563473661152,
+            0.013451793826022998
+          ],
+          [
+            0.027239028307026122,
+            0.0219768008736233
+          ],
+          [
+            0.02610076627227638,
+            0.030580229881682915
+          ],
+          [
+            0.022315225948227296,
+            0.03838947540295273
+          ],
+          [
+            0.016266356932702248,
+            0.044612482295886026
+          ],
+          [
+            0.008567667635859425,
+            0.04861808016226653
+          ],
+          [
+            1.6685812638382689e-18,
+            0.05
+          ],
+          [
+            -0.008567667635859422,
+            0.04861808016226653
+          ],
+          [
+            -0.016266356932702248,
+            0.044612482295886026
+          ],
+          [
+            -0.022315225948227296,
+            0.038389475402952726
+          ],
+          [
+            -0.026100766272276376,
+            0.03058022988168292
+          ],
+          [
+            -0.027239028307026122,
+            0.021976800873623293
+          ],
+          [
+            -0.025614563473661155,
+            0.013451793826023002
+          ],
+          [
+            -0.021392133620176133,
+            0.00586986021454413
+          ],
+          [
+            -0.015,
+            0
+          ]
+        ],
+        "meridionalRigidity": 200000,
+        "hoopRigidity": 100000,
+        "couplingRigidity": 20000,
+        "gaugePressure": 200000,
+        "ambientPressure": 101325,
+        "exponent": 1.2,
+        "provenance": "Illustrative load diagnostic; no measured tyre data"
+      },
+      "states": [
+        {
+          "branch": "load",
+          "deflection": 0,
+          "reaction": 0,
+          "materialReaction": 2.2737367544323206e-13,
+          "gasReaction": -6.821210263296962e-13,
+          "pressure": 200000,
+          "volume": 0.004817732021707073,
+          "potential": 17.986388696928376,
+          "compression": 0,
+          "activeVertexSpan": 0,
+          "rimClearance": 0.05180731826241641,
+          "locallyAdmissible": true,
+          "admission": "admitted",
+          "converged": true,
+          "iterations": 0,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 1.1283418643870391e-11
+        },
+        {
+          "branch": "load",
+          "deflection": 0.0010000000000000009,
+          "reaction": 33.670955479665054,
+          "materialReaction": 33.67095547742315,
+          "gasReaction": -1.3073986337985843e-12,
+          "pressure": 200024.26935495497,
+          "volume": 0.0048174086869447914,
+          "potential": 18.00319914591059,
+          "compression": 0,
+          "activeVertexSpan": 0,
+          "rimClearance": 0.05080731826241641,
+          "locallyAdmissible": true,
+          "admission": "admitted",
+          "converged": true,
+          "iterations": 3,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 2.714589442120996e-9
+        },
+        {
+          "branch": "load",
+          "deflection": 0.0020000000000000018,
+          "reaction": 385.6985488623484,
+          "materialReaction": 385.6985488622281,
+          "gasReaction": 7.958078640513122e-13,
+          "pressure": 200247.771002858,
+          "volume": 0.0048144332710590605,
+          "potential": 18.20504371906841,
+          "compression": 0,
+          "activeVertexSpan": 0.07137430400490505,
+          "rimClearance": 0.04980731826241641,
+          "locallyAdmissible": true,
+          "admission": "admitted",
+          "converged": true,
+          "iterations": 3,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 7.844391802791506e-11
+        },
+        {
+          "branch": "load",
+          "deflection": 0.0030000000000000027,
+          "reaction": 749.1829420877257,
+          "materialReaction": 749.1829420864899,
+          "gasReaction": -5.684341886080801e-13,
+          "pressure": 200487.9930216519,
+          "volume": 0.004811239765919138,
+          "potential": 18.7729451537314,
+          "compression": 28,
+          "activeVertexSpan": 0.07153502751085061,
+          "rimClearance": 0.04880731826241641,
+          "locallyAdmissible": false,
+          "admission": "compressive-resultant",
+          "converged": true,
+          "iterations": 3,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 1.27403154692729e-9
+        },
+        {
+          "branch": "load",
+          "deflection": 0.0040000000000000036,
+          "reaction": 1107.9446815567485,
+          "materialReaction": 1107.9446815515978,
+          "gasReaction": -2.2737367544323206e-13,
+          "pressure": 200735.24594476356,
+          "volume": 0.004807957655028615,
+          "potential": 19.701837816804932,
+          "compression": 28,
+          "activeVertexSpan": 0.0717279142749738,
+          "rimClearance": 0.04780731826241641,
+          "locallyAdmissible": false,
+          "admission": "compressive-resultant",
+          "converged": true,
+          "iterations": 3,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 5.704755778879189e-9
+        },
+        {
+          "branch": "unload",
+          "deflection": 0.0030000000000000027,
+          "reaction": 749.1829420977845,
+          "materialReaction": 749.1829420770173,
+          "gasReaction": -5.684341886080802e-14,
+          "pressure": 200487.99302163106,
+          "volume": 0.004811239765919415,
+          "potential": 18.772945153730134,
+          "compression": 28,
+          "activeVertexSpan": 0.07153502751076314,
+          "rimClearance": 0.04880731826241641,
+          "locallyAdmissible": false,
+          "admission": "compressive-resultant",
+          "converged": true,
+          "iterations": 4,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 2.561690592983723e-8
+        },
+        {
+          "branch": "unload",
+          "deflection": 0.0020000000000000018,
+          "reaction": 385.6985488623495,
+          "materialReaction": 385.69854886237374,
+          "gasReaction": -6.252776074688882e-13,
+          "pressure": 200247.7710028573,
+          "volume": 0.00481443327105907,
+          "potential": 18.20504371906577,
+          "compression": 0,
+          "activeVertexSpan": 0.07137430400490523,
+          "rimClearance": 0.04980731826241641,
+          "locallyAdmissible": true,
+          "admission": "admitted",
+          "converged": true,
+          "iterations": 4,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 1.0913936421275139e-11
+        },
+        {
+          "branch": "unload",
+          "deflection": 0.0010000000000000009,
+          "reaction": 33.67095547953551,
+          "materialReaction": 33.6709554771449,
+          "gasReaction": 1.5916157281026244e-12,
+          "pressure": 200024.26935495398,
+          "volume": 0.0048174086869448044,
+          "potential": 18.003199145908475,
+          "compression": 0,
+          "activeVertexSpan": 0,
+          "rimClearance": 0.05080731826241641,
+          "locallyAdmissible": true,
+          "admission": "admitted",
+          "converged": true,
+          "iterations": 4,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 2.9194815454047784e-9
+        },
+        {
+          "branch": "unload",
+          "deflection": 0,
+          "reaction": 0,
+          "materialReaction": -1.9598030576162273e-7,
+          "gasReaction": 0,
+          "pressure": 199999.99999974898,
+          "volume": 0.004817732021710417,
+          "potential": 17.98638869691286,
+          "compression": 0,
+          "activeVertexSpan": 0,
+          "rimClearance": 0.05180731826241641,
+          "locallyAdmissible": true,
+          "admission": "admitted",
+          "converged": true,
+          "iterations": 3,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 2.034499857472838e-7
+        }
+      ]
+    },
+    {
+      "segments": 16,
+      "nodes": 128,
+      "pressure": 120000,
+      "configuration": {
+        "nodes": 128,
+        "rimRadius": 0.311,
+        "section": [
+          [
+            0.015,
+            0
+          ],
+          [
+            0.021392133620176137,
+            0.0058698602145441404
+          ],
+          [
+            0.025614563473661152,
+            0.013451793826022998
+          ],
+          [
+            0.027239028307026122,
+            0.0219768008736233
+          ],
+          [
+            0.02610076627227638,
+            0.030580229881682915
+          ],
+          [
+            0.022315225948227296,
+            0.03838947540295273
+          ],
+          [
+            0.016266356932702248,
+            0.044612482295886026
+          ],
+          [
+            0.008567667635859425,
+            0.04861808016226653
+          ],
+          [
+            1.6685812638382689e-18,
+            0.05
+          ],
+          [
+            -0.008567667635859422,
+            0.04861808016226653
+          ],
+          [
+            -0.016266356932702248,
+            0.044612482295886026
+          ],
+          [
+            -0.022315225948227296,
+            0.038389475402952726
+          ],
+          [
+            -0.026100766272276376,
+            0.03058022988168292
+          ],
+          [
+            -0.027239028307026122,
+            0.021976800873623293
+          ],
+          [
+            -0.025614563473661155,
+            0.013451793826023002
+          ],
+          [
+            -0.021392133620176133,
+            0.00586986021454413
+          ],
+          [
+            -0.015,
+            0
+          ]
+        ],
+        "meridionalRigidity": 200000,
+        "hoopRigidity": 100000,
+        "couplingRigidity": 20000,
+        "gaugePressure": 120000,
+        "ambientPressure": 101325,
+        "exponent": 1.2,
+        "provenance": "Illustrative load diagnostic; no measured tyre data"
+      },
+      "states": [
+        {
+          "branch": "load",
+          "deflection": 0,
+          "reaction": 1.4210854715202004e-13,
+          "materialReaction": -1.4210854715202004e-14,
+          "gasReaction": -1.4210854715202004e-13,
+          "pressure": 120000,
+          "volume": 0.0047516606857600525,
+          "potential": 6.4943526906852,
+          "compression": 0,
+          "activeVertexSpan": 0,
+          "rimClearance": 0.051087206744578284,
+          "locallyAdmissible": true,
+          "admission": "admitted",
+          "converged": true,
+          "iterations": 0,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 3.771560841414612e-11
+        },
+        {
+          "branch": "load",
+          "deflection": 0.0010000000000000009,
+          "reaction": 143.6253503071243,
+          "materialReaction": 143.62535029440158,
+          "gasReaction": -1.8474111129762605e-13,
+          "pressure": 120070.41400228055,
+          "volume": 0.0047504012787818115,
+          "potential": 6.549471736914069,
+          "compression": 0,
+          "activeVertexSpan": 0.03559957273632516,
+          "rimClearance": 0.05008720674457828,
+          "locallyAdmissible": true,
+          "admission": "admitted",
+          "converged": true,
+          "iterations": 3,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 4.9935447776761066e-8
+        },
+        {
+          "branch": "load",
+          "deflection": 0.0020000000000000018,
+          "reaction": 452.23876993921823,
+          "materialReaction": 452.2387699305058,
+          "gasReaction": -1.1368683772161603e-12,
+          "pressure": 120221.57016489768,
+          "volume": 0.004747700216636461,
+          "potential": 6.831192543028798,
+          "compression": 28,
+          "activeVertexSpan": 0.07129897141614494,
+          "rimClearance": 0.04908720674457828,
+          "locallyAdmissible": false,
+          "admission": "compressive-resultant",
+          "converged": true,
+          "iterations": 3,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 3.871303633218304e-8
+        },
+        {
+          "branch": "load",
+          "deflection": 0.0030000000000000027,
+          "reaction": 800.9218710555538,
+          "materialReaction": 800.921871055539,
+          "gasReaction": 3.552713678800501e-13,
+          "pressure": 120398.52042703591,
+          "volume": 0.0047445425201900725,
+          "potential": 7.458142341317788,
+          "compression": 56,
+          "activeVertexSpan": 0.07148829422765873,
+          "rimClearance": 0.04808720674457828,
+          "locallyAdmissible": false,
+          "admission": "compressive-resultant",
+          "converged": true,
+          "iterations": 4,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 2.2595258997171186e-11
+        },
+        {
+          "branch": "load",
+          "deflection": 0.0040000000000000036,
+          "reaction": 1283.4530015558453,
+          "materialReaction": 1283.453001484842,
+          "gasReaction": -8.242295734817162e-13,
+          "pressure": 120639.8078443036,
+          "volume": 0.004740244158021496,
+          "potential": 8.49055951724504,
+          "compression": 72,
+          "activeVertexSpan": 0.10734847231151928,
+          "rimClearance": 0.04708720674457828,
+          "locallyAdmissible": false,
+          "admission": "compressive-resultant",
+          "converged": true,
+          "iterations": 3,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 3.1386873189376274e-7
+        },
+        {
+          "branch": "unload",
+          "deflection": 0.0030000000000000027,
+          "reaction": 800.9218710743905,
+          "materialReaction": 800.9218708500579,
+          "gasReaction": -1.0231815394945443e-12,
+          "pressure": 120398.52042679534,
+          "volume": 0.0047445425201943624,
+          "potential": 7.458142341318548,
+          "compression": 56,
+          "activeVertexSpan": 0.07148829422618724,
+          "rimClearance": 0.04808720674457828,
+          "locallyAdmissible": false,
+          "admission": "compressive-resultant",
+          "converged": true,
+          "iterations": 4,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 6.587935121871169e-7
+        },
+        {
+          "branch": "unload",
+          "deflection": 0.0020000000000000018,
+          "reaction": 452.2387699622054,
+          "materialReaction": 452.2387699567904,
+          "gasReaction": -9.237055564881302e-13,
+          "pressure": 120221.57016491196,
+          "volume": 0.004747700216636206,
+          "potential": 6.831192543027141,
+          "compression": 28,
+          "activeVertexSpan": 0.07129897141619881,
+          "rimClearance": 0.04908720674457828,
+          "locallyAdmissible": false,
+          "admission": "compressive-resultant",
+          "converged": true,
+          "iterations": 4,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 1.2225385148667556e-8
+        },
+        {
+          "branch": "unload",
+          "deflection": 0.0010000000000000009,
+          "reaction": 143.62535031561686,
+          "materialReaction": 143.62535031552426,
+          "gasReaction": -2.4158453015843406e-13,
+          "pressure": 120070.41400229695,
+          "volume": 0.004750401278781518,
+          "potential": 6.5494717369135875,
+          "compression": 0,
+          "activeVertexSpan": 0.035599572736369975,
+          "rimClearance": 0.05008720674457828,
+          "locallyAdmissible": true,
+          "admission": "admitted",
+          "converged": true,
+          "iterations": 4,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 2.970441670413493e-10
+        },
+        {
+          "branch": "unload",
+          "deflection": 0,
+          "reaction": 0,
+          "materialReaction": -8.597282885602908e-10,
+          "gasReaction": -1.2221335055073723e-12,
+          "pressure": 119999.99999999403,
+          "volume": 0.004751660685760159,
+          "potential": 6.494352690674205,
+          "compression": 0,
+          "activeVertexSpan": 0,
+          "rimClearance": 0.051087206744578284,
+          "locallyAdmissible": true,
+          "admission": "admitted",
+          "converged": true,
+          "iterations": 3,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 3.85032006278152e-9
+        }
+      ]
+    },
+    {
+      "segments": 16,
+      "nodes": 128,
+      "pressure": 160000,
+      "configuration": {
+        "nodes": 128,
+        "rimRadius": 0.311,
+        "section": [
+          [
+            0.015,
+            0
+          ],
+          [
+            0.021392133620176137,
+            0.0058698602145441404
+          ],
+          [
+            0.025614563473661152,
+            0.013451793826022998
+          ],
+          [
+            0.027239028307026122,
+            0.0219768008736233
+          ],
+          [
+            0.02610076627227638,
+            0.030580229881682915
+          ],
+          [
+            0.022315225948227296,
+            0.03838947540295273
+          ],
+          [
+            0.016266356932702248,
+            0.044612482295886026
+          ],
+          [
+            0.008567667635859425,
+            0.04861808016226653
+          ],
+          [
+            1.6685812638382689e-18,
+            0.05
+          ],
+          [
+            -0.008567667635859422,
+            0.04861808016226653
+          ],
+          [
+            -0.016266356932702248,
+            0.044612482295886026
+          ],
+          [
+            -0.022315225948227296,
+            0.038389475402952726
+          ],
+          [
+            -0.026100766272276376,
+            0.03058022988168292
+          ],
+          [
+            -0.027239028307026122,
+            0.021976800873623293
+          ],
+          [
+            -0.025614563473661155,
+            0.013451793826023002
+          ],
+          [
+            -0.021392133620176133,
+            0.00586986021454413
+          ],
+          [
+            -0.015,
+            0
+          ]
+        ],
+        "meridionalRigidity": 200000,
+        "hoopRigidity": 100000,
+        "couplingRigidity": 20000,
+        "gaugePressure": 160000,
+        "ambientPressure": 101325,
+        "exponent": 1.2,
+        "provenance": "Illustrative load diagnostic; no measured tyre data"
+      },
+      "states": [
+        {
+          "branch": "load",
+          "deflection": 0,
+          "reaction": 2.5437429940211587e-12,
+          "materialReaction": 2.984279490192421e-13,
+          "gasReaction": -1.1368683772161603e-13,
+          "pressure": 160000,
+          "volume": 0.004787716503481838,
+          "potential": 11.542120180685133,
+          "compression": 0,
+          "activeVertexSpan": 0,
+          "rimClearance": 0.05144858593210927,
+          "locallyAdmissible": true,
+          "admission": "admitted",
+          "converged": true,
+          "iterations": 0,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 2.815170319081517e-11
+        },
+        {
+          "branch": "load",
+          "deflection": 0.0010000000000000009,
+          "reaction": 146.3608309855702,
+          "materialReaction": 146.36083098195698,
+          "gasReaction": 5.115907697472721e-13,
+          "pressure": 160083.10826955328,
+          "volume": 0.004786448022754205,
+          "potential": 11.59817185910373,
+          "compression": 0,
+          "activeVertexSpan": 0.0356271004196246,
+          "rimClearance": 0.05044858593210927,
+          "locallyAdmissible": true,
+          "admission": "admitted",
+          "converged": true,
+          "iterations": 3,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 1.4772965073461819e-8
+        },
+        {
+          "branch": "load",
+          "deflection": 0.0020000000000000018,
+          "reaction": 455.715541358876,
+          "materialReaction": 455.7155413567016,
+          "gasReaction": -2.1458390619955026e-12,
+          "pressure": 160258.9031519988,
+          "volume": 0.004783767301601456,
+          "potential": 11.881829932072916,
+          "compression": 28,
+          "activeVertexSpan": 0.07134114736145117,
+          "rimClearance": 0.04944858593210927,
+          "locallyAdmissible": false,
+          "admission": "compressive-resultant",
+          "converged": true,
+          "iterations": 3,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 9.817959778501972e-9
+        },
+        {
+          "branch": "load",
+          "deflection": 0.0030000000000000027,
+          "reaction": 810.2325528861872,
+          "materialReaction": 810.2325516681566,
+          "gasReaction": 1.8474111129762605e-13,
+          "pressure": 160466.581922074,
+          "volume": 0.004780604631128674,
+          "potential": 12.515212136585296,
+          "compression": 56,
+          "activeVertexSpan": 0.07150773132344337,
+          "rimClearance": 0.04844858593210927,
+          "locallyAdmissible": false,
+          "admission": "compressive-resultant",
+          "converged": true,
+          "iterations": 3,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 0.000004411253341274346
+        },
+        {
+          "branch": "load",
+          "deflection": 0.0040000000000000036,
+          "reaction": 1292.4833240055882,
+          "materialReaction": 1292.483323988787,
+          "gasReaction": 5.400124791776761e-13,
+          "pressure": 160746.23861904588,
+          "volume": 0.004776353092998512,
+          "potential": 13.554075251736407,
+          "compression": 56,
+          "activeVertexSpan": 0.10736338243219407,
+          "rimClearance": 0.047448585932109266,
+          "locallyAdmissible": false,
+          "admission": "compressive-resultant",
+          "converged": true,
+          "iterations": 3,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 8.051839017753082e-8
+        },
+        {
+          "branch": "unload",
+          "deflection": 0.0030000000000000027,
+          "reaction": 810.2325539184781,
+          "materialReaction": 810.2325538856373,
+          "gasReaction": -9.805489753489383e-13,
+          "pressure": 160466.58192376938,
+          "volume": 0.004780604631102875,
+          "potential": 12.515212136586436,
+          "compression": 56,
+          "activeVertexSpan": 0.07150773133054505,
+          "rimClearance": 0.04844858593210927,
+          "locallyAdmissible": false,
+          "admission": "compressive-resultant",
+          "converged": true,
+          "iterations": 4,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 1.220727696704671e-7
+        },
+        {
+          "branch": "unload",
+          "deflection": 0.0020000000000000018,
+          "reaction": 455.7155413632205,
+          "materialReaction": 455.71554136240536,
+          "gasReaction": 5.826450433232822e-13,
+          "pressure": 160258.90315200336,
+          "volume": 0.004783767301601387,
+          "potential": 11.88182993207381,
+          "compression": 28,
+          "activeVertexSpan": 0.07134114736146617,
+          "rimClearance": 0.04944858593210927,
+          "locallyAdmissible": false,
+          "admission": "compressive-resultant",
+          "converged": true,
+          "iterations": 4,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 2.712845059704705e-9
+        },
+        {
+          "branch": "unload",
+          "deflection": 0.0010000000000000009,
+          "reaction": 146.36083098804733,
+          "materialReaction": 146.36083098805182,
+          "gasReaction": -2.8421709430404007e-13,
+          "pressure": 160083.10826955995,
+          "volume": 0.004786448022754104,
+          "potential": 11.598171859106708,
+          "compression": 0,
+          "activeVertexSpan": 0.035627100419638624,
+          "rimClearance": 0.05044858593210927,
+          "locallyAdmissible": true,
+          "admission": "admitted",
+          "converged": true,
+          "iterations": 4,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 2.440003754600184e-11
+        },
+        {
+          "branch": "unload",
+          "deflection": 0,
+          "reaction": 3.3878677641041577e-10,
+          "materialReaction": -2.3565860374219483e-10,
+          "gasReaction": -3.552713678800501e-13,
+          "pressure": 159999.99999999683,
+          "volume": 0.004787716503481886,
+          "potential": 11.54212018067893,
+          "compression": 0,
+          "activeVertexSpan": 0,
+          "rimClearance": 0.05144858593210927,
+          "locallyAdmissible": true,
+          "admission": "admitted",
+          "converged": true,
+          "iterations": 3,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 3.029053452507924e-9
+        }
+      ]
+    },
+    {
+      "segments": 16,
+      "nodes": 128,
+      "pressure": 200000,
+      "configuration": {
+        "nodes": 128,
+        "rimRadius": 0.311,
+        "section": [
+          [
+            0.015,
+            0
+          ],
+          [
+            0.021392133620176137,
+            0.0058698602145441404
+          ],
+          [
+            0.025614563473661152,
+            0.013451793826022998
+          ],
+          [
+            0.027239028307026122,
+            0.0219768008736233
+          ],
+          [
+            0.02610076627227638,
+            0.030580229881682915
+          ],
+          [
+            0.022315225948227296,
+            0.03838947540295273
+          ],
+          [
+            0.016266356932702248,
+            0.044612482295886026
+          ],
+          [
+            0.008567667635859425,
+            0.04861808016226653
+          ],
+          [
+            1.6685812638382689e-18,
+            0.05
+          ],
+          [
+            -0.008567667635859422,
+            0.04861808016226653
+          ],
+          [
+            -0.016266356932702248,
+            0.044612482295886026
+          ],
+          [
+            -0.022315225948227296,
+            0.038389475402952726
+          ],
+          [
+            -0.026100766272276376,
+            0.03058022988168292
+          ],
+          [
+            -0.027239028307026122,
+            0.021976800873623293
+          ],
+          [
+            -0.025614563473661155,
+            0.013451793826023002
+          ],
+          [
+            -0.021392133620176133,
+            0.00586986021454413
+          ],
+          [
+            -0.015,
+            0
+          ]
+        ],
+        "meridionalRigidity": 200000,
+        "hoopRigidity": 100000,
+        "couplingRigidity": 20000,
+        "gaugePressure": 200000,
+        "ambientPressure": 101325,
+        "exponent": 1.2,
+        "provenance": "Illustrative load diagnostic; no measured tyre data"
+      },
+      "states": [
+        {
+          "branch": "load",
+          "deflection": 0,
+          "reaction": 5.684341886080802e-14,
+          "materialReaction": -2.5579538487363607e-13,
+          "gasReaction": -1.1368683772161603e-13,
+          "pressure": 200000,
+          "volume": 0.004823759229498363,
+          "potential": 18.029770549047868,
+          "compression": 0,
+          "activeVertexSpan": 0,
+          "rimClearance": 0.05180949051092826,
+          "locallyAdmissible": true,
+          "admission": "admitted",
+          "converged": true,
+          "iterations": 0,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 2.8613555969059234e-11
+        },
+        {
+          "branch": "load",
+          "deflection": 0.0010000000000000009,
+          "reaction": 148.82003224343867,
+          "materialReaction": 148.82003224216055,
+          "gasReaction": -1.7053025658242404e-12,
+          "pressure": 200095.66788955985,
+          "volume": 0.004822483351847321,
+          "potential": 18.08667115323216,
+          "compression": 0,
+          "activeVertexSpan": 0.035654860437174085,
+          "rimClearance": 0.05080949051092826,
+          "locallyAdmissible": true,
+          "admission": "admitted",
+          "converged": true,
+          "iterations": 3,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 5.34030064613944e-9
+        },
+        {
+          "branch": "load",
+          "deflection": 0.0020000000000000018,
+          "reaction": 458.90344119729514,
+          "materialReaction": 458.90344119664104,
+          "gasReaction": -7.105427357601002e-13,
+          "pressure": 200295.36868531094,
+          "volume": 0.004819822427131785,
+          "potential": 18.372215800191764,
+          "compression": 0,
+          "activeVertexSpan": 0.07138493358275072,
+          "rimClearance": 0.049809490510928256,
+          "locallyAdmissible": true,
+          "admission": "admitted",
+          "converged": true,
+          "iterations": 3,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 2.9180959870700462e-9
+        },
+        {
+          "branch": "load",
+          "deflection": 0.0030000000000000027,
+          "reaction": 818.7463350293458,
+          "materialReaction": 818.746334631465,
+          "gasReaction": 4.263256414560601e-13,
+          "pressure": 200533.37994273865,
+          "volume": 0.004816655248212568,
+          "potential": 19.011475487317316,
+          "compression": 52,
+          "activeVertexSpan": 0.07153030194569863,
+          "rimClearance": 0.048809490510928255,
+          "locallyAdmissible": false,
+          "admission": "compressive-resultant",
+          "converged": true,
+          "iterations": 3,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 0.0000014656614517605249
+        },
+        {
+          "branch": "load",
+          "deflection": 0.0040000000000000036,
+          "reaction": 1300.812714336023,
+          "materialReaction": 1300.8127143318527,
+          "gasReaction": 1.3642420526593924e-12,
+          "pressure": 200850.03266710616,
+          "volume": 0.004812448689964665,
+          "potential": 20.056603453926495,
+          "compression": 56,
+          "activeVertexSpan": 0.10738574959397237,
+          "rimClearance": 0.047809490510928254,
+          "locallyAdmissible": false,
+          "admission": "compressive-resultant",
+          "converged": true,
+          "iterations": 3,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 1.9822131491764594e-8
+        },
+        {
+          "branch": "unload",
+          "deflection": 0.0030000000000000027,
+          "reaction": 818.7463353599165,
+          "materialReaction": 818.7463353575129,
+          "gasReaction": -9.947598300641403e-13,
+          "pressure": 200533.37994338394,
+          "volume": 0.004816655248203987,
+          "potential": 19.01147548731753,
+          "compression": 52,
+          "activeVertexSpan": 0.07153030194825578,
+          "rimClearance": 0.048809490510928255,
+          "locallyAdmissible": false,
+          "admission": "compressive-resultant",
+          "converged": true,
+          "iterations": 4,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 8.614271962414932e-9
+        },
+        {
+          "branch": "unload",
+          "deflection": 0.0020000000000000018,
+          "reaction": 458.9034411983049,
+          "materialReaction": 458.9034411981714,
+          "gasReaction": 2.2453150450019166e-12,
+          "pressure": 200295.36868531196,
+          "volume": 0.0048198224271317714,
+          "potential": 18.372215800190776,
+          "compression": 0,
+          "activeVertexSpan": 0.07138493358275566,
+          "rimClearance": 0.049809490510928256,
+          "locallyAdmissible": true,
+          "admission": "admitted",
+          "converged": true,
+          "iterations": 4,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 6.302265376234573e-10
+        },
+        {
+          "branch": "unload",
+          "deflection": 0.0010000000000000009,
+          "reaction": 148.8200322443443,
+          "materialReaction": 148.82003224434337,
+          "gasReaction": -1.8189894035458565e-12,
+          "pressure": 200095.66788956223,
+          "volume": 0.004822483351847289,
+          "potential": 18.086671153232565,
+          "compression": 0,
+          "activeVertexSpan": 0.03565486043717938,
+          "rimClearance": 0.05080949051092826,
+          "locallyAdmissible": true,
+          "admission": "admitted",
+          "converged": true,
+          "iterations": 4,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 2.41158204516978e-11
+        },
+        {
+          "branch": "unload",
+          "deflection": 0,
+          "reaction": 1.0797407412610482e-10,
+          "materialReaction": -1.9078925106441602e-9,
+          "gasReaction": 4.831690603168681e-13,
+          "pressure": 200000.00000000084,
+          "volume": 0.004823759229498352,
+          "potential": 18.02977054905814,
+          "compression": 0,
+          "activeVertexSpan": 0,
+          "rimClearance": 0.05180949051092826,
+          "locallyAdmissible": true,
+          "admission": "admitted",
+          "converged": true,
+          "iterations": 3,
+          "stability": "positive-with-refinement-margin",
+          "kkt": 1.000136329309953e-8
+        }
+      ]
+    }
+  ],
+  "sourcesSha256": {
+    "dist/sealed-casing.js": "47c10d740da0ea883e41cae176883902349425b3688423922964a6e610f5a8ad",
+    "dist/wheel-ring.js": "c0de0d124a02f1ecfacd899e73de714ce6a697d0badccd9020052c88fe55de60",
+    "dist/tyre-gas.js": "bb977230f4762d4f57059506149491934589be374c07107a4283c1e32bfb0089",
+    "scripts/lib/tyre-dense.mjs": "ce37478c657618654605b342eacb55ae38accf3b21e9e9c738a64cb7e2fdd329",
+    "scripts/lib/tyre-sealed-load.mjs": "75eed477cdf432b54ddcbf04a5bf0cfd3d74469d1ee2af93a39692ffcdec1889",
+    "scripts/lib/tyre-meridian-fixture.mjs": "8610247689576494a9300712dd66bc44d06bbf1079f2897a5f8eddf8eea1249d",
+    "scripts/lib/tyre-inflation.mjs": "693611ae30bf86543c190a3910948b9e8f7171a61ff1923d397542232e91b3cd",
+    "scripts/tyre-sealed-load.mjs": "e1f70836809448eca5e5c8b5858c07d184689b1d0da8bd5e66faa3083d130e57",
+    "scripts/plot-tyre-sealed-load.py": "3c7da98749fc1544911e26ca3ea28596801734f85aa32fcb97cfe5ddb4677986",
+    "test/tyre-sealed-load.test.mjs": "7a0db67e50c31689eb7ff7f72b817e088809466c2595ca6358467dc047c1e48a"
+  },
+  "reportSha256": "7e5a14d5508580781649eb7b2667286d5b9214da8ccb3fb468b36747ae1feb4a"
+}

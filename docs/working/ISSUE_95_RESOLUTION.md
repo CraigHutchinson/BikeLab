@@ -26,3 +26,7 @@ Merge reviewable increments after each iteration, but keep this contract and the
 ## 15 November receiving increment
 
 The opt-in moving-wheel consumer now has closed swept volume, membrane/gas force gradients, discrete inflation equilibrium and split Euler native forces. Focused free-flight/drop/replay/refinement tests and Edge worker/UI receiving pass; see [runtime evidence and limitations](../TYRE_SWEPT_RUNTIME.md). Steps 1–4 have a bounded first consumer; this does not finish loaded stability or steps 5–6. The next slice is imposed load/unload and loaded mesh/stability/admission checks before trail and near-rim integration. No calibration or #95 closure is claimed.
+
+## Loaded gate failure, 15 November
+
+The [static imposed-height sweep](../TYRE_SEALED_LOAD.md) converges at all 162 samples, but 50 develop compression and 48/105 mesh comparisons fail. A positive local tangent is insufficient. Correct the discretization/model after active-set and strain-mode investigation before proceeding with native loaded receiving or trail reuse. The proposed quadrature change is only an unsuccessful preliminary probe, not an adopted fix. Runtime timestep admission, native load/unload, inserts and calibration remain pending.
