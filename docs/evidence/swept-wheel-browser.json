@@ -1,0 +1,21 @@
+{
+  "success": true,
+  "node": "v24.22.0",
+  "checks": [
+    "worker saved record agrees with headless at 1e-7 absolute plus 1e-8 relative",
+    "selection, save, scrub, restore and load preserve sealed model"
+  ],
+  "errors": [],
+  "browser": "158.0.4370.21",
+  "sources": {
+    "dist/moving-wheel.js": "3896fc8f29ef509eb4115838e7eb42014f479dc3eaf5ee638734421e1cb11a37",
+    "dist/moving-wheel-app.js": "cd46893774472478e566508fb31cc50b2bffc9623e2724cea3b4541f8747807c",
+    "dist/moving-wheel.html": "2cd8327e1f38aaa11aa637614c7c3657360877388f7dd3e51ffe2cde5e4f09f4",
+    "dist/sealed-casing.js": "47c10d740da0ea883e41cae176883902349425b3688423922964a6e610f5a8ad",
+    "dist/sealed-casing-example.js": "ab29a64f7a5d451211f0c85988ba14d4e09bf81dd5a084a4f07b99629f49ddc9",
+    "dist/wheel-ring.js": "c0de0d124a02f1ecfacd899e73de714ce6a697d0badccd9020052c88fe55de60",
+    "dist/tyre-gas.js": "bb977230f4762d4f57059506149491934589be374c07107a4283c1e32bfb0089",
+    "scripts/sealed-wheel-browser-check.mjs": "7fb3c53c94ed269fc2074122dd4362a6dab2a9794b64cd1af9b62c58306c791c"
+  },
+  "screenshotSha256": "0322d09b1c7cbf02c6d2efb45cd0b40c89b774dbd91d813cd1b8c97570582ff5"
+}

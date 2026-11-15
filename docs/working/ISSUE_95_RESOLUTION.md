@@ -22,3 +22,7 @@ The smallest vertical slice is a distinct, explicitly uncalibrated sealed-casing
 #95's implementation can be resolved only once pressure, geometry-dependent response, unloaded prestress and declared near-rim handling reach the actual wheel/trail consumers with numerical and browser receiving. Calibration may remain explicitly deferred per user direction; it must not be fabricated. Physical pinch/burst/bead-release predictions require their own supported criteria and stay unavailable. Air leakage/damage evolution and general 3D riding are outside the current fixed-mass planar receiver.
 
 Merge reviewable increments after each iteration, but keep this contract and the remaining work current on main. A merge, positive tangent, or passing software suite is not completion of a failed physical/model gate.
+
+## 15 November receiving increment
+
+The opt-in moving-wheel consumer now has closed swept volume, membrane/gas force gradients, discrete inflation equilibrium and split Euler native forces. Focused free-flight/drop/replay/refinement tests and Edge worker/UI receiving pass; see [runtime evidence and limitations](../TYRE_SWEPT_RUNTIME.md). Steps 1–4 have a bounded first consumer; this does not finish loaded stability or steps 5–6. The next slice is imposed load/unload and loaded mesh/stability/admission checks before trail and near-rim integration. No calibration or #95 closure is claimed.

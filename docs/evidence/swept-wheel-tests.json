@@ -1,0 +1,21 @@
+{
+  "date": "2026-11-15",
+  "node": "v24.22.0",
+  "platform": "Windows",
+  "command": "node --test",
+  "tests": 487,
+  "pass": 487,
+  "fail": 0,
+  "skipped": 0,
+  "durationMs": 137694.6958,
+  "scope": "Complete local Node suite; focused Edge receiving is separate. No full-browser or full hosted attestation.",
+  "sourcesSha256": {
+    "dist/moving-wheel.js": "3896fc8f29ef509eb4115838e7eb42014f479dc3eaf5ee638734421e1cb11a37",
+    "dist/sealed-casing.js": "47c10d740da0ea883e41cae176883902349425b3688423922964a6e610f5a8ad",
+    "dist/tyre-gas.js": "bb977230f4762d4f57059506149491934589be374c07107a4283c1e32bfb0089",
+    "dist/wheel-ring.js": "c0de0d124a02f1ecfacd899e73de714ce6a697d0badccd9020052c88fe55de60",
+    "test/sealed-casing.test.mjs": "c9530f17759c2f7892e0185ebda15794a5df18726ed98b15708da8f555d29a48",
+    "test/sealed-moving-wheel.test.mjs": "08eebe2b70d5745272afb41de3aa833b2445f50e9bb741d0bf015f1bd9b390c0"
+  },
+  "browserRecordSha256": "0e372020323270286c2a7aa3967d22b71eb7016d64445bd4ea6973787216eb21"
+}
