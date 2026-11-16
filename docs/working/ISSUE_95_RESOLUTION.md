@@ -30,3 +30,7 @@ The opt-in moving-wheel consumer now has closed swept volume, membrane/gas force
 ## Loaded gate failure, 15 November
 
 The [static imposed-height sweep](../TYRE_SEALED_LOAD.md) converges at all 162 samples, but 50 develop compression and 48/105 mesh comparisons fail. A positive local tangent is insufficient. Correct the discretization/model after active-set and strain-mode investigation before proceeding with native loaded receiving or trail reuse. The proposed quadrature change is only an unsuccessful preliminary probe, not an adopted fix. Runtime timestep admission, native load/unload, inserts and calibration remain pending.
+
+## Endpoint candidate, 16 November
+
+The [versioned endpoint-energy formulation](../TYRE_CASING_MODES.md) removes the identified strain-averaging deficiency without new material constants, while preserving all archived legacy force states exactly. It is not promoted: 19/30 loaded refinement comparisons still fail and 45/81 states are compressive. Next investigate contact resolution and transverse section freedom or a supported wrinkling law; do not tune away these failures. Native loaded receiving, timestep admission, trail/inserts and calibration remain pending.
