@@ -34,3 +34,7 @@ The [static imposed-height sweep](../TYRE_SEALED_LOAD.md) converges at all 162 s
 ## Endpoint candidate, 16 November
 
 The [versioned endpoint-energy formulation](../TYRE_CASING_MODES.md) removes the identified strain-averaging deficiency without new material constants, while preserving all archived legacy force states exactly. It is not promoted: 19/30 loaded refinement comparisons still fail and 45/81 states are compressive. Next investigate contact resolution and transverse section freedom or a supported wrinkling law; do not tune away these failures. Native loaded receiving, timestep admission, trail/inserts and calibration remain pending.
+
+## Sampling separation, 16 November
+
+The [independent sampling sweep](../TYRE_CASING_RESOLUTION.md) isolates transverse discretization: all six section-refinement comparisons pass while all six circumferential comparisons fail at 1.6 bar/2 mm. All final states remain compressive. Next test contact-phase sensitivity and finer circumferential resolution before selecting a richer shape or supported wrinkling model. Runtime, native loaded, trail/insert and calibration gates remain unchanged.
