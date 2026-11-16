@@ -1,0 +1,804 @@
+{
+  "scope": "Separate sampling convergence from affine section freedom. Fixed 1.6 bar and 2 mm lowering, not a pressure envelope or model acceptance.",
+  "sourcesSha256": {
+    "dist/sealed-casing.js": "14371827976d1451fcf8e8ae927bad88e6d070be6c361ca7a00f6780eb2b4315",
+    "dist/wheel-ring.js": "c0de0d124a02f1ecfacd899e73de714ce6a697d0badccd9020052c88fe55de60",
+    "dist/tyre-gas.js": "bb977230f4762d4f57059506149491934589be374c07107a4283c1e32bfb0089",
+    "scripts/lib/tyre-dense.mjs": "ce37478c657618654605b342eacb55ae38accf3b21e9e9c738a64cb7e2fdd329",
+    "scripts/lib/tyre-sealed-load.mjs": "7ac242d7a1219f4b95e084853c1215c22ba83a5f4275aac9d101386551560fb3",
+    "scripts/lib/tyre-meridian-fixture.mjs": "8610247689576494a9300712dd66bc44d06bbf1079f2897a5f8eddf8eea1249d",
+    "scripts/lib/tyre-inflation.mjs": "693611ae30bf86543c190a3910948b9e8f7171a61ff1923d397542232e91b3cd",
+    "scripts/tyre-casing-resolution.mjs": "ee0803eec418dc64afc21866c49b8ac97c16c14349574bc4e06270cdc3f36bdb"
+  },
+  "cases": [
+    {
+      "nodes": 32,
+      "segments": 8,
+      "states": [
+        {
+          "deflection": 0,
+          "radius": 0.36238761370873374,
+          "reaction": 1.5802470443304628e-11,
+          "contacts": [],
+          "activeVertexSpan": 0,
+          "kkt": 1.9610979506978765e-11,
+          "converged": true,
+          "admission": "admitted",
+          "compression": 0,
+          "locallyAdmissible": true
+        },
+        {
+          "deflection": 0.0010000000000000009,
+          "radius": 0.36238761370873374,
+          "reaction": 336.13610298354575,
+          "contacts": [
+            {
+              "node": 0,
+              "x": -1.2342646384990505e-17,
+              "reaction": 336.13610298354575
+            }
+          ],
+          "activeVertexSpan": 0,
+          "kkt": 3.431784989516018e-8,
+          "converged": true,
+          "admission": "admitted",
+          "compression": 0,
+          "locallyAdmissible": true
+        },
+        {
+          "deflection": 0.0020000000000000018,
+          "radius": 0.36238761370873374,
+          "reaction": 668.7670440586921,
+          "contacts": [
+            {
+              "node": 0,
+              "x": -5.3349220059548064e-17,
+              "reaction": 668.7670440586921
+            }
+          ],
+          "activeVertexSpan": 0,
+          "kkt": 2.535955445637228e-8,
+          "converged": true,
+          "admission": "compressive-resultant",
+          "compression": 16,
+          "locallyAdmissible": false
+        }
+      ]
+    },
+    {
+      "nodes": 32,
+      "segments": 16,
+      "states": [
+        {
+          "deflection": 0,
+          "radius": 0.3624398982270495,
+          "reaction": 0,
+          "contacts": [],
+          "activeVertexSpan": 0,
+          "kkt": 1.7962520360015333e-11,
+          "converged": true,
+          "admission": "admitted",
+          "compression": 0,
+          "locallyAdmissible": true
+        },
+        {
+          "deflection": 0.0010000000000000009,
+          "radius": 0.3624398982270495,
+          "reaction": 339.01062333084576,
+          "contacts": [
+            {
+              "node": 0,
+              "x": 2.5484374838411875e-17,
+              "reaction": 339.01062333084576
+            }
+          ],
+          "activeVertexSpan": 0,
+          "kkt": 3.146898563954892e-8,
+          "converged": true,
+          "admission": "admitted",
+          "compression": 0,
+          "locallyAdmissible": true
+        },
+        {
+          "deflection": 0.0020000000000000018,
+          "radius": 0.3624398982270495,
+          "reaction": 674.5467302748899,
+          "contacts": [
+            {
+              "node": 0,
+              "x": -1.3193362682668147e-17,
+              "reaction": 674.5467302748899
+            }
+          ],
+          "activeVertexSpan": 0,
+          "kkt": 2.29785399596949e-8,
+          "converged": true,
+          "admission": "compressive-resultant",
+          "compression": 28,
+          "locallyAdmissible": false
+        }
+      ]
+    },
+    {
+      "nodes": 32,
+      "segments": 32,
+      "states": [
+        {
+          "deflection": 0,
+          "radius": 0.36245329766484324,
+          "reaction": 1.0743406164692715e-11,
+          "contacts": [],
+          "activeVertexSpan": 0,
+          "kkt": 1.2960299500264227e-11,
+          "converged": true,
+          "admission": "admitted",
+          "compression": 0,
+          "locallyAdmissible": true
+        },
+        {
+          "deflection": 0.0010000000000000009,
+          "radius": 0.36245329766484324,
+          "reaction": 339.69686294787664,
+          "contacts": [
+            {
+              "node": 0,
+              "x": 1.0233147878731722e-17,
+              "reaction": 339.69686294787664
+            }
+          ],
+          "activeVertexSpan": 0,
+          "kkt": 3.0794467420491856e-8,
+          "converged": true,
+          "admission": "admitted",
+          "compression": 0,
+          "locallyAdmissible": true
+        },
+        {
+          "deflection": 0.0020000000000000018,
+          "radius": 0.36245329766484324,
+          "reaction": 675.9223375880615,
+          "contacts": [
+            {
+              "node": 0,
+              "x": -2.7365380731895615e-17,
+              "reaction": 675.9223375880615
+            }
+          ],
+          "activeVertexSpan": 0,
+          "kkt": 2.241795016288961e-8,
+          "converged": true,
+          "admission": "compressive-resultant",
+          "compression": 60,
+          "locallyAdmissible": false
+        }
+      ]
+    },
+    {
+      "nodes": 64,
+      "segments": 8,
+      "states": [
+        {
+          "deflection": 0,
+          "radius": 0.3623943085872308,
+          "reaction": 0,
+          "contacts": [],
+          "activeVertexSpan": 0,
+          "kkt": 1.679723027336877e-11,
+          "converged": true,
+          "admission": "admitted",
+          "compression": 0,
+          "locallyAdmissible": true
+        },
+        {
+          "deflection": 0.0010000000000000009,
+          "radius": 0.3623943085872308,
+          "reaction": 168.9432778937108,
+          "contacts": [
+            {
+              "node": 0,
+              "x": 3.3790400210655868e-18,
+              "reaction": 168.9432778937108
+            }
+          ],
+          "activeVertexSpan": 0,
+          "kkt": 8.812612861675007e-10,
+          "converged": true,
+          "admission": "admitted",
+          "compression": 0,
+          "locallyAdmissible": true
+        },
+        {
+          "deflection": 0.0020000000000000018,
+          "radius": 0.3623943085872308,
+          "reaction": 415.1783914858144,
+          "contacts": [
+            {
+              "node": 0,
+              "x": -7.103165615610365e-18,
+              "reaction": 335.4033208371058
+            },
+            {
+              "node": 1,
+              "x": 0.03563225748543215,
+              "reaction": 39.88753532435476
+            },
+            {
+              "node": 63,
+              "x": -0.035632257485432174,
+              "reaction": 39.88753532435385
+            }
+          ],
+          "activeVertexSpan": 0.07126451497086433,
+          "kkt": 1.1093902685388457e-8,
+          "converged": true,
+          "admission": "compressive-resultant",
+          "compression": 16,
+          "locallyAdmissible": false
+        }
+      ]
+    },
+    {
+      "nodes": 64,
+      "segments": 16,
+      "states": [
+        {
+          "deflection": 0,
+          "radius": 0.36244684589894294,
+          "reaction": 0,
+          "contacts": [],
+          "activeVertexSpan": 0,
+          "kkt": 1.4594547792512458e-11,
+          "converged": true,
+          "admission": "admitted",
+          "compression": 0,
+          "locallyAdmissible": true
+        },
+        {
+          "deflection": 0.0010000000000000009,
+          "radius": 0.36244684589894294,
+          "reaction": 170.48397561520386,
+          "contacts": [
+            {
+              "node": 0,
+              "x": 7.308507107116294e-18,
+              "reaction": 170.48397561520386
+            }
+          ],
+          "activeVertexSpan": 0,
+          "kkt": 7.328608830903249e-10,
+          "converged": true,
+          "admission": "admitted",
+          "compression": 0,
+          "locallyAdmissible": true
+        },
+        {
+          "deflection": 0.0020000000000000018,
+          "radius": 0.36244684589894294,
+          "reaction": 418.80850149766286,
+          "contacts": [
+            {
+              "node": 0,
+              "x": 1.7248835501592717e-17,
+              "reaction": 338.4695132211575
+            },
+            {
+              "node": 1,
+              "x": 0.03563330446960343,
+              "reaction": 40.16949413825233
+            },
+            {
+              "node": 63,
+              "x": -0.035633304469603395,
+              "reaction": 40.169494138252986
+            }
+          ],
+          "activeVertexSpan": 0.07126660893920683,
+          "kkt": 9.792621824544767e-9,
+          "converged": true,
+          "admission": "compressive-resultant",
+          "compression": 28,
+          "locallyAdmissible": false
+        }
+      ]
+    },
+    {
+      "nodes": 64,
+      "segments": 32,
+      "states": [
+        {
+          "deflection": 0,
+          "radius": 0.36246031005974355,
+          "reaction": 0,
+          "contacts": [],
+          "activeVertexSpan": 0,
+          "kkt": 1.290345608140342e-11,
+          "converged": true,
+          "admission": "admitted",
+          "compression": 0,
+          "locallyAdmissible": true
+        },
+        {
+          "deflection": 0.0010000000000000009,
+          "radius": 0.36246031005974355,
+          "reaction": 170.85449839319347,
+          "contacts": [
+            {
+              "node": 0,
+              "x": -2.710230865457087e-18,
+              "reaction": 170.85449839319347
+            }
+          ],
+          "activeVertexSpan": 0,
+          "kkt": 6.996607737619343e-10,
+          "converged": true,
+          "admission": "admitted",
+          "compression": 0,
+          "locallyAdmissible": true
+        },
+        {
+          "deflection": 0.0020000000000000018,
+          "radius": 0.36246031005974355,
+          "reaction": 419.67203508289015,
+          "contacts": [
+            {
+              "node": 0,
+              "x": 1.6716886599795492e-17,
+              "reaction": 339.2038370872149
+            },
+            {
+              "node": 1,
+              "x": 0.035633610180076894,
+              "reaction": 40.23409899783752
+            },
+            {
+              "node": 63,
+              "x": -0.03563361018007686,
+              "reaction": 40.23409899783772
+            }
+          ],
+          "activeVertexSpan": 0.07126722036015376,
+          "kkt": 9.4887013801781e-9,
+          "converged": true,
+          "admission": "compressive-resultant",
+          "compression": 60,
+          "locallyAdmissible": false
+        }
+      ]
+    },
+    {
+      "nodes": 128,
+      "segments": 8,
+      "states": [
+        {
+          "deflection": 0,
+          "radius": 0.3623959853078363,
+          "reaction": 2.4158453015843406e-13,
+          "contacts": [],
+          "activeVertexSpan": 0,
+          "kkt": 2.857802883227123e-11,
+          "converged": true,
+          "admission": "admitted",
+          "compression": 0,
+          "locallyAdmissible": true
+        },
+        {
+          "deflection": 0.0010000000000000009,
+          "radius": 0.3623959853078363,
+          "reaction": 179.38721262677052,
+          "contacts": [
+            {
+              "node": 0,
+              "x": -3.533392730991697e-17,
+              "reaction": 84.94688553786654
+            },
+            {
+              "node": 1,
+              "x": 0.01781130652646245,
+              "reaction": 47.22016354445218
+            },
+            {
+              "node": 127,
+              "x": -0.01781130652646252,
+              "reaction": 47.22016354445179
+            }
+          ],
+          "activeVertexSpan": 0.03562261305292497,
+          "kkt": 3.531945225176969e-8,
+          "converged": true,
+          "admission": "admitted",
+          "compression": 0,
+          "locallyAdmissible": true
+        },
+        {
+          "deflection": 0.0020000000000000018,
+          "radius": 0.3623959853078363,
+          "reaction": 467.1245735986336,
+          "contacts": [
+            {
+              "node": 0,
+              "x": -2.934233463159503e-17,
+              "reaction": 167.38306840084286
+            },
+            {
+              "node": 1,
+              "x": 0.017848827882973053,
+              "reaction": 131.1445888118313
+            },
+            {
+              "node": 2,
+              "x": 0.03566159423871396,
+              "reaction": 18.72616378706428
+            },
+            {
+              "node": 126,
+              "x": -0.03566159423871402,
+              "reaction": 18.72616378706381
+            },
+            {
+              "node": 127,
+              "x": -0.01784882788297311,
+              "reaction": 131.1445888118314
+            }
+          ],
+          "activeVertexSpan": 0.07132318847742798,
+          "kkt": 1.5081067061828435e-8,
+          "converged": true,
+          "admission": "compressive-resultant",
+          "compression": 28,
+          "locallyAdmissible": false
+        }
+      ]
+    },
+    {
+      "nodes": 128,
+      "segments": 16,
+      "states": [
+        {
+          "deflection": 0,
+          "radius": 0.36244858593210927,
+          "reaction": 1.8189894035458565e-12,
+          "contacts": [],
+          "activeVertexSpan": 0,
+          "kkt": 2.8194335754960775e-11,
+          "converged": true,
+          "admission": "admitted",
+          "compression": 0,
+          "locallyAdmissible": true
+        },
+        {
+          "deflection": 0.0010000000000000009,
+          "radius": 0.36244858593210927,
+          "reaction": 181.0479532071957,
+          "contacts": [
+            {
+              "node": 0,
+              "x": 4.6528032470173315e-18,
+              "reaction": 85.78068448532
+            },
+            {
+              "node": 1,
+              "x": 0.01781255120074586,
+              "reaction": 47.63363436093796
+            },
+            {
+              "node": 127,
+              "x": -0.01781255120074585,
+              "reaction": 47.633634360937705
+            }
+          ],
+          "activeVertexSpan": 0.03562510240149171,
+          "kkt": 4.427393207606656e-8,
+          "converged": true,
+          "admission": "admitted",
+          "compression": 0,
+          "locallyAdmissible": true
+        },
+        {
+          "deflection": 0.0020000000000000018,
+          "radius": 0.36244858593210927,
+          "reaction": 471.23599769272755,
+          "contacts": [
+            {
+              "node": 0,
+              "x": 3.564719182042277e-17,
+              "reaction": 168.93178669332536
+            },
+            {
+              "node": 1,
+              "x": 0.01784822792319638,
+              "reaction": 132.38581409374436
+            },
+            {
+              "node": 2,
+              "x": 0.035661668345981036,
+              "reaction": 18.766291405956466
+            },
+            {
+              "node": 126,
+              "x": -0.03566166834598096,
+              "reaction": 18.766291405956537
+            },
+            {
+              "node": 127,
+              "x": -0.01784822792319631,
+              "reaction": 132.38581409374478
+            }
+          ],
+          "activeVertexSpan": 0.071323336691962,
+          "kkt": 1.6051576068321083e-8,
+          "converged": true,
+          "admission": "compressive-resultant",
+          "compression": 52,
+          "locallyAdmissible": false
+        }
+      ]
+    },
+    {
+      "nodes": 128,
+      "segments": 32,
+      "states": [
+        {
+          "deflection": 0,
+          "radius": 0.3624620663028099,
+          "reaction": 0,
+          "contacts": [],
+          "activeVertexSpan": 0,
+          "kkt": 2.916067387559451e-11,
+          "converged": true,
+          "admission": "admitted",
+          "compression": 0,
+          "locallyAdmissible": true
+        },
+        {
+          "deflection": 0.0010000000000000009,
+          "radius": 0.3624620663028099,
+          "reaction": 181.44778424870657,
+          "contacts": [
+            {
+              "node": 0,
+              "x": -6.435691847843314e-18,
+              "reaction": 85.98258558476742
+            },
+            {
+              "node": 1,
+              "x": 0.017812882761946102,
+              "reaction": 47.73259933196965
+            },
+            {
+              "node": 127,
+              "x": -0.017812882761946112,
+              "reaction": 47.732599331969496
+            }
+          ],
+          "activeVertexSpan": 0.03562576552389221,
+          "kkt": 4.689612254082931e-8,
+          "converged": true,
+          "admission": "admitted",
+          "compression": 0,
+          "locallyAdmissible": true
+        },
+        {
+          "deflection": 0.0020000000000000018,
+          "radius": 0.3624620663028099,
+          "reaction": 472.21521981938366,
+          "contacts": [
+            {
+              "node": 0,
+              "x": 2.1643335324458967e-17,
+              "reaction": 169.3027569435425
+            },
+            {
+              "node": 1,
+              "x": 0.01784810373399445,
+              "reaction": 132.68438900648508
+            },
+            {
+              "node": 2,
+              "x": 0.03566173346707383,
+              "reaction": 18.77184243143516
+            },
+            {
+              "node": 126,
+              "x": -0.03566173346707379,
+              "reaction": 18.771842431435687
+            },
+            {
+              "node": 127,
+              "x": -0.017848103733994407,
+              "reaction": 132.68438900648522
+            }
+          ],
+          "activeVertexSpan": 0.07132346693414762,
+          "kkt": 1.633689450386555e-8,
+          "converged": true,
+          "admission": "compressive-resultant",
+          "compression": 108,
+          "locallyAdmissible": false
+        }
+      ]
+    }
+  ],
+  "comparisons": [
+    {
+      "axis": "nodes",
+      "from": [
+        32,
+        8
+      ],
+      "to": [
+        64,
+        8
+      ],
+      "error": 253.58865257287772,
+      "budget": 34.43835220293461,
+      "complete": true,
+      "passed": false
+    },
+    {
+      "axis": "nodes",
+      "from": [
+        32,
+        16
+      ],
+      "to": [
+        64,
+        16
+      ],
+      "error": 255.73822877722705,
+      "budget": 34.7273365137445,
+      "complete": true,
+      "passed": false
+    },
+    {
+      "axis": "nodes",
+      "from": [
+        32,
+        32
+      ],
+      "to": [
+        64,
+        32
+      ],
+      "error": 256.25030250517136,
+      "budget": 34.79611687940308,
+      "complete": true,
+      "passed": false
+    },
+    {
+      "axis": "nodes",
+      "from": [
+        64,
+        8
+      ],
+      "to": [
+        128,
+        8
+      ],
+      "error": 51.9461821128192,
+      "budget": 24.356228679931682,
+      "complete": true,
+      "passed": false
+    },
+    {
+      "axis": "nodes",
+      "from": [
+        64,
+        16
+      ],
+      "to": [
+        128,
+        16
+      ],
+      "error": 52.42749619506469,
+      "budget": 24.56179988463638,
+      "complete": true,
+      "passed": false
+    },
+    {
+      "axis": "nodes",
+      "from": [
+        64,
+        32
+      ],
+      "to": [
+        128,
+        32
+      ],
+      "error": 52.543184736493515,
+      "budget": 24.610760990969183,
+      "complete": true,
+      "passed": false
+    },
+    {
+      "axis": "segments",
+      "from": [
+        32,
+        8
+      ],
+      "to": [
+        32,
+        16
+      ],
+      "error": 5.779686216197774,
+      "budget": 34.7273365137445,
+      "complete": true,
+      "passed": true
+    },
+    {
+      "axis": "segments",
+      "from": [
+        32,
+        16
+      ],
+      "to": [
+        32,
+        32
+      ],
+      "error": 1.3756073131715993,
+      "budget": 34.79611687940308,
+      "complete": true,
+      "passed": true
+    },
+    {
+      "axis": "segments",
+      "from": [
+        64,
+        8
+      ],
+      "to": [
+        64,
+        16
+      ],
+      "error": 3.630110011848444,
+      "budget": 21.940425074883144,
+      "complete": true,
+      "passed": true
+    },
+    {
+      "axis": "segments",
+      "from": [
+        64,
+        16
+      ],
+      "to": [
+        64,
+        32
+      ],
+      "error": 0.8635335852272874,
+      "budget": 21.98360175414451,
+      "complete": true,
+      "passed": true
+    },
+    {
+      "axis": "segments",
+      "from": [
+        128,
+        8
+      ],
+      "to": [
+        128,
+        16
+      ],
+      "error": 4.111424094093934,
+      "budget": 24.56179988463638,
+      "complete": true,
+      "passed": true
+    },
+    {
+      "axis": "segments",
+      "from": [
+        128,
+        16
+      ],
+      "to": [
+        128,
+        32
+      ],
+      "error": 0.9792221266561114,
+      "budget": 24.610760990969183,
+      "complete": true,
+      "passed": true
+    }
+  ],
+  "reportSha256": "4d3c4fee9e5a59897528a6001e35e7e4932bdc0d669f3d1d115197d9936f436a"
+}

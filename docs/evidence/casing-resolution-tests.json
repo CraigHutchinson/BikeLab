@@ -1,0 +1,30 @@
+{
+  "date": "2026-11-16",
+  "node": "v24.22.0",
+  "base": "55f50119f532f878f67b6177a2b41ac3697c4b01",
+  "scope": "Offline diagnostic only; runtime and tests unchanged. No new browser or full hosted receipt. Sandbox failure was loopback EACCES.",
+  "runs": [
+    {
+      "command": "node --test",
+      "scope": "sandbox",
+      "exitCode": 1,
+      "tests": 497.0,
+      "pass": 496.0,
+      "fail": 1.0,
+      "skipped": 0.0,
+      "duration_ms": 125691.5532,
+      "logSha256": "be3113a8701f5d3952f813dfc25a552e2218aa771fc6837176cb840962ea6cb6"
+    },
+    {
+      "command": "node --test",
+      "scope": "Windows host",
+      "exitCode": 0,
+      "tests": 497.0,
+      "pass": 497.0,
+      "fail": 0.0,
+      "skipped": 0.0,
+      "duration_ms": 124663.0419,
+      "logSha256": "719bc97a163b58c41108177e5342faf9e34e4e29df7ca3eb2ebd5b13302ea4d7"
+    }
+  ]
+}
