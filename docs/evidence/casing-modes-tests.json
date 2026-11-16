@@ -1,0 +1,54 @@
+{
+  "date": "2026-11-16",
+  "node": "v24.22.0",
+  "platform": "Windows",
+  "command": "node --test",
+  "tests": 497,
+  "pass": 497,
+  "fail": 0,
+  "skipped": 0,
+  "durationMs": 121354.6717,
+  "scope": "Software correctness and compatibility pass; both loaded model receiving gates fail. No promotion or full-browser/full-hosted claim.",
+  "receiving": [
+    {
+      "model": "bikelab-swept-sealed-casing-0.1",
+      "cases": 9,
+      "samples": 81,
+      "converged": 81,
+      "locallyAdmissible": 55,
+      "compressive": 26,
+      "averagingWouldHideCompression": 41,
+      "locallyAdmissibleWithNegativeEndpoint": 19,
+      "refinementComparisons": 30,
+      "refinementFailures": 24,
+      "complete": false
+    },
+    {
+      "model": "bikelab-swept-sealed-casing-endpoint-0.1",
+      "cases": 9,
+      "samples": 81,
+      "converged": 81,
+      "locallyAdmissible": 36,
+      "compressive": 45,
+      "averagingWouldHideCompression": 37,
+      "locallyAdmissibleWithNegativeEndpoint": 0,
+      "refinementComparisons": 30,
+      "refinementFailures": 19,
+      "complete": false
+    }
+  ],
+  "sourcesSha256": {
+    "dist/sealed-casing.js": "14371827976d1451fcf8e8ae927bad88e6d070be6c361ca7a00f6780eb2b4315",
+    "dist/wheel-ring.js": "c0de0d124a02f1ecfacd899e73de714ce6a697d0badccd9020052c88fe55de60",
+    "dist/tyre-gas.js": "bb977230f4762d4f57059506149491934589be374c07107a4283c1e32bfb0089",
+    "scripts/lib/tyre-dense.mjs": "ce37478c657618654605b342eacb55ae38accf3b21e9e9c738a64cb7e2fdd329",
+    "scripts/lib/tyre-sealed-load.mjs": "7ac242d7a1219f4b95e084853c1215c22ba83a5f4275aac9d101386551560fb3",
+    "scripts/lib/tyre-casing-modes.mjs": "e188ccedf8fd3a11dee0acf4f896f8dc257c4669b425d0c06be0517f1a893d7c",
+    "scripts/lib/tyre-meridian-fixture.mjs": "8610247689576494a9300712dd66bc44d06bbf1079f2897a5f8eddf8eea1249d",
+    "scripts/lib/tyre-inflation.mjs": "693611ae30bf86543c190a3910948b9e8f7171a61ff1923d397542232e91b3cd",
+    "scripts/tyre-casing-modes.mjs": "7ce45afce8d4af17d74e225ee7a24a0a211f2987312dac2c6e6407aaa3f7f04f",
+    "scripts/plot-tyre-casing-modes.py": "849a9e3b3116cf9bff0c11220c2c7b0b94032c213215b8a801634f0e7da64e5b",
+    "test/sealed-endpoint.test.mjs": "4005765a235704ca542257d8049530551d1ab469ebd368b7c1edfe405b5f0210"
+  },
+  "plotSha256": "6af692b7dac193e402e89a3e047fdc7f7ed4cc13f14bfed7e0b170ae1ca969f3"
+}

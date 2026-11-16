@@ -29804,7 +29804,7 @@
   "sourcesSha256": {
     "scripts/spinning-gap.mjs": "2a1f3b62c735accd124f7136b14a1588a88f3270d998ba948de5f40260cd372c",
     "dist/wheel-ring.js": "c0de0d124a02f1ecfacd899e73de714ce6a697d0badccd9020052c88fe55de60",
-    "dist/sealed-casing.js": "47c10d740da0ea883e41cae176883902349425b3688423922964a6e610f5a8ad",
+    "dist/sealed-casing.js": "14371827976d1451fcf8e8ae927bad88e6d070be6c361ca7a00f6780eb2b4315",
     "dist/sealed-casing-example.js": "ab29a64f7a5d451211f0c85988ba14d4e09bf81dd5a084a4f07b99629f49ddc9",
     "dist/tyre-gas.js": "bb977230f4762d4f57059506149491934589be374c07107a4283c1e32bfb0089",
     "dist/moving-wheel.js": "3896fc8f29ef509eb4115838e7eb42014f479dc3eaf5ee638734421e1cb11a37",

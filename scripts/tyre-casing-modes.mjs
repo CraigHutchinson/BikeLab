@@ -1,0 +1,23 @@
+import assert from 'node:assert/strict';
+import {readFile,writeFile,mkdir} from 'node:fs/promises';
+import {createHash} from 'node:crypto';
+import {resolve,join} from 'node:path';
+import {createSweptCasing,MODEL,ENDPOINT_MODEL} from '../dist/sealed-casing.js';
+import {meridianFixture} from './lib/tyre-meridian-fixture.mjs';
+import {solveSealedPlane} from './lib/tyre-sealed-load.mjs';
+import {inspectCasingStrains,alternatingCurvature} from './lib/tyre-casing-modes.mjs';
+const dir=resolve(process.argv[2]??'artifacts/casing-modes');assert.ok(process.argv.length<=3);await mkdir(dir,{recursive:true});
+const paths=['dist/sealed-casing.js','dist/wheel-ring.js','dist/tyre-gas.js','scripts/lib/tyre-dense.mjs','scripts/lib/tyre-sealed-load.mjs','scripts/lib/tyre-casing-modes.mjs','scripts/lib/tyre-meridian-fixture.mjs','scripts/lib/tyre-inflation.mjs','scripts/tyre-casing-modes.mjs','scripts/plot-tyre-casing-modes.py','test/sealed-endpoint.test.mjs'];
+const hash=x=>createHash('sha256').update(x).digest('hex'),hashes=async()=>Object.fromEntries(await Promise.all(paths.map(async p=>[p,hash(await readFile(p))]))),sourcesSha256=await hashes(),cases=[];
+for(const nodes of [32,64,128])for(const pressure of [120000,160000,200000])for(const model of [MODEL,ENDPOINT_MODEL]){
+ const f=meridianFixture(8),configuration={nodes,rimRadius:f.rimRadius,section:f.restPoints,meridionalRigidity:f.meridionalRigidity,hoopRigidity:f.hoopRigidity,couplingRigidity:f.couplingRigidity,gaugePressure:pressure,ambientPressure:101325,exponent:1.2,provenance:'Uncalibrated endpoint quadrature comparison; no added material constants'},m=createSweptCasing(configuration,model),states=[];let q;
+ for(const [index,deflection] of [0,.001,.002,.003,.004,.003,.002,.001,0].entries()){
+  const s=solveSealedPlane(configuration,m.reference.radius-deflection,q,{casingModel:model});const {cells,...strain}=inspectCasingStrains(configuration,s.coordinates);states.push({...s,branch:index<=4?'load':'unload',strain});if(!s.converged)break;q=s.coordinates;
+ }
+ cases.push({nodes,pressure,model,configuration,alternatingCurvature:[alternatingCurvature(configuration,model,1e-6),alternatingCurvature(configuration,model,5e-7)],states});console.log('quadrature comparison',cases.length+'/18');
+}
+const comparisons=[];
+for(const c of cases){const d=cases.find(a=>a.pressure===c.pressure&&a.model===c.model&&a.nodes===2*c.nodes);if(!d)continue;for(let i=0;i<Math.min(c.states.length,d.states.length,5);i++){const a=c.states[i],b=d.states[i],error=Math.abs(a.reaction-b.reaction),budget=1+.05*Math.max(a.reaction,b.reaction);comparisons.push({model:c.model,nodes:[c.nodes,d.nodes],pressure:c.pressure,deflection:a.deflection,error,budget,passed:error<=budget});}}
+const receiving=[MODEL,ENDPOINT_MODEL].map(model=>{const cs=cases.filter(c=>c.model===model),states=cs.flatMap(c=>c.states),rs=comparisons.filter(c=>c.model===model);return {model,cases:cs.length,samples:states.length,converged:states.filter(s=>s.converged).length,locallyAdmissible:states.filter(s=>s.locallyAdmissible).length,compressive:states.filter(s=>s.state.compressiveCells>0).length,averagingWouldHideCompression:states.filter(s=>s.strain.hiddenCompressionCells>0).length,locallyAdmissibleWithNegativeEndpoint:states.filter(s=>s.locallyAdmissible&&s.strain.minEndpointResultant<0).length,refinementComparisons:rs.length,refinementFailures:rs.filter(s=>!s.passed).length,complete:cs.every(c=>c.states.length===9)&&states.every(s=>s.locallyAdmissible)&&rs.every(r=>r.passed)};});
+assert.deepEqual(await hashes(),sourcesSha256);const report={scope:'Versioned endpoint energy comparison. Not promoted to moving-wheel or trail; both loaded gates must remain visible.',cases,comparisons,receiving,sourcesSha256};await writeFile(join(dir,'report.json'),JSON.stringify(report)+'\n');
+const summary={...report,reportSha256:hash(await readFile(join(dir,'report.json'))),cases:cases.map(c=>({...c,states:c.states.map(s=>({branch:s.branch,deflection:s.deflection,reaction:s.reaction,potential:s.state.potential,pressure:s.state.gaugePressure,converged:s.converged,locallyAdmissible:s.locallyAdmissible,admission:s.admission,compression:s.state.compressiveCells,stability:s.stability.classification,kkt:s.metrics.maxKktForce,contacts:s.contacts,radialDisplacement:s.strain.radialDisplacement,alternatingRadialAmplitude:s.strain.alternatingRadialAmplitude,missingEnergy:s.strain.missingEnergy,hiddenCompressionCells:s.strain.hiddenCompressionCells,minEndpointResultant:s.strain.minEndpointResultant}))}))};await writeFile(join(dir,'summary.json'),JSON.stringify(summary,null,2)+'\n');console.log(JSON.stringify(receiving,null,2));if(!receiving.every(r=>r.complete))process.exitCode=1;

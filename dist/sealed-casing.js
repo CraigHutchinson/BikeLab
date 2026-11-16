@@ -2,7 +2,10 @@
 import {ringSin} from './wheel-ring.js';
 import {createSealedGas} from './tyre-gas.js';
 export const MODEL='bikelab-swept-sealed-casing-0.1';
-export function createSweptCasing(input){
+export const ENDPOINT_MODEL='bikelab-swept-sealed-casing-endpoint-0.1';
+export function createSweptCasing(input,model=MODEL){
+ if(![MODEL,ENDPOINT_MODEL].includes(model))throw RangeError('Unsupported swept casing discretization');
+ const endpoint=model===ENDPOINT_MODEL;
  const keys=['nodes','rimRadius','section','meridionalRigidity','hoopRigidity','couplingRigidity','gaugePressure','ambientPressure','exponent','provenance'];
  if(!input||Object.getPrototypeOf(input)!==Object.prototype||Reflect.ownKeys(input).length!==keys.length||Reflect.ownKeys(input).some(k=>!keys.includes(k)||!Object.hasOwn(Object.getOwnPropertyDescriptor(input,k),'value')))throw TypeError('Invalid swept casing configuration');
  const {nodes:N,rimRadius:L,meridionalRigidity:Cm,hoopRigidity:Ch,couplingRigidity:Cc,gaugePressure:pg}=input;
@@ -23,7 +26,7 @@ export function createSweptCasing(input){
   triangles.push(a,b,c,a,c,d);
   if(j<M-1){const lm=Math.hypot(axial[j+1]-axial[j],radial[j+1]-radial[j]),R=L+(radial[j]+radial[j+1])/2;cells.push({a,b,c,d,lm,lh:2*R*Math.sin(Math.PI/N),area:2*Math.PI/N*R*lm});}
  }
- const normals=new Float64Array(triangles.length),state={model:MODEL,volume:0,materialEnergy:0,gasEnergy:0,potential:0,gaugePressure:pg,maxStrain:0,compressiveCells:0,forces,materialForces,gasForces};
+ const normals=new Float64Array(triangles.length),state={model,volume:0,materialEnergy:0,gasEnergy:0,potential:0,gaugePressure:pg,maxStrain:0,compressiveCells:0,forces,materialForces,gasForces};
  const gasState={};let chamber=null,initialized=false;
  function map(points){
   if(points.length!==2*N)throw RangeError('Casing coordinate count changed');
@@ -63,10 +66,21 @@ export function createSweptCasing(input){
    const hx=(vertices[b]+vertices[c]-vertices[a]-vertices[d])/2,hy=(vertices[b+1]+vertices[c+1]-vertices[a+1]-vertices[d+1])/2,hz=(vertices[b+2]+vertices[c+2]-vertices[a+2]-vertices[d+2])/2,lh=Math.hypot(hx,hy,hz);
    if(Math.min(la,lb,lh)<=1e-10)throw RangeError('Collapsed material cell');
    const em=(la+lb)/(2*s.lm)-1,eh=lh/s.lh-1,Nm=Cm*em+Cc*eh,Nh=Cc*em+Ch*eh;
-   state.maxStrain=Math.max(state.maxStrain,Math.abs(em),Math.abs(eh));if(state.maxStrain>.2)throw RangeError('Casing small-strain envelope');
-   if(Nm<0||Nh<0)state.compressiveCells++;
-   state.materialEnergy+=s.area*(Cm*em*em+2*Cc*em*eh+Ch*eh*eh)/2;
-   edgeForce(s.a,s.d,s.area*Nm/(2*s.lm*la));edgeForce(s.b,s.c,s.area*Nm/(2*s.lm*lb));
+   if(endpoint){
+    // Integrate endpoint energies, not the square of their averaged strain.
+    // Added energy is exactly area*Cm*(ema-emb)^2/8; no new material coefficient.
+    const ema=la/s.lm-1,emb=lb/s.lm-1,Nma=Cm*ema+Cc*eh,Nmb=Cm*emb+Cc*eh;
+    state.maxStrain=Math.max(state.maxStrain,Math.abs(ema),Math.abs(emb),Math.abs(eh));
+    if(Nma<0||Nmb<0||Nh<0)state.compressiveCells++;
+    state.materialEnergy+=s.area*(Cm*(ema*ema+emb*emb)/2+2*Cc*em*eh+Ch*eh*eh)/2;
+    edgeForce(s.a,s.d,s.area*Nma/(2*s.lm*la));edgeForce(s.b,s.c,s.area*Nmb/(2*s.lm*lb));
+   }else{
+    state.maxStrain=Math.max(state.maxStrain,Math.abs(em),Math.abs(eh));
+    if(Nm<0||Nh<0)state.compressiveCells++;
+    state.materialEnergy+=s.area*(Cm*em*em+2*Cc*em*eh+Ch*eh*eh)/2;
+    edgeForce(s.a,s.d,s.area*Nm/(2*s.lm*la));edgeForce(s.b,s.c,s.area*Nm/(2*s.lm*lb));
+   }
+   if(state.maxStrain>.2)throw RangeError('Casing small-strain envelope');
    const f=s.area*Nh/(2*s.lh*lh);
    force3[a]+=f*hx;force3[a+1]+=f*hy;force3[a+2]+=f*hz;force3[d]+=f*hx;force3[d+1]+=f*hy;force3[d+2]+=f*hz;
    force3[b]-=f*hx;force3[b+1]-=f*hy;force3[b+2]-=f*hz;force3[c]-=f*hx;force3[c+1]-=f*hy;force3[c+2]-=f*hz;
@@ -85,5 +99,5 @@ export function createSweptCasing(input){
  chamber=createSealedGas({referenceVolume,initialGaugePressure:pg,ambientPressure:input.ambientPressure,exponent:input.exponent,minVolumeFraction:.5,maxVolumeFraction:1.5,provenance:input.provenance});
  evaluate(initial);let residual=0;for(let i=0;i<N;i++)residual=Math.max(residual,Math.hypot(forces[2*i],forces[2*i+1]));
  if(residual>1e-5)throw RangeError('Reduced unloaded force residual');
- return Object.freeze({model:MODEL,nodes:N,initial,directions:Float64Array.from(directions),state,reference:Object.freeze({restVolume,referenceVolume,radius:Math.hypot(initial[0],initial[1]),restHeight:H,unloadedResidual:residual,scope:'Uncalibrated affine swept membrane; small strain, no shear, bending, insert or failure'}),evaluate});
+ return Object.freeze({model,nodes:N,initial,directions:Float64Array.from(directions),state,reference:Object.freeze({restVolume,referenceVolume,radius:Math.hypot(initial[0],initial[1]),restHeight:H,unloadedResidual:residual,scope:'Uncalibrated affine swept membrane; small strain, no shear, bending, insert or failure'}),evaluate});
 }
