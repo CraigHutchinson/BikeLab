@@ -1,0 +1,217 @@
+{
+  "scope": "Whole benchmark-process CPU profile, including startup/warmup. Sampling attribution, not exact per-function timing or an optimization speedup. Unprofiled timings are separate.",
+  "profileSha256": "0dbf6f0e921e6dda18ff5404046386f22f162b41e31053fe6565bc534066cec5",
+  "totalSampledMs": 5005.276,
+  "rows": [
+    {
+      "source": "dist/sealed-casing.js",
+      "function": "evaluate",
+      "line": 67,
+      "sampledMs": 3461.036,
+      "percent": 69.14775528861945
+    },
+    {
+      "source": "dist/sealed-casing.js",
+      "function": "geometry",
+      "line": 48,
+      "sampledMs": 1172.602,
+      "percent": 23.427319492471543
+    },
+    {
+      "source": "dist/tyre-relaxation.js",
+      "function": "relaxEndpointInto",
+      "line": 4,
+      "sampledMs": 154.368,
+      "percent": 3.084105651716309
+    },
+    {
+      "source": "",
+      "function": "(garbage collector)",
+      "line": 0,
+      "sampledMs": 65.796,
+      "percent": 1.314532904878772
+    },
+    {
+      "source": "dist/sealed-casing.js",
+      "function": "map",
+      "line": 37,
+      "sampledMs": 53.013,
+      "percent": 1.0591423929469623
+    },
+    {
+      "source": "scripts/tyre-casing-cost.mjs",
+      "function": "batch",
+      "line": 23,
+      "sampledMs": 12.644,
+      "percent": 0.2526134422956896
+    },
+    {
+      "source": "",
+      "function": "(program)",
+      "line": 0,
+      "sampledMs": 12.509,
+      "percent": 0.2499162883325515
+    },
+    {
+      "source": "dist/sealed-casing.js",
+      "function": "createSweptCasing",
+      "line": 8,
+      "sampledMs": 12.152,
+      "percent": 0.24278381451891964
+    },
+    {
+      "source": "scripts/tyre-casing-cost.mjs",
+      "function": "",
+      "line": 1,
+      "sampledMs": 8.116,
+      "percent": 0.16214890048021327
+    },
+    {
+      "source": "realm",
+      "function": "compileForInternalLoader",
+      "line": 383,
+      "sampledMs": 6.96,
+      "percent": 0.139053270988453
+    },
+    {
+      "source": "",
+      "function": "utf8Slice",
+      "line": 0,
+      "sampledMs": 6.615,
+      "percent": 0.13216054419376674
+    },
+    {
+      "source": "node:zlib",
+      "function": "processChunkSync",
+      "line": 421,
+      "sampledMs": 6.252,
+      "percent": 0.12490819687066208
+    },
+    {
+      "source": "",
+      "function": "(idle)",
+      "line": 0,
+      "sampledMs": 4.243,
+      "percent": 0.08477055011551811
+    },
+    {
+      "source": "dist/sealed-casing.js",
+      "function": "uniformForce",
+      "line": 106,
+      "sampledMs": 3.842,
+      "percent": 0.07675900389908569
+    },
+    {
+      "source": "node:assert",
+      "function": "",
+      "line": 1,
+      "sampledMs": 1.915,
+      "percent": 0.03825962844007004
+    },
+    {
+      "source": "node:zlib",
+      "function": "createProperty",
+      "line": 997,
+      "sampledMs": 1.914,
+      "percent": 0.03823964952182457
+    },
+    {
+      "source": "",
+      "function": "lstat",
+      "line": 0,
+      "sampledMs": 1.902,
+      "percent": 0.03799990250287896
+    },
+    {
+      "source": "",
+      "function": "open",
+      "line": 0,
+      "sampledMs": 1.612,
+      "percent": 0.032206016211693424
+    },
+    {
+      "source": "",
+      "function": "internalModuleStat",
+      "line": 0,
+      "sampledMs": 1.602,
+      "percent": 0.03200622702923875
+    },
+    {
+      "source": "writable",
+      "function": "_write",
+      "line": 452,
+      "sampledMs": 1.593,
+      "percent": 0.03182641676502954
+    },
+    {
+      "source": "buffer",
+      "function": "FastBuffer",
+      "line": 960,
+      "sampledMs": 1.584,
+      "percent": 0.03164660650082034
+    },
+    {
+      "source": "keys",
+      "function": "",
+      "line": 1,
+      "sampledMs": 1.578,
+      "percent": 0.03152673299134753
+    },
+    {
+      "source": "node:fs",
+      "function": "tryReadSync",
+      "line": 422,
+      "sampledMs": 1.573,
+      "percent": 0.03142683840012019
+    },
+    {
+      "source": "hash",
+      "function": "update",
+      "line": 186,
+      "sampledMs": 1.571,
+      "percent": 0.03138688056362926
+    },
+    {
+      "source": "dist/tyre-gas.js",
+      "function": "polytropicState",
+      "line": 7,
+      "sampledMs": 1.563,
+      "percent": 0.03122704921766552
+    },
+    {
+      "source": "",
+      "function": "",
+      "line": 0,
+      "sampledMs": 1.448,
+      "percent": 0.02892947361943677
+    },
+    {
+      "source": "node:net",
+      "function": "",
+      "line": 1,
+      "sampledMs": 1.43,
+      "percent": 0.02856985309101836
+    },
+    {
+      "source": "node:path",
+      "function": "normalizeString",
+      "line": 92,
+      "sampledMs": 1.425,
+      "percent": 0.02846995849979102
+    },
+    {
+      "source": "node:fs",
+      "function": "realpathSync",
+      "line": 2781,
+      "sampledMs": 1.377,
+      "percent": 0.027510970424008588
+    },
+    {
+      "source": "util",
+      "function": "",
+      "line": 182,
+      "sampledMs": 1.041,
+      "percent": 0.020798053893531544
+    }
+  ]
+}

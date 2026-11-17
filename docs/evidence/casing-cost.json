@@ -1,0 +1,370 @@
+{
+  "scope": "Descriptive local force-kernel cost only. Fixed saved states, no native contact/integration/rendering or stable-timestep/real-time admission. Batch-mean tail is not per-call worst-case latency.",
+  "environment": {
+    "node": "v24.22.0",
+    "platform": "win32",
+    "architecture": "x64",
+    "cpu": "Intel(R) Core(TM) Ultra 9 275HX",
+    "logicalProcessors": 24
+  },
+  "protocol": {
+    "warmupCalls": 252,
+    "callsPerRound": 252,
+    "rounds": 15,
+    "statesPerArm": 42,
+    "pressures": [
+      120000,
+      160000,
+      200000
+    ],
+    "phases": [
+      0,
+      0.5
+    ],
+    "loweringMm": [
+      0,
+      1,
+      2,
+      4,
+      2,
+      1,
+      0
+    ],
+    "order": "rotated and reversed alternating rounds",
+    "contention": "Caller must coordinate other work; this script does not establish an uncontended host."
+  },
+  "cpuMs": {
+    "user": 3296,
+    "system": 0
+  },
+  "wallMs": 3309.5946000000004,
+  "sourcesSha256": {
+    "dist/sealed-casing.js": "40a92a31cd25d4ed3f484c3224829b0306e9eb82aee87f0b1add2fb07dfb7162",
+    "dist/tyre-relaxation.js": "8568a58c5eb0bf4dced852f3fd9e59d818835a4ed241c01a159a01486dd830d1",
+    "dist/tyre-gas.js": "bb977230f4762d4f57059506149491934589be374c07107a4283c1e32bfb0089",
+    "dist/wheel-ring.js": "c0de0d124a02f1ecfacd899e73de714ce6a697d0badccd9020052c88fe55de60",
+    "scripts/tyre-casing-cost.mjs": "97827d498e42176ad064d926bf5d029d8d01352c884dd51f6b9fe88bd9605ce6",
+    "docs/evidence/contact-relaxation-receiving.json": "13bc1bb1be8b58194d6881751d5a1ff616c9c6a3e917b39acf80c1017e0bb01a",
+    "docs/evidence/contact-relaxation-report.json.gz.b64": "6cf5911ab752b042f63b3a08eb4f003f9f3b1547b9426be27613bca45f6c054c"
+  },
+  "results": [
+    {
+      "nodes": 128,
+      "states": 42,
+      "configurationMs": 75.90150000000001,
+      "warmup": {
+        "elapsedMs": 29.8586,
+        "checksum": 2698.4459403293286
+      },
+      "samples": [
+        {
+          "round": 0,
+          "order": 0,
+          "elapsedMs": 29.2567,
+          "checksum": 2698.4459403293286
+        },
+        {
+          "round": 1,
+          "order": 0,
+          "elapsedMs": 29.8837,
+          "checksum": 2693.531194457924
+        },
+        {
+          "round": 2,
+          "order": 1,
+          "elapsedMs": 29.4948,
+          "checksum": 2735.728775412165
+        },
+        {
+          "round": 3,
+          "order": 2,
+          "elapsedMs": 46.0152,
+          "checksum": 2782.9337369084105
+        },
+        {
+          "round": 4,
+          "order": 2,
+          "elapsedMs": 29.2708,
+          "checksum": 2786.0459584331616
+        },
+        {
+          "round": 5,
+          "order": 1,
+          "elapsedMs": 41.4277,
+          "checksum": 2784.1798097284645
+        },
+        {
+          "round": 6,
+          "order": 0,
+          "elapsedMs": 30.0574,
+          "checksum": 2786.0295118216904
+        },
+        {
+          "round": 7,
+          "order": 0,
+          "elapsedMs": 29.3949,
+          "checksum": 2705.3570777999385
+        },
+        {
+          "round": 8,
+          "order": 1,
+          "elapsedMs": 29.4506,
+          "checksum": 2694.6600926726937
+        },
+        {
+          "round": 9,
+          "order": 2,
+          "elapsedMs": 30.266,
+          "checksum": 2778.152739511383
+        },
+        {
+          "round": 10,
+          "order": 2,
+          "elapsedMs": 30.2279,
+          "checksum": 2779.667519994296
+        },
+        {
+          "round": 11,
+          "order": 1,
+          "elapsedMs": 30.0781,
+          "checksum": 2688.223971406397
+        },
+        {
+          "round": 12,
+          "order": 0,
+          "elapsedMs": 29.9941,
+          "checksum": 2701.5929416792
+        },
+        {
+          "round": 13,
+          "order": 0,
+          "elapsedMs": 29.7791,
+          "checksum": 2734.325646812466
+        },
+        {
+          "round": 14,
+          "order": 1,
+          "elapsedMs": 29.5684,
+          "checksum": 2667.6575758176573
+        }
+      ],
+      "medianUs": 118.58611111111111,
+      "p95BatchMeanUs": 182.6,
+      "minBatchMeanUs": 116.09801587301587,
+      "maxBatchMeanUs": 182.6,
+      "sampledFineGate": false
+    },
+    {
+      "nodes": 256,
+      "states": 42,
+      "configurationMs": 97.93440000000001,
+      "warmup": {
+        "elapsedMs": 59.9585,
+        "checksum": 2763.031907342619
+      },
+      "samples": [
+        {
+          "round": 0,
+          "order": 1,
+          "elapsedMs": 58.9872,
+          "checksum": 2763.031907342619
+        },
+        {
+          "round": 1,
+          "order": 2,
+          "elapsedMs": 72.4524,
+          "checksum": 2739.801734192596
+        },
+        {
+          "round": 2,
+          "order": 2,
+          "elapsedMs": 59.7571,
+          "checksum": 2764.0126267450582
+        },
+        {
+          "round": 3,
+          "order": 1,
+          "elapsedMs": 59.0902,
+          "checksum": 2771.3758122584845
+        },
+        {
+          "round": 4,
+          "order": 0,
+          "elapsedMs": 62.9278,
+          "checksum": 2759.5107827971656
+        },
+        {
+          "round": 5,
+          "order": 0,
+          "elapsedMs": 70.6289,
+          "checksum": 2796.5472292542217
+        },
+        {
+          "round": 6,
+          "order": 1,
+          "elapsedMs": 60.5224,
+          "checksum": 2731.096175419629
+        },
+        {
+          "round": 7,
+          "order": 2,
+          "elapsedMs": 71.8969,
+          "checksum": 2765.9831070692
+        },
+        {
+          "round": 8,
+          "order": 2,
+          "elapsedMs": 63.2665,
+          "checksum": 2723.552640116148
+        },
+        {
+          "round": 9,
+          "order": 1,
+          "elapsedMs": 60.3509,
+          "checksum": 2744.90066961909
+        },
+        {
+          "round": 10,
+          "order": 0,
+          "elapsedMs": 60.6218,
+          "checksum": 2744.3986859579577
+        },
+        {
+          "round": 11,
+          "order": 0,
+          "elapsedMs": 60.945,
+          "checksum": 2730.1559155463437
+        },
+        {
+          "round": 12,
+          "order": 1,
+          "elapsedMs": 60.939,
+          "checksum": 2775.9034781655423
+        },
+        {
+          "round": 13,
+          "order": 2,
+          "elapsedMs": 60.5963,
+          "checksum": 2727.9898049252547
+        },
+        {
+          "round": 14,
+          "order": 2,
+          "elapsedMs": 72.5143,
+          "checksum": 2747.3644788144397
+        }
+      ],
+      "medianUs": 241.82142857142858,
+      "p95BatchMeanUs": 287.75515873015877,
+      "minBatchMeanUs": 234.0761904761905,
+      "maxBatchMeanUs": 287.75515873015877,
+      "sampledFineGate": true
+    },
+    {
+      "nodes": 512,
+      "states": 42,
+      "configurationMs": 229.71059999999997,
+      "warmup": {
+        "elapsedMs": 123.6288,
+        "checksum": 2737.521250080959
+      },
+      "samples": [
+        {
+          "round": 0,
+          "order": 2,
+          "elapsedMs": 131.6186,
+          "checksum": 2737.521250080959
+        },
+        {
+          "round": 1,
+          "order": 1,
+          "elapsedMs": 119.0362,
+          "checksum": 2766.588217753495
+        },
+        {
+          "round": 2,
+          "order": 0,
+          "elapsedMs": 129.5267,
+          "checksum": 2756.7472920628024
+        },
+        {
+          "round": 3,
+          "order": 0,
+          "elapsedMs": 138.6643,
+          "checksum": 2746.426047798882
+        },
+        {
+          "round": 4,
+          "order": 1,
+          "elapsedMs": 119.8849,
+          "checksum": 2771.8406301118134
+        },
+        {
+          "round": 5,
+          "order": 2,
+          "elapsedMs": 124.963,
+          "checksum": 2739.051626977357
+        },
+        {
+          "round": 6,
+          "order": 2,
+          "elapsedMs": 136.984,
+          "checksum": 2787.299800548695
+        },
+        {
+          "round": 7,
+          "order": 1,
+          "elapsedMs": 116.3101,
+          "checksum": 2726.035322285465
+        },
+        {
+          "round": 8,
+          "order": 0,
+          "elapsedMs": 128.4701,
+          "checksum": 2753.425922757814
+        },
+        {
+          "round": 9,
+          "order": 0,
+          "elapsedMs": 119.6188,
+          "checksum": 2742.434439780316
+        },
+        {
+          "round": 10,
+          "order": 1,
+          "elapsedMs": 119.3326,
+          "checksum": 2736.9344572564373
+        },
+        {
+          "round": 11,
+          "order": 2,
+          "elapsedMs": 119.827,
+          "checksum": 2761.108017592625
+        },
+        {
+          "round": 12,
+          "order": 2,
+          "elapsedMs": 129.7018,
+          "checksum": 2727.739964683071
+        },
+        {
+          "round": 13,
+          "order": 1,
+          "elapsedMs": 122.8712,
+          "checksum": 2771.679961415306
+        },
+        {
+          "round": 14,
+          "order": 0,
+          "elapsedMs": 122.4332,
+          "checksum": 2712.2593460410576
+        }
+      ],
+      "medianUs": 487.58412698412695,
+      "p95BatchMeanUs": 550.2551587301587,
+      "minBatchMeanUs": 461.5480158730159,
+      "maxBatchMeanUs": 550.2551587301587,
+      "sampledFineGate": true
+    }
+  ]
+}

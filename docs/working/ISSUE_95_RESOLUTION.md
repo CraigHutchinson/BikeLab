@@ -42,3 +42,7 @@ The [independent sampling sweep](../TYRE_CASING_RESOLUTION.md) isolates transver
 ## Fine-mesh restricted relaxation, 17 November
 
 The [contact-phase and relaxed reference](../TYRE_CONTACT_RELAXATION.md) passes the bounded fine-mesh loaded gate: 84 locally admissible states, 48 phase/refinement comparisons and 36 returns at 256/512 stations. All 126 sampled candidate states are locally admissible, but 18 coarse comparisons fail. This selects a numerical reference, not a production default. Next receive practical contact accuracy/cost, transverse limitations and runtime timestep admission, then native imposed loading and trail/near-rim integration. Calibration remains explicitly deferred and #95 stays open.
+
+## Kernel cost reference, 17 November
+
+The [cost measurement](../TYRE_CASING_COST.md) receives a source-bound force-only baseline and profile. Fine accuracy alone does not choose a runtime mesh: next derive timestep admission from configured coupled mass/stiffness and receive full native loaded cost/refinement. No material/runtime law changed; trail, near-rim and calibration gates remain.

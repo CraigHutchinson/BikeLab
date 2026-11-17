@@ -1,5 +1,7 @@
 # GitHub feedback and delivery plan — 2026-11-03
 
+Latest 17 November cost follow-up: [local casing kernel reference](TYRE_CASING_COST.md) measures approximately 119/242/488 microseconds at 128/256/512 stations; only the latter two pass the sampled fine gate. The profile points to evaluator/surface work, but kernel timing cannot establish native-step speed or stability. Next derive configured-mass timestep admission and receive full native loaded cost before selecting a reduction. Physics/defaults are unchanged; #95 remains open and uncalibrated.
+
 Latest 17 November: [contact-phase and restricted relaxed casing](TYRE_CONTACT_RELAXATION.md) receives 126 locally admissible load/unload states. Fine 256/512-station receiving passes all 48 phase/mesh and 36 return comparisons; 18 coarse failures remain. Full local Node 503/503 and focused Edge checks pass. Next receive practical equal-accuracy contact cost and runtime timestep/native loading before trail/near-rim integration. Legacy production law is unchanged; #95 stays open and uncalibrated.
 
 

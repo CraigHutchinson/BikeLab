@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "level": "quick",
+  "head": "be6c31511abeb3e61aae20ee4facced9a59fe3c7",
+  "clean": false,
+  "node": "v24.22.0",
+  "platform": "win32",
+  "arch": "x64",
+  "startedAt": "2026-11-17T16:08:25.683Z",
+  "checks": [
+    {
+      "command": [
+        "node",
+        "scripts/check-provenance.mjs"
+      ],
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "command": [
+        "node",
+        "--test",
+        "test/ci.test.mjs",
+        "test/pages.test.mjs",
+        "test/physics.test.mjs",
+        "test/suspension-reference.test.mjs",
+        "test/records.test.mjs",
+        "test/terrain-request.test.mjs",
+        "test/rider-task.test.mjs",
+        "test/rider-transfer.test.mjs",
+        "test/rider-loads.test.mjs",
+        "test/rider-geometry-error.test.mjs",
+        "test/rider-static-reference.test.mjs",
+        "test/rider-crouch.test.mjs"
+      ],
+      "exitCode": 0,
+      "error": null
+    }
+  ],
+  "coverage": "selected quick tests and pinned vendor hashes; no full suite or browser",
+  "success": true,
+  "finishedAt": "2026-11-17T16:08:27.659Z"
+}
