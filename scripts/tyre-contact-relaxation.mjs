@@ -1,0 +1,24 @@
+import assert from 'node:assert/strict';
+import {readFile,writeFile,mkdir} from 'node:fs/promises';
+import {createHash} from 'node:crypto';
+import {createSweptCasing,ENDPOINT_MODEL,RELAXED_MODEL} from '../dist/sealed-casing.js';
+import {meridianFixture} from './lib/tyre-meridian-fixture.mjs';
+import {solveSealedPlane} from './lib/tyre-sealed-load.mjs';
+const dir='artifacts/contact-relaxation';await mkdir(dir,{recursive:true});
+const paths=['dist/sealed-casing.js','dist/tyre-relaxation.js','dist/wheel-ring.js','dist/tyre-gas.js','scripts/lib/tyre-dense.mjs','scripts/lib/tyre-sealed-load.mjs','scripts/lib/tyre-meridian-fixture.mjs','scripts/lib/tyre-inflation.mjs','scripts/tyre-contact-relaxation.mjs','test/tyre-relaxation.test.mjs'];
+const hash=b=>createHash('sha256').update(b).digest('hex'),hashes=async()=>Object.fromEntries(await Promise.all(paths.map(async p=>[p,hash(await readFile(p))]))),sourcesSha256=await hashes(),cases=[];
+for(const model of [ENDPOINT_MODEL,RELAXED_MODEL])for(const nodes of model===ENDPOINT_MODEL?[32,64,128,256,512]:[128,256,512])for(const pressure of model===ENDPOINT_MODEL?[160000]:[120000,160000,200000])for(const phase of [0,.5]){
+ const f=meridianFixture(8),configuration={nodes,rimRadius:f.rimRadius,section:f.restPoints,meridionalRigidity:f.meridionalRigidity,hoopRigidity:f.hoopRigidity,couplingRigidity:f.couplingRigidity,gaugePressure:pressure,ambientPressure:101325,exponent:1.2,provenance:'Uncalibrated contact-phase and restricted axis-aligned relaxation study'},m=createSweptCasing(configuration,model),states=[];let q;
+ const lowering=model===ENDPOINT_MODEL?[0,.001,.002]:[0,.001,.002,.004,.002,.001,0];
+ for(const [index,d] of lowering.entries()){const s=solveSealedPlane(configuration,m.reference.radius-d,q,{casingModel:model,planeAngle:phase*2*Math.PI/nodes});states.push({...s,branch:index<=3?'load':'unload'});q=s.coordinates;if(!s.converged)break;}
+ cases.push({model,nodes,pressure,phase,configuration,states,complete:states.length===lowering.length&&states.every(s=>s.converged)});console.log(`${cases.length}/28`,model,nodes,pressure,phase,states.at(-1).reason);await writeFile(`${dir}/progress.json`,JSON.stringify(cases));
+}
+const comparisons=[];
+for(const c of cases)for(const kind of ['phase','mesh']){
+ const d=cases.find(d=>d.model===c.model&&d.pressure===c.pressure&&(kind==='phase'?c.phase===0&&d.nodes===c.nodes&&d.phase===.5:d.nodes===2*c.nodes&&d.phase===c.phase));if(!d)continue;
+ for(let i=0;i<Math.min(c.model===ENDPOINT_MODEL?3:4,c.states.length,d.states.length);i++){const a=c.states[i],b=d.states[i],error=Math.abs(a.reaction-b.reaction),budget=1+.05*Math.max(a.reaction,b.reaction);comparisons.push({model:c.model,kind,nodes:[c.nodes,d.nodes],phase:[c.phase,d.phase],pressure:c.pressure,deflection:a.deflection,complete:c.complete&&d.complete,error,budget,passed:c.complete&&d.complete&&error<=budget});}
+}
+const returns=[];for(const c of cases.filter(c=>c.model===RELAXED_MODEL)){for(const [a,b] of [[0,6],[1,5],[2,4]]){const x=c.states[a],y=c.states[b];returns.push({nodes:c.nodes,phase:c.phase,pressure:c.pressure,deflection:x.deflection,complete:!!y,forceError:y?Math.abs(x.reaction-y.reaction):null,energyError:y?Math.abs(x.state.potential-y.state.potential):null,passed:!!y&&Math.abs(x.reaction-y.reaction)<=1e-4&&Math.abs(x.state.potential-y.state.potential)<=1e-8});}}
+const candidates=cases.filter(c=>c.model===RELAXED_MODEL),receiving={candidateCases:candidates.length,completeCases:candidates.filter(c=>c.complete).length,samples:candidates.flatMap(c=>c.states).length,locallyAdmissible:candidates.flatMap(c=>c.states).filter(s=>s.locallyAdmissible).length,refinementFailures:comparisons.filter(c=>c.model===RELAXED_MODEL&&!c.passed).length,returnFailures:returns.filter(r=>!r.passed).length};
+assert.deepEqual(await hashes(),sourcesSha256);const report={scope:'Offline restricted axis-aligned relaxed candidate. Not native/trail integration or calibrated tyre accuracy.',sourcesSha256,cases,comparisons,returns,receiving};await writeFile(`${dir}/report.json`,JSON.stringify(report)+'\n');
+const summary={...report,reportSha256:hash(await readFile(`${dir}/report.json`)),cases:cases.map(c=>({...c,configuration:undefined,states:c.states.map(s=>({branch:s.branch,deflection:s.deflection,reaction:s.reaction,potential:s.state.potential,volume:s.state.volume,pressure:s.state.gaugePressure,compression:s.state.compressiveCells,relaxedCells:s.state.relaxedCells,maxRelaxation:s.state.maxRelaxation,converged:s.converged,locallyAdmissible:s.locallyAdmissible,admission:s.admission,stability:s.stability.classification,kkt:s.metrics.maxKktForce,contacts:s.contacts}))}))};await writeFile(`${dir}/summary.json`,JSON.stringify(summary,null,2)+'\n');console.log(JSON.stringify(receiving));if(receiving.completeCases!==18||receiving.locallyAdmissible!==126||receiving.refinementFailures||receiving.returnFailures)process.exitCode=1;

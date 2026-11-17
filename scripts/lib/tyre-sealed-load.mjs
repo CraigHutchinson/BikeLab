@@ -1,6 +1,6 @@
 // Offline constrained equilibrium of the same swept membrane. No inertia,
 // penalty springs or native contact; zero-thickness surface above a flat plane.
-import {createSweptCasing,MODEL as CASING_MODEL,ENDPOINT_MODEL} from '../../dist/sealed-casing.js';
+import {createSweptCasing,MODEL as CASING_MODEL,ENDPOINT_MODEL,RELAXED_MODEL} from '../../dist/sealed-casing.js';
 import {factor,linearSolve,normInf} from './tyre-dense.mjs';
 export const MODEL='bikelab-sealed-plane-equilibrium-0.1';
 export const BUDGETS=Object.freeze({force:1e-5,gap:1e-12,differenceStep:1e-7,maxIterations:100,maxBacktracks:32,armijo:1e-4});
@@ -25,10 +25,16 @@ function stability(model,q,f,height){
  const lower=1/Math.max(...rows);return {...out,eigenvalueLowerBound:lower,errorEstimate:error,classification:lower>10*error+1e-10*scale?'positive-with-refinement-margin':'indeterminate'};
 }
 export function solveSealedPlane(configuration,height,initial,options={}){
- if(!options||Object.getPrototypeOf(options)!==Object.prototype||Reflect.ownKeys(options).some(k=>!['maxIterations','maxBacktracks','casingModel'].includes(k)||!Object.hasOwn(Object.getOwnPropertyDescriptor(options,k),'value')))throw TypeError('Invalid static solver options');
- const {maxIterations=BUDGETS.maxIterations,maxBacktracks=BUDGETS.maxBacktracks,casingModel=CASING_MODEL}=options;
+ if(!options||Object.getPrototypeOf(options)!==Object.prototype||Reflect.ownKeys(options).some(k=>!['maxIterations','maxBacktracks','casingModel','planeAngle'].includes(k)||!Object.hasOwn(Object.getOwnPropertyDescriptor(options,k),'value')))throw TypeError('Invalid static solver options');
+ const {maxIterations=BUDGETS.maxIterations,maxBacktracks=BUDGETS.maxBacktracks,casingModel=CASING_MODEL,planeAngle=0}=options;
  if(!Number.isInteger(maxIterations)||maxIterations<0||maxIterations>200||!Number.isInteger(maxBacktracks)||maxBacktracks<0||maxBacktracks>40)throw RangeError('Invalid iteration limits');
- const model=createSweptCasing(configuration,casingModel);
+ if(!Number.isFinite(planeAngle)||Math.abs(planeAngle)>Math.PI/configuration.nodes)throw RangeError('Plane phase outside half a station');
+ const base=createSweptCasing(configuration,casingModel),cos=Math.cos(planeAngle),sin=Math.sin(planeAngle);
+ // Solve in the plane frame: x'=cos*x-sin*z, z'=sin*x+cos*z.
+ // Material coordinates and force gradients rotate together; beads remain above
+ // the plane because height > rimRadius. At zero phase preserve exact old math.
+ function rotate(points,inverse=false){const out=new Float64Array(points.length),s=inverse?-sin:sin;for(let i=0;i<points.length;i+=2){out[i]=cos*points[i]-s*points[i+1];out[i+1]=s*points[i]+cos*points[i+1];}return out;}
+ const model=planeAngle===0?base:{...base,initial:rotate(base.initial),evaluate(points){const state=base.evaluate(rotate(points,true));return {...state,forces:rotate(state.forces),materialForces:rotate(state.materialForces),gasForces:rotate(state.gasForces)};}};
  if(!Number.isFinite(height)||height<=configuration.rimRadius||height>model.reference.radius+.01)throw RangeError('Hub height must clear the beads and stay in the diagnostic range');
  let q=Float64Array.from(initial??model.initial);model.evaluate(q);
  for(let i=1;i<q.length;i+=2)q[i]=Math.max(q[i],-height);
@@ -37,7 +43,7 @@ export function solveSealedPlane(configuration,height,initial,options={}){
   state=snapshot(model,q);const contacts=[];let reaction=0,minGap=Infinity,complementarity=0;
   for(let i=0;i<model.nodes;i++){const gap=q[2*i+1]+height;minGap=Math.min(minGap,gap);const force=gap<=BUDGETS.gap?Math.max(0,-state.forces[2*i+1]):0;reaction+=force;complementarity=Math.max(complementarity,Math.abs(force*gap));if(force>BUDGETS.force)contacts.push({node:i,x:q[2*i],reaction:force});}
   const stable=converged?stability(model,q,state.forces,height):{classification:'not-evaluated'};
-  return {model:casingModel===ENDPOINT_MODEL?'bikelab-sealed-plane-equilibrium-endpoint-0.1':MODEL,converged,locallyAdmissible:converged&&state.compressiveCells===0&&stable.classification==='positive-with-refinement-margin',reason,admission:!converged?'solver-failed':state.compressiveCells?'compressive-resultant':stable.classification!=='positive-with-refinement-margin'?'stability-indeterminate':'admitted',height,deflection:model.reference.radius-height,coordinates:Array.from(q),reference:model.reference,state,reaction,materialReaction:-state.materialForces.filter((_,i)=>i%2).reduce((a,b)=>a+b,0),gasReaction:-state.gasForces.filter((_,i)=>i%2).reduce((a,b)=>a+b,0),contacts,activeVertexSpan:contacts.length?Math.max(...contacts.map(c=>c.x))-Math.min(...contacts.map(c=>c.x)):0,rimClearance:height-configuration.rimRadius,metrics:{maxKktForce:residual(q,state.forces,height),minGap,complementarity},stability:stable,iterations:history.length,history};
+  return {model:casingModel===RELAXED_MODEL?'bikelab-sealed-plane-equilibrium-relaxed-0.1':casingModel===ENDPOINT_MODEL?'bikelab-sealed-plane-equilibrium-endpoint-0.1':MODEL,converged,locallyAdmissible:converged&&state.compressiveCells===0&&stable.classification==='positive-with-refinement-margin',reason,planeAngle,coordinateFrame:'plane',admission:!converged?'solver-failed':state.compressiveCells?'compressive-resultant':stable.classification!=='positive-with-refinement-margin'?'stability-indeterminate':'admitted',height,deflection:model.reference.radius-height,coordinates:Array.from(q),reference:model.reference,state,reaction,materialReaction:-state.materialForces.filter((_,i)=>i%2).reduce((a,b)=>a+b,0),gasReaction:-state.gasForces.filter((_,i)=>i%2).reduce((a,b)=>a+b,0),contacts,activeVertexSpan:contacts.length?Math.max(...contacts.map(c=>c.x))-Math.min(...contacts.map(c=>c.x)):0,rimClearance:height-configuration.rimRadius,metrics:{maxKktForce:residual(q,state.forces,height),minGap,complementarity},stability:stable,iterations:history.length,history};
  }
  for(let iteration=0;iteration<=maxIterations;iteration++){
   state=snapshot(model,q);const metric=residual(q,state.forces,height);

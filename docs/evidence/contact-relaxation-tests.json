@@ -1,0 +1,36 @@
+{
+  "date": "2026-11-17",
+  "node": "v24.22.0",
+  "scope": "Windows host suite; first run had five stale provenance failures, final run passes after exact mechanical replay and pin refresh. No full hosted/browser claim.",
+  "sourcesSha256": {
+    "dist/sealed-casing.js": "40a92a31cd25d4ed3f484c3224829b0306e9eb82aee87f0b1add2fb07dfb7162",
+    "dist/tyre-relaxation.js": "8568a58c5eb0bf4dced852f3fd9e59d818835a4ed241c01a159a01486dd830d1",
+    "scripts/lib/tyre-sealed-load.mjs": "e9d3e929916001793a4ee7d9c7bec1c388410d46854eebceef686a66491ac990",
+    "test/tyre-relaxation.test.mjs": "6706c6ed6bf06e9db7d7c1068469071ac5bae51617abe946b5e1999ecfba25a0",
+    "test/tyre-relaxation-conditioning.test.mjs": "2992f2720a546e958088e1ea5d40d4b7e1a9b117adfcdcd2d6df11aad96bda57",
+    "server.mjs": "d83eb021fb44e381350a250aa7f90060718629753aa77e4e3961f06f1565b6c8",
+    "scripts/spinning-gap.mjs": "b8e30b9d8e37f7fde2fff39cb8a0010a4839a8178466a7abd2e0aa47b49f3619"
+  },
+  "runs": [
+    {
+      "command": "node --test",
+      "exitCode": 1,
+      "tests": 502.0,
+      "pass": 497.0,
+      "fail": 5.0,
+      "skipped": 0.0,
+      "duration_ms": 143272.7984,
+      "logSha256": "9c42285a63a4c37516e573773cacaa4b635f426b1c81c2a9102972ec9e2cc9a7"
+    },
+    {
+      "command": "node --test",
+      "exitCode": 0,
+      "tests": 503.0,
+      "pass": 503.0,
+      "fail": 0.0,
+      "skipped": 0.0,
+      "duration_ms": 104314.8384,
+      "logSha256": "571545f11b71ff8c356fb883ee5fb0894f464de8b4d7fe2579332a5fd62d8081"
+    }
+  ]
+}

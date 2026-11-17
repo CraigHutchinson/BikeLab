@@ -1,5 +1,8 @@
 # BikeLab workstream handoff — 2026-11-04
 
+Latest 17 November: [contact-phase and restricted relaxed casing](TYRE_CONTACT_RELAXATION.md) receives 126 locally admissible load/unload states. Fine 256/512-station receiving passes all 48 phase/mesh and 36 return comparisons; 18 coarse failures remain. Full local Node 503/503 and focused Edge checks pass. Next receive practical equal-accuracy contact cost and runtime timestep/native loading before trail/near-rim integration. Legacy production law is unchanged; #95 stays open and uncalibrated.
+
+
 Latest 16 November: [independent casing sampling sweep](TYRE_CASING_RESOLUTION.md) converges at all 27 states. All six transverse refinements pass the unchanged reaction budget; all six circumferential refinements fail, and all nine final states are compressive. Finer transverse sampling alone does not fix the tested case. Next contact-phase sensitivity/circumferential refinement, then supported shape or wrinkling changes; #95 remains open and uncalibrated.
 
 Latest 16 November: [strain-mode diagnosis and versioned endpoint-energy candidate](TYRE_CASING_MODES.md) identifies averaged-away alternating deformation and hidden endpoint compression. The candidate uses unchanged material constants and passes independent gradients, energy identity and equilibrium checks; all 162 archived legacy force states replay exactly. Both loaded gates still fail (candidate 19/30 refinement failures, 45/81 compression states), so no runtime promotion. Full local suite 497/497 and focused Edge checks pass. Next examine contact resolution and richer transverse shape/wrinkling physics before selecting a production law. #95 remains open and uncalibrated.

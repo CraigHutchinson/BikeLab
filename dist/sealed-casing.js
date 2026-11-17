@@ -1,15 +1,20 @@
 // Reduced swept membrane in hub coordinates. Uncalibrated; no shear/bending law.
+import {relaxEndpointInto} from './tyre-relaxation.js';
 import {ringSin} from './wheel-ring.js';
 import {createSealedGas} from './tyre-gas.js';
 export const MODEL='bikelab-swept-sealed-casing-0.1';
 export const ENDPOINT_MODEL='bikelab-swept-sealed-casing-endpoint-0.1';
+export const RELAXED_MODEL='bikelab-swept-sealed-casing-relaxed-0.1';
 export function createSweptCasing(input,model=MODEL){
- if(![MODEL,ENDPOINT_MODEL].includes(model))throw RangeError('Unsupported swept casing discretization');
- const endpoint=model===ENDPOINT_MODEL;
+ if(![MODEL,ENDPOINT_MODEL,RELAXED_MODEL].includes(model))throw RangeError('Unsupported swept casing discretization');
+ const relaxed=model===RELAXED_MODEL,endpoint=model!==MODEL,relaxation=new Float64Array(7);
  const keys=['nodes','rimRadius','section','meridionalRigidity','hoopRigidity','couplingRigidity','gaugePressure','ambientPressure','exponent','provenance'];
  if(!input||Object.getPrototypeOf(input)!==Object.prototype||Reflect.ownKeys(input).length!==keys.length||Reflect.ownKeys(input).some(k=>!keys.includes(k)||!Object.hasOwn(Object.getOwnPropertyDescriptor(input,k),'value')))throw TypeError('Invalid swept casing configuration');
  const {nodes:N,rimRadius:L,meridionalRigidity:Cm,hoopRigidity:Ch,couplingRigidity:Cc,gaugePressure:pg}=input;
- if(![16,32,64,128].includes(N)||![L,Cm,Ch,Cc,pg].every(Number.isFinite)||L<.15||L>.45||Cm<=0||Ch<=0||Math.max(Cm,Ch)>1e7||Cc*Cc>=Cm*Ch||pg<0||pg>1e6)throw RangeError('Invalid swept casing geometry/material');
+ if(!(endpoint?[16,32,64,128,256,512]:[16,32,64,128]).includes(N)||![L,Cm,Ch,Cc,pg].every(Number.isFinite)||L<.15||L>.45||Cm<=0||Ch<=0||Math.max(Cm,Ch)>1e7||Cc*Cc>=Cm*Ch||pg<0||pg>1e6)throw RangeError('Invalid swept casing geometry/material');
+ // Bound roundoff amplification in the relaxed active-set solve. This is a
+ // numerical admission gate, not a calibrated material/stiffness restriction.
+ if(relaxed){const scale=Math.max(Cm,Ch),a=Cm/scale,b=Ch/scale,c=Cc/scale;if(Cm*Ch<Number.MIN_VALUE/Number.EPSILON||(a*b-c*c)/((a+b)*(a+b))<=Math.sqrt(Number.EPSILON))throw RangeError('Relaxed material conditioning is unresolved');}
  if(typeof input.provenance!=='string'||!input.provenance.trim())throw TypeError('Explicit casing provenance required');
  const section=input.section;
  if(!Array.isArray(section)||section.length<5||section.length>33||!section.every(p=>Array.isArray(p)&&p.length===2&&p.every(Number.isFinite)&&p[1]>=0))throw RangeError('Invalid reference section');
@@ -18,7 +23,7 @@ export function createSweptCasing(input,model=MODEL){
  for(let j=0;j<M;j++){const a=section[j],b=section[(j+1)%M],c=section[(j+2)%M];if((b[0]-a[0])*(c[1]-b[1])-(b[1]-a[1])*(c[0]-b[0])<=0)throw RangeError('Reference section must be strictly convex CCW');}
  const alpha=Float64Array.from(section,p=>p[1]/H),axial=Float64Array.from(section,p=>p[0]),radial=Float64Array.from(section,p=>p[1]);
  const directions=new Float64Array(2*N),q=new Float64Array(2*N),vertices=new Float64Array(3*N*M),force3=new Float64Array(3*N*M),volumeGradient=new Float64Array(3*N*M),forces=new Float64Array(2*N),materialForces=new Float64Array(2*N),gasForces=new Float64Array(2*N);
- for(let i=0;i<N;i++){const a=128*i/N;directions[2*i]=ringSin(a);directions[2*i+1]=-ringSin(a+32);}
+ for(let i=0;i<N;i++){const a=128*i/N;directions[2*i]=N<=128?ringSin(a):Math.sin(2*Math.PI*i/N);directions[2*i+1]=N<=128?-ringSin(a+32):-Math.cos(2*Math.PI*i/N);}
  const triangles=[],cells=[];
  for(let i=0;i<N;i++)for(let j=0;j<M;j++){
   const k=(i+1)%N,h=(j+1)%M,a=i*M+j,b=k*M+j,c=k*M+h,d=i*M+h;
@@ -27,6 +32,7 @@ export function createSweptCasing(input,model=MODEL){
   if(j<M-1){const lm=Math.hypot(axial[j+1]-axial[j],radial[j+1]-radial[j]),R=L+(radial[j]+radial[j+1])/2;cells.push({a,b,c,d,lm,lh:2*R*Math.sin(Math.PI/N),area:2*Math.PI/N*R*lm});}
  }
  const normals=new Float64Array(triangles.length),state={model,volume:0,materialEnergy:0,gasEnergy:0,potential:0,gaugePressure:pg,maxStrain:0,compressiveCells:0,forces,materialForces,gasForces};
+ if(relaxed){state.relaxedCells=0;state.maxRelaxation=0;}
  const gasState={};let chamber=null,initialized=false;
  function map(points){
   if(points.length!==2*N)throw RangeError('Casing coordinate count changed');
@@ -59,14 +65,19 @@ export function createSweptCasing(input,model=MODEL){
   a*=3;b*=3;for(let k=0;k<3;k++){const f=scale*(vertices[b+k]-vertices[a+k]);force3[a+k]+=f;force3[b+k]-=f;}
  }
  function evaluate(points){
-  map(points);state.volume=geometry();force3.fill(0);forces.fill(0);materialForces.fill(0);gasForces.fill(0);state.materialEnergy=0;state.maxStrain=0;state.compressiveCells=0;
+  map(points);state.volume=geometry();force3.fill(0);forces.fill(0);materialForces.fill(0);gasForces.fill(0);state.materialEnergy=0;state.maxStrain=0;state.compressiveCells=0;if(relaxed){state.relaxedCells=0;state.maxRelaxation=0;}
   for(const s of cells){
    const a=3*s.a,b=3*s.b,c=3*s.c,d=3*s.d;
    const la=Math.hypot(vertices[d]-vertices[a],vertices[d+1]-vertices[a+1],vertices[d+2]-vertices[a+2]),lb=Math.hypot(vertices[c]-vertices[b],vertices[c+1]-vertices[b+1],vertices[c+2]-vertices[b+2]);
    const hx=(vertices[b]+vertices[c]-vertices[a]-vertices[d])/2,hy=(vertices[b+1]+vertices[c+1]-vertices[a+1]-vertices[d+1])/2,hz=(vertices[b+2]+vertices[c+2]-vertices[a+2]-vertices[d+2])/2,lh=Math.hypot(hx,hy,hz);
    if(Math.min(la,lb,lh)<=1e-10)throw RangeError('Collapsed material cell');
-   const em=(la+lb)/(2*s.lm)-1,eh=lh/s.lh-1,Nm=Cm*em+Cc*eh,Nh=Cc*em+Ch*eh;
-   if(endpoint){
+   const em=(la+lb)/(2*s.lm)-1,eh=lh/s.lh-1,Nm=Cm*em+Cc*eh;let Nh=Cc*em+Ch*eh;
+   if(relaxed){
+    const ea=la/s.lm-1,eb=lb/s.lm-1,r=relaxEndpointInto(Cm,Ch,Cc,ea,eb,eh,relaxation);Nh=r[3];
+    state.maxStrain=Math.max(state.maxStrain,Math.abs(ea),Math.abs(eb),Math.abs(eh),Math.abs(ea+r[4]),Math.abs(eb+r[5]),Math.abs(eh+r[6]));
+    const slack=Math.max(r[4],r[5],r[6]);state.maxRelaxation=Math.max(state.maxRelaxation,slack);if(slack>0)state.relaxedCells++;
+    state.materialEnergy+=s.area*r[0];edgeForce(s.a,s.d,s.area*r[1]/(2*s.lm*la));edgeForce(s.b,s.c,s.area*r[2]/(2*s.lm*lb));
+   }else if(endpoint){
     // Integrate endpoint energies, not the square of their averaged strain.
     // Added energy is exactly area*Cm*(ema-emb)^2/8; no new material coefficient.
     const ema=la/s.lm-1,emb=lb/s.lm-1,Nma=Cm*ema+Cc*eh,Nmb=Cm*emb+Cc*eh;
