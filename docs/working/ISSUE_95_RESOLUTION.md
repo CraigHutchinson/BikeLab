@@ -38,3 +38,7 @@ The [versioned endpoint-energy formulation](../TYRE_CASING_MODES.md) removes the
 ## Sampling separation, 16 November
 
 The [independent sampling sweep](../TYRE_CASING_RESOLUTION.md) isolates transverse discretization: all six section-refinement comparisons pass while all six circumferential comparisons fail at 1.6 bar/2 mm. All final states remain compressive. Next test contact-phase sensitivity and finer circumferential resolution before selecting a richer shape or supported wrinkling model. Runtime, native loaded, trail/insert and calibration gates remain unchanged.
+
+## Fine-mesh restricted relaxation, 17 November
+
+The [contact-phase and relaxed reference](../TYRE_CONTACT_RELAXATION.md) passes the bounded fine-mesh loaded gate: 84 locally admissible states, 48 phase/refinement comparisons and 36 returns at 256/512 stations. All 126 sampled candidate states are locally admissible, but 18 coarse comparisons fail. This selects a numerical reference, not a production default. Next receive practical contact accuracy/cost, transverse limitations and runtime timestep admission, then native imposed loading and trail/near-rim integration. Calibration remains explicitly deferred and #95 stays open.

@@ -12,6 +12,9 @@ export function createSweptCasing(input,model=MODEL){
  if(!input||Object.getPrototypeOf(input)!==Object.prototype||Reflect.ownKeys(input).length!==keys.length||Reflect.ownKeys(input).some(k=>!keys.includes(k)||!Object.hasOwn(Object.getOwnPropertyDescriptor(input,k),'value')))throw TypeError('Invalid swept casing configuration');
  const {nodes:N,rimRadius:L,meridionalRigidity:Cm,hoopRigidity:Ch,couplingRigidity:Cc,gaugePressure:pg}=input;
  if(!(endpoint?[16,32,64,128,256,512]:[16,32,64,128]).includes(N)||![L,Cm,Ch,Cc,pg].every(Number.isFinite)||L<.15||L>.45||Cm<=0||Ch<=0||Math.max(Cm,Ch)>1e7||Cc*Cc>=Cm*Ch||pg<0||pg>1e6)throw RangeError('Invalid swept casing geometry/material');
+ // Bound roundoff amplification in the relaxed active-set solve. This is a
+ // numerical admission gate, not a calibrated material/stiffness restriction.
+ if(relaxed){const scale=Math.max(Cm,Ch),a=Cm/scale,b=Ch/scale,c=Cc/scale;if(Cm*Ch<Number.MIN_VALUE/Number.EPSILON||(a*b-c*c)/((a+b)*(a+b))<=Math.sqrt(Number.EPSILON))throw RangeError('Relaxed material conditioning is unresolved');}
  if(typeof input.provenance!=='string'||!input.provenance.trim())throw TypeError('Explicit casing provenance required');
  const section=input.section;
  if(!Array.isArray(section)||section.length<5||section.length>33||!section.every(p=>Array.isArray(p)&&p.length===2&&p.every(Number.isFinite)&&p[1]>=0))throw RangeError('Invalid reference section');

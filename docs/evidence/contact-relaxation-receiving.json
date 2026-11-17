@@ -1,0 +1,25 @@
+{
+  "sweepSourceCommit": "7464f6d88af73c0b9267dfdf2f5862762425f453",
+  "scope": "Only the numerical conditioning admission gate changed after the source-bound sweep. All 156 stored force/energy states replay exactly with final guarded factory; no solver or constitutive arithmetic changed.",
+  "reportSha256": "af5946810e77ad11d9072d5353389ae1f7220831a1d4a8538d86ad377a7d9391",
+  "replayedStates": 156,
+  "exact": true,
+  "guardedSourcesSha256": {
+    "dist/sealed-casing.js": "40a92a31cd25d4ed3f484c3224829b0306e9eb82aee87f0b1add2fb07dfb7162",
+    "dist/tyre-relaxation.js": "8568a58c5eb0bf4dced852f3fd9e59d818835a4ed241c01a159a01486dd830d1"
+  },
+  "fineMesh": {
+    "nodes": [
+      256,
+      512
+    ],
+    "cases": 12,
+    "samples": 84,
+    "allLocallyAdmissible": true,
+    "comparisons": 48,
+    "comparisonFailures": 0,
+    "returnComparisons": 36,
+    "returnFailures": 0
+  },
+  "coarseCandidateFailures": 18
+}
