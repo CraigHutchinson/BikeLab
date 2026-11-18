@@ -1,0 +1,22 @@
+{
+  "scope": "Exact first 2 ms replay after metadata validation and preallocated recording changes; not a repeat of the complete matrix.",
+  "sourceSha256": "5550efaa9437a7b506c3da5e2f2ebad90c40a6995d52604e667b49715c370822",
+  "evidence": [
+    {
+      "integrator": "Euler",
+      "nodes": 256,
+      "massScale": 1,
+      "frames": 3,
+      "exactScalarMatches": 51,
+      "exactCoordinateHashMatches": 3
+    },
+    {
+      "integrator": "implicitfast",
+      "nodes": 512,
+      "massScale": 0.5,
+      "frames": 3,
+      "exactScalarMatches": 57,
+      "exactCoordinateHashMatches": 3
+    }
+  ]
+}

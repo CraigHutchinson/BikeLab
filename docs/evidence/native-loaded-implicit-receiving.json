@@ -1,0 +1,1253 @@
+{
+  "scope": "Offline free-hub native loaded transient from hard-plane equilibrium; no runtime admission, calibration or cost claim.",
+  "reportSha256": "07e27673a83be30aaad2b3090c44648c38bb4233eb8531f5081616b379684e4c",
+  "comparatorSha256": "6f1bc6e6fdcad7b6c34599f390f0353206efd6d2c3f1c79f06539f0e31b96f92",
+  "sourcesSha256": {
+    "scripts/lib/tyre-native-loaded.mjs": "895fb39a10088a0b0bd00cdc7ecfb0a97d43934c7056aebf26eca0a804448604",
+    "scripts/tyre-native-loaded.mjs": "e98a89d348b74221aae4930abba61b82ed19762657ff497ad24811956664fc5c",
+    "dist/moving-wheel.js": "3896fc8f29ef509eb4115838e7eb42014f479dc3eaf5ee638734421e1cb11a37",
+    "dist/sealed-casing.js": "40a92a31cd25d4ed3f484c3224829b0306e9eb82aee87f0b1add2fb07dfb7162",
+    "dist/tyre-relaxation.js": "8568a58c5eb0bf4dced852f3fd9e59d818835a4ed241c01a159a01486dd830d1",
+    "dist/vendor/mujoco-3.16.0/mujoco.js": "5d5d89ddd0857a6518c628fa502d42f99d6dd67ca240182f1068cd30a45465ac",
+    "dist/vendor/mujoco-3.16.0/mujoco.wasm": "e05ac96db7f45bd46e76fed6e3469bf9204329e093344d742a18bca2cc0e230e",
+    "docs/evidence/contact-relaxation-report.json.gz.b64": "6cf5911ab752b042f63b3a08eb4f003f9f3b1547b9426be27613bca45f6c054c"
+  },
+  "budgets": {
+    "hubZ": 0.000025,
+    "pressureAbsolute": 100,
+    "pressureRelative": 0.01,
+    "forceAbsolute": 1,
+    "forceRelative": 0.05,
+    "penetration": 0.0005,
+    "energyAbsolute": 0.001,
+    "energyRelative": 0.01
+  },
+  "receiving": [
+    {
+      "nodes": 256,
+      "dt": 0.000015625,
+      "massScale": 0.5,
+      "damping": 0,
+      "status": "completed",
+      "termination": null,
+      "maxPenetration": 0.00022678440839851068,
+      "maxResidual": 0.0009804259443783932,
+      "maxMomentumResidualZ": 0.00006210314320487242,
+      "energyBudget": 0.0017137626353940431,
+      "passed": true
+    },
+    {
+      "nodes": 256,
+      "dt": 0.0000078125,
+      "massScale": 0.5,
+      "damping": 0,
+      "status": "completed",
+      "termination": null,
+      "maxPenetration": 0.00022435078021132285,
+      "maxResidual": 0.00039625201228162335,
+      "maxMomentumResidualZ": 0.00003124565069878571,
+      "energyBudget": 0.001707776214884221,
+      "passed": true
+    },
+    {
+      "nodes": 256,
+      "dt": 0.00000390625,
+      "massScale": 0.5,
+      "damping": 0,
+      "status": "completed",
+      "termination": null,
+      "maxPenetration": 0.00021606769156946474,
+      "maxResidual": 0.0001560791122653775,
+      "maxMomentumResidualZ": 0.000015613365982325433,
+      "energyBudget": 0.0017040845642195964,
+      "passed": true
+    },
+    {
+      "nodes": 256,
+      "dt": 0.000015625,
+      "massScale": 0.5,
+      "damping": 0.5,
+      "status": "completed",
+      "termination": null,
+      "maxPenetration": 0.0002480895783342794,
+      "maxResidual": 0.0010540265099871719,
+      "maxMomentumResidualZ": 0.0000592465103590456,
+      "energyBudget": 0.0017437680884573332,
+      "passed": true
+    },
+    {
+      "nodes": 256,
+      "dt": 0.0000078125,
+      "massScale": 0.5,
+      "damping": 0.5,
+      "status": "completed",
+      "termination": null,
+      "maxPenetration": 0.0002472295070572177,
+      "maxResidual": 0.00041418304751190266,
+      "maxMomentumResidualZ": 0.000033374465015723054,
+      "energyBudget": 0.0017242953075608178,
+      "passed": true
+    },
+    {
+      "nodes": 256,
+      "dt": 0.00000390625,
+      "massScale": 0.5,
+      "damping": 0.5,
+      "status": "completed",
+      "termination": null,
+      "maxPenetration": 0.00026360734884957543,
+      "maxResidual": 0.00018851614567342266,
+      "maxMomentumResidualZ": 0.00001562664644794154,
+      "energyBudget": 0.001748629283693978,
+      "passed": true
+    },
+    {
+      "nodes": 256,
+      "dt": 0.000015625,
+      "massScale": 1,
+      "damping": 0,
+      "status": "completed",
+      "termination": null,
+      "maxPenetration": 0.00012946781042743935,
+      "maxResidual": 0.0005031033757203866,
+      "maxMomentumResidualZ": 0.00004000404820425629,
+      "energyBudget": 0.0013913972419057614,
+      "passed": true
+    },
+    {
+      "nodes": 256,
+      "dt": 0.0000078125,
+      "massScale": 1,
+      "damping": 0,
+      "status": "completed",
+      "termination": null,
+      "maxPenetration": 0.00012631639528788385,
+      "maxResidual": 0.00022105560812198718,
+      "maxMomentumResidualZ": 0.00002850869654247301,
+      "energyBudget": 0.0013815204190440824,
+      "passed": true
+    },
+    {
+      "nodes": 256,
+      "dt": 0.00000390625,
+      "massScale": 1,
+      "damping": 0,
+      "status": "completed",
+      "termination": null,
+      "maxPenetration": 0.00011769729922657425,
+      "maxResidual": 0.00009767067984162506,
+      "maxMomentumResidualZ": 0.000011763769808381674,
+      "energyBudget": 0.0013713635334157656,
+      "passed": true
+    },
+    {
+      "nodes": 256,
+      "dt": 0.000015625,
+      "massScale": 1,
+      "damping": 0.5,
+      "status": "completed",
+      "termination": null,
+      "maxPenetration": 0.00014657027965855746,
+      "maxResidual": 0.0006223070912008775,
+      "maxMomentumResidualZ": 0.00006438188022572788,
+      "energyBudget": 0.0014340317899629168,
+      "passed": true
+    },
+    {
+      "nodes": 256,
+      "dt": 0.0000078125,
+      "massScale": 1,
+      "damping": 0.5,
+      "status": "completed",
+      "termination": null,
+      "maxPenetration": 0.00011531831745973547,
+      "maxResidual": 0.00019797378669186155,
+      "maxMomentumResidualZ": 0.000012102129383517735,
+      "energyBudget": 0.001360360254721563,
+      "passed": true
+    },
+    {
+      "nodes": 256,
+      "dt": 0.00000390625,
+      "massScale": 1,
+      "damping": 0.5,
+      "status": "completed",
+      "termination": null,
+      "maxPenetration": 0.00012880043144875843,
+      "maxResidual": 0.00010335257114225515,
+      "maxMomentumResidualZ": 0.000010244075537624298,
+      "energyBudget": 0.0013758226553106888,
+      "passed": true
+    },
+    {
+      "nodes": 256,
+      "dt": 0.000015625,
+      "massScale": 2,
+      "damping": 0,
+      "status": "completed",
+      "termination": null,
+      "maxPenetration": 0.00006685040383712135,
+      "maxResidual": 0.00031383874996451094,
+      "maxMomentumResidualZ": 0.0000667341554114742,
+      "energyBudget": 0.0012063782525308596,
+      "passed": true
+    },
+    {
+      "nodes": 256,
+      "dt": 0.0000078125,
+      "massScale": 2,
+      "damping": 0,
+      "status": "completed",
+      "termination": null,
+      "maxPenetration": 0.00006329794844986379,
+      "maxResidual": 0.00013137696966037185,
+      "maxMomentumResidualZ": 0.000030377853609930838,
+      "energyBudget": 0.0011982514134640247,
+      "passed": true
+    },
+    {
+      "nodes": 256,
+      "dt": 0.00000390625,
+      "massScale": 2,
+      "damping": 0,
+      "status": "completed",
+      "termination": null,
+      "maxPenetration": 0.00006358295517947116,
+      "maxResidual": 0.00006217096818468548,
+      "maxMomentumResidualZ": 0.000014845465606816433,
+      "energyBudget": 0.0011991653066826683,
+      "passed": true
+    },
+    {
+      "nodes": 256,
+      "dt": 0.000015625,
+      "massScale": 2,
+      "damping": 0.5,
+      "status": "completed",
+      "termination": null,
+      "maxPenetration": 0.00006936818991863256,
+      "maxResidual": 0.0003268990545707805,
+      "maxMomentumResidualZ": 0.0000557535001319831,
+      "energyBudget": 0.0012077820050405922,
+      "passed": true
+    },
+    {
+      "nodes": 256,
+      "dt": 0.0000078125,
+      "massScale": 2,
+      "damping": 0.5,
+      "status": "completed",
+      "termination": null,
+      "maxPenetration": 0.0000670057880777919,
+      "maxResidual": 0.00017924429727411706,
+      "maxMomentumResidualZ": 0.000031534367308960753,
+      "energyBudget": 0.0012044337377341422,
+      "passed": true
+    },
+    {
+      "nodes": 256,
+      "dt": 0.00000390625,
+      "massScale": 2,
+      "damping": 0.5,
+      "status": "completed",
+      "termination": null,
+      "maxPenetration": 0.00006394274636619986,
+      "maxResidual": 0.00005774941574793538,
+      "maxMomentumResidualZ": 0.000016947513622245225,
+      "energyBudget": 0.0011950285499938084,
+      "passed": true
+    },
+    {
+      "nodes": 512,
+      "dt": 0.000015625,
+      "massScale": 0.5,
+      "damping": 0,
+      "status": "completed",
+      "termination": null,
+      "maxPenetration": 0.00020676692866932475,
+      "maxResidual": 0.00017158755588072612,
+      "maxMomentumResidualZ": 0.0001252151771957699,
+      "energyBudget": 0.001715258445462096,
+      "passed": true
+    },
+    {
+      "nodes": 512,
+      "dt": 0.0000078125,
+      "massScale": 0.5,
+      "damping": 0,
+      "status": "completed",
+      "termination": null,
+      "maxPenetration": 0.00020529511455114112,
+      "maxResidual": 0.00009143263653271616,
+      "maxMomentumResidualZ": 0.0000622173750315369,
+      "energyBudget": 0.0017142794007309605,
+      "passed": true
+    },
+    {
+      "nodes": 512,
+      "dt": 0.00000390625,
+      "massScale": 0.5,
+      "damping": 0,
+      "status": "completed",
+      "termination": null,
+      "maxPenetration": 0.00020476761383144212,
+      "maxResidual": 0.000049390597780588105,
+      "maxMomentumResidualZ": 0.00003081177471919716,
+      "energyBudget": 0.0017140376516901938,
+      "passed": true
+    },
+    {
+      "nodes": 512,
+      "dt": 0.000015625,
+      "massScale": 0.5,
+      "damping": 0.5,
+      "status": "completed",
+      "termination": null,
+      "maxPenetration": 0.0002064617524511464,
+      "maxResidual": 0.00017715580715935776,
+      "maxMomentumResidualZ": 0.00012248088400479418,
+      "energyBudget": 0.00171537626118966,
+      "passed": true
+    },
+    {
+      "nodes": 512,
+      "dt": 0.0000078125,
+      "massScale": 0.5,
+      "damping": 0.5,
+      "status": "completed",
+      "termination": null,
+      "maxPenetration": 0.00020493483204108483,
+      "maxResidual": 0.00009339117387040629,
+      "maxMomentumResidualZ": 0.000058933819180317926,
+      "energyBudget": 0.0017138105233016707,
+      "passed": true
+    },
+    {
+      "nodes": 512,
+      "dt": 0.00000390625,
+      "massScale": 0.5,
+      "damping": 0.5,
+      "status": "completed",
+      "termination": null,
+      "maxPenetration": 0.0002049507267812189,
+      "maxResidual": 0.00004929032831707494,
+      "maxMomentumResidualZ": 0.00003049735873528192,
+      "energyBudget": 0.0017138360773812655,
+      "passed": true
+    },
+    {
+      "nodes": 512,
+      "dt": 0.000015625,
+      "massScale": 1,
+      "damping": 0,
+      "status": "completed",
+      "termination": null,
+      "maxPenetration": 0.00010468491753835826,
+      "maxResidual": 0.00008437390070944407,
+      "maxMomentumResidualZ": 0.00008061440270168418,
+      "energyBudget": 0.0013598503195920797,
+      "passed": true
+    },
+    {
+      "nodes": 512,
+      "dt": 0.0000078125,
+      "massScale": 1,
+      "damping": 0,
+      "status": "completed",
+      "termination": null,
+      "maxPenetration": 0.00010315756695399959,
+      "maxResidual": 0.00004716636929363745,
+      "maxMomentumResidualZ": 0.00004024731666341097,
+      "energyBudget": 0.001358438886558363,
+      "passed": true
+    },
+    {
+      "nodes": 512,
+      "dt": 0.00000390625,
+      "massScale": 1,
+      "damping": 0,
+      "status": "completed",
+      "termination": null,
+      "maxPenetration": 0.00010300667082200813,
+      "maxResidual": 0.000024958349747784882,
+      "maxMomentumResidualZ": 0.00001978722901796459,
+      "energyBudget": 0.0013582696783514673,
+      "passed": true
+    },
+    {
+      "nodes": 512,
+      "dt": 0.000015625,
+      "massScale": 1,
+      "damping": 0.5,
+      "status": "completed",
+      "termination": null,
+      "maxPenetration": 0.0001042385375842628,
+      "maxResidual": 0.00008478055879654934,
+      "maxMomentumResidualZ": 0.00007895452559569804,
+      "energyBudget": 0.0013594860946947204,
+      "passed": true
+    },
+    {
+      "nodes": 512,
+      "dt": 0.0000078125,
+      "massScale": 1,
+      "damping": 0.5,
+      "status": "completed",
+      "termination": null,
+      "maxPenetration": 0.00010342653718096472,
+      "maxResidual": 0.000047614826670259016,
+      "maxMomentumResidualZ": 0.00003900959903724299,
+      "energyBudget": 0.0013582562256888205,
+      "passed": true
+    },
+    {
+      "nodes": 512,
+      "dt": 0.00000390625,
+      "massScale": 1,
+      "damping": 0.5,
+      "status": "completed",
+      "termination": null,
+      "maxPenetration": 0.00010266941346937716,
+      "maxResidual": 0.000024974136095654266,
+      "maxMomentumResidualZ": 0.000020048999984645377,
+      "energyBudget": 0.0013582065621232943,
+      "passed": true
+    },
+    {
+      "nodes": 512,
+      "dt": 0.000015625,
+      "massScale": 2,
+      "damping": 0,
+      "status": "completed",
+      "termination": null,
+      "maxPenetration": 0.00005304985285526551,
+      "maxResidual": 0.00004944675787295523,
+      "maxMomentumResidualZ": 0.00004364914923193908,
+      "energyBudget": 0.0011801003313808784,
+      "passed": true
+    },
+    {
+      "nodes": 512,
+      "dt": 0.0000078125,
+      "massScale": 2,
+      "damping": 0,
+      "status": "completed",
+      "termination": null,
+      "maxPenetration": 0.00005320829395670356,
+      "maxResidual": 0.000023321040243999047,
+      "maxMomentumResidualZ": 0.000022402871428184312,
+      "energyBudget": 0.001178930152420593,
+      "passed": true
+    },
+    {
+      "nodes": 512,
+      "dt": 0.00000390625,
+      "massScale": 2,
+      "damping": 0,
+      "status": "completed",
+      "termination": null,
+      "maxPenetration": 0.0000523105988507753,
+      "maxResidual": 0.000012446682598170185,
+      "maxMomentumResidualZ": 0.000010880275948643714,
+      "energyBudget": 0.0011783799923140062,
+      "passed": true
+    },
+    {
+      "nodes": 512,
+      "dt": 0.000015625,
+      "massScale": 2,
+      "damping": 0.5,
+      "status": "completed",
+      "termination": null,
+      "maxPenetration": 0.00005238854595153273,
+      "maxResidual": 0.0000429685728667098,
+      "maxMomentumResidualZ": 0.0000442819967005903,
+      "energyBudget": 0.0011785092678268424,
+      "passed": true
+    },
+    {
+      "nodes": 512,
+      "dt": 0.0000078125,
+      "massScale": 2,
+      "damping": 0.5,
+      "status": "completed",
+      "termination": null,
+      "maxPenetration": 0.00005246254632452436,
+      "maxResidual": 0.000023634754420950882,
+      "maxMomentumResidualZ": 0.000021602865032832597,
+      "energyBudget": 0.0011782174594711266,
+      "passed": true
+    },
+    {
+      "nodes": 512,
+      "dt": 0.00000390625,
+      "massScale": 2,
+      "damping": 0.5,
+      "status": "completed",
+      "termination": null,
+      "maxPenetration": 0.00005233701363700094,
+      "maxResidual": 0.000012480783737881584,
+      "maxMomentumResidualZ": 0.000011142994363666503,
+      "energyBudget": 0.0011781225522224925,
+      "passed": true
+    }
+  ],
+  "comparisons": [
+    {
+      "kind": "timestep",
+      "nodes": [
+        256,
+        256
+      ],
+      "dt": [
+        0.000015625,
+        0.0000078125
+      ],
+      "massScale": 0.5,
+      "damping": 0,
+      "aligned": true,
+      "errors": {
+        "hubZ": 0.000004846545376135936,
+        "pressure": 3.411474907916272,
+        "groundReaction": 6.037397630691089
+      },
+      "budgetRatios": {
+        "hubZ": 0.19386181504543742,
+        "pressure": 0.0020036866307025017,
+        "groundReaction": 0.2839269570488343
+      },
+      "passed": true
+    },
+    {
+      "kind": "timestep",
+      "nodes": [
+        256,
+        256
+      ],
+      "dt": [
+        0.0000078125,
+        0.00000390625
+      ],
+      "massScale": 0.5,
+      "damping": 0,
+      "aligned": true,
+      "errors": {
+        "hubZ": 0.000003019908765944379,
+        "pressure": 2.534757703746436,
+        "groundReaction": 5.255883727031971
+      },
+      "budgetRatios": {
+        "hubZ": 0.12079635063777516,
+        "pressure": 0.0014888369327585118,
+        "groundReaction": 0.24861949374404232
+      },
+      "passed": true
+    },
+    {
+      "kind": "mesh",
+      "nodes": [
+        256,
+        512
+      ],
+      "dt": [
+        0.00000390625,
+        0.00000390625
+      ],
+      "massScale": 0.5,
+      "damping": 0,
+      "aligned": true,
+      "errors": {
+        "hubZ": 0.0000685554585432846,
+        "pressure": 13.564939232746838,
+        "groundReaction": 9.021190728310046
+      },
+      "budgetRatios": {
+        "hubZ": 2.742218341731384,
+        "pressure": 0.00796650621548554,
+        "groundReaction": 0.4148914702592371
+      },
+      "passed": false
+    },
+    {
+      "kind": "timestep",
+      "nodes": [
+        256,
+        256
+      ],
+      "dt": [
+        0.000015625,
+        0.0000078125
+      ],
+      "massScale": 0.5,
+      "damping": 0.5,
+      "aligned": true,
+      "errors": {
+        "hubZ": 0.000004948850485742007,
+        "pressure": 3.0038755273271818,
+        "groundReaction": 5.311212092320943
+      },
+      "budgetRatios": {
+        "hubZ": 0.19795401942968027,
+        "pressure": 0.001764288279428411,
+        "groundReaction": 0.24866008159814412
+      },
+      "passed": true
+    },
+    {
+      "kind": "timestep",
+      "nodes": [
+        256,
+        256
+      ],
+      "dt": [
+        0.0000078125,
+        0.00000390625
+      ],
+      "massScale": 0.5,
+      "damping": 0.5,
+      "aligned": true,
+      "errors": {
+        "hubZ": 0.0000018003019852108615,
+        "pressure": 1.8224709149508271,
+        "groundReaction": 6.293224156419569
+      },
+      "budgetRatios": {
+        "hubZ": 0.07201207940843446,
+        "pressure": 0.0010704465980368983,
+        "groundReaction": 0.29525806678688504
+      },
+      "passed": true
+    },
+    {
+      "kind": "mesh",
+      "nodes": [
+        256,
+        512
+      ],
+      "dt": [
+        0.00000390625,
+        0.00000390625
+      ],
+      "massScale": 0.5,
+      "damping": 0.5,
+      "aligned": true,
+      "errors": {
+        "hubZ": 0.00006656810504390709,
+        "pressure": 13.099860968941357,
+        "groundReaction": 8.103310994937885
+      },
+      "budgetRatios": {
+        "hubZ": 2.6627242017562835,
+        "pressure": 0.007693395430832999,
+        "groundReaction": 0.374131439434639
+      },
+      "passed": false
+    },
+    {
+      "kind": "timestep",
+      "nodes": [
+        256,
+        256
+      ],
+      "dt": [
+        0.000015625,
+        0.0000078125
+      ],
+      "massScale": 1,
+      "damping": 0,
+      "aligned": true,
+      "errors": {
+        "hubZ": 0.000001606320253033644,
+        "pressure": 2.0005602383753285,
+        "groundReaction": 5.573333473796481
+      },
+      "budgetRatios": {
+        "hubZ": 0.06425281012134576,
+        "pressure": 0.0011749800087494852,
+        "groundReaction": 0.26444896299678505
+      },
+      "passed": true
+    },
+    {
+      "kind": "timestep",
+      "nodes": [
+        256,
+        256
+      ],
+      "dt": [
+        0.0000078125,
+        0.00000390625
+      ],
+      "massScale": 1,
+      "damping": 0,
+      "aligned": true,
+      "errors": {
+        "hubZ": 0.0000016580778460228984,
+        "pressure": 1.2727707039157394,
+        "groundReaction": 4.961435203727774
+      },
+      "budgetRatios": {
+        "hubZ": 0.06632311384091594,
+        "pressure": 0.0007475434691231635,
+        "groundReaction": 0.23243949453661705
+      },
+      "passed": true
+    },
+    {
+      "kind": "mesh",
+      "nodes": [
+        256,
+        512
+      ],
+      "dt": [
+        0.00000390625,
+        0.00000390625
+      ],
+      "massScale": 1,
+      "damping": 0,
+      "aligned": true,
+      "errors": {
+        "hubZ": 0.00009414367607024632,
+        "pressure": 16.50353332326631,
+        "groundReaction": 7.9228213667178125
+      },
+      "budgetRatios": {
+        "hubZ": 3.7657470428098527,
+        "pressure": 0.009692271593532668,
+        "groundReaction": 0.36912379247941274
+      },
+      "passed": false
+    },
+    {
+      "kind": "timestep",
+      "nodes": [
+        256,
+        256
+      ],
+      "dt": [
+        0.000015625,
+        0.0000078125
+      ],
+      "massScale": 1,
+      "damping": 0.5,
+      "aligned": true,
+      "errors": {
+        "hubZ": 0.0000018958150444503552,
+        "pressure": 4.043833448755322,
+        "groundReaction": 8.701848115663267
+      },
+      "budgetRatios": {
+        "hubZ": 0.07583260177801421,
+        "pressure": 0.0023750753444994983,
+        "groundReaction": 0.4122312732044343
+      },
+      "passed": true
+    },
+    {
+      "kind": "timestep",
+      "nodes": [
+        256,
+        256
+      ],
+      "dt": [
+        0.0000078125,
+        0.00000390625
+      ],
+      "massScale": 1,
+      "damping": 0.5,
+      "aligned": true,
+      "errors": {
+        "hubZ": 0.000002346178520462594,
+        "pressure": 0.8984260683646426,
+        "groundReaction": 3.2780412262995924
+      },
+      "budgetRatios": {
+        "hubZ": 0.09384714081850376,
+        "pressure": 0.0005276749477615772,
+        "groundReaction": 0.1543159680131625
+      },
+      "passed": true
+    },
+    {
+      "kind": "mesh",
+      "nodes": [
+        256,
+        512
+      ],
+      "dt": [
+        0.00000390625,
+        0.00000390625
+      ],
+      "massScale": 1,
+      "damping": 0.5,
+      "aligned": true,
+      "errors": {
+        "hubZ": 0.00009249562396129729,
+        "pressure": 16.141800420649815,
+        "groundReaction": 8.775985699536193
+      },
+      "budgetRatios": {
+        "hubZ": 3.6998249584518916,
+        "pressure": 0.009479834105646536,
+        "groundReaction": 0.40933566992075693
+      },
+      "passed": false
+    },
+    {
+      "kind": "timestep",
+      "nodes": [
+        256,
+        256
+      ],
+      "dt": [
+        0.000015625,
+        0.0000078125
+      ],
+      "massScale": 2,
+      "damping": 0,
+      "aligned": true,
+      "errors": {
+        "hubZ": 0.00000105474029321595,
+        "pressure": 0.6915998103504535,
+        "groundReaction": 4.105024536835799
+      },
+      "budgetRatios": {
+        "hubZ": 0.042189611728638,
+        "pressure": 0.00040618201921426635,
+        "groundReaction": 0.19299988553599343
+      },
+      "passed": true
+    },
+    {
+      "kind": "timestep",
+      "nodes": [
+        256,
+        256
+      ],
+      "dt": [
+        0.0000078125,
+        0.00000390625
+      ],
+      "massScale": 2,
+      "damping": 0,
+      "aligned": true,
+      "errors": {
+        "hubZ": 0.0000021041885258088477,
+        "pressure": 0.725083578232443,
+        "groundReaction": 3.6873643463287635
+      },
+      "budgetRatios": {
+        "hubZ": 0.08416754103235391,
+        "pressure": 0.00042584161474923556,
+        "groundReaction": 0.17411123134478693
+      },
+      "passed": true
+    },
+    {
+      "kind": "mesh",
+      "nodes": [
+        256,
+        512
+      ],
+      "dt": [
+        0.00000390625,
+        0.00000390625
+      ],
+      "massScale": 2,
+      "damping": 0,
+      "aligned": true,
+      "errors": {
+        "hubZ": 0.00007654074103968789,
+        "pressure": 12.725244373490568,
+        "groundReaction": 6.461794843912571
+      },
+      "budgetRatios": {
+        "hubZ": 3.0616296415875155,
+        "pressure": 0.007473447680203969,
+        "groundReaction": 0.3044601653446541
+      },
+      "passed": false
+    },
+    {
+      "kind": "timestep",
+      "nodes": [
+        256,
+        256
+      ],
+      "dt": [
+        0.000015625,
+        0.0000078125
+      ],
+      "massScale": 2,
+      "damping": 0.5,
+      "aligned": true,
+      "errors": {
+        "hubZ": 0.0000019564359010626475,
+        "pressure": 1.194596200453816,
+        "groundReaction": 5.397440443193602
+      },
+      "budgetRatios": {
+        "hubZ": 0.0782574360425059,
+        "pressure": 0.000701610504480497,
+        "groundReaction": 0.2538193279302968
+      },
+      "passed": true
+    },
+    {
+      "kind": "timestep",
+      "nodes": [
+        256,
+        256
+      ],
+      "dt": [
+        0.0000078125,
+        0.00000390625
+      ],
+      "massScale": 2,
+      "damping": 0.5,
+      "aligned": true,
+      "errors": {
+        "hubZ": 0.0000023560727087090783,
+        "pressure": 1.136957594571868,
+        "groundReaction": 5.922627969299526
+      },
+      "budgetRatios": {
+        "hubZ": 0.09424290834836313,
+        "pressure": 0.0006677706890845383,
+        "groundReaction": 0.2781042402577806
+      },
+      "passed": true
+    },
+    {
+      "kind": "mesh",
+      "nodes": [
+        256,
+        512
+      ],
+      "dt": [
+        0.00000390625,
+        0.00000390625
+      ],
+      "massScale": 2,
+      "damping": 0.5,
+      "aligned": true,
+      "errors": {
+        "hubZ": 0.00007761607562861705,
+        "pressure": 12.825453039229615,
+        "groundReaction": 7.959849899637732
+      },
+      "budgetRatios": {
+        "hubZ": 3.104643025144682,
+        "pressure": 0.007532300494708377,
+        "groundReaction": 0.3717123200095794
+      },
+      "passed": false
+    },
+    {
+      "kind": "timestep",
+      "nodes": [
+        512,
+        512
+      ],
+      "dt": [
+        0.000015625,
+        0.0000078125
+      ],
+      "massScale": 0.5,
+      "damping": 0,
+      "aligned": true,
+      "errors": {
+        "hubZ": 0.0000013863773616895614,
+        "pressure": 0.4556613370368723,
+        "groundReaction": 0.6031371340437204
+      },
+      "budgetRatios": {
+        "hubZ": 0.055455094467582455,
+        "pressure": 0.00026761977763717826,
+        "groundReaction": 0.02868751360229277
+      },
+      "passed": true
+    },
+    {
+      "kind": "timestep",
+      "nodes": [
+        512,
+        512
+      ],
+      "dt": [
+        0.0000078125,
+        0.00000390625
+      ],
+      "massScale": 0.5,
+      "damping": 0,
+      "aligned": true,
+      "errors": {
+        "hubZ": 4.4476782956603955e-7,
+        "pressure": 0.6126009961590171,
+        "groundReaction": 0.526751387677848
+      },
+      "budgetRatios": {
+        "hubZ": 0.017790713182641582,
+        "pressure": 0.00035979254588440094,
+        "groundReaction": 0.02546782927402034
+      },
+      "passed": true
+    },
+    {
+      "kind": "timestep",
+      "nodes": [
+        512,
+        512
+      ],
+      "dt": [
+        0.000015625,
+        0.0000078125
+      ],
+      "massScale": 0.5,
+      "damping": 0.5,
+      "aligned": true,
+      "errors": {
+        "hubZ": 0.000004078456920741935,
+        "pressure": 1.0074008589435834,
+        "groundReaction": 0.9408044427695472
+      },
+      "budgetRatios": {
+        "hubZ": 0.1631382768296774,
+        "pressure": 0.0005916891031337424,
+        "groundReaction": 0.04440307443036715
+      },
+      "passed": true
+    },
+    {
+      "kind": "timestep",
+      "nodes": [
+        512,
+        512
+      ],
+      "dt": [
+        0.0000078125,
+        0.00000390625
+      ],
+      "massScale": 0.5,
+      "damping": 0.5,
+      "aligned": true,
+      "errors": {
+        "hubZ": 0.00000411496231711439,
+        "pressure": 0.8905734901491087,
+        "groundReaction": 0.8141194880666944
+      },
+      "budgetRatios": {
+        "hubZ": 0.1645984926845756,
+        "pressure": 0.000523090505815881,
+        "groundReaction": 0.039242266392425354
+      },
+      "passed": true
+    },
+    {
+      "kind": "timestep",
+      "nodes": [
+        512,
+        512
+      ],
+      "dt": [
+        0.000015625,
+        0.0000078125
+      ],
+      "massScale": 1,
+      "damping": 0,
+      "aligned": true,
+      "errors": {
+        "hubZ": 3.297771836718866e-7,
+        "pressure": 0.41951062640873715,
+        "groundReaction": 0.4749560418368901
+      },
+      "budgetRatios": {
+        "hubZ": 0.013191087346875463,
+        "pressure": 0.0002463873715266874,
+        "groundReaction": 0.022277597009202534
+      },
+      "passed": true
+    },
+    {
+      "kind": "timestep",
+      "nodes": [
+        512,
+        512
+      ],
+      "dt": [
+        0.0000078125,
+        0.00000390625
+      ],
+      "massScale": 1,
+      "damping": 0,
+      "aligned": true,
+      "errors": {
+        "hubZ": 2.914835317002762e-7,
+        "pressure": 0.1526728238677606,
+        "groundReaction": 0.6476735708142201
+      },
+      "budgetRatios": {
+        "hubZ": 0.011659341268011048,
+        "pressure": 0.00008966539571169052,
+        "groundReaction": 0.030916871089410682
+      },
+      "passed": true
+    },
+    {
+      "kind": "timestep",
+      "nodes": [
+        512,
+        512
+      ],
+      "dt": [
+        0.000015625,
+        0.0000078125
+      ],
+      "massScale": 1,
+      "damping": 0.5,
+      "aligned": true,
+      "errors": {
+        "hubZ": 9.259162842556456e-7,
+        "pressure": 0.35400003296672367,
+        "groundReaction": 0.5580228589311105
+      },
+      "budgetRatios": {
+        "hubZ": 0.037036651370225826,
+        "pressure": 0.00020791174133689516,
+        "groundReaction": 0.026643880359581193
+      },
+      "passed": true
+    },
+    {
+      "kind": "timestep",
+      "nodes": [
+        512,
+        512
+      ],
+      "dt": [
+        0.0000078125,
+        0.00000390625
+      ],
+      "massScale": 1,
+      "damping": 0.5,
+      "aligned": true,
+      "errors": {
+        "hubZ": 9.330942041252399e-7,
+        "pressure": 0.22103785863146186,
+        "groundReaction": 0.47249359904350285
+      },
+      "budgetRatios": {
+        "hubZ": 0.037323768165009596,
+        "pressure": 0.00012981227798367263,
+        "groundReaction": 0.022227823818694276
+      },
+      "passed": true
+    },
+    {
+      "kind": "timestep",
+      "nodes": [
+        512,
+        512
+      ],
+      "dt": [
+        0.000015625,
+        0.0000078125
+      ],
+      "massScale": 2,
+      "damping": 0,
+      "aligned": true,
+      "errors": {
+        "hubZ": 4.9709871718928156e-8,
+        "pressure": 0.3214213645842392,
+        "groundReaction": 0.8781648499409016
+      },
+      "budgetRatios": {
+        "hubZ": 0.0019883948687571262,
+        "pressure": 0.00018877240924449983,
+        "groundReaction": 0.041620439504483055
+      },
+      "passed": true
+    },
+    {
+      "kind": "timestep",
+      "nodes": [
+        512,
+        512
+      ],
+      "dt": [
+        0.0000078125,
+        0.00000390625
+      ],
+      "massScale": 2,
+      "damping": 0,
+      "aligned": true,
+      "errors": {
+        "hubZ": 1.1789795284489202e-7,
+        "pressure": 0.10767810908146203,
+        "groundReaction": 0.6557342230931908
+      },
+      "budgetRatios": {
+        "hubZ": 0.004715918113795681,
+        "pressure": 0.00006323986349178359,
+        "groundReaction": 0.031078386438612323
+      },
+      "passed": true
+    },
+    {
+      "kind": "timestep",
+      "nodes": [
+        512,
+        512
+      ],
+      "dt": [
+        0.000015625,
+        0.0000078125
+      ],
+      "massScale": 2,
+      "damping": 0.5,
+      "aligned": true,
+      "errors": {
+        "hubZ": 2.821973789646215e-7,
+        "pressure": 0.3324861204891931,
+        "groundReaction": 1.1227449772287628
+      },
+      "budgetRatios": {
+        "hubZ": 0.01128789515858486,
+        "pressure": 0.00019527078784947055,
+        "groundReaction": 0.053323025456296635
+      },
+      "passed": true
+    },
+    {
+      "kind": "timestep",
+      "nodes": [
+        512,
+        512
+      ],
+      "dt": [
+        0.0000078125,
+        0.00000390625
+      ],
+      "massScale": 2,
+      "damping": 0.5,
+      "aligned": true,
+      "errors": {
+        "hubZ": 1.9335394269015538e-7,
+        "pressure": 0.10347373224794865,
+        "groundReaction": 1.2683375609573773
+      },
+      "budgetRatios": {
+        "hubZ": 0.007734157707606215,
+        "pressure": 0.00006077061174496559,
+        "groundReaction": 0.06021689957725468
+      },
+      "passed": true
+    }
+  ],
+  "summary": {
+    "runs": 36,
+    "runGateFailures": 0,
+    "timestepFailures": 0,
+    "meshFailures": 6
+  }
+}

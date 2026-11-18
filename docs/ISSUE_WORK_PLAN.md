@@ -1,5 +1,7 @@
 # GitHub feedback and delivery plan — 2026-11-03
 
+Latest 18 November: [loaded native damping/contact](TYRE_NATIVE_LOADED.md) runs 72 fine-mesh cases. Euler retains three damping failures; implicitfast completes 36/36 with all 24 timestep comparisons passing. All six native mesh comparisons still fail on hub motion, so runtime limits/defaults stay unchanged. Full local Node 510/510 passes. Next settled/equal-load native contact/mesh refinement, then practical runtime cost and viewer/trail/near-rim receiving; #95 remains open and uncalibrated.
+
 Latest 17 November mass follow-up: [coupled casing mass/frequency](TYRE_MASS_FREQUENCY.md) reuses the native-verified inverse mass and receives eight additional native cases plus 162 frozen-state estimates. Nominal internal scales are about 139/70/35 microseconds at 128/256/512 stations; they are not admitted native timesteps. Full local Node 507/507 passes. Next damping/contact/nonlinear loaded refinement and complete native cost; runtime limits stay unchanged, #95 open and uncalibrated.
 
 Latest 17 November cost follow-up: [local casing kernel reference](TYRE_CASING_COST.md) measures approximately 119/242/488 microseconds at 128/256/512 stations; only the latter two pass the sampled fine gate. The profile points to evaluator/surface work, but kernel timing cannot establish native-step speed or stability. Next derive configured-mass timestep admission and receive full native loaded cost before selecting a reduction. Physics/defaults are unchanged; #95 remains open and uncalibrated.
