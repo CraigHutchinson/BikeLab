@@ -17,11 +17,12 @@ export async function runLoaded(casing,state,options={}){
  const steps=Math.round(p.duration/p.dt),stride=Math.round(p.sampleDt/p.dt);
  if(stride<1||Math.abs(steps*p.dt-p.duration)>1e-12||Math.abs(stride*p.dt-p.sampleDt)>1e-12||steps%stride)throw RangeError('Unaligned offline observation times');
  if(!state.converged||!state.locallyAdmissible||state.planeAngle!==0||state.coordinates.length!==casing.initial.length||!Number.isFinite(state.reaction)||state.reaction<0)throw RangeError('Expected admitted phase-zero equilibrium');
+ const load=options.appliedLoad??state.reaction;if(!Number.isFinite(load)||load<0)throw RangeError('Invalid applied hub load');
  const model=mj.MjModel.from_xml_string(nativeLoadedXML(casing,p));let data,velocityBuffer;
  try{
- data=new mj.MjData(model);velocityBuffer=new mj.DoubleBuffer(6);const q=new Float64Array(casing.initial.length),oldQ=new Float64Array(model.nq),frames=Array.from({length:steps/stride+2},()=>({momentumZ:0,groundImpulse:0,momentumResidualZ:0,time:0,hubZ:0,hubVz:0,spin:0,maxStrain:0,relaxedCells:0,pressure:0,volume:0,energy:0,contactWork:0,dampingLoss:0,externalWork:0,residual:0,penetration:0,contacts:0,groundReaction:0,coordinates:new Float64Array(q.length)}));let frameCount=0;
+ data=new mj.MjData(model);velocityBuffer=new mj.DoubleBuffer(6);const q=new Float64Array(casing.initial.length),oldQ=new Float64Array(model.nq),frames=Array.from({length:steps/stride+2},()=>({momentumZ:0,maxBodySpeed:0,groundImpulse:0,momentumResidualZ:0,time:0,hubZ:0,hubVz:0,spin:0,maxStrain:0,relaxedCells:0,pressure:0,volume:0,energy:0,contactWork:0,dampingLoss:0,externalWork:0,residual:0,penetration:0,contacts:0,groundReaction:0,coordinates:new Float64Array(q.length)}));let frameCount=0;
  for(let i=0;i<q.length;i++)data.qpos[i+3]=state.coordinates[i]-casing.initial[i];
- data.qfrc_applied[1]=-state.reaction;
+ data.qfrc_applied[1]=-load;
  const force=()=>{for(let i=0;i<q.length;i++)q[i]=casing.initial[i]+data.qpos[i+3];casing.evaluate(q);for(let i=0;i<q.length;i++)data.qfrc_applied[i+3]=casing.state.forces[i];};
  let energy=0,contactPower=0,dampingPower=0,contactWork=0,loss=0,work=0,initialEnergy=0,maxResidual=0,maxPenetration=0,maxIterations=0,groundImpulse=0,termination=null;
  function observe(){force();mj.mj_forward(model,data);mj.mj_energyPos(model,data);mj.mj_energyVel(model,data);energy=data.energy[0]+data.energy[1]+casing.state.potential;contactPower=0;dampingPower=0;for(let i=0;i<model.nv;i++){contactPower+=data.qfrc_constraint[i]*data.qvel[i];dampingPower-=data.qfrc_damper[i]*data.qvel[i];}
@@ -29,9 +30,9 @@ export async function runLoaded(casing,state,options={}){
  return penetration;
  }
  function snapshot(penetration){
- const f=frames[frameCount++];let momentumZ=0;
- for(let b=1;b<model.nbody;b++){mj.mj_objectVelocity(model,data,mj.mjtObj.mjOBJ_BODY.value,b,velocityBuffer,0);momentumZ+=model.body_mass[b]*velocityBuffer.GetView()[5];}
- f.momentumZ=momentumZ;f.groundImpulse=groundImpulse;f.momentumResidualZ=momentumZ-groundImpulse+state.reaction*data.time;
+ const f=frames[frameCount++];let momentumZ=0,maxBodySpeed=0;
+ for(let b=1;b<model.nbody;b++){mj.mj_objectVelocity(model,data,mj.mjtObj.mjOBJ_BODY.value,b,velocityBuffer,0);const v=velocityBuffer.GetView();momentumZ+=model.body_mass[b]*v[5];maxBodySpeed=Math.max(maxBodySpeed,Math.hypot(v[3],v[4],v[5]));}
+ f.momentumZ=momentumZ;f.maxBodySpeed=maxBodySpeed;f.groundImpulse=groundImpulse;f.momentumResidualZ=momentumZ-groundImpulse+load*data.time;
  f.time=data.time;f.hubZ=p.height+data.qpos[1];f.hubVz=data.qvel[1];f.spin=data.qpos[2];f.maxStrain=casing.state.maxStrain;f.relaxedCells=casing.state.relaxedCells;
  f.pressure=casing.state.gaugePressure;f.volume=casing.state.volume;f.energy=energy;f.contactWork=contactWork;f.dampingLoss=loss;f.externalWork=work;
  f.residual=energy-initialEnergy-contactWork+loss-work;f.penetration=penetration;f.contacts=data.ncon;f.groundReaction=data.qfrc_constraint[1];f.coordinates.set(q);
@@ -40,7 +41,7 @@ export async function runLoaded(casing,state,options={}){
  for(let k=1;k<=steps;k++){
  const cp=contactPower,dp=dampingPower,fz=data.qfrc_constraint[1];oldQ.set(data.qpos);
  try{mj.mj_step1(model,data);force();mj.mj_step2(model,data);penetration=observe();}catch(e){if(!(e instanceof RangeError))throw e;termination={step:k,reason:'casing-domain',detail:e.message,attemptedQpos:Array.from(data.qpos),attemptedQvel:Array.from(data.qvel)};break;}
- groundImpulse+=p.dt*(fz+data.qfrc_constraint[1])/2;contactWork+=p.dt*(cp+contactPower)/2;loss+=p.dt*(dp+dampingPower)/2;work-=state.reaction*(data.qpos[1]-oldQ[1]);
+ groundImpulse+=p.dt*(fz+data.qfrc_constraint[1])/2;contactWork+=p.dt*(cp+contactPower)/2;loss+=p.dt*(dp+dampingPower)/2;work-=load*(data.qpos[1]-oldQ[1]);
  const residual=energy-initialEnergy-contactWork+loss-work;maxResidual=Math.max(maxResidual,Math.abs(residual));
  let finite=Number.isFinite(energy)&&Number.isFinite(contactPower)&&Number.isFinite(dampingPower)&&Number.isFinite(residual);for(let i=0;i<model.nv;i++)finite&&=Number.isFinite(data.qpos[i])&&Number.isFinite(data.qvel[i])&&Number.isFinite(data.qacc[i]);
  if(!finite)termination={step:k,reason:'nonfinite-state'};
@@ -49,6 +50,6 @@ export async function runLoaded(casing,state,options={}){
  else if(casing.state.maxStrain>.3)termination={step:k,reason:'strain-exceeds-30-percent'};
  if(k%stride===0||termination)snapshot(penetration);if(termination)break;
  }
- return {params:{...p,nodes:q.length/2},load:state.reaction,status:termination?'terminated':'completed',termination,acceptedTime:termination?(termination.step-1)*p.dt:data.time,attemptedTime:data.time,maxResidual,maxPenetration,maxIterations,frames:frames.slice(0,frameCount).map(f=>({...f,coordinates:Array.from(f.coordinates)}))};
+ return {params:{...p,nodes:q.length/2},load,initialStaticReaction:state.reaction,status:termination?'terminated':'completed',termination,acceptedTime:termination?(termination.step-1)*p.dt:data.time,attemptedTime:data.time,maxResidual,maxPenetration,maxIterations,frames:frames.slice(0,frameCount).map(f=>({...f,coordinates:Array.from(f.coordinates)}))};
  }finally{velocityBuffer?.delete();data?.delete();model.delete();}
 }

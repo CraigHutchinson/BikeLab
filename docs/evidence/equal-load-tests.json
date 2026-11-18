@@ -1,0 +1,23 @@
+{
+  "date": "2026-11-18",
+  "scope": "Complete Windows Node suite; no browser/full-hosted claim. Numerical mesh and settlement gates remain failed.",
+  "command": "node --test",
+  "exitCode": 0,
+  "node": "v24.22.0",
+  "tests": 511,
+  "pass": 511,
+  "fail": 0,
+  "skipped": 0,
+  "duration_ms": 110369.8427,
+  "logSha256": "90eb49eca053b3d4deb36a4059b3f91850e09ca0b0e7c9ff349fb7823cc563f6",
+  "sourcesSha256": {
+    "scripts/lib/tyre-native-loaded.mjs": "bc214ba38a0e7da7e80b800811b8c4dd7dad99fd96d4ab3ed3c4cec00eb34bc4",
+    "scripts/tyre-equal-load.mjs": "35675347c61ad1c532487a86e45b985e192e2475e5c611e12af73608de6626cb",
+    "test/tyre-native-loaded.test.mjs": "cd1a93f56754a7c71913ca74fe753b989392b16f39b34421d561426a916dbdb5",
+    "dist/moving-wheel.js": "3896fc8f29ef509eb4115838e7eb42014f479dc3eaf5ee638734421e1cb11a37",
+    "dist/sealed-casing.js": "40a92a31cd25d4ed3f484c3224829b0306e9eb82aee87f0b1add2fb07dfb7162",
+    "dist/tyre-relaxation.js": "8568a58c5eb0bf4dced852f3fd9e59d818835a4ed241c01a159a01486dd830d1",
+    "dist/vendor/mujoco-3.16.0/mujoco.js": "5d5d89ddd0857a6518c628fa502d42f99d6dd67ca240182f1068cd30a45465ac",
+    "dist/vendor/mujoco-3.16.0/mujoco.wasm": "e05ac96db7f45bd46e76fed6e3469bf9204329e093344d742a18bca2cc0e230e"
+  }
+}

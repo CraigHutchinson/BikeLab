@@ -1,0 +1,108 @@
+{
+  "scope": "One native forward evaluation at each final geometry with every velocity zeroed. This is a static-residual diagnostic, not another settled solve or the dynamic endpoint acceleration.",
+  "reportSha256": "fd7c5d19f46c3d797ffd7199aba8ead652bd2ef674e3a3cf6b4db5ff37d087d9",
+  "sourcesSha256": {
+    "scripts/diagnose-tyre-equal-load.mjs": "687b07a3acf860d22517101c3a338df21a4442328ca5b74497b342ffae4d68fe",
+    "scripts/lib/tyre-native-loaded.mjs": "bc214ba38a0e7da7e80b800811b8c4dd7dad99fd96d4ab3ed3c4cec00eb34bc4",
+    "dist/sealed-casing.js": "40a92a31cd25d4ed3f484c3224829b0306e9eb82aee87f0b1add2fb07dfb7162",
+    "dist/moving-wheel.js": "3896fc8f29ef509eb4115838e7eb42014f479dc3eaf5ee638734421e1cb11a37"
+  },
+  "rows": [
+    {
+      "nodes": 256,
+      "dt": 0.0000078125,
+      "contactTime": 0.001,
+      "sourceTime": 0.09999999999998707,
+      "zeroedAllVelocities": true,
+      "hubForceResidual": 1.1840374189458203,
+      "hubAcceleration": 0.14810374374897423,
+      "maxInternalForce": 0.33091028742995476,
+      "maxInternalAcceleration": 84.51999687074785,
+      "contacts": 8
+    },
+    {
+      "nodes": 256,
+      "dt": 0.00000390625,
+      "contactTime": 0.001,
+      "sourceTime": 0.10000000000003244,
+      "zeroedAllVelocities": true,
+      "hubForceResidual": 1.6734989329186192,
+      "hubAcceleration": 0.2429914013313343,
+      "maxInternalForce": 0.3487537329761672,
+      "maxInternalAcceleration": 89.06444689643962,
+      "contacts": 8
+    },
+    {
+      "nodes": 256,
+      "dt": 0.0000078125,
+      "contactTime": 0.0005,
+      "sourceTime": 0.09999999999998707,
+      "zeroedAllVelocities": true,
+      "hubForceResidual": 4.769001808164603,
+      "hubAcceleration": 0.9846358845656178,
+      "maxInternalForce": 0.8124961805423965,
+      "maxInternalAcceleration": 206.99076222920527,
+      "contacts": 8
+    },
+    {
+      "nodes": 256,
+      "dt": 0.00000390625,
+      "contactTime": 0.0005,
+      "sourceTime": 0.10000000000003244,
+      "zeroedAllVelocities": true,
+      "hubForceResidual": 5.50325025368511,
+      "hubAcceleration": 1.0334423120845606,
+      "maxInternalForce": 0.8067539921167253,
+      "maxInternalAcceleration": 205.54225767179128,
+      "contacts": 8
+    },
+    {
+      "nodes": 512,
+      "dt": 0.0000078125,
+      "contactTime": 0.001,
+      "sourceTime": 0.09999999999998707,
+      "zeroedAllVelocities": true,
+      "hubForceResidual": -2.3699832498529645,
+      "hubAcceleration": -0.8130167437006631,
+      "maxInternalForce": 0.09117563669586914,
+      "maxInternalAcceleration": 47.47794423735774,
+      "contacts": 16
+    },
+    {
+      "nodes": 512,
+      "dt": 0.00000390625,
+      "contactTime": 0.001,
+      "sourceTime": 0.10000000000003244,
+      "zeroedAllVelocities": true,
+      "hubForceResidual": -2.1890717879822432,
+      "hubAcceleration": -0.8512463147418922,
+      "maxInternalForce": 0.1097429278419284,
+      "maxInternalAcceleration": 55.27922976451531,
+      "contacts": 16
+    },
+    {
+      "nodes": 512,
+      "dt": 0.0000078125,
+      "contactTime": 0.0005,
+      "sourceTime": 0.09999999999998707,
+      "zeroedAllVelocities": true,
+      "hubForceResidual": 0.422973974155866,
+      "hubAcceleration": 0.28070547650474337,
+      "maxInternalForce": 0.8257397500060684,
+      "maxInternalAcceleration": 423.0594568602954,
+      "contacts": 16
+    },
+    {
+      "nodes": 512,
+      "dt": 0.00000390625,
+      "contactTime": 0.0005,
+      "sourceTime": 0.10000000000003244,
+      "zeroedAllVelocities": true,
+      "hubForceResidual": 1.4361886877113648,
+      "hubAcceleration": 0.15483368003782946,
+      "maxInternalForce": 0.547429357266239,
+      "maxInternalAcceleration": 280.4386818039895,
+      "contacts": 16
+    }
+  ]
+}
