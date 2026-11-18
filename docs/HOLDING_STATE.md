@@ -1,5 +1,7 @@
 # BikeLab workstream handoff — 2026-11-04
 
+Latest 18 November equal-load follow-up: [native contact study](TYRE_EQUAL_LOAD.md) completes eight 100 ms cases at the same 400 N load. All run and timestep gates pass, but both mesh comparisons fail and no run qualifies as settled. Zero-velocity endpoint residuals are nonzero. Full local Node 511/511 passes. Next receive a native static equilibrium and perturb/release comparison before runtime promotion; #95 remains open and uncalibrated.
+
 Latest 18 November: [loaded native damping/contact](TYRE_NATIVE_LOADED.md) runs 72 fine-mesh cases. Euler retains three damping failures; implicitfast completes 36/36 with all 24 timestep comparisons passing. All six native mesh comparisons still fail on hub motion, so runtime limits/defaults stay unchanged. Full local Node 510/510 passes. Next settled/equal-load native contact/mesh refinement, then practical runtime cost and viewer/trail/near-rim receiving; #95 remains open and uncalibrated.
 
 Latest 17 November mass follow-up: [coupled casing mass/frequency](TYRE_MASS_FREQUENCY.md) reuses the native-verified inverse mass and receives eight additional native cases plus 162 frozen-state estimates. Nominal internal scales are about 139/70/35 microseconds at 128/256/512 stations; they are not admitted native timesteps. Full local Node 507/507 passes. Next damping/contact/nonlinear loaded refinement and complete native cost; runtime limits stay unchanged, #95 open and uncalibrated.

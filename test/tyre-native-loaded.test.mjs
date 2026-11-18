@@ -33,3 +33,10 @@ test('implicit damping candidate receives the light fine-mesh failure without ch
  assert.equal(results[0].status,'terminated');assert.equal(results[0].termination.reason,'casing-domain');assert.ok(results[0].acceptedTime<results[0].attemptedTime);
  assert.equal(results[1].status,'completed');assert.ok(results[1].maxResidual<.001);assert.ok(results[1].maxPenetration<.0005);assert.ok(results[1].frames.at(-1).dampingLoss>=0);
 });
+
+test('constant applied hub load is distinct from the initial equilibrium reaction and owns work',async()=>{
+ const archive=JSON.parse(gunzipSync(Buffer.from((await readFile('docs/evidence/contact-relaxation-report.json.gz.b64','utf8')).trim(),'base64'))),c=archive.cases.find(c=>c.nodes===256&&c.model===RELAXED_MODEL&&c.pressure===160000&&c.phase===0),m=createSweptCasing(c.configuration,c.model),r=await runLoaded(m,c.states[2],{integrator:'implicitfast',appliedLoad:400,duration:.002});
+ assert.equal(r.status,'completed');assert.equal(r.load,400);assert.equal(r.initialStaticReaction,c.states[2].reaction);assert.notEqual(r.load,r.initialStaticReaction);
+ for(const f of r.frames){near(f.externalWork,-400*(f.hubZ-r.frames[0].hubZ),1e-12);assert.ok(f.maxBodySpeed>=Math.abs(f.hubVz)-1e-12);near(f.momentumResidualZ,f.momentumZ-f.groundImpulse+400*f.time,1e-12);}
+ await assert.rejects(runLoaded(m,c.states[2],{appliedLoad:-1}));await assert.rejects(runLoaded(m,c.states[2],{appliedLoad:NaN}));
+});

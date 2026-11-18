@@ -54,3 +54,7 @@ The [mass-aware diagnostic](../TYRE_MASS_FREQUENCY.md) receives configured hub/t
 ## Native receiving checkpoint, 18 November
 
 The [72-case native comparison](../TYRE_NATIVE_LOADED.md) identifies three Euler damping failures and receives implicitfast without changing viscosity/material constants. Its 36 runs and 24 timestep comparisons pass, but all six mesh comparisons fail on hub motion. Full local Node 510/510 passes. Next settled/equal-load/contact-time refinement before production mesh selection, native cost or viewer/trail/near-rim promotion. Preserve the frozen 25 micrometre budget. Physical calibration remains deferred.
+
+## Equal-load receiving, 18 November
+
+The [equal-load study](../TYRE_EQUAL_LOAD.md) removes the mesh-dependent applied-load difference. Eight 100 ms runs pass energy/penetration and all four timestep comparisons, but both mesh comparisons and all eight sampled settlement tests fail. Native forward evaluations with velocities zeroed also show nonzero residual forces. Full local Node 511/511 passes. Next receive the actual regularized native static equilibrium and perturb/release refinement, without adding invented material damping or widening gates. Runtime/trail/near-rim integration and calibration remain ahead.

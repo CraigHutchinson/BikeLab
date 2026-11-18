@@ -1,0 +1,403 @@
+{
+  "scope": "Sampled final-window settlement and fixed numerical budgets. Contact-time differences measure model sensitivity, not an automatic admission gate.",
+  "sourcesSha256": {
+    "scripts/lib/tyre-native-loaded.mjs": "bc214ba38a0e7da7e80b800811b8c4dd7dad99fd96d4ab3ed3c4cec00eb34bc4",
+    "scripts/tyre-equal-load.mjs": "35675347c61ad1c532487a86e45b985e192e2475e5c611e12af73608de6626cb",
+    "dist/moving-wheel.js": "3896fc8f29ef509eb4115838e7eb42014f479dc3eaf5ee638734421e1cb11a37",
+    "dist/sealed-casing.js": "40a92a31cd25d4ed3f484c3224829b0306e9eb82aee87f0b1add2fb07dfb7162",
+    "dist/tyre-relaxation.js": "8568a58c5eb0bf4dced852f3fd9e59d818835a4ed241c01a159a01486dd830d1",
+    "dist/wheel-ring.js": "c0de0d124a02f1ecfacd899e73de714ce6a697d0badccd9020052c88fe55de60",
+    "dist/tyre-gas.js": "bb977230f4762d4f57059506149491934589be374c07107a4283c1e32bfb0089",
+    "dist/vendor/mujoco-3.16.0/mujoco.js": "5d5d89ddd0857a6518c628fa502d42f99d6dd67ca240182f1068cd30a45465ac",
+    "dist/vendor/mujoco-3.16.0/mujoco.wasm": "e05ac96db7f45bd46e76fed6e3469bf9204329e093344d742a18bca2cc0e230e",
+    "docs/evidence/contact-relaxation-report.json.gz.b64": "6cf5911ab752b042f63b3a08eb4f003f9f3b1547b9426be27613bca45f6c054c"
+  },
+  "reportSha256": "fd7c5d19f46c3d797ffd7199aba8ead652bd2ef674e3a3cf6b4db5ff37d087d9",
+  "comparatorSha256": "39f6ea77b83853efc702957663048a29909145ff2f63a9f43e8e737f68c6f3c9",
+  "budgets": {
+    "hubZ": 0.000025,
+    "pressureAbsolute": 100,
+    "pressureRelative": 0.01,
+    "forceAbsolute": 1,
+    "forceRelative": 0.05,
+    "penetration": 0.0005,
+    "energyAbsolute": 0.001,
+    "energyRelative": 0.01,
+    "settledWindow": 0.02,
+    "settledHeightSpan": 0.000005,
+    "settledBodySpeed": 0.001,
+    "settledReactionAbsolute": 1,
+    "settledReactionRelative": 0.01
+  },
+  "receiving": [
+    {
+      "nodes": 256,
+      "dt": 0.0000078125,
+      "contactTime": 0.001,
+      "status": "completed",
+      "termination": null,
+      "initialStaticReaction": 401.51504489343847,
+      "appliedLoad": 400,
+      "maxResidual": 0.0006024841298498977,
+      "maxPenetration": 0.00012285463454717044,
+      "energyBudget": 0.0013694906566663455,
+      "runPassed": true,
+      "tailSamples": 21,
+      "heightSpan": 0.000012511373987722507,
+      "maxBodySpeed": 0.010987558885071497,
+      "reactionError": 5.800890058222308,
+      "settled": false
+    },
+    {
+      "nodes": 256,
+      "dt": 0.00000390625,
+      "contactTime": 0.001,
+      "status": "completed",
+      "termination": null,
+      "initialStaticReaction": 401.51504489343847,
+      "appliedLoad": 400,
+      "maxResidual": 0.00029000273302185603,
+      "maxPenetration": 0.00012579352397527584,
+      "energyBudget": 0.001376950569172385,
+      "runPassed": true,
+      "tailSamples": 21,
+      "heightSpan": 0.000019100580703146353,
+      "maxBodySpeed": 0.007522736694714775,
+      "reactionError": 2.313226150221226,
+      "settled": false
+    },
+    {
+      "nodes": 256,
+      "dt": 0.0000078125,
+      "contactTime": 0.0005,
+      "status": "completed",
+      "termination": null,
+      "initialStaticReaction": 401.51504489343847,
+      "appliedLoad": 400,
+      "maxResidual": 0.0009936122641634078,
+      "maxPenetration": 0.00004014086494492408,
+      "energyBudget": 0.0014074618084340463,
+      "runPassed": true,
+      "tailSamples": 21,
+      "heightSpan": 0.00006380237897135599,
+      "maxBodySpeed": 0.025546101115698255,
+      "reactionError": 9.099001874694977,
+      "settled": false
+    },
+    {
+      "nodes": 256,
+      "dt": 0.00000390625,
+      "contactTime": 0.0005,
+      "status": "completed",
+      "termination": null,
+      "initialStaticReaction": 401.51504489343847,
+      "appliedLoad": 400,
+      "maxResidual": 0.00038251361229023687,
+      "maxPenetration": 0.0000360939353120429,
+      "energyBudget": 0.0014194059611313723,
+      "runPassed": true,
+      "tailSamples": 21,
+      "heightSpan": 0.00007364435543749659,
+      "maxBodySpeed": 0.02810416220893962,
+      "reactionError": 6.5619406933682285,
+      "settled": false
+    },
+    {
+      "nodes": 512,
+      "dt": 0.0000078125,
+      "contactTime": 0.001,
+      "status": "completed",
+      "termination": null,
+      "initialStaticReaction": 402.74837382225877,
+      "appliedLoad": 400,
+      "maxResidual": 0.00006700128795887172,
+      "maxPenetration": 0.00010385082899417695,
+      "energyBudget": 0.0013566921694396898,
+      "runPassed": true,
+      "tailSamples": 21,
+      "heightSpan": 0.000032574504112925506,
+      "maxBodySpeed": 0.015827439145137623,
+      "reactionError": 2.6547352645163187,
+      "settled": false
+    },
+    {
+      "nodes": 512,
+      "dt": 0.00000390625,
+      "contactTime": 0.001,
+      "status": "completed",
+      "termination": null,
+      "initialStaticReaction": 402.74837382225877,
+      "appliedLoad": 400,
+      "maxResidual": 0.000029561116473741673,
+      "maxPenetration": 0.0001033894061931507,
+      "energyBudget": 0.0013558051131369558,
+      "runPassed": true,
+      "tailSamples": 21,
+      "heightSpan": 0.000032638497139303446,
+      "maxBodySpeed": 0.019790782125509346,
+      "reactionError": 2.860116569093293,
+      "settled": false
+    },
+    {
+      "nodes": 512,
+      "dt": 0.0000078125,
+      "contactTime": 0.0005,
+      "status": "completed",
+      "termination": null,
+      "initialStaticReaction": 402.74837382225877,
+      "appliedLoad": 400,
+      "maxResidual": 0.00021672743457209955,
+      "maxPenetration": 0.000027460662895020097,
+      "energyBudget": 0.001115448033803211,
+      "runPassed": true,
+      "tailSamples": 21,
+      "heightSpan": 0.000022392440690688353,
+      "maxBodySpeed": 0.015242691320126093,
+      "reactionError": 2.035675714107356,
+      "settled": false
+    },
+    {
+      "nodes": 512,
+      "dt": 0.00000390625,
+      "contactTime": 0.0005,
+      "status": "completed",
+      "termination": null,
+      "initialStaticReaction": 402.74837382225877,
+      "appliedLoad": 400,
+      "maxResidual": 0.0000951635206159155,
+      "maxPenetration": 0.000027302426460499612,
+      "energyBudget": 0.0011161925580903756,
+      "runPassed": true,
+      "tailSamples": 21,
+      "heightSpan": 0.000022540506187329612,
+      "maxBodySpeed": 0.0131925780022011,
+      "reactionError": 2.2188612073108516,
+      "settled": false
+    }
+  ],
+  "comparisons": [
+    {
+      "kind": "timestep",
+      "nodes": [
+        256,
+        256
+      ],
+      "dt": [
+        0.0000078125,
+        0.00000390625
+      ],
+      "contactTime": [
+        0.001,
+        0.001
+      ],
+      "aligned": true,
+      "errors": {
+        "hubZ": 0.000006676789578108355,
+        "pressure": 1.3466940466605593,
+        "groundReaction": 6.195280348656922
+      },
+      "budgetRatios": {
+        "hubZ": 0.2670715831243342,
+        "pressure": 0.0007909629283979939,
+        "groundReaction": 0.29473243177266545
+      },
+      "withinComparisonBudgets": true
+    },
+    {
+      "kind": "mesh",
+      "nodes": [
+        256,
+        512
+      ],
+      "dt": [
+        0.00000390625,
+        0.00000390625
+      ],
+      "contactTime": [
+        0.001,
+        0.001
+      ],
+      "aligned": true,
+      "errors": {
+        "hubZ": 0.00008318612242558254,
+        "pressure": 13.949228160228813,
+        "groundReaction": 9.386258473144267
+      },
+      "budgetRatios": {
+        "hubZ": 3.3274448970233017,
+        "pressure": 0.00819249079169527,
+        "groundReaction": 0.4394769344029546
+      },
+      "withinComparisonBudgets": false
+    },
+    {
+      "kind": "contactTime",
+      "nodes": [
+        256,
+        256
+      ],
+      "dt": [
+        0.00000390625,
+        0.00000390625
+      ],
+      "contactTime": [
+        0.001,
+        0.0005
+      ],
+      "aligned": true,
+      "errors": {
+        "hubZ": 0.00006918967315505675,
+        "pressure": 12.569142183172517,
+        "groundReaction": 7.876065365673128
+      },
+      "budgetRatios": {
+        "hubZ": 2.76758692620227,
+        "pressure": 0.007381774377637114,
+        "groundReaction": 0.37515140331873287
+      },
+      "withinComparisonBudgets": false
+    },
+    {
+      "kind": "timestep",
+      "nodes": [
+        256,
+        256
+      ],
+      "dt": [
+        0.0000078125,
+        0.00000390625
+      ],
+      "contactTime": [
+        0.0005,
+        0.0005
+      ],
+      "aligned": true,
+      "errors": {
+        "hubZ": 0.00000632389903654218,
+        "pressure": 2.4121946899977047,
+        "groundReaction": 9.198518832945297
+      },
+      "budgetRatios": {
+        "hubZ": 0.2529559614616872,
+        "pressure": 0.0014166856164389782,
+        "groundReaction": 0.43228316878280665
+      },
+      "withinComparisonBudgets": true
+    },
+    {
+      "kind": "mesh",
+      "nodes": [
+        256,
+        512
+      ],
+      "dt": [
+        0.00000390625,
+        0.00000390625
+      ],
+      "contactTime": [
+        0.0005,
+        0.0005
+      ],
+      "aligned": true,
+      "errors": {
+        "hubZ": 0.0000762018201866943,
+        "pressure": 12.515056423115311,
+        "groundReaction": 8.46666434490163
+      },
+      "budgetRatios": {
+        "hubZ": 3.048072807467772,
+        "pressure": 0.007350328267854657,
+        "groundReaction": 0.3933104767655545
+      },
+      "withinComparisonBudgets": false
+    },
+    {
+      "kind": "timestep",
+      "nodes": [
+        512,
+        512
+      ],
+      "dt": [
+        0.0000078125,
+        0.00000390625
+      ],
+      "contactTime": [
+        0.001,
+        0.001
+      ],
+      "aligned": true,
+      "errors": {
+        "hubZ": 0.000001078980471913571,
+        "pressure": 0.3976562799362,
+        "groundReaction": 0.7516825879255293
+      },
+      "budgetRatios": {
+        "hubZ": 0.04315921887654284,
+        "pressure": 0.0002335472085437202,
+        "groundReaction": 0.03601602668877924
+      },
+      "withinComparisonBudgets": true
+    },
+    {
+      "kind": "contactTime",
+      "nodes": [
+        512,
+        512
+      ],
+      "dt": [
+        0.00000390625,
+        0.00000390625
+      ],
+      "contactTime": [
+        0.001,
+        0.0005
+      ],
+      "aligned": true,
+      "errors": {
+        "hubZ": 0.00007617397539394499,
+        "pressure": 10.54644752459717,
+        "groundReaction": 6.226514087599298
+      },
+      "budgetRatios": {
+        "hubZ": 3.0469590157577997,
+        "pressure": 0.006193940973850864,
+        "groundReaction": 0.29383954557518194
+      },
+      "withinComparisonBudgets": false
+    },
+    {
+      "kind": "timestep",
+      "nodes": [
+        512,
+        512
+      ],
+      "dt": [
+        0.0000078125,
+        0.00000390625
+      ],
+      "contactTime": [
+        0.0005,
+        0.0005
+      ],
+      "aligned": true,
+      "errors": {
+        "hubZ": 5.95878016429463e-7,
+        "pressure": 0.18516250417451374,
+        "groundReaction": 1.0466510156820164
+      },
+      "budgetRatios": {
+        "hubZ": 0.02383512065717852,
+        "pressure": 0.00010874641567066188,
+        "groundReaction": 0.049690460022093944
+      },
+      "withinComparisonBudgets": true
+    }
+  ],
+  "summary": {
+    "runs": 8,
+    "runFailures": 0,
+    "unsettled": 8,
+    "timestepFailures": 0,
+    "meshFailures": 2
+  }
+}
