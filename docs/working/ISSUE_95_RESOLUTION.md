@@ -46,3 +46,7 @@ The [contact-phase and relaxed reference](../TYRE_CONTACT_RELAXATION.md) passes 
 ## Kernel cost reference, 17 November
 
 The [cost measurement](../TYRE_CASING_COST.md) receives a source-bound force-only baseline and profile. Fine accuracy alone does not choose a runtime mesh: next derive timestep admission from configured coupled mass/stiffness and receive full native loaded cost/refinement. No material/runtime law changed; trail, near-rim and calibration gates remain.
+
+## Coupled mass/frequency, 17 November
+
+The [mass-aware diagnostic](../TYRE_MASS_FREQUENCY.md) receives configured hub/tyre/spin coupling against native mass matrices and supplies 162 frozen internal frequency estimates. This completes the internal inertial component of timestep analysis only. Actual damping/contact/nonlinear native refinement and end-to-end cost remain required before changing runtime admission or mesh defaults. Trail, near-rim and calibration gates remain.

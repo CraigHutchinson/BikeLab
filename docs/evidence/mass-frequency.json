@@ -1,0 +1,3597 @@
+{
+  "scope": "Frozen internal material/gas frequency diagnostic using the coupled free-hub inverse mass. No native contact, damping, gyro or nonlinear timestep admission. Finite-difference change is an error estimate, not a certified Hessian bound. Runtime timestep/defaults remain unchanged.",
+  "sourcesSha256": {
+    "scripts/lib/tyre-mass-frequency.mjs": "13368533688453c5d7cf52f465398328486a1e575b413939154f33b1081c92ee",
+    "scripts/tyre-mass-frequency.mjs": "a94328a287056247e073c853322fd5bf790d32003f80e1e0979f4cb852ec6afc",
+    "scripts/spinning-gap.mjs": "b8e30b9d8e37f7fde2fff39cb8a0010a4839a8178466a7abd2e0aa47b49f3619",
+    "scripts/lib/tyre-dense.mjs": "ce37478c657618654605b342eacb55ae38accf3b21e9e9c738a64cb7e2fdd329",
+    "dist/sealed-casing.js": "40a92a31cd25d4ed3f484c3224829b0306e9eb82aee87f0b1add2fb07dfb7162",
+    "dist/tyre-relaxation.js": "8568a58c5eb0bf4dced852f3fd9e59d818835a4ed241c01a159a01486dd830d1",
+    "dist/tyre-gas.js": "bb977230f4762d4f57059506149491934589be374c07107a4283c1e32bfb0089",
+    "dist/wheel-ring.js": "c0de0d124a02f1ecfacd899e73de714ce6a697d0badccd9020052c88fe55de60",
+    "docs/evidence/contact-relaxation-report.json.gz.b64": "6cf5911ab752b042f63b3a08eb4f003f9f3b1547b9426be27613bca45f6c054c"
+  },
+  "variants": [
+    {
+      "name": "half-all-mass",
+      "hubMass": 1.5,
+      "tyreMass": 0.5,
+      "hubInertia": 0.04,
+      "skin": 0.008
+    },
+    {
+      "name": "nominal",
+      "hubMass": 3,
+      "tyreMass": 1,
+      "hubInertia": 0.08,
+      "skin": 0.008
+    },
+    {
+      "name": "double-all-mass",
+      "hubMass": 6,
+      "tyreMass": 2,
+      "hubInertia": 0.16,
+      "skin": 0.008
+    },
+    {
+      "name": "light-hub",
+      "hubMass": 1,
+      "tyreMass": 1,
+      "hubInertia": 0.08,
+      "skin": 0.008
+    },
+    {
+      "name": "heavy-hub",
+      "hubMass": 30,
+      "tyreMass": 1,
+      "hubInertia": 0.08,
+      "skin": 0.008
+    },
+    {
+      "name": "low-spin-inertia",
+      "hubMass": 3,
+      "tyreMass": 1,
+      "hubInertia": 0.02,
+      "skin": 0.008
+    }
+  ],
+  "cases": [
+    {
+      "nodes": 128,
+      "pressure": 120000,
+      "deflection": 0,
+      "phase": 0,
+      "localContactAdmission": "admitted",
+      "fullInternalTangentPositive": [
+        true,
+        true
+      ],
+      "steps": [
+        1e-7,
+        5e-8
+      ],
+      "tangentInf": 1589980.8068894763,
+      "differenceInf": 0.0008303095257440329,
+      "skewInf": [
+        0.00033101523174261516,
+        0.0008772546605335663
+      ],
+      "rows": [
+        {
+          "name": "half-all-mass",
+          "masses": {
+            "hubMass": 1.5,
+            "tyreMass": 0.5,
+            "hubInertia": 0.04,
+            "skin": 0.008
+          },
+          "lambdaBound": 412398802.8006289,
+          "fixedHubLambdaBound": 407035086.5637059,
+          "nodeMass": 0.00390625,
+          "hubSpinInertiaWithNodes": 0.040016,
+          "oscillatorScaleSeconds": 0.0000984852740504309,
+          "coarseLambdaBound": 412398802.8554003,
+          "differenceOperatorBound": 0.21391830452686172,
+          "differenceRelative": 5.187170842255789e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.00009848527402488791
+        },
+        {
+          "name": "nominal",
+          "masses": {
+            "hubMass": 3,
+            "tyreMass": 1,
+            "hubInertia": 0.08,
+            "skin": 0.008
+          },
+          "lambdaBound": 206199401.40031445,
+          "fixedHubLambdaBound": 203517543.28185296,
+          "nodeMass": 0.0078125,
+          "hubSpinInertiaWithNodes": 0.080032,
+          "oscillatorScaleSeconds": 0.00013927921025615043,
+          "coarseLambdaBound": 206199401.42770016,
+          "differenceOperatorBound": 0.10695915226343086,
+          "differenceRelative": 5.187170842255789e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.00013927921022002717
+        },
+        {
+          "name": "double-all-mass",
+          "masses": {
+            "hubMass": 6,
+            "tyreMass": 2,
+            "hubInertia": 0.16,
+            "skin": 0.008
+          },
+          "lambdaBound": 103099700.70015723,
+          "fixedHubLambdaBound": 101758771.64092648,
+          "nodeMass": 0.015625,
+          "hubSpinInertiaWithNodes": 0.160064,
+          "oscillatorScaleSeconds": 0.0001969705481008618,
+          "coarseLambdaBound": 103099700.71385008,
+          "differenceOperatorBound": 0.05347957613171543,
+          "differenceRelative": 5.187170842255789e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.00019697054804977582
+        },
+        {
+          "name": "light-hub",
+          "masses": {
+            "hubMass": 1,
+            "tyreMass": 1,
+            "hubInertia": 0.08,
+            "skin": 0.008
+          },
+          "lambdaBound": 211990948.72159043,
+          "fixedHubLambdaBound": 203517543.28185296,
+          "nodeMass": 0.0078125,
+          "hubSpinInertiaWithNodes": 0.080032,
+          "oscillatorScaleSeconds": 0.00013736349632727297,
+          "coarseLambdaBound": 211990948.75124612,
+          "differenceOperatorBound": 0.1084278432414797,
+          "differenceRelative": 5.114739279924584e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.00013736349629214404
+        },
+        {
+          "name": "heavy-hub",
+          "masses": {
+            "hubMass": 30,
+            "tyreMass": 1,
+            "hubInertia": 0.08,
+            "skin": 0.008
+          },
+          "lambdaBound": 203784969.11511093,
+          "fixedHubLambdaBound": 203517543.28185296,
+          "nodeMass": 0.0078125,
+          "hubSpinInertiaWithNodes": 0.080032,
+          "oscillatorScaleSeconds": 0.00014010186666594144,
+          "coarseLambdaBound": 203784969.14222217,
+          "differenceOperatorBound": 0.10678395728925455,
+          "differenceRelative": 5.240031085361162e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.00014010186662923453
+        },
+        {
+          "name": "low-spin-inertia",
+          "masses": {
+            "hubMass": 3,
+            "tyreMass": 1,
+            "hubInertia": 0.02,
+            "skin": 0.008
+          },
+          "lambdaBound": 206516287.95824155,
+          "fixedHubLambdaBound": 203517543.28185296,
+          "nodeMass": 0.0078125,
+          "hubSpinInertiaWithNodes": 0.020032,
+          "oscillatorScaleSeconds": 0.00013917231153680158,
+          "coarseLambdaBound": 206516287.98449108,
+          "differenceOperatorBound": 0.11388724334790948,
+          "differenceRelative": 5.514685765170152e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.000139172311498427
+        }
+      ]
+    },
+    {
+      "nodes": 128,
+      "pressure": 120000,
+      "deflection": 0.0020000000000000018,
+      "phase": 0,
+      "localContactAdmission": "admitted",
+      "fullInternalTangentPositive": [
+        true,
+        true
+      ],
+      "steps": [
+        1e-7,
+        5e-8
+      ],
+      "tangentInf": 1590065.5454517254,
+      "differenceInf": 0.000908995279625624,
+      "skewInf": [
+        0.0002714487531216836,
+        0.0007909468667595121
+      ],
+      "rows": [
+        {
+          "name": "half-all-mass",
+          "masses": {
+            "hubMass": 1.5,
+            "tyreMass": 0.5,
+            "hubInertia": 0.04,
+            "skin": 0.008
+          },
+          "lambdaBound": 412432573.74754065,
+          "fixedHubLambdaBound": 407056779.6356417,
+          "nodeMass": 0.00390625,
+          "hubSpinInertiaWithNodes": 0.040016,
+          "oscillatorScaleSeconds": 0.00009848124186522051,
+          "coarseLambdaBound": 412432573.7185629,
+          "differenceOperatorBound": 0.2384604045873858,
+          "differenceRelative": 5.781803372624802e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.00009848124183675054
+        },
+        {
+          "name": "nominal",
+          "masses": {
+            "hubMass": 3,
+            "tyreMass": 1,
+            "hubInertia": 0.08,
+            "skin": 0.008
+          },
+          "lambdaBound": 206216286.87377033,
+          "fixedHubLambdaBound": 203528389.81782085,
+          "nodeMass": 0.0078125,
+          "hubSpinInertiaWithNodes": 0.080032,
+          "oscillatorScaleSeconds": 0.00013927350788513988,
+          "coarseLambdaBound": 206216286.85928145,
+          "differenceOperatorBound": 0.1192302022936929,
+          "differenceRelative": 5.781803372624802e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.00013927350784487727
+        },
+        {
+          "name": "double-all-mass",
+          "masses": {
+            "hubMass": 6,
+            "tyreMass": 2,
+            "hubInertia": 0.16,
+            "skin": 0.008
+          },
+          "lambdaBound": 103108143.43688516,
+          "fixedHubLambdaBound": 101764194.90891042,
+          "nodeMass": 0.015625,
+          "hubSpinInertiaWithNodes": 0.160064,
+          "oscillatorScaleSeconds": 0.00019696248373044103,
+          "coarseLambdaBound": 103108143.42964073,
+          "differenceOperatorBound": 0.05961510114684645,
+          "differenceRelative": 5.781803372624802e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.0001969624836735011
+        },
+        {
+          "name": "light-hub",
+          "masses": {
+            "hubMass": 1,
+            "tyreMass": 1,
+            "hubInertia": 0.08,
+            "skin": 0.008
+          },
+          "lambdaBound": 212004695.0600017,
+          "fixedHubLambdaBound": 203528389.81782085,
+          "nodeMass": 0.0078125,
+          "hubSpinInertiaWithNodes": 0.080032,
+          "oscillatorScaleSeconds": 0.00013735904294543945,
+          "coarseLambdaBound": 212004695.04777515,
+          "differenceOperatorBound": 0.12097297195987834,
+          "differenceRelative": 5.706145891044559e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.0001373590429062499
+        },
+        {
+          "name": "heavy-hub",
+          "masses": {
+            "hubMass": 30,
+            "tyreMass": 1,
+            "hubInertia": 0.08,
+            "skin": 0.008
+          },
+          "lambdaBound": 203794644.06390324,
+          "fixedHubLambdaBound": 203528389.81782085,
+          "nodeMass": 0.0078125,
+          "hubSpinInertiaWithNodes": 0.080032,
+          "oscillatorScaleSeconds": 0.00014009854102782222,
+          "coarseLambdaBound": 203794644.0504926,
+          "differenceOperatorBound": 0.11896598009370299,
+          "differenceRelative": 5.837542033558016e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.00014009854098693067
+        },
+        {
+          "name": "low-spin-inertia",
+          "masses": {
+            "hubMass": 3,
+            "tyreMass": 1,
+            "hubInertia": 0.02,
+            "skin": 0.008
+          },
+          "lambdaBound": 206549184.08624983,
+          "fixedHubLambdaBound": 203528389.81782085,
+          "nodeMass": 0.0078125,
+          "hubSpinInertiaWithNodes": 0.020032,
+          "oscillatorScaleSeconds": 0.00013916122843207122,
+          "coarseLambdaBound": 206549184.07029304,
+          "differenceOperatorBound": 0.13280009535829032,
+          "differenceRelative": 6.429465986311342e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.0001391612283873346
+        }
+      ]
+    },
+    {
+      "nodes": 128,
+      "pressure": 120000,
+      "deflection": 0.0040000000000000036,
+      "phase": 0,
+      "localContactAdmission": "admitted",
+      "fullInternalTangentPositive": [
+        true,
+        true
+      ],
+      "steps": [
+        1e-7,
+        5e-8
+      ],
+      "tangentInf": 1590150.1933984463,
+      "differenceInf": 0.0009748833798385315,
+      "skewInf": [
+        0.000330380524617091,
+        0.0008440284499164896
+      ],
+      "rows": [
+        {
+          "name": "half-all-mass",
+          "masses": {
+            "hubMass": 1.5,
+            "tyreMass": 0.5,
+            "hubInertia": 0.04,
+            "skin": 0.008
+          },
+          "lambdaBound": 412464742.86843616,
+          "fixedHubLambdaBound": 407078449.51000226,
+          "nodeMass": 0.00390625,
+          "hubSpinInertiaWithNodes": 0.040016,
+          "oscillatorScaleSeconds": 0.0000984774013954546,
+          "coarseLambdaBound": 412464742.90307635,
+          "differenceOperatorBound": 0.2551376515611157,
+          "differenceRelative": 6.185683891107679e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.00009847740136499709
+        },
+        {
+          "name": "nominal",
+          "masses": {
+            "hubMass": 3,
+            "tyreMass": 1,
+            "hubInertia": 0.08,
+            "skin": 0.008
+          },
+          "lambdaBound": 206232371.43421808,
+          "fixedHubLambdaBound": 203539224.75500113,
+          "nodeMass": 0.0078125,
+          "hubSpinInertiaWithNodes": 0.080032,
+          "oscillatorScaleSeconds": 0.00013926807664071107,
+          "coarseLambdaBound": 206232371.45153818,
+          "differenceOperatorBound": 0.12756882578055784,
+          "differenceRelative": 6.185683891107679e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.00013926807659763764
+        },
+        {
+          "name": "double-all-mass",
+          "masses": {
+            "hubMass": 6,
+            "tyreMass": 2,
+            "hubInertia": 0.16,
+            "skin": 0.008
+          },
+          "lambdaBound": 103116185.71710904,
+          "fixedHubLambdaBound": 101769612.37750056,
+          "nodeMass": 0.015625,
+          "hubSpinInertiaWithNodes": 0.160064,
+          "oscillatorScaleSeconds": 0.0001969548027909092,
+          "coarseLambdaBound": 103116185.72576909,
+          "differenceOperatorBound": 0.06378441289027892,
+          "differenceRelative": 6.185683891107679e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.00019695480272999418
+        },
+        {
+          "name": "light-hub",
+          "masses": {
+            "hubMass": 1,
+            "tyreMass": 1,
+            "hubInertia": 0.08,
+            "skin": 0.008
+          },
+          "lambdaBound": 212011046.5219971,
+          "fixedHubLambdaBound": 203539224.75500113,
+          "nodeMass": 0.0078125,
+          "hubSpinInertiaWithNodes": 0.080032,
+          "oscillatorScaleSeconds": 0.00013735698541756647,
+          "coarseLambdaBound": 212011046.541343,
+          "differenceOperatorBound": 0.12865427105156144,
+          "differenceRelative": 6.068281495804653e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.0001373569853758904
+        },
+        {
+          "name": "heavy-hub",
+          "masses": {
+            "hubMass": 30,
+            "tyreMass": 1,
+            "hubInertia": 0.08,
+            "skin": 0.008
+          },
+          "lambdaBound": 203807772.74391398,
+          "fixedHubLambdaBound": 203539224.75500113,
+          "nodeMass": 0.0078125,
+          "hubSpinInertiaWithNodes": 0.080032,
+          "oscillatorScaleSeconds": 0.00014009402859310984,
+          "coarseLambdaBound": 203807772.76039037,
+          "differenceOperatorBound": 0.1274775207530373,
+          "differenceRelative": 6.254791906941341e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.0001400940285492969
+        },
+        {
+          "name": "low-spin-inertia",
+          "masses": {
+            "hubMass": 3,
+            "tyreMass": 1,
+            "hubInertia": 0.02,
+            "skin": 0.008
+          },
+          "lambdaBound": 206588032.7747011,
+          "fixedHubLambdaBound": 203539224.75500113,
+          "nodeMass": 0.0078125,
+          "hubSpinInertiaWithNodes": 0.020032,
+          "oscillatorScaleSeconds": 0.00013914814324674288,
+          "coarseLambdaBound": 206588032.79164878,
+          "differenceOperatorBound": 0.14290002134434918,
+          "differenceRelative": 6.917149044165195e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.00013914814319861745
+        }
+      ]
+    },
+    {
+      "nodes": 128,
+      "pressure": 160000,
+      "deflection": 0,
+      "phase": 0,
+      "localContactAdmission": "admitted",
+      "fullInternalTangentPositive": [
+        true,
+        true
+      ],
+      "steps": [
+        1e-7,
+        5e-8
+      ],
+      "tangentInf": 1590572.159537374,
+      "differenceInf": 0.0008044321750662053,
+      "skewInf": [
+        0.0003099922009686118,
+        0.0007313437537614931
+      ],
+      "rows": [
+        {
+          "name": "half-all-mass",
+          "masses": {
+            "hubMass": 1.5,
+            "tyreMass": 0.5,
+            "hubInertia": 0.04,
+            "skin": 0.008
+          },
+          "lambdaBound": 412522105.42221487,
+          "fixedHubLambdaBound": 407186472.84156775,
+          "nodeMass": 0.00390625,
+          "hubSpinInertiaWithNodes": 0.040016,
+          "oscillatorScaleSeconds": 0.00009847055435435305,
+          "coarseLambdaBound": 412522105.4475601,
+          "differenceOperatorBound": 0.21135911515552258,
+          "differenceRelative": 5.123582769926894e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.00009847055432912695
+        },
+        {
+          "name": "nominal",
+          "masses": {
+            "hubMass": 3,
+            "tyreMass": 1,
+            "hubInertia": 0.08,
+            "skin": 0.008
+          },
+          "lambdaBound": 206261052.71110743,
+          "fixedHubLambdaBound": 203593236.42078388,
+          "nodeMass": 0.0078125,
+          "hubSpinInertiaWithNodes": 0.080032,
+          "oscillatorScaleSeconds": 0.00013925839346232312,
+          "coarseLambdaBound": 206261052.72378004,
+          "differenceOperatorBound": 0.10567955757776129,
+          "differenceRelative": 5.123582769926894e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.00013925839342664802
+        },
+        {
+          "name": "double-all-mass",
+          "masses": {
+            "hubMass": 6,
+            "tyreMass": 2,
+            "hubInertia": 0.16,
+            "skin": 0.008
+          },
+          "lambdaBound": 103130526.35555372,
+          "fixedHubLambdaBound": 101796618.21039194,
+          "nodeMass": 0.015625,
+          "hubSpinInertiaWithNodes": 0.160064,
+          "oscillatorScaleSeconds": 0.0001969411087087061,
+          "coarseLambdaBound": 103130526.36189002,
+          "differenceOperatorBound": 0.052839778788880645,
+          "differenceRelative": 5.123582769926894e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.0001969411086582539
+        },
+        {
+          "name": "light-hub",
+          "masses": {
+            "hubMass": 1,
+            "tyreMass": 1,
+            "hubInertia": 0.08,
+            "skin": 0.008
+          },
+          "lambdaBound": 212062893.67287612,
+          "fixedHubLambdaBound": 203593236.42078388,
+          "nodeMass": 0.0078125,
+          "hubSpinInertiaWithNodes": 0.080032,
+          "oscillatorScaleSeconds": 0.00013734019322076985,
+          "coarseLambdaBound": 212062893.68806916,
+          "differenceOperatorBound": 0.10743950854120955,
+          "differenceRelative": 5.066398306671395e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.00013734019318597883
+        },
+        {
+          "name": "heavy-hub",
+          "masses": {
+            "hubMass": 30,
+            "tyreMass": 1,
+            "hubInertia": 0.08,
+            "skin": 0.008
+          },
+          "lambdaBound": 203922987.74307698,
+          "fixedHubLambdaBound": 203593236.42078388,
+          "nodeMass": 0.0078125,
+          "hubSpinInertiaWithNodes": 0.080032,
+          "oscillatorScaleSeconds": 0.00014005444694984486,
+          "coarseLambdaBound": 203922987.75253972,
+          "differenceOperatorBound": 0.10537471914798917,
+          "differenceRelative": 5.167378151635902e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.00014005444691365915
+        },
+        {
+          "name": "low-spin-inertia",
+          "masses": {
+            "hubMass": 3,
+            "tyreMass": 1,
+            "hubInertia": 0.02,
+            "skin": 0.008
+          },
+          "lambdaBound": 206768668.3824566,
+          "fixedHubLambdaBound": 203593236.42078388,
+          "nodeMass": 0.0078125,
+          "hubSpinInertiaWithNodes": 0.020032,
+          "oscillatorScaleSeconds": 0.00013908734921638243,
+          "coarseLambdaBound": 206768668.39333445,
+          "differenceOperatorBound": 0.12400889056954903,
+          "differenceRelative": 5.99747009736368e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.00013908734917467383
+        }
+      ]
+    },
+    {
+      "nodes": 128,
+      "pressure": 160000,
+      "deflection": 0.0020000000000000018,
+      "phase": 0,
+      "localContactAdmission": "admitted",
+      "fullInternalTangentPositive": [
+        true,
+        true
+      ],
+      "steps": [
+        1e-7,
+        5e-8
+      ],
+      "tangentInf": 1590669.9225359063,
+      "differenceInf": 0.0009140180037291445,
+      "skewInf": [
+        0.00032514965815910735,
+        0.0009401340807855263
+      ],
+      "rows": [
+        {
+          "name": "half-all-mass",
+          "masses": {
+            "hubMass": 1.5,
+            "tyreMass": 0.5,
+            "hubInertia": 0.04,
+            "skin": 0.008
+          },
+          "lambdaBound": 412553316.324201,
+          "fixedHubLambdaBound": 407211500.169192,
+          "nodeMass": 0.00390625,
+          "hubSpinInertiaWithNodes": 0.040016,
+          "oscillatorScaleSeconds": 0.00009846682948676843,
+          "coarseLambdaBound": 412553316.3152086,
+          "differenceOperatorBound": 0.23745525440799437,
+          "differenceRelative": 5.755747075885641e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.00009846682945843094
+        },
+        {
+          "name": "nominal",
+          "masses": {
+            "hubMass": 3,
+            "tyreMass": 1,
+            "hubInertia": 0.08,
+            "skin": 0.008
+          },
+          "lambdaBound": 206276658.1621005,
+          "fixedHubLambdaBound": 203605750.084596,
+          "nodeMass": 0.0078125,
+          "hubSpinInertiaWithNodes": 0.080032,
+          "oscillatorScaleSeconds": 0.0001392531257040669,
+          "coarseLambdaBound": 206276658.1576043,
+          "differenceOperatorBound": 0.11872762720399718,
+          "differenceRelative": 5.755747075885641e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.00013925312566399163
+        },
+        {
+          "name": "double-all-mass",
+          "masses": {
+            "hubMass": 6,
+            "tyreMass": 2,
+            "hubInertia": 0.16,
+            "skin": 0.008
+          },
+          "lambdaBound": 103138329.08105025,
+          "fixedHubLambdaBound": 101802875.042298,
+          "nodeMass": 0.015625,
+          "hubSpinInertiaWithNodes": 0.160064,
+          "oscillatorScaleSeconds": 0.00019693365897353686,
+          "coarseLambdaBound": 103138329.07880215,
+          "differenceOperatorBound": 0.05936381360199859,
+          "differenceRelative": 5.755747075885641e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.00019693365891686188
+        },
+        {
+          "name": "light-hub",
+          "masses": {
+            "hubMass": 1,
+            "tyreMass": 1,
+            "hubInertia": 0.08,
+            "skin": 0.008
+          },
+          "lambdaBound": 212074988.85040587,
+          "fixedHubLambdaBound": 203605750.084596,
+          "nodeMass": 0.0078125,
+          "hubSpinInertiaWithNodes": 0.080032,
+          "oscillatorScaleSeconds": 0.00013733627673416854,
+          "coarseLambdaBound": 212074988.84806347,
+          "differenceOperatorBound": 0.11961619248708495,
+          "differenceRelative": 5.640278145739298e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.0001373362766954378
+        },
+        {
+          "name": "heavy-hub",
+          "masses": {
+            "hubMass": 30,
+            "tyreMass": 1,
+            "hubInertia": 0.08,
+            "skin": 0.008
+          },
+          "lambdaBound": 203931839.60025024,
+          "fixedHubLambdaBound": 203605750.084596,
+          "nodeMass": 0.0078125,
+          "hubSpinInertiaWithNodes": 0.080032,
+          "oscillatorScaleSeconds": 0.00014005140731803293,
+          "coarseLambdaBound": 203931839.59900963,
+          "differenceOperatorBound": 0.11858242720030458,
+          "differenceRelative": 5.81480691944678e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.00014005140727731434
+        },
+        {
+          "name": "low-spin-inertia",
+          "masses": {
+            "hubMass": 3,
+            "tyreMass": 1,
+            "hubInertia": 0.02,
+            "skin": 0.008
+          },
+          "lambdaBound": 206791939.8317795,
+          "fixedHubLambdaBound": 203605750.084596,
+          "nodeMass": 0.0078125,
+          "hubSpinInertiaWithNodes": 0.020032,
+          "oscillatorScaleSeconds": 0.0001390795228589594,
+          "coarseLambdaBound": 206791939.82588384,
+          "differenceOperatorBound": 0.13337602337824664,
+          "differenceRelative": 6.449768955537869e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.00013907952281410786
+        }
+      ]
+    },
+    {
+      "nodes": 128,
+      "pressure": 160000,
+      "deflection": 0.0040000000000000036,
+      "phase": 0,
+      "localContactAdmission": "admitted",
+      "fullInternalTangentPositive": [
+        true,
+        true
+      ],
+      "steps": [
+        1e-7,
+        5e-8
+      ],
+      "tangentInf": 1590765.297078975,
+      "differenceInf": 0.0009355187352574346,
+      "skewInf": [
+        0.0002714399183485483,
+        0.0007952760252520896
+      ],
+      "rows": [
+        {
+          "name": "half-all-mass",
+          "masses": {
+            "hubMass": 1.5,
+            "tyreMass": 0.5,
+            "hubInertia": 0.04,
+            "skin": 0.008
+          },
+          "lambdaBound": 412584515.4186705,
+          "fixedHubLambdaBound": 407235916.0522176,
+          "nodeMass": 0.00390625,
+          "hubSpinInertiaWithNodes": 0.040016,
+          "oscillatorScaleSeconds": 0.00009846310645078522,
+          "coarseLambdaBound": 412584515.42152506,
+          "differenceOperatorBound": 0.2435264425572219,
+          "differenceRelative": 5.902462003696461e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.00009846310642172648
+        },
+        {
+          "name": "nominal",
+          "masses": {
+            "hubMass": 3,
+            "tyreMass": 1,
+            "hubInertia": 0.08,
+            "skin": 0.008
+          },
+          "lambdaBound": 206292257.70933524,
+          "fixedHubLambdaBound": 203617958.0261088,
+          "nodeMass": 0.0078125,
+          "hubSpinInertiaWithNodes": 0.080032,
+          "oscillatorScaleSeconds": 0.00013924786053608624,
+          "coarseLambdaBound": 206292257.71076253,
+          "differenceOperatorBound": 0.12176322127861094,
+          "differenceRelative": 5.902462003696461e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.00013924786049499097
+        },
+        {
+          "name": "double-all-mass",
+          "masses": {
+            "hubMass": 6,
+            "tyreMass": 2,
+            "hubInertia": 0.16,
+            "skin": 0.008
+          },
+          "lambdaBound": 103146128.85466762,
+          "fixedHubLambdaBound": 101808979.0130544,
+          "nodeMass": 0.015625,
+          "hubSpinInertiaWithNodes": 0.160064,
+          "oscillatorScaleSeconds": 0.00019692621290157044,
+          "coarseLambdaBound": 103146128.85538127,
+          "differenceOperatorBound": 0.06088161063930547,
+          "differenceRelative": 5.902462003696461e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.00019692621284345295
+        },
+        {
+          "name": "light-hub",
+          "masses": {
+            "hubMass": 1,
+            "tyreMass": 1,
+            "hubInertia": 0.08,
+            "skin": 0.008
+          },
+          "lambdaBound": 212079921.4866749,
+          "fixedHubLambdaBound": 203617958.0261088,
+          "nodeMass": 0.0078125,
+          "hubSpinInertiaWithNodes": 0.080032,
+          "oscillatorScaleSeconds": 0.0001373346796149459,
+          "coarseLambdaBound": 212079921.4898694,
+          "differenceOperatorBound": 0.12352846081127086,
+          "differenceRelative": 5.824618377135349e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.00013733467957494975
+        },
+        {
+          "name": "heavy-hub",
+          "masses": {
+            "hubMass": 30,
+            "tyreMass": 1,
+            "hubInertia": 0.08,
+            "skin": 0.008
+          },
+          "lambdaBound": 203944483.58646682,
+          "fixedHubLambdaBound": 203617958.0261088,
+          "nodeMass": 0.0078125,
+          "hubSpinInertiaWithNodes": 0.080032,
+          "oscillatorScaleSeconds": 0.00014004706585343498,
+          "coarseLambdaBound": 203944483.59249243,
+          "differenceOperatorBound": 0.12158039576867047,
+          "differenceRelative": 5.961445665536903e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.00014004706581169084
+        },
+        {
+          "name": "low-spin-inertia",
+          "masses": {
+            "hubMass": 3,
+            "tyreMass": 1,
+            "hubInertia": 0.02,
+            "skin": 0.008
+          },
+          "lambdaBound": 206824452.51686862,
+          "fixedHubLambdaBound": 203617958.0261088,
+          "nodeMass": 0.0078125,
+          "hubSpinInertiaWithNodes": 0.020032,
+          "oscillatorScaleSeconds": 0.0001390685908187775,
+          "coarseLambdaBound": 206824452.51750228,
+          "differenceOperatorBound": 0.1344198841297836,
+          "differenceRelative": 6.49922591328123e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.00013906859077358557
+        }
+      ]
+    },
+    {
+      "nodes": 128,
+      "pressure": 200000,
+      "deflection": 0,
+      "phase": 0,
+      "localContactAdmission": "admitted",
+      "fullInternalTangentPositive": [
+        true,
+        true
+      ],
+      "steps": [
+        1e-7,
+        5e-8
+      ],
+      "tangentInf": 1591153.6898531872,
+      "differenceInf": 0.0007574478800376205,
+      "skewInf": [
+        0.00022147708734454596,
+        0.000981545219898905
+      ],
+      "rows": [
+        {
+          "name": "half-all-mass",
+          "masses": {
+            "hubMass": 1.5,
+            "tyreMass": 0.5,
+            "hubInertia": 0.04,
+            "skin": 0.008
+          },
+          "lambdaBound": 412649227.7308356,
+          "fixedHubLambdaBound": 407335344.6024159,
+          "nodeMass": 0.00390625,
+          "hubSpinInertiaWithNodes": 0.040016,
+          "oscillatorScaleSeconds": 0.00009845538557712212,
+          "coarseLambdaBound": 412649227.7614904,
+          "differenceOperatorBound": 0.194452927566358,
+          "differenceRelative": 4.712305621790633e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.0000984553855539245
+        },
+        {
+          "name": "nominal",
+          "masses": {
+            "hubMass": 3,
+            "tyreMass": 1,
+            "hubInertia": 0.08,
+            "skin": 0.008
+          },
+          "lambdaBound": 206324613.8654178,
+          "fixedHubLambdaBound": 203667672.30120796,
+          "nodeMass": 0.0078125,
+          "hubSpinInertiaWithNodes": 0.080032,
+          "oscillatorScaleSeconds": 0.0001392369415718385,
+          "coarseLambdaBound": 206324613.8807452,
+          "differenceOperatorBound": 0.097226463783179,
+          "differenceRelative": 4.712305621790633e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.00013923694153903214
+        },
+        {
+          "name": "double-all-mass",
+          "masses": {
+            "hubMass": 6,
+            "tyreMass": 2,
+            "hubInertia": 0.16,
+            "skin": 0.008
+          },
+          "lambdaBound": 103162306.9327089,
+          "fixedHubLambdaBound": 101833836.15060398,
+          "nodeMass": 0.015625,
+          "hubSpinInertiaWithNodes": 0.160064,
+          "oscillatorScaleSeconds": 0.00019691077115424423,
+          "coarseLambdaBound": 103162306.9403726,
+          "differenceOperatorBound": 0.0486132318915895,
+          "differenceRelative": 4.712305621790633e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.000196910771107849
+        },
+        {
+          "name": "light-hub",
+          "masses": {
+            "hubMass": 1,
+            "tyreMass": 1,
+            "hubInertia": 0.08,
+            "skin": 0.008
+          },
+          "lambdaBound": 212133752.18364525,
+          "fixedHubLambdaBound": 203667672.30120796,
+          "nodeMass": 0.0078125,
+          "hubSpinInertiaWithNodes": 0.080032,
+          "oscillatorScaleSeconds": 0.0001373172536030484,
+          "coarseLambdaBound": 212133752.2008742,
+          "differenceOperatorBound": 0.09748908079526442,
+          "differenceRelative": 4.595642126334881e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.00013731725357149534
+        },
+        {
+          "name": "heavy-hub",
+          "masses": {
+            "hubMass": 30,
+            "tyreMass": 1,
+            "hubInertia": 0.08,
+            "skin": 0.008
+          },
+          "lambdaBound": 204064325.8838502,
+          "fixedHubLambdaBound": 203667672.30120796,
+          "nodeMass": 0.0078125,
+          "hubSpinInertiaWithNodes": 0.080032,
+          "oscillatorScaleSeconds": 0.0001400059365994239,
+          "coarseLambdaBound": 204064325.8981551,
+          "differenceOperatorBound": 0.09735638827675966,
+          "differenceRelative": 4.770867610254092e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.0001400059365660264
+        },
+        {
+          "name": "low-spin-inertia",
+          "masses": {
+            "hubMass": 3,
+            "tyreMass": 1,
+            "hubInertia": 0.02,
+            "skin": 0.008
+          },
+          "lambdaBound": 207058967.43627766,
+          "fixedHubLambdaBound": 203667672.30120796,
+          "nodeMass": 0.0078125,
+          "hubSpinInertiaWithNodes": 0.020032,
+          "oscillatorScaleSeconds": 0.00013898981398636026,
+          "coarseLambdaBound": 207058967.45105675,
+          "differenceOperatorBound": 0.10178426027055464,
+          "differenceRelative": 4.915713698894916e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.00013898981395219854
+        }
+      ]
+    },
+    {
+      "nodes": 128,
+      "pressure": 200000,
+      "deflection": 0.0020000000000000018,
+      "phase": 0,
+      "localContactAdmission": "admitted",
+      "fullInternalTangentPositive": [
+        true,
+        true
+      ],
+      "steps": [
+        1e-7,
+        5e-8
+      ],
+      "tangentInf": 1591256.3529325568,
+      "differenceInf": 0.0009417034874548147,
+      "skewInf": [
+        0.00036315344639925584,
+        0.000903312406670409
+      ],
+      "rows": [
+        {
+          "name": "half-all-mass",
+          "masses": {
+            "hubMass": 1.5,
+            "tyreMass": 0.5,
+            "hubInertia": 0.04,
+            "skin": 0.008
+          },
+          "lambdaBound": 412672932.2333304,
+          "fixedHubLambdaBound": 407361626.35073453,
+          "nodeMass": 0.00390625,
+          "hubSpinInertiaWithNodes": 0.040016,
+          "oscillatorScaleSeconds": 0.0000984525578299325,
+          "coarseLambdaBound": 412672932.2708093,
+          "differenceOperatorBound": 0.24608655901850562,
+          "differenceRelative": 5.963234799208134e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.00009845255780057773
+        },
+        {
+          "name": "nominal",
+          "masses": {
+            "hubMass": 3,
+            "tyreMass": 1,
+            "hubInertia": 0.08,
+            "skin": 0.008
+          },
+          "lambdaBound": 206336466.1166652,
+          "fixedHubLambdaBound": 203680813.17536727,
+          "nodeMass": 0.0078125,
+          "hubSpinInertiaWithNodes": 0.080032,
+          "oscillatorScaleSeconds": 0.000139232942533412,
+          "coarseLambdaBound": 206336466.13540465,
+          "differenceOperatorBound": 0.12304327950925281,
+          "differenceRelative": 5.963234799208134e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.00013923294249189807
+        },
+        {
+          "name": "double-all-mass",
+          "masses": {
+            "hubMass": 6,
+            "tyreMass": 2,
+            "hubInertia": 0.16,
+            "skin": 0.008
+          },
+          "lambdaBound": 103168233.0583326,
+          "fixedHubLambdaBound": 101840406.58768363,
+          "nodeMass": 0.015625,
+          "hubSpinInertiaWithNodes": 0.160064,
+          "oscillatorScaleSeconds": 0.000196905115659865,
+          "coarseLambdaBound": 103168233.06770232,
+          "differenceOperatorBound": 0.061521639754626406,
+          "differenceRelative": 5.963234799208134e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.00019690511560115545
+        },
+        {
+          "name": "light-hub",
+          "masses": {
+            "hubMass": 1,
+            "tyreMass": 1,
+            "hubInertia": 0.08,
+            "skin": 0.008
+          },
+          "lambdaBound": 212146464.09288654,
+          "fixedHubLambdaBound": 203680813.17536727,
+          "nodeMass": 0.0078125,
+          "hubSpinInertiaWithNodes": 0.080032,
+          "oscillatorScaleSeconds": 0.00013731313948636478,
+          "coarseLambdaBound": 212146464.11423528,
+          "differenceOperatorBound": 0.12485547478051881,
+          "differenceRelative": 5.885343190346641e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.00013731313944595803
+        },
+        {
+          "name": "heavy-hub",
+          "masses": {
+            "hubMass": 30,
+            "tyreMass": 1,
+            "hubInertia": 0.08,
+            "skin": 0.008
+          },
+          "lambdaBound": 204070363.13166916,
+          "fixedHubLambdaBound": 203680813.17536727,
+          "nodeMass": 0.0078125,
+          "hubSpinInertiaWithNodes": 0.080032,
+          "oscillatorScaleSeconds": 0.0001400038656059342,
+          "coarseLambdaBound": 204070363.14693883,
+          "differenceOperatorBound": 0.12291654910692942,
+          "differenceRelative": 6.023243513690514e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.0001400038655637703
+        },
+        {
+          "name": "low-spin-inertia",
+          "masses": {
+            "hubMass": 3,
+            "tyreMass": 1,
+            "hubInertia": 0.02,
+            "skin": 0.008
+          },
+          "lambdaBound": 207065573.85470262,
+          "fixedHubLambdaBound": 203680813.17536727,
+          "nodeMass": 0.0078125,
+          "hubSpinInertiaWithNodes": 0.020032,
+          "oscillatorScaleSeconds": 0.00013898759673659002,
+          "coarseLambdaBound": 207065573.8719305,
+          "differenceOperatorBound": 0.13832975712025147,
+          "differenceRelative": 6.680480706914473e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.00013898759669016484
+        }
+      ]
+    },
+    {
+      "nodes": 128,
+      "pressure": 200000,
+      "deflection": 0.0040000000000000036,
+      "phase": 0,
+      "localContactAdmission": "admitted",
+      "fullInternalTangentPositive": [
+        true,
+        true
+      ],
+      "steps": [
+        1e-7,
+        5e-8
+      ],
+      "tangentInf": 1591368.5274245741,
+      "differenceInf": 0.0009471264592100237,
+      "skewInf": [
+        0.00039192878382454666,
+        0.0008595764323491295
+      ],
+      "rows": [
+        {
+          "name": "half-all-mass",
+          "masses": {
+            "hubMass": 1.5,
+            "tyreMass": 0.5,
+            "hubInertia": 0.04,
+            "skin": 0.008
+          },
+          "lambdaBound": 412708634.9233274,
+          "fixedHubLambdaBound": 407390343.020691,
+          "nodeMass": 0.00390625,
+          "hubSpinInertiaWithNodes": 0.040016,
+          "oscillatorScaleSeconds": 0.00009844829925999114,
+          "coarseLambdaBound": 412708634.9503759,
+          "differenceOperatorBound": 0.24698452894670192,
+          "differenceRelative": 5.984476893549524e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.00009844829923053307
+        },
+        {
+          "name": "nominal",
+          "masses": {
+            "hubMass": 3,
+            "tyreMass": 1,
+            "hubInertia": 0.08,
+            "skin": 0.008
+          },
+          "lambdaBound": 206354317.4616637,
+          "fixedHubLambdaBound": 203695171.5103455,
+          "nodeMass": 0.0078125,
+          "hubSpinInertiaWithNodes": 0.080032,
+          "oscillatorScaleSeconds": 0.0001392269200060446,
+          "coarseLambdaBound": 206354317.47518796,
+          "differenceOperatorBound": 0.12349226447335096,
+          "differenceRelative": 5.984476893549524e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.0001392269199643846
+        },
+        {
+          "name": "double-all-mass",
+          "masses": {
+            "hubMass": 6,
+            "tyreMass": 2,
+            "hubInertia": 0.16,
+            "skin": 0.008
+          },
+          "lambdaBound": 103177158.73083185,
+          "fixedHubLambdaBound": 101847585.75517274,
+          "nodeMass": 0.015625,
+          "hubSpinInertiaWithNodes": 0.160064,
+          "oscillatorScaleSeconds": 0.00019689659851998228,
+          "coarseLambdaBound": 103177158.73759398,
+          "differenceOperatorBound": 0.06174613223667548,
+          "differenceRelative": 5.984476893549524e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.00019689659846106614
+        },
+        {
+          "name": "light-hub",
+          "masses": {
+            "hubMass": 1,
+            "tyreMass": 1,
+            "hubInertia": 0.08,
+            "skin": 0.008
+          },
+          "lambdaBound": 212148089.15017948,
+          "fixedHubLambdaBound": 203695171.5103455,
+          "nodeMass": 0.0078125,
+          "hubSpinInertiaWithNodes": 0.080032,
+          "oscillatorScaleSeconds": 0.00013731261357508517,
+          "coarseLambdaBound": 212148089.16612065,
+          "differenceOperatorBound": 0.12515130352555473,
+          "differenceRelative": 5.899242553957685e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.00013731261353458317
+        },
+        {
+          "name": "heavy-hub",
+          "masses": {
+            "hubMass": 30,
+            "tyreMass": 1,
+            "hubInertia": 0.08,
+            "skin": 0.008
+          },
+          "lambdaBound": 204084638.48996297,
+          "fixedHubLambdaBound": 203695171.5103455,
+          "nodeMass": 0.0078125,
+          "hubSpinInertiaWithNodes": 0.080032,
+          "oscillatorScaleSeconds": 0.00013999896900933147,
+          "coarseLambdaBound": 204084638.5025439,
+          "differenceOperatorBound": 0.1232287187276499,
+          "differenceRelative": 6.038118284620936e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.00013999896896706496
+        },
+        {
+          "name": "low-spin-inertia",
+          "masses": {
+            "hubMass": 3,
+            "tyreMass": 1,
+            "hubInertia": 0.02,
+            "skin": 0.008
+          },
+          "lambdaBound": 207099073.7422207,
+          "fixedHubLambdaBound": 203695171.5103455,
+          "nodeMass": 0.0078125,
+          "hubSpinInertiaWithNodes": 0.020032,
+          "oscillatorScaleSeconds": 0.00013897635511904674,
+          "coarseLambdaBound": 207099073.75366768,
+          "differenceOperatorBound": 0.13595302000054857,
+          "differenceRelative": 6.564636796481829e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.00013897635507343029
+        }
+      ]
+    },
+    {
+      "nodes": 256,
+      "pressure": 120000,
+      "deflection": 0,
+      "phase": 0,
+      "localContactAdmission": "admitted",
+      "fullInternalTangentPositive": [
+        true,
+        true
+      ],
+      "steps": [
+        1e-7,
+        5e-8
+      ],
+      "tangentInf": 3199870.2593611735,
+      "differenceInf": 0.0016370215211338746,
+      "skewInf": [
+        0.00050474285819746,
+        0.0017210767277364702
+      ],
+      "rows": [
+        {
+          "name": "half-all-mass",
+          "masses": {
+            "hubMass": 1.5,
+            "tyreMass": 0.5,
+            "hubInertia": 0.04,
+            "skin": 0.008
+          },
+          "lambdaBound": 1643741318.4630075,
+          "fixedHubLambdaBound": 1638333572.7929208,
+          "nodeMass": 0.001953125,
+          "hubSpinInertiaWithNodes": 0.040016,
+          "oscillatorScaleSeconds": 0.00004933024354834015,
+          "coarseLambdaBound": 1643741318.4316926,
+          "differenceOperatorBound": 0.8571156674739557,
+          "differenceRelative": 5.214419433560313e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.00004933024353547872
+        },
+        {
+          "name": "nominal",
+          "masses": {
+            "hubMass": 3,
+            "tyreMass": 1,
+            "hubInertia": 0.08,
+            "skin": 0.008
+          },
+          "lambdaBound": 821870659.2315037,
+          "fixedHubLambdaBound": 819166786.3964604,
+          "nodeMass": 0.00390625,
+          "hubSpinInertiaWithNodes": 0.080032,
+          "oscillatorScaleSeconds": 0.00006976349946123052,
+          "coarseLambdaBound": 821870659.2158463,
+          "differenceOperatorBound": 0.42855783373697787,
+          "differenceRelative": 5.214419433560313e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.00006976349944304171
+        },
+        {
+          "name": "double-all-mass",
+          "masses": {
+            "hubMass": 6,
+            "tyreMass": 2,
+            "hubInertia": 0.16,
+            "skin": 0.008
+          },
+          "lambdaBound": 410935329.61575186,
+          "fixedHubLambdaBound": 409583393.1982302,
+          "nodeMass": 0.0078125,
+          "hubSpinInertiaWithNodes": 0.160064,
+          "oscillatorScaleSeconds": 0.0000986604870966803,
+          "coarseLambdaBound": 410935329.60792315,
+          "differenceOperatorBound": 0.21427891686848893,
+          "differenceRelative": 5.214419433560313e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.00009866048707095744
+        },
+        {
+          "name": "light-hub",
+          "masses": {
+            "hubMass": 1,
+            "tyreMass": 1,
+            "hubInertia": 0.08,
+            "skin": 0.008
+          },
+          "lambdaBound": 827698201.330329,
+          "fixedHubLambdaBound": 819166786.3964604,
+          "nodeMass": 0.00390625,
+          "hubSpinInertiaWithNodes": 0.080032,
+          "oscillatorScaleSeconds": 0.0000695174750924742,
+          "coarseLambdaBound": 827698201.3177547,
+          "differenceOperatorBound": 0.43335511328512943,
+          "differenceRelative": 5.235665760643356e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.00006951747507427569
+        },
+        {
+          "name": "heavy-hub",
+          "masses": {
+            "hubMass": 30,
+            "tyreMass": 1,
+            "hubInertia": 0.08,
+            "skin": 0.008
+          },
+          "lambdaBound": 819439302.2810009,
+          "fixedHubLambdaBound": 819166786.3964604,
+          "nodeMass": 0.00390625,
+          "hubSpinInertiaWithNodes": 0.080032,
+          "oscillatorScaleSeconds": 0.00006986692038293206,
+          "coarseLambdaBound": 819439302.2569028,
+          "differenceOperatorBound": 0.42777262858772797,
+          "differenceRelative": 5.220308903868475e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.00006986692036469571
+        },
+        {
+          "name": "low-spin-inertia",
+          "masses": {
+            "hubMass": 3,
+            "tyreMass": 1,
+            "hubInertia": 0.02,
+            "skin": 0.008
+          },
+          "lambdaBound": 822197331.2400742,
+          "fixedHubLambdaBound": 819166786.3964604,
+          "nodeMass": 0.00390625,
+          "hubSpinInertiaWithNodes": 0.020032,
+          "oscillatorScaleSeconds": 0.00006974963901328024,
+          "coarseLambdaBound": 822197331.2239884,
+          "differenceOperatorBound": 0.4751566002839082,
+          "differenceRelative": 5.779106574905274e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.00006974963899312572
+        }
+      ]
+    },
+    {
+      "nodes": 256,
+      "pressure": 120000,
+      "deflection": 0.0020000000000000018,
+      "phase": 0,
+      "localContactAdmission": "admitted",
+      "fullInternalTangentPositive": [
+        true,
+        true
+      ],
+      "steps": [
+        1e-7,
+        5e-8
+      ],
+      "tangentInf": 3200038.275030004,
+      "differenceInf": 0.0017876511844331366,
+      "skewInf": [
+        0.0005988150991693142,
+        0.0016372302104281644
+      ],
+      "rows": [
+        {
+          "name": "half-all-mass",
+          "masses": {
+            "hubMass": 1.5,
+            "tyreMass": 0.5,
+            "hubInertia": 0.04,
+            "skin": 0.008
+          },
+          "lambdaBound": 1643842588.5855205,
+          "fixedHubLambdaBound": 1638419596.815362,
+          "nodeMass": 0.001953125,
+          "hubSpinInertiaWithNodes": 0.040016,
+          "oscillatorScaleSeconds": 0.000049328724012106743,
+          "coarseLambdaBound": 1643842588.7434704,
+          "differenceOperatorBound": 0.9349701865793812,
+          "differenceRelative": 5.687711177892625e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.000049328723998078373
+        },
+        {
+          "name": "nominal",
+          "masses": {
+            "hubMass": 3,
+            "tyreMass": 1,
+            "hubInertia": 0.08,
+            "skin": 0.008
+          },
+          "lambdaBound": 821921294.2927603,
+          "fixedHubLambdaBound": 819209798.407681,
+          "nodeMass": 0.00390625,
+          "hubSpinInertiaWithNodes": 0.080032,
+          "oscillatorScaleSeconds": 0.00006976135051248072,
+          "coarseLambdaBound": 821921294.3717352,
+          "differenceOperatorBound": 0.4674850932896906,
+          "differenceRelative": 5.687711177892625e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.0000697613504926416
+        },
+        {
+          "name": "double-all-mass",
+          "masses": {
+            "hubMass": 6,
+            "tyreMass": 2,
+            "hubInertia": 0.16,
+            "skin": 0.008
+          },
+          "lambdaBound": 410960647.1463801,
+          "fixedHubLambdaBound": 409604899.2038405,
+          "nodeMass": 0.0078125,
+          "hubSpinInertiaWithNodes": 0.160064,
+          "oscillatorScaleSeconds": 0.00009865744802421349,
+          "coarseLambdaBound": 410960647.1858676,
+          "differenceOperatorBound": 0.2337425466448453,
+          "differenceRelative": 5.687711177892625e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.00009865744799615675
+        },
+        {
+          "name": "light-hub",
+          "masses": {
+            "hubMass": 1,
+            "tyreMass": 1,
+            "hubInertia": 0.08,
+            "skin": 0.008
+          },
+          "lambdaBound": 827748865.9208534,
+          "fixedHubLambdaBound": 819209798.407681,
+          "nodeMass": 0.00390625,
+          "hubSpinInertiaWithNodes": 0.080032,
+          "oscillatorScaleSeconds": 0.00006951534755811503,
+          "coarseLambdaBound": 827748866.0025858,
+          "differenceOperatorBound": 0.47062655548044885,
+          "differenceRelative": 5.685620057683638e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.00006951534753835315
+        },
+        {
+          "name": "heavy-hub",
+          "masses": {
+            "hubMass": 30,
+            "tyreMass": 1,
+            "hubInertia": 0.08,
+            "skin": 0.008
+          },
+          "lambdaBound": 819481595.987922,
+          "fixedHubLambdaBound": 819209798.407681,
+          "nodeMass": 0.00390625,
+          "hubSpinInertiaWithNodes": 0.080032,
+          "oscillatorScaleSeconds": 0.0000698651174326304,
+          "coarseLambdaBound": 819481596.0631849,
+          "differenceOperatorBound": 0.4677112629629374,
+          "differenceRelative": 5.707404110754805e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.00006986511741269298
+        },
+        {
+          "name": "low-spin-inertia",
+          "masses": {
+            "hubMass": 3,
+            "tyreMass": 1,
+            "hubInertia": 0.02,
+            "skin": 0.008
+          },
+          "lambdaBound": 822266691.8023318,
+          "fixedHubLambdaBound": 819209798.407681,
+          "nodeMass": 0.00390625,
+          "hubSpinInertiaWithNodes": 0.020032,
+          "oscillatorScaleSeconds": 0.00006974669715983177,
+          "coarseLambdaBound": 822266691.881123,
+          "differenceOperatorBound": 0.513231444195034,
+          "differenceRelative": 6.241666472833511e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.000069746697138065
+        }
+      ]
+    },
+    {
+      "nodes": 256,
+      "pressure": 120000,
+      "deflection": 0.0040000000000000036,
+      "phase": 0,
+      "localContactAdmission": "admitted",
+      "fullInternalTangentPositive": [
+        true,
+        true
+      ],
+      "steps": [
+        1e-7,
+        5e-8
+      ],
+      "tangentInf": 3200220.9060131316,
+      "differenceInf": 0.002251878557881698,
+      "skewInf": [
+        0.0005114054082747121,
+        0.001566996318065117
+      ],
+      "rows": [
+        {
+          "name": "half-all-mass",
+          "masses": {
+            "hubMass": 1.5,
+            "tyreMass": 0.5,
+            "hubInertia": 0.04,
+            "skin": 0.008
+          },
+          "lambdaBound": 1643946047.6159306,
+          "fixedHubLambdaBound": 1638513103.8787234,
+          "nodeMass": 0.001953125,
+          "hubSpinInertiaWithNodes": 0.040016,
+          "oscillatorScaleSeconds": 0.00004932717177678165,
+          "coarseLambdaBound": 1643946047.664782,
+          "differenceOperatorBound": 1.173181208508221,
+          "differenceRelative": 7.136372937600853e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.000049327171759180796
+        },
+        {
+          "name": "nominal",
+          "masses": {
+            "hubMass": 3,
+            "tyreMass": 1,
+            "hubInertia": 0.08,
+            "skin": 0.008
+          },
+          "lambdaBound": 821973023.8079653,
+          "fixedHubLambdaBound": 819256551.9393617,
+          "nodeMass": 0.00390625,
+          "hubSpinInertiaWithNodes": 0.080032,
+          "oscillatorScaleSeconds": 0.00006975915532023197,
+          "coarseLambdaBound": 821973023.832391,
+          "differenceOperatorBound": 0.5865906042541105,
+          "differenceRelative": 7.136372937600853e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.00006975915529534061
+        },
+        {
+          "name": "double-all-mass",
+          "masses": {
+            "hubMass": 6,
+            "tyreMass": 2,
+            "hubInertia": 0.16,
+            "skin": 0.008
+          },
+          "lambdaBound": 410986511.90398264,
+          "fixedHubLambdaBound": 409628275.96968085,
+          "nodeMass": 0.0078125,
+          "hubSpinInertiaWithNodes": 0.160064,
+          "oscillatorScaleSeconds": 0.0000986543435535633,
+          "coarseLambdaBound": 410986511.9161955,
+          "differenceOperatorBound": 0.29329530212705524,
+          "differenceRelative": 7.136372937600853e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.00009865434351836159
+        },
+        {
+          "name": "light-hub",
+          "masses": {
+            "hubMass": 1,
+            "tyreMass": 1,
+            "hubInertia": 0.08,
+            "skin": 0.008
+          },
+          "lambdaBound": 827784424.423534,
+          "fixedHubLambdaBound": 819256551.9393617,
+          "nodeMass": 0.00390625,
+          "hubSpinInertiaWithNodes": 0.080032,
+          "oscillatorScaleSeconds": 0.00006951385448326028,
+          "coarseLambdaBound": 827784424.4507753,
+          "differenceOperatorBound": 0.5913968837241471,
+          "differenceRelative": 7.144334518446559e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.00006951385445842877
+        },
+        {
+          "name": "heavy-hub",
+          "masses": {
+            "hubMass": 30,
+            "tyreMass": 1,
+            "hubInertia": 0.08,
+            "skin": 0.008
+          },
+          "lambdaBound": 819531249.4841043,
+          "fixedHubLambdaBound": 819256551.9393617,
+          "nodeMass": 0.00390625,
+          "hubSpinInertiaWithNodes": 0.080032,
+          "oscillatorScaleSeconds": 0.000069863000917921,
+          "coarseLambdaBound": 819531249.5084716,
+          "differenceOperatorBound": 0.5856413303507303,
+          "differenceRelative": 7.146052462543583e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.00006986300089295877
+        },
+        {
+          "name": "low-spin-inertia",
+          "masses": {
+            "hubMass": 3,
+            "tyreMass": 1,
+            "hubInertia": 0.02,
+            "skin": 0.008
+          },
+          "lambdaBound": 822345128.3784313,
+          "fixedHubLambdaBound": 819256551.9393617,
+          "nodeMass": 0.00390625,
+          "hubSpinInertiaWithNodes": 0.020032,
+          "oscillatorScaleSeconds": 0.00006974337080548996,
+          "coarseLambdaBound": 822345128.4046617,
+          "differenceOperatorBound": 0.636689250297244,
+          "differenceRelative": 7.74236057739797e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.00006974337077849104
+        }
+      ]
+    },
+    {
+      "nodes": 256,
+      "pressure": 160000,
+      "deflection": 0,
+      "phase": 0,
+      "localContactAdmission": "admitted",
+      "fullInternalTangentPositive": [
+        true,
+        true
+      ],
+      "steps": [
+        1e-7,
+        5e-8
+      ],
+      "tangentInf": 3199604.1969893295,
+      "differenceInf": 0.0019094981373378728,
+      "skewInf": [
+        0.0005102185159657768,
+        0.0015280178281331658
+      ],
+      "rows": [
+        {
+          "name": "half-all-mass",
+          "masses": {
+            "hubMass": 1.5,
+            "tyreMass": 0.5,
+            "hubInertia": 0.04,
+            "skin": 0.008
+          },
+          "lambdaBound": 1643579407.5779316,
+          "fixedHubLambdaBound": 1638197348.8585367,
+          "nodeMass": 0.001953125,
+          "hubSpinInertiaWithNodes": 0.040016,
+          "oscillatorScaleSeconds": 0.00004933267327782632,
+          "coarseLambdaBound": 1643579407.4878519,
+          "differenceOperatorBound": 0.995349551533459,
+          "differenceRelative": 6.055986993657097e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.00004933267326288842
+        },
+        {
+          "name": "nominal",
+          "masses": {
+            "hubMass": 3,
+            "tyreMass": 1,
+            "hubInertia": 0.08,
+            "skin": 0.008
+          },
+          "lambdaBound": 821789703.7889658,
+          "fixedHubLambdaBound": 819098674.4292684,
+          "nodeMass": 0.00390625,
+          "hubSpinInertiaWithNodes": 0.080032,
+          "oscillatorScaleSeconds": 0.00006976693561762276,
+          "coarseLambdaBound": 821789703.7439259,
+          "differenceOperatorBound": 0.4976747757667295,
+          "differenceRelative": 6.055986993657097e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.00006976693559649738
+        },
+        {
+          "name": "double-all-mass",
+          "masses": {
+            "hubMass": 6,
+            "tyreMass": 2,
+            "hubInertia": 0.16,
+            "skin": 0.008
+          },
+          "lambdaBound": 410894851.8944829,
+          "fixedHubLambdaBound": 409549337.2146342,
+          "nodeMass": 0.0078125,
+          "hubSpinInertiaWithNodes": 0.160064,
+          "oscillatorScaleSeconds": 0.00009866534655565264,
+          "coarseLambdaBound": 410894851.87196296,
+          "differenceOperatorBound": 0.24883738788336476,
+          "differenceRelative": 6.055986993657097e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.00009866534652577684
+        },
+        {
+          "name": "light-hub",
+          "masses": {
+            "hubMass": 1,
+            "tyreMass": 1,
+            "hubInertia": 0.08,
+            "skin": 0.008
+          },
+          "lambdaBound": 827628839.4070439,
+          "fixedHubLambdaBound": 819098674.4292684,
+          "nodeMass": 0.00390625,
+          "hubSpinInertiaWithNodes": 0.080032,
+          "oscillatorScaleSeconds": 0.00006952038809195008,
+          "coarseLambdaBound": 827628839.3642858,
+          "differenceOperatorBound": 0.5006413021374293,
+          "differenceRelative": 6.049104118896033e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.00006952038807092328
+        },
+        {
+          "name": "heavy-hub",
+          "masses": {
+            "hubMass": 30,
+            "tyreMass": 1,
+            "hubInertia": 0.08,
+            "skin": 0.008
+          },
+          "lambdaBound": 819434695.1154075,
+          "fixedHubLambdaBound": 819098674.4292684,
+          "nodeMass": 0.00390625,
+          "hubSpinInertiaWithNodes": 0.080032,
+          "oscillatorScaleSeconds": 0.00006986711679151788,
+          "coarseLambdaBound": 819434695.0696728,
+          "differenceOperatorBound": 0.49743833191044534,
+          "differenceRelative": 6.070506104704136e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.00006986711677031142
+        },
+        {
+          "name": "low-spin-inertia",
+          "masses": {
+            "hubMass": 3,
+            "tyreMass": 1,
+            "hubInertia": 0.02,
+            "skin": 0.008
+          },
+          "lambdaBound": 822310998.6269832,
+          "fixedHubLambdaBound": 819098674.4292684,
+          "nodeMass": 0.00390625,
+          "hubSpinInertiaWithNodes": 0.020032,
+          "oscillatorScaleSeconds": 0.00006974481812847152,
+          "coarseLambdaBound": 822310998.5803103,
+          "differenceOperatorBound": 0.5420252503711726,
+          "differenceRelative": 6.591487299527731e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.00006974481810548542
+        }
+      ]
+    },
+    {
+      "nodes": 256,
+      "pressure": 160000,
+      "deflection": 0.0020000000000000018,
+      "phase": 0,
+      "localContactAdmission": "admitted",
+      "fullInternalTangentPositive": [
+        true,
+        true
+      ],
+      "steps": [
+        1e-7,
+        5e-8
+      ],
+      "tangentInf": 3199792.221809044,
+      "differenceInf": 0.0018829821615722053,
+      "skewInf": [
+        0.0005003379274585162,
+        0.0018788308055904812
+      ],
+      "rows": [
+        {
+          "name": "half-all-mass",
+          "masses": {
+            "hubMass": 1.5,
+            "tyreMass": 0.5,
+            "hubInertia": 0.04,
+            "skin": 0.008
+          },
+          "lambdaBound": 1643681571.1013606,
+          "fixedHubLambdaBound": 1638293617.5662305,
+          "nodeMass": 0.001953125,
+          "hubSpinInertiaWithNodes": 0.040016,
+          "oscillatorScaleSeconds": 0.000049331140110414535,
+          "coarseLambdaBound": 1643681571.1624305,
+          "differenceOperatorBound": 0.9838580301185128,
+          "differenceRelative": 5.985697275046235e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.00004933114009565047
+        },
+        {
+          "name": "nominal",
+          "masses": {
+            "hubMass": 3,
+            "tyreMass": 1,
+            "hubInertia": 0.08,
+            "skin": 0.008
+          },
+          "lambdaBound": 821840785.5506803,
+          "fixedHubLambdaBound": 819146808.7831153,
+          "nodeMass": 0.00390625,
+          "hubSpinInertiaWithNodes": 0.080032,
+          "oscillatorScaleSeconds": 0.00006976476739147562,
+          "coarseLambdaBound": 821840785.5812153,
+          "differenceOperatorBound": 0.4919290150592564,
+          "differenceRelative": 5.985697275046235e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.00006976476737059608
+        },
+        {
+          "name": "double-all-mass",
+          "masses": {
+            "hubMass": 6,
+            "tyreMass": 2,
+            "hubInertia": 0.16,
+            "skin": 0.008
+          },
+          "lambdaBound": 410920392.77534014,
+          "fixedHubLambdaBound": 409573404.39155763,
+          "nodeMass": 0.0078125,
+          "hubSpinInertiaWithNodes": 0.160064,
+          "oscillatorScaleSeconds": 0.00009866228022082907,
+          "coarseLambdaBound": 410920392.79060763,
+          "differenceOperatorBound": 0.2459645075296282,
+          "differenceRelative": 5.985697275046235e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.00009866228019130095
+        },
+        {
+          "name": "light-hub",
+          "masses": {
+            "hubMass": 1,
+            "tyreMass": 1,
+            "hubInertia": 0.08,
+            "skin": 0.008
+          },
+          "lambdaBound": 827678504.401882,
+          "fixedHubLambdaBound": 819146808.7831153,
+          "nodeMass": 0.00390625,
+          "hubSpinInertiaWithNodes": 0.080032,
+          "oscillatorScaleSeconds": 0.00006951830226907662,
+          "coarseLambdaBound": 827678504.4349768,
+          "differenceOperatorBound": 0.49599620796726046,
+          "differenceRelative": 5.992619179178633e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.00006951830224824678
+        },
+        {
+          "name": "heavy-hub",
+          "masses": {
+            "hubMass": 30,
+            "tyreMass": 1,
+            "hubInertia": 0.08,
+            "skin": 0.008
+          },
+          "lambdaBound": 819478743.1497843,
+          "fixedHubLambdaBound": 819146808.7831153,
+          "nodeMass": 0.00390625,
+          "hubSpinInertiaWithNodes": 0.080032,
+          "oscillatorScaleSeconds": 0.00006986523904267806,
+          "coarseLambdaBound": 819478743.1750848,
+          "differenceOperatorBound": 0.49126806914030013,
+          "differenceRelative": 5.994884836817618e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.00006986523902173637
+        },
+        {
+          "name": "low-spin-inertia",
+          "masses": {
+            "hubMass": 3,
+            "tyreMass": 1,
+            "hubInertia": 0.02,
+            "skin": 0.008
+          },
+          "lambdaBound": 822369271.954854,
+          "fixedHubLambdaBound": 819146808.7831153,
+          "nodeMass": 0.00390625,
+          "hubSpinInertiaWithNodes": 0.020032,
+          "oscillatorScaleSeconds": 0.00006974234701555791,
+          "coarseLambdaBound": 822369271.9855583,
+          "differenceOperatorBound": 0.539709241891251,
+          "differenceRelative": 6.56285759082788e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.00006974234699267247
+        }
+      ]
+    },
+    {
+      "nodes": 256,
+      "pressure": 160000,
+      "deflection": 0.0040000000000000036,
+      "phase": 0,
+      "localContactAdmission": "admitted",
+      "fullInternalTangentPositive": [
+        true,
+        true
+      ],
+      "steps": [
+        1e-7,
+        5e-8
+      ],
+      "tangentInf": 3200008.4159234674,
+      "differenceInf": 0.0020287153917017964,
+      "skewInf": [
+        0.0005710718921923541,
+        0.0017513227425854927
+      ],
+      "rows": [
+        {
+          "name": "half-all-mass",
+          "masses": {
+            "hubMass": 1.5,
+            "tyreMass": 0.5,
+            "hubInertia": 0.04,
+            "skin": 0.008
+          },
+          "lambdaBound": 1643807347.0811658,
+          "fixedHubLambdaBound": 1638404308.9528153,
+          "nodeMass": 0.001953125,
+          "hubSpinInertiaWithNodes": 0.040016,
+          "oscillatorScaleSeconds": 0.000049329252787308957,
+          "coarseLambdaBound": 1643807347.1037214,
+          "differenceOperatorBound": 1.0594468622607989,
+          "differenceRelative": 6.445079249353707e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.00004932925277141241
+        },
+        {
+          "name": "nominal",
+          "masses": {
+            "hubMass": 3,
+            "tyreMass": 1,
+            "hubInertia": 0.08,
+            "skin": 0.008
+          },
+          "lambdaBound": 821903673.5405829,
+          "fixedHubLambdaBound": 819202154.4764076,
+          "nodeMass": 0.00390625,
+          "hubSpinInertiaWithNodes": 0.080032,
+          "oscillatorScaleSeconds": 0.00006976209831354314,
+          "coarseLambdaBound": 821903673.5518607,
+          "differenceOperatorBound": 0.5297234311303994,
+          "differenceRelative": 6.445079249353707e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.00006976209829106202
+        },
+        {
+          "name": "double-all-mass",
+          "masses": {
+            "hubMass": 6,
+            "tyreMass": 2,
+            "hubInertia": 0.16,
+            "skin": 0.008
+          },
+          "lambdaBound": 410951836.77029145,
+          "fixedHubLambdaBound": 409601077.2382038,
+          "nodeMass": 0.0078125,
+          "hubSpinInertiaWithNodes": 0.160064,
+          "oscillatorScaleSeconds": 0.00009865850557461791,
+          "coarseLambdaBound": 410951836.77593035,
+          "differenceOperatorBound": 0.2648617155651997,
+          "differenceRelative": 6.445079249353707e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.00009865850554282482
+        },
+        {
+          "name": "light-hub",
+          "masses": {
+            "hubMass": 1,
+            "tyreMass": 1,
+            "hubInertia": 0.08,
+            "skin": 0.008
+          },
+          "lambdaBound": 827733909.076372,
+          "fixedHubLambdaBound": 819202154.4764076,
+          "nodeMass": 0.00390625,
+          "hubSpinInertiaWithNodes": 0.080032,
+          "oscillatorScaleSeconds": 0.00006951597561354098,
+          "coarseLambdaBound": 827733909.0898192,
+          "differenceOperatorBound": 0.5322801245437672,
+          "differenceRelative": 6.430570485359391e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.00006951597559118961
+        },
+        {
+          "name": "heavy-hub",
+          "masses": {
+            "hubMass": 30,
+            "tyreMass": 1,
+            "hubInertia": 0.08,
+            "skin": 0.008
+          },
+          "lambdaBound": 819535278.4202613,
+          "fixedHubLambdaBound": 819202154.4764076,
+          "nodeMass": 0.00390625,
+          "hubSpinInertiaWithNodes": 0.080032,
+          "oscillatorScaleSeconds": 0.00006986282919016029,
+          "coarseLambdaBound": 819535278.4343339,
+          "differenceOperatorBound": 0.529558086530848,
+          "differenceRelative": 6.461687501136325e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.0000698628291675887
+        },
+        {
+          "name": "low-spin-inertia",
+          "masses": {
+            "hubMass": 3,
+            "tyreMass": 1,
+            "hubInertia": 0.02,
+            "skin": 0.008
+          },
+          "lambdaBound": 822456429.1987207,
+          "fixedHubLambdaBound": 819202154.4764076,
+          "nodeMass": 0.00390625,
+          "hubSpinInertiaWithNodes": 0.020032,
+          "oscillatorScaleSeconds": 0.00006973865155426767,
+          "coarseLambdaBound": 822456429.2096753,
+          "differenceOperatorBound": 0.582154793143208,
+          "differenceRelative": 7.078244785688806e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.0000697386515295863
+        }
+      ]
+    },
+    {
+      "nodes": 256,
+      "pressure": 200000,
+      "deflection": 0,
+      "phase": 0,
+      "localContactAdmission": "admitted",
+      "fullInternalTangentPositive": [
+        true,
+        true
+      ],
+      "steps": [
+        1e-7,
+        5e-8
+      ],
+      "tangentInf": 3199334.344527938,
+      "differenceInf": 0.001903661701825432,
+      "skewInf": [
+        0.0005438718689623201,
+        0.0019448264522852199
+      ],
+      "rows": [
+        {
+          "name": "half-all-mass",
+          "masses": {
+            "hubMass": 1.5,
+            "tyreMass": 0.5,
+            "hubInertia": 0.04,
+            "skin": 0.008
+          },
+          "lambdaBound": 1643422299.5479984,
+          "fixedHubLambdaBound": 1638059184.3983042,
+          "nodeMass": 0.001953125,
+          "hubSpinInertiaWithNodes": 0.040016,
+          "oscillatorScaleSeconds": 0.00004933503127609808,
+          "coarseLambdaBound": 1643422299.4652455,
+          "differenceOperatorBound": 0.982602067377006,
+          "differenceRelative": 5.978999236211275e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.000049335031261349386
+        },
+        {
+          "name": "nominal",
+          "masses": {
+            "hubMass": 3,
+            "tyreMass": 1,
+            "hubInertia": 0.08,
+            "skin": 0.008
+          },
+          "lambdaBound": 821711149.7739992,
+          "fixedHubLambdaBound": 819029592.1991521,
+          "nodeMass": 0.00390625,
+          "hubSpinInertiaWithNodes": 0.080032,
+          "oscillatorScaleSeconds": 0.00006977027033075873,
+          "coarseLambdaBound": 821711149.7326227,
+          "differenceOperatorBound": 0.491301033688503,
+          "differenceRelative": 5.978999236211275e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.00006977027030990092
+        },
+        {
+          "name": "double-all-mass",
+          "masses": {
+            "hubMass": 6,
+            "tyreMass": 2,
+            "hubInertia": 0.16,
+            "skin": 0.008
+          },
+          "lambdaBound": 410855574.8869996,
+          "fixedHubLambdaBound": 409514796.09957606,
+          "nodeMass": 0.0078125,
+          "hubSpinInertiaWithNodes": 0.160064,
+          "oscillatorScaleSeconds": 0.00009867006255219616,
+          "coarseLambdaBound": 410855574.8663114,
+          "differenceOperatorBound": 0.2456505168442515,
+          "differenceRelative": 5.978999236211275e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.00009867006252269877
+        },
+        {
+          "name": "light-hub",
+          "masses": {
+            "hubMass": 1,
+            "tyreMass": 1,
+            "hubInertia": 0.08,
+            "skin": 0.008
+          },
+          "lambdaBound": 827558855.2193819,
+          "fixedHubLambdaBound": 819029592.1991521,
+          "nodeMass": 0.00390625,
+          "hubSpinInertiaWithNodes": 0.080032,
+          "oscillatorScaleSeconds": 0.00006952332759588907,
+          "coarseLambdaBound": 827558855.1803167,
+          "differenceOperatorBound": 0.49351237321992947,
+          "differenceRelative": 5.963471602138819e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.00006952332757515906
+        },
+        {
+          "name": "heavy-hub",
+          "masses": {
+            "hubMass": 30,
+            "tyreMass": 1,
+            "hubInertia": 0.08,
+            "skin": 0.008
+          },
+          "lambdaBound": 819433641.4814656,
+          "fixedHubLambdaBound": 819029592.1991521,
+          "nodeMass": 0.00390625,
+          "hubSpinInertiaWithNodes": 0.080032,
+          "oscillatorScaleSeconds": 0.00006986716170933566,
+          "coarseLambdaBound": 819433641.4348835,
+          "differenceOperatorBound": 0.4908937625598385,
+          "differenceRelative": 5.990646926239748e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.00006986716168840819
+        },
+        {
+          "name": "low-spin-inertia",
+          "masses": {
+            "hubMass": 3,
+            "tyreMass": 1,
+            "hubInertia": 0.02,
+            "skin": 0.008
+          },
+          "lambdaBound": 822462371.4432656,
+          "fixedHubLambdaBound": 819029592.1991521,
+          "nodeMass": 0.00390625,
+          "hubSpinInertiaWithNodes": 0.020032,
+          "oscillatorScaleSeconds": 0.00006973839962488787,
+          "coarseLambdaBound": 822462371.3973132,
+          "differenceOperatorBound": 0.5314990963289303,
+          "differenceRelative": 6.462290735517179e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.00006973839960235438
+        }
+      ]
+    },
+    {
+      "nodes": 256,
+      "pressure": 200000,
+      "deflection": 0.0020000000000000018,
+      "phase": 0,
+      "localContactAdmission": "admitted",
+      "fullInternalTangentPositive": [
+        true,
+        true
+      ],
+      "steps": [
+        1e-7,
+        5e-8
+      ],
+      "tangentInf": 3199532.164145252,
+      "differenceInf": 0.0019476740859356578,
+      "skewInf": [
+        0.0005210052325530512,
+        0.0017143444167948552
+      ],
+      "rows": [
+        {
+          "name": "half-all-mass",
+          "masses": {
+            "hubMass": 1.5,
+            "tyreMass": 0.5,
+            "hubInertia": 0.04,
+            "skin": 0.008
+          },
+          "lambdaBound": 1643522277.2522635,
+          "fixedHubLambdaBound": 1638160468.0423691,
+          "nodeMass": 0.001953125,
+          "hubSpinInertiaWithNodes": 0.040016,
+          "oscillatorScaleSeconds": 0.000049333530694618726,
+          "coarseLambdaBound": 1643522277.2549324,
+          "differenceOperatorBound": 1.014876883001522,
+          "differenceRelative": 6.175011419366049e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.00004933353067938697
+        },
+        {
+          "name": "nominal",
+          "masses": {
+            "hubMass": 3,
+            "tyreMass": 1,
+            "hubInertia": 0.08,
+            "skin": 0.008
+          },
+          "lambdaBound": 821761138.6261318,
+          "fixedHubLambdaBound": 819080234.0211846,
+          "nodeMass": 0.00390625,
+          "hubSpinInertiaWithNodes": 0.080032,
+          "oscillatorScaleSeconds": 0.00006976814818807919,
+          "coarseLambdaBound": 821761138.6274662,
+          "differenceOperatorBound": 0.507438441500761,
+          "differenceRelative": 6.175011419366049e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.00006976814816653823
+        },
+        {
+          "name": "double-all-mass",
+          "masses": {
+            "hubMass": 6,
+            "tyreMass": 2,
+            "hubInertia": 0.16,
+            "skin": 0.008
+          },
+          "lambdaBound": 410880569.3130659,
+          "fixedHubLambdaBound": 409540117.0105923,
+          "nodeMass": 0.0078125,
+          "hubSpinInertiaWithNodes": 0.160064,
+          "oscillatorScaleSeconds": 0.00009866706138923745,
+          "coarseLambdaBound": 410880569.3137331,
+          "differenceOperatorBound": 0.2537192207503805,
+          "differenceRelative": 6.175011419366049e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.00009866706135877395
+        },
+        {
+          "name": "light-hub",
+          "masses": {
+            "hubMass": 1,
+            "tyreMass": 1,
+            "hubInertia": 0.08,
+            "skin": 0.008
+          },
+          "lambdaBound": 827609910.6750673,
+          "fixedHubLambdaBound": 819080234.0211846,
+          "nodeMass": 0.00390625,
+          "hubSpinInertiaWithNodes": 0.080032,
+          "oscillatorScaleSeconds": 0.00006952118310736244,
+          "coarseLambdaBound": 827609910.6799688,
+          "differenceOperatorBound": 0.5102649836938592,
+          "differenceRelative": 6.165525292920245e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.00006952118308593072
+        },
+        {
+          "name": "heavy-hub",
+          "masses": {
+            "hubMass": 30,
+            "tyreMass": 1,
+            "hubInertia": 0.08,
+            "skin": 0.008
+          },
+          "lambdaBound": 819477593.7454522,
+          "fixedHubLambdaBound": 819080234.0211846,
+          "nodeMass": 0.00390625,
+          "hubSpinInertiaWithNodes": 0.080032,
+          "oscillatorScaleSeconds": 0.00006986528803936869,
+          "coarseLambdaBound": 819477593.7285731,
+          "differenceOperatorBound": 0.5077022785330483,
+          "differenceRelative": 6.19543819633404e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.00006986528801772639
+        },
+        {
+          "name": "low-spin-inertia",
+          "masses": {
+            "hubMass": 3,
+            "tyreMass": 1,
+            "hubInertia": 0.02,
+            "skin": 0.008
+          },
+          "lambdaBound": 822508762.2714276,
+          "fixedHubLambdaBound": 819080234.0211846,
+          "nodeMass": 0.00390625,
+          "hubSpinInertiaWithNodes": 0.020032,
+          "oscillatorScaleSeconds": 0.00006973643291773475,
+          "coarseLambdaBound": 822508762.2701324,
+          "differenceOperatorBound": 0.5585677910860296,
+          "differenceRelative": 6.791025417692783e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.00006973643289405566
+        }
+      ]
+    },
+    {
+      "nodes": 256,
+      "pressure": 200000,
+      "deflection": 0.0040000000000000036,
+      "phase": 0,
+      "localContactAdmission": "admitted",
+      "fullInternalTangentPositive": [
+        true,
+        true
+      ],
+      "steps": [
+        1e-7,
+        5e-8
+      ],
+      "tangentInf": 3199774.352683279,
+      "differenceInf": 0.0017757951512933356,
+      "skewInf": [
+        0.0005076290274724782,
+        0.0017125733079821348
+      ],
+      "rows": [
+        {
+          "name": "half-all-mass",
+          "masses": {
+            "hubMass": 1.5,
+            "tyreMass": 0.5,
+            "hubInertia": 0.04,
+            "skin": 0.008
+          },
+          "lambdaBound": 1643656700.7094247,
+          "fixedHubLambdaBound": 1638284468.573839,
+          "nodeMass": 0.001953125,
+          "hubSpinInertiaWithNodes": 0.040016,
+          "oscillatorScaleSeconds": 0.00004933151332708066,
+          "coarseLambdaBound": 1643656700.8164198,
+          "differenceOperatorBound": 0.9258067382136331,
+          "differenceRelative": 5.632604045686926e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.00004933151331318741
+        },
+        {
+          "name": "nominal",
+          "masses": {
+            "hubMass": 3,
+            "tyreMass": 1,
+            "hubInertia": 0.08,
+            "skin": 0.008
+          },
+          "lambdaBound": 821828350.3547124,
+          "fixedHubLambdaBound": 819142234.2869195,
+          "nodeMass": 0.00390625,
+          "hubSpinInertiaWithNodes": 0.080032,
+          "oscillatorScaleSeconds": 0.00006976529519954656,
+          "coarseLambdaBound": 821828350.4082099,
+          "differenceOperatorBound": 0.46290336910681656,
+          "differenceRelative": 5.632604045686926e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.00006976529517989854
+        },
+        {
+          "name": "double-all-mass",
+          "masses": {
+            "hubMass": 6,
+            "tyreMass": 2,
+            "hubInertia": 0.16,
+            "skin": 0.008
+          },
+          "lambdaBound": 410914175.1773562,
+          "fixedHubLambdaBound": 409571117.14345974,
+          "nodeMass": 0.0078125,
+          "hubSpinInertiaWithNodes": 0.160064,
+          "oscillatorScaleSeconds": 0.00009866302665416131,
+          "coarseLambdaBound": 410914175.20410496,
+          "differenceOperatorBound": 0.23145168455340828,
+          "differenceRelative": 5.632604045686926e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.00009866302662637483
+        },
+        {
+          "name": "light-hub",
+          "masses": {
+            "hubMass": 1,
+            "tyreMass": 1,
+            "hubInertia": 0.08,
+            "skin": 0.008
+          },
+          "lambdaBound": 827665102.7936224,
+          "fixedHubLambdaBound": 819142234.2869195,
+          "nodeMass": 0.00390625,
+          "hubSpinInertiaWithNodes": 0.080032,
+          "oscillatorScaleSeconds": 0.00006951886508927975,
+          "coarseLambdaBound": 827665102.8500643,
+          "differenceOperatorBound": 0.4651810663110456,
+          "differenceRelative": 5.620402077373052e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.00006951886506974355
+        },
+        {
+          "name": "heavy-hub",
+          "masses": {
+            "hubMass": 30,
+            "tyreMass": 1,
+            "hubInertia": 0.08,
+            "skin": 0.008
+          },
+          "lambdaBound": 819538870.2721109,
+          "fixedHubLambdaBound": 819142234.2869195,
+          "nodeMass": 0.00390625,
+          "hubSpinInertiaWithNodes": 0.080032,
+          "oscillatorScaleSeconds": 0.00006986267609357372,
+          "coarseLambdaBound": 819538870.3274617,
+          "differenceOperatorBound": 0.46322034291355524,
+          "differenceRelative": 5.652207109587768e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.0000698626760738298
+        },
+        {
+          "name": "low-spin-inertia",
+          "masses": {
+            "hubMass": 3,
+            "tyreMass": 1,
+            "hubInertia": 0.02,
+            "skin": 0.008
+          },
+          "lambdaBound": 822594159.8443995,
+          "fixedHubLambdaBound": 819142234.2869195,
+          "nodeMass": 0.00390625,
+          "hubSpinInertiaWithNodes": 0.020032,
+          "oscillatorScaleSeconds": 0.00006973281298157395,
+          "coarseLambdaBound": 822594159.8979216,
+          "differenceOperatorBound": 0.5103563323658407,
+          "differenceRelative": 6.20422995055519e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.00006973281295994203
+        }
+      ]
+    },
+    {
+      "nodes": 512,
+      "pressure": 120000,
+      "deflection": 0,
+      "phase": 0,
+      "localContactAdmission": "admitted",
+      "fullInternalTangentPositive": [
+        true,
+        true
+      ],
+      "steps": [
+        1e-7,
+        5e-8
+      ],
+      "tangentInf": 6409674.716354256,
+      "differenceInf": 0.003104465266072165,
+      "skewInf": [
+        0.0017451957004447766,
+        0.0036922531212824072
+      ],
+      "rows": [
+        {
+          "name": "half-all-mass",
+          "masses": {
+            "hubMass": 1.5,
+            "tyreMass": 0.5,
+            "hubInertia": 0.04,
+            "skin": 0.008
+          },
+          "lambdaBound": 6568936452.890013,
+          "fixedHubLambdaBound": 6563506909.546758,
+          "nodeMass": 0.0009765625,
+          "hubSpinInertiaWithNodes": 0.040016,
+          "oscillatorScaleSeconds": 0.000024676437723194444,
+          "coarseLambdaBound": 6568936452.834248,
+          "differenceOperatorBound": 3.2498104307395925,
+          "differenceRelative": 4.947239867588967e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.00002467643771709043
+        },
+        {
+          "name": "nominal",
+          "masses": {
+            "hubMass": 3,
+            "tyreMass": 1,
+            "hubInertia": 0.08,
+            "skin": 0.008
+          },
+          "lambdaBound": 3284468226.4450064,
+          "fixedHubLambdaBound": 3281753454.773379,
+          "nodeMass": 0.001953125,
+          "hubSpinInertiaWithNodes": 0.080032,
+          "oscillatorScaleSeconds": 0.00003489775289919664,
+          "coarseLambdaBound": 3284468226.417124,
+          "differenceOperatorBound": 1.6249052153697963,
+          "differenceRelative": 4.947239867588967e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.000034897752890564266
+        },
+        {
+          "name": "double-all-mass",
+          "masses": {
+            "hubMass": 6,
+            "tyreMass": 2,
+            "hubInertia": 0.16,
+            "skin": 0.008
+          },
+          "lambdaBound": 1642234113.2225032,
+          "fixedHubLambdaBound": 1640876727.3866894,
+          "nodeMass": 0.00390625,
+          "hubSpinInertiaWithNodes": 0.160064,
+          "oscillatorScaleSeconds": 0.00004935287544638889,
+          "coarseLambdaBound": 1642234113.208562,
+          "differenceOperatorBound": 0.8124526076848981,
+          "differenceRelative": 4.947239867588967e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.00004935287543418086
+        },
+        {
+          "name": "light-hub",
+          "masses": {
+            "hubMass": 1,
+            "tyreMass": 1,
+            "hubInertia": 0.08,
+            "skin": 0.008
+          },
+          "lambdaBound": 3290314565.5817404,
+          "fixedHubLambdaBound": 3281753454.773379,
+          "nodeMass": 0.001953125,
+          "hubSpinInertiaWithNodes": 0.080032,
+          "oscillatorScaleSeconds": 0.00003486673537727307,
+          "coarseLambdaBound": 3290314565.557114,
+          "differenceOperatorBound": 1.635575959967552,
+          "differenceRelative": 4.97088022244577e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.00003486673536860715
+        },
+        {
+          "name": "heavy-hub",
+          "masses": {
+            "hubMass": 30,
+            "tyreMass": 1,
+            "hubInertia": 0.08,
+            "skin": 0.008
+          },
+          "lambdaBound": 3282028556.4612565,
+          "fixedHubLambdaBound": 3281753454.773379,
+          "nodeMass": 0.001953125,
+          "hubSpinInertiaWithNodes": 0.080032,
+          "oscillatorScaleSeconds": 0.00003491072097409471,
+          "coarseLambdaBound": 3282028556.4149523,
+          "differenceOperatorBound": 1.6242141392757492,
+          "differenceRelative": 4.948811722183816e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.00003491072096545638
+        },
+        {
+          "name": "low-spin-inertia",
+          "masses": {
+            "hubMass": 3,
+            "tyreMass": 1,
+            "hubInertia": 0.02,
+            "skin": 0.008
+          },
+          "lambdaBound": 3284799899.4406195,
+          "fixedHubLambdaBound": 3281753454.773379,
+          "nodeMass": 0.001953125,
+          "hubSpinInertiaWithNodes": 0.020032,
+          "oscillatorScaleSeconds": 0.000034895991005810105,
+          "coarseLambdaBound": 3284799899.4082313,
+          "differenceOperatorBound": 1.8119575458146804,
+          "differenceRelative": 5.516188508539729e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.00003489599099618546
+        }
+      ]
+    },
+    {
+      "nodes": 512,
+      "pressure": 120000,
+      "deflection": 0.0020000000000000018,
+      "phase": 0,
+      "localContactAdmission": "admitted",
+      "fullInternalTangentPositive": [
+        true,
+        true
+      ],
+      "steps": [
+        1e-7,
+        5e-8
+      ],
+      "tangentInf": 6410000.575781433,
+      "differenceInf": 0.003629121653082122,
+      "skewInf": [
+        0.0016858145853557993,
+        0.0034976220954225368
+      ],
+      "rows": [
+        {
+          "name": "half-all-mass",
+          "masses": {
+            "hubMass": 1.5,
+            "tyreMass": 0.5,
+            "hubInertia": 0.04,
+            "skin": 0.008
+          },
+          "lambdaBound": 6569285080.458145,
+          "fixedHubLambdaBound": 6563840589.600187,
+          "nodeMass": 0.0009765625,
+          "hubSpinInertiaWithNodes": 0.040016,
+          "oscillatorScaleSeconds": 0.00002467578293347923,
+          "coarseLambdaBound": 6569285080.32347,
+          "differenceOperatorBound": 3.8192166758210235,
+          "differenceRelative": 5.8137478112834e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.00002467578292630629
+        },
+        {
+          "name": "nominal",
+          "masses": {
+            "hubMass": 3,
+            "tyreMass": 1,
+            "hubInertia": 0.08,
+            "skin": 0.008
+          },
+          "lambdaBound": 3284642540.2290726,
+          "fixedHubLambdaBound": 3281920294.8000937,
+          "nodeMass": 0.001953125,
+          "hubSpinInertiaWithNodes": 0.080032,
+          "oscillatorScaleSeconds": 0.00003489682688670088,
+          "coarseLambdaBound": 3284642540.161735,
+          "differenceOperatorBound": 1.9096083379105118,
+          "differenceRelative": 5.8137478112834e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.000034896826876556815
+        },
+        {
+          "name": "double-all-mass",
+          "masses": {
+            "hubMass": 6,
+            "tyreMass": 2,
+            "hubInertia": 0.16,
+            "skin": 0.008
+          },
+          "lambdaBound": 1642321270.1145363,
+          "fixedHubLambdaBound": 1640960147.4000468,
+          "nodeMass": 0.00390625,
+          "hubSpinInertiaWithNodes": 0.160064,
+          "oscillatorScaleSeconds": 0.00004935156586695846,
+          "coarseLambdaBound": 1642321270.0808675,
+          "differenceOperatorBound": 0.9548041689552559,
+          "differenceRelative": 5.8137478112834e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.00004935156585261258
+        },
+        {
+          "name": "light-hub",
+          "masses": {
+            "hubMass": 1,
+            "tyreMass": 1,
+            "hubInertia": 0.08,
+            "skin": 0.008
+          },
+          "lambdaBound": 3290488002.8248987,
+          "fixedHubLambdaBound": 3281920294.8000937,
+          "nodeMass": 0.001953125,
+          "hubSpinInertiaWithNodes": 0.080032,
+          "oscillatorScaleSeconds": 0.000034865816475556434,
+          "coarseLambdaBound": 3290488002.759473,
+          "differenceOperatorBound": 1.9211000418738846,
+          "differenceRelative": 5.83834385727774e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.00003486581646537851
+        },
+        {
+          "name": "heavy-hub",
+          "masses": {
+            "hubMass": 30,
+            "tyreMass": 1,
+            "hubInertia": 0.08,
+            "skin": 0.008
+          },
+          "lambdaBound": 3282194721.556662,
+          "fixedHubLambdaBound": 3281920294.8000937,
+          "nodeMass": 0.001953125,
+          "hubSpinInertiaWithNodes": 0.080032,
+          "oscillatorScaleSeconds": 0.0000349098372640782,
+          "coarseLambdaBound": 3282194721.5117292,
+          "differenceOperatorBound": 1.909573193514669,
+          "differenceRelative": 5.817976553837752e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.00003490983725392297
+        },
+        {
+          "name": "low-spin-inertia",
+          "masses": {
+            "hubMass": 3,
+            "tyreMass": 1,
+            "hubInertia": 0.02,
+            "skin": 0.008
+          },
+          "lambdaBound": 3284992433.3360734,
+          "fixedHubLambdaBound": 3281920294.8000937,
+          "nodeMass": 0.001953125,
+          "hubSpinInertiaWithNodes": 0.020032,
+          "oscillatorScaleSeconds": 0.000034894968361212175,
+          "coarseLambdaBound": 3284992433.2711825,
+          "differenceOperatorBound": 2.107384688523361,
+          "differenceRelative": 6.415188866609373e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.000034894968350019285
+        }
+      ]
+    },
+    {
+      "nodes": 512,
+      "pressure": 120000,
+      "deflection": 0.0040000000000000036,
+      "phase": 0,
+      "localContactAdmission": "admitted",
+      "fullInternalTangentPositive": [
+        true,
+        true
+      ],
+      "steps": [
+        1e-7,
+        5e-8
+      ],
+      "tangentInf": 6410384.9751750855,
+      "differenceInf": 0.003421857972957465,
+      "skewInf": [
+        0.0016840985318852114,
+        0.0038195974191022053
+      ],
+      "rows": [
+        {
+          "name": "half-all-mass",
+          "masses": {
+            "hubMass": 1.5,
+            "tyreMass": 0.5,
+            "hubInertia": 0.04,
+            "skin": 0.008
+          },
+          "lambdaBound": 6569693178.509787,
+          "fixedHubLambdaBound": 6564234214.579288,
+          "nodeMass": 0.0009765625,
+          "hubSpinInertiaWithNodes": 0.040016,
+          "oscillatorScaleSeconds": 0.000024675016512958966,
+          "coarseLambdaBound": 6569693178.640002,
+          "differenceOperatorBound": 3.598501090932358,
+          "differenceRelative": 5.477426408136477e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.000024675016506201188
+        },
+        {
+          "name": "nominal",
+          "masses": {
+            "hubMass": 3,
+            "tyreMass": 1,
+            "hubInertia": 0.08,
+            "skin": 0.008
+          },
+          "lambdaBound": 3284846589.2548933,
+          "fixedHubLambdaBound": 3282117107.289644,
+          "nodeMass": 0.001953125,
+          "hubSpinInertiaWithNodes": 0.080032,
+          "oscillatorScaleSeconds": 0.00003489574300440664,
+          "coarseLambdaBound": 3284846589.320001,
+          "differenceOperatorBound": 1.799250545466179,
+          "differenceRelative": 5.477426408136477e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.000034895742994849704
+        },
+        {
+          "name": "double-all-mass",
+          "masses": {
+            "hubMass": 6,
+            "tyreMass": 2,
+            "hubInertia": 0.16,
+            "skin": 0.008
+          },
+          "lambdaBound": 1642423294.6274467,
+          "fixedHubLambdaBound": 1641058553.644822,
+          "nodeMass": 0.00390625,
+          "hubSpinInertiaWithNodes": 0.160064,
+          "oscillatorScaleSeconds": 0.00004935003302591793,
+          "coarseLambdaBound": 1642423294.6600006,
+          "differenceOperatorBound": 0.8996252727330895,
+          "differenceRelative": 5.477426408136477e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.000049350033012402375
+        },
+        {
+          "name": "light-hub",
+          "masses": {
+            "hubMass": 1,
+            "tyreMass": 1,
+            "hubInertia": 0.08,
+            "skin": 0.008
+          },
+          "lambdaBound": 3290680603.7941265,
+          "fixedHubLambdaBound": 3282117107.289644,
+          "nodeMass": 0.001953125,
+          "hubSpinInertiaWithNodes": 0.080032,
+          "oscillatorScaleSeconds": 0.00003486479612610351,
+          "coarseLambdaBound": 3290680603.861539,
+          "differenceOperatorBound": 1.8123796734511366,
+          "differenceRelative": 5.507613444347891e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.00003486479611650242
+        },
+        {
+          "name": "heavy-hub",
+          "masses": {
+            "hubMass": 30,
+            "tyreMass": 1,
+            "hubInertia": 0.08,
+            "skin": 0.008
+          },
+          "lambdaBound": 3282394780.621321,
+          "fixedHubLambdaBound": 3282117107.289644,
+          "nodeMass": 0.001953125,
+          "hubSpinInertiaWithNodes": 0.080032,
+          "oscillatorScaleSeconds": 0.00003490877338598338,
+          "coarseLambdaBound": 3282394780.685645,
+          "differenceOperatorBound": 1.7974416573758987,
+          "differenceRelative": 5.476006932461862e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.000034908773376425345
+        },
+        {
+          "name": "low-spin-inertia",
+          "masses": {
+            "hubMass": 3,
+            "tyreMass": 1,
+            "hubInertia": 0.02,
+            "skin": 0.008
+          },
+          "lambdaBound": 3285226440.6697016,
+          "fixedHubLambdaBound": 3282117107.289644,
+          "nodeMass": 0.001953125,
+          "hubSpinInertiaWithNodes": 0.020032,
+          "oscillatorScaleSeconds": 0.0000348937255513075,
+          "coarseLambdaBound": 3285226440.733377,
+          "differenceOperatorBound": 1.982263951825678,
+          "differenceRelative": 6.033873121457005e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.00003489372554078027
+        }
+      ]
+    },
+    {
+      "nodes": 512,
+      "pressure": 160000,
+      "deflection": 0,
+      "phase": 0,
+      "localContactAdmission": "admitted",
+      "fullInternalTangentPositive": [
+        true,
+        true
+      ],
+      "steps": [
+        1e-7,
+        5e-8
+      ],
+      "tangentInf": 6408414.700957099,
+      "differenceInf": 0.0028716898019404136,
+      "skewInf": [
+        0.0017558215929172893,
+        0.003629561267725845
+      ],
+      "rows": [
+        {
+          "name": "half-all-mass",
+          "masses": {
+            "hubMass": 1.5,
+            "tyreMass": 0.5,
+            "hubInertia": 0.04,
+            "skin": 0.008
+          },
+          "lambdaBound": 6567621925.167472,
+          "fixedHubLambdaBound": 6562216653.780069,
+          "nodeMass": 0.0009765625,
+          "hubSpinInertiaWithNodes": 0.040016,
+          "oscillatorScaleSeconds": 0.00002467890712832165,
+          "coarseLambdaBound": 6567621924.89172,
+          "differenceOperatorBound": 3.031193053061544,
+          "differenceRelative": 4.615358629956839e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.000024678907122626553
+        },
+        {
+          "name": "nominal",
+          "masses": {
+            "hubMass": 3,
+            "tyreMass": 1,
+            "hubInertia": 0.08,
+            "skin": 0.008
+          },
+          "lambdaBound": 3283810962.583736,
+          "fixedHubLambdaBound": 3281108326.8900347,
+          "nodeMass": 0.001953125,
+          "hubSpinInertiaWithNodes": 0.080032,
+          "oscillatorScaleSeconds": 0.000034901245165418535,
+          "coarseLambdaBound": 3283810962.44586,
+          "differenceOperatorBound": 1.515596526530772,
+          "differenceRelative": 4.615358629956839e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.000034901245157364444
+        },
+        {
+          "name": "double-all-mass",
+          "masses": {
+            "hubMass": 6,
+            "tyreMass": 2,
+            "hubInertia": 0.16,
+            "skin": 0.008
+          },
+          "lambdaBound": 1641905481.291868,
+          "fixedHubLambdaBound": 1640554163.4450173,
+          "nodeMass": 0.00390625,
+          "hubSpinInertiaWithNodes": 0.160064,
+          "oscillatorScaleSeconds": 0.0000493578142566433,
+          "coarseLambdaBound": 1641905481.22293,
+          "differenceOperatorBound": 0.757798263265386,
+          "differenceRelative": 4.615358629956839e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.000049357814245253106
+        },
+        {
+          "name": "light-hub",
+          "masses": {
+            "hubMass": 1,
+            "tyreMass": 1,
+            "hubInertia": 0.08,
+            "skin": 0.008
+          },
+          "lambdaBound": 3289669041.8387046,
+          "fixedHubLambdaBound": 3281108326.8900347,
+          "nodeMass": 0.001953125,
+          "hubSpinInertiaWithNodes": 0.080032,
+          "oscillatorScaleSeconds": 0.000034870156116747435,
+          "coarseLambdaBound": 3289669041.703465,
+          "differenceOperatorBound": 1.5310205323891015,
+          "differenceRelative": 4.6540260218193973e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.000034870156108633104
+        },
+        {
+          "name": "heavy-hub",
+          "masses": {
+            "hubMass": 30,
+            "tyreMass": 1,
+            "hubInertia": 0.08,
+            "skin": 0.008
+          },
+          "lambdaBound": 3281447489.429122,
+          "fixedHubLambdaBound": 3281108326.8900347,
+          "nodeMass": 0.001953125,
+          "hubSpinInertiaWithNodes": 0.080032,
+          "oscillatorScaleSeconds": 0.000034913811770328884,
+          "coarseLambdaBound": 3281447489.2963877,
+          "differenceOperatorBound": 1.5141125495048582,
+          "differenceRelative": 4.61416053245536e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.00003491381176227399
+        },
+        {
+          "name": "low-spin-inertia",
+          "masses": {
+            "hubMass": 3,
+            "tyreMass": 1,
+            "hubInertia": 0.02,
+            "skin": 0.008
+          },
+          "lambdaBound": 3284338947.0091553,
+          "fixedHubLambdaBound": 3281108326.8900347,
+          "nodeMass": 0.001953125,
+          "hubSpinInertiaWithNodes": 0.020032,
+          "oscillatorScaleSeconds": 0.00003489843972194613,
+          "coarseLambdaBound": 3284338946.8738804,
+          "differenceOperatorBound": 1.7099964470908517,
+          "differenceRelative": 5.206516363507609e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.00003489843971286117
+        }
+      ]
+    },
+    {
+      "nodes": 512,
+      "pressure": 160000,
+      "deflection": 0.0020000000000000018,
+      "phase": 0,
+      "localContactAdmission": "admitted",
+      "fullInternalTangentPositive": [
+        true,
+        true
+      ],
+      "steps": [
+        1e-7,
+        5e-8
+      ],
+      "tangentInf": 6408783.380563323,
+      "differenceInf": 0.003458344344520768,
+      "skewInf": [
+        0.0016404802929581852,
+        0.0038787206610252922
+      ],
+      "rows": [
+        {
+          "name": "half-all-mass",
+          "masses": {
+            "hubMass": 1.5,
+            "tyreMass": 0.5,
+            "hubInertia": 0.04,
+            "skin": 0.008
+          },
+          "lambdaBound": 6568006886.440435,
+          "fixedHubLambdaBound": 6562594181.696843,
+          "nodeMass": 0.0009765625,
+          "hubSpinInertiaWithNodes": 0.040016,
+          "oscillatorScaleSeconds": 0.000024678183882831772,
+          "coarseLambdaBound": 6568006885.970873,
+          "differenceOperatorBound": 3.6374276243750274,
+          "differenceRelative": 5.538099589822979e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.00002467818387599826
+        },
+        {
+          "name": "nominal",
+          "masses": {
+            "hubMass": 3,
+            "tyreMass": 1,
+            "hubInertia": 0.08,
+            "skin": 0.008
+          },
+          "lambdaBound": 3284003443.2202177,
+          "fixedHubLambdaBound": 3281297090.8484216,
+          "nodeMass": 0.001953125,
+          "hubSpinInertiaWithNodes": 0.080032,
+          "oscillatorScaleSeconds": 0.000034900222341837813,
+          "coarseLambdaBound": 3284003442.9854364,
+          "differenceOperatorBound": 1.8187138121875137,
+          "differenceRelative": 5.538099589822979e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.00003490022233217377
+        },
+        {
+          "name": "double-all-mass",
+          "masses": {
+            "hubMass": 6,
+            "tyreMass": 2,
+            "hubInertia": 0.16,
+            "skin": 0.008
+          },
+          "lambdaBound": 1642001721.6101089,
+          "fixedHubLambdaBound": 1640648545.4242108,
+          "nodeMass": 0.00390625,
+          "hubSpinInertiaWithNodes": 0.160064,
+          "oscillatorScaleSeconds": 0.000049356367765663544,
+          "coarseLambdaBound": 1642001721.4927182,
+          "differenceOperatorBound": 0.9093569060937569,
+          "differenceRelative": 5.538099589822979e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.00004935636775199652
+        },
+        {
+          "name": "light-hub",
+          "masses": {
+            "hubMass": 1,
+            "tyreMass": 1,
+            "hubInertia": 0.08,
+            "skin": 0.008
+          },
+          "lambdaBound": 3289861710.65971,
+          "fixedHubLambdaBound": 3281297090.8484216,
+          "nodeMass": 0.001953125,
+          "hubSpinInertiaWithNodes": 0.080032,
+          "oscillatorScaleSeconds": 0.00003486913502667957,
+          "coarseLambdaBound": 3289861710.425995,
+          "differenceOperatorBound": 1.8333918631520216,
+          "differenceRelative": 5.572853889911303e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.00003486913501696354
+        },
+        {
+          "name": "heavy-hub",
+          "masses": {
+            "hubMass": 30,
+            "tyreMass": 1,
+            "hubInertia": 0.08,
+            "skin": 0.008
+          },
+          "lambdaBound": 3281632529.902832,
+          "fixedHubLambdaBound": 3281297090.8484216,
+          "nodeMass": 0.001953125,
+          "hubSpinInertiaWithNodes": 0.080032,
+          "oscillatorScaleSeconds": 0.00003491282741889955,
+          "coarseLambdaBound": 3281632529.6732087,
+          "differenceOperatorBound": 1.8170721414460262,
+          "differenceRelative": 5.537098151266282e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.000034912827409233766
+        },
+        {
+          "name": "low-spin-inertia",
+          "masses": {
+            "hubMass": 3,
+            "tyreMass": 1,
+            "hubInertia": 0.02,
+            "skin": 0.008
+          },
+          "lambdaBound": 3284539644.951409,
+          "fixedHubLambdaBound": 3281297090.8484216,
+          "nodeMass": 0.001953125,
+          "hubSpinInertiaWithNodes": 0.020032,
+          "oscillatorScaleSeconds": 0.00003489737349154645,
+          "coarseLambdaBound": 3284539644.710997,
+          "differenceOperatorBound": 2.023682314565517,
+          "differenceRelative": 6.161235769146746e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.0000348973734807959
+        }
+      ]
+    },
+    {
+      "nodes": 512,
+      "pressure": 160000,
+      "deflection": 0.0040000000000000036,
+      "phase": 0,
+      "localContactAdmission": "admitted",
+      "fullInternalTangentPositive": [
+        true,
+        true
+      ],
+      "steps": [
+        1e-7,
+        5e-8
+      ],
+      "tangentInf": 6409230.277488994,
+      "differenceInf": 0.0031802398225592235,
+      "skewInf": [
+        0.001781433775214572,
+        0.0037043911850631606
+      ],
+      "rows": [
+        {
+          "name": "half-all-mass",
+          "masses": {
+            "hubMass": 1.5,
+            "tyreMass": 0.5,
+            "hubInertia": 0.04,
+            "skin": 0.008
+          },
+          "lambdaBound": 6568480093.786434,
+          "fixedHubLambdaBound": 6563051804.14873,
+          "nodeMass": 0.0009765625,
+          "hubSpinInertiaWithNodes": 0.040016,
+          "oscillatorScaleSeconds": 0.000024677294932262895,
+          "coarseLambdaBound": 6568480093.793518,
+          "differenceOperatorBound": 3.304430746011606,
+          "differenceRelative": 5.030738768832516e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.000024677294926055645
+        },
+        {
+          "name": "nominal",
+          "masses": {
+            "hubMass": 3,
+            "tyreMass": 1,
+            "hubInertia": 0.08,
+            "skin": 0.008
+          },
+          "lambdaBound": 3284240046.893217,
+          "fixedHubLambdaBound": 3281525902.074365,
+          "nodeMass": 0.001953125,
+          "hubSpinInertiaWithNodes": 0.080032,
+          "oscillatorScaleSeconds": 0.00003489896517588704,
+          "coarseLambdaBound": 3284240046.896759,
+          "differenceOperatorBound": 1.652215373005803,
+          "differenceRelative": 5.030738768832516e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.000034898965167108653
+        },
+        {
+          "name": "double-all-mass",
+          "masses": {
+            "hubMass": 6,
+            "tyreMass": 2,
+            "hubInertia": 0.16,
+            "skin": 0.008
+          },
+          "lambdaBound": 1642120023.4466085,
+          "fixedHubLambdaBound": 1640762951.0371826,
+          "nodeMass": 0.00390625,
+          "hubSpinInertiaWithNodes": 0.160064,
+          "oscillatorScaleSeconds": 0.00004935458986452579,
+          "coarseLambdaBound": 1642120023.4483795,
+          "differenceOperatorBound": 0.8261076865029015,
+          "differenceRelative": 5.030738768832516e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.00004935458985211129
+        },
+        {
+          "name": "light-hub",
+          "masses": {
+            "hubMass": 1,
+            "tyreMass": 1,
+            "hubInertia": 0.08,
+            "skin": 0.008
+          },
+          "lambdaBound": 3290088521.9294314,
+          "fixedHubLambdaBound": 3281525902.074365,
+          "nodeMass": 0.001953125,
+          "hubSpinInertiaWithNodes": 0.080032,
+          "oscillatorScaleSeconds": 0.00003486793310626866,
+          "coarseLambdaBound": 3290088521.934944,
+          "differenceOperatorBound": 1.666695907843441,
+          "differenceRelative": 5.065808706162191e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.00003486793309743695
+        },
+        {
+          "name": "heavy-hub",
+          "masses": {
+            "hubMass": 30,
+            "tyreMass": 1,
+            "hubInertia": 0.08,
+            "skin": 0.008
+          },
+          "lambdaBound": 3281862930.483971,
+          "fixedHubLambdaBound": 3281525902.074365,
+          "nodeMass": 0.001953125,
+          "hubSpinInertiaWithNodes": 0.080032,
+          "oscillatorScaleSeconds": 0.00003491160188372617,
+          "coarseLambdaBound": 3281862930.4932237,
+          "differenceOperatorBound": 1.6492648449618952,
+          "differenceRelative": 5.025392223552373e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.00003491160187495395
+        },
+        {
+          "name": "low-spin-inertia",
+          "masses": {
+            "hubMass": 3,
+            "tyreMass": 1,
+            "hubInertia": 0.02,
+            "skin": 0.008
+          },
+          "lambdaBound": 3284802028.719571,
+          "fixedHubLambdaBound": 3281525902.074365,
+          "nodeMass": 0.001953125,
+          "hubSpinInertiaWithNodes": 0.020032,
+          "oscillatorScaleSeconds": 0.000034895979695644295,
+          "coarseLambdaBound": 3284802028.724084,
+          "differenceOperatorBound": 1.8182355136976613,
+          "differenceRelative": 5.535297097969758e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.00003489597968598631
+        }
+      ]
+    },
+    {
+      "nodes": 512,
+      "pressure": 200000,
+      "deflection": 0,
+      "phase": 0,
+      "localContactAdmission": "admitted",
+      "fullInternalTangentPositive": [
+        true,
+        true
+      ],
+      "steps": [
+        1e-7,
+        5e-8
+      ],
+      "tangentInf": 6407155.072052314,
+      "differenceInf": 0.0029986941247851645,
+      "skewInf": [
+        0.0017588645236129852,
+        0.003415896546532904
+      ],
+      "rows": [
+        {
+          "name": "half-all-mass",
+          "masses": {
+            "hubMass": 1.5,
+            "tyreMass": 0.5,
+            "hubInertia": 0.04,
+            "skin": 0.008
+          },
+          "lambdaBound": 6566314715.179853,
+          "fixedHubLambdaBound": 6560926793.7815695,
+          "nodeMass": 0.0009765625,
+          "hubSpinInertiaWithNodes": 0.040016,
+          "oscillatorScaleSeconds": 0.00002468136352204093,
+          "coarseLambdaBound": 6566314715.787173,
+          "differenceOperatorBound": 3.148965859319224,
+          "differenceRelative": 4.795636511359283e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.00002468136351612279
+        },
+        {
+          "name": "nominal",
+          "masses": {
+            "hubMass": 3,
+            "tyreMass": 1,
+            "hubInertia": 0.08,
+            "skin": 0.008
+          },
+          "lambdaBound": 3283157357.5899267,
+          "fixedHubLambdaBound": 3280463396.8907847,
+          "nodeMass": 0.001953125,
+          "hubSpinInertiaWithNodes": 0.080032,
+          "oscillatorScaleSeconds": 0.00003490471903073087,
+          "coarseLambdaBound": 3283157357.8935866,
+          "differenceOperatorBound": 1.574482929659612,
+          "differenceRelative": 4.795636511359283e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.00003490471902236134
+        },
+        {
+          "name": "double-all-mass",
+          "masses": {
+            "hubMass": 6,
+            "tyreMass": 2,
+            "hubInertia": 0.16,
+            "skin": 0.008
+          },
+          "lambdaBound": 1641578678.7949634,
+          "fixedHubLambdaBound": 1640231698.4453924,
+          "nodeMass": 0.00390625,
+          "hubSpinInertiaWithNodes": 0.160064,
+          "oscillatorScaleSeconds": 0.00004936272704408186,
+          "coarseLambdaBound": 1641578678.9467933,
+          "differenceOperatorBound": 0.787241464829806,
+          "differenceRelative": 4.795636511359283e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.00004936272703224558
+        },
+        {
+          "name": "light-hub",
+          "masses": {
+            "hubMass": 1,
+            "tyreMass": 1,
+            "hubInertia": 0.08,
+            "skin": 0.008
+          },
+          "lambdaBound": 3289024494.1280756,
+          "fixedHubLambdaBound": 3280463396.8907847,
+          "nodeMass": 0.001953125,
+          "hubSpinInertiaWithNodes": 0.080032,
+          "oscillatorScaleSeconds": 0.0000348735726887913,
+          "coarseLambdaBound": 3289024494.4334397,
+          "differenceOperatorBound": 1.5880558325156091,
+          "differenceRelative": 4.828349060187235e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.00003487357268037221
+        },
+        {
+          "name": "heavy-hub",
+          "masses": {
+            "hubMass": 30,
+            "tyreMass": 1,
+            "hubInertia": 0.08,
+            "skin": 0.008
+          },
+          "lambdaBound": 3280871144.5606833,
+          "fixedHubLambdaBound": 3280463396.8907847,
+          "nodeMass": 0.001953125,
+          "hubSpinInertiaWithNodes": 0.080032,
+          "oscillatorScaleSeconds": 0.00003491687825964315,
+          "coarseLambdaBound": 3280871144.873442,
+          "differenceOperatorBound": 1.573844223333519,
+          "differenceRelative": 4.797031501657041e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.00003491687825126828
+        },
+        {
+          "name": "low-spin-inertia",
+          "masses": {
+            "hubMass": 3,
+            "tyreMass": 1,
+            "hubInertia": 0.02,
+            "skin": 0.008
+          },
+          "lambdaBound": 3283916851.2596297,
+          "fixedHubLambdaBound": 3280463396.8907847,
+          "nodeMass": 0.001953125,
+          "hubSpinInertiaWithNodes": 0.020032,
+          "oscillatorScaleSeconds": 0.000034900682472056205,
+          "coarseLambdaBound": 3283916851.561444,
+          "differenceOperatorBound": 1.7405051678330368,
+          "differenceRelative": 5.300089029859029e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.00003490068246280737
+        }
+      ]
+    },
+    {
+      "nodes": 512,
+      "pressure": 200000,
+      "deflection": 0.0020000000000000018,
+      "phase": 0,
+      "localContactAdmission": "admitted",
+      "fullInternalTangentPositive": [
+        true,
+        true
+      ],
+      "steps": [
+        1e-7,
+        5e-8
+      ],
+      "tangentInf": 6407543.823582528,
+      "differenceInf": 0.0030876520775667965,
+      "skewInf": [
+        0.0017140286979198394,
+        0.0036518428960410354
+      ],
+      "rows": [
+        {
+          "name": "half-all-mass",
+          "masses": {
+            "hubMass": 1.5,
+            "tyreMass": 0.5,
+            "hubInertia": 0.04,
+            "skin": 0.008
+          },
+          "lambdaBound": 6566711880.608333,
+          "fixedHubLambdaBound": 6561324875.348509,
+          "nodeMass": 0.0009765625,
+          "hubSpinInertiaWithNodes": 0.040016,
+          "oscillatorScaleSeconds": 0.00002468061712622515,
+          "coarseLambdaBound": 6566711880.407771,
+          "differenceOperatorBound": 3.255169652472571,
+          "differenceRelative": 4.957077014578894e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.000024680617120107966
+        },
+        {
+          "name": "nominal",
+          "masses": {
+            "hubMass": 3,
+            "tyreMass": 1,
+            "hubInertia": 0.08,
+            "skin": 0.008
+          },
+          "lambdaBound": 3283355940.3041663,
+          "fixedHubLambdaBound": 3280662437.6742544,
+          "nodeMass": 0.001953125,
+          "hubSpinInertiaWithNodes": 0.080032,
+          "oscillatorScaleSeconds": 0.000034903663467645286,
+          "coarseLambdaBound": 3283355940.2038856,
+          "differenceOperatorBound": 1.6275848262362855,
+          "differenceRelative": 4.957077014578894e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.00003490366345899428
+        },
+        {
+          "name": "double-all-mass",
+          "masses": {
+            "hubMass": 6,
+            "tyreMass": 2,
+            "hubInertia": 0.16,
+            "skin": 0.008
+          },
+          "lambdaBound": 1641677970.1520832,
+          "fixedHubLambdaBound": 1640331218.8371272,
+          "nodeMass": 0.00390625,
+          "hubSpinInertiaWithNodes": 0.160064,
+          "oscillatorScaleSeconds": 0.0000493612342524503,
+          "coarseLambdaBound": 1641677970.1019428,
+          "differenceOperatorBound": 0.8137924131181428,
+          "differenceRelative": 4.957077014578894e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.00004936123424021593
+        },
+        {
+          "name": "light-hub",
+          "masses": {
+            "hubMass": 1,
+            "tyreMass": 1,
+            "hubInertia": 0.08,
+            "skin": 0.008
+          },
+          "lambdaBound": 3289224379.682601,
+          "fixedHubLambdaBound": 3280662437.6742544,
+          "nodeMass": 0.001953125,
+          "hubSpinInertiaWithNodes": 0.080032,
+          "oscillatorScaleSeconds": 0.000034872513042425445,
+          "coarseLambdaBound": 3289224379.5837727,
+          "differenceOperatorBound": 1.6445473756617799,
+          "differenceRelative": 4.999802949960116e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.00003487251303370766
+        },
+        {
+          "name": "heavy-hub",
+          "masses": {
+            "hubMass": 30,
+            "tyreMass": 1,
+            "hubInertia": 0.08,
+            "skin": 0.008
+          },
+          "lambdaBound": 3281063687.8887506,
+          "fixedHubLambdaBound": 3280662437.6742544,
+          "nodeMass": 0.001953125,
+          "hubSpinInertiaWithNodes": 0.080032,
+          "oscillatorScaleSeconds": 0.00003491585372747612,
+          "coarseLambdaBound": 3281063687.7994485,
+          "differenceOperatorBound": 1.6250049517265281,
+          "differenceRelative": 4.95267726050195e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.00003491585371882977
+        },
+        {
+          "name": "low-spin-inertia",
+          "masses": {
+            "hubMass": 3,
+            "tyreMass": 1,
+            "hubInertia": 0.02,
+            "skin": 0.008
+          },
+          "lambdaBound": 3284112206.3099914,
+          "fixedHubLambdaBound": 3280662437.6742544,
+          "nodeMass": 0.001953125,
+          "hubSpinInertiaWithNodes": 0.020032,
+          "oscillatorScaleSeconds": 0.000034899644425005884,
+          "coarseLambdaBound": 3284112206.209952,
+          "differenceOperatorBound": 1.8247455701656632,
+          "differenceRelative": 5.556282658855728e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.00003489964441531027
+        }
+      ]
+    },
+    {
+      "nodes": 512,
+      "pressure": 200000,
+      "deflection": 0.0040000000000000036,
+      "phase": 0,
+      "localContactAdmission": "admitted",
+      "fullInternalTangentPositive": [
+        true,
+        true
+      ],
+      "steps": [
+        1e-7,
+        5e-8
+      ],
+      "tangentInf": 6408051.519461066,
+      "differenceInf": 0.0034592117762492075,
+      "skewInf": [
+        0.0017848519305978805,
+        0.003606764858115452
+      ],
+      "rows": [
+        {
+          "name": "half-all-mass",
+          "masses": {
+            "hubMass": 1.5,
+            "tyreMass": 0.5,
+            "hubInertia": 0.04,
+            "skin": 0.008
+          },
+          "lambdaBound": 6567244756.268783,
+          "fixedHubLambdaBound": 6561844755.928132,
+          "nodeMass": 0.0009765625,
+          "hubSpinInertiaWithNodes": 0.040016,
+          "oscillatorScaleSeconds": 0.000024679615795573,
+          "coarseLambdaBound": 6567244756.227054,
+          "differenceOperatorBound": 3.6402263907612613,
+          "differenceRelative": 5.543003993092343e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.00002467961578873304
+        },
+        {
+          "name": "nominal",
+          "masses": {
+            "hubMass": 3,
+            "tyreMass": 1,
+            "hubInertia": 0.08,
+            "skin": 0.008
+          },
+          "lambdaBound": 3283622378.1343913,
+          "fixedHubLambdaBound": 3280922377.964066,
+          "nodeMass": 0.001953125,
+          "hubSpinInertiaWithNodes": 0.080032,
+          "oscillatorScaleSeconds": 0.0000349022473722566,
+          "coarseLambdaBound": 3283622378.113527,
+          "differenceOperatorBound": 1.8201131953806307,
+          "differenceRelative": 5.543003993092343e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.00003490224736258344
+        },
+        {
+          "name": "double-all-mass",
+          "masses": {
+            "hubMass": 6,
+            "tyreMass": 2,
+            "hubInertia": 0.16,
+            "skin": 0.008
+          },
+          "lambdaBound": 1641811189.0671957,
+          "fixedHubLambdaBound": 1640461188.982033,
+          "nodeMass": 0.00390625,
+          "hubSpinInertiaWithNodes": 0.160064,
+          "oscillatorScaleSeconds": 0.000049359231591146,
+          "coarseLambdaBound": 1641811189.0567634,
+          "differenceOperatorBound": 0.9100565976903153,
+          "differenceRelative": 5.543003993092343e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.00004935923157746608
+        },
+        {
+          "name": "light-hub",
+          "masses": {
+            "hubMass": 1,
+            "tyreMass": 1,
+            "hubInertia": 0.08,
+            "skin": 0.008
+          },
+          "lambdaBound": 3289478540.3602767,
+          "fixedHubLambdaBound": 3280922377.964066,
+          "nodeMass": 0.001953125,
+          "hubSpinInertiaWithNodes": 0.080032,
+          "oscillatorScaleSeconds": 0.00003487116580871521,
+          "coarseLambdaBound": 3289478540.3428736,
+          "differenceOperatorBound": 1.8335326796436535,
+          "differenceRelative": 5.573931117492069e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.000034871165798996736
+        },
+        {
+          "name": "heavy-hub",
+          "masses": {
+            "hubMass": 30,
+            "tyreMass": 1,
+            "hubInertia": 0.08,
+            "skin": 0.008
+          },
+          "lambdaBound": 3281323575.39564,
+          "fixedHubLambdaBound": 3280922377.964066,
+          "nodeMass": 0.001953125,
+          "hubSpinInertiaWithNodes": 0.080032,
+          "oscillatorScaleSeconds": 0.00003491447099675047,
+          "coarseLambdaBound": 3281323575.348458,
+          "differenceOperatorBound": 1.8172978254038517,
+          "differenceRelative": 5.538307282556656e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.00003491447098708212
+        },
+        {
+          "name": "low-spin-inertia",
+          "masses": {
+            "hubMass": 3,
+            "tyreMass": 1,
+            "hubInertia": 0.02,
+            "skin": 0.008
+          },
+          "lambdaBound": 3284399533.9183073,
+          "fixedHubLambdaBound": 3280922377.964066,
+          "nodeMass": 0.001953125,
+          "hubSpinInertiaWithNodes": 0.020032,
+          "oscillatorScaleSeconds": 0.00003489811783687609,
+          "coarseLambdaBound": 3284399533.89514,
+          "differenceOperatorBound": 2.0261414497292645,
+          "differenceRelative": 6.168985925144333e-10,
+          "estimatedInflatedOscillatorScaleSeconds": 0.00003489811782611179
+        }
+      ]
+    }
+  ]
+}
