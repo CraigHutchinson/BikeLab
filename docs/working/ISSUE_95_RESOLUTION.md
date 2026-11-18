@@ -1,5 +1,11 @@
 # Issue 95 resolution contract — 6 November 2026
 
+## Current tracking decision - 18 November
+
+The user requested a reasonable split into independently closable increments. [The delivery plan](../TYRE_DELIVERY_PLAN.md) now governs #112–#117. #95 is the historical umbrella and is retired as superseded, not completed physics. The all-or-nothing closure requirement below is historical: its unfinished obligations transfer to the linked issues rather than being waived. Next user-facing delivery is #113 (bounded flat static footprint); native acceptance is #112. Runtime/trail/near-rim and calibration remain open in their own issues.
+
+## Historical resolution contract
+
 User explicitly asks to work toward resolution, and confirms no measured load/deflection data are available: keep the model uncalibrated. This is permission to implement a declared illustrative model, not permission to call it physically validated. Do not close #95 while its runtime wheel still uses an unrelated constant foundation.
 
 ## Received foundations
