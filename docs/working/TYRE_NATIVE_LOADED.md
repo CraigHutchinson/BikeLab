@@ -1,5 +1,7 @@
 # Native loaded casing receiving — 18 November 2026
 
+Current ownership: [#112](https://github.com/CraigHutchinson/BikeLab/issues/112) owns native acceptance under the [split delivery plan](../TYRE_DELIVERY_PLAN.md). Preserve the experiments below, but do not treat frictionless dynamic settling as a universal pressure-model gate; reconcile existing #48/#73/#75 and keep the independent flat static consumer #113 unblocked.
+
 Active follow-up to merged PR109. Build an offline native fixture for the received relaxed 256/512-station shapes, retaining isolated free-hub translation/spin and current flex-edge damping/contact conventions. Production mesh caps, defaults and timestep limits remain unchanged.
 
 Receive the fixture against production modelXML at 128 stations, including mass, passive forces and contact response. Start from archived 2 mm hard-plane equilibria with zero gravity and an equal opposite hub load. This deliberately separates contact compliance transients from unknown gravity-supported equilibria; it is not a bicycle/rider test. Track energy, external/contact work, damping loss, finite states, contact penetration and common-time mesh/timestep differences. Include nominal and lighter mass/inertia, damping off/on and a resolved failure if encountered. No retrospective widening of gates.
