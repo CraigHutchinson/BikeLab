@@ -1,0 +1,23 @@
+{
+  "date": "2026-11-17",
+  "node": "v24.22.0",
+  "scope": "Complete Windows host Node suite, including eight native configured mass/angle/mesh cases; no browser/full-hosted claim.",
+  "command": "node --test",
+  "exitCode": 0,
+  "tests": 507.0,
+  "pass": 507.0,
+  "fail": 0.0,
+  "skipped": 0.0,
+  "duration_ms": 104703.9748,
+  "logSha256": "50b9c6b725a4cf6738d434df3bc067518b897269113ed893844523c67d977934",
+  "sourcesSha256": {
+    "scripts/lib/tyre-mass-frequency.mjs": "13368533688453c5d7cf52f465398328486a1e575b413939154f33b1081c92ee",
+    "scripts/tyre-mass-frequency.mjs": "a94328a287056247e073c853322fd5bf790d32003f80e1e0979f4cb852ec6afc",
+    "test/tyre-mass-frequency.test.mjs": "f6196eb81f32ab0aa1224e6ea6ab7d84d379acd611d90df102cf56f1cc5d601f",
+    "scripts/spinning-gap.mjs": "b8e30b9d8e37f7fde2fff39cb8a0010a4839a8178466a7abd2e0aa47b49f3619",
+    "dist/moving-wheel.js": "3896fc8f29ef509eb4115838e7eb42014f479dc3eaf5ee638734421e1cb11a37",
+    "dist/sealed-casing.js": "40a92a31cd25d4ed3f484c3224829b0306e9eb82aee87f0b1add2fb07dfb7162",
+    "dist/vendor/mujoco-3.16.0/mujoco.js": "5d5d89ddd0857a6518c628fa502d42f99d6dd67ca240182f1068cd30a45465ac",
+    "dist/vendor/mujoco-3.16.0/mujoco.wasm": "e05ac96db7f45bd46e76fed6e3469bf9204329e093344d742a18bca2cc0e230e"
+  }
+}
