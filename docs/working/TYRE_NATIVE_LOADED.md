@@ -1,0 +1,13 @@
+# Native loaded casing receiving — 18 November 2026
+
+Active follow-up to merged PR109. Build an offline native fixture for the received relaxed 256/512-station shapes, retaining isolated free-hub translation/spin and current flex-edge damping/contact conventions. Production mesh caps, defaults and timestep limits remain unchanged.
+
+Receive the fixture against production modelXML at 128 stations, including mass, passive forces and contact response. Start from archived 2 mm hard-plane equilibria with zero gravity and an equal opposite hub load. This deliberately separates contact compliance transients from unknown gravity-supported equilibria; it is not a bicycle/rider test. Track energy, external/contact work, damping loss, finite states, contact penetration and common-time mesh/timestep differences. Include nominal and lighter mass/inertia, damping off/on and a resolved failure if encountered. No retrospective widening of gates.
+
+Initial timestep refinement: 15.625, 7.8125 and 3.90625 microseconds, 20 ms duration; only the two finest agreeing trajectories can support a bounded receiving claim. Start with 256 stations before committing the full matrix. Compare 512 after resolving native failures. Preserve complete failures and source-bound results. Whole-run timing is descriptive only until coordinated performance receiving. Runtime/trail/near-rim/insert integration and physical calibration remain pending; #95 stays open.
+
+Receiving gates fixed before inspecting the matrix: compare every common 1 ms observation between adjacent timesteps, separately from mesh comparison at the finest step. Hub-height error <= 5 micrometres + 1% of the imposed 2 mm deflection (25 micrometres); pressure error <= 100 Pa + 1% of the larger pressure; ground reaction error <= 1 N + 5% of the larger force. Require completed trajectories, peak penetration < 0.5 mm and energy/work residual <= 0.001 J + 1% of the largest accumulated absolute work/loss term. These are numerical diagnostic budgets, not physical accuracy/calibration. A failed coarse step is retained; no blanket timestep admission follows even if all sampled cases pass.
+
+## Native receiving checkpoint, 18 November
+
+The [72-case native comparison](../TYRE_NATIVE_LOADED.md) identifies three Euler damping failures and receives implicitfast without changing viscosity/material constants. Its 36 runs and 24 timestep comparisons pass, but all six mesh comparisons fail on hub motion. Full local Node 510/510 passes. Next settled/equal-load/contact-time refinement before production mesh selection, native cost or viewer/trail/near-rim promotion. Preserve the frozen 25 micrometre budget. Physical calibration remains deferred.

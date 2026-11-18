@@ -1,0 +1,15 @@
+import assert from 'node:assert/strict';import {readFile,writeFile} from 'node:fs/promises';import {createHash} from 'node:crypto';
+const implicit=process.argv.includes('--implicit');
+const path=implicit?'artifacts/native-loaded/implicit-report.json':'artifacts/native-loaded/report.json',raw=await readFile(path),report=JSON.parse(raw),runs=report.runs,comparisons=[];
+const budgets={hubZ:.000025,pressureAbsolute:100,pressureRelative:.01,forceAbsolute:1,forceRelative:.05,penetration:.0005,energyAbsolute:.001,energyRelative:.01};
+for(const a of runs){for(const kind of ['timestep','mesh']){
+ const b=runs.find(b=>b.params.hubMass===a.params.hubMass&&b.params.edgeViscosity===a.params.edgeViscosity&&(kind==='timestep'?b.params.nodes===a.params.nodes&&b.params.dt===a.params.dt/2:a.params.dt===.00000390625&&b.params.dt===a.params.dt&&b.params.nodes===a.params.nodes*2));if(!b)continue;
+ const errors={hubZ:0,pressure:0,groundReaction:0},ratios={hubZ:0,pressure:0,groundReaction:0};let aligned=a.frames.length===b.frames.length;
+ for(let i=0;i<Math.min(a.frames.length,b.frames.length);i++){const x=a.frames[i],y=b.frames[i];aligned&&=Math.abs(x.time-y.time)<1e-10;
+ for(const k of Object.keys(errors)){const e=Math.abs(x[k]-y[k]),budget=k==='hubZ'?budgets.hubZ:k==='pressure'?100+.01*Math.max(Math.abs(x[k]),Math.abs(y[k])):1+.05*Math.max(Math.abs(x[k]),Math.abs(y[k]));errors[k]=Math.max(errors[k],e);ratios[k]=Math.max(ratios[k],e/budget);}}
+ comparisons.push({kind,nodes:[a.params.nodes,b.params.nodes],dt:[a.params.dt,b.params.dt],massScale:a.params.tyreMass,damping:a.params.edgeViscosity,aligned,errors,budgetRatios:ratios,passed:aligned&&a.status==='completed'&&b.status==='completed'&&Object.values(ratios).every(r=>r<=1)});
+}}
+const receiving=runs.map(r=>{const workScale=Math.max(...r.frames.flatMap(f=>[Math.abs(f.externalWork),Math.abs(f.contactWork),Math.abs(f.dampingLoss)])),energyBudget=.001+.01*workScale;return {nodes:r.params.nodes,dt:r.params.dt,massScale:r.params.tyreMass,damping:r.params.edgeViscosity,status:r.status,termination:r.termination,maxPenetration:r.maxPenetration,maxResidual:r.maxResidual,maxMomentumResidualZ:Math.max(...r.frames.map(f=>Math.abs(f.momentumResidualZ))),energyBudget,passed:r.status==='completed'&&r.maxPenetration<budgets.penetration&&r.maxResidual<=energyBudget};});
+assert.equal(runs.length,36);assert.equal(comparisons.length,30);
+const output={scope:report.scope,reportSha256:createHash('sha256').update(raw).digest('hex'),comparatorSha256:createHash('sha256').update(await readFile('scripts/receive-tyre-native-loaded.mjs')).digest('hex'),sourcesSha256:report.sourcesSha256,budgets,receiving,comparisons,summary:{runs:runs.length,runGateFailures:receiving.filter(r=>!r.passed).length,timestepFailures:comparisons.filter(c=>c.kind==='timestep'&&!c.passed).length,meshFailures:comparisons.filter(c=>c.kind==='mesh'&&!c.passed).length}};
+await writeFile(`docs/evidence/native-loaded-${implicit?'implicit-':''}receiving.json`,JSON.stringify(output,null,2)+'\n');console.log(JSON.stringify(output.summary));if(receiving.some(r=>!r.passed)||comparisons.some(c=>!c.passed))process.exitCode=1;

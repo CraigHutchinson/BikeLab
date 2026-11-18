@@ -50,3 +50,7 @@ The [cost measurement](../TYRE_CASING_COST.md) receives a source-bound force-onl
 ## Coupled mass/frequency, 17 November
 
 The [mass-aware diagnostic](../TYRE_MASS_FREQUENCY.md) receives configured hub/tyre/spin coupling against native mass matrices and supplies 162 frozen internal frequency estimates. This completes the internal inertial component of timestep analysis only. Actual damping/contact/nonlinear native refinement and end-to-end cost remain required before changing runtime admission or mesh defaults. Trail, near-rim and calibration gates remain.
+
+## Native receiving checkpoint, 18 November
+
+The [72-case native comparison](../TYRE_NATIVE_LOADED.md) identifies three Euler damping failures and receives implicitfast without changing viscosity/material constants. Its 36 runs and 24 timestep comparisons pass, but all six mesh comparisons fail on hub motion. Full local Node 510/510 passes. Next settled/equal-load/contact-time refinement before production mesh selection, native cost or viewer/trail/near-rim promotion. Preserve the frozen 25 micrometre budget. Physical calibration remains deferred.
