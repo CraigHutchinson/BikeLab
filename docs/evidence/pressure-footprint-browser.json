@@ -1,0 +1,60 @@
+{
+  "success": true,
+  "node": "v24.22.0",
+  "playwright": "1.56.1",
+  "sourcesSha256": {
+    "scripts/pressure-footprint-check.mjs": "06fe391e1724e7450b944020ffb93c6e9e071c9ffc09eceda5a9892166236eab",
+    "scripts/pressure-footprint-browser-check.mjs": "052d0d025e26035ec3cfd39b0e13958d153f05f8736ad341de0e5ac233053a12",
+    "server.mjs": "903362ce6c74ebafd16770e56b4ac6072a5b0d0b5ecc67651d39d9d7c30ac4ab",
+    "dist/style.css": "c22cbdb01344f4d694b9d3833556c12e0b4e5184fcc961cf074443a5f75d808c",
+    "dist/pressure-footprint.js": "7c2e17ec6279a749092c04002dca255f360439bab880e0399950843151cfe699",
+    "dist/pressure-footprint-worker.js": "cc1f9b5c53707ea22c67fd4ddc416f24083c1c507c3cb169d126cf45dfc415b0",
+    "dist/pressure-footprint-app.js": "49f5c9fb2e691cdb893ae08163c0d4b0e792300baea3f09e3988e3a2224df0b9",
+    "dist/pressure-footprint.html": "77c52e484c6d068068f03dafc93ab62dbbfe85eb9acbb1ef2f95e9ce8ddf6295",
+    "dist/sealed-plane.js": "d7655447fa2fabc57cdbcba9b4fabd9f69cad37e552d6fd3da9ccede63d08e89",
+    "dist/static-dense.js": "ce37478c657618654605b342eacb55ae38accf3b21e9e9c738a64cb7e2fdd329",
+    "dist/sealed-casing.js": "40a92a31cd25d4ed3f484c3224829b0306e9eb82aee87f0b1add2fb07dfb7162",
+    "dist/sealed-casing-example.js": "ab29a64f7a5d451211f0c85988ba14d4e09bf81dd5a084a4f07b99629f49ddc9",
+    "dist/tyre-relaxation.js": "8568a58c5eb0bf4dced852f3fd9e59d818835a4ed241c01a159a01486dd830d1",
+    "dist/tyre-gas.js": "bb977230f4762d4f57059506149491934589be374c07107a4283c1e32bfb0089",
+    "dist/wheel-ring.js": "c0de0d124a02f1ecfacd899e73de714ce6a697d0badccd9020052c88fe55de60"
+  },
+  "checks": [
+    {
+      "name": "cancel terminates active worker and discards partial cycle",
+      "elapsedMs": 13.164199999999937
+    },
+    "saved file reruns and agrees with headless; scrub reaches unload",
+    "legacy record refused without stale result",
+    "worker construction failure refuses and unlocks retry",
+    "60 second wall-clock timeout terminates an inert worker and rejects partial output"
+  ],
+  "cases": [
+    {
+      "pressure": 120000,
+      "elapsedMs": 10365.9385,
+      "frames": 2488,
+      "p95FrameGapMs": 4.300000000000182,
+      "maxFrameGapMs": 4.699999999998909,
+      "headlessAgreement": true
+    },
+    {
+      "pressure": 160000,
+      "elapsedMs": 10828.7491,
+      "frames": 2599,
+      "p95FrameGapMs": 4.299999999999272,
+      "maxFrameGapMs": 4.5,
+      "headlessAgreement": true
+    },
+    {
+      "pressure": 200000,
+      "elapsedMs": 9928.041899999997,
+      "frames": 2383,
+      "p95FrameGapMs": 4.299999999999272,
+      "maxFrameGapMs": 4.5,
+      "headlessAgreement": true
+    }
+  ],
+  "errors": [],
+  "browser": "159.0.4402.13"
+}

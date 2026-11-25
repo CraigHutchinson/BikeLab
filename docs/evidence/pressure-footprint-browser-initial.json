@@ -1,0 +1,28 @@
+{
+  "success": false,
+  "node": "v24.22.0",
+  "playwright": "1.56.1",
+  "sourcesSha256": {
+    "dist/pressure-footprint.js": "7c2e17ec6279a749092c04002dca255f360439bab880e0399950843151cfe699",
+    "dist/pressure-footprint-worker.js": "cc1f9b5c53707ea22c67fd4ddc416f24083c1c507c3cb169d126cf45dfc415b0",
+    "dist/pressure-footprint-app.js": "2493a59f1c7ea3a9df36db459c868c649389c6747489d1331461c4ece1bb9a14",
+    "dist/pressure-footprint.html": "a810ff106b5a6d213b12582868e67c2a1fe157705c0f06309f4d35945f945c5d",
+    "dist/sealed-plane.js": "d7655447fa2fabc57cdbcba9b4fabd9f69cad37e552d6fd3da9ccede63d08e89",
+    "dist/static-dense.js": "ce37478c657618654605b342eacb55ae38accf3b21e9e9c738a64cb7e2fdd329",
+    "dist/sealed-casing.js": "40a92a31cd25d4ed3f484c3224829b0306e9eb82aee87f0b1add2fb07dfb7162",
+    "dist/sealed-casing-example.js": "ab29a64f7a5d451211f0c85988ba14d4e09bf81dd5a084a4f07b99629f49ddc9",
+    "dist/tyre-relaxation.js": "8568a58c5eb0bf4dced852f3fd9e59d818835a4ed241c01a159a01486dd830d1",
+    "dist/tyre-gas.js": "bb977230f4762d4f57059506149491934589be374c07107a4283c1e32bfb0089",
+    "dist/wheel-ring.js": "c0de0d124a02f1ecfacd899e73de714ce6a697d0badccd9020052c88fe55de60"
+  },
+  "checks": [
+    {
+      "name": "cancel terminates active worker and discards partial cycle",
+      "elapsedMs": 17.710400000000163
+    }
+  ],
+  "cases": [],
+  "errors": [],
+  "browser": "158.0.4370.26",
+  "failure": "AssertionError [ERR_ASSERTION]: state.0.stability.differenceInf"
+}

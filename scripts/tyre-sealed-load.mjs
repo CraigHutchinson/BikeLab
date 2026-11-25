@@ -6,7 +6,7 @@ import {createSweptCasing} from '../dist/sealed-casing.js';
 import {meridianFixture} from './lib/tyre-meridian-fixture.mjs';
 import {solveSealedPlane,MODEL,BUDGETS} from './lib/tyre-sealed-load.mjs';
 const dir=resolve(process.argv[2]??'artifacts/sealed-load');assert.ok(process.argv.length<=3);await mkdir(dir,{recursive:true});
-const paths=['dist/sealed-casing.js','dist/wheel-ring.js','dist/tyre-gas.js','scripts/lib/tyre-dense.mjs','scripts/lib/tyre-sealed-load.mjs','scripts/lib/tyre-meridian-fixture.mjs','scripts/lib/tyre-inflation.mjs','scripts/tyre-sealed-load.mjs','scripts/plot-tyre-sealed-load.py','test/tyre-sealed-load.test.mjs'];
+const paths=['dist/sealed-casing.js','dist/wheel-ring.js','dist/tyre-gas.js','scripts/lib/tyre-dense.mjs','scripts/lib/tyre-sealed-load.mjs','dist/sealed-plane.js','dist/static-dense.js','scripts/lib/tyre-meridian-fixture.mjs','scripts/lib/tyre-inflation.mjs','scripts/tyre-sealed-load.mjs','scripts/plot-tyre-sealed-load.py','test/tyre-sealed-load.test.mjs'];
 const hash=b=>createHash('sha256').update(b).digest('hex'),hashes=async()=>Object.fromEntries(await Promise.all(paths.map(async p=>[p,hash(await readFile(p))]))),sourcesSha256=await hashes();
 const cases=[];
 for(const segments of [8,16])for(const nodes of [32,64,128])for(const pressure of [120000,160000,200000]){
