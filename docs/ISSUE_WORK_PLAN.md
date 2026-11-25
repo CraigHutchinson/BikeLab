@@ -1,5 +1,7 @@
 # GitHub feedback and delivery plan — 2026-11-03
 
+**25 November checkpoint.** The [static pressure footprint](PRESSURE_FOOTPRINT.md) delivers #113 for three pressures and the seven prescribed flat-plane equilibria. Next is #112: establish native stationary force balance and verify perturb/release and mesh refinement before #114 moving-wheel integration. #117 awaits measurements. Earlier dated plans below describe the preceding checkpoints.
+
 Current 18 November delivery decision: [pressure-aware tyre work is split](TYRE_DELIVERY_PLAN.md) into #112–#117. #95 is retired as superseded, not fixed. Next independently shippable product: #113 flat static footprint; #112 owns native acceptance, #114 moving-wheel, #115 trail reuse, #116 near-rim/inserts and #117 measured calibration. Existing contact/rest issues retain their ownership. Earlier dated open-#95 statements below are historical; their failed gates are preserved in the successor issues.
 
 Latest 18 November equal-load follow-up: [native contact study](TYRE_EQUAL_LOAD.md) completes eight 100 ms cases at the same 400 N load. All run and timestep gates pass, but both mesh comparisons fail and no run qualifies as settled. Zero-velocity endpoint residuals are nonzero. Full local Node 511/511 passes. Next receive a native static equilibrium and perturb/release comparison before runtime promotion; #95 remains open and uncalibrated.

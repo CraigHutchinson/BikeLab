@@ -1,5 +1,7 @@
 # Pressure-aware tyre delivery plan
 
+**25 November checkpoint.** The [static pressure footprint](PRESSURE_FOOTPRINT.md) delivers #113 for three pressures and the seven prescribed flat-plane equilibria. Next is #112: establish native stationary force balance and verify perturb/release and mesh refinement before #114 moving-wheel integration. #117 awaits measurements. Earlier dated plans below describe the preceding checkpoints.
+
 Current decision: 18 November 2026, replacing the all-or-nothing tracking boundary of #95 at the user's request. Close #95 as **superseded**, not as completed physics. Preserve its original report and downstream findings; the open obligations now have separate issues and explicit closure tests. No model, budget, default or failure threshold changes in this planning increment.
 
 ## What is already delivered

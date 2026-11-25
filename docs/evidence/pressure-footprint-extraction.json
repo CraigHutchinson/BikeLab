@@ -1,0 +1,10 @@
+{
+  "sourceCommit": "c6113850cdae64377c01c1108c1873c4db6586cd",
+  "solverIdenticalExceptImportPaths": true,
+  "denseIdentical": true,
+  "newSha256": {
+    "dist/sealed-plane.js": "d7655447fa2fabc57cdbcba9b4fabd9f69cad37e552d6fd3da9ccede63d08e89",
+    "dist/static-dense.js": "ce37478c657618654605b342eacb55ae38accf3b21e9e9c738a64cb7e2fdd329"
+  },
+  "legacyImports": "Reexports retain script and test callers. Future evidence generators include shared implementation hashes; historical receipts unchanged."
+}

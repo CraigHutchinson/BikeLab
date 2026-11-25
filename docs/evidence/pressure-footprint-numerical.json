@@ -1,0 +1,580 @@
+{
+  "scope": "Fixed illustrative section, phase zero, flat static only. No measured calibration or native receiving.",
+  "node": "v24.22.0",
+  "sourcesSha256": {
+    "scripts/pressure-footprint-check.mjs": "06fe391e1724e7450b944020ffb93c6e9e071c9ffc09eceda5a9892166236eab",
+    "scripts/pressure-footprint-browser-check.mjs": "052d0d025e26035ec3cfd39b0e13958d153f05f8736ad341de0e5ac233053a12",
+    "server.mjs": "903362ce6c74ebafd16770e56b4ac6072a5b0d0b5ecc67651d39d9d7c30ac4ab",
+    "dist/style.css": "c22cbdb01344f4d694b9d3833556c12e0b4e5184fcc961cf074443a5f75d808c",
+    "dist/pressure-footprint.js": "7c2e17ec6279a749092c04002dca255f360439bab880e0399950843151cfe699",
+    "dist/pressure-footprint-worker.js": "cc1f9b5c53707ea22c67fd4ddc416f24083c1c507c3cb169d126cf45dfc415b0",
+    "dist/pressure-footprint-app.js": "49f5c9fb2e691cdb893ae08163c0d4b0e792300baea3f09e3988e3a2224df0b9",
+    "dist/pressure-footprint.html": "77c52e484c6d068068f03dafc93ab62dbbfe85eb9acbb1ef2f95e9ce8ddf6295",
+    "dist/sealed-plane.js": "d7655447fa2fabc57cdbcba9b4fabd9f69cad37e552d6fd3da9ccede63d08e89",
+    "dist/static-dense.js": "ce37478c657618654605b342eacb55ae38accf3b21e9e9c738a64cb7e2fdd329",
+    "dist/sealed-casing.js": "40a92a31cd25d4ed3f484c3224829b0306e9eb82aee87f0b1add2fb07dfb7162",
+    "dist/sealed-casing-example.js": "ab29a64f7a5d451211f0c85988ba14d4e09bf81dd5a084a4f07b99629f49ddc9",
+    "dist/tyre-relaxation.js": "8568a58c5eb0bf4dced852f3fd9e59d818835a4ed241c01a159a01486dd830d1",
+    "dist/tyre-gas.js": "bb977230f4762d4f57059506149491934589be374c07107a4283c1e32bfb0089",
+    "dist/wheel-ring.js": "c0de0d124a02f1ecfacd899e73de714ce6a697d0badccd9020052c88fe55de60"
+  },
+  "archiveSha256": "af5946810e77ad11d9072d5353389ae1f7220831a1d4a8538d86ad377a7d9391",
+  "cases": [
+    {
+      "pressure": 120000,
+      "elapsedMs": 11098.2569,
+      "states": [
+        {
+          "index": 0,
+          "branch": "load",
+          "lowering": 0,
+          "elapsedMs": 695.2434999999999,
+          "reaction": 0,
+          "pressure": 120000,
+          "volume": 0.004542554545190184,
+          "potential": 5.986052886792446,
+          "maxStrain": 0.020944555409379895,
+          "footprint": 0,
+          "rimClearance": 0.051048062910556524,
+          "height": 0.3620480629105565,
+          "metrics": {
+            "maxKktForce": 2.7898039434148814e-10,
+            "minGap": 0,
+            "complementarity": 0
+          },
+          "admission": "admitted"
+        },
+        {
+          "index": 1,
+          "branch": "load",
+          "lowering": 0.001,
+          "elapsedMs": 1228.1366,
+          "reaction": 164.94404231610196,
+          "pressure": 120081.1337501072,
+          "volume": 0.0045411673292500366,
+          "potential": 6.054113491957697,
+          "maxStrain": 0.02098222128593985,
+          "footprint": 0.03560095335377151,
+          "rimClearance": 0.05004806291055652,
+          "height": 0.3610480629105565,
+          "metrics": {
+            "maxKktForce": 0.0000057289368138313534,
+            "minGap": 0,
+            "complementarity": 0
+          },
+          "admission": "admitted"
+        },
+        {
+          "index": 2,
+          "branch": "load",
+          "lowering": 0.002,
+          "elapsedMs": 1506.9567,
+          "reaction": 326.9272244073881,
+          "pressure": 120234.97254491826,
+          "volume": 0.004538539567660667,
+          "potential": 6.310101567362654,
+          "maxStrain": 0.021043513935821156,
+          "footprint": 0.07122109548420957,
+          "rimClearance": 0.04904806291055652,
+          "height": 0.3600480629105565,
+          "metrics": {
+            "maxKktForce": 0.0000018421252270250932,
+            "minGap": 0,
+            "complementarity": 0
+          },
+          "admission": "admitted"
+        },
+        {
+          "index": 3,
+          "branch": "load",
+          "lowering": 0.004,
+          "elapsedMs": 2219.8495,
+          "reaction": 493.9655072490842,
+          "pressure": 120662.57270099601,
+          "volume": 0.004531253153851534,
+          "potential": 7.149584284971768,
+          "maxStrain": 0.058989719836324506,
+          "footprint": 0.08901571437300204,
+          "rimClearance": 0.04704806291055652,
+          "height": 0.3580480629105565,
+          "metrics": {
+            "maxKktForce": 2.9759450903554807e-8,
+            "minGap": 0,
+            "complementarity": 0
+          },
+          "admission": "admitted"
+        },
+        {
+          "index": 4,
+          "branch": "unload",
+          "lowering": 0.002,
+          "elapsedMs": 2224.2182999999995,
+          "reaction": 326.9272247477496,
+          "pressure": 120234.97254500056,
+          "volume": 0.004538539567659262,
+          "potential": 6.310101567365496,
+          "maxStrain": 0.021043513933047153,
+          "footprint": 0.07122109548537849,
+          "rimClearance": 0.04904806291055652,
+          "height": 0.3600480629105565,
+          "metrics": {
+            "maxKktForce": 6.159694976304309e-11,
+            "minGap": 0,
+            "complementarity": 0
+          },
+          "admission": "admitted"
+        },
+        {
+          "index": 5,
+          "branch": "unload",
+          "lowering": 0.001,
+          "elapsedMs": 1840.4625999999998,
+          "reaction": 164.9440425352235,
+          "pressure": 120081.13375000688,
+          "volume": 0.004541167329251751,
+          "potential": 6.054113491957677,
+          "maxStrain": 0.020982221283996738,
+          "footprint": 0.035600953354476425,
+          "rimClearance": 0.05004806291055652,
+          "height": 0.3610480629105565,
+          "metrics": {
+            "maxKktForce": 0.000004032969768807959,
+            "minGap": 0,
+            "complementarity": 0
+          },
+          "admission": "admitted"
+        },
+        {
+          "index": 6,
+          "branch": "unload",
+          "lowering": 0,
+          "elapsedMs": 1358.2970000000005,
+          "reaction": 1.2142464811404352e-10,
+          "pressure": 119999.99999998706,
+          "volume": 0.004542554545190405,
+          "potential": 5.98605288678325,
+          "maxStrain": 0.020944555410336907,
+          "footprint": 0,
+          "rimClearance": 0.051048062910556524,
+          "height": 0.3620480629105565,
+          "metrics": {
+            "maxKktForce": 1.2011513117471395e-7,
+            "minGap": 0,
+            "complementarity": 0
+          },
+          "admission": "admitted"
+        }
+      ],
+      "comparisons": [
+        {
+          "index": 0,
+          "forceError": 0,
+          "budget": 1
+        },
+        {
+          "index": 1,
+          "forceError": 3.6745972557700384,
+          "budget": 9.4309319785936
+        },
+        {
+          "index": 2,
+          "forceError": 2.0516740558399533,
+          "budget": 17.346361220369406
+        },
+        {
+          "index": 3,
+          "forceError": 6.003689804864393,
+          "budget": 25.998459852697433
+        },
+        {
+          "index": 4,
+          "forceError": 2.0516743954766525,
+          "budget": 17.34636123738748
+        },
+        {
+          "index": 5,
+          "forceError": 3.6745970387590035,
+          "budget": 9.430931978699126
+        },
+        {
+          "index": 6,
+          "forceError": 1.2142464811404352e-10,
+          "budget": 1.0000000000060711
+        }
+      ],
+      "energyDerivative": 326.92722325755597,
+      "energyError": 0.000001149832144164975
+    },
+    {
+      "pressure": 160000,
+      "elapsedMs": 10006.419199999998,
+      "states": [
+        {
+          "index": 0,
+          "branch": "load",
+          "lowering": 0,
+          "elapsedMs": 697.2164999999986,
+          "reaction": 0,
+          "pressure": 160000,
+          "volume": 0.004575784342415023,
+          "potential": 10.638171974006728,
+          "maxStrain": 0.02790591382326091,
+          "footprint": 0,
+          "rimClearance": 0.05139640467571421,
+          "height": 0.3623964046757142,
+          "metrics": {
+            "maxKktForce": 2.909033014475426e-10,
+            "minGap": 0,
+            "complementarity": 0
+          },
+          "admission": "admitted"
+        },
+        {
+          "index": 1,
+          "branch": "load",
+          "lowering": 0.001,
+          "elapsedMs": 1394.4892999999993,
+          "reaction": 166.63251704728407,
+          "pressure": 160095.1304445897,
+          "volume": 0.004574396698700527,
+          "potential": 10.706916748979605,
+          "maxStrain": 0.02794556828579875,
+          "footprint": 0.03562681339480896,
+          "rimClearance": 0.05039640467571421,
+          "height": 0.3613964046757142,
+          "metrics": {
+            "maxKktForce": 6.789235840187757e-11,
+            "minGap": 0,
+            "complementarity": 0
+          },
+          "admission": "admitted"
+        },
+        {
+          "index": 2,
+          "branch": "load",
+          "lowering": 0.002,
+          "elapsedMs": 1153.7220000000016,
+          "reaction": 401.51504489343847,
+          "pressure": 160273.71281663555,
+          "volume": 0.004571794261399464,
+          "potential": 11.003978718054457,
+          "maxStrain": 0.028016857276234486,
+          "footprint": 0.07130133645205622,
+          "rimClearance": 0.04939640467571421,
+          "height": 0.3603964046757142,
+          "metrics": {
+            "maxKktForce": 0.000008750786213873596,
+            "minGap": 0,
+            "complementarity": 0
+          },
+          "admission": "admitted"
+        },
+        {
+          "index": 3,
+          "branch": "load",
+          "lowering": 0.004,
+          "elapsedMs": 1605.0564000000013,
+          "reaction": 644.8661643659354,
+          "pressure": 160772.13549584243,
+          "volume": 0.00456454806964906,
+          "potential": 12.077304181986591,
+          "maxStrain": 0.052028832918650236,
+          "footprint": 0.08913387344817404,
+          "rimClearance": 0.04739640467571421,
+          "height": 0.3583964046757142,
+          "metrics": {
+            "maxKktForce": 0.0000054456835724137065,
+            "minGap": 0,
+            "complementarity": 0
+          },
+          "admission": "admitted"
+        },
+        {
+          "index": 4,
+          "branch": "unload",
+          "lowering": 0.002,
+          "elapsedMs": 2034.8313999999991,
+          "reaction": 401.5150465947201,
+          "pressure": 160273.7128165922,
+          "volume": 0.004571794261400096,
+          "potential": 11.003978718055977,
+          "maxStrain": 0.028016857255142247,
+          "footprint": 0.07130133645770917,
+          "rimClearance": 0.04939640467571421,
+          "height": 0.3603964046757142,
+          "metrics": {
+            "maxKktForce": 1.0106049330715905e-10,
+            "minGap": 0,
+            "complementarity": 0
+          },
+          "admission": "admitted"
+        },
+        {
+          "index": 5,
+          "branch": "unload",
+          "lowering": 0.001,
+          "elapsedMs": 1751.2904999999992,
+          "reaction": 166.63251704729794,
+          "pressure": 160095.1304445893,
+          "volume": 0.004574396698700533,
+          "potential": 10.706916748979001,
+          "maxStrain": 0.02794556828579875,
+          "footprint": 0.035626813394808915,
+          "rimClearance": 0.05039640467571421,
+          "height": 0.3613964046757142,
+          "metrics": {
+            "maxKktForce": 1.1313971981508075e-10,
+            "minGap": 0,
+            "complementarity": 0
+          },
+          "admission": "admitted"
+        },
+        {
+          "index": 6,
+          "branch": "unload",
+          "lowering": 0,
+          "elapsedMs": 1356.1830999999984,
+          "reaction": 1.71581859831349e-10,
+          "pressure": 159999.99999999083,
+          "volume": 0.004575784342415156,
+          "potential": 10.638171974009392,
+          "maxStrain": 0.027905913824300965,
+          "footprint": 0,
+          "rimClearance": 0.05139640467571421,
+          "height": 0.3623964046757142,
+          "metrics": {
+            "maxKktForce": 1.221875023382779e-7,
+            "minGap": 0,
+            "complementarity": 0
+          },
+          "admission": "admitted"
+        }
+      ],
+      "comparisons": [
+        {
+          "index": 0,
+          "forceError": 0,
+          "budget": 1
+        },
+        {
+          "index": 1,
+          "forceError": 3.594089029948776,
+          "budget": 9.511330303861643
+        },
+        {
+          "index": 2,
+          "forceError": 1.233328928820299,
+          "budget": 21.13741869111294
+        },
+        {
+          "index": 3,
+          "forceError": 5.211193833752645,
+          "budget": 33.50386790998441
+        },
+        {
+          "index": 4,
+          "forceError": 1.2333272272719,
+          "budget": 21.1374186910996
+        },
+        {
+          "index": 5,
+          "forceError": 3.5940890433573713,
+          "budget": 9.511330304532766
+        },
+        {
+          "index": 6,
+          "forceError": 1.71581859831349e-10,
+          "budget": 1.0000000000085791
+        }
+      ],
+      "energyDerivative": 401.51503361229857,
+      "energyError": 0.000011281139904895099
+    },
+    {
+      "pressure": 200000,
+      "elapsedMs": 9764.803200000002,
+      "states": [
+        {
+          "index": 0,
+          "branch": "load",
+          "lowering": 0,
+          "elapsedMs": 644.2524999999987,
+          "reaction": 6.394884621840902e-13,
+          "pressure": 200000,
+          "volume": 0.004608999261932425,
+          "potential": 16.616810805307388,
+          "maxStrain": 0.034857865203475225,
+          "footprint": 0,
+          "rimClearance": 0.051744273923732764,
+          "height": 0.36274427392373276,
+          "metrics": {
+            "maxKktForce": 2.8605739998965873e-10,
+            "minGap": 0,
+            "complementarity": 0
+          },
+          "admission": "admitted"
+        },
+        {
+          "index": 1,
+          "branch": "load",
+          "lowering": 0.001,
+          "elapsedMs": 1469.9117000000006,
+          "reaction": 168.2516943412561,
+          "pressure": 200108.9097022098,
+          "volume": 0.0046076115065057325,
+          "potential": 16.686213469940853,
+          "maxStrain": 0.03489848042933441,
+          "footprint": 0.03565292129542966,
+          "rimClearance": 0.05074427392373276,
+          "height": 0.36174427392373276,
+          "metrics": {
+            "maxKktForce": 6.433964472307707e-11,
+            "minGap": 0,
+            "complementarity": 0
+          },
+          "admission": "admitted"
+        },
+        {
+          "index": 2,
+          "branch": "load",
+          "lowering": 0.002,
+          "elapsedMs": 1115.237799999999,
+          "reaction": 459.07256972929076,
+          "pressure": 200311.63602083223,
+          "volume": 0.004605030762170686,
+          "potential": 17.00067138366239,
+          "maxStrain": 0.034975974108566454,
+          "footprint": 0.07136993377953739,
+          "rimClearance": 0.04974427392373276,
+          "height": 0.36074427392373276,
+          "metrics": {
+            "maxKktForce": 0.000008908581063948873,
+            "minGap": 0,
+            "complementarity": 0
+          },
+          "admission": "admitted"
+        },
+        {
+          "index": 3,
+          "branch": "load",
+          "lowering": 0.004,
+          "elapsedMs": 1577.514900000002,
+          "reaction": 780.5407129329786,
+          "pressure": 200879.1835679432,
+          "volume": 0.004597822657560298,
+          "potential": 18.284332611870145,
+          "maxStrain": 0.04507734253144402,
+          "footprint": 0.08923705294271458,
+          "rimClearance": 0.04774427392373276,
+          "height": 0.35874427392373276,
+          "metrics": {
+            "maxKktForce": 1.3362466688704444e-10,
+            "minGap": 0,
+            "complementarity": 0
+          },
+          "admission": "admitted"
+        },
+        {
+          "index": 4,
+          "branch": "unload",
+          "lowering": 0.002,
+          "elapsedMs": 2028.2608,
+          "reaction": 459.07257148629947,
+          "pressure": 200311.63602052093,
+          "volume": 0.004605030762174647,
+          "potential": 17.000671383663427,
+          "maxStrain": 0.03497597408634556,
+          "footprint": 0.07136993378553533,
+          "rimClearance": 0.04974427392373276,
+          "height": 0.36074427392373276,
+          "metrics": {
+            "maxKktForce": 5.856524154523868e-10,
+            "minGap": 0,
+            "complementarity": 0
+          },
+          "admission": "admitted"
+        },
+        {
+          "index": 5,
+          "branch": "unload",
+          "lowering": 0.001,
+          "elapsedMs": 1523.0710999999974,
+          "reaction": 168.25169433663245,
+          "pressure": 200108.90970218318,
+          "volume": 0.004607611506506072,
+          "potential": 16.68621346994206,
+          "maxStrain": 0.03489848042948829,
+          "footprint": 0.03565292129535412,
+          "rimClearance": 0.05074427392373276,
+          "height": 0.36174427392373276,
+          "metrics": {
+            "maxKktForce": 2.3346372052257536e-7,
+            "minGap": 0,
+            "complementarity": 0
+          },
+          "admission": "admitted"
+        },
+        {
+          "index": 6,
+          "branch": "unload",
+          "lowering": 0,
+          "elapsedMs": 1393.9238000000041,
+          "reaction": 2.3729285203444306e-10,
+          "pressure": 199999.99999998434,
+          "volume": 0.004608999261932625,
+          "potential": 16.61681080529586,
+          "maxStrain": 0.03485786520451417,
+          "footprint": 0,
+          "rimClearance": 0.051744273923732764,
+          "height": 0.36274427392373276,
+          "metrics": {
+            "maxKktForce": 1.1611786199239305e-7,
+            "minGap": 0,
+            "complementarity": 0
+          },
+          "admission": "admitted"
+        }
+      ],
+      "comparisons": [
+        {
+          "index": 0,
+          "forceError": 6.394884621840902e-13,
+          "budget": 1.000000000000032
+        },
+        {
+          "index": 1,
+          "forceError": 3.4831285830786953,
+          "budget": 9.58674114621674
+        },
+        {
+          "index": 2,
+          "forceError": 2.060738784441128,
+          "budget": 24.056665425686596
+        },
+        {
+          "index": 3,
+          "forceError": 11.92797121304966,
+          "budget": 40.623434207301415
+        },
+        {
+          "index": 4,
+          "forceError": 2.060737036583589,
+          "budget": 24.056665426144153
+        },
+        {
+          "index": 5,
+          "forceError": 3.483128593188354,
+          "budget": 9.586741146491041
+        },
+        {
+          "index": 6,
+          "forceError": 2.3729285203444306e-10,
+          "budget": 1.0000000000118647
+        }
+      ],
+      "energyDerivative": 459.07254625277005,
+      "energyError": 0.000023476520709664328
+    }
+  ],
+  "success": true
+}
